@@ -5,18 +5,13 @@ from firebase_admin import credentials, firestore
 import json
 import os
 
-# ==========================================
 # 1. PAGE SETUP
-# ==========================================
 st.set_page_config(page_title="NEET Sarathi: NTA Secret Panel", page_icon="🩺", layout="centered")
 st.title("🩺 NEET Sarathi: Dr. Sharma Edition")
 st.markdown("### `Head of NTA Secret Panel` | Deepthink Engine Active 🧠")
 
-# ==========================================
-# 2. CONNECTIONS (Gemini + Firebase)
-# ==========================================
-
-# A. Gemini Connection
+# 2. CONNECTIONS
+# Gemini Setup
 try:
     if "GOOGLE_API_KEY" in st.secrets:
         genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
@@ -26,7 +21,7 @@ try:
 except Exception as e:
     st.error(f"Error: {e}")
 
-# B. Firebase Connection
+# Firebase Setup
 db = None
 if not firebase_admin._apps:
     try:
@@ -45,9 +40,7 @@ if not firebase_admin._apps:
 if firebase_admin._apps:
     db = firestore.client()
 
-# ==========================================
 # 3. HELPER FUNCTIONS
-# ==========================================
 def log_mistake_to_db(mistake_text):
     if db is None: return "⚠️ DB disconnected."
     try:
@@ -72,9 +65,7 @@ def detect_language(text):
     hindi_keywords = ['hai', 'ho', 'ka', 'ki', 'mein', 'se', 'ko', 'na', 'kya', 'samjhao']
     return "Hinglish" if any(w in text.lower() for w in hindi_keywords) else "English"
 
-# ==========================================
 # 4. THE ULTIMATE SYSTEM PROMPT (BRAIN) 🧠
-# ==========================================
 FINAL_BOT_ROLE = """
 You are 'NEET Sarathi' - Anuj's 24/7 AI Mentor & Strategic Coach.
 Simultaneously, you possess the mind of 'Dr. Sharma' (Former NEET Paper Setter, 25+ Yrs Exp) & 'Director Pradeep' (NTA Head).
@@ -125,9 +116,7 @@ Focus on these high-weightage areas:
 - Always end with an ACTIONABLE step.
 """
 
-# ==========================================
 # 5. CHAT LOOP
-# ==========================================
 if st.sidebar.button("🗑️ Reset"):
     st.session_state.messages = []
     st.rerun()
@@ -154,13 +143,14 @@ if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # 2. Model Selection (Safe Mode)
+    # 2. Model Selection (STRICTLY GEMINI PRO)
+    # Humne 'flash' ko hata diya hai kyunki wo 404 error de raha tha.
+    # 'gemini-pro' universal hai aur hamesha chalta hai.
     try:
-        # Try latest model first
-        model = genai.GenerativeModel("gemini-1.5-flash")
-    except:
-        # Fallback to stable model
         model = genai.GenerativeModel("gemini-pro")
+    except Exception as e:
+        st.error(f"Model Init Error: {e}")
+        st.stop()
 
     # 3. Create Chat History
     history = []
