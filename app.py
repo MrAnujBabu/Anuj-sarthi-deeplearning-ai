@@ -6,27 +6,15 @@ import json
 import os
 
 # ==========================================
-# 1. PAGE & UI CONFIGURATION
+# 1. PAGE CONFIGURATION
 # ==========================================
 st.set_page_config(page_title="NEET Sarathi: NTA Secret Panel", page_icon="🩺", layout="centered")
 
-st.title("🩺 NEET Sarathi: Dr. Sharma & Director Pradeep")
+st.title("🩺 NEET Sarathi: Dr. Sharma Edition")
 st.markdown("### `Head of NTA Secret Panel` | Deepthink Engine Active 🧠")
-st.caption("Powered by Gemini 1.5 Flash & Firebase Memory")
 
 # ==========================================
-# 2. SIDEBAR & CONNECTION STATUS
-# ==========================================
-with st.sidebar:
-    st.header("⚙️ Examiner Controls")
-    if st.button("🗑️ Reset Interview"):
-        st.session_state.messages = []
-        st.rerun()
-    st.markdown("---")
-    st.success("✅ Deepthink Engine: ACTIVATED")
-    
-# ==========================================
-# 3. SECURE CONNECTIONS (Using Secrets)
+# 2. SECURE CONNECTION (Safety Mode 🛡️)
 # ==========================================
 
 # A. Gemini Connection
@@ -34,30 +22,40 @@ try:
     if "GOOGLE_API_KEY" in st.secrets:
         genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
     else:
-        st.error("⚠️ Google API Key missing in Secrets!")
+        st.error("⚠️ Google API Key missing! Please check Streamlit Secrets.")
+        st.stop()
 except Exception as e:
     st.error(f"Error configuring Gemini: {e}")
 
-# B. Firebase Connection
-# Check karte hain agar firebase pehle se connected to nahi
+# B. Firebase Connection (Crash Proof Logic)
+db = None  # Default state empty rakhenge
+
+# Check karte hain ki kya Firebase pehle se connected hai?
 if not firebase_admin._apps:
     try:
-        # Streamlit me hum file path nahi, secrets se JSON text padhte hain
-        key_dict = json.loads(st.secrets["FIREBASE_KEY"])
-        cred = credentials.Certificate(key_dict)
-        firebase_admin.initialize_app(cred)
-        st.sidebar.success("✅ Memory Database: CONNECTED")
+        if "FIREBASE_KEY" in st.secrets:
+            # Secrets se JSON text padhkar use Dictionary banayenge
+            key_dict = json.loads(st.secrets["FIREBASE_KEY"])
+            cred = credentials.Certificate(key_dict)
+            firebase_admin.initialize_app(cred)
+            st.sidebar.success("✅ Memory Database: CONNECTED")
+        else:
+            st.sidebar.warning("⚠️ Firebase Key not found. Memory disabled.")
     except Exception as e:
-        st.sidebar.error(f"❌ Firebase Error: {e}")
+        st.error(f"❌ Firebase Error: {e}")
+        st.stop()  # Agar key galat hai toh yahi ruk jao
 
-db = firestore.client()
+# Agar connection safal raha, tabhi Client banao
+if firebase_admin._apps:
+    db = firestore.client()
 
 # ==========================================
-# 4. LOGIC FUNCTIONS (Brain Parts)
+# 3. LOGIC FUNCTIONS
 # ==========================================
 
 def log_mistake_to_db(mistake_text):
-    """Galti ko database mein save karega"""
+    if db is None: 
+        return "⚠️ Database not connected. Check Secrets."
     try:
         db.collection("mistakes").add({
             "mistake": mistake_text,
@@ -68,7 +66,8 @@ def log_mistake_to_db(mistake_text):
         return f"❌ Error saving: {e}"
 
 def get_past_mistakes():
-    """Purani galtiyan wapas layega"""
+    if db is None: 
+        return "⚠️ Database not connected."
     try:
         docs = db.collection("mistakes").stream()
         mistakes = [f"- {d.to_dict().get('mistake')}" for d in docs]
@@ -77,17 +76,15 @@ def get_past_mistakes():
         return f"Error reading DB: {e}"
 
 def detect_preferred_language(text):
-    """Detects if user is using Hindi words"""
-    hindi_keywords = ['hai', 'ho', 'ka', 'ki', 'mein', 'se', 'ko', 'na', 'kya', 'bhai', 'batao', 'samjhao', 'karein']
+    hindi_keywords = ['hai', 'ho', 'ka', 'ki', 'mein', 'se', 'ko', 'na', 'kya', 'bhai', 'batao', 'samjhao']
     words = text.lower().split()
     if any(word in hindi_keywords for word in words):
         return "Hinglish (70% Hindi + 30% English)"
     return "English (Professional Medical Tone)"
 
 # ==========================================
-# 5. THE SYSTEM PROMPT (Dr. Sharma Persona)
+# 4. SYSTEM PROMPT
 # ==========================================
-
 FINAL_BOT_ROLE = """
 You are 'NEET Sarathi' - Anuj's 24/7 AI Mentor & Strategic Coach.
 Simultaneously, you possess the mind of 'Dr. Sharma' (Former NEET Paper Setter, 25+ Yrs Exp) & 'Director Pradeep' (NTA Head).
@@ -114,24 +111,6 @@ You must synthesize answers using these layers before replying:
 5. **PREDICTIVE ENGINE:** Predict questions based on "Statistical Hotspots" & "Future Trends".
 6. **ROLEPLAY:** "Act like [Topic]" -> Become that topic in First Person (e.g., "I am DNA...").
 
-## ⚠️ THE EXAMINER'S BLUEPRINT (Confidential):
-Focus on these high-weightage areas:
-- **Bio:** Human Phys (45-50 marks), Genetics (40-45), Reproduction (35-40).
-- **Chem:** Organic Named Rxns, Biomolecules, Equilibrium.
-- **Physics:** Mechanics, Electrostatics, Optics.
-
-## 🛡️ TRAP DETECTION (Teach Anuj to avoid these):
-1. **"Almost Right":** Options that look correct but change one word.
-2. **"Too Specific":** Correct fact, wrong context.
-3. **"Diagram Deception":** Modified NCERT diagrams.
-
-## 📝 RESPONSE TEMPLATE (For Concepts):
-1. **Examiner's View:** "Main is topic se kya puchunga..."
-2. **Concept Explanation:** Clear Hinglish.
-3. **Common Traps:** "60% students yahan galti karte hain..."
-4. **Practice Question:** Give 1 Level 2 or Level 3 question.
-5. **Memory Hack:** Mnemonic or Trick.
-
 ## 🗣️ LANGUAGE & TONE:
 - Use **Smart Hinglish** (Technical terms in English, logic in Hindi).
 - Use Emojis: 🧬, 🩺, 💊, ⚡.
@@ -139,67 +118,58 @@ Focus on these high-weightage areas:
 """
 
 # ==========================================
-# 6. CHAT INTERFACE & LOOP
+# 5. CHAT LOOP
 # ==========================================
 
-# Initialize Session State
+# Sidebar Reset
+if st.sidebar.button("🗑️ Reset Interview"):
+    st.session_state.messages = []
+    st.rerun()
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display Old Messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# User Input Handling
-prompt = st.chat_input("Ask Dr. Sharma (e.g., /log, Quiz me, Act like DNA)...")
+prompt = st.chat_input("Ask Dr. Sharma (e.g., /log, Quiz me)...")
 
 if prompt:
-    # 1. Show User Message
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # 2. Logic Processing
-    response_text = ""
-    
-    # Model Init
+    # Brain Initialization
     model = genai.GenerativeModel("gemini-1.5-flash", system_instruction=FINAL_BOT_ROLE)
+    response_text = ""
 
-    # --- SPECIAL COMMANDS ---
+    # Special Commands
     if prompt.startswith("/log"):
         msg = prompt.replace("/log", "").strip()
-        if msg:
-            status = log_mistake_to_db(msg)
-            # AI Context for Confirmation
-            ai_prompt = f"[SYSTEM: User logged a mistake: '{msg}'. Confirm save & motivate briefly.]"
-            response = model.generate_content(ai_prompt)
-            response_text = f"**[System]:** {status}\n\n{response.text}"
-        else:
-            response_text = "⚠️ Galti log karne ke liye '/log' ke baad text likhein."
+        status = log_mistake_to_db(msg)
+        # AI se confirmation message
+        ai_prompt = f"[SYSTEM: User logged: '{msg}'. Confirm save & motivate.]"
+        response = model.generate_content(ai_prompt)
+        response_text = f"**[System]:** {status}\n\n{response.text}"
             
     elif "revise mistake" in prompt.lower():
         past_data = get_past_mistakes()
-        ai_prompt = f"[SYSTEM: Here are past mistakes from DB:\n{past_data}\n. Quiz Anuj based on these traps. Be strict.]"
+        ai_prompt = f"[SYSTEM: Past mistakes:\n{past_data}\n. Quiz Anuj strictly based on these.]"
         response = model.generate_content(ai_prompt)
         response_text = response.text
         
     else:
-        # --- NORMAL CHAT + LANGUAGE DETECTION ---
+        # Normal Chat
         lang_mode = detect_preferred_language(prompt)
+        context_input = f"{prompt} \n\n[SYSTEM INSTRUCTION: User prefers: {lang_mode}. Apply 'Dr. Sharma' persona.]"
         
-        # Hidden Context Injection
-        context_input = f"{prompt} \n\n[SYSTEM INSTRUCTION: User prefers tone: {lang_mode}. Apply 'Dr. Sharma' Examiner persona.]"
-        
-        # Chat History Context
         history_for_ai = [{"role": m["role"], "parts": [m["content"]]} for m in st.session_state.messages]
-        
-        # Start Chat
         chat = model.start_chat(history=history_for_ai)
         response = chat.send_message(context_input)
         response_text = response.text
 
-    # 3. Show AI Response
+    # Show Response
     with st.chat_message("assistant"):
         st.markdown(response_text)
     
