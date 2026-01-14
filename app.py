@@ -14,7 +14,7 @@ st.title("🩺 NEET Sarathi: Dr. Sharma Edition")
 st.markdown("### `Head of NTA Secret Panel` | Deepthink Engine Active 🧠")
 
 # ==========================================
-# 2. SECURE CONNECTION (Safety Mode 🛡️)
+# 2. SECURE CONNECTION (Auto-Fix Mode 🛠️)
 # ==========================================
 
 # A. Gemini Connection
@@ -27,25 +27,31 @@ try:
 except Exception as e:
     st.error(f"Error configuring Gemini: {e}")
 
-# B. Firebase Connection (Crash Proof Logic)
-db = None  # Default state empty rakhenge
+# B. Firebase Connection (Smart Fix Logic)
+db = None 
 
-# Check karte hain ki kya Firebase pehle se connected hai?
 if not firebase_admin._apps:
     try:
         if "FIREBASE_KEY" in st.secrets:
-            # Secrets se JSON text padhkar use Dictionary banayenge
-            key_dict = json.loads(st.secrets["FIREBASE_KEY"])
+            # 1. Raw string uthao
+            raw_key = st.secrets["FIREBASE_KEY"]
+            
+            # 2. Smart Quotes (Mobile copy issues) ko fix karo
+            raw_key = raw_key.replace("“", '"').replace("”", '"')
+            
+            # 3. JSON load karte waqt 'strict=False' use karo (Ye magic fix hai!)
+            key_dict = json.loads(raw_key, strict=False)
+            
             cred = credentials.Certificate(key_dict)
             firebase_admin.initialize_app(cred)
             st.sidebar.success("✅ Memory Database: CONNECTED")
         else:
             st.sidebar.warning("⚠️ Firebase Key not found. Memory disabled.")
     except Exception as e:
-        st.error(f"❌ Firebase Error: {e}")
-        st.stop()  # Agar key galat hai toh yahi ruk jao
-
-# Agar connection safal raha, tabhi Client banao
+        # Agar ab bhi error aaye, toh user ko saaf batao
+        st.error(f"❌ Firebase JSON formatting error. (Don't worry, chat still works!) Error: {e}")
+        # Hum stop() nahi karenge, taaki chat chalti rahe bina database ke
+        
 if firebase_admin._apps:
     db = firestore.client()
 
@@ -55,7 +61,7 @@ if firebase_admin._apps:
 
 def log_mistake_to_db(mistake_text):
     if db is None: 
-        return "⚠️ Database not connected. Check Secrets."
+        return "⚠️ Database not connected (Check JSON format)."
     try:
         db.collection("mistakes").add({
             "mistake": mistake_text,
@@ -148,7 +154,6 @@ if prompt:
     if prompt.startswith("/log"):
         msg = prompt.replace("/log", "").strip()
         status = log_mistake_to_db(msg)
-        # AI se confirmation message
         ai_prompt = f"[SYSTEM: User logged: '{msg}'. Confirm save & motivate.]"
         response = model.generate_content(ai_prompt)
         response_text = f"**[System]:** {status}\n\n{response.text}"
