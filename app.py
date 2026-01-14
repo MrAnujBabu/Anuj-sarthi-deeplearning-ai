@@ -14,7 +14,7 @@ st.title("🩺 NEET Sarathi: Dr. Sharma Edition")
 st.markdown("### `Head of NTA Secret Panel` | Deepthink Engine Active 🧠")
 
 # ==========================================
-# 2. SECURE CONNECTION (Auto-Fix Mode 🛠️)
+# 2. SECURE CONNECTION (Fixed & Safe 🛡️)
 # ==========================================
 
 # A. Gemini Connection
@@ -29,17 +29,12 @@ except Exception as e:
 
 # B. Firebase Connection (Smart Fix Logic)
 db = None 
-
 if not firebase_admin._apps:
     try:
         if "FIREBASE_KEY" in st.secrets:
-            # 1. Raw string uthao
+            # Smart fix for mobile quotes & hidden characters
             raw_key = st.secrets["FIREBASE_KEY"]
-            
-            # 2. Smart Quotes (Mobile copy issues) ko fix karo
             raw_key = raw_key.replace("“", '"').replace("”", '"')
-            
-            # 3. JSON load karte waqt 'strict=False' use karo (Ye magic fix hai!)
             key_dict = json.loads(raw_key, strict=False)
             
             cred = credentials.Certificate(key_dict)
@@ -48,9 +43,7 @@ if not firebase_admin._apps:
         else:
             st.sidebar.warning("⚠️ Firebase Key not found. Memory disabled.")
     except Exception as e:
-        # Agar ab bhi error aaye, toh user ko saaf batao
-        st.error(f"❌ Firebase JSON formatting error. (Don't worry, chat still works!) Error: {e}")
-        # Hum stop() nahi karenge, taaki chat chalti rahe bina database ke
+        st.sidebar.error(f"⚠️ Memory Error (Chat still works): {e}")
         
 if firebase_admin._apps:
     db = firestore.client()
@@ -60,8 +53,7 @@ if firebase_admin._apps:
 # ==========================================
 
 def log_mistake_to_db(mistake_text):
-    if db is None: 
-        return "⚠️ Database not connected (Check JSON format)."
+    if db is None: return "⚠️ Database not connected."
     try:
         db.collection("mistakes").add({
             "mistake": mistake_text,
@@ -72,8 +64,7 @@ def log_mistake_to_db(mistake_text):
         return f"❌ Error saving: {e}"
 
 def get_past_mistakes():
-    if db is None: 
-        return "⚠️ Database not connected."
+    if db is None: return "⚠️ Database not connected."
     try:
         docs = db.collection("mistakes").stream()
         mistakes = [f"- {d.to_dict().get('mistake')}" for d in docs]
@@ -89,7 +80,7 @@ def detect_preferred_language(text):
     return "English (Professional Medical Tone)"
 
 # ==========================================
-# 4. SYSTEM PROMPT
+# 4. SYSTEM PROMPT (The Brain)
 # ==========================================
 FINAL_BOT_ROLE = """
 You are 'NEET Sarathi' - Anuj's 24/7 AI Mentor & Strategic Coach.
@@ -124,7 +115,7 @@ You must synthesize answers using these layers before replying:
 """
 
 # ==========================================
-# 5. CHAT LOOP
+# 5. CHAT LOOP (Universal Fix Version)
 # ==========================================
 
 # Sidebar Reset
@@ -132,50 +123,75 @@ if st.sidebar.button("🗑️ Reset Interview"):
     st.session_state.messages = []
     st.rerun()
 
+# Initialize Chat History with System Prompt (Best Practice for Compatibility)
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [
+        {"role": "user", "content": f"[SYSTEM INSTRUCTION (HIDDEN)]: {FINAL_BOT_ROLE}"},
+        {"role": "model", "content": "Understood. I am ready as Dr. Sharma and NEET Sarathi. How can I help Anuj today?"}
+    ]
 
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+# Display Old Messages (Hide System Prompt from UI)
+for i, message in enumerate(st.session_state.messages):
+    if i >= 2: # Skip first 2 system hidden messages
+        role = "user" if message["role"] == "user" else "assistant"
+        with st.chat_message(role):
+            st.markdown(message["content"])
 
 prompt = st.chat_input("Ask Dr. Sharma (e.g., /log, Quiz me)...")
 
 if prompt:
+    # 1. User Message Show
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Brain Initialization
-    model = genai.GenerativeModel("gemini-1.5-flash", system_instruction=FINAL_BOT_ROLE)
+    # 2. Model Initialization (Using gemini-pro as fallback if flash fails)
+    # Note: We don't pass system_instruction here to avoid compatibility errors. 
+    # It is already in the history.
+    try:
+        model = genai.GenerativeModel("gemini-1.5-flash") 
+    except:
+        model = genai.GenerativeModel("gemini-pro")
+
     response_text = ""
 
-    # Special Commands
+    # 3. Special Commands
     if prompt.startswith("/log"):
         msg = prompt.replace("/log", "").strip()
         status = log_mistake_to_db(msg)
-        ai_prompt = f"[SYSTEM: User logged: '{msg}'. Confirm save & motivate.]"
-        response = model.generate_content(ai_prompt)
-        response_text = f"**[System]:** {status}\n\n{response.text}"
+        
+        # Manually create context for AI
+        full_context = f"{FINAL_BOT_ROLE}\n\n[SYSTEM: User logged a mistake: '{msg}'. Database Status: {status}. Confirm save & motivate briefly.]"
+        try:
+            response = model.generate_content(full_context)
+            response_text = f"**[System]:** {status}\n\n{response.text}"
+        except Exception as e:
+            response_text = f"**[System]:** {status}\n\n(AI Motivation temporarily unavailable due to network)"
             
     elif "revise mistake" in prompt.lower():
         past_data = get_past_mistakes()
-        ai_prompt = f"[SYSTEM: Past mistakes:\n{past_data}\n. Quiz Anuj strictly based on these.]"
-        response = model.generate_content(ai_prompt)
+        full_context = f"{FINAL_BOT_ROLE}\n\n[SYSTEM: Here are past mistakes from DB:\n{past_data}\n. Quiz Anuj strictly based on these.]"
+        response = model.generate_content(full_context)
         response_text = response.text
         
     else:
         # Normal Chat
         lang_mode = detect_preferred_language(prompt)
-        context_input = f"{prompt} \n\n[SYSTEM INSTRUCTION: User prefers: {lang_mode}. Apply 'Dr. Sharma' persona.]"
+        # Prepare history for Gemini (Needs mapped roles)
+        gemini_history = []
+        for m in st.session_state.messages:
+            role = "user" if m["role"] == "user" else "model"
+            gemini_history.append({"role": role, "parts": [m["content"]]})
+            
+        chat = model.start_chat(history=gemini_history)
         
-        history_for_ai = [{"role": m["role"], "parts": [m["content"]]} for m in st.session_state.messages]
-        chat = model.start_chat(history=history_for_ai)
-        response = chat.send_message(context_input)
+        # Add hidden context to the prompt
+        hidden_instruction = f" [Instruction: User prefers {lang_mode}. Apply Dr. Sharma persona.]"
+        response = chat.send_message(prompt + hidden_instruction)
         response_text = response.text
 
-    # Show Response
+    # 4. Show Response
     with st.chat_message("assistant"):
         st.markdown(response_text)
     
-    st.session_state.messages.append({"role": "assistant", "content": response_text})
+    st.session_state.messages.append({"role": "model", "content": response_text})
