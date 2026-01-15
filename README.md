@@ -21,7 +21,7 @@ Yeh project ek ordinary student ki problem solve karne ke liye banaya gaya hai: 
 Isme humne **Google Gemini (The Brain)** ko **Firebase Firestore (The Memory)** ke saath joda hai. Result? Ek aisa AI Mentor ("Dr. Sharma") jo na sirf Biology/Physics padhata hai, balki aapki purani galtiyon ko yaad rakhkar aapko sudharta bhi hai.
 
 ### 🌟 Key Features (खासियतें)
-1.  **🧠 Deepthink Engine:** Uses a multi-layered reasoning approach (Layer 1: Past Papers, Layer 2: NCERT Deep Dive, Layer 3: Trap Detection).
+1.  ** Deepthink Engine:** Uses a multi-layered reasoning approach (Layer 1: Past Papers, Layer 2: NCERT Deep Dive, Layer 3: Trap Detection).
 2.  **💾 Permanent Memory (Firebase):** Stores user mistakes (`/log`) permanently. Even if you refresh, Dr. Sharma remembers your weak points.
 3.  **🛡️ Smart Model Selector:** Automatically detects available Gemini models (`gemini-pro` vs `flash`) to prevent 404/Crash errors.
 4.  **💜 Obsidian Integration:** One-click integration to save notes directly into your local Obsidian Vault using URI Schemes (No cloud clutter).
@@ -39,7 +39,7 @@ Isme humne **Google Gemini (The Brain)** ko **Firebase Firestore (The Memory)** 
 
 ---
 
-## 🧗‍♂️ The Engineering Journey (Challenges & Solutions)
+## 🧗‍♂️ The Prompt Engineering Journey (Challenges & Solutions)
 
 Yeh project banana aasan nahi tha. Mobile se coding karte waqt humein kai technical challenges aaye. Future developers ke liye yahan hamara **Analysis & Resolution** log hai:
 
@@ -121,4 +121,4 @@ Yeh project sirf shuruwat hai. Hamara lakshya (Goal) bada hai:
 Contributions are welcome! Agar aapke paas naye "Traps" ya "Deepthink Layers" ke ideas hain, to Pull Request bhejein.
 
 **Developed with ❤️ & Logic by Anuj**
-*Targeting NEET 2026 | Building Naveen Bharat* 🇮🇳
+*Targeting Creating System with Infinite Intelligence| Building Naveen Bharat* 🇮🇳
