@@ -9,7 +9,7 @@ import os
 # 1. PAGE SETUP
 # ==========================================
 st.set_page_config(page_title="NEET Sarathi AI", page_icon="🩺", layout="centered")
-st.title("🩺 Anuj-neet-sarathi: Dr. Sharma Paper Decoder")
+st.title("🩺 Anuj-neet-sarathi: Dr. Sharma Decoder")
 st.markdown("### `Head of NTA Secret Panel` | Deepthink Engine Active 🤔")
 
 # ==========================================
