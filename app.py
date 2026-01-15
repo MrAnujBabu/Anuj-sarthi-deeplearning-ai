@@ -3,7 +3,7 @@ import google.generativeai as genai
 import firebase_admin
 from firebase_admin import credentials, firestore
 import json
-import urllib.parse # Obsidian Link Creator
+import os
 
 # ==========================================
 # 1. PAGE SETUP
@@ -76,32 +76,12 @@ def detect_language(text):
     hindi_keywords = ['hai', 'ho', 'ka', 'ki', 'mein', 'se', 'ko', 'na', 'kya', 'samjhao']
     return "Hinglish" if any(w in text.lower() for w in hindi_keywords) else "English"
 
-# --- 💜 OBSIDIAN LINK GENERATOR ---
-def get_obsidian_link(title, content, vault_name):
-    """
-    Creates a direct link to open Obsidian and save the note.
-    """
-    encoded_title = urllib.parse.quote(title.strip())
-    encoded_content = urllib.parse.quote(content.strip())
-    return f"obsidian://new?vault={vault_name}&name={encoded_title}&content={encoded_content}"
-
 # ==========================================
-# 4. SIDEBAR SETTINGS
-# ==========================================
-with st.sidebar:
-    st.header("💜 Obsidian Setup")
-    vault_name = st.text_input("Vault Name:", value="Vault", help="Apne Obsidian Vault ka naam yahan likhein.")
-    
-    if st.button("🗑️ Reset Chat"):
-        st.session_state.messages = []
-        st.rerun()
-
-# ==========================================
-# 5. THE ULTIMATE SYSTEM PROMPT (FULL DEEPTHINK) 🧠
+# 4. THE ULTIMATE SYSTEM PROMPT (FULL DEEPTHINK) 🧠
 # ==========================================
 FINAL_BOT_ROLE = """
 You are 'NEET Sarathi' - Anuj's 24/7 AI Mentor & Strategic Coach.
-Simultaneously, you possess the mind of 'Dr. Sharma' (Former NEET Paper Setter, 25+ Yrs Exp) & 'Director Pradeep' (NTA Head).
+Simultaneously, you possess the mind of 'Dr. Sharma' (Former NEET Paper Setter, 25+ Yrs Exp).
 
 ## 🧠 CORE INTELLIGENCE (The Deepthink Engine):
 You must synthesize answers using these layers before replying:
@@ -150,17 +130,22 @@ Focus on these high-weightage areas:
 """
 
 # ==========================================
-# 6. CHAT LOOP & DISPLAY
+# 5. CHAT LOOP & DISPLAY
 # ==========================================
 
-# Initialize
+# Initialize Session State
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {"role": "user", "content": f"[SYSTEM_HIDDEN]: {FINAL_BOT_ROLE}"},
         {"role": "model", "content": "Hello Anuj! Dr. Sharma here. Deepthink Engine Activated. 🧠"}
     ]
 
-# Display Loop (Buttons are inside here so they persist)
+# Sidebar Reset
+if st.sidebar.button("🗑️ Reset Chat"):
+    st.session_state.messages = []
+    st.rerun()
+
+# Display Loop
 for i, msg in enumerate(st.session_state.messages):
     if i < 2: continue 
     
@@ -169,56 +154,21 @@ for i, msg in enumerate(st.session_state.messages):
     with st.chat_message(role):
         st.markdown(msg["content"])
         
-        # --- NEW ACTION BAR ---
+        # --- ACTION BAR (Minimal Icon) ---
         if role == "assistant":
             st.markdown("---")
-            # 3 Columns for Buttons
-            c1, c2, c3 = st.columns([1, 1, 1.5])
-            
-            # 1. DOWNLOAD BUTTON (Existing)
-            with c1:
-                st.download_button(
-                    label="📥 Download",
-                    data=msg["content"],
-                    file_name=f"Dr_Sharma_Note_{i}.md",
-                    mime="text/markdown",
-                    key=f"dl_{i}"
-                )
-
-            # 2. COPY AS MARKDOWN (New)
-            with c2:
-                # Popover opens raw code to copy
-                with st.popover("📋 Copy MD"):
-                    st.code(msg["content"], language="markdown")
-
-            # 3. SHARE TO OBSIDIAN (Updated)
-            with c3:
-                # URL Limits check (Browser limit is around 2000 chars)
-                if len(msg["content"]) < 2000:
-                    note_title = f"NEET_Note_{i}"
-                    obsidian_url = get_obsidian_link(note_title, msg["content"], vault_name)
-                    
-                    link_html = f'''
-                    <a href="{obsidian_url}" target="_blank" style="text-decoration:none;">
-                        <button style="
-                            background-color: #7c3aed; 
-                            color: white; 
-                            border: none; 
-                            padding: 6px 10px; 
-                            border-radius: 4px; 
-                            cursor: pointer;
-                            font-size: 14px;">
-                            💜 Share to Obsidian
-                        </button>
-                    </a>
-                    '''
-                    st.markdown(link_html, unsafe_allow_html=True)
-                else:
-                    # Agar note bahut lamba hai to button disable karke info denge
-                    st.caption("⚠️ Note too long for direct share. Use 'Copy MD' & paste in Obsidian.")
+            # Yahan humne text hata kar sirf icon rakha hai
+            st.download_button(
+                label="📥",  # Sirf Icon
+                data=msg["content"],
+                file_name=f"Dr_Sharma_Note_{i}.md",
+                mime="text/markdown",
+                key=f"dl_{i}",
+                help="Download Note" # Hover karne par text dikhega
+            )
 
 # ==========================================
-# 7. INPUT HANDLING
+# 6. INPUT HANDLING
 # ==========================================
 prompt = st.chat_input("Ask Dr. Sharma...")
 
