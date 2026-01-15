@@ -21,7 +21,7 @@ Yeh project ek ordinary student ki problem solve karne ke liye banaya gaya hai: 
 Isme humne **Google Gemini (The Brain)** ko **Firebase Firestore (The Memory)** ke saath joda hai. Result? Ek aisa AI Mentor ("Dr. Sharma") jo na sirf Biology/Physics padhata hai, balki aapki purani galtiyon ko yaad rakhkar aapko sudharta bhi hai.
 
 ### 🌟 Key Features (खासियतें)
-1.  ** Deepthink Engine:** Uses a multi-layered reasoning approach (Layer 1: Past Papers, Layer 2: NCERT Deep Dive, Layer 3: Trap Detection).
+1.  **Deepthink Engine:** Uses a multi-layered reasoning approach (Layer 1: Past Papers, Layer 2: NCERT Deep Dive, Layer 3: Trap Detection).
 2.  **💾 Permanent Memory (Firebase):** Stores user mistakes (`/log`) permanently. Even if you refresh, Dr. Sharma remembers your weak points.
 3.  **🛡️ Smart Model Selector:** Automatically detects available Gemini models (`gemini-pro` vs `flash`) to prevent 404/Crash errors.
 4.  **💜 Obsidian Integration:** One-click integration to save notes directly into your local Obsidian Vault using URI Schemes (No cloud clutter).
@@ -47,7 +47,7 @@ Yeh project banana aasan nahi tha. Mobile se coding karte waqt humein kai techni
 *   **Problem:** Streamlit refresh hote hi chat ud jati thi.
 *   **Resolution:** Humne **Firebase Firestore** integrate kiya. Lekin, humne poori chat save nahi ki (to save cost/storage). Humne sirf **"Mistakes"** ko DB me dala aur Chat History ko Session State + Local Cache se handle kiya.
 
-### 2. The "404 Model Not Found" Nightmare
+### 2. The "404 Model Not Found" Yaha Me Stuck ho gya tha while Devloping app.
 *   **Problem:** Code `gemini-1.5-flash` mang raha tha, par server purani library use kar raha tha.
 *   **Resolution:**
     1.  `requirements.txt` me version lock kiya: `google-generativeai>=0.8.3`.
@@ -63,13 +63,13 @@ Yeh project banana aasan nahi tha. Mobile se coding karte waqt humein kai techni
 
 ---
 
-## 🚀 Installation & Local Setup
+## 🚀 Do your self  & Local Setup
 
 Agar aap isse apne laptop par run karna chahte hain:
 
 1.  **Clone the Repo:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/Anuj-sarthi-deeplearning-ai.git
+    git clone https://github.com/Mranujbabu/Anuj-sarthi-deeplearning-ai.git
     cd Anuj-sarthi-deeplearning-ai
     ```
 
@@ -102,12 +102,13 @@ Agar aap isse apne laptop par run karna chahte hain:
 
 Yeh project sirf shuruwat hai. Hamara lakshya (Goal) bada hai:
 
-1.  **📘 Amazon KDP Book:**
+1.  **📘  Book:**
     *   Hum jald hi ek book launch karenge: *"Build Your Own AI Tutor on Mobile"* logic par.
     *   Isme hum ye sikhaenge ki kaise bina heavy coding background ke, Logic aur AI ke dam par problems solve ki jati hain.
 
 2.  **🎓 Offline Course Integration:**
     *   **Naveen Bharat** platform ke under hum students ko "Ratta Maarna" nahi, balki "AI Tools Banana" sikhaenge.
+    *   **Contributor** :- To Genrate Employee ment and Job 
     *   Students will learn **Prompt Engineering** and **Logic Building** to create their own subject-specific bots.
 
 3.  **Next Tech Upgrade:**
