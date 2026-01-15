@@ -9,8 +9,8 @@ import os
 # 1. PAGE SETUP
 # ==========================================
 st.set_page_config(page_title="NEET Sarathi AI", page_icon="🩺", layout="centered")
-st.title("🩺 NEET Sarathi: Dr. Sharma Edition")
-st.markdown("### `Head of NTA Secret Panel` | Deepthink Engine Active 🧠")
+st.title("🩺 Anuj-neet-sarathi: Dr. Sharma Paper Decoder")
+st.markdown("### `Head of NTA Secret Panel` | Deepthink Engine Active 🤔")
 
 # ==========================================
 # 2. NEET 2026 DETAILED SYLLABUS DATABASE
