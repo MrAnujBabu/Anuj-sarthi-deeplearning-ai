@@ -122,4 +122,4 @@ Yeh project sirf shuruwat hai. Hamara lakshya (Goal) bada hai:
 Contributions are welcome! Agar aapke paas naye "Traps" ya "Deepthink Layers" ke ideas hain, to Pull Request bhejein.
 
 **Developed with ❤️ & Logic by Anuj**
-*Targeting Creating System with Infinite Intelligence| Building Naveen Bharat* 🇮🇳
+*visit our platform [Naveenbharatprism](https://naveenbharatlog-in.vercel.app/)🇮🇳
