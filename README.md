@@ -98,7 +98,7 @@ Agar aap isse apne laptop par run karna chahte hain:
 
 ---
 
-## 🔮 Future Vision: Naveen Bharat Platform 🇮🇳
+## : Naveen Bharat Platform 🇮🇳
 
 Yeh project sirf shuruwat hai. Hamara lakshya (Goal) bada hai:
 
