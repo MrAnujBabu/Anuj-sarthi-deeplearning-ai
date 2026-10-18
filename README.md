@@ -1,102 +1,53 @@
-Here is the **Professional `README.md` file** for your GitHub repository.
+# SnapSolve — NEET 2027 study companion
 
-This is written in a mix of **English (for technical professionalism)** and **Hinglish (for storytelling and connection)**, exactly as you requested. It documents not just *what* the code is, but *how* it was built, the struggles faced, and the future vision for **Naveen Bharat**.
+[Open SnapSolve](https://snapsolveneet.lovable.app) · [Original NEET Sarathi app](https://anujsarthiai.streamlit.app/) · [Naveen Bharat platform](https://naveenbharatlog-in.vercel.app/)
 
----
+Photograph a question, get a step-by-step NCERT explanation from Claude, and continue in the same doubt thread. Covers Class 11 and 12 Physics, Chemistry and Biology. AI can make mistakes: check important facts against NCERT and official NTA notices.
 
-# 🩺 NEET Sarathi: Dr. Sharma Edition (AI Mentor)
+## Study tools
 
-**`Head of NTA Secret Panel` | Deepthink Engine Active 🧠 | Powered by Gemini & Firebase**
+- Photo, MCQ, diagram and formula doubt solving with follow-up chat.
+- Quiz mode: selectable answers, hints, skip, scoring and an admin-configurable timer.
+- Credit-free saved-question practice and spaced-repetition cards. New tutor answers, AI document extraction and live searches may use credits.
+- Visible Search switch: Perplexity and Parallel find current information; Firecrawl reads links and provides extraction fallbacks. Sources appear in answers; Search is disabled in quiz mode.
+- Reply toolbar: like/dislike, copy and sharing.
+- Obsidian export: markdown notes or a vault ZIP containing notes, index and available photo/PDF files in `attachments/`, with relative wiki links. Files no longer available in the browser cannot be recovered by export.
+- Private `/admin`: tutor role, notes, links, files, mistakes, weak topics, habits, syllabus memory, quiz timer and default mode. Admin memory and uploaded originals are admin-only.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://anujsarthiai.streamlit.app/)
-*(Click above to Open Live App)*
+## Storage and backups
 
----
+Doubts and feedback stay in browser localStorage; PDF attachments use IndexedDB. Admin memory/settings and private originals use Lovable Cloud. Active relevant memory is included in tutor instructions with a size cap; this is not model training.
 
-## 📖 About The Project (परिचय)
+Keep separate backups of **source code**, **Cloud data and uploaded originals**, and **browser study data/Obsidian attachments**. This source export does not include production database rows, private files, secrets or browser history.
 
-**NEET Sarathi** is not just a chatbot; it is a **Personalized Cognitive Augmentation Tool** for medical aspirants.
-Yeh project ek ordinary student ki problem solve karne ke liye banaya gaya hai: *"Padhte sab hain, par apni galtiyan yaad kaun rakhta hai?"*
+`data/imported-pcb.json` contains 84 chapters extracted from the original `app.py`: Physics 27, Chemistry 25, Botany 17 and Zoology 15. Admin memory uses Biology for Botany/Zoology and retains their original branch in each note. This user-provided study outline is **not a verified official NTA 2027 syllabus**.
 
-Isme humne **Google Gemini (The Brain)** ko **Firebase Firestore (The Memory)** ke saath joda hai. Result? Ek aisa AI Mentor ("Dr. Sharma") jo na sirf Biology/Physics padhata hai, balki aapki purani galtiyon ko yaad rakhkar aapko sudharta bhi hai.
+## Repository layout and local setup
 
-### 🌟 Key Features (खासियतें)
-1.  **Deepthink Engine:** Uses a multi-layered reasoning approach (Layer 1: Past Papers, Layer 2: NCERT Deep Dive, Layer 3: Trap Detection).
-2.  **💾 Permanent Memory (Firebase):** Stores user mistakes (`/log`) permanently. Even if you refresh, Dr. Sharma remembers your weak points.
-3.  **🛡️ Smart Model Selector:** Automatically detects available Gemini models (`gemini-pro` vs `flash`) to prevent 404/Crash errors.
-4.  **💜 Obsidian Integration:** One-click integration to save notes directly into your local Obsidian Vault using URI Schemes (No cloud clutter).
-5.  **👔 Professional UI:** Action bars with Copy & Download options that persist even after chat updates.
+The original `app.py` and `requirements.txt` remain at the repository root. The complete SnapSolve web app lives in `snapsolve/`; these are separate applications.
 
----
+```sh
+git clone https://github.com/MrAnujBabu/Anuj-sarthi-deeplearning-ai.git
+cd Anuj-sarthi-deeplearning-ai/snapsolve
+bun install
+bun run dev
+bun run test
+```
 
-## 🛠️ Tech Stack & Architecture
+React 19, TanStack Start, TypeScript, Tailwind CSS and Lovable Cloud; server deployment targets Cloudflare Workers. A separate deployment needs its own Cloud/auth/storage configuration and server credentials for Lovable AI, Firecrawl, Parallel and Perplexity. Copying source does not provision or transfer these services. Never commit `.env` or private credentials. The GitHub API export is a one-time copy, **not automatic two-way Git sync**.
 
-*   **Frontend:** [Streamlit](https://streamlit.io/) (Python based UI).
-*   **AI Model:** Google Gemini API (`gemini-pro` / `gemini-1.5-flash`).
-*   **Database:** Firebase Firestore (NoSQL Cloud Database).
-*   **Logic:** Python 3.x.
-*   **Hosting:** Streamlit Cloud.
+## Future vision — Naveen Bharat
 
----
+The original vision is retained: **Build Your Own AI Tutor on Mobile** book, offline courses on prompt engineering and logic building, contributor opportunities, and voice interaction. These are future ideas, not implemented feature claims. Cowork background tasks still require a connected background service.
 
-## 🧗‍♂️ The Prompt Engineering Journey (Challenges & Solutions)
+[Visit Naveenbharatprism](https://naveenbharatlog-in.vercel.app/) · [Legacy Streamlit app](https://anujsarthiai.streamlit.app/)
 
-Yeh project banana aasan nahi tha. Mobile se coding karte waqt humein kai technical challenges aaye. Future developers ke liye yahan hamara **Analysis & Resolution** log hai:
+Developed by Anuj, with [Lovable](https://lovable.dev).
 
-### 1. The "Amnesia" Problem (Bhulakkad AI)
-*   **Problem:** Streamlit refresh hote hi chat ud jati thi.
-*   **Resolution:** Humne **Firebase Firestore** integrate kiya. Lekin, humne poori chat save nahi ki (to save cost/storage). Humne sirf **"Mistakes"** ko DB me dala aur Chat History ko Session State + Local Cache se handle kiya.
-
-### 2. The "404 Model Not Found" Yaha Me Stuck ho gya tha while Devloping app.
-*   **Problem:** Code `gemini-1.5-flash` mang raha tha, par server purani library use kar raha tha.
-*   **Resolution:**
-    1.  `requirements.txt` me version lock kiya: `google-generativeai>=0.8.3`.
-    2.  Ek smart function `get_valid_model()` banaya jo Google se puchta hai *"Kaunsa model zinda hai?"* aur wahi connect karta hai.
-
-### 3. The "Disappearing Buttons" Glitch
-*   **Problem:** Chat aage badhte hi Copy/Save buttons gayab ho jate the.
-*   **Resolution:** Humne buttons ko `if` condition se nikal kar **Display Loop** ke andar daal diya. Ab `st.rerun()` hone par bhi buttons wapas render hote hain.
-
-### 4. JSON Formatting on Mobile
-*   **Problem:** Phone se API Keys copy karne par Smart Quotes (`“`) aa jate the, jisse app crash hota tha.
-*   **Resolution:** Added a sanitizer: `.replace("“", '"')` before parsing JSON.
 
 ---
 
-## 🚀 Do your self  & Local Setup
-
-Agar aap isse apne laptop par run karna chahte hain:
-
-1.  **Clone the Repo:**
-    ```bash
-    git clone https://github.com/Mranujbabu/Anuj-sarthi-deeplearning-ai.git
-    cd Anuj-sarthi-deeplearning-ai
-    ```
-
-2.  **Install Dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3.  **Setup Secrets (`.streamlit/secrets.toml`):**
-    Create a file named `secrets.toml` inside a `.streamlit` folder and add your keys:
-    ```toml
-    GOOGLE_API_KEY = "YOUR_GEMINI_API_KEY"
-    FIREBASE_KEY = """
-    {
-      "type": "service_account",
-      "project_id": "...",
-      ... (Your Firebase JSON content here)
-    }
-    """
-    ```
-
-4.  **Run App:**
-    ```bash
-    streamlit run app.py
-    ```
-
----
+## Original future-project vision (preserved)
 
 ## : Naveen Bharat Platform 🇮🇳
 

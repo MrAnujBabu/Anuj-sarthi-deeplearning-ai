@@ -1,0 +1,1 @@
+ALTER TABLE public.agent_settings ADD COLUMN IF NOT EXISTS default_mode text NOT NULL DEFAULT 'solve' CHECK (default_mode IN ('solve','quiz'));

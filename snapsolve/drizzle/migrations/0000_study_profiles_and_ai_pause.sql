@@ -1,0 +1,13 @@
+CREATE TABLE public.profiles (id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE, display_name text NOT NULL DEFAULT '', avatar_url text, updated_at timestamptz NOT NULL DEFAULT now());
+GRANT SELECT, INSERT, UPDATE ON public.profiles TO authenticated;
+GRANT ALL ON public.profiles TO service_role;
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+CREATE POLICY profiles_read_own ON public.profiles FOR SELECT TO authenticated USING (id = auth.uid());
+CREATE POLICY profiles_insert_own ON public.profiles FOR INSERT TO authenticated WITH CHECK (id = auth.uid());
+CREATE POLICY profiles_update_own ON public.profiles FOR UPDATE TO authenticated USING (id = auth.uid()) WITH CHECK (id = auth.uid());
+CREATE FUNCTION public.create_study_profile() RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$ BEGIN INSERT INTO public.profiles (id,display_name) VALUES (NEW.id,coalesce(NEW.raw_user_meta_data->>'display_name',NEW.raw_user_meta_data->>'name','')); RETURN NEW; END; $$;
+CREATE TRIGGER study_profile_signup AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION public.create_study_profile();
+CREATE TABLE public.ai_pause_state (id text PRIMARY KEY, kind text NOT NULL, message text NOT NULL, updated_at timestamptz NOT NULL DEFAULT now());
+GRANT ALL ON public.ai_pause_state TO service_role;
+ALTER TABLE public.ai_pause_state ENABLE ROW LEVEL SECURITY;
+COMMENT ON TABLE public.ai_pause_state IS 'Server-only durable AI credit and provider circuit breakers; no browser access.';

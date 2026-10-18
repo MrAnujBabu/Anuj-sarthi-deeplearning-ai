@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792324277775,
+      "tag": "0000_study_profiles_and_ai_pause",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792327989557,
+      "tag": "0001_agent_memory_admin",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792328647380,
+      "tag": "0002_agent_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792330806018,
+      "tag": "0003_agent_settings_default_mode",
+      "breakpoints": true
+    }
+  ]
+}
