@@ -10,6 +10,10 @@
 <!-- LOVABLE:END -->
 
 ## Architecture
+- SnapSolve is the repository-root application; keep the previous Python application under legacy/ so hosting detection selects the web app.
+- Use vite.vercel.config.ts to pin Nitro's Vercel preset for external deployments; preserve vite.config.ts for Lovable's own deployment target.
+- Share chat settings between home and doubt composers through ChatControls; keeps model, effort and mode behavior consistent within the input widget.
+- Repository PCB outlines are stored as per-chapter admin memory, mapping Botany/Zoology to Biology while retaining the original branch and provenance; keeps existing subject choices and avoids claiming official syllabus verification.
 - AI tutor calls run only in the `/api/chat` server route (Claude via Lovable AI Gateway Messages API, streamed); keeps the key and prompt server-side.
 - Doubts are threads stored in browser localStorage (`src/lib/threads.ts`), one page per doubt at `/doubt/$threadId`; photos are downscaled to JPEG before sending so history fits in storage.
 - Prompt forms disable controls until hydration and use native dialog submission as a no-navigation fallback, preventing question text from leaking into URLs before React handles submissions.
@@ -20,6 +24,6 @@
 - Tutor models use a shared server-validated catalog; terminal AI pauses are persisted server-side and never reset by public browser requests.
 - Load Mermaid through the lazy diagram adapter only when rendering a diagram; graph dependency initialization failures must not prevent chat or practice routes from opening.
 - Saved practice persists a stable card-ID queue and completed IDs; due-date changes must not skip cards on reload, and newly saved material joins the next session.
-- Agent memory lives in Cloud table memory_items, editable only by admins (has_role); /api/chat injects relevant active items into the system prompt, size-capped.
+- Agent memory lives in Cloud table memory_items, editable only by admins (has_role); /api/chat ranks active chapter outlines against bounded recent conversation context, excludes unmatched chapters and injects size-capped memory so follow-ups retain context.
 - Chat export: `src/lib/export-chat.ts` converts threads to Obsidian-ready markdown (YAML frontmatter, one note per doubt, attachments as placeholders — never embed data URLs); bulk export zips notes + index.md via fflate.
 - Web search: `createAgentTools({ webSearch })` adds a `web_search` tool (Perplexity + Parallel in parallel, deduped by URL) only when the client sends `search: true`; /api/chat appends a search instruction to the system prompt and disables it in quiz mode.

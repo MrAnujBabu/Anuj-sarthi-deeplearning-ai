@@ -24,17 +24,27 @@ Keep separate backups of **source code**, **Cloud data and uploaded originals**,
 
 ## Repository layout and local setup
 
-The original `app.py` and `requirements.txt` remain at the repository root. The complete SnapSolve web app lives in `snapsolve/`; these are separate applications.
+SnapSolve is the main application at the repository root (`package.json`, `src/`, `public/`). The previous Python app is archived under `legacy/` and is not part of the web deployment. Do not set the Vercel Root Directory to `snapsolve`.
 
 ```sh
 git clone https://github.com/MrAnujBabu/Anuj-sarthi-deeplearning-ai.git
-cd Anuj-sarthi-deeplearning-ai/snapsolve
+cd Anuj-sarthi-deeplearning-ai
 bun install
 bun run dev
 bun run test
 ```
 
 React 19, TanStack Start, TypeScript, Tailwind CSS and Lovable Cloud; server deployment targets Cloudflare Workers. A separate deployment needs its own Cloud/auth/storage configuration and server credentials for Lovable AI, Firecrawl, Parallel and Perplexity. Copying source does not provision or transfer these services. Never commit `.env` or private credentials. The GitHub API export is a one-time copy, **not automatic two-way Git sync**.
+
+## Vercel deployment
+
+Import this repository with **Root Directory left at the repository root** and framework **TanStack Start**. `vercel.json` uses `bun install --frozen-lockfile` and `bun run build:vercel`; `vite.vercel.config.ts` selects Nitro's Vercel preset and retains the existing SSR entry. Leave Output Directory at its framework default; do not use a static `dist` directory or SPA rewrites for this full-stack app.
+
+**A source move alone does not make every service work on Vercel.** Browser configuration needs `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` for the target backend. Server authentication needs the corresponding `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`. The current memory, agent settings and persistent AI-pause implementations also depend on a privileged server client. That privileged credential is managed internally by Lovable Cloud and is not available to export; do not substitute a publishable key or expose any privileged key to the browser. A fully independent Vercel deployment needs an appropriately provisioned backend or a deliberately redesigned, authenticated service boundary.
+
+AI/search connections and their credentials are not automatically copied to Vercel. Their external-host access must be confirmed separately. Set private credentials only through the hosting service's environment settings, never in the repository. Configure permitted auth redirect origins for the eventual Vercel URL. Database migrations and private uploaded files require separate transfer and checks; do not run them blindly against production.
+
+This setup is source configuration, not proof of a successful Vercel deployment. Verify a deployed preview's page reloads, sign-in, `/admin` read/write, `/api/chat` streaming, live search and attachment access before treating it as production-ready. Browser study history is origin-specific and must be exported/imported when moving domains.
 
 ## Future vision — Naveen Bharat
 
@@ -44,7 +54,6 @@ The original vision is retained: **Build Your Own AI Tutor on Mobile** book, off
 
 Developed by Anuj, with [Lovable](https://lovable.dev).
 
-
 ---
 
 ## Original future-project vision (preserved)
@@ -53,20 +62,16 @@ Developed by Anuj, with [Lovable](https://lovable.dev).
 
 Yeh project sirf shuruwat hai. Hamara lakshya (Goal) bada hai:
 
-1.  **📘  Book:**
-    *   Hum jald hi ek book launch karenge: *"Build Your Own AI Tutor on Mobile"* logic par.
-    *   Isme hum ye sikhaenge ki kaise bina heavy coding background ke, Logic aur AI ke dam par problems solve ki jati hain.
-
-2.  **🎓 Offline Course Integration:**
-    *   **Naveen Bharat** platform ke under hum students ko "Ratta Maarna" nahi, balki "AI Tools Banana" sikhaenge.
-    *   **Contributor** :- To Genrate Employee ment and Job 
-    *   Students will learn **Prompt Engineering** and **Logic Building** to create their own subject-specific bots.
-
-3.  **Next Tech Upgrade:**
-    *   Voice Interaction (Baat karne wala Dr. Sharma).
-    *   Image Analysis (Question ki photo khinch kar solution).
-
----
+1. **📘 Book:**
+   * Hum jald hi ek book launch karenge: *"Build Your Own AI Tutor on Mobile"* logic par.
+   * Isme hum ye sikhaenge ki kaise bina heavy coding background ke, Logic aur AI ke dam par problems solve ki jati hain.
+2. **🎓 Offline Course Integration:**
+   * **Naveen Bharat** platform ke under hum students ko "Ratta Maarna" nahi, balki "AI Tools Banana" sikhaenge.
+   * **Contributor** :- To Genrate Employee ment and Job
+   * Students will learn **Prompt Engineering** and **Logic Building** to create their own subject-specific bots.
+3. **Next Tech Upgrade:**
+   * Voice Interaction (Baat karne wala Dr. Sharma).
+   * Image Analysis (Question ki photo khinch kar solution).
 
 ## 🤝 Contributing
 

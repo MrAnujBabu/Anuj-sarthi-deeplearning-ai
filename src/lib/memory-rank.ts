@@ -19,10 +19,11 @@ export function buildTeacherMemory(rows: MemoryRow[], query: string, cap = 24000
     let score = 0;
     for (const w of head) if (q.has(w)) score += 3;
     for (const w of words(r.content.slice(0, 4000))) if (q.has(w)) score += 1;
+    const relevant = score > 0;
     if (r.kind === "tracker") score += 2 + Math.min(r.frequency, 5);
     if (r.category === "Syllabus") score += 2;
-    return { r, score };
-  });
+    return { r, score, relevant };
+  }).filter(({ r, relevant }) => !r.chapter || relevant);
   scored.sort((a, b) => b.score - a.score);
   let out = "";
   for (const { r } of scored) {

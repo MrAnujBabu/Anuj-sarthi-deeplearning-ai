@@ -115,8 +115,8 @@ export const Route = createFileRoute("/api/chat")({
           },
         });
 
-        const lastUser = [...messages].reverse().find((m) => m.role === "user");
-        const queryText = (lastUser?.parts ?? []).map((p: any) => (p.type === "text" ? p.text : "")).join(" ");
+        // Short follow-ups retain chapter context without ranking against the entire chat.
+        const queryText = messages.slice(-4).map((m) => m.parts.map((p) => p.type === "text" ? p.text : "").join(" ").slice(0, 2000)).join(" ");
         const [memory, brain] = await Promise.all([loadTeacherMemory(queryText), loadAgentBrain()]);
         const searchOn = body.search === true && body.mode !== "quiz";
         const basePrompt =

@@ -858,7 +858,10 @@ export const PromptInput = ({
       // Reset form immediately after capturing text to avoid race condition
       // where user input during async blob conversion would be lost
       if (!usingProvider) {
-        form.reset();
+        // Clear only the draft: resetting the entire form also resets embedded
+        // model selectors to their initial value before the request is sent.
+        const draft = form.elements.namedItem("message");
+        if (draft instanceof HTMLTextAreaElement) draft.value = "";
       }
 
       try {

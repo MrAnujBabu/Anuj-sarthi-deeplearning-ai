@@ -5,8 +5,7 @@ import { DoubtSidebar, MobileStudyMenu } from "@/components/doubt-sidebar";
 import { SnapComposer } from "@/components/snap-composer";
 import { compressImage, pendingFirstMessage } from "@/lib/threads";
 import { useEffect, useState } from "react";
-import { Switch } from "@/components/ui/switch";
-import { ModelPicker } from '@/components/model-picker';
+import { ChatControls } from "@/components/chat-controls";
 import { BackupControls } from '@/components/backup-controls';
 import { Button } from '@/components/ui/button';
 import { DEFAULT_MODEL, resolveModel, resolveEffort, type Effort } from '@/lib/models';
@@ -39,6 +38,8 @@ const SUBJECTS = [
 function Index() {
   const navigate = useNavigate();
   const [quiz, setQuiz] = useState(false);
+  const [search, setSearch] = useState(false);
+  useEffect(() => setSearch(localStorage.getItem("snapsolve.search") === "1"), []);
   const [model,setModel] = useState<string>(DEFAULT_MODEL);
   const [effort,setEffort] = useState<Effort>('medium');
   useEffect(()=>{const m=localStorage.getItem('snapsolve.model');if(resolveModel(m))setModel(m ?? DEFAULT_MODEL);setEffort(resolveEffort(localStorage.getItem('snapsolve.effort')));},[]);
@@ -63,15 +64,9 @@ function Index() {
           <p className="mt-2 text-base text-muted-foreground md:mt-4 md:text-lg">What are we learning today?</p>
 
           <div className="mt-5 md:mt-8">
-            <label className="mb-2 flex w-fit cursor-pointer items-center gap-2 px-1 py-1.5 text-sm">
-              <Switch checked={quiz} onCheckedChange={setQuiz} aria-label="Quiz mode" />
-              <span className="font-medium">Quiz mode</span>
-              <span className="text-xs text-muted-foreground">
-                {quiz ? "Upload a PDF or paste a link — I'll quiz you from it" : "Off"}
-              </span>
-            </label>
             <SnapComposer
               big
+              controls={<ChatControls model={model} effort={effort} onModel={v=>{setModel(v);localStorage.setItem('snapsolve.model',v);}} onEffort={v=>{setEffort(v);localStorage.setItem('snapsolve.effort',v);}} quiz={quiz} onQuiz={setQuiz} search={search} onSearch={v=>{setSearch(v);localStorage.setItem('snapsolve.search',v ? '1' : '0');}} />}
               placeholder="Ask a doubt, snap a question, or revise a chapter…"
               onSubmit={async (m) => {
                 const files = await Promise.all(m.files.map((f) => compressImage(f)));
@@ -87,7 +82,6 @@ function Index() {
             />
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-2"><ModelPicker model={model} effort={effort} onModel={v=>{setModel(v);localStorage.setItem('snapsolve.model',v);}} onEffort={v=>{setEffort(v);localStorage.setItem('snapsolve.effort',v);}}/></div>
           <RevisionCard />
 
           <div className="mt-6 grid gap-2 sm:grid-cols-3 md:mt-10 md:gap-3">

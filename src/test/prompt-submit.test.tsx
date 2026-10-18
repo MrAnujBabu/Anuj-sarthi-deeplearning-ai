@@ -28,4 +28,19 @@ describe("Question submission", () => {
     await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1));
     expect(onSubmit.mock.calls[0]?.[0]).toEqual({ text: "Find acceleration for 2 kg and 8 N", files: [] });
   });
+  it("keeps the selected model when clearing a submitted question", async () => {
+    hydration.ready = true;
+    const onSubmit = vi.fn();
+    const screen = render(<PromptInput onSubmit={onSubmit}>
+      <PromptInputTextarea />
+      <select aria-label="Model" defaultValue="sonnet"><option value="sonnet">Sonnet</option><option value="haiku">Haiku</option></select>
+      <Button type="submit">Send</Button>
+    </PromptInput>);
+    fireEvent.change(screen.getByRole("combobox"), { target: { value: "haiku" } });
+    fireEvent.change(screen.getByRole("textbox"), { target: { value: "Chemical bonding" } });
+    act(() => screen.getByRole("button", { name: "Send" }).click());
+    await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1));
+    expect((screen.getByRole("combobox") as HTMLSelectElement).value).toBe("haiku");
+    expect((screen.getByRole("textbox") as HTMLTextAreaElement).value).toBe("");
+  });
 });

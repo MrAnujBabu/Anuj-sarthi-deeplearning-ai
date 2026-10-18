@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
-import { ArrowLeft, FileDown, FileText, Globe } from "lucide-react";
+import { ArrowLeft, FileDown, FileText } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
@@ -18,10 +18,9 @@ import { compressImage, getThread, pendingFirstMessage, titleFrom, upsertThread 
 import { AssistantAnswer } from "@/components/assistant-answer";
 import { MessageActions } from "@/components/message-actions";
 import { ToolStep } from "@/components/tool-step";
-import { Switch } from "@/components/ui/switch";
+import { ChatControls } from "@/components/chat-controls";
 import { restoreDocs, stripDocs } from "@/lib/doc-store";
 import { parseCards, parseQuizTag, recordResults } from "@/lib/srs";
-import { ModelPicker } from '@/components/model-picker';
 import { DEFAULT_MODEL, resolveModel, resolveEffort, type Effort } from '@/lib/models';
 import { displayAiError, isCreditError } from '@/lib/ai/errors';
 import { Button } from '@/components/ui/button';
@@ -77,7 +76,8 @@ function DoubtPage() {
 function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMessages: UIMessage[] }) {
   const [model, setModel] = useState<string>(DEFAULT_MODEL);
   const [effort, setEffort] = useState<Effort>('medium');
-  useEffect(() => { const id=localStorage.getItem('snapsolve.model'); if(resolveModel(id)) setModel(id ?? DEFAULT_MODEL); setEffort(resolveEffort(localStorage.getItem('snapsolve.effort'))); }, []);
+  const [settingsReady, setSettingsReady] = useState(false);
+  useEffect(() => { const id=localStorage.getItem('snapsolve.model'); if(resolveModel(id)) setModel(id ?? DEFAULT_MODEL); setEffort(resolveEffort(localStorage.getItem('snapsolve.effort'))); setSettingsReady(true); }, []);
   const quizKey = `snapsolve.quiz.${threadId}`;
   const [quiz, setQuiz] = useState(false);
   useEffect(() => setQuiz(localStorage.getItem(quizKey) === "1" || pendingFirstMessage.get(threadId)?.mode === "quiz"), [quizKey, threadId]);
@@ -102,14 +102,14 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
   };
   useEffect(() => {
     const pending = pendingFirstMessage.get(threadId);
-    if (!pending || initialMessages.length > 0) return;
+    if (!settingsReady || !pending || initialMessages.length > 0) return;
     // Deferred so a dev double-mount cancels the first attempt instead of sending twice.
     const t = setTimeout(() => {
       pendingFirstMessage.delete(threadId);
       sendMessage({ text: pending.text, files: pending.files }, pending.mode ?? "solve");
     }, 0);
     return () => clearTimeout(t);
-  }, [threadId, initialMessages.length, sendMessage]);
+  }, [threadId, initialMessages.length, sendMessage, settingsReady]);
 
   // Save to this browser whenever the conversation settles.
   useEffect(() => {
@@ -201,23 +201,16 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
         <ConversationScrollButton />
       </Conversation>
       <div className="mx-auto w-full max-w-3xl border-t bg-background/85 px-4 pb-2 pt-2 backdrop-blur md:pb-4 md:pt-3">
-        <div className="mb-1.5 flex flex-wrap items-center justify-between gap-2 md:mb-2"><ModelPicker model={model} effort={effort} onModel={v=>{setModel(v);localStorage.setItem('snapsolve.model',v);}} onEffort={v=>{setEffort(v);localStorage.setItem('snapsolve.effort',v);}} disabled={busy}/></div>
-        <div className="mb-2 flex flex-wrap items-center gap-2">
-          <label className="flex w-fit cursor-pointer items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm">
-            <Switch checked={quiz} onCheckedChange={toggleQuiz} disabled={busy} aria-label="Quiz mode" />
-            <span className="font-medium">Quiz mode</span>
-            <span className="text-xs text-muted-foreground">{quiz ? "Practice questions, one at a time" : "Off"}</span>
-          </label>
-          <label className="flex w-fit cursor-pointer items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm">
-            <Switch checked={search} onCheckedChange={toggleSearch} disabled={busy || quiz} aria-label="Web search" />
-            <Globe className={`size-3.5 ${search ? "text-primary" : "text-muted-foreground"}`} />
-            <span className="font-medium">Search</span>
-            <span className="text-xs text-muted-foreground">{search ? "Live web data" : "Off"}</span>
-          </label>
+        <SnapComposer
+          controls={<ChatControls model={model} effort={effort} onModel={v=>{setModel(v);localStorage.setItem('snapsolve.model',v);}} onEffort={v=>{setEffort(v);localStorage.setItem('snapsolve.effort',v);}} quiz={quiz} onQuiz={toggleQuiz} search={search} onSearch={toggleSearch} disabled={busy} />}
+          actions={
           <Button
-            variant="outline"
-            size="sm"
-            className="ml-auto gap-1.5 rounded-full"
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="size-8"
+            aria-label="Export chat as markdown"
+            title="Export chat as Obsidian markdown"
             onClick={() => {
               const t = getThread(threadId);
               if (!t || t.messages.length === 0) {
@@ -228,10 +221,9 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
               toast.success("Saved as an Obsidian-ready .md note.");
             }}
           >
-            <FileDown className="size-3.5" /> Export .md
+            <FileDown className="size-4" />
           </Button>
-        </div>
-        <SnapComposer
+          }
           status={status}
           onStop={stop}
           placeholder={
@@ -244,7 +236,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
           onSubmit={async (msg) => {
             if (busy) return;
             const files = await Promise.all(msg.files.map((f) => compressImage(f)));
-            sendMessage({ text: msg.text.trim() || "Solve this question step by step.", files });
+            await sendMessage({ text: msg.text.trim() || "Solve this question step by step.", files });
           }}
         />
       </div>
