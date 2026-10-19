@@ -130,8 +130,18 @@ function RootComponent() {
       window.location.reload();
     };
     const clear = window.setTimeout(() => sessionStorage.removeItem("snapsolve.chunk-reload"), 10000);
+    const isChunkError = (m: unknown) => /dynamically imported module|Importing a module script failed|Failed to fetch dynamically/i.test(String((m as Error)?.message ?? m));
+    const onRejection = (event: PromiseRejectionEvent) => { if (isChunkError(event.reason)) onPreloadError(event); };
+    const onError = (event: ErrorEvent) => { if (isChunkError(event.error ?? event.message)) onPreloadError(event); };
     window.addEventListener("vite:preloadError", onPreloadError);
-    return () => { window.clearTimeout(clear); window.removeEventListener("vite:preloadError", onPreloadError); };
+    window.addEventListener("unhandledrejection", onRejection);
+    window.addEventListener("error", onError);
+    return () => {
+      window.clearTimeout(clear);
+      window.removeEventListener("vite:preloadError", onPreloadError);
+      window.removeEventListener("unhandledrejection", onRejection);
+      window.removeEventListener("error", onError);
+    };
   }, []);
 
   return (
