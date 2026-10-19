@@ -13,6 +13,14 @@ describe("AI failure classification", () => {
   it("treats 402 as credits", () => {
     expect(classifyAiFailure(402, {}).kind).toBe("credits");
   });
+  it("treats a raw gateway 401 as a workspace AI-connection issue, never as credits or raw 'Unauthorized'", () => {
+    const f = classifyAiFailure(401, { error: { message: "Unauthorized" } });
+    expect(f.kind).toBe("configuration");
+    expect(f.message).not.toBe("Unauthorized");
+    expect(f.message).toContain("workspace");
+    expect(isCreditError(encodeAiFailure(f))).toBe(false);
+    expect(isConfigurationError(encodeAiFailure(f))).toBe(true);
+  });
 });
 
 describe("quiz options", () => {
