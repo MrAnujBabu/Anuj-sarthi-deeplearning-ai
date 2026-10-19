@@ -20,6 +20,10 @@
  */
 
 @theme inline {
+  --text-study-small: 0.875rem;
+  --text-study-medium: 1rem;
+  --text-study-large: 1.125rem;
+  --text-study-largest: 1.25rem;
   --font-display: "Fraunces", Georgia, serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -176,3 +180,12 @@
 .assistant-answer .katex-display > .katex {
   text-align: left;
 }
+
+.study-text-14 { --study-size: var(--text-study-small); }
+.study-text-16 { --study-size: var(--text-study-medium); }
+.study-text-18 { --study-size: var(--text-study-large); }
+.study-text-20 { --study-size: var(--text-study-largest); }
+.study-text .assistant-answer,
+.study-text .assistant-answer [data-streamdown],
+.study-text .study-question { font-size: var(--study-size); line-height: 1.65; }
+.study-question-bold { font-weight: 700; }
