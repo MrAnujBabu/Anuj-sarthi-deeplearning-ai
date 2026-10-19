@@ -18,7 +18,7 @@ describe("PDF-style numbered quiz options", () => {
 
   it("still reads letter options on separate lines", () => {
     const r = extractQuizOptions("Q1. Site of respiration?\n(A) Mitochondria\n(B) Chloroplast\n(C) Ribosome\n(D) Golgi", ["A", "B", "C", "D"]);
-    expect(r.labels.A).toBe("Mitochondria");
-    expect(r.labels.D).toBe("Golgi");
+    expect(r.labels['A']).toBe("Mitochondria");
+    expect(r.labels['D']).toBe("Golgi");
   });
 });
