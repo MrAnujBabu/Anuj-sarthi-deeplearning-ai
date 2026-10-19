@@ -1,0 +1,2 @@
+ALTER TABLE public.memory_items DROP CONSTRAINT IF EXISTS memory_items_kind_check;
+ALTER TABLE public.memory_items ADD CONSTRAINT memory_items_kind_check CHECK (kind IN ('note','link','file','tracker','fact','assertion_reason','insight','teacher_question','mistake_question','flashcard','active_recall','pyq','fyq'));
