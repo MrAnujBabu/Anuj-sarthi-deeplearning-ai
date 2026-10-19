@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
-import { Check, Copy, MoreHorizontal, Share2, ThumbsDown, ThumbsUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, Copy, MoreHorizontal, Share2, Square, ThumbsDown, ThumbsUp, Volume2 } from "lucide-react";
+import { toast } from "sonner";
+import { streamSpeech } from "@/lib/stream-speech";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
@@ -61,9 +63,25 @@ export function MessageActions({ messageId, text }: { messageId: string; text: s
     }
   };
 
+  const [speaking, setSpeaking] = useState(false);
+  const abort = useRef<AbortController | null>(null);
+  useEffect(() => () => abort.current?.abort(), []);
+  const listen = async () => {
+    if (speaking) { abort.current?.abort(); return; }
+    const ctrl = new AbortController();
+    abort.current = ctrl;
+    setSpeaking(true);
+    try { await streamSpeech("/api/speech", text, ctrl.signal); }
+    catch (e) { if (!ctrl.signal.aborted) toast.error(e instanceof Error && e.message.includes("402") ? "AI credits khatam ho gaye." : "Awaaz abhi nahi chal paayi."); }
+    finally { if (abort.current === ctrl) abort.current = null; setSpeaking(false); }
+  };
+
   const btn = "size-7 text-muted-foreground hover:text-foreground";
   return (
     <div className="mt-1 flex items-center gap-0.5" aria-label="Answer actions">
+      <Button variant="ghost" size="icon" className={btn} aria-label={speaking ? "Stop listening" : "Listen in Indian teacher voice"} title="Indian teacher awaaz mein suniye" onClick={listen}>
+        {speaking ? <Square className="size-3.5 fill-primary text-primary" /> : <Volume2 className="size-3.5" />}
+      </Button>
       <Button variant="ghost" size="icon" className={btn} aria-label="Like answer" aria-pressed={vote === "up"} onClick={() => cast("up")}>
         <ThumbsUp className={`size-3.5 ${vote === "up" ? "fill-primary text-primary" : ""}`} />
       </Button>
