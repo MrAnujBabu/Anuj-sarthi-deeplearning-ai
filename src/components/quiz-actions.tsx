@@ -1,24 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Lightbulb, SkipForward, Square, Timer } from "lucide-react";
-import { getQuizTimer } from "@/lib/memory.functions";
+import { useQuizTimerPreference } from '@/lib/quiz-timer-preference';
 import { MessageResponse } from "@/components/ai-elements/message";
 import { normalizeMath } from "@/lib/math-format";
 import { Switch } from "@/components/ui/switch";
+import { useNumericAnswerLabels, useQuizKeyboardShortcuts } from '@/lib/quiz-label-preference';
+import { quizAnswerForKey } from '@/lib/quiz-shortcuts';
 
 /** Compact checkbox-card answer list for the open quiz question, with optional auto-skip timer. */
 export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void }) {
   const [picked, setPicked] = useState<string | null>(null);
-  const [limit, setLimit] = useState(0);
+  const [numericLabels, setNumericLabels] = useNumericAnswerLabels();
+  const [keyboardEnabled] = useQuizKeyboardShortcuts();
+  const { seconds: limit } = useQuizTimerPreference();
   const [left, setLeft] = useState(0);
   const answered = useRef(false);
 
-  useEffect(() => { getQuizTimer().then((r) => setLimit(r.seconds)).catch(() => setLimit(0)); }, []);
-  useEffect(() => { answered.current = false; setPicked(null); setLeft(limit); }, [limit, questionKey]);
+  useEffect(() => { answered.current = false; setPicked(null); setLeft(limit); }, [questionKey]);
+  useEffect(() => { setLeft(limit); }, [limit]);
   useEffect(() => {
     if (disabled || !limit || picked || answered.current || options.length === 0) return;
-    if (left <= 0) { answered.current = true; onSend("skip"); return; }
-    const t = setTimeout(() => setLeft((s) => s - 1), 1000);
+    const t = setTimeout(() => {
+      if (left <= 1) { answered.current = true; setLeft(0); onSend('skip'); }
+      else setLeft((s) => s - 1);
+    }, 1000);
     return () => clearTimeout(t);
   }, [left, limit, picked, options.length, disabled]);
 
@@ -27,15 +33,16 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => {
       const target = event.target;
-      if (event.repeat || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey || event.isComposing || disabled || answered.current) return;
+      if (!keyboardEnabled || event.repeat || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey || event.isComposing || disabled || answered.current) return;
+      if (document.querySelector('[role="dialog"], [role="alertdialog"]')) return;
       if (target instanceof Element && target.closest('input,textarea,select,[contenteditable="true"],[role="dialog"],[role="alertdialog"]')) return;
-      const answer = ({ '1': 'A', '2': 'B', '3': 'C', '4': 'D' } as Record<string, string>)[event.key];
+      const answer = quizAnswerForKey(event);
       if (!answer || !options.includes(answer)) return;
       event.preventDefault(); choose(answer);
     };
     window.addEventListener('keydown', keydown);
     return () => window.removeEventListener('keydown', keydown);
-  }, [options, disabled, questionKey, onSend]);
+  }, [options, disabled, questionKey, onSend, keyboardEnabled]);
 
   return (
     <div className="space-y-2 border-t border-border pt-3" role="group" aria-label="Quiz answer">
@@ -64,7 +71,7 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
                 }`}
               >
                 <input type="checkbox" className="pointer-events-none mt-0.5 size-4 shrink-0 accent-primary" checked={active} tabIndex={-1} readOnly aria-hidden="true" />
-                <span className="w-6 shrink-0 font-semibold">{labels[o] ? `(${o})` : o}</span>
+                <span className="w-6 shrink-0 font-semibold">{numericLabels ? ['A', 'B', 'C', 'D'].indexOf(o) + 1 : labels[o] ? `(${o})` : o}</span>
                 {labels[o] && <span className="assistant-answer min-w-0 flex-1 break-words font-normal [overflow-wrap:anywhere] [&_p]:m-0 [&_p]:leading-snug"><MessageResponse>{normalizeMath(labels[o])}</MessageResponse></span>}
               </Button>
             );
@@ -72,6 +79,7 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
         </div>
       )}
       <div className="flex flex-wrap items-center gap-1">
+        <label className="inline-flex min-h-8 items-center gap-2 px-2 text-xs text-muted-foreground"><Switch checked={numericLabels} onCheckedChange={setNumericLabels} aria-label="Number answer labels" /><span>{numericLabels ? '1 / 2 / 3 / 4' : 'A / B / C / D'}</span></label>
         {limit > 0 && options.length > 0 && !picked && (
           <span className={`mr-2 inline-flex items-center gap-1 text-xs tabular-nums ${left <= 5 ? "text-destructive" : "text-muted-foreground"}`} aria-live="polite"><Timer className="size-3.5" /> {left}s</span>
         )}
