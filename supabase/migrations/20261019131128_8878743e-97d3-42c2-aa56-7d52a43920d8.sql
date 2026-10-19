@@ -1,0 +1,2 @@
+ALTER TABLE public.memory_items DROP CONSTRAINT memory_items_kind_check;
+ALTER TABLE public.memory_items ADD CONSTRAINT memory_items_kind_check CHECK (kind = ANY (ARRAY['note','link','file','tracker','fact','assertion_reason','insight','teacher_question','mistake_question','flashcard','active_recall','pyq','fyq','wisdom']));
