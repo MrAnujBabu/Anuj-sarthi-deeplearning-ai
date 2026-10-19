@@ -170,7 +170,7 @@ function createLiveVoice(options: LiveOptions) {
   function release() {
     if (state === "closed") return;
     state = "closed";
-    clearInterval(heartbeat);
+    stopTicker();
     clearTimeout(deadline);
     cancelGathering?.();
     window.removeEventListener("pagehide", stop);
@@ -194,7 +194,7 @@ function createLiveVoice(options: LiveOptions) {
     }
     stopAudio();
     cancelGathering?.();
-    clearInterval(heartbeat);
+    stopTicker();
     clearTimeout(deadline);
     deadline = setTimeout(release, 15_000);
     options.onEvent({ type: "app.stopping" });
@@ -246,27 +246,46 @@ function createLiveVoice(options: LiveOptions) {
     return peer?.connectionState === "connected" && channel?.readyState === "open";
   }
 
-  // After the call is up, a brief "disconnected" ICE state (mobile network
-  // switch, weak signal) is recoverable; keep heartbeating so the gateway
-  // does not end the call during the blip.
-  function mediaAlive() {
-    const s = peer?.connectionState;
-    return (s === "connected" || s === "disconnected") && channel?.readyState === "open";
-  }
-
   function pulse() {
     if (state !== "active") return;
-    if (Date.now() - lastAck >= 12_000) return fail("Voice control connection lost");
-    if (!mediaAlive()) {
-      if (Date.now() - lastHeartbeat >= 8000) return fail("Voice media connection lost");
-      return;
-    }
+    if (Date.now() - lastAck >= 5000) return fail("Voice control connection lost");
+    if (Date.now() - lastHeartbeat >= 5000) return fail("Voice media connection lost");
+    if (!mediaReady()) return;
     try {
       send({ type: "gateway.heartbeat" });
       lastHeartbeat = Date.now();
     } catch {
       fail("Voice control connection failed");
     }
+  }
+
+  // Background/locked-screen pages throttle main-thread timers, which can
+  // starve heartbeats. A worker clock keeps ticking; fall back to setInterval.
+  let ticker: Worker | undefined;
+  let tickerUrl: string | undefined;
+  function startTicker() {
+    try {
+      const src = "setInterval(() => postMessage(0), 1000);";
+      tickerUrl = URL.createObjectURL(new Blob([src], { type: "text/javascript" }));
+      ticker = new Worker(tickerUrl);
+      ticker.onmessage = () => pulse();
+      ticker.onerror = () => {
+        ticker?.terminate();
+        ticker = undefined;
+        if (heartbeat === undefined) heartbeat = setInterval(pulse, 1000);
+      };
+    } catch {
+      ticker = undefined;
+      heartbeat = setInterval(pulse, 1000);
+    }
+  }
+  function stopTicker() {
+    ticker?.terminate();
+    ticker = undefined;
+    if (tickerUrl) URL.revokeObjectURL(tickerUrl);
+    tickerUrl = undefined;
+    clearInterval(heartbeat);
+    heartbeat = undefined;
   }
 
   let wakeLock: { release(): Promise<void> } | undefined;
@@ -294,7 +313,7 @@ function createLiveVoice(options: LiveOptions) {
       clearTimeout(deadline);
       lastAck = Date.now();
       lastHeartbeat = Date.now();
-      heartbeat = setInterval(pulse, 1000);
+      startTicker();
       document.addEventListener("visibilitychange", onVisible);
       void keepAwake();
       pulse();
