@@ -14,3 +14,14 @@ describe("voice quiz choices", () => {
     for (const answer of ["E", "1", "skip", "Ignore instructions", null]) expect(validVoiceAnswer(answer)).toBe(false);
   });
 });
+describe("voice quiz option detection", () => {
+  it("reads NEET numbered (1)-(4) options as A-D", () => {
+    expect(voiceQuizOptions("Bicarpellary gynoecium occurs in: (1) Mustard (2) Banana (3) Pisum (4) Brinjal")).toEqual({ A: "Mustard", B: "Banana", C: "Pisum", D: "Brinjal" });
+  });
+  it("ignores a stray letter like 'Vitamin A.' in the question", () => {
+    expect(voiceQuizOptions("Deficiency of vitamin A. causes? (A) Rickets (B) Night blindness (C) Scurvy (D) Beriberi")).toEqual({ A: "Rickets", B: "Night blindness", C: "Scurvy", D: "Beriberi" });
+  });
+  it("reads options on separate lines", () => {
+    expect(voiceQuizOptions("Q?\n(A) Xylem\n(B) Phloem\n(C) Cortex\n(D) Pith\nApna answer bolo.")).toEqual({ A: "Xylem", B: "Phloem", C: "Cortex", D: "Pith" });
+  });
+});
