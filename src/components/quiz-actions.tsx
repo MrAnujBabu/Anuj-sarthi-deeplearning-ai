@@ -11,7 +11,7 @@ import { quizAnswerForKey } from '@/lib/quiz-shortcuts';
 /** Compact checkbox-card answer list for the open quiz question, with optional auto-skip timer. */
 export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void }) {
   const [picked, setPicked] = useState<string | null>(null);
-  const [numericLabels, setNumericLabels] = useNumericAnswerLabels();
+  const [numericLabels] = useNumericAnswerLabels();
   const [keyboardEnabled] = useQuizKeyboardShortcuts();
   const { seconds: limit } = useQuizTimerPreference();
   const [left, setLeft] = useState(0);
@@ -79,7 +79,6 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
         </div>
       )}
       <div className="flex flex-wrap items-center gap-1">
-        <label className="inline-flex min-h-8 items-center gap-2 px-2 text-xs text-muted-foreground"><Switch checked={numericLabels} onCheckedChange={setNumericLabels} aria-label="Number answer labels" /><span>{numericLabels ? '1 / 2 / 3 / 4' : 'A / B / C / D'}</span></label>
         {limit > 0 && options.length > 0 && !picked && (
           <span className={`mr-2 inline-flex items-center gap-1 text-xs tabular-nums ${left <= 5 ? "text-destructive" : "text-muted-foreground"}`} aria-live="polite"><Timer className="size-3.5" /> {left}s</span>
         )}
