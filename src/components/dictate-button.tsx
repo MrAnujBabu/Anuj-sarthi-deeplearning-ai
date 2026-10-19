@@ -74,15 +74,15 @@ export function DictateButton({ disabled }: { disabled?: boolean }) {
     }
   };
   useEffect(() => { if (state === 'rec' && secs >= 600) void stop(); }, [secs, state]);
-  if (creditError) return <span role="alert" className="max-w-48 text-xs text-destructive" title={creditError}>AI credits unavailable · <Link to="/practice" className="underline">Saved practice</Link></span>;
+  if (creditError) return <Link to="/practice" role="alert" className="grid size-9 shrink-0 place-items-center rounded-full border border-destructive text-destructive" title={`${creditError} · Saved practice`} aria-label="AI credits unavailable — saved practice"><Mic className="size-4" /></Link>;
   if (state === 'rec' || state === 'busy') return (
-    <div className="flex items-center gap-1" role="group" aria-label={state === 'rec' ? 'Recording' : 'Transcribing'}>
-      <PromptInputButton ref={btn} onClick={cancel} variant="ghost" aria-label="Cancel dictation" title="Cancel dictation"><X className="size-4" /></PromptInputButton>
+    <div className="flex shrink-0 items-center gap-2" role="group" aria-label={state === 'rec' ? 'Recording' : 'Transcribing'}>
+      <PromptInputButton ref={btn} onClick={cancel} variant="outline" className="size-9 shrink-0 rounded-full" aria-label="Cancel dictation" tooltip="Cancel dictation"><X className="size-4" /></PromptInputButton>
       {state === 'rec' ? <>
         <span className="flex items-center gap-1.5 text-xs tabular-nums text-muted-foreground"><span className="size-2 rounded-full bg-destructive" />{Math.floor(secs / 60)}:{String(secs % 60).padStart(2, '0')}</span>
-        <PromptInputButton onClick={stop} variant="secondary" aria-label="Stop and insert text" title="Done — insert text"><Square className="size-3.5 fill-current" /></PromptInputButton>
+        <PromptInputButton onClick={stop} variant="secondary" className="size-9 shrink-0 rounded-full" aria-label="Stop and insert text" tooltip="Done — insert text"><Square className="size-3.5 fill-current" /></PromptInputButton>
       </> : <Loader2 className="size-4 animate-spin text-muted-foreground" aria-label="Transcribing" />}
     </div>
   );
-  return <PromptInputButton ref={btn} onClick={start} variant="ghost" className="h-8 gap-2 px-2" disabled={!hydrated || disabled || state === 'starting'} aria-label="Dictate (voice typing)" title="Bol kar likho">{state === 'starting' ? <Loader2 className="size-4 animate-spin" /> : <><Mic className="size-4" /><AudioLines className="size-4" /></>}</PromptInputButton>;
+  return <PromptInputButton ref={btn} onClick={start} variant="outline" size="sm" className="h-9 w-14 shrink-0 gap-1.5 rounded-full px-2.5" disabled={!hydrated || disabled || state === 'starting'} aria-label="Dictate (voice typing)" tooltip="Bol kar likho">{state === 'starting' ? <Loader2 className="size-4 animate-spin" /> : <><Mic className="size-4" /><AudioLines className="size-3.5" /></>}</PromptInputButton>;
 }
