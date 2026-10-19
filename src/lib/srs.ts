@@ -60,7 +60,10 @@ export function parseQuizTag(text: string): string[] | null {
   if (!last) return null;
   try {
     const v = JSON.parse((last[1] ?? "").trim());
-    return Array.isArray(v.options) ? v.options.filter((o: unknown) => typeof o === "string").slice(0, 6) : [];
+    // NEET papers number options 1–4; buttons and grading always use A–F.
+    return Array.isArray(v.options)
+      ? v.options.filter((o: unknown) => typeof o === "string").slice(0, 6).map((o: string) => (/^\(?[1-6]\)?$/.test(o.trim()) ? "ABCDEF"[Number(o.replace(/\D/g, "")) - 1]! : o))
+      : [];
   } catch {
     return null;
   }
