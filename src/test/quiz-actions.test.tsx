@@ -1,10 +1,19 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-vi.mock('@/lib/memory.functions', () => ({ getQuizTimer: async () => ({ seconds: 0 }) }));
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+vi.mock('@/lib/quiz-timer-preference', () => ({ useQuizTimerPreference: () => ({ seconds: 0 }) }));
 vi.mock('@/components/ai-elements/message', () => ({ MessageResponse: ({ children }: { children: React.ReactNode }) => <span>{children}</span> }));
 import { QuizActions } from '@/components/quiz-actions';
-afterEach(cleanup);
+afterEach(async () => { await act(async () => { await Promise.resolve(); }); cleanup(); localStorage.clear(); });
 describe('quiz answer commands', () => {
+  it('number labels still submit B for key 2 and revert to letters', () => {
+    const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
+    fireEvent.click(screen.getByRole('switch', { name: 'Number answer labels' }));
+    expect(screen.getByRole('checkbox', { name: 'Answer B' }).textContent).toBe('2');
+    fireEvent.keyDown(window, { key: '2' });
+    expect(send.mock.calls).toEqual([['B']]);
+    fireEvent.click(screen.getByRole('switch', { name: 'Number answer labels' }));
+    expect(screen.getByRole('checkbox', { name: 'Answer B' }).textContent).toBe('B');
+  });
   it.each([['1','A'],['2','B'],['3','C'],['4','D']])('key %s selects %s once', (key, answer) => {
     const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
     fireEvent.keyDown(window, { key }); fireEvent.keyDown(window, { key });
@@ -24,6 +33,26 @@ describe('quiz answer commands', () => {
     render(<QuizActions options={['A']} onSend={send} onChatHidden={hide} />);
     fireEvent.click(screen.getByRole('switch', { name: 'Hide Chat Widget' }));
     expect(hide).toHaveBeenCalledWith(true);
+    expect(send).not.toHaveBeenCalled();
+  });
+  it.each([['Numpad1', 'End', 'A'], ['Numpad2', 'ArrowDown', 'B'], ['Numpad3', 'PageDown', 'C'], ['Numpad4', 'ArrowLeft', 'D']])('keypad %s with Num Lock off submits its letter', (code, key, answer) => {
+    const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
+    fireEvent.keyDown(window, { key, code });
+    expect(send.mock.calls).toEqual([[answer]]);
+  });
+  it.each([['Numpad1', '1', 'A'], ['Numpad2', '2', 'B'], ['Numpad3', '3', 'C'], ['Numpad4', '4', 'D']])('keypad %s with Num Lock on submits its letter', (code, key, answer) => {
+    const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
+    fireEvent.keyDown(window, { key, code });
+    expect(send.mock.calls).toEqual([[answer]]);
+  });
+  it('does not submit when shortcuts are off or settings are open', () => {
+    localStorage.setItem('snapsolve.quiz-keyboard', '0');
+    const send = vi.fn(); const view = render(<QuizActions options={['B']} onSend={send} />);
+    fireEvent.keyDown(window, { key: '2', code: 'Numpad2' });
+    expect(send).not.toHaveBeenCalled();
+    view.unmount(); localStorage.removeItem('snapsolve.quiz-keyboard');
+    render(<><div role="dialog">Settings</div><QuizActions options={['B']} onSend={send} /></>);
+    fireEvent.keyDown(window, { key: 'ArrowDown', code: 'Numpad2' });
     expect(send).not.toHaveBeenCalled();
   });
   it('submits an option only once and resets for a new question', () => {
