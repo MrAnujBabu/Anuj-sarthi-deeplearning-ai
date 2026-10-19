@@ -1,9 +1,10 @@
-import { Camera, FileText, X } from "lucide-react";
+import { ArrowUp, Camera, FileText, X } from "lucide-react";
 import type { ChatStatus } from "ai";
 import type { ReactNode } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { DictateButton } from "@/components/dictate-button";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import {
   PromptInput,
   PromptInputButton,
@@ -22,7 +23,7 @@ function AttachmentPreviews() {
     <div className="flex w-full flex-wrap gap-2 px-3 pt-3">
       {files.map((f) => (
         <div key={f.id} className="relative">
-          {f.mediaType === "application/pdf" ? (
+          {!f.mediaType.startsWith('image/') ? (
             <div className="flex h-20 w-32 flex-col items-center justify-center gap-1 rounded-lg border bg-muted px-2 text-center text-xs">
               <FileText className="size-5 text-primary" />
               <span className="line-clamp-2 break-all">{f.filename ?? "PDF"}</span>
@@ -49,7 +50,7 @@ function AttachmentPreviews() {
 function SnapButton({ big }: { big?: boolean }) {
   const { openFileDialog } = usePromptInputAttachments();
   return (
-    <PromptInputButton onClick={openFileDialog} variant="ghost" className="gap-2 px-2" title="Snap or upload a photo or PDF">
+    <PromptInputButton onClick={openFileDialog} variant="outline" className="h-9 shrink-0 gap-2 rounded-full px-3" tooltip="Upload photo, PDF or PowerPoint (.pptx)">
       <Camera className="size-4" />
       <span>{big ? "Snap / upload" : "Photo / PDF"}</span>
     </PromptInputButton>
@@ -75,13 +76,14 @@ export function SnapComposer({
 }) {
   const busy = status === "submitted" || status === "streaming";
   return (
+    <TooltipProvider>
     <div className="overflow-hidden rounded-lg border border-input bg-card shadow-sm focus-within:border-ring" aria-label="Chat composer">
     <PromptInput
-      onSubmit={(m) => {
+      onSubmit={async (m) => {
         if (!m.text.trim() && m.files.length === 0) return;
-        return onSubmit(m);
+        try { await onSubmit(m); } catch (error) { toast.error(error instanceof Error ? error.message : 'Could not read attachment.'); throw error; }
       }}
-      accept="image/*,application/pdf"
+      accept="image/*,application/pdf,.pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation"
       multiple
       maxFiles={4}
       maxFileSize={15 * 1024 * 1024}
@@ -91,18 +93,19 @@ export function SnapComposer({
     >
       <AttachmentPreviews />
       <PromptInputTextarea className="min-h-20 text-sm md:min-h-24" onKeyDown={(event) => { if (busy && event.key === "Enter" && !event.shiftKey) event.preventDefault(); }} autoFocus placeholder={placeholder ?? "Ask a follow-up…"} />
-      <PromptInputFooter>
-        <PromptInputTools>
+      <PromptInputFooter className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 pt-2">
+        <PromptInputTools className="flex-wrap gap-2 [&>button]:shrink-0">
           <SnapButton big={!!big} />
           {actions}
         </PromptInputTools>
-        <PromptInputTools className="ml-auto">
+        <PromptInputTools className="ml-auto shrink-0 gap-2">
           <DictateButton disabled={busy} />
-        <PromptInputSubmit {...(status ? { status } : {})} {...(onStop ? { onStop } : {})} disabled={busy && !onStop} />
+        <PromptInputSubmit className="size-9 shrink-0 rounded-full" title={busy ? "Stop response" : "Send message"} {...(status ? { status } : {})} {...(onStop ? { onStop } : {})} {...(!busy ? { children: <ArrowUp className="size-4" /> } : {})} disabled={busy && !onStop} />
         </PromptInputTools>
       </PromptInputFooter>
     </PromptInput>
     {controls}
     </div>
+    </TooltipProvider>
   );
 }
