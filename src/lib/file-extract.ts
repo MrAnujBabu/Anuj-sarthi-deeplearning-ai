@@ -21,7 +21,7 @@ export async function extractLocally(file: File): Promise<string | null> {
     const pick = Object.keys(files)
       .filter((n) => (ext === "docx" ? n === "word/document.xml" : ext === "pptx" ? /^ppt\/slides\/slide\d+\.xml$/.test(n) : n === "xl/sharedStrings.xml" || /^xl\/worksheets\/sheet\d+\.xml$/.test(n)))
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-    return pick.map((n) => xmlText(strFromU8(files[n]!))).join("\n\n---\n\n").slice(0, 400000);
+    return pick.map((n, i) => { const bytes = files[n]; return bytes ? `${ext === 'pptx' ? `[Slide ${i + 1}]\n` : ''}${xmlText(strFromU8(bytes))}` : ''; }).join("\n\n---\n\n").slice(0, 400000);
   }
   return null;
 }
