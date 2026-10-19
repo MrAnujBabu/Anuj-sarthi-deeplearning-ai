@@ -106,3 +106,7 @@
 - [ ] Physical-phone Start / 2–3 questions / End and PDF spoken-answer verification — requires user's phone and audible input/output
 - [x] Report historical duration/cost records observed before latest workspace move; current workspace has no matching logs, so final settlement and post-fix voice verification remain unconfirmed
 - [ ] Genuine Indian regional voice/model — blocked: authenticated catalog checked before move exposes GPT Live only; documented regional voices do not establish an Indian-native voice, no arbitrary model substitution
+
+## Voice (Oct 19)
+- [x] Voice call stays connected through silent pauses / screen lock (tutor check-in, worker heartbeat clock, wake lock)
+- [x] Voice quiz: option buttons always appear, never freeze; timer expiry auto-skips to next question
