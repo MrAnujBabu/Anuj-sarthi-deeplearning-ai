@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
-import { ArrowLeft, FileDown, FileText } from "lucide-react";
+import { ArrowLeft, FileDown, FileText, PanelBottomOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
@@ -83,6 +83,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
   useEffect(() => { const id=localStorage.getItem('snapsolve.model'); if(resolveModel(id)) setModel(id ?? DEFAULT_MODEL); setEffort(resolveEffort(localStorage.getItem('snapsolve.effort'))); setSettingsReady(true); }, []);
   const quizKey = `snapsolve.quiz.${threadId}`;
   const [quiz, setQuiz] = useState(false);
+  const [chatHidden, setChatHidden] = useState(false);
   useEffect(() => setQuiz(localStorage.getItem(quizKey) === "1" || pendingFirstMessage.get(threadId)?.mode === "quiz"), [quizKey, threadId]);
   const [search, setSearch] = useState(false);
   useEffect(() => setSearch(localStorage.getItem("snapsolve.search") === "1"), []);
@@ -197,7 +198,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
               )}
             </Message>
           ))}
-          {openQuizOptions && openQuiz && quizSource && <QuizActions questionKey={quizSource.id} options={openQuizOptions} labels={openQuiz.labels} selectedAnswer={selectedAnswer} disabled={busy} onSend={(t) => sendMessage({ text: t }, "quiz")} />}
+          {openQuizOptions && openQuiz && quizSource && <QuizActions questionKey={quizSource.id} options={openQuizOptions} labels={openQuiz.labels} selectedAnswer={selectedAnswer} disabled={busy} chatHidden={chatHidden} onChatHidden={setChatHidden} onSend={(t) => { if (t === 'stop quiz') setChatHidden(false); sendMessage({ text: t }, "quiz"); }} />}
           {waiting && (
             <div className="px-1">
               <Shimmer>Reading your question and working it out…</Shimmer>
@@ -214,7 +215,8 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
         </ConversationContent>
         <ConversationScrollButton />
       </Conversation>
-      <div className="mx-auto w-full max-w-3xl border-t bg-background/85 px-4 pb-2 pt-2 backdrop-blur md:pb-4 md:pt-3">
+      {quiz && chatHidden && <div className="mx-auto flex w-full max-w-3xl shrink-0 items-center justify-end gap-2 border-t px-4 py-1"><Button variant="ghost" size="sm" onClick={() => setChatHidden(false)}><PanelBottomOpen className="size-4" />Show Chat Widget</Button>{busy && <Button variant="outline" size="sm" onClick={stop}>Stop response</Button>}</div>}
+      <div hidden={quiz && chatHidden} className="mx-auto w-full max-w-3xl border-t bg-background/85 px-4 pb-2 pt-2 backdrop-blur md:pb-4 md:pt-3">
         <SnapComposer
           controls={<ChatControls model={model} effort={effort} onModel={v=>{setModel(v);localStorage.setItem('snapsolve.model',v);}} onEffort={v=>{setEffort(v);localStorage.setItem('snapsolve.effort',v);}} quiz={quiz} onQuiz={toggleQuiz} search={search} onSearch={toggleSearch} disabled={busy} />}
           actions={

@@ -4,9 +4,10 @@ import { Lightbulb, SkipForward, Square, Timer } from "lucide-react";
 import { getQuizTimer } from "@/lib/memory.functions";
 import { MessageResponse } from "@/components/ai-elements/message";
 import { normalizeMath } from "@/lib/math-format";
+import { Switch } from "@/components/ui/switch";
 
 /** Compact checkbox-card answer list for the open quiz question, with optional auto-skip timer. */
-export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean }) {
+export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void }) {
   const [picked, setPicked] = useState<string | null>(null);
   const [limit, setLimit] = useState(0);
   const [left, setLeft] = useState(0);
@@ -23,6 +24,18 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
 
   const choose = (o: string) => { if (disabled || answered.current) return; answered.current = true; setPicked(o); onSend(o); };
   const command = (text: string) => { if (disabled || answered.current) return; answered.current = true; onSend(text); };
+  useEffect(() => {
+    const keydown = (event: KeyboardEvent) => {
+      const target = event.target;
+      if (event.repeat || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey || event.isComposing || disabled || answered.current) return;
+      if (target instanceof Element && target.closest('input,textarea,select,[contenteditable="true"],[role="dialog"],[role="alertdialog"]')) return;
+      const answer = ({ '1': 'A', '2': 'B', '3': 'C', '4': 'D' } as Record<string, string>)[event.key];
+      if (!answer || !options.includes(answer)) return;
+      event.preventDefault(); choose(answer);
+    };
+    window.addEventListener('keydown', keydown);
+    return () => window.removeEventListener('keydown', keydown);
+  }, [options, disabled, questionKey, onSend]);
 
   return (
     <div className="space-y-2 border-t border-border pt-3" role="group" aria-label="Quiz answer">
@@ -37,6 +50,8 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
                 variant="outline"
                 role="checkbox"
                 aria-label={`Answer ${o}${labels[o] ? `: ${labels[o]}` : ""}`}
+                aria-keyshortcuts={String(['A','B','C','D'].indexOf(o) + 1)}
+                title={`Answer ${o} · ${['A','B','C','D'].indexOf(o) + 1}`}
                 aria-checked={active}
                 aria-disabled={disabled || !!picked}
                 onClick={() => choose(o)}
@@ -62,6 +77,7 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
         )}
         <Button disabled={disabled} size="sm" variant="ghost" className="h-8 gap-1.5 px-2 text-xs text-primary" onClick={() => command("hint")}><Lightbulb className="size-3.5" />Hint</Button>
         <Button disabled={disabled} size="sm" variant="ghost" className="h-8 gap-1.5 px-2 text-xs text-muted-foreground" onClick={() => command("skip")}><SkipForward className="size-3.5" />Skip</Button>
+        {onChatHidden && <label className="inline-flex min-h-8 items-center gap-2 px-2 text-xs text-muted-foreground"><Switch checked={chatHidden} onCheckedChange={onChatHidden} aria-label="Hide Chat Widget" /><span>Hide Chat Widget</span></label>}
         <Button disabled={disabled} size="sm" variant="ghost" className="ml-auto h-8 gap-1.5 px-2 text-xs text-muted-foreground" onClick={() => command("stop quiz")}><Square className="size-3" />Stop quiz</Button>
       </div>
     </div>

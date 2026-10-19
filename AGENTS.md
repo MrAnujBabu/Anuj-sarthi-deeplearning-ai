@@ -28,3 +28,7 @@
 - Chat export: `src/lib/export-chat.ts` converts threads to Obsidian-ready markdown (YAML frontmatter, one note per doubt, attachments as placeholders — never embed data URLs); bulk export zips notes + index.md via fflate.
 - Web search: `createAgentTools({ webSearch })` adds a `web_search` tool (Perplexity + Parallel in parallel, deduped by URL) only when the client sends `search: true`; /api/chat appends a search instruction to the system prompt and disables it in quiz mode.
 - Voice dictation records 16 kHz WAV in the browser and transcribes only through the `/api/transcribe` server route; keeps the AI key server-side and inserts text into the composer for review before sending.
+- Dictation forwards SSE unchanged and consumes it with the shared transcription parser; exposes partial text promptly, preserves terminal errors, and propagates explicit cancellation without timeout retries.
+- Student links use Parallel full-content extraction with Firecrawl fallback and explicit empty/truncated results; prevents answers falsely claiming to have read an unavailable document.
+- Browser quota failures preserve prior threads and return a save failure; media cleanup replaces attachments/extracted documents with markers and clears IndexedDB only after thread cleanup, keeping answers and revision cards intact.
+- Admin link reads reuse the bounded student document reader; file paths are content-addressed to avoid repeat uploads, and memory saves compare content/normalized URLs before inserting.

@@ -142,6 +142,17 @@ export function createAgentTools(opts?: { webSearch?: boolean }) {
       execute: async ({ url }) => {
         if (!/^https?:\/\//i.test(url)) return { error: "Not a web link." };
         guard();
+        // Public PDF extraction is faster via Parallel; keep Firecrawl as fallback.
+        try {
+          const data = await gw("parallel", "PARALLEL_API_KEY", "/v1/extract", {
+            urls: [url],
+            objective: "Read the student's document, preserving questions, options, answer keys and page references.",
+            advanced_settings: { full_content: true, excerpt_settings: { max_chars_per_result: 12000 } },
+          });
+          const result = data.results?.[0];
+          const text = result?.full_content || (result?.excerpts ?? []).join("\n");
+          if (text?.trim()) return { url, title: result.title, text: trim(text, 12000), truncated: text.length > 12000 };
+        } catch { /* Fall back to the existing reader. */ }
         try {
           const data = await gw("firecrawl", "FIRECRAWL_API_KEY", "/v2/scrape", {
             url,
@@ -150,7 +161,8 @@ export function createAgentTools(opts?: { webSearch?: boolean }) {
           });
           const md = data.markdown ?? data.data?.markdown ?? "";
           const title = data.metadata?.title ?? data.data?.metadata?.title;
-          return { url, title, text: trim(md, 12000) };
+          if (!md.trim()) return { url, error: "This link returned no readable text. Upload the PDF instead; do not guess its contents." };
+          return { url, title, text: trim(md, 12000), truncated: md.length > 12000 };
         } catch (e) {
           return { url, error: String(e) };
         }

@@ -1,97 +1,88 @@
-import { Loader2, Mic, Square, X } from "lucide-react";
+import { AudioLines, Loader2, Mic, Square, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useHydrated, Link } from '@tanstack/react-router';
 import { toast } from "sonner";
 import { PromptInputButton } from "@/components/ai-elements/prompt-input";
 import { recordWav, type Recording } from "@/lib/record-wav";
+import { readTranscript } from '@/lib/transcription';
+import { displayAiError, isCreditError } from '@/lib/ai/errors';
 
-// Inserts text into the composer textarea so React state (controlled or not) picks it up.
-function insertIntoTextarea(el: HTMLTextAreaElement, text: string) {
-  const prev = el.value;
-  const next = prev && !/\s$/.test(prev) ? `${prev} ${text}` : prev + text;
-  const setter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value")?.set;
-  setter?.call(el, next);
-  el.dispatchEvent(new Event("input", { bubbles: true }));
-  el.focus();
-  el.setSelectionRange(next.length, next.length);
+function setTextarea(el: HTMLTextAreaElement, text: string) {
+  Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value')?.set?.call(el, text);
+  el.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
 export function DictateButton({ disabled }: { disabled?: boolean }) {
-  const [state, setState] = useState<"idle" | "rec" | "busy">("idle");
+  const hydrated = useHydrated();
+  const [state, setState] = useState<'idle' | 'starting' | 'rec' | 'busy'>('idle');
   const [secs, setSecs] = useState(0);
-  const [level, setLevel] = useState(0);
+  const [creditError, setCreditError] = useState('');
   const rec = useRef<Recording | null>(null);
   const btn = useRef<HTMLButtonElement>(null);
-
+  const controller = useRef<AbortController | null>(null);
+  const mounted = useRef(true);
+  useEffect(() => { mounted.current = true; return () => {
+    mounted.current = false; rec.current?.cancel(); controller.current?.abort();
+  }; }, []);
   useEffect(() => {
-    if (state !== "rec") return;
+    if (state !== 'rec') return;
     const started = Date.now();
-    const t = setInterval(() => {
-      setSecs(Math.floor((Date.now() - started) / 1000));
-      setLevel(rec.current?.level() ?? 0);
-    }, 120);
-    return () => clearInterval(t);
+    const timer = setInterval(() => setSecs(Math.floor((Date.now() - started) / 1000)), 250);
+    return () => clearInterval(timer);
   }, [state]);
-  useEffect(() => () => rec.current?.cancel(), []);
-  useEffect(() => { if (state === "rec" && secs >= 600) void stop(); return undefined; }, [secs, state]);
 
   const start = async () => {
-    if (!navigator.mediaDevices?.getUserMedia) { toast.error("Is browser mein mic support nahi hai."); return; }
+    if (!navigator.mediaDevices?.getUserMedia) { toast.error('Is browser mein mic support nahi hai.'); return; }
+    setState('starting');
     try {
-      rec.current = await recordWav();
-      setSecs(0);
-      setState("rec");
+      const recording = await recordWav();
+      if (!mounted.current) { recording.cancel(); return; }
+      rec.current = recording; setSecs(0); setState('rec');
     } catch (e) {
-      const name = (e as DOMException).name;
-      toast.error(name === "NotAllowedError" ? "Mic ki permission do (browser address bar mein mic icon)." : "Mic shuru nahi ho paya.");
+      if (!mounted.current) return;
+      setState('idle');
+      toast.error((e as DOMException).name === 'NotAllowedError' ? 'Mic ki permission do (browser address bar mein mic icon).' : 'Mic shuru nahi ho paya.');
     }
   };
-
-  const cancel = () => { rec.current?.cancel(); rec.current = null; setState("idle"); };
-
+  const cancel = () => {
+    rec.current?.cancel(); rec.current = null;
+    controller.current?.abort(); controller.current = null; setState('idle');
+  };
   const stop = async () => {
-    const r = rec.current;
-    if (!r) return;
+    const recording = rec.current;
+    if (!recording) return;
     rec.current = null;
-    setState("busy");
+    const textarea = btn.current?.closest('form')?.querySelector('textarea');
+    const original = textarea?.value || '';
+    const prefix = original && !/\s$/.test(original) ? original + ' ' : original;
+    const abort = new AbortController(); controller.current = abort; setState('busy');
     try {
-      const file = await r.stop();
-      const fd = new FormData();
-      fd.append("file", file);
-      const res = await fetch("/api/transcribe", { method: "POST", body: fd });
-      const data = (await res.json().catch(() => ({}))) as { text?: string; error?: string };
-      if (!res.ok) throw new Error(data.error ?? "Voice typing failed.");
-      if (!data.text) throw new Error("Kuch samajh nahi aaya — dobara bolo.");
-      const ta = btn.current?.closest("form")?.querySelector("textarea");
-      if (ta) insertIntoTextarea(ta, data.text);
+      const file = await recording.stop();
+      const body = new FormData(); body.append('file', file);
+      const response = await fetch('/api/transcribe', { method: 'POST', body, signal: abort.signal });
+      await readTranscript(response, text => {
+        if (textarea && mounted.current && !abort.signal.aborted) setTextarea(textarea, prefix + text);
+      });
+      if (textarea && mounted.current) { textarea.focus(); textarea.setSelectionRange(textarea.value.length, textarea.value.length); }
     } catch (e) {
-      toast.error((e as Error).message);
+      if (abort.signal.aborted || !mounted.current) return;
+      const message = e instanceof Error ? e.message : 'Voice typing failed.';
+      if (isCreditError(message)) setCreditError(displayAiError(message));
+      toast.error(displayAiError(message));
     } finally {
-      setState("idle");
+      if (controller.current === abort) { controller.current = null; if (mounted.current) setState('idle'); }
     }
   };
-
-  if (state === "rec") {
-    const mm = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
-    return (
-      <div className="flex items-center gap-1" role="group" aria-label="Recording">
-        <PromptInputButton ref={btn} onClick={cancel} variant="ghost" className="px-2" aria-label="Cancel dictation" title="Cancel">
-          <X className="size-4" />
-        </PromptInputButton>
-        <span className="flex items-center gap-1.5 text-xs tabular-nums text-muted-foreground" aria-live="polite">
-          <span className="size-2 rounded-full bg-destructive transition-transform" style={{ transform: `scale(${1 + Math.min(level * 12, 1.2)})` }} />
-          {mm}
-        </span>
-        <PromptInputButton onClick={stop} variant="secondary" className="gap-1.5 px-2" aria-label="Stop and insert text" title="Done — insert text">
-          <Square className="size-3.5 fill-current" />
-          <span>Done</span>
-        </PromptInputButton>
-      </div>
-    );
-  }
-  return (
-    <PromptInputButton ref={btn} onClick={start} variant="ghost" className="px-2" disabled={disabled || state === "busy"}
-      aria-label={state === "busy" ? "Transcribing" : "Dictate (voice typing)"} title="Bol kar likho">
-      {state === "busy" ? <Loader2 className="size-4 animate-spin" /> : <Mic className="size-4" />}
-    </PromptInputButton>
+  useEffect(() => { if (state === 'rec' && secs >= 600) void stop(); }, [secs, state]);
+  if (creditError) return <span role="alert" className="max-w-48 text-xs text-destructive" title={creditError}>AI credits unavailable · <Link to="/practice" className="underline">Saved practice</Link></span>;
+  if (state === 'rec' || state === 'busy') return (
+    <div className="flex items-center gap-1" role="group" aria-label={state === 'rec' ? 'Recording' : 'Transcribing'}>
+      <PromptInputButton ref={btn} onClick={cancel} variant="ghost" aria-label="Cancel dictation" title="Cancel dictation"><X className="size-4" /></PromptInputButton>
+      {state === 'rec' ? <>
+        <span className="flex items-center gap-1.5 text-xs tabular-nums text-muted-foreground"><span className="size-2 rounded-full bg-destructive" />{Math.floor(secs / 60)}:{String(secs % 60).padStart(2, '0')}</span>
+        <PromptInputButton onClick={stop} variant="secondary" aria-label="Stop and insert text" title="Done — insert text"><Square className="size-3.5 fill-current" /></PromptInputButton>
+      </> : <Loader2 className="size-4 animate-spin text-muted-foreground" aria-label="Transcribing" />}
+    </div>
   );
+  return <PromptInputButton ref={btn} onClick={start} variant="ghost" className="h-8 gap-2 px-2" disabled={!hydrated || disabled || state === 'starting'} aria-label="Dictate (voice typing)" title="Bol kar likho">{state === 'starting' ? <Loader2 className="size-4 animate-spin" /> : <><Mic className="size-4" /><AudioLines className="size-4" /></>}</PromptInputButton>;
 }

@@ -6,6 +6,7 @@ import { amIAdmin, getAgentSettings, saveAgentSettings, listMemory, saveMemory, 
 import { extractLocally, needsAi } from "@/lib/file-extract";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { canonicalMemoryUrl } from '@/lib/memory-duplicates';
 
 export const Route = createFileRoute("/admin")({
   ssr: false,
@@ -137,13 +138,18 @@ function Library() {
     try {
       let data = { ...form, kind: tab };
       if (tab === "link" && !form.id) {
+        const url = canonicalMemoryUrl(form.source_url ?? '');
+        if (items.some(i => i.source_url && canonicalMemoryUrl(i.source_url) === url)) { setMsg('Ye link pehle se saved hai — dobara read/save nahi kiya ✓'); return; }
         setBusy("Reading link…");
         const r = await readLink({ data: { url: form.source_url ?? "" } });
         data = { ...data, title: data.title || r.title, content: r.markdown };
       }
       if (tab === "file" && file) {
         setBusy("Uploading…");
-        const path = `${crypto.randomUUID()}-${file.name.replace(/[^\w.\-]/g, "_")}`;
+        const digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+        const hash = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('');
+        const path = `content-${hash}`;
+        if (items.some(i => i.file_path === path)) { setMsg('Ye file pehle se saved hai — dobara upload/read nahi kiya ✓'); return; }
         const up = await supabase.storage.from("agent-memory").upload(path, file, file.type ? { contentType: file.type } : {});
         if (up.error) throw up.error;
         data = { ...data, title: data.title || file.name, file_path: path, mime: file.type || "application/octet-stream" };
@@ -169,7 +175,7 @@ function Library() {
     <div className="space-y-6">
       <div>
         <h1 className="font-display text-3xl">Agent memory</h1>
-        <p className="text-muted-foreground">Jo yahan save hoga, tutor har jawab mein use karega (jo "Use in answers" on hai).</p>
+        <p className="text-muted-foreground">Active memory mein se relevant notes tutor ke jawab mein use hote hain. Links readable hone chahiye; private documents upload karein.</p>
       </div>
       <div className="flex gap-2 border-b border-border">
         {TABS.map((t) => (

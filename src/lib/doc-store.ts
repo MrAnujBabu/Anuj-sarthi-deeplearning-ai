@@ -4,6 +4,7 @@ import type { UIMessage } from "ai";
 const DB = "snapsolve-docs";
 const STORE = "docs";
 const ids = new Map<string, string>(); // dataUrl -> id
+const pendingWrites = new Set<Promise<void>>();
 
 function open(): Promise<IDBDatabase> {
   return new Promise((res, rej) => {
@@ -16,20 +17,20 @@ function open(): Promise<IDBDatabase> {
 
 async function put(id: string, data: string) {
   const db = await open();
-  await new Promise<void>((res, rej) => {
+  try { await new Promise<void>((res, rej) => {
     const tx = db.transaction(STORE, "readwrite");
     tx.objectStore(STORE).put(data, id);
     tx.oncomplete = () => res();
     tx.onerror = () => rej(tx.error);
-  });
+  }); } finally { db.close(); }
 }
 
 async function get(id: string): Promise<string | undefined> {
   const db = await open();
   return new Promise((res) => {
     const r = db.transaction(STORE).objectStore(STORE).get(id);
-    r.onsuccess = () => res(r.result as string | undefined);
-    r.onerror = () => res(undefined);
+    r.onsuccess = () => { db.close(); res(r.result as string | undefined); };
+    r.onerror = () => { db.close(); res(undefined); };
   });
 }
 
@@ -46,11 +47,29 @@ export function stripDocs(messages: UIMessage[]): UIMessage[] {
       if (!id) {
         id = crypto.randomUUID();
         ids.set(p.url, id);
-        void put(id, p.url).catch(() => {});
+        const write = put(id, p.url).catch(() => {});
+        pendingWrites.add(write);
+        void write.finally(() => pendingWrites.delete(write));
       }
       return { ...p, url: `idb:${id}` };
     }),
   }));
+}
+
+/** Also removes orphaned PDFs from deleted conversations. No cloud files are touched. */
+export async function clearDocumentStore(): Promise<void> {
+  await Promise.all([...pendingWrites]);
+  const db = await open();
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction(STORE, 'readwrite');
+      tx.objectStore(STORE).clear();
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+      tx.onabort = () => reject(tx.error);
+    });
+    ids.clear();
+  } finally { db.close(); }
 }
 
 /** Put PDF data back into messages loaded from storage. */

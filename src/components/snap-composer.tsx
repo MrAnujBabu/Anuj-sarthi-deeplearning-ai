@@ -94,10 +94,12 @@ export function SnapComposer({
       <PromptInputFooter>
         <PromptInputTools>
           <SnapButton big={!!big} />
-          <DictateButton disabled={busy} />
           {actions}
         </PromptInputTools>
+        <PromptInputTools className="ml-auto">
+          <DictateButton disabled={busy} />
         <PromptInputSubmit {...(status ? { status } : {})} {...(onStop ? { onStop } : {})} disabled={busy && !onStop} />
+        </PromptInputTools>
       </PromptInputFooter>
     </PromptInput>
     {controls}

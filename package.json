@@ -65,6 +65,7 @@
     "date-fns": "^4.1.0",
     "dompurify": "^3.4.17",
     "embla-carousel-react": "^8.6.0",
+    "eventsource-parser": "^4.1.2",
     "fflate": "^0.8.3",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.575.0",

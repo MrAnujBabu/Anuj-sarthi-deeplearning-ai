@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { canonicalMemoryUrl, isDuplicateMemory } from './memory-duplicates';
 
 type Ctx = { supabase: any; userId: string };
 
@@ -45,17 +46,16 @@ export const saveMemory = createServerFn({ method: "POST" })
   .inputValidator((d: MemoryInput) => {
     if (!d.title?.trim()) throw new Error("Title required");
     if (!["note", "link", "file", "tracker"].includes(d.kind)) throw new Error("Bad kind");
-    return { ...d, title: d.title.trim().slice(0, 200), content: (d.content ?? "").slice(0, 400000) };
+    return { ...d, source_url: d.source_url ? canonicalMemoryUrl(d.source_url) : null, title: d.title.trim().slice(0, 200), content: (d.content ?? "").slice(0, 400000) };
   })
   .handler(async ({ data, context }) => {
     await assertAdmin(context as Ctx);
     const { id, ...row } = data;
     if (!id) {
       // Skip duplicates so repeated uploads don't fill the database.
-      const dupe = row.source_url
-        ? await context.supabase.from("memory_items").select("id").eq("source_url", row.source_url).limit(1)
-        : await context.supabase.from("memory_items").select("id").eq("title", row.title).eq("content", row.content).limit(1);
-      if (dupe.data?.length) return { ok: true, duplicate: true };
+      const { data: candidates, error } = await context.supabase.from("memory_items").select("title,content,source_url");
+      if (error) throw new Error(error.message);
+      if (candidates?.some(candidate => isDuplicateMemory(row, candidate))) return { ok: true, duplicate: true };
     }
     const payload = { ...row, updated_at: new Date().toISOString() };
     const q = id
@@ -86,20 +86,10 @@ export const readLinkForMemory = createServerFn({ method: "POST" })
   })
   .handler(async ({ data, context }) => {
     await assertAdmin(context as Ctx);
-    const lovable = process.env["LOVABLE_API_KEY"];
-    const key = process.env["FIRECRAWL_API_KEY"];
-    if (!lovable || !key) throw new Error("Link reader not configured");
-    const res = await fetch("https://connector-gateway.lovable.dev/firecrawl/v2/scrape", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${lovable}`, "X-Connection-Api-Key": key },
-      body: JSON.stringify({ url: data.url, formats: ["markdown"], onlyMainContent: true }),
-    });
-    const text = await res.text();
-    if (!res.ok) throw new Error(`Could not read link [${res.status}]: ${text.slice(0, 200)}`);
-    const j = JSON.parse(text);
-    const md = j.markdown ?? j.data?.markdown ?? "";
-    const title = j.metadata?.title ?? j.data?.metadata?.title ?? data.url;
-    return { title: String(title).slice(0, 200), markdown: String(md) };
+    const { createAgentTools } = await import('./agent/tools.server');
+    const result = await createAgentTools().read_link.execute?.({ url: data.url }, { toolCallId: 'admin-link', messages: [], context: {} });
+    if (!result || !('text' in result) || typeof result.text !== 'string') throw new Error(result && 'error' in result ? String(result.error) : 'Link returned no readable text.');
+    return { title: String(result.title || data.url).slice(0, 200), markdown: result.text + (result.truncated ? '\n\n[Document truncated; split large chapters into separate links.]' : '') };
   });
 
 /** For PDFs and images: read the text with a vision model. */

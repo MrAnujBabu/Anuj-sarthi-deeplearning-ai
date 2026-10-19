@@ -36,10 +36,23 @@ export function getThread(id: string): Thread | undefined {
 
 export function upsertThread(thread: Thread): boolean {
   const others = loadThreads().filter((t) => t.id !== thread.id);
-  let list = [thread, ...others];
-  // If storage is full, drop the oldest doubts until it fits.
-  while (!saveThreads(list) && list.length > 1) list = list.slice(0, -1);
-  return list.length > 0;
+  // Never silently delete older study material to fit a new upload.
+  return saveThreads([thread, ...others]);
+}
+
+/** Remove uploaded payloads, not students' questions or saved answers. */
+export function withoutStudyMedia(messages: UIMessage[]): UIMessage[] {
+  return messages.map(m => ({ ...m, parts: m.parts.map(p => {
+    if (p.type === 'file') return { type: 'text' as const, text: `[Removed attachment: ${p.filename || 'document'}]` };
+    if (p.type === 'text') return { ...p, text: p.text.replace(/<doc name="([^"]*)">[\s\S]*?<\/doc>\n*/g, (_match, name: string) => `[Removed document: ${name}]\n`) };
+    return p;
+  }) }));
+}
+
+export function clearThreadMedia(): void {
+  const threads = loadThreads().map(t => ({ ...t, messages: withoutStudyMedia(t.messages) }));
+  if (!saveThreads(threads)) throw new Error('Could not save cleanup. Nothing was removed.');
+  pendingFirstMessage.clear();
 }
 
 export function deleteThread(id: string) {

@@ -1,4 +1,13 @@
 # Roadmap
+- [x] Laptop/Mac keys 1–4 select A–D; tests ignore typing, modifiers, held keys and grading; browser key 2 verified
+- [x] Admin bounded PDF-link reading, same-file/content/link duplicate protection; signed-in notes and public PDF link verified (full tutor grounding/office formats not re-verified)
+- [x] Storage safety cleanup preserves answers/cards, no silent eviction, focus toggle; 93 tests and live checks pass, reliability report delivered
+- [ ] Perplexity numeric balance — blocked: managed Search connection has no separate account balance and no documented remaining-balance API; no fake counter
+- [x] Current workspace: connect Firecrawl, GitHub API, Parallel and Perplexity fresh; disregard previous workspace connection IDs
+- [x] Core regression/live checks and report: 82 tests pass; voice sample, quiz wrong answer/hint/reload, search, PDF link, simulated 402 and zero-AI saved practice verified
+- [x] Match reference mic + waveform placement; streamed dictation, cancellation and terminal credit message verified
+- [ ] Physical-phone microphone and remaining full live suite — blocked: physical device/user input and hosted verification unavailable; see test report
+- [ ] Real-time numeric workspace credits — blocked: supported runtime credit-balance API details required
 - [x] New workspace move: reconnect Firecrawl, Parallel, Perplexity, GitHub API; Cloud schema 0000–0005 + private agent-memory bucket; 84 memory items restored from CSV
 - [x] Restore missing quiz files (option cards, key-term emphasis), "Unknown model" shown as setup issue not credits; live tutor, PDF quiz, answer tap and saved practice verified; 63 tests pass
 - [ ] Admin role for anujkumar75yadav@gmail.com — auto-granted on first sign-in (no account exists yet in this workspace)
