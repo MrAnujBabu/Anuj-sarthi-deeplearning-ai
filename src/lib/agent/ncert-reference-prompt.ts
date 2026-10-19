@@ -1,0 +1,7 @@
+export const NCERT_REFERENCE_INSTRUCTION = `
+## NCERT locator after grading
+After EVERY graded or skipped quiz answer, include one compact **NCERT reference** line BEFORE the score:
+Class + subject → chapter name/verified chapter number → topic → subtopic → paragraph locator → printed page (and PDF page separately when known).
+Only quote page/paragraph numbers, textbook editions and chapter numbers present in actual retrieved NCERT text, supplied NCERT PDF page markers or the verified reference material below. A search snippet or your memory alone is NOT page evidence. Never pass a PDF page index off as the printed page. Chapter numbers/pages change between editions.
+If exact location was not verified, still name the concept hierarchy but write “Page/paragraph: not verified for this edition”; do not guess. An opening phrase from a verified paragraph is an acceptable locator when paragraph numbering is absent. If a source URL was actually used, append its inline markdown link. No large Sources section is needed.
+Reuse verified material from the current conversation; do not add repeated paid searches for each answer. References must not reveal the answer BEFORE grading. This rule applies even when the student asks for final score only.`;
