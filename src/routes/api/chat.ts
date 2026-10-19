@@ -12,6 +12,7 @@ import { resolveModel, resolveEffort } from '@/lib/models';
 import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 import { loadTeacherMemory, loadAgentBrain } from '@/lib/memory.server';
+import { NCERT_REFERENCE_INSTRUCTION } from '@/lib/agent/ncert-reference-prompt';
 
 const SYSTEM = `You are "SnapSolve", a NEET 2027 doubt-solving tutor for Indian students (Physics, Chemistry, Biology).
 
@@ -69,7 +70,7 @@ Use valid JSON with double quotes. For "skip", use "correct":false.
 <!--card {...}-->
 **Score: x/y**
 **Q<n+1>.** next question with options
-<!--quiz {"options":["A","B","C","D"]}-->`;
+<!--quiz {"options":["A","B","C","D"]}-->` + NCERT_REFERENCE_INSTRUCTION;
 
 export const Route = createFileRoute("/api/chat")({
   server: {
