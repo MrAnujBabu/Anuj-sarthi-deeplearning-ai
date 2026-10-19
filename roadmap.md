@@ -1,4 +1,11 @@
 # Roadmap
+
+## Workspace move (Oct 19, 16:54 UTC)
+- [x] Fresh-link Firecrawl, Parallel, Perplexity, GitHub API; previous workspace connections ignored
+- [x] My Personal Agent database verified: 94 memory items, agent settings, AI pause table, owner admin role, private 25 MB agent-memory bucket (0 files)
+- [x] All 5 Claude models available; live tutor, quiz option select (B graded 1/1) and PDF quiz verified; Unknown model shows setup message (400); 167 tests pass
+- [x] Tutor keeps answering when the AI pause check can't reach the database
+- [ ] Re-upload admin memory files to Storage (agent-memory has 0 files) — waiting on user
 - [x] Commit tested changes to GitHub after the current voice/Supabase audit (167 tests and clean preview verified)
 - [x] Latest audit: Supabase has 94 memory items, 1 admin and private 25 MB bucket; voice_calls RLS/admin policy verified; Explain simpler real chat passed; no recorded voice calls
 - [x] Current voice expansion: server-owned admin call/PDF metadata and confirmed-duration tracking; browser scanned-PDF OCR attachment passed; unexpected disconnect remains failed even with final usage; 167 tests pass
