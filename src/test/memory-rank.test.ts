@@ -5,6 +5,30 @@ import imported from "../../data/imported-pcb.json";
 const row = (title: string, content: string, extra = {}) => ({ title, content, category: "General", subject: "", chapter: "", kind: "note", tracker_type: null, frequency: 1, ...extra });
 
 describe("teacher memory", () => {
+  it.each([
+    ['missing source', 'Year: 2021\nQuestion: Force on a body?', {}],
+    ['missing year', 'Question: Force on a body?', { source_url: 'https://example.org/paper.pdf' }],
+    ['missing question', 'Year: 2021\nArchive: Force', { source_url: 'https://example.org/paper.pdf' }],
+    ['reference only', 'Year: 2021\nQuestion: Force\nReference only', { source_url: 'https://example.org/paper.pdf' }],
+  ])('excludes %s from year tips', (_, content, extra) => {
+    expect(buildTeacherMemory([row('Force', content, { kind: 'pyq', ...extra })], 'Force')).toBe('');
+  });
+  it('preserves source and 2020 year before capped question text', () => {
+    const out = buildTeacherMemory([row('Population', 'Question: Population attributes?\n' + 'population '.repeat(5000) + '\nYear: 2020', { kind: 'pyq', source_url: 'https://nta.ac.in/paper.pdf' })], 'population', 2000);
+    expect(out).toContain('Year: 2020');
+    expect(out).toContain('Source: https://nta.ac.in/paper.pdf');
+    expect(out).toContain('Question: Population attributes?');
+    expect(out.length).toBeLessThanOrEqual(2000);
+  });
+  it('includes sourced 2021 questions but excludes unrelated 2017 PYQs', () => {
+    const out = buildTeacherMemory([
+      row('Force', 'Year: 2021\nQuestion: Force on a body?', { kind: 'pyq', source_url: 'https://example.org/2021.pdf' }),
+      row('Algae', 'Year: 2017\nQuestion: Algae?', { kind: 'pyq' }),
+    ], 'Force on a body');
+    expect(out).toContain('Year: 2021');
+    expect(out).toContain('Source: https://example.org/2021.pdf');
+    expect(out).not.toContain('2017');
+  });
   it("puts the item matching the question first", () => {
     const out = buildTeacherMemory([row("Organic tips", "aldehyde"), row("Projectile motion", "range formula")], "projectile range kaise nikale");
     expect(out.indexOf("Projectile")).toBeLessThan(out.indexOf("Organic"));
