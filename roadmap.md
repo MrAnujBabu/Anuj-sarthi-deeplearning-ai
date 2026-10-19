@@ -74,3 +74,7 @@
 - [ ] Verify admin account anujkumar75yadav@gmail.com and turn off email confirmation
 - [x] Admin account created, confirmed, admin role (email-confirm toggle must be switched off in Supabase dashboard)
 - [x] Push latest code to GitHub + backup ZIP before workspace move
+
+## Workspace move (Oct 19, latest)
+- [x] Fresh-link Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
+- [x] Supabase "My Personal Agent" connected and verified: 94 memory items, 1 admin role, agent-memory bucket live
