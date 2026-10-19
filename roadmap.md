@@ -73,4 +73,4 @@
 
 - [ ] Verify admin account anujkumar75yadav@gmail.com and turn off email confirmation
 - [x] Admin account created, confirmed, admin role (email-confirm toggle must be switched off in Supabase dashboard)
-- [ ] Push latest code to GitHub + backup ZIP before workspace move
+- [x] Push latest code to GitHub + backup ZIP before workspace move
