@@ -50,15 +50,15 @@ function Index() {
       <DoubtSidebar />
       <main className="flex min-w-0 flex-1 flex-col items-center overflow-y-auto px-5 py-6">
         <div className="w-full max-w-2xl pt-2 md:pt-16">
-          <div className="sticky top-0 z-10 -mx-5 mb-6 flex items-center gap-1 border-b bg-background/85 px-5 py-2.5 backdrop-blur md:mb-12">
+          <div className="mb-5 flex min-w-0 items-center gap-3 md:hidden">
+            <img src={logo} alt="SnapSolve logo" width={40} height={40} className="size-10 shrink-0" />
+            <span className="min-w-0 truncate font-display text-2xl font-semibold">SnapSolve</span>
+          </div>
+          <div className="-mx-5 mb-6 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1 border-b bg-background px-5 py-2.5 sm:flex md:mb-12">
             <MobileStudyMenu/>
             <Button variant="secondary" size="sm" className="rounded-full">Chat</Button>
-            <Button variant="ghost" size="sm" className="rounded-full" disabled title="Background connection required">Cowork · unavailable</Button>
-            <Button variant="ghost" size="sm" asChild className="ml-auto rounded-full"><Link to="/practice">Saved practice</Link></Button>
-          </div>
-          <div className="mb-8 flex items-center gap-3 md:hidden">
-            <img src={logo} alt="SnapSolve logo" width={40} height={40} className="size-10" />
-            <span className="font-display text-2xl font-semibold">SnapSolve</span>
+            <Button variant="ghost" size="sm" className="hidden rounded-full sm:inline-flex" disabled title="Background connection required">Cowork · unavailable</Button>
+            <Button variant="ghost" size="sm" asChild className="ml-auto shrink-0 rounded-full"><Link to="/practice">Saved practice</Link></Button>
           </div>
           <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground"><Sparkles className="size-5 text-primary"/>NEET 2027 · NCERT Class 11 & 12</div>
           <h1 className="font-display text-3xl font-medium leading-tight md:text-5xl">SnapSolve, your study companion.</h1>

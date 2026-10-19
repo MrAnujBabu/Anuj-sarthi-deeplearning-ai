@@ -78,3 +78,14 @@
 ## Workspace move (Oct 19, latest)
 - [x] Fresh-link Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
 - [x] Supabase "My Personal Agent" connected and verified: 94 memory items, 1 admin role, agent-memory bucket live
+
+## Session handover and voice verification (Oct 19, 14:35 UTC)
+- [x] Confirm My Personal Agent external Supabase connection after latest workspace move; expected project configured, auth health HTTP 200 (roles/storage not rechecked)
+- [x] Fresh-link Firecrawl, GitHub API, Parallel and Perplexity after the latest workspace move; ignore earlier connection references
+- [ ] Deliver session report file with implemented, verified and blocked work
+- [x] Verify safe voice changes: 157 tests pass; phone-size Quiz/Search and transcript import checked without runtime errors
+- [ ] Commit current code to GitHub
+- [x] Fix mobile home title/navigation overlap: 390px top/scrolled screenshots checked, no horizontal overflow/page errors; Quiz toggle selected successfully (spoken option grading still unverified)
+- [ ] Physical-phone Start / 2–3 questions / End and PDF spoken-answer verification — requires user's phone and audible input/output
+- [x] Report historical duration/cost records observed before latest workspace move; current workspace has no matching logs, so final settlement and post-fix voice verification remain unconfirmed
+- [ ] Genuine Indian regional voice/model — blocked: authenticated catalog checked before move exposes GPT Live only; documented regional voices do not establish an Indian-native voice, no arbitrary model substitution

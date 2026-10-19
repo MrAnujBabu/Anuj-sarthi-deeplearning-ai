@@ -176,6 +176,17 @@ function isListeningSound(text: string) {
   return /^(?:m+hm+|uhhuh)[.,!]*$/.test(normalized);
 }
 
+// Claude rejects conversations ending on an assistant turn (no prefill); the
+// spoken transcript often ends with the voice agent's own words.
+export function endWithUserTurn(messages: ModelMessage[]): ModelMessage[] {
+  const copy = [...messages];
+  const last = copy.at(-1);
+  if (!last || last.role === "assistant") {
+    copy.push({ role: "user", content: "(Answer the student's latest spoken question above.)" });
+  }
+  return copy;
+}
+
 async function answerQuestion(
   messages: ModelMessage[],
   config: LiveConfig,
@@ -202,7 +213,7 @@ async function answerQuestion(
     includeRawChunks: true,
     prepareStep() {
       consumeInput();
-      return { messages: [...messages] };
+      return { messages: endWithUserTurn(messages) };
     },
     onStepFinish(step) {
       messages.push(...step.response.messages.slice(responseCursor));
@@ -230,7 +241,7 @@ async function answerQuestion(
       (prefs.quiz ? " QUIZ MODE: give exactly one NEET MCQ with options A-D (no answer) or check the student's spoken answer briefly and give the next MCQ." : "") +
       (prefs.search ? " Use web_search for current facts when needed." : "") +
       (prefs.context ? `\n\nStudent-attached material (use it when relevant):\n${prefs.context}` : ""),
-    messages,
+    messages: endWithUserTurn(messages),
     tools: {
       ...(prefs.search ? { web_search: createAgentTools({ webSearch: true }).web_search } : {}),
       plan_study_schedule: tool({
