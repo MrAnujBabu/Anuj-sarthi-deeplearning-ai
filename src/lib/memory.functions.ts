@@ -236,9 +236,15 @@ export const setStorageLimit = createServerFn({ method: "POST" })
     return { limited: data.limited };
   });
 
-/** Public: students only need the quiz timer and default mode, never the brain text. */
+/** Public: students only need the quiz timer and default mode, never the brain text.
+ * Never throws: a missing or unreachable backend must not blank the screen. */
 export const getQuizTimer = createServerFn({ method: "GET" }).handler(async () => {
-  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  const { data } = await supabaseAdmin.from("agent_settings").select("quiz_timer_seconds,default_mode").eq("id", "main").maybeSingle();
-  return { seconds: data?.quiz_timer_seconds ?? 0, defaultMode: (data?.default_mode === "quiz" ? "quiz" : "solve") as "solve" | "quiz" };
+  try {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data } = await supabaseAdmin.from("agent_settings").select("quiz_timer_seconds,default_mode").eq("id", "main").maybeSingle();
+    return { seconds: data?.quiz_timer_seconds ?? 0, defaultMode: (data?.default_mode === "quiz" ? "quiz" : "solve") as "solve" | "quiz" };
+  } catch (e) {
+    console.error("[getQuizTimer] falling back to defaults:", e);
+    return { seconds: 0, defaultMode: "solve" as const };
+  }
 });
