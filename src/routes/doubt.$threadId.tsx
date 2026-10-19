@@ -29,6 +29,7 @@ import { exportThreadMarkdown } from "@/lib/export-chat";
 import { extractQuizOptions } from "@/lib/quiz-options";
 import { emphasizeQuizQuestion } from "@/lib/quiz-emphasis";
 import { DOC_RE, pdfsToText } from "@/lib/pdf-text";
+import { useBoldQuestions, useHideChatWidget, useHideTopBar, useStudyTextSize } from '@/lib/quiz-label-preference';
 
 export const Route = createFileRoute("/doubt/$threadId")({
   head: () => ({
@@ -57,11 +58,30 @@ function DoubtPage() {
       live = false;
     };
   }, [threadId]);
+  const [topBarSetting] = useHideTopBar();
+  const [peek, setPeek] = useState(false);
+  useEffect(() => {
+    if (!topBarSetting) return;
+    let startY = -1, startX = 0, timer: ReturnType<typeof setTimeout> | undefined;
+    const start = (e: TouchEvent) => { const t = e.touches[0]; if (!t) return; startY = t.clientY <= 48 ? t.clientY : -1; startX = t.clientX; };
+    const move = (e: TouchEvent) => {
+      if (startY < 0) return;
+      const t = e.touches[0]; if (!t) return;
+      if (t.clientY - startY > 50 && Math.abs(t.clientX - startX) < 60) {
+        startY = -1; setPeek(true); clearTimeout(timer); timer = setTimeout(() => setPeek(false), 4000);
+      }
+    };
+    window.addEventListener('touchstart', start, { passive: true });
+    window.addEventListener('touchmove', move, { passive: true });
+    return () => { window.removeEventListener('touchstart', start); window.removeEventListener('touchmove', move); clearTimeout(timer); };
+  }, [topBarSetting]);
+  const topBarHidden = topBarSetting && !peek;
 
   return (
     <div className="flex h-screen bg-background">
       <DoubtSidebar activeId={threadId} />
       <main className="flex min-w-0 flex-1 flex-col">
+        {topBarHidden ? <div className="fixed left-2 top-2 z-30 rounded-md bg-background/80 backdrop-blur md:hidden"><MobileStudyMenu activeId={threadId}/></div> :
         <header className="flex items-center gap-2 border-b px-4 py-3 md:hidden">
           <MobileStudyMenu activeId={threadId}/>
           <Link to="/" aria-label="Back" className="p-1">
@@ -69,7 +89,7 @@ function DoubtPage() {
           </Link>
           <img src={logo} alt="" width={28} height={28} className="size-7" />
           <span className="font-display text-lg font-semibold">SnapSolve</span>
-        </header>
+        </header>}
         {initial && <ChatWindow key={threadId} threadId={threadId} initialMessages={initial} />}
       </main>
     </div>
@@ -83,7 +103,9 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
   useEffect(() => { const id=localStorage.getItem('snapsolve.model'); if(resolveModel(id)) setModel(id ?? DEFAULT_MODEL); setEffort(resolveEffort(localStorage.getItem('snapsolve.effort'))); setSettingsReady(true); }, []);
   const quizKey = `snapsolve.quiz.${threadId}`;
   const [quiz, setQuiz] = useState(false);
-  const [chatHidden, setChatHidden] = useState(false);
+  const [chatHidden, setChatHidden] = useHideChatWidget();
+  const [boldQuestions] = useBoldQuestions();
+  const [textSize] = useStudyTextSize();
   useEffect(() => setQuiz(localStorage.getItem(quizKey) === "1" || pendingFirstMessage.get(threadId)?.mode === "quiz"), [quizKey, threadId]);
   const [search, setSearch] = useState(false);
   useEffect(() => setSearch(localStorage.getItem("snapsolve.search") === "1"), []);
@@ -93,6 +115,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
   };
   const { messages, sendMessage: rawSend, status, stop, error } = useChat({
     id: threadId,
+    experimental_throttle: 50,
     messages: initialMessages,
     transport: new DefaultChatTransport({ api: "/api/chat" }),
     onError: (e) => toast.error(displayAiError(e.message) || "Couldn't reach the tutor. Check your connection and try again."),
@@ -121,13 +144,23 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
     if (status === "submitted" || status === "streaming") {
       if (messages.length !== 1) return;
     }
-    const ok = upsertThread({ id: threadId, title: titleFrom(messages), updatedAt: Date.now(), messages: stripDocs(messages) });
-    if (status === "ready") {
-      for (const m of messages)
-        if (m.role === "assistant")
-          recordResults(m.id, parseCards(m.parts.map((p) => (p.type === "text" ? p.text : "")).join("\n")));
-    }
-    if (!ok) toast.error("Browser storage is full — this doubt couldn't be saved.");
+    let cancelled = false;
+    void (async () => {
+      try {
+        const stored = await stripDocs(messages);
+        if (cancelled) return;
+        const ok = upsertThread({ id: threadId, title: titleFrom(messages), updatedAt: Date.now(), messages: stored });
+        if (!ok) throw new Error('Browser storage is full — this doubt could not be saved.');
+        if (status === "ready") {
+          for (const m of messages)
+            if (m.role === "assistant")
+              recordResults(m.id, parseCards(m.parts.map((p) => (p.type === "text" ? p.text : "")).join("\n")));
+        }
+      } catch {
+        if (!cancelled) toast.error('Study data could not be saved. Keep this page open and download a backup before retrying.');
+      }
+    })();
+    return () => { cancelled = true; };
   }, [messages, status, threadId]);
 
   const busy = status === "submitted" || status === "streaming";
@@ -143,7 +176,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
   return (
     <>
       <Conversation className="flex-1">
-        <ConversationContent className="mx-auto w-full max-w-3xl">
+        <ConversationContent className={`study-text study-text-${textSize} mx-auto w-full max-w-3xl`}>
           {messages.length === 0 && !busy && (
             <div className="py-20 text-center text-muted-foreground">
               This doubt is empty. Snap a question below to get started.
@@ -176,6 +209,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
                         text={openQuiz && m.id === quizSource?.id && m.parts.filter(part => part.type === "text").length === 1 ? emphasizeQuizQuestion(openQuiz.text) : p.text}
                         isAnimating={busy && m.id === last?.id}
                         compact={quiz}
+                        boldQuestion={boldQuestions && m.id === quizSource?.id}
                       />
 
                     ) : (
@@ -183,7 +217,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
                         {[...p.text.matchAll(DOC_RE)].map((d, j) => (
                           <div key={j} className="flex w-fit items-center gap-2 rounded-lg border bg-card px-3 py-2 text-sm"><FileText className="size-4" /> {d[1]}</div>
                         ))}
-                        <p className="w-fit max-w-full whitespace-pre-wrap rounded-2xl border bg-card px-4 py-2.5 shadow-sm">{p.text.replace(DOC_RE, "")}</p>
+                        <p className={`study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl border bg-card px-4 py-2.5 shadow-sm ${boldQuestions ? 'font-bold' : ''}`}>{p.text.replace(DOC_RE, "")}</p>
                       </div>
                     );
                   if (p.type.startsWith("tool-")) return <ToolStep key={i} part={p as never} />;
