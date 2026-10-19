@@ -217,7 +217,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
                         {[...p.text.matchAll(DOC_RE)].map((d, j) => (
                           <div key={j} className="flex w-fit items-center gap-2 rounded-lg border bg-card px-3 py-2 text-sm"><FileText className="size-4" /> {d[1]}</div>
                         ))}
-                        <p className={`study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl border bg-card px-4 py-2.5 shadow-sm ${boldQuestions ? 'font-bold' : ''}`}>{p.text.replace(DOC_RE, "")}</p>
+                        <p className={`study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl border bg-card px-4 py-2.5 shadow-sm `}>{p.text.replace(DOC_RE, "")}</p>
                       </div>
                     );
                   if (p.type.startsWith("tool-")) return <ToolStep key={i} part={p as never} />;
