@@ -1,6 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { canonicalMemoryUrl, isDuplicateMemory } from './memory-duplicates';
+import { ALL_KINDS, type MemoryKind, directImportUrl, capText } from './import-sources';
+import { cleanMemoryText } from './admin-retention';
 
 type Ctx = { supabase: any; userId: string };
 
@@ -27,7 +29,7 @@ export const listMemory = createServerFn({ method: "POST" })
 
 export type MemoryInput = {
   id?: string;
-  kind: "note" | "link" | "file" | "tracker";
+  kind: MemoryKind;
   title: string;
   category: string;
   subject: string;
@@ -45,8 +47,8 @@ export const saveMemory = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: MemoryInput) => {
     if (!d.title?.trim()) throw new Error("Title required");
-    if (!["note", "link", "file", "tracker"].includes(d.kind)) throw new Error("Bad kind");
-    return { ...d, source_url: d.source_url ? canonicalMemoryUrl(d.source_url) : null, title: d.title.trim().slice(0, 200), content: (d.content ?? "").slice(0, 400000) };
+    if (!(ALL_KINDS as readonly string[]).includes(d.kind)) throw new Error("Bad kind");
+    return { ...d, source_url: d.source_url ? canonicalMemoryUrl(d.source_url) : null, title: cleanMemoryText(d.title).trim().slice(0, 200), content: cleanMemoryText(d.content ?? "").slice(0, 400000) };
   })
   .handler(async ({ data, context }) => {
     await assertAdmin(context as Ctx);
@@ -86,10 +88,68 @@ export const readLinkForMemory = createServerFn({ method: "POST" })
   })
   .handler(async ({ data, context }) => {
     await assertAdmin(context as Ctx);
+    const started = Date.now();
+    const { url, source } = directImportUrl(data.url);
+    if (source === 'drive') throw new Error('Google Drive is not connected in this workspace. Connect Google Drive or download the file and upload it in PDF/Files.');
+    // Linked workspace Sheets access also reads private sheets owned/shared with the connected account.
+    if (source === 'sheets' && process.env['GOOGLE_SHEETS_API_KEY'] && process.env['LOVABLE_API_KEY']) {
+      const sheetUrl = new URL(data.url);
+      const id = sheetUrl.pathname.match(/\/spreadsheets\/d\/([\w-]+)/)?.[1];
+      const headers = { Authorization: `Bearer ${process.env['LOVABLE_API_KEY']}`, 'X-Connection-Api-Key': process.env['GOOGLE_SHEETS_API_KEY'] };
+      const base = `https://connector-gateway.lovable.dev/google_sheets/v4/spreadsheets/${id}`;
+      const meta = await fetch(base, { headers });
+      if (!meta.ok) throw new Error(`Google Sheet read failed [${meta.status}]: ${await meta.text()}`);
+      const info = await meta.json() as { properties?: { title?: string }; sheets?: { properties: { sheetId: number; title: string } }[] };
+      const gid = sheetUrl.searchParams.get('gid') ?? sheetUrl.hash.match(/gid=(\d+)/)?.[1];
+      const sheet = gid ? info.sheets?.find(s => String(s.properties.sheetId) === gid) : info.sheets?.[0];
+      if (!sheet) throw new Error('Google Sheet tab not found.');
+      const range = `'${sheet.properties.title.replace(/'/g, "''")}'`;
+      const res = await fetch(`${base}/values/${range}`, { headers });
+      if (!res.ok) throw new Error(`Google Sheet read failed [${res.status}]: ${await res.text()}`);
+      const result = await res.json() as { values?: unknown[][] };
+      const csv = (result.values ?? []).map(row => row.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
+      if (!csv.trim()) throw new Error('Google Sheet returned no rows.');
+      if (new TextEncoder().encode(csv).byteLength > 25 * 1024 * 1024) throw new Error('Google Sheet exceeds 25 MB.');
+      const c = capText(csv);
+      if (c.truncated) throw new Error('Google Sheet exceeds 400,000 characters; split it before bulk import to avoid partial rows.');
+      return { title: info.properties?.title ?? sheet.properties.title, markdown: csv, ...c, pages: undefined as number | undefined, mime: 'text/csv', method: 'google-sheets-api', ms: Date.now() - started, csv: true };
+    }
+    // 1) Direct fetch: free and fast for PDFs, CSV, Google Sheets/Docs/Drive exports and text.
+    try {
+      const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': 'SnapSolveAdmin/1.0' } });
+      const type = (res.headers.get('content-type') ?? '').toLowerCase();
+      const size = Number(res.headers.get('content-length') ?? 0);
+      if (size > 25 * 1024 * 1024) throw new Error('Link file 25 MB se bada hai — chhote parts mein upload karein.');
+      if (res.ok && !type.includes('text/html')) {
+        const buf = new Uint8Array(await res.arrayBuffer());
+        if (buf.byteLength > 25 * 1024 * 1024) throw new Error('Link file 25 MB se bada hai — chhote parts mein upload karein.');
+        let text = '';
+        let pages: number | undefined;
+        const isPdf = type.includes('pdf') || (buf[0] === 0x25 && buf[1] === 0x50 && buf[2] === 0x44 && buf[3] === 0x46);
+        if (isPdf) {
+          const { extractText, getDocumentProxy } = await import('unpdf');
+          const pdf = await getDocumentProxy(buf);
+          const r = await extractText(pdf, { mergePages: true });
+          text = r.text; pages = r.totalPages;
+        } else if (/text|csv|json|xml|markdown/.test(type) || source !== 'web') {
+          text = new TextDecoder().decode(buf);
+        }
+        if (text.trim()) {
+          const c = capText(text);
+          const name = decodeURIComponent(new URL(data.url).pathname.split('/').pop() || '') || data.url;
+          return { title: name.slice(0, 200), markdown: c.text, truncated: c.truncated, chars: c.chars, totalChars: c.totalChars, pages, mime: isPdf ? 'application/pdf' : type.split(';')[0], method: source === 'web' ? (isPdf ? 'direct-pdf' : 'direct-text') : `google-${source}`, ms: Date.now() - started, csv: type.includes('csv') || source === 'sheets' };
+        }
+      } else if (!res.ok && source !== 'web') {
+        throw new Error('Google file public nahi hai — "Anyone with the link" share karein ya file upload karein.');
+      }
+    } catch (e) {
+      if (String(e).includes('25 MB') || String(e).includes('public nahi')) throw e;
+    }
+    // 2) Web pages: Parallel then Firecrawl through the shared reader.
     const { createAgentTools } = await import('./agent/tools.server');
     const result = await createAgentTools().read_link.execute?.({ url: data.url }, { toolCallId: 'admin-link', messages: [], context: {} });
     if (!result || !('text' in result) || typeof result.text !== 'string') throw new Error(result && 'error' in result ? String(result.error) : 'Link returned no readable text.');
-    return { title: String(result.title || data.url).slice(0, 200), markdown: result.text + (result.truncated ? '\n\n[Document truncated; split large chapters into separate links.]' : '') };
+    return { title: String(result.title || data.url).slice(0, 200), markdown: result.text + (result.truncated ? '\n\n[Document truncated; split large chapters into separate links.]' : ''), truncated: !!result.truncated, chars: result.text.length, totalChars: result.text.length, pages: undefined as number | undefined, mime: 'text/markdown', method: 'web-reader', ms: Date.now() - started, csv: false };
   });
 
 /** For PDFs and images: read the text with a vision model. */
@@ -147,6 +207,33 @@ export const saveAgentSettings = createServerFn({ method: "POST" })
     const { error } = await context.supabase.from("agent_settings").upsert({ id: "main", ...data, updated_at: new Date().toISOString() });
     if (error) throw new Error(error.message);
     return { ok: true };
+  });
+
+const MEMORY_LIMIT = "25MB";
+
+export const getStorageLimit = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await assertAdmin(context as Ctx);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await supabaseAdmin.storage.getBucket("agent-memory");
+    if (error) throw new Error(error.message);
+    return { limited: !!data?.file_size_limit };
+  });
+
+/** Admin toggle: on = 25 MB per file, off = project-wide maximum. */
+export const setStorageLimit = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { limited: boolean }) => ({ limited: d.limited === true }))
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context as Ctx);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin.storage.updateBucket("agent-memory", {
+      public: false,
+      fileSizeLimit: data.limited ? MEMORY_LIMIT : null,
+    });
+    if (error) throw new Error(error.message);
+    return { limited: data.limited };
   });
 
 /** Public: students only need the quiz timer and default mode, never the brain text. */
