@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as VoiceRouteImport } from './routes/voice'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiSpeechRouteImport } from './routes/api/speech'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as DoubtThreadIdRouteImport } from './routes/doubt.$threadId'
 
@@ -42,6 +43,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSpeechRoute = ApiSpeechRouteImport.update({
+  id: '/api/speech',
+  path: '/api/speech',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   id: '/api/transcribe',
   path: '/api/transcribe',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/voice'
     | '/api/chat'
+    | '/api/speech'
     | '/api/transcribe'
     | '/doubt/$threadId'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/voice'
     | '/api/chat'
+    | '/api/speech'
     | '/api/transcribe'
     | '/doubt/$threadId'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/voice'
     | '/api/chat'
+    | '/api/speech'
     | '/api/transcribe'
     | '/doubt/$threadId'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   PracticeRoute: typeof PracticeRoute
   VoiceRoute: typeof VoiceRoute
   ApiChatRoute: typeof ApiChatRoute
+  ApiSpeechRoute: typeof ApiSpeechRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   DoubtThreadIdRoute: typeof DoubtThreadIdRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/speech': {
+      id: '/api/speech'
+      path: '/api/speech'
+      fullPath: '/api/speech'
+      preLoaderRoute: typeof ApiSpeechRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/transcribe': {
       id: '/api/transcribe'
       path: '/api/transcribe'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   PracticeRoute: PracticeRoute,
   VoiceRoute: VoiceRoute,
   ApiChatRoute: ApiChatRoute,
+  ApiSpeechRoute: ApiSpeechRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   DoubtThreadIdRoute: DoubtThreadIdRoute,
 }
