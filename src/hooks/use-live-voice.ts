@@ -174,6 +174,9 @@ function createLiveVoice(options: LiveOptions) {
     clearTimeout(deadline);
     cancelGathering?.();
     window.removeEventListener("pagehide", stop);
+    document.removeEventListener("visibilitychange", onVisible);
+    void wakeLock?.release().catch(() => {});
+    wakeLock = undefined;
     stopAudio();
     channel?.close();
     peer?.close();
@@ -243,16 +246,44 @@ function createLiveVoice(options: LiveOptions) {
     return peer?.connectionState === "connected" && channel?.readyState === "open";
   }
 
+  // After the call is up, a brief "disconnected" ICE state (mobile network
+  // switch, weak signal) is recoverable; keep heartbeating so the gateway
+  // does not end the call during the blip.
+  function mediaAlive() {
+    const s = peer?.connectionState;
+    return (s === "connected" || s === "disconnected") && channel?.readyState === "open";
+  }
+
   function pulse() {
     if (state !== "active") return;
-    if (Date.now() - lastAck >= 5000) return fail("Voice control connection lost");
-    if (Date.now() - lastHeartbeat >= 5000) return fail("Voice media connection lost");
-    if (!mediaReady()) return;
+    if (Date.now() - lastAck >= 12_000) return fail("Voice control connection lost");
+    if (!mediaAlive()) {
+      if (Date.now() - lastHeartbeat >= 8000) return fail("Voice media connection lost");
+      return;
+    }
     try {
       send({ type: "gateway.heartbeat" });
       lastHeartbeat = Date.now();
     } catch {
       fail("Voice control connection failed");
+    }
+  }
+
+  let wakeLock: { release(): Promise<void> } | undefined;
+  async function keepAwake() {
+    try {
+      const nav = navigator as Navigator & { wakeLock?: { request(t: "screen"): Promise<{ release(): Promise<void> }> } };
+      if (state === "active" && document.visibilityState === "visible" && nav.wakeLock) {
+        wakeLock = await nav.wakeLock.request("screen");
+      }
+    } catch {
+      /* optional */
+    }
+  }
+  function onVisible() {
+    if (document.visibilityState === "visible" && state === "active") {
+      pulse();
+      void keepAwake();
     }
   }
 
@@ -264,6 +295,8 @@ function createLiveVoice(options: LiveOptions) {
       lastAck = Date.now();
       lastHeartbeat = Date.now();
       heartbeat = setInterval(pulse, 1000);
+      document.addEventListener("visibilitychange", onVisible);
+      void keepAwake();
       pulse();
       if (state !== "active") return;
       send({ type: "app.ready" });
