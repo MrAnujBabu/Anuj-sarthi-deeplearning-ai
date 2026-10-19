@@ -5,14 +5,16 @@ vi.mock('@/components/ai-elements/message', () => ({ MessageResponse: ({ childre
 import { QuizActions } from '@/components/quiz-actions';
 afterEach(async () => { await act(async () => { await Promise.resolve(); }); cleanup(); localStorage.clear(); });
 describe('quiz answer commands', () => {
-  it('number labels still submit B for key 2 and revert to letters', () => {
+  it('number labels from Settings still submit B for key 2', () => {
+    localStorage.setItem('snapsolve.numeric-answer-labels', '1');
     const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
-    fireEvent.click(screen.getByRole('switch', { name: 'Number answer labels' }));
     expect(screen.getByRole('checkbox', { name: 'Answer B' }).textContent).toBe('2');
     fireEvent.keyDown(window, { key: '2' });
     expect(send.mock.calls).toEqual([['B']]);
-    fireEvent.click(screen.getByRole('switch', { name: 'Number answer labels' }));
-    expect(screen.getByRole('checkbox', { name: 'Answer B' }).textContent).toBe('B');
+  });
+  it('quiz bar has no duplicate label switch', () => {
+    render(<QuizActions options={['A','B','C','D']} onSend={vi.fn()} />);
+    expect(screen.queryByRole('switch', { name: 'Number answer labels' })).toBeNull();
   });
   it.each([['1','A'],['2','B'],['3','C'],['4','D']])('key %s selects %s once', (key, answer) => {
     const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
