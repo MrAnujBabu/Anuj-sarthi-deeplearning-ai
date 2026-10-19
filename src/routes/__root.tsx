@@ -121,6 +121,18 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  // After an app update, old code chunks can vanish; reload once instead of blanking.
+  useEffect(() => {
+    const onPreloadError = (event: Event) => {
+      if (sessionStorage.getItem("snapsolve.chunk-reload")) return;
+      sessionStorage.setItem("snapsolve.chunk-reload", "1");
+      event.preventDefault();
+      window.location.reload();
+    };
+    const clear = window.setTimeout(() => sessionStorage.removeItem("snapsolve.chunk-reload"), 10000);
+    window.addEventListener("vite:preloadError", onPreloadError);
+    return () => { window.clearTimeout(clear); window.removeEventListener("vite:preloadError", onPreloadError); };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
