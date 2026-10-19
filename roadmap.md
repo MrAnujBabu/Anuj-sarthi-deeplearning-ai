@@ -1,4 +1,8 @@
 # Roadmap
+- [x] New workspace move: reconnect Firecrawl, Parallel, Perplexity, GitHub API; Cloud schema 0000–0005 + private agent-memory bucket; 84 memory items restored from CSV
+- [x] Restore missing quiz files (option cards, key-term emphasis), "Unknown model" shown as setup issue not credits; live tutor, PDF quiz, answer tap and saved practice verified; 63 tests pass
+- [ ] Admin role for anujkumar75yadav@gmail.com — auto-granted on first sign-in (no account exists yet in this workspace)
+- [ ] Re-upload admin memory files to Storage — waiting on user
 - [x] Keep quiz selection visibly tinted during live grading, add persistent sidebar collapse/expand, and emphasize key question terms; 9 tests pass
 - [x] Show full quiz option text inside checkbox buttons; live Endodermis selection sends B once, grading and next-question cards survive reload
 - [x] Difficult Anatomy quiz at high effort with Quiz+Search: fix answer cards not submitting; verify B grading, score, hint, skip, stop, cards and reload

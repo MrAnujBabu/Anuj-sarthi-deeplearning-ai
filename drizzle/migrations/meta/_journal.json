@@ -29,6 +29,20 @@
       "when": 1792330806018,
       "tag": "0003_agent_settings_default_mode",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792374859377,
+      "tag": "0004_restore_snapsolve_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1792374891540,
+      "tag": "0005_owner_admin_role",
+      "breakpoints": true
     }
   ]
 }

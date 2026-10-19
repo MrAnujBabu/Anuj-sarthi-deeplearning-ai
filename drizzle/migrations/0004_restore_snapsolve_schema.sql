@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.memory_items IS 'Admin-only tutor memory (chapter outlines, trackers, files, links).';

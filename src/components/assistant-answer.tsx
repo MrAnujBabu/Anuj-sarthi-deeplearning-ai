@@ -19,14 +19,16 @@ export function splitOptions(text: string) {
 export function AssistantAnswer({
   text,
   isAnimating,
+  compact = false,
 }: {
   text: string;
   isAnimating: boolean;
+  compact?: boolean;
 }) {
   const segments = splitDiagrams(splitOptions(stripCards(text)));
 
   return (
-    <div className="assistant-answer flex w-full flex-col gap-3">
+    <div className={`assistant-answer flex w-full flex-col ${compact ? "gap-2" : "gap-3"}`}>
       {segments.map((s, i) =>
         s.kind === "text" || (s.complete && !isRenderableSvg(s.svg)) ? (
           <MessageResponse key={i} isAnimating={isAnimating}>
