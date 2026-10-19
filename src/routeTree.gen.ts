@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as DoubtThreadIdRouteImport } from './routes/doubt.$threadId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
+  id: '/api/transcribe',
+  path: '/api/transcribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DoubtThreadIdRoute = DoubtThreadIdRouteImport.update({
   id: '/doubt/$threadId',
   path: '/doubt/$threadId',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/practice': typeof PracticeRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/practice': typeof PracticeRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRoutesById {
@@ -61,15 +69,34 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/practice': typeof PracticeRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/practice' | '/api/chat' | '/doubt/$threadId'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/practice'
+    | '/api/chat'
+    | '/api/transcribe'
+    | '/doubt/$threadId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/practice' | '/api/chat' | '/doubt/$threadId'
+  to:
+    | '/'
+    | '/admin'
+    | '/practice'
+    | '/api/chat'
+    | '/api/transcribe'
+    | '/doubt/$threadId'
   id:
-    '__root__' | '/' | '/admin' | '/practice' | '/api/chat' | '/doubt/$threadId'
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/practice'
+    | '/api/chat'
+    | '/api/transcribe'
+    | '/doubt/$threadId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +104,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   PracticeRoute: typeof PracticeRoute
   ApiChatRoute: typeof ApiChatRoute
+  ApiTranscribeRoute: typeof ApiTranscribeRoute
   DoubtThreadIdRoute: typeof DoubtThreadIdRoute
 }
 
@@ -110,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/transcribe': {
+      id: '/api/transcribe'
+      path: '/api/transcribe'
+      fullPath: '/api/transcribe'
+      preLoaderRoute: typeof ApiTranscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/doubt/$threadId': {
       id: '/doubt/$threadId'
       path: '/doubt/$threadId'
@@ -125,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   PracticeRoute: PracticeRoute,
   ApiChatRoute: ApiChatRoute,
+  ApiTranscribeRoute: ApiTranscribeRoute,
   DoubtThreadIdRoute: DoubtThreadIdRoute,
 }
 export const routeTree = rootRouteImport
