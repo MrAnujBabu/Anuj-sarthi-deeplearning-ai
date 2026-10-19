@@ -90,6 +90,9 @@ export const Route = createFileRoute("/api/chat")({
         if (!Array.isArray(messages) || messages.length === 0) {
           return Response.json({ error: "No messages provided." }, { status: 400 });
         }
+        if (messages.some((m) => !m || typeof m !== "object" || !Array.isArray((m as UIMessage).parts))) {
+          return Response.json({ error: "Invalid message format." }, { status: 400 });
+        }
 
         const selected = resolveModel(body.model);
         if (!selected) return new Response(encodeAiFailure({ kind: 'configuration', message: 'Unknown model. This model selection is not recognized by this app. Check the model configuration after a workspace move; this is not a credit-balance error.', status: 400 }), { status: 400 });
