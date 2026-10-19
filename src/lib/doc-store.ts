@@ -5,6 +5,7 @@ const DB = "snapsolve-docs";
 const STORE = "docs";
 const ids = new Map<string, string>(); // dataUrl -> id
 const pendingWrites = new Set<Promise<void>>();
+const writesById = new Map<string, Promise<void>>();
 
 function open(): Promise<IDBDatabase> {
   return new Promise((res, rej) => {
@@ -22,6 +23,7 @@ async function put(id: string, data: string) {
     tx.objectStore(STORE).put(data, id);
     tx.oncomplete = () => res();
     tx.onerror = () => rej(tx.error);
+    tx.onabort = () => rej(tx.error);
   }); } finally { db.close(); }
 }
 
@@ -38,22 +40,33 @@ const isDoc = (p: { type: string; mediaType?: string; url?: string }) =>
   p.type === "file" && p.mediaType === "application/pdf";
 
 /** Replace PDF data with pointers (saving the data to IndexedDB). */
-export function stripDocs(messages: UIMessage[]): UIMessage[] {
-  return messages.map((m) => ({
+export async function stripDocs(messages: UIMessage[]): Promise<UIMessage[]> {
+  return Promise.all(messages.map(async (m) => ({
     ...m,
-    parts: m.parts.map((p) => {
+    parts: await Promise.all(m.parts.map(async (p) => {
       if (!isDoc(p) || !("url" in p) || !p.url.startsWith("data:")) return p;
       let id = ids.get(p.url);
       if (!id) {
-        id = crypto.randomUUID();
-        ids.set(p.url, id);
-        const write = put(id, p.url).catch(() => {});
+        const newId = crypto.randomUUID();
+        id = newId;
+        ids.set(p.url, newId);
+        const data = p.url;
+        const write = put(newId, data);
         pendingWrites.add(write);
-        void write.finally(() => pendingWrites.delete(write));
+        writesById.set(newId, write);
+        void write.then(() => {
+          pendingWrites.delete(write);
+          writesById.delete(newId);
+        }, () => {
+          pendingWrites.delete(write);
+          writesById.delete(newId);
+          ids.delete(data);
+        });
       }
+      await writesById.get(id);
       return { ...p, url: `idb:${id}` };
-    }),
-  }));
+    })),
+  })));
 }
 
 /** Also removes orphaned PDFs from deleted conversations. No cloud files are touched. */
