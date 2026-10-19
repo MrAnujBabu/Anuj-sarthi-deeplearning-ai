@@ -41,6 +41,7 @@ const TABS: { id: Tab; label: string }[] = [
   ...STUDY_KINDS.map(k => ({ id: k.id as Tab, label: k.label })),
 ];
 const CATEGORIES = ["General", "Syllabus", "Mistake", "Weak topic", "Habit", "Strategy"];
+const WISDOM_TOPICS = ["Revision", "Test strategy", "Mistakes", "Time management", "Motivation", "Health & sleep", "Life"];
 const SUBJECTS = ["", "Physics", "Chemistry", "Biology"];
 const TRACK = [
   { id: "mistake", label: "Mistake pattern" },
@@ -107,7 +108,7 @@ function SignIn({ onDone }: { onDone: () => void }) {
   );
 }
 
-const blank = (kind: Tab): MemoryInput => ({ kind: kind === 'pdf' ? 'file' : kind, title: "", category: kind === "tracker" ? "Mistake" : STUDY_KINDS.find(k => k.id === kind)?.label ?? "General", subject: "", chapter: "", content: STUDY_KINDS.find(k => k.id === kind)?.template ?? "", tracker_type: kind === "tracker" ? "mistake" : null, frequency: 1, active: true });
+const blank = (kind: Tab): MemoryInput => ({ kind: kind === 'pdf' ? 'file' : kind, title: "", category: kind === "tracker" ? "Mistake" : kind === "wisdom" ? "Revision" : STUDY_KINDS.find(k => k.id === kind)?.label ?? "General", subject: "", chapter: "", content: STUDY_KINDS.find(k => k.id === kind)?.template ?? "", tracker_type: kind === "tracker" ? "mistake" : null, frequency: 1, active: true });
 
 function Library() {
   const navigate = useNavigate();
@@ -130,7 +131,14 @@ function Library() {
   const load = async () => setItems((await list()) as Item[]);
   useEffect(() => { load(); }, []);
   const matches = (i: Item, t: Tab) => t === 'pdf' ? i.mime === 'application/pdf' : i.kind === t;
-  const shown = useMemo(() => items.filter((i) => matches(i, tab)), [items, tab]);
+  const [query, setQuery] = useState("");
+  const [topic, setTopic] = useState("");
+  const inTab = useMemo(() => items.filter((i) => matches(i, tab)), [items, tab]);
+  const topics = useMemo(() => [...new Set(inTab.map((i) => i.category).filter(Boolean))].sort(), [inTab]);
+  const shown = useMemo(() => {
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return inTab.filter((i) => (!topic || i.category === topic) && words.every((w) => `${i.title} ${i.category} ${i.subject} ${i.chapter} ${i.content}`.toLowerCase().includes(w)));
+  }, [inTab, query, topic]);
   const set = (p: Partial<MemoryInput>) => setForm((f) => ({ ...f, ...p }));
 
   const submit = async (e: React.FormEvent) => {
@@ -209,7 +217,7 @@ function Library() {
       </div>
       <div className="flex gap-1 overflow-x-auto border-b border-border">
         {TABS.map((t) => (
-          <button key={t.id} onClick={() => { setTab(t.id); setForm(blank(t.id)); setMsg(""); }}
+          <button key={t.id} onClick={() => { setTab(t.id); setForm(blank(t.id)); setMsg(""); setQuery(""); setTopic(""); }}
             className={`shrink-0 whitespace-nowrap px-3 py-2 text-sm ${tab === t.id ? "border-b-2 border-primary font-medium" : "text-muted-foreground"}`}>
             {t.label} <span className="text-xs text-muted-foreground">({items.filter((i) => matches(i, t.id)).length})</span>
           </button>
@@ -235,7 +243,7 @@ function Library() {
             </select>
           ) : (
             <select className="h-9 rounded-md border border-input bg-background px-3 text-sm" value={form.category} onChange={(e) => set({ category: e.target.value })}>
-              {[...new Set([form.category, ...CATEGORIES])].map((c) => <option key={c}>{c}</option>)}
+              {[...new Set([form.category, ...(tab === "wisdom" ? WISDOM_TOPICS : CATEGORIES)])].map((c) => <option key={c}>{c}</option>)}
             </select>
           )}
           <select className="h-9 rounded-md border border-input bg-background px-3 text-sm" value={form.subject} onChange={(e) => set({ subject: e.target.value })}>
@@ -271,8 +279,18 @@ function Library() {
 
       {isStudyKind(tab) && <StudyImport kind={tab} onDone={load} />}
 
+      {inTab.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <Input type="search" aria-label="Search saved items" placeholder="Search… (e.g. revision, test, galti)" value={query} onChange={(e) => setQuery(e.target.value)} className="max-w-xs" />
+          <button type="button" onClick={() => setTopic("")} className={`rounded-full border px-3 py-1 text-xs ${!topic ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground"}`}>All</button>
+          {topics.map((t) => (
+            <button key={t} type="button" onClick={() => setTopic(topic === t ? "" : t)} className={`rounded-full border px-3 py-1 text-xs ${topic === t ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground"}`}>{t} ({inTab.filter((i) => i.category === t).length})</button>
+          ))}
+          {(query || topic) && <span className="text-xs text-muted-foreground">{shown.length} / {inTab.length}</span>}
+        </div>
+      )}
       <ul className="space-y-3">
-        {shown.length === 0 && <li className="text-sm text-muted-foreground">Abhi kuch save nahi hai.</li>}
+        {shown.length === 0 && <li className="text-sm text-muted-foreground">{inTab.length ? "Kuch match nahi hua." : "Abhi kuch save nahi hai."}</li>}
         {shown.map((i) => (
           <li key={i.id} className="rounded-xl border border-border bg-card p-4">
             <div className="flex flex-wrap items-start justify-between gap-2">
