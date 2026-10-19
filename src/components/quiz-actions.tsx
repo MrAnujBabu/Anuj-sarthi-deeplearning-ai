@@ -71,8 +71,8 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
                 }`}
               >
                 <input type="checkbox" className="pointer-events-none mt-0.5 size-4 shrink-0 accent-primary" checked={active} tabIndex={-1} readOnly aria-hidden="true" />
-                <span className="w-6 shrink-0 font-semibold">{numericLabels ? ['A', 'B', 'C', 'D'].indexOf(o) + 1 : labels[o] ? `(${o})` : o}</span>
-                {labels[o] && <span className="assistant-answer min-w-0 flex-1 break-words font-normal [overflow-wrap:anywhere] [&_p]:m-0 [&_p]:leading-snug"><MessageResponse>{normalizeMath(labels[o])}</MessageResponse></span>}
+                <span className="w-6 shrink-0 font-semibold text-muted-foreground">{numericLabels ? ['A', 'B', 'C', 'D'].indexOf(o) + 1 : labels[o] ? `(${o})` : o}</span>
+                {labels[o] && <span className="assistant-answer min-w-0 flex-1 break-words text-[1.05em] font-normal text-foreground [overflow-wrap:anywhere] [&_p]:m-0 [&_p]:leading-relaxed"><MessageResponse>{normalizeMath(labels[o])}</MessageResponse></span>}
               </Button>
             );
           })}
