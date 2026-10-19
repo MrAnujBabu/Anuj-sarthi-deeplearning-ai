@@ -1,18 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowLeft, Download, FileText, GraduationCap, Globe, Mic, MicOff, Paperclip, PhoneOff, Phone, Upload, Volume2, X } from "lucide-react";
+import { ArrowLeft, Download, FileText, GraduationCap, Globe, Mic, MicOff, Paperclip, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useLiveVoice, type LiveEvent } from "@/hooks/use-live-voice";
-import { useVoiceChoice, VOICE_CHOICES, type VoiceChoiceId } from "@/lib/quiz-label-preference";
+import { useVoiceChoice, useStudyTextSize, STUDY_TEXT_SIZES, VOICE_CHOICES, type VoiceChoiceId, type StudyTextSize } from "@/lib/quiz-label-preference";
 import { extractLocally } from "@/lib/file-extract";
 import { cn } from "@/lib/utils";
 import { parseVoiceTranscript, voiceTranscriptMarkdown, type VoiceRow } from "@/lib/voice-transcript";
 import { QuizActions } from "@/components/quiz-actions";
 import { VOICE_ANSWERS, VOICE_SKIP, validVoiceAnswer } from "@/lib/voice-quiz";
 import { readVoicePdf } from '@/lib/voice-pdf';
+import { Sheet, SheetTrigger, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { resolveModel, VOICE_TUTOR_MODEL } from '@/lib/models';
 import { billableSeconds, confirmedSeconds } from '@/lib/voice-usage';
 
 export const Route = createFileRoute("/voice")({
@@ -62,6 +64,7 @@ function VoicePage() {
   const [finalUsage, setFinalUsage] = useState(false);
   const [callId, setCallId] = useState('');
   const [choice, setChoice] = useVoiceChoice();
+  const [textSize, setTextSize] = useStudyTextSize();
   const scrollRef = useRef<HTMLElement>(null);
   const pinned = useRef(true);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -174,53 +177,61 @@ function VoicePage() {
   const status = voice.status === "connecting" ? "Connecting…" : live ? (thinking ? "Soch raha hai…" : voice.muted ? "Muted" : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
 
   return (
-    <main className="mx-auto flex h-dvh max-w-2xl flex-col px-4 pt-3">
-      <header className="flex items-center gap-2">
+    <main className="mx-auto flex h-dvh w-full max-w-3xl flex-col px-4 pt-2 sm:px-6">
+      <header className="flex shrink-0 items-center gap-2 border-b pb-2">
         <Link to="/" aria-label="Back" className="grid size-9 place-items-center rounded-full hover:bg-muted">
           <ArrowLeft className="size-5" />
         </Link>
-        <h1 className="text-lg font-semibold">Voice mode</h1>
-        <span role="status" className={cn("ml-auto flex items-center gap-2 rounded-full border px-3 py-1 text-xs", live ? "border-primary/40 text-primary" : "text-muted-foreground")}>
+        <div className="min-w-0 flex-1"><h1 className="text-base font-semibold">Voice mode</h1><p className="text-xs text-muted-foreground">Claude {resolveModel(VOICE_TUTOR_MODEL)?.name}</p></div>
+        <span role="status" className={cn("flex shrink-0 items-center gap-1.5 text-xs", live ? "text-primary" : "text-muted-foreground")}>
           {live && <span className="size-2 animate-pulse rounded-full bg-primary" aria-hidden />}
           {status}
         </span>
-        <Button variant="ghost" size="icon" className="size-9" aria-label="Export conversation" title="Export conversation (.md)" onClick={exportCall}><Download className="size-4" /></Button>
-        <Button variant="ghost" size="icon" className="size-9" aria-label="Import conversation" title="Import conversation (.md / .json)" disabled={locked} onClick={() => importInput.current?.click()}><Upload className="size-4" /></Button>
-        <input ref={importInput} type="file" accept=".md,.markdown,.txt,.json" hidden onChange={(e) => { void importCall(e.target.files?.[0]); e.target.value = ""; }} />
-      </header>
-
-      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border bg-card/60 px-3 py-2 text-sm">
-        <label className="flex items-center gap-2"><GraduationCap className="size-4 text-muted-foreground" />Quiz<Switch checked={quiz} disabled={locked} onCheckedChange={setQuiz} aria-label="Voice quiz mode" /></label>
-        <label className="flex items-center gap-2"><Globe className="size-4 text-muted-foreground" />Search<Switch checked={search} disabled={locked} onCheckedChange={setSearch} aria-label="Voice live search" /></label>
-        <label className="flex items-center gap-2"><FileText className="size-4 text-muted-foreground" />Read scans<Switch checked={ocr} disabled={locked || reading} onCheckedChange={setOcr} aria-label="Read scanned PDFs" /></label>
+        <Sheet>
+          <SheetTrigger asChild><Button variant="ghost" size="icon" className="size-9 shrink-0" aria-label="Voice settings and search" title="Voice settings and search">{search ? <Globe className="size-4 text-primary" /> : <SlidersHorizontal className="size-4" />}</Button></SheetTrigger>
+          <SheetContent side="right" className="w-[min(90vw,340px)] overflow-y-auto"><SheetTitle>Voice settings</SheetTitle><SheetDescription>Claude {resolveModel(VOICE_TUTOR_MODEL)?.name}</SheetDescription>
+      <div className="mt-6 flex flex-col items-stretch gap-5 text-sm">
+        <label className="flex items-center justify-between gap-2"><GraduationCap className="size-4 text-muted-foreground" />Quiz<Switch checked={quiz} disabled={locked} onCheckedChange={setQuiz} aria-label="Voice quiz mode" /></label>
+        <label className="flex items-center justify-between gap-2"><Globe className="size-4 text-muted-foreground" />Search<Switch checked={search} disabled={locked} onCheckedChange={setSearch} aria-label="Voice live search" /></label>
+        <label className="flex items-center justify-between gap-2"><FileText className="size-4 text-muted-foreground" />Read scans<Switch checked={ocr} disabled={locked || reading} onCheckedChange={setOcr} aria-label="Read scanned PDFs" /></label>
         <Select value={choice} onValueChange={(v) => setChoice(v as VoiceChoiceId)} disabled={locked}>
-          <SelectTrigger aria-label="Voice" className="ml-auto h-8 w-40"><SelectValue /></SelectTrigger>
+          <SelectTrigger aria-label="Voice" className="w-full"><SelectValue /></SelectTrigger>
           <SelectContent>{VOICE_CHOICES.map((c) => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
         </Select>
         {locked && <p className="w-full text-xs text-muted-foreground">Ye options call ke dauran fixed hain — badalne ke liye End karke dobara Start karo.</p>}
+        <Select value={textSize} onValueChange={(v) => setTextSize(v as StudyTextSize)}><SelectTrigger aria-label="Voice transcript text size"><SelectValue /></SelectTrigger><SelectContent>{STUDY_TEXT_SIZES.map((size) => <SelectItem key={size} value={size}>{size} px</SelectItem>)}</SelectContent></Select>
+        <div className="flex gap-2 border-t pt-3">        <Button variant="ghost" size="icon" className="size-9" aria-label="Export conversation" title="Export conversation (.md)" onClick={exportCall}><Download className="size-4" /></Button>
+        <Button variant="ghost" size="icon" className="size-9" aria-label="Import conversation" title="Import conversation (.md / .json)" disabled={locked} onClick={() => importInput.current?.click()}><Upload className="size-4" /></Button>
+</div>
       </div>
       {callId && <p className="mt-2 text-xs text-muted-foreground" title={callId}>Call {callId.slice(0, 8)} · {billableSeconds(usage, created) ?? '—'} billable seconds · {finalUsage ? 'Final usage received' : 'Final usage pending'} · Credits unconfirmed</p>}
+          </SheetContent>
+        </Sheet>
+        <input ref={importInput} type="file" accept=".md,.markdown,.txt,.json" hidden onChange={(e) => { void importCall(e.target.files?.[0]); e.target.value = ""; }} />
+      </header>
+
       {readProgress && <p role="status" className="mt-2 text-xs text-primary">{readProgress}</p>}
 
       <section
         ref={scrollRef}
         onScroll={(e) => { const el = e.currentTarget; pinned.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80; }}
-        className="flex-1 space-y-3 overflow-y-auto py-5"
+        className={`voice-transcript study-text study-text-${textSize} min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain py-4 pr-1`}
+        aria-label="Voice conversation"
         aria-live="polite"
       >
         {rows.length === 0 && (
-          <div className="pt-14 text-center">
-            <div className={cn("mx-auto mb-5 grid size-24 place-items-center rounded-full border border-primary/30 bg-primary/10", live && "animate-pulse")}>
-              <Mic className="size-9 text-primary" />
+          <div className="pt-12 text-center">
+            <div className={cn("mx-auto mb-4 grid size-14 place-items-center rounded-full border border-primary/30 bg-primary/10", live && "animate-pulse")}>
+              <Mic className="size-6 text-primary" />
             </div>
-            <p className="text-sm text-muted-foreground">Start dabao aur apna doubt bolo. Tutor bolkar jawab dega — type karne ki zarurat nahi.</p>
-            <p className="mt-2 text-xs text-muted-foreground">PDF / notes attach karo, ya purani call import karo — tutor use yaad rakhega.</p>
+            <p className="text-sm text-muted-foreground">Ready when you are</p>
           </div>
         )}
         {rows.map((r) => (
-          <p key={r.id} className={cn("msg-in max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-[0.95rem] leading-relaxed", r.role === "user" ? "ml-auto rounded-br-md border border-primary/20 bg-user-bubble text-foreground" : "rounded-bl-md bg-card text-foreground")}>
-            {r.text}
-          </p>
+          <div key={r.id} className={cn("msg-in min-w-0", r.role === "user" ? "ml-auto max-w-[90%]" : "w-full")}>
+            <p className={cn("mb-1.5 text-xs font-medium text-muted-foreground", r.role === "user" && "text-right")}>{r.role === "user" ? 'You' : 'SnapSolve'}</p>
+            <p className={cn("voice-caption whitespace-pre-wrap break-words text-foreground", r.role === "user" && "rounded-lg border border-primary/15 bg-user-bubble px-3 py-2")}>{r.text}</p>
+          </div>
         ))}
         {thinking && (
           <div className="msg-in flex items-center gap-2 px-1 text-sm text-muted-foreground" role="status">
@@ -250,8 +261,8 @@ function VoicePage() {
         }} />
       </div>}
       <audio ref={voice.audioRef} className="sr-only" />
-      <footer className="flex items-center justify-center gap-3 border-t py-3">
-        <Button size="icon" variant="outline" className="size-12 rounded-full" disabled={locked || reading} onClick={() => fileInput.current?.click()} aria-label="Attach PDF or notes" title="Attach PDF, notes, Word, PPTX">
+      <footer className="flex shrink-0 flex-wrap items-center justify-center gap-2 border-t py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+        <Button size="icon" variant="outline" className="size-10 rounded-full" disabled={locked || reading} onClick={() => fileInput.current?.click()} aria-label="Attach PDF or notes" title="Attach PDF, notes, Word, PPTX">
           <Paperclip className="size-5" />
         </Button>
         <input ref={fileInput} type="file" multiple hidden accept="application/pdf,.pdf,.md,.txt,.docx,.pptx" onChange={(e) => { void addFiles(e.target.files); e.target.value = ""; }} />
@@ -264,7 +275,7 @@ function VoicePage() {
           </Button>
         ) : (
           <>
-            <Button size="icon" variant="outline" className="size-12 rounded-full" disabled={!live} onClick={() => voice.setMuted(!voice.muted)} aria-label={voice.muted ? "Unmute" : "Mute"}>
+            <Button size="icon" variant="outline" className="size-10 rounded-full" disabled={!live} onClick={() => voice.setMuted(!voice.muted)} aria-label={voice.muted ? "Unmute" : "Mute"}>
               {voice.muted ? <MicOff className="size-5" /> : <Mic className="size-5" />}
             </Button>
             <Button size="lg" variant="destructive" className="rounded-full px-8" disabled={voice.status === "stopping"} onClick={voice.stop}>

@@ -11,7 +11,7 @@ vi.mock("ai", async (original) => {
     text: Promise.resolve("Powerhouse? A. Nucleus B. Mitochondria C. Ribosome D. Golgi"),
   })) };
 });
-import { bindLiveConnection, type LiveSocket } from "./live-relay.server";
+import { bindLiveConnection, getLiveConfig, type LiveSocket } from "./live-relay.server";
 
 function socket() {
   let receive: (data: unknown) => void = () => {};
@@ -21,6 +21,13 @@ function socket() {
 }
 afterEach(() => vi.useRealTimers());
 describe("voice quiz relay", () => {
+  it('uses powerful Claude Fable 5.1 for voice study without replacing live audio', () => {
+    vi.stubEnv('LOVABLE_API_KEY', 'test');
+    try {
+      expect(getLiveConfig().backendModel).toBe('anthropic/claude-fable-5-1');
+      expect(getLiveConfig().liveModel).toBe('openai/gpt-live-1');
+    } finally { vi.unstubAllEnvs(); }
+  });
   it('retains only gateway-confirmed final duration and metadata', async () => {
     vi.useFakeTimers(); history.mockClear();
     const browser = socket(), gateway = socket();

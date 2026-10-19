@@ -1,5 +1,11 @@
 # Roadmap
 
+## Current voice polish
+- [x] Explain publishing, workspace credit exhaustion/recovery and supported lower-friction credit management; no automated workspace move or documented runtime balance API
+- [x] Compact voice screen; Search/voice controls in side panel, shared transcript text sizing; imported conversation verified at desktop/390px
+- [x] Upgrade voice tutor only to Claude Fable 5.1; real Messages response HTTP 200, preserve call/quiz behavior; physical audio remains unverified
+- [x] 174 tests pass; desktop/390px transcript and side settings checked, no page errors; commit tested source to GitHub
+
 ## Workspace move (Oct 19, 16:54 UTC)
 - [x] Fresh-link Firecrawl, Parallel, Perplexity, GitHub API; previous workspace connections ignored
 - [x] My Personal Agent database verified: 94 memory items, agent settings, AI pause table, owner admin role, private 25 MB agent-memory bucket (0 files)

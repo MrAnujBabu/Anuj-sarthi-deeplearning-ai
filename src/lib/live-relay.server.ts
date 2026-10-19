@@ -6,6 +6,7 @@ import { createAgentTools } from "@/lib/agent/tools.server";
 import { validVoiceAnswer, voiceQuizOptions, VOICE_SKIP } from "@/lib/voice-quiz";
 import { createVoiceTracking } from '@/lib/voice-tracking.server';
 import { confirmedSeconds, documentMetadata, type VoiceDocument } from '@/lib/voice-usage';
+import { VOICE_TUTOR_MODEL } from '@/lib/models';
 
 export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; search: boolean; context: string; documents: VoiceDocument[] };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
@@ -44,7 +45,7 @@ export type LiveConfig = {
 const liveSettings = {
   baseURL: "https://ai.gateway.lovable.dev/v1",
   liveModel: "openai/gpt-live-1",
-  backendModel: "anthropic/claude-sonnet-5",
+  backendModel: VOICE_TUTOR_MODEL,
 };
 
 export type LiveSocket = {
@@ -213,7 +214,7 @@ async function answerQuestion(
   consumeInput();
   const result = streamText({
     model: provider(config.backendModel),
-    maxOutputTokens: 4000,
+    maxOutputTokens: 16000, // Required Messages budget includes adaptive thinking.
     abortSignal: signal,
     maxRetries: 0,
     stopWhen: stepCountIs(50),

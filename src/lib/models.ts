@@ -6,6 +6,7 @@ export const MODELS = [
   { id: 'anthropic/claude-haiku-4-5', name: 'Haiku 4.5', description: 'Quick questions', effort: false },
 ] as const;
 export const DEFAULT_MODEL = MODELS[0].id;
+export const VOICE_TUTOR_MODEL = 'anthropic/claude-fable-5-1';
 export type Effort = 'low' | 'medium' | 'high';
 export function resolveModel(id: unknown) {
   if (id === undefined) return MODELS[0];
