@@ -79,3 +79,20 @@ export function useVoiceChoice() {
   const update = (v: VoiceChoiceId) => { setChoice(v); try { localStorage.setItem(key, v); window.dispatchEvent(new Event(event)); } catch { /* keep in memory */ } };
   return [choice, update] as const;
 }
+
+export type ThemeChoice = 'light' | 'dark' | 'system';
+const THEME_KEY = 'snapsolve.theme';
+export function applyTheme(choice: ThemeChoice) {
+  const dark = choice === 'dark' || (choice === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.classList.toggle('dark', dark);
+}
+/** Light by default; dark or follow-phone on request. */
+export function useThemeChoice() {
+  const [choice, setChoice] = useState<ThemeChoice>('light');
+  useEffect(() => {
+    try { const v = localStorage.getItem(THEME_KEY); if (v === 'dark' || v === 'system') setChoice(v); } catch { /* storage unavailable */ }
+  }, []);
+  const update = (v: ThemeChoice) => { setChoice(v); try { localStorage.setItem(THEME_KEY, v); } catch { /* keep */ } applyTheme(v); };
+  return [choice, update] as const;
+}
+export const THEME_BOOT_SCRIPT = `try{var t=localStorage.getItem('${THEME_KEY}');if(t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}`;
