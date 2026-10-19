@@ -3,7 +3,7 @@ import { BookOpen, Settings, Shield } from 'lucide-react';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Switch } from './ui/switch';
-import { STUDY_TEXT_SIZES, useBoldQuestions, useHideChatWidget, useHideTopBar, useNumericAnswerLabels, useQuizKeyboardShortcuts, useStudyTextSize } from '@/lib/quiz-label-preference';
+import { STUDY_TEXT_SIZES, useBoldQuestions, useHideChatWidget, useHideTopBar, useNumericAnswerLabels, useQuizKeyboardShortcuts, useStudyTextSize, useVoiceChoice, VOICE_CHOICES, type VoiceChoiceId } from '@/lib/quiz-label-preference';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { BackupControls } from './backup-controls';
 import { Input } from './ui/input';
@@ -28,6 +28,7 @@ export function StudySettings() {
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Keyboard answers <span className="mt-1 block text-xs text-muted-foreground">1–4 · top row + numeric keypad</span></span><Switch checked={keyboard} onCheckedChange={setKeyboard} aria-label="Keyboard quiz answers" /></label>
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Hide Chat Widget <span className="mt-1 block text-xs text-muted-foreground">Quiz</span></span><Switch checked={hidden} onCheckedChange={setHidden} aria-label="Hide Chat Widget" /></label>
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Hide top bar <span className="mt-1 block text-xs text-muted-foreground">Full-screen mobile · menu stays in the corner</span></span><Switch checked={topBarHidden} onCheckedChange={setTopBarHidden} aria-label="Hide top bar" /></label>
+        <VoiceChoiceRow />
         <div className="space-y-3 py-3">
           <div className="flex items-center justify-between gap-4"><span className="text-sm">Quiz timer <span className="mt-1 block text-xs text-muted-foreground">Admin default: {timer.adminSeconds ? `${timer.adminSeconds}s` : 'Off'}</span></span><Select value={timer.override === null ? 'admin' : 'device'} onValueChange={value => timer.update(value === 'admin' ? null : timer.seconds)}><SelectTrigger aria-label="Quiz timer source" className="w-36"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="admin">Admin default</SelectItem><SelectItem value="device">This device</SelectItem></SelectContent></Select></div>
           {timer.override !== null && <div className="flex items-center justify-between gap-4"><label htmlFor="device-quiz-seconds" className="text-xs text-muted-foreground">Seconds · 0 = off</label><Input id="device-quiz-seconds" aria-label="Quiz timer seconds" type="number" min={0} max={600} step={1} className="w-28" value={timer.override} onChange={event => timer.update(Number(event.target.value))} /></div>}
@@ -40,4 +41,16 @@ export function StudySettings() {
       </div>
     </DialogContent>
   </Dialog>;
+}
+function VoiceChoiceRow() {
+  const [choice, setChoice] = useVoiceChoice();
+  return (
+    <div className="flex min-h-16 items-center justify-between gap-4 py-3">
+      <span className="text-sm">Voice mode awaaz <span className="mt-1 block text-xs text-muted-foreground">Next call se lagu hoti hai</span></span>
+      <Select value={choice} onValueChange={v => setChoice(v as VoiceChoiceId)}>
+        <SelectTrigger aria-label="Voice mode voice" className="w-44"><SelectValue /></SelectTrigger>
+        <SelectContent>{VOICE_CHOICES.map(c => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
+      </Select>
+    </div>
+  );
 }
