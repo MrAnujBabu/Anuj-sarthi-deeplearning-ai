@@ -9,6 +9,7 @@ export const STUDY_KINDS = [
   { id: 'active_recall', label: 'Active recall', template: 'Prompt: \nExpected answer: ' },
   { id: 'pyq', label: 'PYQ', template: 'Year: \nQuestion: \nOptions: \nAnswer: \nExplanation: ' },
   { id: 'fyq', label: 'FYQ', template: 'Question: \nAnswer: \nKitni baar aata hai: ' },
+  { id: 'wisdom', label: 'Life & study library', template: 'Kisne sikhaya (teacher/lecture/khud): \nSeekh: \nKab use karna hai (revision / test / mistake / life): ' },
 ] as const;
 export type StudyKind = (typeof STUDY_KINDS)[number]['id'];
 export const BASE_KINDS = ['note', 'link', 'file', 'tracker'] as const;
