@@ -31,6 +31,8 @@ const initialState: LiveState = {
 export function useLiveVoice(
   options: {
     url?: string;
+    /** Per-call options sent with the start message (voice, accent, quiz, search, attached context). */
+    prefs?: () => Record<string, unknown>;
     onEvent?: (event: LiveEvent) => void | Promise<void>;
   } = {},
 ) {
@@ -71,6 +73,7 @@ export function useLiveVoice(
     }
     const voice = createLiveVoice({
       url: endpoint.href,
+      prefs: latest.current.prefs?.() ?? {},
       audio,
       onEvent(event) {
         if (!mounted.current || controller.current !== voice) return;
@@ -121,6 +124,7 @@ export function useLiveVoice(
 
 type LiveOptions = {
   url: string;
+  prefs: Record<string, unknown>;
   audio: HTMLAudioElement;
   onEvent: (event: LiveEvent) => void;
 };
@@ -351,7 +355,7 @@ function createLiveVoice(options: LiveOptions) {
       deadline = setTimeout(() => fail("Voice session did not start"), 50_000);
       socket.onopen = () => {
         if (!starting()) return release();
-        send({ type: "app.start", sdp });
+        send({ type: "app.start", sdp, prefs: options.prefs });
       };
       socket.onmessage = ({ data }) => {
         try {
