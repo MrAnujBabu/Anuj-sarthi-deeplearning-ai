@@ -1,17 +1,19 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Plus, Trash2, BookOpen, Menu, FileDown } from "lucide-react";
+import { Plus, Trash2, BookOpen, Menu, FileDown, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
 import { deleteThread, loadThreads, type Thread } from "@/lib/threads";
 import { exportAllMarkdown } from "@/lib/export-chat";
-import { BackupControls } from './backup-controls';
 import { Button } from './ui/button';
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from './ui/sheet';
+import { StudySettings } from './study-settings';
 
 export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: string | undefined; mobileContent?: boolean }) {
   const [threads, setThreads] = useState<Thread[]>([]);
+  const [collapsed, setCollapsed] = useState(false);
+  useEffect(() => { setCollapsed(localStorage.getItem('snapsolve.sidebar.hidden') === '1'); }, []);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,8 +28,10 @@ export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: s
   }, []);
 
   return (
-    <aside className={cn('w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar',mobileContent ? 'flex h-full w-full border-r-0' : 'hidden md:flex')}>
-      <Link to="/" className="flex items-center gap-2 px-5 py-5">
+    <aside className={cn('relative shrink-0 flex-col border-sidebar-border bg-sidebar',mobileContent ? 'flex h-full w-full border-r-0' : collapsed ? 'hidden w-0 md:flex' : 'hidden w-64 border-r md:flex')}>
+      {!mobileContent && <Button variant="ghost" size="icon" className={cn('absolute top-4 z-30 size-8 rounded-md bg-background text-muted-foreground', collapsed ? 'left-3' : 'right-2')} aria-label={collapsed ? 'Show sidebar' : 'Hide sidebar'} title={collapsed ? 'Show sidebar' : 'Hide sidebar'} aria-expanded={!collapsed} onClick={() => { const next = !collapsed; setCollapsed(next); localStorage.setItem('snapsolve.sidebar.hidden', next ? '1' : '0'); }}>{collapsed ? <PanelLeftOpen className="size-4" /> : <PanelLeftClose className="size-4" />}</Button>}
+      <div className={cn('flex min-h-0 flex-1 flex-col', !mobileContent && collapsed && 'hidden')}>
+      <Link to="/" className="flex min-w-0 items-center gap-2 py-5 pl-4 pr-10">
         <img src={logo} alt="SnapSolve logo" width={36} height={36} className="size-9" />
         <div>
           <div className="font-display text-xl font-semibold leading-none">SnapSolve</div>
@@ -43,7 +47,7 @@ export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: s
         </Link>
       </div>
       <Link to="/practice" className="mx-3 mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-sidebar-accent"><BookOpen className="size-4"/>Saved practice</Link>
-      <button
+      <Button variant="ghost"
         type="button"
         onClick={() => {
           if (threads.length === 0) {
@@ -55,10 +59,10 @@ export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: s
             () => toast.error("Export failed — please try again."),
           );
         }}
-        className="mx-3 mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-sidebar-accent"
+        className="mx-3 mt-1 h-auto justify-start gap-2 whitespace-normal rounded-md px-3 py-2 text-left text-sm hover:bg-sidebar-accent"
       >
         <FileDown className="size-4" /> Export all (.md / Obsidian)
-      </button>
+      </Button>
       <div className="mt-4 px-5 text-xs font-medium uppercase tracking-wide text-muted-foreground">Past doubts</div>
       <nav className="mt-2 flex-1 space-y-0.5 overflow-y-auto px-3 pb-4">
         {threads.length === 0 && <p className="px-2 py-2 text-sm text-muted-foreground">No doubts yet.</p>}
@@ -87,7 +91,8 @@ export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: s
           </div>
         ))}
       </nav>
-      <div className="border-t p-3"><BackupControls /></div>
+      <div className="border-t p-3"><StudySettings /></div>
+      </div>
     </aside>
   );
 }
