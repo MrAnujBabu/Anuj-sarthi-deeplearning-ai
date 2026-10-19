@@ -37,3 +37,4 @@
 - Admin imports share parsers/Sheets auth; MIME puts linked PDFs in PDF view. Drive needs authorization; PYQs require sourced evidence. PPTX reads text only. Admin/quiz share a device label preference; submissions stay A–D to preserve grading.
 - Voice uses a persistent /api/live relay with validated call prefs and Claude delegation; QuizActions taps use one-use server question IDs and A–D validation to reject duplicates.
 - Voice history is server-owned/admin-readable metadata with confirmed usage, never inferred credits; scanned PDFs use explicit lazy browser OCR without silent page truncation.
+- Voice keeps calls alive through quiet pauses with capped tutor check-ins from the relay and a worker-driven heartbeat clock; never synthesize heartbeats, since the Gateway ends sessions after ~120 s without transcripts or 5 s without heartbeats.
