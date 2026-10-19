@@ -18,7 +18,7 @@ describe("AI failure classification", () => {
 describe("quiz options", () => {
   it("pulls A-D option text for answer cards", () => {
     const r = extractQuizOptions("**Q1.** Which tissue?\n(A) Xylem\n(B) Endodermis\n(C) Phloem\n(D) Cortex", ["A", "B", "C", "D"]);
-    expect(r.labels.B).toBe("Endodermis");
+    expect(r.labels['B']).toBe("Endodermis");
     expect(r.text).toBe("**Q1.** Which tissue?");
   });
 });
