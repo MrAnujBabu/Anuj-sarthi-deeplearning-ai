@@ -2,6 +2,31 @@ import { createAnthropic } from "@ai-sdk/anthropic";
 import { stepCountIs, streamText, tool, type ModelMessage } from "ai";
 import process from "node:process";
 import { z } from "zod";
+import { createAgentTools } from "@/lib/agent/tools.server";
+
+export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; search: boolean; context: string };
+const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
+export function parseCallPrefs(raw: unknown): CallPrefs {
+  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "search" | "context", unknown>>;
+  return {
+    voice: typeof r.voice === "string" && VOICES.has(r.voice) ? r.voice : "marin",
+    accent: r.accent === "neutral" ? "neutral" : "indian",
+    quiz: r.quiz === true,
+    search: r.search === true,
+    context: typeof r.context === "string" ? r.context.slice(0, 40_000) : "",
+  };
+}
+
+function callInstructions(prefs: CallPrefs) {
+  const extra: string[] = [];
+  if (prefs.accent === "indian")
+    extra.push("Accent: Speak with a natural Indian English accent and Indian pronunciation, like a friendly Indian teacher; never an American accent.");
+  if (prefs.quiz)
+    extra.push("Quiz mode is ON: delegate to the backend to get one NEET MCQ at a time, read the question and options A-D aloud, wait for the student's spoken answer, then delegate again to check it and continue.");
+  if (prefs.search) extra.push("Live search is ON: the backend can look up current information on the web.");
+  if (prefs.context) extra.push("The student attached study material or a previous conversation; the backend has it. Delegate questions about it.");
+  return [conversationInstructions, ...extra].join("\n");
+}
 
 export type LiveConfig = {
   baseURL: string;
@@ -158,6 +183,7 @@ async function answerQuestion(
   signal: AbortSignal,
   consumeInput: () => void,
   onPlan: (plan: ReturnType<typeof planStudySchedule>) => void,
+  prefs: CallPrefs = parseCallPrefs(null),
 ) {
   signal.throwIfAborted();
   const provider = createAnthropic({
@@ -200,9 +226,13 @@ async function answerQuestion(
       "Return verified facts and useful next steps in at most 150 words. " +
       "To display a study schedule for the current request, call plan_study_schedule with its total minutes and days. " +
       "Ask for missing details instead of guessing. The tool only calculates a draft plan; " +
-      "it does not save calendar events. You have no other tools.",
+      "it does not save calendar events." +
+      (prefs.quiz ? " QUIZ MODE: give exactly one NEET MCQ with options A-D (no answer) or check the student's spoken answer briefly and give the next MCQ." : "") +
+      (prefs.search ? " Use web_search for current facts when needed." : "") +
+      (prefs.context ? `\n\nStudent-attached material (use it when relevant):\n${prefs.context}` : ""),
     messages,
     tools: {
+      ...(prefs.search ? { web_search: createAgentTools({ webSearch: true }).web_search } : {}),
       plan_study_schedule: tool({
         description: "Distribute a total study time evenly across days and return a draft schedule.",
         inputSchema: studyScheduleInput,
@@ -283,6 +313,7 @@ export function bindLiveConnection(
   }> = [];
   let completedDelegation: (typeof pendingDelegations)[number] | undefined;
   const backendMessages: ModelMessage[] = [];
+  let prefs = parseCallPrefs(null);
   let transcriptCursor = 0;
   let restartTimer: ReturnType<typeof setTimeout> | undefined;
   let startupTimer: ReturnType<typeof setTimeout> | undefined;
@@ -446,6 +477,7 @@ export function bindLiveConnection(
         (plan) => {
           pending.plan = plan;
         },
+        prefs,
       );
       if (closing || controller.signal.aborted) return;
       if (taskRevision !== revision) return;
@@ -589,8 +621,8 @@ export function bindLiveConnection(
         type: "session.start",
         session: {
           model: config.liveModel,
-          instructions: conversationInstructions,
-          audio: { output: { voice: "marin" } },
+          instructions: callInstructions(prefs),
+          audio: { output: { voice: prefs.voice } },
           delegation: { type: "client" },
         },
         transport: { type: "webrtc", sdp },
@@ -609,6 +641,7 @@ export function bindLiveConnection(
           throw new Error("Voice startup message required");
         }
         starting = true;
+        prefs = parseCallPrefs(event.prefs);
         execution.waitUntil(
           startSession(event.sdp).catch((error) => {
             if (!closing)
