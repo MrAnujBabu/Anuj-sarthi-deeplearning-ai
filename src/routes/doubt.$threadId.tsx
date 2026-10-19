@@ -183,11 +183,11 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
             </div>
           )}
           {messages.map((m) => (
-            <Message key={m.id} from={m.role}>
+            <Message key={m.id} from={m.role} className="msg-in">
               <MessageContent
                 className={
                   m.role === "user"
-                    ? "group-[.is-user]:bg-secondary group-[.is-user]:text-secondary-foreground"
+                    ? "group-[.is-user]:bg-transparent group-[.is-user]:p-0"
                     : "bg-transparent"
                 }
               >
@@ -217,7 +217,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
                         {[...p.text.matchAll(DOC_RE)].map((d, j) => (
                           <div key={j} className="flex w-fit items-center gap-2 rounded-lg border bg-card px-3 py-2 text-sm"><FileText className="size-4" /> {d[1]}</div>
                         ))}
-                        <p className={`study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl border bg-card px-4 py-2.5 shadow-sm `}>{p.text.replace(DOC_RE, "")}</p>
+                        <p className={`study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl rounded-br-md border border-primary/20 bg-user-bubble px-4 py-2.5 text-foreground shadow-sm`}>{p.text.replace(DOC_RE, "")}</p>
                       </div>
                     );
                   if (p.type.startsWith("tool-")) return <ToolStep key={i} part={p as never} />;
@@ -232,9 +232,19 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
               )}
             </Message>
           ))}
+          {!quiz && !busy && last?.role === "assistant" && (
+            <div className="msg-in flex flex-wrap gap-2 pl-1" aria-label="Quick follow-ups">
+              {["Explain simpler", "Give me a similar MCQ", "NCERT line kahan hai?", "Common trap kya hai?"].map((q) => (
+                <button key={q} type="button" onClick={() => sendMessage({ text: q })} className="rounded-full border border-border bg-card/60 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
           {openQuizOptions && openQuiz && quizSource && <QuizActions questionKey={quizSource.id} options={openQuizOptions} labels={openQuiz.labels} selectedAnswer={selectedAnswer} disabled={busy} chatHidden={chatHidden} onChatHidden={setChatHidden} onSend={(t) => { if (t === 'stop quiz') setChatHidden(false); sendMessage({ text: t }, "quiz"); }} />}
           {waiting && (
-            <div className="px-1">
+            <div className="msg-in flex items-center gap-3 px-1" role="status">
+              <span className="flex gap-1" aria-hidden>{[0,1,2].map(i => <span key={i} className="think-dot size-1.5 rounded-full bg-primary" />)}</span>
               <Shimmer>Reading your question and working it out…</Shimmer>
             </div>
           )}
