@@ -9,7 +9,7 @@ import { useNumericAnswerLabels, useQuizKeyboardShortcuts } from '@/lib/quiz-lab
 import { quizAnswerForKey } from '@/lib/quiz-shortcuts';
 
 /** Compact checkbox-card answer list for the open quiz question, with optional auto-skip timer. */
-export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void }) {
+export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden, answersOnly = false }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void; answersOnly?: boolean }) {
   const [picked, setPicked] = useState<string | null>(null);
   const [numericLabels] = useNumericAnswerLabels();
   const [keyboardEnabled] = useQuizKeyboardShortcuts();
@@ -20,13 +20,13 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
   useEffect(() => { answered.current = false; setPicked(null); setLeft(limit); }, [questionKey]);
   useEffect(() => { setLeft(limit); }, [limit]);
   useEffect(() => {
-    if (disabled || !limit || picked || answered.current || options.length === 0) return;
+    if (answersOnly || disabled || !limit || picked || answered.current || options.length === 0) return;
     const t = setTimeout(() => {
       if (left <= 1) { answered.current = true; setLeft(0); onSend('skip'); }
       else setLeft((s) => s - 1);
     }, 1000);
     return () => clearTimeout(t);
-  }, [left, limit, picked, options.length, disabled]);
+  }, [left, limit, picked, options.length, disabled, answersOnly]);
 
   const choose = (o: string) => { if (disabled || answered.current) return; answered.current = true; setPicked(o); onSend(o); };
   const command = (text: string) => { if (disabled || answered.current) return; answered.current = true; onSend(text); };
@@ -78,7 +78,7 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
           })}
         </div>
       )}
-      <div className="flex flex-wrap items-center gap-1">
+      {!answersOnly && <div className="flex flex-wrap items-center gap-1">
         {limit > 0 && options.length > 0 && !picked && (
           <span className={`mr-2 inline-flex items-center gap-1 text-xs tabular-nums ${left <= 5 ? "text-destructive" : "text-muted-foreground"}`} aria-live="polite"><Timer className="size-3.5" /> {left}s</span>
         )}
@@ -86,7 +86,7 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
         <Button disabled={disabled} size="sm" variant="ghost" className="h-8 gap-1.5 px-2 text-xs text-muted-foreground" onClick={() => command("skip")}><SkipForward className="size-3.5" />Skip</Button>
         {onChatHidden && <label className="inline-flex min-h-8 items-center gap-2 px-2 text-xs text-muted-foreground"><Switch checked={chatHidden} onCheckedChange={onChatHidden} aria-label="Hide Chat Widget" /><span>Hide Chat Widget</span></label>}
         <Button disabled={disabled} size="sm" variant="ghost" className="ml-auto h-8 gap-1.5 px-2 text-xs text-muted-foreground" onClick={() => command("stop quiz")}><Square className="size-3" />Stop quiz</Button>
-      </div>
+      </div>}
     </div>
   );
 }

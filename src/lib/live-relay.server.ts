@@ -3,6 +3,7 @@ import { stepCountIs, streamText, tool, type ModelMessage } from "ai";
 import process from "node:process";
 import { z } from "zod";
 import { createAgentTools } from "@/lib/agent/tools.server";
+import { validVoiceAnswer, voiceQuizOptions } from "@/lib/voice-quiz";
 
 export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; search: boolean; context: string };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
@@ -325,6 +326,8 @@ export function bindLiveConnection(
   let completedDelegation: (typeof pendingDelegations)[number] | undefined;
   const backendMessages: ModelMessage[] = [];
   let prefs = parseCallPrefs(null);
+  let openQuiz: { id: string; answered: boolean } | undefined;
+  const typedAnswers = new Set<string>();
   let transcriptCursor = 0;
   let restartTimer: ReturnType<typeof setTimeout> | undefined;
   let startupTimer: ReturnType<typeof setTimeout> | undefined;
@@ -451,12 +454,17 @@ export function bindLiveConnection(
           JSON.stringify({
             type: "session.commentary.append",
             event_id: crypto.randomUUID(),
-            delegation_id: delegationID,
+            delegation_id: typedAnswers.has(delegationID) ? null : delegationID,
             content,
           }),
         );
       }
       if (plan) emit({ type: "app.study_schedule.plan", delegation_id: delegationID, plan });
+      const labels = prefs.quiz ? voiceQuizOptions(answer) : null;
+      if (labels) {
+        openQuiz = { id: crypto.randomUUID(), answered: false };
+        emit({ type: "app.quiz.question", questionId: openQuiz.id, text: answer, labels });
+      }
       completedDelegation = pendingDelegations.shift();
     } catch {
       stop();
@@ -668,6 +676,20 @@ export function bindLiveConnection(
       if (event.type === "app.ready") {
         browserReady = true;
         requestGreeting();
+        return;
+      }
+      if (event.type === "app.quiz.answer") {
+        if (!prefs.quiz || !openQuiz || openQuiz.answered || event.questionId !== openQuiz.id || !validVoiceAnswer(event.answer)) {
+          emit({ type: "app.quiz.rejected", error: { message: "This question is no longer accepting answers." } });
+          return;
+        }
+        openQuiz.answered = true;
+        transcripts.push({ role: "user", text: `My answer is ${event.answer}. Check it and give the next MCQ.`, start_ms: 0, end_ms: 0, listeningSound: false });
+        revision++;
+        const id = crypto.randomUUID();
+        typedAnswers.add(id);
+        emit({ type: "app.quiz.accepted", questionId: openQuiz.id, answer: event.answer });
+        queueDelegation({ type: "app.quiz.answer", delegation: { id, target: "client" } });
         return;
       }
       if (event.type !== "gateway.heartbeat") {

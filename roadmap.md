@@ -82,9 +82,11 @@
 ## Session handover and voice verification (Oct 19, 14:35 UTC)
 - [x] Confirm My Personal Agent external Supabase connection after latest workspace move; expected project configured, auth health HTTP 200 (roles/storage not rechecked)
 - [x] Fresh-link Firecrawl, GitHub API, Parallel and Perplexity after the latest workspace move; ignore earlier connection references
-- [ ] Deliver session report file with implemented, verified and blocked work
-- [x] Verify safe voice changes: 157 tests pass; phone-size Quiz/Search and transcript import checked without runtime errors
-- [ ] Commit current code to GitHub
+- [x] Deliver session report file with implemented, verified and blocked work
+- [x] Verify safe voice changes: 161 tests pass; simulated 390px connected-call B tap submits once and stays selected; real spoken grading remains unverified
+- [x] Commit current code to GitHub (verified remote file hashes before handover)
+- [x] Voice quiz: show the normal chat A–D option cards and send tapped answers into the active voice conversation
+- [ ] Diagnose quickly lost voice media connection — blocked: no failing real-call trace; heartbeat limits and paid-session cleanup preserved, no automatic paid reconnect
 - [x] Fix mobile home title/navigation overlap: 390px top/scrolled screenshots checked, no horizontal overflow/page errors; Quiz toggle selected successfully (spoken option grading still unverified)
 - [ ] Physical-phone Start / 2–3 questions / End and PDF spoken-answer verification — requires user's phone and audible input/output
 - [x] Report historical duration/cost records observed before latest workspace move; current workspace has no matching logs, so final settlement and post-fix voice verification remain unconfirmed

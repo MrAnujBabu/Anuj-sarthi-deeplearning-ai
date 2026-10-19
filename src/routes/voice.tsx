@@ -10,6 +10,8 @@ import { useVoiceChoice, VOICE_CHOICES, type VoiceChoiceId } from "@/lib/quiz-la
 import { extractLocally } from "@/lib/file-extract";
 import { cn } from "@/lib/utils";
 import { parseVoiceTranscript, voiceTranscriptMarkdown, type VoiceRow } from "@/lib/voice-transcript";
+import { QuizActions } from "@/components/quiz-actions";
+import { VOICE_ANSWERS, validVoiceAnswer } from "@/lib/voice-quiz";
 
 export const Route = createFileRoute("/voice")({
   head: () => ({
@@ -42,6 +44,8 @@ async function readAttachment(file: File): Promise<string> {
 function VoicePage() {
   const [rows, setRows] = useState<Row[]>([]);
   const [thinking, setThinking] = useState(false);
+  const [question, setQuestion] = useState<{ id: string; labels: Record<string, string> } | null>(null);
+  const [picked, setPicked] = useState<string>();
   const [quiz, setQuiz] = useState(false);
   const [search, setSearch] = useState(false);
   const [files, setFiles] = useState<Attachment[]>([]);
@@ -53,7 +57,16 @@ function VoicePage() {
   const importInput = useRef<HTMLInputElement>(null);
 
   const onEvent = useCallback((event: LiveEvent) => {
-    if (event.type === "session.input_transcript.delta" || event.type === "session.output_transcript.delta") {
+    if (event.type === "app.quiz.question" && typeof event.questionId === "string" && event.labels && typeof event.labels === "object") {
+      setQuestion({ id: event.questionId, labels: event.labels as Record<string, string> });
+      setPicked(undefined);
+    } else if (event.type === "app.quiz.accepted" && validVoiceAnswer(event.answer)) {
+      setPicked(event.answer);
+      setRows((prev) => [...prev, { id: crypto.randomUUID(), role: "user", text: `Answer ${event.answer}` }]);
+    } else if (event.type === "app.quiz.rejected") {
+      setThinking(false);
+      toast.error(event.error?.message ?? "Answer could not be accepted.");
+    } else if (event.type === "session.input_transcript.delta" || event.type === "session.output_transcript.delta") {
       const role = event.type === "session.input_transcript.delta" ? "user" : "assistant";
       const delta = typeof event["delta"] === "string" ? event["delta"] : "";
       if (!delta) return;
@@ -195,6 +208,12 @@ function VoicePage() {
       {voice.error && (
         <p role="alert" className="mb-2 rounded-md border border-destructive px-3 py-2 text-sm text-destructive">{voice.error}</p>
       )}
+      {quiz && question && <div className="max-h-[40dvh] shrink-0 overflow-y-auto pb-2">
+        <QuizActions answersOnly options={VOICE_ANSWERS} labels={question.labels} questionKey={question.id} selectedAnswer={picked} disabled={!live || thinking || !!picked} onSend={(answer) => {
+          if (!voice.submitAnswer(answer, question.id)) { toast.error("Start a connected call before answering."); return; }
+          setThinking(true);
+        }} />
+      </div>}
       <audio ref={voice.audioRef} className="sr-only" />
       <footer className="flex items-center justify-center gap-3 border-t py-3">
         <Button size="icon" variant="outline" className="size-12 rounded-full" disabled={locked || reading} onClick={() => fileInput.current?.click()} aria-label="Attach PDF or notes" title="Attach PDF, notes, Word, PPTX">

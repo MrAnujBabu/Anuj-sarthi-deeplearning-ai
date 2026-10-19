@@ -2,6 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export type LiveEvent = {
   type: string;
+  questionId?: string;
+  labels?: Record<string, string>;
+  answer?: string;
   reason?: string;
   error?: { message?: string };
   usage?: { seconds?: number };
@@ -118,8 +121,11 @@ export function useLiveVoice(
   const resumePlayback = useCallback(() => {
     void controller.current?.resumePlayback();
   }, []);
+  const submitAnswer = useCallback((answer: string, questionId: string) => {
+    return controller.current?.submitAnswer(answer, questionId) ?? false;
+  }, []);
 
-  return { ...call, audioRef, start, stop, setMuted, resumePlayback };
+  return { ...call, audioRef, start, stop, setMuted, resumePlayback, submitAnswer };
 }
 
 type LiveOptions = {
@@ -400,5 +406,11 @@ function createLiveVoice(options: LiveOptions) {
     }
   }
 
-  return { start, stop, setMuted, resumePlayback };
+  function submitAnswer(answer: string, questionId: string) {
+    if (state !== "active" || socket?.readyState !== WebSocket.OPEN) return false;
+    try { send({ type: "app.quiz.answer", answer, questionId }); return true; }
+    catch { fail("The quiz answer could not be sent."); return false; }
+  }
+
+  return { start, stop, setMuted, resumePlayback, submitAnswer };
 }
