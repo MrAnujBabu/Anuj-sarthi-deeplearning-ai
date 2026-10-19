@@ -50,7 +50,7 @@ You are NOT solving doubts now. Do NOT write step-by-step derivations, "NEET tip
 - Key words: in each question stem, wrap only 1–3 key/complex terms in **…** (e.g. **Casparian strips**). Never bold the whole question, the intro line or the options.
 - NEVER put a hint, formula, method or the answer inside or after a question. No "(Hint: …)". Hints only when the student says "hint".
 - When the student replies with an option: say ✅ Correct or ❌ Wrong, give the right option, a 2–4 line NCERT-based reason and the trap, then show the running score (e.g. "Score: 2/3") and ask the next question.
-- "hint" → one small hint about the CURRENT question, no answer, no score change, do not ask a new question. "skip" → reveal answer briefly, count it as wrong in the score, next question. "stop quiz" → final score + 2 weak spots to revise from NCERT, then STOP (no new question, no quiz tag).
+- "hint" → one small hint about the CURRENT question, no answer, no score change, do not ask a new question. "skip" → ONE line only: "⏭️ Answer: (X) <term>" plus the running score (counted wrong) — no explanation, no trap — then the next question immediately. "stop quiz" → final score + 2 weak spots to revise from NCERT, then STOP (no new question, no quiz tag).
 - Option-buttons tag: whenever your message ends with an MCQ waiting for an answer, add as the very last line: <!--quiz {"options":["A","B","C","D"]}-->. For one-line recall questions use <!--quiz {"options":[]}-->. Never mention this tag.
 - Do not call any tools in quiz mode, except one ncert_search at the very start if you need the chapter, read_link once if the student pasted a link, or one web_search when the student has live search turned on.
 
@@ -144,9 +144,10 @@ export const Route = createFileRoute("/api/chat")({
           : basePrompt;
         const result = streamText({
           model: anthropic(selected.id),
-          ...(selected.effort ? { providerOptions: { anthropic: { thinking: { type: 'adaptive' }, effort: resolveEffort(body.effort) } } } : {}),
-          system: systemPrompt,
-          messages: await convertToModelMessages(messages),
+          ...(selected.effort ? { providerOptions: { anthropic: { thinking: { type: 'adaptive' }, effort: body.mode === 'quiz' ? 'low' : resolveEffort(body.effort) } } } : {}),
+          // Cache the large stable prefix (rules + memory) and the conversation so far; later turns re-read it cheaply.
+          system: [{ role: 'system', content: systemPrompt, providerOptions: { anthropic: { cacheControl: { type: 'ephemeral' } } } }],
+          messages: markLastForCache(await convertToModelMessages(body.mode === 'quiz' ? trimQuizHistory(messages) : messages)),
           tools: createAgentTools({ webSearch: searchOn }),
           stopWhen: stepCountIs(50),
           maxOutputTokens: 12000,
@@ -195,3 +196,14 @@ export const Route = createFileRoute("/api/chat")({
     },
   },
 });
+
+/** Quiz turns only need the topic opener and recent questions; the latest reply carries the running score. */
+export function trimQuizHistory<T>(messages: T[], keep = 12): T[] {
+  return messages.length <= keep + 1 ? messages : [messages[0] as T, ...messages.slice(-keep)];
+}
+
+function markLastForCache<T extends { providerOptions?: unknown }>(messages: T[]): T[] {
+  if (!messages.length) return messages;
+  const last = messages[messages.length - 1] as T;
+  return [...messages.slice(0, -1), { ...last, providerOptions: { anthropic: { cacheControl: { type: 'ephemeral' } } } } as T];
+}
