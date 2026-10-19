@@ -11,6 +11,17 @@ vi.mock("@tanstack/react-router", async (importOriginal) => ({
 afterEach(cleanup);
 
 describe("Question submission", () => {
+  it("accepts PPTX by extension when browser MIME is missing", async () => {
+    hydration.ready = true;
+    const createUrl = vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:test-pptx');
+    const screen = render(<PromptInput accept=".pptx" onSubmit={vi.fn()}><PromptInputTextarea /></PromptInput>);
+    const input = screen.container.querySelector('input[type=file]');
+    if (!input) throw new Error('Missing file input');
+    fireEvent.change(input, { target: { files: [new File(['slides'], 'lesson.PPTX', { type: '' })] } });
+    await waitFor(() => expect(createUrl).toHaveBeenCalledTimes(1));
+    expect(createUrl.mock.calls[0]?.[0]).toMatchObject({ name: 'lesson.PPTX', type: '' });
+    createUrl.mockRestore();
+  });
   it("blocks submission until ready, then sends the typed question once", async () => {
     hydration.ready = false;
     const onSubmit = vi.fn();
