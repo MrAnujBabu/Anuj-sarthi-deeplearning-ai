@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import katexCss from "katex/dist/katex.min.css?url";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -123,9 +124,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster />
+      </TooltipProvider>
     </QueryClientProvider>
   );
 }
