@@ -188,4 +188,4 @@
 .study-text .assistant-answer,
 .study-text .assistant-answer [data-streamdown],
 .study-text .study-question { font-size: var(--study-size); line-height: 1.65; }
-.study-question-bold { font-weight: 700; }
+.assistant-answer.study-question-bold strong { font-weight: 600; color: var(--primary); }
