@@ -11,7 +11,7 @@ import { extractLocally } from "@/lib/file-extract";
 import { cn } from "@/lib/utils";
 import { parseVoiceTranscript, voiceTranscriptMarkdown, type VoiceRow } from "@/lib/voice-transcript";
 import { QuizActions } from "@/components/quiz-actions";
-import { VOICE_ANSWERS, validVoiceAnswer } from "@/lib/voice-quiz";
+import { VOICE_ANSWERS, VOICE_SKIP, validVoiceAnswer } from "@/lib/voice-quiz";
 import { readVoicePdf } from '@/lib/voice-pdf';
 import { billableSeconds, confirmedSeconds } from '@/lib/voice-usage';
 
@@ -43,6 +43,12 @@ async function readAttachment(file: File, ocr: boolean, progress: (message: stri
 function VoicePage() {
   const [rows, setRows] = useState<Row[]>([]);
   const [thinking, setThinking] = useState(false);
+  // Never leave quiz buttons locked if a reply is slow or lost.
+  useEffect(() => {
+    if (!thinking) return;
+    const t = setTimeout(() => setThinking(false), 45_000);
+    return () => clearTimeout(t);
+  }, [thinking]);
   const [question, setQuestion] = useState<{ id: string; labels: Record<string, string> } | null>(null);
   const [picked, setPicked] = useState<string>();
   const [quiz, setQuiz] = useState(false);
@@ -75,6 +81,9 @@ function VoicePage() {
     if (event.type === "app.quiz.question" && typeof event.questionId === "string" && event.labels && typeof event.labels === "object") {
       setQuestion({ id: event.questionId, labels: event.labels as Record<string, string> });
       setPicked(undefined);
+    } else if (event.type === "app.quiz.accepted" && event.answer === VOICE_SKIP) {
+      setPicked(VOICE_SKIP);
+      setRows((prev) => [...prev, { id: crypto.randomUUID(), role: "user", text: "Skipped (time up)" }]);
     } else if (event.type === "app.quiz.accepted" && validVoiceAnswer(event.answer)) {
       setPicked(event.answer);
       setRows((prev) => [...prev, { id: crypto.randomUUID(), role: "user", text: `Answer ${event.answer}` }]);
@@ -235,7 +244,7 @@ function VoicePage() {
         <p role="alert" className="mb-2 rounded-md border border-destructive px-3 py-2 text-sm text-destructive">{voice.error}</p>
       )}
       {quiz && question && <div className="max-h-[40dvh] shrink-0 overflow-y-auto pb-2">
-        <QuizActions answersOnly options={VOICE_ANSWERS} labels={question.labels} questionKey={question.id} selectedAnswer={picked} disabled={!live || thinking || !!picked} onSend={(answer) => {
+        <QuizActions answersOnly timed options={VOICE_ANSWERS} labels={question.labels} questionKey={question.id} selectedAnswer={picked === VOICE_SKIP ? undefined : picked} disabled={!live || thinking || !!picked} onSend={(answer) => {
           if (!voice.submitAnswer(answer, question.id)) { toast.error("Start a connected call before answering."); return; }
           setThinking(true);
         }} />
