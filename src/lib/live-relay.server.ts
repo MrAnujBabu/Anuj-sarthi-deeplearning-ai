@@ -3,7 +3,7 @@ import { stepCountIs, streamText, tool, type ModelMessage } from "ai";
 import process from "node:process";
 import { z } from "zod";
 import { createAgentTools } from "@/lib/agent/tools.server";
-import { validVoiceAnswer, voiceQuizOptions } from "@/lib/voice-quiz";
+import { validVoiceAnswer, voiceQuizOptions, VOICE_SKIP } from "@/lib/voice-quiz";
 import { createVoiceTracking } from '@/lib/voice-tracking.server';
 import { confirmedSeconds, documentMetadata, type VoiceDocument } from '@/lib/voice-usage';
 
@@ -246,7 +246,7 @@ async function answerQuestion(
       "To display a study schedule for the current request, call plan_study_schedule with its total minutes and days. " +
       "Ask for missing details instead of guessing. The tool only calculates a draft plan; " +
       "it does not save calendar events." +
-      (prefs.quiz ? " QUIZ MODE: give exactly one NEET MCQ with options A-D (no answer) or check the student's spoken answer briefly and give the next MCQ." : "") +
+      (prefs.quiz ? " QUIZ MODE: give exactly one NEET MCQ with options labelled (A) (B) (C) (D), each on its own line (convert (1)-(4) numbering to A-D), no answer or check the student's spoken answer briefly and give the next MCQ." : "") +
       (prefs.search ? " Use web_search for current facts when needed." : "") +
       (prefs.context ? `\n\nStudent-attached material (use it when relevant):\n${prefs.context}` : ""),
     messages: endWithUserTurn(messages),
@@ -351,6 +351,34 @@ export function bindLiveConnection(
   let greetingRequested = false;
   let greetingCommand: { id: string; type: "instructions" | "commentary" } | undefined;
   let greetingTimer: ReturnType<typeof setTimeout> | undefined;
+  // Live ends a session after ~120 s without transcript activity. When the
+  // student goes quiet, the tutor briefly checks in (real speech, not a faked
+  // heartbeat) so pauses don't drop the call; capped so an abandoned call ends.
+  const IDLE_CHECKIN_MS = 70_000;
+  const MAX_IDLE_CHECKINS = 6;
+  let lastTranscriptAt = Date.now();
+  let idleCheckins = 0;
+  const idleTimer = setInterval(() => {
+    if (closing || !browserReady || !sessionID || task || greetingCommand) return;
+    if (gateway?.readyState !== 1) return;
+    if (Date.now() - lastTranscriptAt < IDLE_CHECKIN_MS) return;
+    if (idleCheckins >= MAX_IDLE_CHECKINS) return;
+    idleCheckins++;
+    lastTranscriptAt = Date.now();
+    try {
+      gateway.send(
+        JSON.stringify({
+          type: "session.commentary.append",
+          event_id: crypto.randomUUID(),
+          delegation_id: null,
+          content:
+            "The student has been silent for a while. In one short, warm Hinglish sentence, check whether they are still there or want to continue, then listen. Do not repeat earlier content.",
+        }),
+      );
+    } catch {
+      /* the gateway close path handles a broken socket */
+    }
+  }, 5000);
   const startTimer = setTimeout(() => {
     emit({ type: "app.error", error: { message: "Voice startup message timed out" } });
     stop();
@@ -419,6 +447,7 @@ export function bindLiveConnection(
     finished = closing = true;
     if (tracked) track({ status: lastError ? 'failed' : finalUsage ? 'closed' : 'unconfirmed', finalized: finalUsage, confirmed_seconds: usageSeconds, answer_count: answerCount, search_count: searchCount, last_error: lastError, ended_at: new Date().toISOString() });
     clearTimeout(startTimer);
+    clearInterval(idleTimer);
     clearTimeout(startupTimer);
     clearTimeout(closeTimer);
     clearTimeout(restartTimer);
@@ -436,6 +465,7 @@ export function bindLiveConnection(
     discardPendingWork();
     clearTimeout(startupTimer);
     clearTimeout(startTimer);
+    clearInterval(idleTimer);
     clearGreeting();
     if (gateway?.readyState === 1) {
       execution.waitUntil(
@@ -594,6 +624,8 @@ export function bindLiveConnection(
       if (event.type === "session.input_transcript.delta" || event.type === "session.output_transcript.delta") {
         const role = event.type === "session.input_transcript.delta" ? "user" : "assistant";
         if (!event.delta?.trim()) return;
+        lastTranscriptAt = Date.now();
+        if (role === "user") idleCheckins = 0;
         const listeningSound = role === "user" && Boolean(task) && isListeningSound(event.delta);
         transcripts.push({
           role,
@@ -718,12 +750,13 @@ export function bindLiveConnection(
         return;
       }
       if (event.type === "app.quiz.answer") {
-        if (!prefs.quiz || !openQuiz || openQuiz.answered || event.questionId !== openQuiz.id || !validVoiceAnswer(event.answer)) {
+        const skipped = event.answer === VOICE_SKIP;
+        if (!prefs.quiz || !openQuiz || openQuiz.answered || event.questionId !== openQuiz.id || (!skipped && !validVoiceAnswer(event.answer))) {
           emit({ type: "app.quiz.rejected", error: { message: "This question is no longer accepting answers." } });
           return;
         }
         openQuiz.answered = true;
-        transcripts.push({ role: "user", text: `My answer is ${event.answer}. Check it and give the next MCQ.`, start_ms: 0, end_ms: 0, listeningSound: false });
+        transcripts.push({ role: "user", text: skipped ? "Time is up, I skipped this question. Tell me the correct answer in one short line, then give the next MCQ." : `My answer is ${event.answer}. Check it and give the next MCQ.`, start_ms: 0, end_ms: 0, listeningSound: false });
         revision++;
         const id = crypto.randomUUID();
         typedAnswers.add(id);
