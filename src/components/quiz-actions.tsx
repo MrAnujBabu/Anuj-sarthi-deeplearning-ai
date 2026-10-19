@@ -9,7 +9,7 @@ import { useNumericAnswerLabels, useQuizKeyboardShortcuts } from '@/lib/quiz-lab
 import { quizAnswerForKey } from '@/lib/quiz-shortcuts';
 
 /** Compact checkbox-card answer list for the open quiz question, with optional auto-skip timer. */
-export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden, answersOnly = false }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void; answersOnly?: boolean }) {
+export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden, answersOnly = false, timed = false }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void; answersOnly?: boolean; timed?: boolean }) {
   const [picked, setPicked] = useState<string | null>(null);
   const [numericLabels] = useNumericAnswerLabels();
   const [keyboardEnabled] = useQuizKeyboardShortcuts();
@@ -20,13 +20,13 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
   useEffect(() => { answered.current = false; setPicked(null); setLeft(limit); }, [questionKey]);
   useEffect(() => { setLeft(limit); }, [limit]);
   useEffect(() => {
-    if (answersOnly || disabled || !limit || picked || answered.current || options.length === 0) return;
+    if ((answersOnly && !timed) || disabled || !limit || picked || answered.current || options.length === 0) return;
     const t = setTimeout(() => {
       if (left <= 1) { answered.current = true; setLeft(0); onSend('skip'); }
       else setLeft((s) => s - 1);
     }, 1000);
     return () => clearTimeout(t);
-  }, [left, limit, picked, options.length, disabled, answersOnly]);
+  }, [left, limit, picked, options.length, disabled, answersOnly, timed]);
 
   const choose = (o: string) => { if (disabled || answered.current) return; answered.current = true; setPicked(o); onSend(o); };
   const command = (text: string) => { if (disabled || answered.current) return; answered.current = true; onSend(text); };
@@ -76,6 +76,12 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
               </Button>
             );
           })}
+        </div>
+      )}
+      {answersOnly && timed && limit > 0 && options.length > 0 && !picked && !selectedAnswer && (
+        <div className="flex items-center gap-2">
+          <span className={`inline-flex items-center gap-1 text-xs tabular-nums ${left <= 5 ? "text-destructive" : "text-muted-foreground"}`} aria-live="polite"><Timer className="size-3.5" /> {left}s</span>
+          <Button disabled={disabled} size="sm" variant="ghost" className="ml-auto h-8 gap-1.5 px-2 text-xs text-muted-foreground" onClick={() => command("skip")}><SkipForward className="size-3.5" />Skip</Button>
         </div>
       )}
       {!answersOnly && <div className="flex flex-wrap items-center gap-1">
