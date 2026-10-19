@@ -77,7 +77,7 @@ export function SnapComposer({
   const busy = status === "submitted" || status === "streaming";
   return (
     <TooltipProvider>
-    <div className="overflow-hidden rounded-lg border border-input bg-card shadow-sm focus-within:border-ring" aria-label="Chat composer">
+    <div className="overflow-hidden rounded-2xl border border-input bg-card shadow-lg shadow-background/40 transition-[border-color,box-shadow] focus-within:border-primary/50 focus-within:ring-4 focus-within:ring-primary/10" aria-label="Chat composer">
     <PromptInput
       onSubmit={async (m) => {
         if (!m.text.trim() && m.files.length === 0) return;
