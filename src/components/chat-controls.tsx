@@ -16,10 +16,10 @@ export function ChatControls({ model, effort, onModel, onEffort, quiz, onQuiz, s
           <span>Quiz</span>
           <Switch checked={quiz} onCheckedChange={onQuiz} disabled={disabled} aria-label="Quiz mode" />
         </label>
-        <label className="flex cursor-pointer items-center gap-1.5 text-xs" title={quiz ? "Web search is unavailable in quiz mode" : "Search live web sources"}>
-          <Globe className={search && !quiz ? "size-3.5 text-primary" : "size-3.5 text-muted-foreground"} />
+        <label className="flex cursor-pointer items-center gap-1.5 text-xs" title="Search live web sources">
+          <Globe className={search ? "size-3.5 text-primary" : "size-3.5 text-muted-foreground"} />
           <span>Search</span>
-          <Switch checked={search && !quiz} onCheckedChange={onSearch} disabled={disabled || quiz} aria-label="Web search" />
+          <Switch checked={search} onCheckedChange={onSearch} disabled={disabled} aria-label="Web search" />
         </label>
       </div>
     </div>
