@@ -22,10 +22,13 @@ import { ChatControls } from "@/components/chat-controls";
 import { restoreDocs, stripDocs } from "@/lib/doc-store";
 import { parseCards, parseQuizTag, recordResults } from "@/lib/srs";
 import { DEFAULT_MODEL, resolveModel, resolveEffort, type Effort } from '@/lib/models';
-import { displayAiError, isCreditError } from '@/lib/ai/errors';
+import { displayAiError, isCreditError, isConfigurationError } from '@/lib/ai/errors';
 import { Button } from '@/components/ui/button';
 import { QuizActions } from "@/components/quiz-actions";
 import { exportThreadMarkdown } from "@/lib/export-chat";
+import { extractQuizOptions } from "@/lib/quiz-options";
+import { emphasizeQuizQuestion } from "@/lib/quiz-emphasis";
+import { DOC_RE, pdfsToText } from "@/lib/pdf-text";
 
 export const Route = createFileRoute("/doubt/$threadId")({
   head: () => ({
@@ -128,6 +131,12 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
 
   const busy = status === "submitted" || status === "streaming";
   const last = messages[messages.length - 1];
+  const quizSource = busy ? [...messages].reverse().find(m => m.role === "assistant" && parseQuizTag(m.parts.map(p => p.type === "text" ? p.text : "").join("\n"))) : last?.role === "assistant" ? last : undefined;
+  const openQuizText = quizSource?.parts.map((p) => p.type === "text" ? p.text : "").join("\n") ?? "";
+  const openQuizOptions = quiz ? parseQuizTag(openQuizText) : null;
+  const openQuiz = openQuizOptions ? extractQuizOptions(openQuizText, openQuizOptions) : null;
+  const submittedAnswer = busy ? [...messages].reverse().find(m => m.role === "user")?.parts.find(p => p.type === "text") : undefined;
+  const selectedAnswer = submittedAnswer?.type === "text" && /^[A-D]$/.test(submittedAnswer.text.trim()) ? submittedAnswer.text.trim() : undefined;
   const waiting = busy && (last?.role === "user" || !last?.parts.some((p) => p.type === "text" && p.text));
 
   return (
@@ -163,11 +172,18 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
                     return m.role === "assistant" ? (
                       <AssistantAnswer
                         key={i}
-                        text={p.text}
+                        text={openQuiz && m.id === quizSource?.id && m.parts.filter(part => part.type === "text").length === 1 ? emphasizeQuizQuestion(openQuiz.text) : p.text}
                         isAnimating={busy && m.id === last?.id}
+                        compact={quiz}
                       />
+
                     ) : (
-                      <p key={i} className="w-fit max-w-full whitespace-pre-wrap rounded-2xl border bg-card px-4 py-2.5 shadow-sm">{p.text}</p>
+                      <div key={i} className="space-y-2">
+                        {[...p.text.matchAll(DOC_RE)].map((d, j) => (
+                          <div key={j} className="flex w-fit items-center gap-2 rounded-lg border bg-card px-3 py-2 text-sm"><FileText className="size-4" /> {d[1]}</div>
+                        ))}
+                        <p className="w-fit max-w-full whitespace-pre-wrap rounded-2xl border bg-card px-4 py-2.5 shadow-sm">{p.text.replace(DOC_RE, "")}</p>
+                      </div>
                     );
                   if (p.type.startsWith("tool-")) return <ToolStep key={i} part={p as never} />;
                   return null;
@@ -181,10 +197,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
               )}
             </Message>
           ))}
-          {quiz && !busy && last?.role === "assistant" && (() => {
-            const opts = parseQuizTag(last.parts.map((p) => (p.type === "text" ? p.text : "")).join("\n"));
-            return opts ? <QuizActions questionKey={last.id} options={opts} onSend={(t) => sendMessage({ text: t }, "quiz")} /> : null;
-          })()}
+          {openQuizOptions && openQuiz && quizSource && <QuizActions questionKey={quizSource.id} options={openQuizOptions} labels={openQuiz.labels} selectedAnswer={selectedAnswer} disabled={busy} onSend={(t) => sendMessage({ text: t }, "quiz")} />}
           {waiting && (
             <div className="px-1">
               <Shimmer>Reading your question and working it out…</Shimmer>
@@ -194,7 +207,8 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
             <div role="alert" className="space-y-3 border-l-2 border-destructive pl-4 text-sm">
               <p className="text-destructive">{displayAiError(error.message)}</p>
               {isCreditError(error.message) && <p>AI is paused. Your saved questions, answers and revision cards are still available.</p>}
-              <Button variant="outline" asChild><Link to="/practice">Practice saved material · no AI credits</Link></Button>
+              {isConfigurationError(error.message) && <p>This is a model or workspace setup issue, not a credit-balance error. The workspace owner needs to verify Claude access. Saved practice is still available.</p>}
+              <Button variant="outline" asChild><Link to="/practice">{isCreditError(error.message) ? 'Practice saved material · no AI credits' : 'Practice saved material'}</Link></Button>
             </div>
           )}
         </ConversationContent>
@@ -227,16 +241,20 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
           status={status}
           onStop={stop}
           placeholder={
-            quiz
-              ? "Type your answer — A, B, C or D (or 'hint', 'skip', 'stop quiz')…"
-              : search
-                ? "Ask anything — Search is on, I'll fetch live web data…"
-                : "Ask a follow-up — 'why is option C wrong?', 'explain step 3'…"
+            quiz && search
+              ? "Type your answer — quiz + live search both on…"
+              : quiz
+                ? "Type your answer — A, B, C or D (or 'hint', 'skip', 'stop quiz')…"
+                : search
+                  ? "Ask anything — Search is on, I'll fetch live web data…"
+                  : "Ask a follow-up — 'why is option C wrong?', 'explain step 3'…"
           }
+
           onSubmit={async (msg) => {
             if (busy) return;
-            const files = await Promise.all(msg.files.map((f) => compressImage(f)));
-            await sendMessage({ text: msg.text.trim() || "Solve this question step by step.", files });
+            const docs = await pdfsToText(msg.files);
+            const files = await Promise.all(docs.files.map((f) => compressImage(f)));
+            await sendMessage({ text: docs.text + (msg.text.trim() || "Solve this question step by step."), files });
           }}
         />
       </div>

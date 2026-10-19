@@ -4,6 +4,7 @@ import logo from "@/assets/logo.png";
 import { DoubtSidebar, MobileStudyMenu } from "@/components/doubt-sidebar";
 import { SnapComposer } from "@/components/snap-composer";
 import { compressImage, pendingFirstMessage } from "@/lib/threads";
+import { pdfsToText } from "@/lib/pdf-text";
 import { useEffect, useState } from "react";
 import { ChatControls } from "@/components/chat-controls";
 import { BackupControls } from '@/components/backup-controls';
@@ -69,10 +70,11 @@ function Index() {
               controls={<ChatControls model={model} effort={effort} onModel={v=>{setModel(v);localStorage.setItem('snapsolve.model',v);}} onEffort={v=>{setEffort(v);localStorage.setItem('snapsolve.effort',v);}} quiz={quiz} onQuiz={setQuiz} search={search} onSearch={v=>{setSearch(v);localStorage.setItem('snapsolve.search',v ? '1' : '0');}} />}
               placeholder="Ask a doubt, snap a question, or revise a chapter…"
               onSubmit={async (m) => {
-                const files = await Promise.all(m.files.map((f) => compressImage(f)));
+                const docs = await pdfsToText(m.files);
+                const files = await Promise.all(docs.files.map((f) => compressImage(f)));
                 const id = crypto.randomUUID();
                 pendingFirstMessage.set(id, {
-                  text: m.text.trim() || (quiz ? "Is material se mujhse questions poochho." : "Solve this question step by step."),
+                  text: docs.text + (m.text.trim() || (quiz ? "Is material se mujhse questions poochho." : "Solve this question step by step.")),
                   files,
                   mode: quiz ? "quiz" : "solve",
                 });

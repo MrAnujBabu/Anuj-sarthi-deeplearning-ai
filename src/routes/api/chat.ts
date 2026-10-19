@@ -47,10 +47,11 @@ You are NOT solving doubts now. Do NOT write step-by-step derivations, "NEET tip
 - When the student replies with an option: say ✅ Correct or ❌ Wrong, give the right option, a 2–4 line NCERT-based reason and the trap, then show the running score (e.g. "Score: 2/3") and ask the next question.
 - "hint" → one small hint about the CURRENT question, no answer, no score change, do not ask a new question. "skip" → reveal answer briefly, count it as wrong in the score, next question. "stop quiz" → final score + 2 weak spots to revise from NCERT, then STOP (no new question, no quiz tag).
 - Option-buttons tag: whenever your message ends with an MCQ waiting for an answer, add as the very last line: <!--quiz {"options":["A","B","C","D"]}-->. For one-line recall questions use <!--quiz {"options":[]}-->. Never mention this tag.
-- Do not call any tools in quiz mode, except one ncert_search at the very start if you need the chapter, or read_link once if the student pasted a link.
+- Do not call any tools in quiz mode, except one ncert_search at the very start if you need the chapter, read_link once if the student pasted a link, or one web_search when the student has live search turned on.
 
 ### Student's own material (PDF upload or link)
-- If the student attached a PDF or pasted a link (call read_link once for it), quiz ONLY from that material. Mention which page/section each question comes from when you can.
+- If the student attached a PDF or pasted a link (call read_link once for it), quiz ONLY from that material. Mention which page/section each question comes from when you can. PDF text arrives inside <doc name="…"> with [Page N] markers.
+- Answer sheet: if the material (same PDF or a separate one) contains an answer key/solutions, grade against it, ask its questions with their original numbers, and never reveal the key before the student answers. If the key looks wrong versus NCERT (or web_search when live search is on), say so briefly and give the NCERT-correct answer.
 - Active recall: mix MCQs with short recall prompts ("Explain in one line…", "Fill the blank…", "Name the…"). Grade one-line answers generously but precisely.
 - Revision sessions list due questions with [id:…]: ask each (rephrase lightly), never show the answer first.
 
@@ -73,7 +74,7 @@ export const Route = createFileRoute("/api/chat")({
       POST: async ({ request }) => {
         const apiKey = process.env["LOVABLE_API_KEY"];
         if (!apiKey) {
-          return Response.json({ error: "AI is not configured." }, { status: 500 });
+          return new Response(encodeAiFailure({ kind: 'configuration', message: 'AI is not configured for this workspace. Ask the workspace owner to restore the Lovable AI connection.', status: 503 }), { status: 503 });
         }
         let body: { messages?: UIMessage[]; mode?: string; model?: string; effort?: string; search?: boolean };
         try {
@@ -87,7 +88,7 @@ export const Route = createFileRoute("/api/chat")({
         }
 
         const selected = resolveModel(body.model);
-        if (!selected) return Response.json({ error: 'Unknown model.' }, { status: 400 });
+        if (!selected) return new Response(encodeAiFailure({ kind: 'configuration', message: 'Unknown model. This model selection is not recognized by this app. Check the model configuration after a workspace move; this is not a credit-balance error.', status: 400 }), { status: 400 });
         try {
         const paused = await getAiPause();
         if (paused) return new Response(encodeAiFailure({ kind: paused.kind === 'credits' ? 'credits' : 'denied', message: paused.message, status: paused.kind === 'credits' ? 402 : 403 }), { status: paused.kind === 'credits' ? 402 : 403 });
@@ -118,13 +119,18 @@ export const Route = createFileRoute("/api/chat")({
         // Short follow-ups retain chapter context without ranking against the entire chat.
         const queryText = messages.slice(-4).map((m) => m.parts.map((p) => p.type === "text" ? p.text : "").join(" ").slice(0, 2000)).join(" ");
         const [memory, brain] = await Promise.all([loadTeacherMemory(queryText), loadAgentBrain()]);
-        const searchOn = body.search === true && body.mode !== "quiz";
+        const searchOn = body.search === true;
+        const searchNote = !searchOn
+          ? ""
+          : body.mode === "quiz"
+            ? `\n\n## Live web search is ON (quiz mode)\nThe student also turned on live search. You may call web_search once with short keywords when a question or its explanation needs a fact you are not sure about, then use the result. Keep asking exactly one MCQ at a time. Do NOT add a Sources section — if a link mattered, name the source in one short inline line.`
+            : `\n\n## Live web search is ON\nThe student enabled real-time search. When the answer needs current or factual information beyond NCERT (dates, news, stats, announcements, anything you might not know), call web_search once with short keywords, then answer using the results. Cite the links you used in the **Sources** line. If search returns nothing, say so and answer from your knowledge.`;
         const basePrompt =
           (body.mode === "quiz" ? QUIZ : SYSTEM) +
           (brain ? `\n\n## Role & brain set by the admin (highest priority after safety)\n${brain}` : "") +
-          (searchOn
-            ? `\n\n## Live web search is ON\nThe student enabled real-time search. When the answer needs current or factual information beyond NCERT (dates, news, stats, announcements, anything you might not know), call web_search once with short keywords, then answer using the results. Cite the links you used in the **Sources** line. If search returns nothing, say so and answer from your knowledge.`
-            : "");
+          searchNote +
+          (body.mode !== "quiz" ? `\n\n## Student PDFs\nPDF text arrives inside <doc name="…"> with [Page N] markers. If it holds questions plus an answer key/solutions (same or separate PDF), solve the asked questions, compare with the key, cite page numbers, and flag any key answer that conflicts with NCERT${searchOn ? " (verify doubtful facts with web_search)" : ""}.` : "");
+
         const systemPrompt = memory
           ? `${basePrompt}\n\n## Teacher memory (from the admin — follow it: syllabus scope, known mistake patterns, habits to reinforce or correct)\n${memory}`
           : basePrompt;
