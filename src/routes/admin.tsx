@@ -122,6 +122,7 @@ function Library() {
   const [file, setFile] = useState<File | null>(null);
   const [keepOriginal, setKeepOriginal] = useState(false);
   const [pdfSource, setPdfSource] = useState<'file' | 'link'>('file');
+  const [wisdomSource, setWisdomSource] = useState<'write' | 'file' | 'link'>('write');
   const [fileInputVersion, setFileInputVersion] = useState(0);
   const [busy, setBusy] = useState("");
   const [msg, setMsg] = useState("");
@@ -144,16 +145,16 @@ function Library() {
     };
     try {
       let data = { ...form, kind: tab === 'pdf' ? 'file' as const : tab };
-      if ((tab === "link" || (tab === 'pdf' && pdfSource === 'link')) && !form.id) {
+      if ((tab === "link" || (tab === 'pdf' && pdfSource === 'link') || (tab === 'wisdom' && wisdomSource === 'link')) && !form.id) {
         const url = canonicalMemoryUrl(form.source_url ?? '');
         if (items.some(i => i.source_url && canonicalMemoryUrl(i.source_url) === url)) { setMsg('Ye link pehle se saved hai — dobara read/save nahi kiya ✓'); return; }
         setBusy("Reading link…");
         const r = await readLink({ data: { url: form.source_url ?? "" } });
         if (tab === 'pdf' && r.mime !== 'application/pdf') throw new Error('Link did not return a readable PDF. Use Links for other documents; upload scanned PDFs as files.');
-        data = { ...data, kind: 'link', mime: r.mime ?? null, file_path: null, title: data.title || r.title, content: r.markdown };
+        data = { ...data, kind: tab === 'wisdom' ? 'wisdom' : 'link', source_url: url, mime: r.mime ?? null, file_path: null, title: data.title || r.title, content: r.markdown };
         setMsg(`${r.chars.toLocaleString()} characters read${r.pages ? ` from ${r.pages} pages` : ''} in ${(r.ms / 1000).toFixed(1)}s via ${r.method}${r.truncated ? ` — capped at 400,000 of ${r.totalChars.toLocaleString()}` : ''}. `);
       }
-      if ((tab === "file" || (tab === 'pdf' && pdfSource === 'file')) && file) {
+      if ((tab === "file" || (tab === 'pdf' && pdfSource === 'file') || (tab === 'wisdom' && wisdomSource === 'file')) && file) {
         validateImportSize(file.size);
         if (tab === 'pdf' && !/\.pdf$/i.test(file.name)) throw new Error('Choose a PDF file.');
         setBusy("Uploading…");
@@ -227,7 +228,7 @@ function Library() {
 
       <form onSubmit={submit} className="space-y-3 rounded-xl border border-border bg-card p-5">
         <div className="grid gap-3 sm:grid-cols-2">
-          <Input placeholder={tab === "link" || tab === "file" || tab === 'pdf' ? "Title (optional)" : "Title"} value={form.title} onChange={(e) => set({ title: e.target.value })} />
+          <Input placeholder={tab === "link" || tab === "file" || tab === 'pdf' || (tab === 'wisdom' && wisdomSource !== 'write') ? "Title (optional)" : "Title"} value={form.title} onChange={(e) => set({ title: e.target.value })} />
           {tab === "tracker" ? (
             <select className="h-9 rounded-md border border-input bg-background px-3 text-sm" value={form.tracker_type ?? "mistake"} onChange={(e) => set({ tracker_type: e.target.value as "mistake" })}>
               {TRACK.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
@@ -243,8 +244,9 @@ function Library() {
           <Input placeholder="Chapter (optional)" value={form.chapter} onChange={(e) => set({ chapter: e.target.value })} />
         </div>
         {tab === 'pdf' && !form.id && <select aria-label="PDF source" className="h-9 rounded-md border border-input bg-background px-3 text-sm" value={pdfSource} onChange={e => { setPdfSource(e.target.value === 'link' ? 'link' : 'file'); setFile(null); }}><option value="file">Upload PDF</option><option value="link">PDF link</option></select>}
-        {(tab === "link" || (tab === 'pdf' && pdfSource === 'link')) && !form.id && <Input type="url" required placeholder="https://… (e.g. NTA syllabus page)" value={form.source_url ?? ""} onChange={(e) => set({ source_url: e.target.value })} />}
-        {(tab === "file" || (tab === 'pdf' && pdfSource === 'file')) && !form.id && (
+        {tab === 'wisdom' && !form.id && <select aria-label="Library source" className="h-9 rounded-md border border-input bg-background px-3 text-sm" value={wisdomSource} onChange={e => { setWisdomSource(e.target.value as 'write' | 'file' | 'link'); setFile(null); }}><option value="write">Likho (Markdown)</option><option value="file">File upload (.md, PDF, Word, PPT, image…)</option><option value="link">Link paste karo — agent padhega</option></select>}
+        {(tab === "link" || (tab === 'pdf' && pdfSource === 'link') || (tab === 'wisdom' && wisdomSource === 'link')) && !form.id && <Input type="url" required placeholder="https://… (e.g. NTA syllabus page)" value={form.source_url ?? ""} onChange={(e) => set({ source_url: e.target.value })} />}
+        {(tab === "file" || (tab === 'pdf' && pdfSource === 'file') || (tab === 'wisdom' && wisdomSource === 'file')) && !form.id && (
           <div className="space-y-3"><input key={fileInputVersion} type="file" required onChange={(e) => setFile(e.target.files?.[0] ?? null)}
             accept={tab === 'pdf' ? '.pdf,application/pdf' : '.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.md,.markdown,.csv,.tsv,.json,.html,image/*'} className="block text-sm" />
           <label className="flex items-center gap-2 text-sm"><Switch checked={keepOriginal} onCheckedChange={setKeepOriginal} aria-label="Keep original file" />Keep original file in Cloud</label>
@@ -255,7 +257,7 @@ function Library() {
             <Input type="number" min={1} className="w-24" value={form.frequency ?? 1} onChange={(e) => set({ frequency: Math.max(1, Number(e.target.value) || 1) })} />
           </label>
         )}
-        {(tab === "note" || tab === "tracker" || isStudyKind(tab) || form.id) && (
+        {(tab === "note" || tab === "tracker" || (isStudyKind(tab) && (tab !== 'wisdom' || wisdomSource === 'write')) || form.id) && (
           <textarea className="min-h-40 w-full rounded-md border border-input bg-background p-3 font-mono text-sm"
             placeholder={tab === "tracker" ? "Pattern detail: kya galti hoti hai, kyon, kaise sudhare…" : "Markdown ya plain text…"}
             value={form.content} onChange={(e) => set({ content: e.target.value })} />
