@@ -22,7 +22,6 @@
 - Doubts use browser threads at `/doubt/$threadId`; downscale photos, throttle streamed renders, and await IndexedDB PDF writes before saving pointers to avoid jank and broken backups.
 - Prompt forms disable controls until hydration and use native dialog submission as a no-navigation fallback, preventing question text from leaking into URLs before React handles submissions.
 - Assistant text normalizes inline equation delimiters before markdown rendering, preserves display equations and code, and uses scoped KaTeX sizing so equations follow the surrounding text.
-
 - Saved practice extracts existing answers and revision cards and grades recall locally through the shared SRS persistence API; it never calls the tutor endpoint.
 - Study backup exports only browser study data and embedded attachments, with validated non-destructive imports; source ZIPs and Cloud exports are separate backups.
 - Tutor models use a shared server-validated catalog; terminal AI pauses are persisted server-side and never reset by public browser requests.
@@ -31,10 +30,9 @@
 - Agent memory lives in Cloud table memory_items, editable only by admins (has_role); /api/chat ranks active chapter outlines against bounded recent conversation context, excludes unmatched chapters and injects size-capped memory so follow-ups retain context.
 - Chat export: `src/lib/export-chat.ts` converts threads to Obsidian-ready markdown (YAML frontmatter, one note per doubt, attachments as placeholders — never embed data URLs); bulk export zips notes + index.md via fflate.
 - Web search: `createAgentTools({ webSearch })` adds a `web_search` tool (Perplexity + Parallel in parallel, deduped by URL) only when the client sends `search: true`; /api/chat appends a search instruction to the system prompt and disables it in quiz mode.
-- Voice dictation records 16 kHz WAV in the browser and transcribes only through the `/api/transcribe` server route; keeps the AI key server-side and inserts text into the composer for review before sending.
-- Dictation forwards SSE unchanged and consumes it with the shared transcription parser; exposes partial text promptly, preserves terminal errors, and propagates explicit cancellation without timeout retries.
+- Dictation records 16 kHz WAV and transcribes only via `/api/transcribe` (SSE forwarded unchanged, shared parser, no timeout retries); text lands in the composer for review, keeping the key server-side.
 - Student links use Parallel full-content extraction with Firecrawl fallback and explicit empty/truncated results; prevents answers falsely claiming to have read an unavailable document.
 - Browser quota failures preserve prior threads and return a save failure; media cleanup replaces attachments/extracted documents with markers and clears IndexedDB only after thread cleanup, keeping answers and revision cards intact.
 - Admin link reads reuse the bounded student document reader; file paths are content-addressed to avoid repeat uploads, and memory saves compare content/normalized URLs before inserting.
 - Admin imports share parsers/Sheets auth; MIME puts linked PDFs in PDF view. Drive needs authorization; PYQs require sourced evidence. PPTX reads text only. Admin/quiz share a device label preference; submissions stay A–D to preserve grading.
-- Voice mode uses a persistent /api/live WebSocket relay (src/lib/live-relay.server.ts) to Lovable AI Gateway Live; GPT Live speaks, Claude answers delegated doubts server-side, keeping the key on the server.
+- Voice mode: persistent `/api/live` WebSocket relay to Gateway Live; Claude answers delegated doubts server-side.
