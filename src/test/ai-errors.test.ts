@@ -22,3 +22,10 @@ describe("quiz options", () => {
     expect(r.text).toBe("**Q1.** Which tissue?");
   });
 });
+
+describe("quiz options with full-text tags", () => {
+  it("removes the inline option line so options show only on the cards", () => {
+    const r = extractQuizOptions("**Q1.** Strips made of?\n\n(A) Lignin (B) Cutin (C) Suberin (D) Cellulose", ["Lignin", "Cutin", "Suberin", "Cellulose"]);
+    expect(r.text).toBe("**Q1.** Strips made of?");
+  });
+});

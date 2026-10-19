@@ -5,7 +5,11 @@
 export function extractQuizOptions(text: string, options: string[]): { text: string; labels: Record<string, string> } {
   const labels: Record<string, string> = {};
   const letters = options.map((o) => o.trim().toUpperCase()).filter((o) => /^[A-F]$/.test(o));
-  if (!letters.length) return { text, labels };
+  if (!letters.length) {
+    // Cards already carry the full option text, so drop the "(A) … (B) …" lines from the question.
+    const kept = text.split("\n").filter((l) => !/^\s*[-*]?\s*(\*\*)?\(?A[).]\s+/.test(l) && !/^\s*[-*]?\s*(\*\*)?\(?[B-F][).]\s+/.test(l));
+    return { text: kept.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd(), labels };
+  }
   const set = letters.join("");
   // Matches "(A) text", "A) text", "A. text" — possibly several on one line.
   const re = new RegExp(`(?:^|\\s)\\(?([${set}])[).]\\s+(.+?)(?=\\s+\\(?[${set}][).]\\s+|$)`, "g");
