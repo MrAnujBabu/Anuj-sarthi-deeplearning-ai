@@ -78,21 +78,36 @@ function SignIn({ onDone }: { onDone: () => void }) {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
+  const [mode, setMode] = useState<"in" | "up">("in");
+  const [info, setInfo] = useState("");
   return (
     <form
       className="mx-auto mt-10 max-w-sm space-y-3 rounded-xl border border-border bg-card p-6"
       onSubmit={async (e) => {
-        e.preventDefault(); setBusy(true); setErr("");
+        e.preventDefault(); setBusy(true); setErr(""); setInfo("");
+        if (mode === "up") {
+          const { data, error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/admin` } });
+          setBusy(false);
+          if (error) return setErr(error.message);
+          if (data.session) return onDone();
+          setInfo("Account ban gaya. Email mein confirmation link par click karo, phir yahan sign in karo.");
+          setMode("in");
+          return;
+        }
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         setBusy(false);
-        if (error) setErr(error.message); else onDone();
+        if (error) setErr(error.message === "Invalid login credentials" ? "Galat email/password — ya account abhi bana nahi. Pehli baar ho to 'Create account' dabao." : error.message); else onDone();
       }}
     >
-      <h1 className="font-display text-2xl">Admin sign in</h1>
+      <h1 className="font-display text-2xl">{mode === "in" ? "Admin sign in" : "Create admin account"}</h1>
       <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      <Input type="password" placeholder="Password (min 6)" minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} required />
       {err && <p className="text-sm text-destructive">{err}</p>}
-      <Button type="submit" className="w-full" disabled={busy}>{busy ? "Signing in…" : "Sign in"}</Button>
+      {info && <p className="text-sm text-muted-foreground">{info}</p>}
+      <Button type="submit" className="w-full" disabled={busy}>{busy ? "Please wait…" : mode === "in" ? "Sign in" : "Create account"}</Button>
+      <button type="button" className="w-full text-sm text-muted-foreground underline" onClick={() => { setMode(mode === "in" ? "up" : "in"); setErr(""); }}>
+        {mode === "in" ? "Pehli baar? Create account" : "Account hai? Sign in"}
+      </button>
     </form>
   );
 }
@@ -142,9 +157,10 @@ function Library() {
       }
       if (!data.title.trim()) throw new Error("Title daalo");
       setBusy("Saving…");
-      await save({ data });
+      const res = await save({ data });
+      if (res.duplicate && data.file_path) await supabase.storage.from("agent-memory").remove([data.file_path]);
       setForm(blank(tab)); setFile(null); await load();
-      setMsg((m) => m || "Saved ✓");
+      setMsg((m) => m || (res.duplicate ? "Ye pehle se saved hai — dobara save nahi kiya ✓" : "Saved ✓"));
     } catch (x) { setMsg((x as Error).message); }
     finally { setBusy(""); }
   };

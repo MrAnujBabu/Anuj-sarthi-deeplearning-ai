@@ -3,6 +3,7 @@ import type { ChatStatus } from "ai";
 import type { ReactNode } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { DictateButton } from "@/components/dictate-button";
 import {
   PromptInput,
   PromptInputButton,
@@ -93,6 +94,7 @@ export function SnapComposer({
       <PromptInputFooter>
         <PromptInputTools>
           <SnapButton big={!!big} />
+          <DictateButton disabled={busy} />
           {actions}
         </PromptInputTools>
         <PromptInputSubmit {...(status ? { status } : {})} {...(onStop ? { onStop } : {})} disabled={busy && !onStop} />

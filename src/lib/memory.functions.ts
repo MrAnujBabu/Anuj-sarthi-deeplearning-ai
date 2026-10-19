@@ -50,13 +50,20 @@ export const saveMemory = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     await assertAdmin(context as Ctx);
     const { id, ...row } = data;
+    if (!id) {
+      // Skip duplicates so repeated uploads don't fill the database.
+      const dupe = row.source_url
+        ? await context.supabase.from("memory_items").select("id").eq("source_url", row.source_url).limit(1)
+        : await context.supabase.from("memory_items").select("id").eq("title", row.title).eq("content", row.content).limit(1);
+      if (dupe.data?.length) return { ok: true, duplicate: true };
+    }
     const payload = { ...row, updated_at: new Date().toISOString() };
     const q = id
       ? context.supabase.from("memory_items").update(payload).eq("id", id)
       : context.supabase.from("memory_items").insert(payload);
     const { error } = await q;
     if (error) throw new Error(error.message);
-    return { ok: true };
+    return { ok: true, duplicate: false };
   });
 
 export const deleteMemory = createServerFn({ method: "POST" })
