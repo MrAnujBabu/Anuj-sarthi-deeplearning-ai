@@ -13,6 +13,7 @@ import { AdminRecovery } from '@/components/admin-recovery';
 import { STUDY_KINDS, isStudyKind, csvToStudyItems, ankiToStudyItems, validateImportSize, type MemoryKind, type StudyKind } from '@/lib/import-sources';
 import { pendingFirstMessage } from '@/lib/threads';
 import { useNumericAnswerLabels } from '@/lib/quiz-label-preference';
+import { AdminVoiceHistory } from '@/components/admin-voice-history';
 
 export const Route = createFileRoute("/admin")({
   ssr: false,
@@ -56,6 +57,7 @@ const PRESETS: { label: string; tab: Tab; fill: Partial<MemoryInput> }[] = [
 ];
 
 function AdminPage() {
+  const [section, setSection] = useState<'memory' | 'voice'>('memory');
   const [recoveryVersion, setRecoveryVersion] = useState(0);
   const [state, setState] = useState<"loading" | "out" | "denied" | "in">("loading");
   const check = useServerFn(amIAdmin);
@@ -78,7 +80,7 @@ function AdminPage() {
         {state === "loading" && <p className="text-muted-foreground">Loading…</p>}
         {state === "out" && <SignIn onDone={refresh} />}
         {state === "denied" && <p className="text-destructive">Access denied — this account is not an admin.</p>}
-        {state === "in" && <div className="space-y-10"><BrainSettings key={`brain-${recoveryVersion}`} /><Library key={`library-${recoveryVersion}`} /><AdminRecovery onChanged={() => setRecoveryVersion(v => v + 1)} /><PasswordChange /></div>}
+        {state === "in" && <><nav aria-label="Admin sections" className="mb-8 flex gap-2 border-b border-border pb-3"><Button variant={section === 'memory' ? 'secondary' : 'ghost'} onClick={() => setSection('memory')}>Agent memory</Button><Button variant={section === 'voice' ? 'secondary' : 'ghost'} onClick={() => setSection('voice')}>Voice calls</Button></nav>{section === 'voice' ? <AdminVoiceHistory /> : <div className="space-y-10"><BrainSettings key={`brain-${recoveryVersion}`} /><Library key={`library-${recoveryVersion}`} /><AdminRecovery onChanged={() => setRecoveryVersion(v => v + 1)} /><PasswordChange /></div>}</>}
       </main>
     </div>
   );

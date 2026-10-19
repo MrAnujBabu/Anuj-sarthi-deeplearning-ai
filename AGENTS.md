@@ -28,7 +28,7 @@
 - Load Mermaid through the lazy diagram adapter only when rendering a diagram; graph dependency initialization failures must not prevent chat or practice routes from opening.
 - Saved practice persists a stable card-ID queue and completed IDs; due-date changes must not skip cards on reload, and newly saved material joins the next session.
 - Agent memory lives in Cloud table memory_items, editable only by admins (has_role); /api/chat ranks active chapter outlines against bounded recent conversation context, excludes unmatched chapters and injects size-capped memory so follow-ups retain context.
-- Chat export: `src/lib/export-chat.ts` converts threads to Obsidian-ready markdown (YAML frontmatter, one note per doubt, attachments as placeholders — never embed data URLs); bulk export zips notes + index.md via fflate.
+- Chat exports Obsidian markdown and zipped notes; attachments remain placeholders, never data URLs.
 - Web search: `createAgentTools({ webSearch })` adds a `web_search` tool (Perplexity + Parallel in parallel, deduped by URL) only when the client sends `search: true`; /api/chat appends a search instruction to the system prompt and disables it in quiz mode.
 - Dictation records 16 kHz WAV and transcribes only via `/api/transcribe` (SSE forwarded unchanged, shared parser, no timeout retries); text lands in the composer for review, keeping the key server-side.
 - Student links use Parallel full-content extraction with Firecrawl fallback and explicit empty/truncated results; prevents answers falsely claiming to have read an unavailable document.
@@ -36,3 +36,4 @@
 - Admin link reads reuse the bounded student document reader; file paths are content-addressed to avoid repeat uploads, and memory saves compare content/normalized URLs before inserting.
 - Admin imports share parsers/Sheets auth; MIME puts linked PDFs in PDF view. Drive needs authorization; PYQs require sourced evidence. PPTX reads text only. Admin/quiz share a device label preference; submissions stay A–D to preserve grading.
 - Voice uses a persistent /api/live relay with validated call prefs and Claude delegation; QuizActions taps use one-use server question IDs and A–D validation to reject duplicates.
+- Voice history is server-owned/admin-readable metadata with confirmed usage, never inferred credits; scanned PDFs use explicit lazy browser OCR without silent page truncation.

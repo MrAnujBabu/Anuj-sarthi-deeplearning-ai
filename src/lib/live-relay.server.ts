@@ -4,17 +4,20 @@ import process from "node:process";
 import { z } from "zod";
 import { createAgentTools } from "@/lib/agent/tools.server";
 import { validVoiceAnswer, voiceQuizOptions } from "@/lib/voice-quiz";
+import { createVoiceTracking } from '@/lib/voice-tracking.server';
+import { confirmedSeconds, documentMetadata, type VoiceDocument } from '@/lib/voice-usage';
 
-export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; search: boolean; context: string };
+export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; search: boolean; context: string; documents: VoiceDocument[] };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
 export function parseCallPrefs(raw: unknown): CallPrefs {
-  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "search" | "context", unknown>>;
+  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "search" | "context" | "documents", unknown>>;
   return {
     voice: typeof r.voice === "string" && VOICES.has(r.voice) ? r.voice : "marin",
     accent: r.accent === "neutral" ? "neutral" : "indian",
     quiz: r.quiz === true,
     search: r.search === true,
     context: typeof r.context === "string" ? r.context.slice(0, 40_000) : "",
+    documents: documentMetadata(r.documents),
   };
 }
 
@@ -75,6 +78,8 @@ type ProviderEvent = {
   end_ms?: number;
   offset_ms?: number;
   delegation?: { id: string; target: string };
+  usage?: { seconds?: unknown };
+  reason?: string;
 };
 
 export function getLiveConfig(): LiveConfig {
@@ -196,6 +201,7 @@ async function answerQuestion(
   consumeInput: () => void,
   onPlan: (plan: ReturnType<typeof planStudySchedule>) => void,
   prefs: CallPrefs = parseCallPrefs(null),
+  onSearch: () => void = () => {},
 ) {
   signal.throwIfAborted();
   const provider = createAnthropic({
@@ -217,6 +223,7 @@ async function answerQuestion(
       return { messages: endWithUserTurn(messages) };
     },
     onStepFinish(step) {
+      for (const call of step.toolCalls) if (call?.toolName === 'web_search') onSearch();
       messages.push(...step.response.messages.slice(responseCursor));
       responseCursor = step.response.messages.length;
     },
@@ -311,6 +318,13 @@ export function bindLiveConnection(
 ): void {
   const config = { ...configuration };
   const runID = crypto.randomUUID();
+  const track = createVoiceTracking(runID, (promise) => execution.waitUntil(promise), () => emit({ type: 'app.history.error', error: { message: 'Call history could not be saved.' } }));
+  let tracked = false;
+  let finalUsage = false;
+  let usageSeconds: number | null = null;
+  let answerCount = 0;
+  let searchCount = 0;
+  let lastError: string | null = null;
   const setupAbort = new AbortController();
   let gateway: LiveSocket | undefined;
   let sessionID: string | undefined;
@@ -403,6 +417,7 @@ export function bindLiveConnection(
   function finish() {
     if (finished) return;
     finished = closing = true;
+    if (tracked) track({ status: lastError ? 'failed' : finalUsage ? 'closed' : 'unconfirmed', finalized: finalUsage, confirmed_seconds: usageSeconds, answer_count: answerCount, search_count: searchCount, last_error: lastError, ended_at: new Date().toISOString() });
     clearTimeout(startTimer);
     clearTimeout(startupTimer);
     clearTimeout(closeTimer);
@@ -497,9 +512,12 @@ export function bindLiveConnection(
           pending.plan = plan;
         },
         prefs,
+        () => { searchCount++; },
       );
       if (closing || controller.signal.aborted) return;
       if (taskRevision !== revision) return;
+      answerCount++;
+      if (tracked) track({ answer_count: answerCount, search_count: searchCount });
       deliverResult(id, answer.trim(), pending.plan);
     } catch {
       if (closing || controller.signal.aborted) return;
@@ -527,13 +545,26 @@ export function bindLiveConnection(
       if (typeof data !== "string" || data.length > 1024 * 1024) throw new Error("Invalid voice event");
       const event: ProviderEvent = JSON.parse(data);
       if (browser.readyState === 1) browser.send(data);
-      if (event.type === "session.closed") return finish();
+      if (event.type === 'session.usage.updated' || event.type === 'session.closed') {
+        const seconds = confirmedSeconds(event.usage?.seconds);
+        if (seconds !== null) {
+          usageSeconds = seconds;
+          finalUsage = event.type === 'session.closed';
+          if (tracked) track({ confirmed_seconds: seconds, finalized: finalUsage });
+        }
+      }
+      if (event.type === "session.closed") {
+        if (!closing) lastError = lastError ?? event.reason?.slice(0, 300) ?? 'Voice session ended unexpectedly';
+        return finish();
+      }
       if (event.type === "gateway.session.closing" || event.type === "gateway.error" || event.type === "app.error") {
+        lastError = event.error?.message?.slice(0, 300) ?? event.reason?.slice(0, 300) ?? event.type;
         return stop();
       }
       if (closing) return;
       if (event.type === "gateway.session.created") {
         sessionID = event.session?.id;
+        if (tracked) track({ session_id: sessionID ?? null, status: 'connected' });
         clearTimeout(startupTimer);
         requestGreeting();
       }
@@ -630,8 +661,12 @@ export function bindLiveConnection(
     }
     gateway = accepted;
     gateway.onMessage(receiveGateway);
-    gateway.onClose(finish);
+    gateway.onClose(() => {
+      if (!finished) lastError = lastError ?? 'Voice gateway disconnected before final usage';
+      finish();
+    });
     gateway.onError(() => {
+      lastError = 'Voice gateway connection failed';
       emit({ type: "app.error", error: { message: "Voice gateway connection failed" } });
       stop();
     });
@@ -661,8 +696,12 @@ export function bindLiveConnection(
         }
         starting = true;
         prefs = parseCallPrefs(event.prefs);
+        tracked = true;
+        track({ voice: prefs.voice, accent: prefs.accent, quiz: prefs.quiz, search: prefs.search, documents: prefs.documents, status: 'starting' });
+        emit({ type: 'app.call.record', callId: runID });
         execution.waitUntil(
           startSession(event.sdp).catch((error) => {
+            lastError = error instanceof Error ? error.message.slice(0, 300) : 'Voice startup failed';
             if (!closing)
               emit({
                 type: "app.error",

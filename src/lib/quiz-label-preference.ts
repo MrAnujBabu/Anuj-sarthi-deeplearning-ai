@@ -58,8 +58,8 @@ export function useStudyTextSize() {
   return [size, update] as const;
 }
 export const VOICE_CHOICES = [
-  { id: 'indian-f', label: 'Indian · female', voice: 'marin', accent: 'indian' },
-  { id: 'indian-m', label: 'Indian · male', voice: 'meridian', accent: 'indian' },
+  { id: 'indian-f', label: 'Indian style · Marin', voice: 'marin', accent: 'indian' },
+  { id: 'indian-m', label: 'Indian style · Meridian', voice: 'meridian', accent: 'indian' },
   { id: 'us-f', label: 'American · female', voice: 'gleam', accent: 'neutral' },
   { id: 'us-m', label: 'American · male', voice: 'meridian', accent: 'neutral' },
   { id: 'uk-m', label: 'British · male', voice: 'vesper', accent: 'neutral' },

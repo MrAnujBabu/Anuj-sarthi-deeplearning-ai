@@ -152,6 +152,66 @@ export type Database = {
         }
         Relationships: []
       }
+      voice_calls: {
+        Row: {
+          accent: string
+          answer_count: number
+          confirmed_seconds: number | null
+          created_at: string
+          credit_total: number | null
+          documents: Json
+          ended_at: string | null
+          finalized: boolean
+          id: string
+          last_error: string | null
+          quiz: boolean
+          search: boolean
+          search_count: number
+          session_id: string | null
+          status: string
+          updated_at: string
+          voice: string
+        }
+        Insert: {
+          accent?: string
+          answer_count?: number
+          confirmed_seconds?: number | null
+          created_at?: string
+          credit_total?: number | null
+          documents?: Json
+          ended_at?: string | null
+          finalized?: boolean
+          id: string
+          last_error?: string | null
+          quiz?: boolean
+          search?: boolean
+          search_count?: number
+          session_id?: string | null
+          status?: string
+          updated_at?: string
+          voice?: string
+        }
+        Update: {
+          accent?: string
+          answer_count?: number
+          confirmed_seconds?: number | null
+          created_at?: string
+          credit_total?: number | null
+          documents?: Json
+          ended_at?: string | null
+          finalized?: boolean
+          id?: string
+          last_error?: string | null
+          quiz?: boolean
+          search?: boolean
+          search_count?: number
+          session_id?: string | null
+          status?: string
+          updated_at?: string
+          voice?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

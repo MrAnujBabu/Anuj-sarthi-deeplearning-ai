@@ -1,4 +1,10 @@
 # Roadmap
+- [x] Commit tested changes to GitHub after the current voice/Supabase audit (167 tests and clean preview verified)
+- [x] Latest audit: Supabase has 94 memory items, 1 admin and private 25 MB bucket; voice_calls RLS/admin policy verified; Explain simpler real chat passed; no recorded voice calls
+- [x] Current voice expansion: server-owned admin call/PDF metadata and confirmed-duration tracking; browser scanned-PDF OCR attachment passed; unexpected disconnect remains failed even with final usage; 167 tests pass
+- [ ] Real spoken Quiz/Search/PDF and Indian-style audio — blocked: physical microphone/playback and user phone required; available Live voice has no native Indian regional option
+- [ ] Actual per-call settled credits and signed-in admin call-history readback — blocked: no real-call billing evidence; external Supabase managed browser session unavailable
+- [ ] Public voice spending protection — existing no-login access preserved; spending-abuse risk needs an owner decision about student sign-in/access before changing that flow
 - [ ] Quiz explanations: verified NCERT chapter → topic → subtopic → paragraph/page references; explicitly mark unavailable edition-specific details
 - [ ] Settings quiz timer with admin-default/device override; verify countdown, auto-skip, off and grading pause
 - [ ] Settings: bold questions, selectable study text size and shared Hide Chat Widget toggle; retain existing quiz switches
@@ -76,6 +82,7 @@
 - [x] Push latest code to GitHub + backup ZIP before workspace move
 
 ## Workspace move (Oct 19, latest)
+- [x] 15:00 UTC workspace move: freshly link Firecrawl, GitHub API, Parallel and Perplexity; My Personal Agent binding confirmed by current platform state (dsazygocmjgjfqkqkwcp); no fresh database or live feature audit
 - [x] Fresh-link Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
 - [x] Supabase "My Personal Agent" connected and verified: 94 memory items, 1 admin role, agent-memory bucket live
 

@@ -12,6 +12,8 @@ import { cn } from "@/lib/utils";
 import { parseVoiceTranscript, voiceTranscriptMarkdown, type VoiceRow } from "@/lib/voice-transcript";
 import { QuizActions } from "@/components/quiz-actions";
 import { VOICE_ANSWERS, validVoiceAnswer } from "@/lib/voice-quiz";
+import { readVoicePdf } from '@/lib/voice-pdf';
+import { billableSeconds, confirmedSeconds } from '@/lib/voice-usage';
 
 export const Route = createFileRoute("/voice")({
   head: () => ({
@@ -28,17 +30,14 @@ export const Route = createFileRoute("/voice")({
 });
 
 type Row = VoiceRow;
-type Attachment = { name: string; text: string };
+type Attachment = { name: string; text: string; pages: number; method: string };
 const CONTEXT_LIMIT = 38_000;
 
-async function readAttachment(file: File): Promise<string> {
+async function readAttachment(file: File, ocr: boolean, progress: (message: string) => void): Promise<Omit<Attachment, 'name'>> {
   if (file.type === "application/pdf" || /\.pdf$/i.test(file.name)) {
-    const { extractText, getDocumentProxy } = await import("unpdf");
-    const pdf = await getDocumentProxy(new Uint8Array(await file.arrayBuffer()));
-    const { text } = await extractText(pdf, { mergePages: true });
-    return String(text).replace(/[ \t]+/g, " ").trim();
+    return readVoicePdf(file, ocr, progress);
   }
-  return (await extractLocally(file))?.trim() ?? "";
+  return { text: (await extractLocally(file))?.trim() ?? '', pages: 0, method: 'text' };
 }
 
 function VoicePage() {
@@ -50,6 +49,12 @@ function VoicePage() {
   const [search, setSearch] = useState(false);
   const [files, setFiles] = useState<Attachment[]>([]);
   const [reading, setReading] = useState(false);
+  const [ocr, setOcr] = useState(false);
+  const [readProgress, setReadProgress] = useState('');
+  const [usage, setUsage] = useState<number | null>(null);
+  const [created, setCreated] = useState(false);
+  const [finalUsage, setFinalUsage] = useState(false);
+  const [callId, setCallId] = useState('');
   const [choice, setChoice] = useVoiceChoice();
   const scrollRef = useRef<HTMLElement>(null);
   const pinned = useRef(true);
@@ -57,6 +62,16 @@ function VoicePage() {
   const importInput = useRef<HTMLInputElement>(null);
 
   const onEvent = useCallback((event: LiveEvent) => {
+    if (event.type === 'app.call.record') {
+      setCallId(typeof event['callId'] === 'string' ? event['callId'] : '');
+      setCreated(false); setUsage(null); setFinalUsage(false);
+    }
+    if (event.type === 'gateway.session.created') setCreated(true);
+    if (event.type === 'session.usage.updated' || event.type === 'session.closed') {
+      const seconds = confirmedSeconds(event.usage?.seconds);
+      if (seconds !== null) { setUsage(seconds); setFinalUsage(event.type === 'session.closed'); }
+    }
+    if (event.type === 'app.history.error') toast.error(event.error?.message ?? 'Call history save failed.');
     if (event.type === "app.quiz.question" && typeof event.questionId === "string" && event.labels && typeof event.labels === "object") {
       setQuestion({ id: event.questionId, labels: event.labels as Record<string, string> });
       setPicked(undefined);
@@ -86,8 +101,8 @@ function VoicePage() {
   const prefs = useCallback(() => {
     const c = VOICE_CHOICES.find((v) => v.id === choice) ?? VOICE_CHOICES[0];
     const previous = rows.length ? `Previous conversation:\n${rows.map((r) => `${r.role === "user" ? "Student" : "Tutor"}: ${r.text}`).join("\n")}\n\n` : "";
-    const docs = files.map((f) => `<doc name="${f.name}">\n${f.text}\n</doc>`).join("\n\n");
-    return { voice: c.voice, accent: c.accent, quiz, search, context: (previous + docs).slice(-CONTEXT_LIMIT) };
+    const docs = files.map((f) => `<doc name=${JSON.stringify(f.name)}>\n${f.text}\n</doc>`).join("\n\n");
+    return { voice: c.voice, accent: c.accent, quiz, search, context: previous.slice(-Math.max(0, CONTEXT_LIMIT - docs.length)) + docs, documents: files.map(({ name, pages, method, text }) => ({ name, pages, method, chars: text.length })) };
   }, [choice, quiz, search, files, rows]);
 
   const voice = useLiveVoice({ onEvent, prefs });
@@ -104,16 +119,24 @@ function VoicePage() {
   const addFiles = async (list: FileList | null) => {
     if (!list?.length) return;
     setReading(true);
+    let contextChars = files.reduce((sum, f) => sum + f.text.length + f.name.length + 32, 0);
     try {
-      for (const file of Array.from(list).slice(0, 4)) {
+      for (const file of Array.from(list).slice(0, Math.max(0, 4 - files.length))) {
         if (file.size > 15 * 1024 * 1024) { toast.error(`${file.name} is over 15 MB.`); continue; }
-        const text = await readAttachment(file).catch(() => "");
-        if (!text) { toast.error(`${file.name}: koi text nahi mila (scanned PDF ya photo voice mode me nahi padhi jaati).`); continue; }
-        setFiles((prev) => [...prev, { name: file.name.replace(/"/g, "'"), text: text.slice(0, CONTEXT_LIMIT) }]);
+        const result = await readAttachment(file, ocr, setReadProgress);
+        const text = result.text;
+        if (!text) { toast.error(`${file.name}: koi readable text nahi mila.`); continue; }
+        const total = contextChars + text.length + file.name.length + 32;
+        if (total > CONTEXT_LIMIT) throw new Error('Study material is too long for one call. Attach a smaller chapter; no pages were silently skipped.');
+        contextChars = total;
+        setFiles((prev) => [...prev, { ...result, name: file.name.replace(/"/g, "'"), text }]);
         toast.success(`${file.name} attached — tutor next call me padh lega.`);
       }
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'File reading failed.');
     } finally {
       setReading(false);
+      setReadProgress('');
     }
   };
 
@@ -160,12 +183,15 @@ function VoicePage() {
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border bg-card/60 px-3 py-2 text-sm">
         <label className="flex items-center gap-2"><GraduationCap className="size-4 text-muted-foreground" />Quiz<Switch checked={quiz} disabled={locked} onCheckedChange={setQuiz} aria-label="Voice quiz mode" /></label>
         <label className="flex items-center gap-2"><Globe className="size-4 text-muted-foreground" />Search<Switch checked={search} disabled={locked} onCheckedChange={setSearch} aria-label="Voice live search" /></label>
+        <label className="flex items-center gap-2"><FileText className="size-4 text-muted-foreground" />Read scans<Switch checked={ocr} disabled={locked || reading} onCheckedChange={setOcr} aria-label="Read scanned PDFs" /></label>
         <Select value={choice} onValueChange={(v) => setChoice(v as VoiceChoiceId)} disabled={locked}>
           <SelectTrigger aria-label="Voice" className="ml-auto h-8 w-40"><SelectValue /></SelectTrigger>
           <SelectContent>{VOICE_CHOICES.map((c) => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
         </Select>
         {locked && <p className="w-full text-xs text-muted-foreground">Ye options call ke dauran fixed hain — badalne ke liye End karke dobara Start karo.</p>}
       </div>
+      {callId && <p className="mt-2 text-xs text-muted-foreground" title={callId}>Call {callId.slice(0, 8)} · {billableSeconds(usage, created) ?? '—'} billable seconds · {finalUsage ? 'Final usage received' : 'Final usage pending'} · Credits unconfirmed</p>}
+      {readProgress && <p role="status" className="mt-2 text-xs text-primary">{readProgress}</p>}
 
       <section
         ref={scrollRef}
@@ -200,7 +226,7 @@ function VoicePage() {
           {files.map((f, i) => (
             <span key={i} className="flex items-center gap-1.5 rounded-full border bg-card px-3 py-1 text-xs">
               <FileText className="size-3.5 text-primary" />{f.name}
-              {!locked && <button type="button" aria-label={`Remove ${f.name}`} onClick={() => setFiles((p) => p.filter((_, j) => j !== i))}><X className="size-3.5" /></button>}
+              {!locked && <Button variant="ghost" size="icon" className="size-5" aria-label={`Remove ${f.name}`} onClick={() => setFiles((p) => p.filter((_, j) => j !== i))}><X className="size-3.5" /></Button>}
             </span>
           ))}
         </div>
