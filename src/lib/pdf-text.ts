@@ -1,4 +1,5 @@
 import type { FileUIPart } from "ai";
+import { extractLocally } from './file-extract';
 
 export const DOC_RE = /<doc name="([^"]*)">[\s\S]*?<\/doc>\n*/g;
 
@@ -7,6 +8,17 @@ export async function pdfsToText(files: FileUIPart[]): Promise<{ files: FileUIPa
   const keep: FileUIPart[] = [];
   let text = "";
   for (const f of files) {
+    if (/\.ppt$/i.test(f.filename ?? '')) throw new Error('Legacy .ppt is not supported. Export it as PDF or save as .pptx, then upload.');
+    if (/\.pptx$/i.test(f.filename ?? '') || f.mediaType === 'application/vnd.openxmlformats-officedocument.presentationml.presentation') {
+      const response = await fetch(f.url);
+      if (!response.ok) throw new Error('Could not open PowerPoint attachment.');
+      const file = new File([await response.arrayBuffer()], f.filename ?? 'slides.pptx', { type: f.mediaType });
+      const content = await extractLocally(file);
+      if (!content?.trim()) throw new Error('PowerPoint has no readable text. Export it as PDF to include images and diagrams.');
+      const name = file.name.replace(/"/g, "'");
+      text += `<doc name="${name}">\n[PowerPoint text only; slide images and diagrams were not read.]\n${content.slice(0, 300000)}\n</doc>\n\n`;
+      continue;
+    }
     if (f.mediaType !== "application/pdf") { keep.push(f); continue; }
     try {
       const { extractText, getDocumentProxy } = await import("unpdf");
