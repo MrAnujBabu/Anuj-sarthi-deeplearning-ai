@@ -37,3 +37,4 @@
 - Browser quota failures preserve prior threads and return a save failure; media cleanup replaces attachments/extracted documents with markers and clears IndexedDB only after thread cleanup, keeping answers and revision cards intact.
 - Admin link reads reuse the bounded student document reader; file paths are content-addressed to avoid repeat uploads, and memory saves compare content/normalized URLs before inserting.
 - Admin imports share parsers/Sheets auth; MIME puts linked PDFs in PDF view. Drive needs authorization; PYQs require sourced evidence. PPTX reads text only. Admin/quiz share a device label preference; submissions stay A–D to preserve grading.
+- Voice mode uses a persistent /api/live WebSocket relay (src/lib/live-relay.server.ts) to Lovable AI Gateway Live; GPT Live speaks, Claude answers delegated doubts server-side, keeping the key on the server.
