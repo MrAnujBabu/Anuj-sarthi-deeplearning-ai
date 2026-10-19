@@ -104,7 +104,11 @@ export function applyResults(cards: Card[], results: CardResult[], now: number):
 export function recordResults(messageId: string, results: CardResult[]) {
   if (!results.length) return;
   const seenKey = "snapsolve.cards.seen";
-  const seen: string[] = JSON.parse(localStorage.getItem(seenKey) ?? "[]");
+  let seen: string[] = [];
+  try {
+    const parsed: unknown = JSON.parse(localStorage.getItem(seenKey) ?? '[]');
+    if (Array.isArray(parsed)) seen = parsed.filter((id): id is string => typeof id === 'string');
+  } catch { /* Recover a damaged message index without crashing the tutor. */ }
   if (seen.includes(messageId)) return;
   save(applyResults(loadCards(), results, Date.now()));
   localStorage.setItem(seenKey, JSON.stringify([...seen, messageId].slice(-500)));
