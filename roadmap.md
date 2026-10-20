@@ -123,3 +123,10 @@
 ## Workspace move #4 (18:31 UTC)
 - [x] Reconnect Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
 - [x] Update Vercel env keys (LOVABLE_API_KEY + 3 connector keys) and redeploy
+
+## Test + optimise (18:41 UTC)
+- [x] Save all finished work to GitHub before testing (user asked 18:41)
+- [ ] Measure answer-check + web search speed (Perplexity, Parallel, Firecrawl), make it faster without losing accuracy
+- [ ] Voice call: connection must not drop — test a real call (fake mic), network drop + recovery
+- [ ] Adversarial tests: bad inputs / injection / huge payloads on every AI route, fix what breaks
+- [ ] Final report: rating + pros/cons
