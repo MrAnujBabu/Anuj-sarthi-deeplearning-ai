@@ -13,7 +13,7 @@ export function toUIMessages(history: TalkMessage[]) {
 
 /** Keep spoken answers short; drop hidden tags and markdown that sound bad aloud. */
 export function speakableText(text: string) {
-  return text.replace(/<!--[\s\S]*?-->/g, ' ').replace(/\$+/g, ' ').replace(/[#*_`>|]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 1500);
+  return text.replace(/```[\s\S]*?(```|$)/g, ' ').replace(/<[^>]+>/g, ' ').replace(/<!--[\s\S]*?-->/g, ' ').replace(/\$+/g, ' ').replace(/[#*_`>|]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 1500);
 }
 
 /** Read the tutor's streamed answer from /api/chat and report text as it arrives. */
