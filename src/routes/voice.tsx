@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import { ArrowLeft, Download, FileText, GraduationCap, Globe, Mic, MicOff, Paperclip, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
+import { ArrowLeft, Download, FileText, GraduationCap, Globe, Mic, MicOff, Paperclip, Pause, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -86,8 +86,24 @@ function LiveVoicePage() {
   const importInput = useRef<HTMLInputElement>(null);
   const turnRef = useRef<Record<"user" | "assistant", { id: string; at: number } | null>>({ user: null, assistant: null });
 
+  // Auto-reconnect when the network drops an established call (max 2 tries).
+  const wasLive = useRef(false);
+  const dropRetries = useRef(0);
+  const dropReconnect = useRef(false);
+
   const onEvent = useCallback((event: LiveEvent) => {
     dispatchQuiz(event);
+    if (event.type === 'app.connected') { wasLive.current = true; dropRetries.current = 0; }
+    if (event.type === 'app.closed') wasLive.current = false;
+    if (event.type === 'app.dropped') {
+      if (wasLive.current && dropRetries.current < 2) {
+        dropRetries.current += 1;
+        dropReconnect.current = true;
+        wasLive.current = false;
+        setReconnecting(true);
+        toast("Connection tooti — call apne aap reconnect ho rahi hai…");
+      }
+    }
     if (event.type === 'app.call.record') {
       setCallId(typeof event['callId'] === 'string' ? event['callId'] : '');
       setCreated(false); setUsage(null); setFinalUsage(false);
@@ -148,7 +164,38 @@ function LiveVoicePage() {
   const voice = useLiveVoice({ onEvent, prefs });
   const canStart = voice.status === "idle" || voice.status === "closed";
   const live = voice.status === "connected";
-  const locked = !canStart;
+  // Settings stay editable during a call; a change reconnects the call with the new settings and keeps the conversation.
+  const locked = voice.status === "connecting" || voice.status === "stopping";
+  const settingsKey = `${choice}|${quiz}|${matchQ}|${assertionQ}|${deep}|${search}|${files.map((f) => f.name).join(",")}`;
+  const appliedKey = useRef(settingsKey);
+  const restartWanted = useRef(false);
+  const [reconnecting, setReconnecting] = useState(false);
+  useEffect(() => {
+    if (canStart) { appliedKey.current = settingsKey; return; }
+    if (!live || settingsKey === appliedKey.current) return;
+    const t = setTimeout(() => {
+      appliedKey.current = settingsKey;
+      restartWanted.current = true;
+      setReconnecting(true);
+      toast("Settings badli — call naye settings ke saath reconnect ho rahi hai…");
+      voice.stop();
+    }, 600);
+    return () => clearTimeout(t);
+  }, [settingsKey, live, canStart]);
+  useEffect(() => {
+    if (!canStart || !restartWanted.current) return;
+    restartWanted.current = false;
+    const t = setTimeout(() => { void Promise.resolve(voice.start()).finally(() => setReconnecting(false)); }, 300);
+    return () => clearTimeout(t);
+  }, [canStart]);
+  // Reconnect after a network drop: the conversation rows stay, so the tutor
+  // picks up with the same context once the new call connects.
+  useEffect(() => {
+    if (!canStart || !dropReconnect.current) return;
+    dropReconnect.current = false;
+    const t = setTimeout(() => { void Promise.resolve(voice.start()).finally(() => setReconnecting(false)); }, 800);
+    return () => clearTimeout(t);
+  }, [canStart]);
   const quizVisible = quiz && !!(question || pending);
   const showQuestion = quizVisible && quizView === 'question';
   const displayedQuestion = pending ?? question;
@@ -212,7 +259,7 @@ function LiveVoicePage() {
     }
   };
 
-  const status = voice.status === "connecting" ? "Connecting…" : live ? (thinking ? "Soch raha hai…" : voice.muted ? "Muted" : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
+  const status = reconnecting ? "Reconnecting…" : voice.status === "connecting" ? "Connecting…" : live ? (voice.paused ? "Paused" : thinking ? "Soch raha hai…" : voice.muted ? "Muted" : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
 
   return (
     <main className="mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6">
@@ -241,7 +288,7 @@ function LiveVoicePage() {
           <SelectTrigger aria-label="Voice" className="w-full"><SelectValue /></SelectTrigger>
           <SelectContent>{VOICE_CHOICES.map((c) => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
         </Select>
-        {locked && <p className="w-full text-xs text-muted-foreground">Ye options call ke dauran fixed hain — badalne ke liye End karke dobara Start karo.</p>}
+        {!canStart && <p className="w-full text-xs text-muted-foreground">Call chalte hue bhi badal sakte ho — call apne aap naye settings ke saath reconnect hogi, baat-cheet wahi se aage chalegi.</p>}
         <Select value={textSize} onValueChange={(v) => setTextSize(v as StudyTextSize)}><SelectTrigger aria-label="Voice transcript text size"><SelectValue /></SelectTrigger><SelectContent>{STUDY_TEXT_SIZES.map((size) => <SelectItem key={size} value={size}>{size} px</SelectItem>)}</SelectContent></Select>
         <QuizTimerSettings />
         <div className="flex gap-2 border-t pt-3">        <Button variant="ghost" size="icon" className="size-9" aria-label="Export conversation" title="Export conversation (.md)" onClick={exportCall}><Download className="size-4" /></Button>
@@ -347,10 +394,16 @@ function LiveVoicePage() {
           ) : (
             <>
               <div className="flex flex-col items-center gap-1">
-                <Button type="button" size="icon" variant={voice.muted ? "secondary" : "outline"} className="voice-dock-btn size-14 rounded-full" disabled={!live} aria-pressed={voice.muted} onClick={() => voice.setMuted(!voice.muted)} aria-label={voice.muted ? "Unmute" : "Mute"}>
+                <Button type="button" size="icon" variant={voice.muted ? "secondary" : "outline"} className="voice-dock-btn size-14 rounded-full" disabled={!live || voice.paused} aria-pressed={voice.muted} onClick={() => voice.setMuted(!voice.muted)} aria-label={voice.muted ? "Unmute" : "Mute"}>
                   {voice.muted ? <MicOff className="size-6" /> : <Mic className="size-6" />}
                 </Button>
                 <span className="text-[11px] text-muted-foreground">{voice.muted ? "Unmute" : "Mute"}</span>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <Button type="button" size="icon" variant={voice.paused ? "secondary" : "outline"} className="voice-dock-btn size-14 rounded-full" disabled={!live} aria-pressed={voice.paused} onClick={() => voice.setPaused(!voice.paused)} aria-label={voice.paused ? "Resume call" : "Pause call"} title={voice.paused ? "Resume — wahi se aage" : "Pause — mic aur awaaz ruk jayegi"}>
+                  {voice.paused ? <Play className="size-6" /> : <Pause className="size-6" />}
+                </Button>
+                <span className="text-[11px] text-muted-foreground">{voice.paused ? "Resume" : "Pause"}</span>
               </div>
               <div className="flex flex-col items-center gap-1">
                 <Button type="button" size="lg" variant="destructive" className="voice-dock-btn h-14 min-w-36 rounded-full px-8 text-base" disabled={voice.status === "stopping"} onClick={voice.stop}>

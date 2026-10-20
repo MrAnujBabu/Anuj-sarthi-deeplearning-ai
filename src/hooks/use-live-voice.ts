@@ -22,6 +22,7 @@ type LiveState = {
   finalized: boolean | null;
   muted: boolean;
   playbackBlocked: boolean;
+  paused: boolean;
 };
 
 const initialState: LiveState = {
@@ -31,6 +32,7 @@ const initialState: LiveState = {
   finalized: null,
   muted: false,
   playbackBlocked: false,
+  paused: false,
 };
 
 export function useLiveVoice(
@@ -118,6 +120,9 @@ export function useLiveVoice(
   const setMuted = useCallback((muted: boolean) => {
     if (controller.current?.setMuted(muted)) setCall((previous) => ({ ...previous, muted }));
   }, []);
+  const setPaused = useCallback((paused: boolean) => {
+    if (controller.current?.setPaused(paused)) setCall((previous) => ({ ...previous, paused }));
+  }, []);
   const resumePlayback = useCallback(() => {
     void controller.current?.resumePlayback();
   }, []);
@@ -125,7 +130,7 @@ export function useLiveVoice(
     return controller.current?.submitAnswer(answer, questionId) ?? false;
   }, []);
 
-  return { ...call, audioRef, start, stop, setMuted, resumePlayback, submitAnswer };
+  return { ...call, audioRef, start, stop, setMuted, setPaused, resumePlayback, submitAnswer };
 }
 
 type LiveOptions = {
@@ -150,6 +155,7 @@ function createLiveVoice(options: LiveOptions) {
   let answerReceived = false;
   let finalized = false;
   let muted = false;
+  let paused = false;
   const quizPlayback = new VoiceQuizPlayback();
   let audioContext: AudioContext | undefined;
   let analyser: AnalyserNode | undefined;
@@ -231,8 +237,21 @@ function createLiveVoice(options: LiveOptions) {
     if (state !== "starting" && state !== "active") return false;
     muted = value;
     microphone?.getAudioTracks().forEach((track) => {
-      track.enabled = !muted;
+      track.enabled = !muted && !paused;
     });
+    return true;
+  }
+
+  // Pause keeps the call connected but silences both sides: the microphone
+  // stops sending and the tutor's audio is paused locally. Resume restores both.
+  function setPaused(value: boolean) {
+    if (state !== "active") return false;
+    paused = value;
+    microphone?.getAudioTracks().forEach((track) => {
+      track.enabled = !muted && !paused;
+    });
+    if (paused) options.audio.pause();
+    else void resumePlayback();
     return true;
   }
 
@@ -251,6 +270,7 @@ function createLiveVoice(options: LiveOptions) {
   function fail(message: string) {
     if (state === "stopping" || state === "closed") return;
     options.onEvent({ type: "app.error", error: { message } });
+    options.onEvent({ type: "app.dropped" });
     stop();
   }
 
@@ -274,11 +294,14 @@ function createLiveVoice(options: LiveOptions) {
     return peer?.connectionState === "connected" && channel?.readyState === "open";
   }
 
+  // Heartbeat every second once media is ready; the call only fails after 8
+  // seconds without any ack, so one delayed or lost ack on mobile data no
+  // longer kills the call.
   function pulse() {
     if (state !== "active") return;
-    if (Date.now() - lastAck >= 5000) return fail("Voice control connection lost");
-    if (Date.now() - lastHeartbeat >= 5000) return fail("Voice media connection lost");
+    if (Date.now() - lastAck >= 8000) return fail("Voice control connection lost");
     if (!mediaReady()) return;
+    if (Date.now() - lastHeartbeat < 1000) return;
     try {
       send({ type: "gateway.heartbeat" });
       lastHeartbeat = Date.now();
@@ -466,6 +489,11 @@ function createLiveVoice(options: LiveOptions) {
               event.usage.seconds >= 0;
             reportUnexpectedClosure(event.reason);
             options.onEvent(event);
+            // Network-side endings can be retried with a fresh call; inactivity
+            // and duration limits are intentional and stay ended.
+            if (["startup_timeout", "initial_heartbeat_timeout", "heartbeat_timeout", "gateway_shutdown"].includes(event.reason ?? "")) {
+              options.onEvent({ type: "app.dropped" });
+            }
             return release();
           } else if (
             event.type === "gateway.session.closing" ||
@@ -490,6 +518,7 @@ function createLiveVoice(options: LiveOptions) {
       socket.onclose = () => {
         if (state !== "stopping" && state !== "closed") {
           options.onEvent({ type: "app.error", error: { message: "Voice control connection closed" } });
+          options.onEvent({ type: "app.dropped" });
         }
         release();
       };
@@ -504,5 +533,5 @@ function createLiveVoice(options: LiveOptions) {
     catch { fail("The quiz answer could not be sent."); return false; }
   }
 
-  return { start, stop, setMuted, resumePlayback, submitAnswer };
+  return { start, stop, setMuted, setPaused, resumePlayback, submitAnswer };
 }
