@@ -1,0 +1,14 @@
+import { describe, expect, it } from 'vitest';
+import { usesTalkTurns, speakableText } from './talk-turn';
+
+describe('talk-and-listen voice', () => {
+  it('uses talk turns on the Vercel site', () => {
+    expect(usesTalkTurns('https://snapsolveanuj.vercel.app')).toBe(true);
+  });
+  it('keeps the live call on other hosts', () => {
+    expect(usesTalkTurns('https://project--069fc516-1b8b-4ac5-b64e-37250cf7e8bb.lovable.app')).toBe(false);
+  });
+  it('never reads hidden tags aloud', () => {
+    expect(speakableText('Sahi! <!--card {"q":"x"}--> **Score: 1/1**')).toBe('Sahi! Score: 1/1');
+  });
+});
