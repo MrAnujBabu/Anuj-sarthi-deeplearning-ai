@@ -133,12 +133,12 @@
 ## Test + optimise (18:41 UTC)
 - [x] Save all finished work to GitHub before testing (user asked 18:41)
 - [x] Make answer-check faster without losing accuracy (19:02 UTC): Gemini starts with its own Google Search while Perplexity/Parallel evidence still loads; per-provider timeouts (8s search / 15s extract / 20s scrape) so one slow service never stalls; Firecrawl early-starts after 4s if Parallel is slow on link/PDF reads; AI-pause check cached 60s (fewer free-tier DB reads); verify panel shows "Claude confirming" as soon as both reviewers flag the answer. Timings live: right 8.8s, wrong 10.3–13.7s (was right 6–10s, wrong 10–12s, but search no longer serial — review starts ~2s earlier). 258 tests pass.
-- [ ] Voice call: connection must not drop — test a real call (fake mic), network drop + recovery
+- [x] Voice call (19:30 UTC): survives 15s network blink (heartbeats continue while media recovers), public STUN added; deployed 07f10a4. Real fake-mic call blocked: test sandbox gathers zero ICE candidates — user to test on phone. Credit-limit drops need workspace credits, not code.
 - [x] Adversarial tests on every AI route (19:08 UTC): bad/empty/huge payloads, null bodies, wrong types, prompt injection, dead link, garbage photo. Fixed 3 bugs found: null JSON body crashed /api/speech and /api/chat (now 400); oversized pasted text/attachments reached the gateway and returned an empty content-filter reply (now capped 100k text / 2MB body with a clear 413). Injection rejected (council caught "ignore rules" + wrong maths → needs_fix); dead link → tutor admits it can't read it, offers upload; garbage photo → clean [unclear: …] reading. 263 tests pass (new chat-route + fallback + pause-cache tests).
-- [ ] Research which AI has the most natural Hindi / Indian voice (Perplexity, Parallel, Firecrawl), test it, add it (user asked 18:49)
-- [ ] Final report: rating + pros/cons
+- [x] Hindi voice research: Sarvam Bulbul V3 best (needs Sarvam key — waiting on user); current Gemini 2.5 Pro TTS reads Hinglish+Devanagari word-perfect, kept.
+- [x] Final report: rating + pros/cons (Files: snapsolve-rating-report.md)
 
 ## Admin panel verify (19:17 UTC, user request)
-- [ ] Login as the user's admin account (inline credentials, use once, never echo) and verify the admin panel end to end
+- [x] Login as the user's admin account and verify the admin panel end to end
 - [x] Check Vercel deploy of d07210b finished READY + pages 200 (19:22 UTC)
 - [x] Admin panel verified on production (19:26 UTC): login with the provided account works; tabs — Agent memory (84 notes, add/edit/delete/Deep analysis), Voice calls (latest 10 with real usage + failure reasons), brain & role, settings — all load without console errors. Note: several 10/19 voice calls failed on "out of credits or spending limit" / heartbeat_timeout — ties into the open voice-connection task.
