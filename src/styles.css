@@ -219,3 +219,10 @@
 .assistant-answer [data-streamdown="table-wrapper"], .assistant-answer div:has(> table) { overflow-x: auto; max-width: 100%; }
 .assistant-answer blockquote { border-left: 3px solid var(--primary); background: var(--muted); padding: .5rem .75rem; margin: .5rem 0; border-radius: 0 var(--radius) var(--radius) 0; font-style: normal; }
 .assistant-answer blockquote p { margin: .2rem 0; }
+/* Voice transcript study notes: compact section headings and lists */
+.voice-caption .assistant-answer h4 { font-size: 1em; font-weight: 600; line-height: 1.4; margin: .9rem 0 .25rem; color: var(--foreground); }
+.voice-caption .assistant-answer h4:first-child { margin-top: 0; }
+.voice-caption .assistant-answer ul { padding-left: 1.2rem; margin: .25rem 0; }
+.voice-caption .assistant-answer li { margin: .2rem 0; }
+.voice-caption .assistant-answer blockquote ul { padding-left: 1rem; }
+.voice-caption .assistant-answer hr { margin: 1rem 0; border-color: var(--border); }

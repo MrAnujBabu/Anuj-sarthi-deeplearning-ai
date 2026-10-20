@@ -1,40 +1,152 @@
 /**
- * Turn a spoken tutor reply (one long run-on paragraph) into readable markdown:
- * verdict in bold, the next question on its own line, options as a list, and
- * the explanation split into short paragraphs. Display only — speech is unchanged.
+ * Turn a spoken tutor reply (one long run-on paragraph) into structured study notes:
+ * result heading, highlighted correct answer, explanation bullets, NCERT and memory-tip
+ * callouts, Match tables, Assertion–Reason boxes and the next question as its own card
+ * with options listed A–D. Display only — the spoken audio is unchanged.
  */
 export function formatVoiceReply(raw: string): string {
   let t = raw.replace(/\s+/g, " ").trim();
   if (!t) return t;
+  t = stripFillers(t);
+
+  const marker = t.match(/((?:Chalo,?\s*)?(?:(?:agla|next)\s+(?:prashn|prashna|question|sawal|sawaal)|(?:question|prashn|sawal)\s+(?:number|no\.?)\s*\w+)[^.?!]*[.?!]?)/i);
+  const hasOptions = OPTION_START.test(t);
+  let feedback = t;
+  let next = "";
+  let label = "";
+  if (marker && marker.index !== undefined) {
+    feedback = t.slice(0, marker.index).trim();
+    next = t.slice(marker.index + marker[0].length).trim();
+    label = marker[0];
+  } else if (hasOptions) {
+    feedback = "";
+    next = t;
+  }
+
+  const parts: string[] = [];
+  if (feedback) parts.push(formatFeedback(feedback));
+  if (next || label) parts.push(formatQuestion(next, label, !!feedback));
+  return parts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+const OPTION_START = /(?:^|[.?!:|]\s*|\n\s*)(?:Options?\s+)?\(?A\)?\s*[:)]\s+\S/;
+const NUMBERS: Record<string, string> = { ek: "1", one: "1", do: "2", two: "2", teen: "3", three: "3", char: "4", chaar: "4", four: "4", paanch: "5", panch: "5", five: "5", chhe: "6", che: "6", six: "6", saat: "7", seven: "7", aath: "8", eight: "8", nau: "9", nine: "9", das: "10", ten: "10" };
+
+function stripFillers(t: string): string {
+  let prev = "";
+  while (prev !== t) {
+    prev = t;
+    t = t
+      .replace(/^(?:Hmm+|Umm+|Uh+|Achha|Accha|Okay|Ok|Haan)[,.!]?\s+/i, "")
+      .replace(/^Ek (?:second|minute|sec)[,.!]?\s*(?:main\s+)?(?:check|dekh)\s*(?:kar)?(?:ti|ta)\s+hoon[.!]?\s*/i, "")
+      .replace(/^Ek (?:second|minute|sec)[,.!]\s*/i, "");
+  }
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+function sentences(t: string): string[] {
+  return t.split(/(?<=[.?!]["”']?)\s+(?=["“(]?[A-Z0-9])/).map((s) => s.trim()).filter(Boolean);
+}
+
+const emphasize = (s: string) => s.replace(/(["“])([^"”]{1,40})(["”])/g, "**$1$2$3**");
+
+/** "X mein teen type hote hain: a, b, aur c." → intro line + nested list. */
+function expandList(s: string, indent: string): string | null {
+  const m = s.match(/^(.{3,140}?):\s+(.+?)[.]?$/);
+  if (!m) return null;
+  const items = (m[2] ?? "").split(/\s*,\s*(?:aur|and|ya|or)?\s*|\s+(?:aur|and)\s+/i).map((x) => x.trim()).filter(Boolean);
+  if (items.length < 3 || items.some((x) => x.split(" ").length > 5)) return null;
+  return `${m[1]}:\n${items.map((x) => `${indent}- ${emphasize(x)}`).join("\n")}`;
+}
+
+function callout(s: string): string | null {
+  const box = (title: string, body: string) => `> ${title} ${expandList(body, "> ") ?? emphasize(body)}`;
+  if (/^NCERT\b|\bNCERT (?:ke|ki|ka|mein|me|according|says)\b/i.test(s)) return box("📚 **NCERT:**", s.replace(/^NCERT\s+(?:ke|ki)\s+(?:mutabik|hisaab se|anusaar),?\s*/i, ""));
+  if (/\b(?:yaad rakho|yaad rakhna|trick|tip|dhyan rakho|remember|mnemonic)\b/i.test(s)) return box("💡 **Yaad rakho:**", s.replace(/^(?:Isko\s+)?(?:pehchanne ka tareeka\s+)?(?:yaad rakho|yaad rakhna|remember)\s*[:,]?\s*/i, ""));
+  return null;
+}
+
+function formatFeedback(t: string): string {
+  const out: string[] = [];
+  const list = sentences(t);
+  const vIdx = list.findIndex((s) => /\b(?:Sahi jawab|Correct answer|Right answer|Sahi answer)\b/i.test(s));
+  let rest = list;
+  if (vIdx >= 0) {
+    const reaction = list.slice(0, vIdx).join(" ");
+    const verdict = list[vIdx] ?? "";
+    const wrong = /chook|galat|wrong|incorrect|nahi,? sahi|not correct|close tha/i.test(reaction + " " + verdict);
+    const right = !wrong && /shabash|bilkul|sahi (?:jawab )?diya|correct|great|well done|excellent|perfect|zabardast|badhiya/i.test(reaction);
+    const heading = reaction || (wrong ? "Galat jawab" : right ? "Sahi jawab!" : "Result");
+    out.push(`#### ${wrong ? "❌" : right ? "🎉" : "📝"} ${heading.replace(/[.!]+$/, "")}`);
+    const vm = verdict.match(/(Sahi jawab|Correct answer|Right answer|Sahi answer)\s+(?:option\s+)?\(?([A-D])\)?\s*(?:hai|is)?\s*[—–:-]?\s*([^.]*)\.?\s*(.*)$/i);
+    if (vm) {
+      out.push(`> **✅ ${vm[1]}: (${vm[2]})${vm[3]?.trim() ? ` — ${vm[3].trim()}` : ""}**`);
+      rest = [...(vm[4]?.trim() ? [vm[4].trim()] : []), ...list.slice(vIdx + 1)];
+    } else {
+      out.push(`> **✅ ${verdict}**`);
+      rest = list.slice(vIdx + 1);
+    }
+  }
+
+  const bullets = vIdx >= 0 || (rest.length >= 4 && rest.join(" ").length / rest.length > 45);
+  const body: string[] = [];
+  let para: string[] = [];
+  const flush = () => { if (para.length) { body.push(para.join(" ")); para = []; } };
+  for (const s of rest) {
+    const c = callout(s);
+    if (c) { flush(); body.push(c); continue; }
+    const l = expandList(s, bullets ? "  " : "");
+    if (bullets) body.push(`- ${l ?? emphasize(s)}`);
+    else if (l) { flush(); body.push(l); }
+    else { para.push(emphasize(s)); if (para.length === 2) flush(); }
+  }
+  flush();
+  if (body.length) {
+    if (vIdx >= 0) out.push("#### 📘 Explanation");
+    // Keep consecutive bullets as one list; other blocks get blank lines around them.
+    out.push(body.reduce((acc, b, i) => acc + (i === 0 ? "" : b.startsWith("- ") && body[i - 1]?.startsWith("- ") ? "\n" : "\n\n") + b, ""));
+  }
+  return out.join("\n\n");
+}
+
+function formatQuestion(t: string, label: string, separate: boolean): string {
+  const out: string[] = [];
+  if (separate) out.push("---");
+  const num = label.match(/(?:number|no\.?|question|prashn|sawal)\s*(\d+|[a-z]+)\s*[.?!]?$/i)?.[1]?.toLowerCase();
+  const n = num && (/^\d+$/.test(num) ? num : NUMBERS[num]);
+  out.push(`#### ❓ ${n ? `Question ${n}` : label ? "Agla sawal" : "Question"}`);
+  if (!t) return out.join("\n\n");
 
   t = matchTable(t);
+  const opt = t.search(OPTION_START);
+  let stem = opt >= 0 ? t.slice(0, opt + (/^[.?!:|]/.test(t.slice(opt)) ? 1 : 0)).trim() : t;
+  const optText = opt >= 0 ? t.slice(opt).replace(/^[.?!:|]?\s*/, "") : "";
 
-  // Options spoken as "Option A: X. B: Y. C: Z. D: W." → one list line each.
-  t = t.replace(/\s*(?:Option\s+)?\(?([A-D])\)?\s*[:)]\s+(?=\S)/g, (m, l: string, off: number, s: string) => {
-    const before = s.slice(Math.max(0, off - 2), off);
-    return /[.?!:]\s?$|^$/.test(before) || off === 0 ? `\n- **(${l})** ` : m;
-  });
+  stem = stem.replace(/^Options?\s*[:\-]?\s*$/i, "").replace(/\s*Options?\s*[:\-]?\s*$/i, "");
+  const ar = stem.match(/^(.*?)Assertion\s*(?:\(A\))?\s*[:\-]\s*(.+?)\s*Reason\s*(?:\(R\))?\s*[:\-]\s*(.+)$/i);
+  if (ar) {
+    if (ar[1]?.trim()) out.push(`**${ar[1].trim()}**`);
+    out.push(`> **Assertion (A):** ${ar[2]?.trim()}\n>\n> **Reason (R):** ${ar[3]?.trim()}`);
+  } else if (stem) {
+    out.push(stem.split(/\n{2,}/).map((b) => b.trim()).filter(Boolean).map((b) => (b.startsWith("|") ? b : `**${b}**`)).join("\n\n"));
+  }
 
-  // Verdict / answer line in bold.
-  t = t.replace(/(Sahi jawab|Correct answer|Right answer|Answer)\s+(?:option\s+)?\(?([A-D])\)?\s*(?:hai)?\s*[—–-]?\s*([^.\n]*)/i, (_m, a: string, l: string, rest: string) =>
-    `**✅ ${a}: (${l})${rest ? ` — ${rest.trim()}` : ""}**`);
-
-  // Next question on its own block.
-  t = t.replace(/\s*((?:Chalo,?\s*)?(?:agla|next)\s+(?:prashn|question|sawal)[^.?!]*[.?!]?)\s*/i, "\n\n---\n\n**$1**\n\n");
-
-  // Split remaining long prose into short paragraphs (every 2 sentences), outside list lines.
-  return t
-    .split("\n")
-    .map((line) => {
-      if (line.startsWith("- ") || line.startsWith("**") || line === "---" || line.length < 220) return line;
-      const sentences = line.match(/[^.?!]+[.?!]+["”]?\s*|[^.?!]+$/g) ?? [line];
-      const out: string[] = [];
-      for (let i = 0; i < sentences.length; i += 2) out.push(sentences.slice(i, i + 2).join("").trim());
-      return out.join("\n\n");
-    })
-    .join("\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
+  if (optText) {
+    const segs = optText.split(/(?:^|(?<=[.?!,;]\s*)|\s+)(?:Options?\s+)?\(?([A-D])\)?\s*[:)]\s+/).slice(1);
+    const lines: string[] = [];
+    let prompt = "";
+    for (let i = 0; i < segs.length; i += 2) {
+      let body = (segs[i + 1] ?? "").trim();
+      if (i + 2 >= segs.length) {
+        const cut = body.match(/^(.+?[.?!])\s+(.+)$/);
+        if (cut && !/^[a-d]-/i.test(cut[2] ?? "")) { body = cut[1] ?? body; prompt = cut[2] ?? ""; }
+      }
+      lines.push(`- **(${segs[i]})** ${body.replace(/[.]$/, "")}`);
+    }
+    out.push(lines.join("\n"));
+    if (prompt) out.push(`*🎤 ${prompt}*`);
+  }
+  return out.join("\n\n");
 }
 
 /** "Column I: a. X, b. Y … Column II: i. P, ii. Q …" → markdown table. */
