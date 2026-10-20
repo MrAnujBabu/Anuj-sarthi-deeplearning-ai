@@ -13,6 +13,7 @@ import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 import { loadTeacherMemory, loadAgentBrain } from '@/lib/memory.server';
 import { NCERT_REFERENCE_INSTRUCTION } from '@/lib/agent/ncert-reference-prompt';
+import { isAiCancellation } from '@/lib/ai/cancellation';
 
 const SYSTEM = `You are "SnapSolve", a NEET 2027 doubt-solving tutor for Indian students (Physics, Chemistry, Biology).
 
@@ -78,6 +79,7 @@ export const Route = createFileRoute("/api/chat")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        if (request.signal.aborted) return new Response(null, { status: 499 });
         const apiKey = process.env["LOVABLE_API_KEY"];
         if (!apiKey) {
           return new Response(encodeAiFailure({ kind: 'configuration', message: 'AI is not configured for this workspace. Ask the workspace owner to restore the Lovable AI connection.', status: 503 }), { status: 503 });
@@ -85,7 +87,8 @@ export const Route = createFileRoute("/api/chat")({
         let body: { messages?: UIMessage[]; mode?: string; model?: string; effort?: string; search?: boolean };
         try {
           body = await request.json();
-        } catch {
+        } catch (error) {
+          if (isAiCancellation(error, request.signal)) return new Response(null, { status: 499 });
           return Response.json({ error: "Invalid request." }, { status: 400 });
         }
         const messages = body.messages;
@@ -154,6 +157,10 @@ export const Route = createFileRoute("/api/chat")({
           maxOutputTokens: selected.id === DEFAULT_MODEL ? CLAUDE_OUTPUT_BUDGET : 12000,
           maxRetries: 0,
           abortSignal: request.signal,
+          // SDK defaults to console.error, which surfaces expected Stop as a preview crash.
+          onError: ({ error }) => {
+            if (!isAiCancellation(error, request.signal)) console.error('Tutor stream failed', error);
+          },
           onStepFinish: ({ rawFinishReason }) => {
             if (rawFinishReason === 'refusal') throw new Error('[AI_DENIED] The model declined this request. This request has stopped.');
           },
@@ -167,9 +174,11 @@ export const Route = createFileRoute("/api/chat")({
             const { value, done } = await handshake.read();
             if (done) break;
             if (value.type === 'error') {
+              if (isAiCancellation(value.error, request.signal)) return new Response(null, { status: 499 });
               const e = value.error as { message?: string; statusCode?: number };
               return new Response(e.message?.startsWith('[AI_') ? e.message : 'The tutor could not start this answer.', { status: e.statusCode ?? 500 });
             }
+            if (value.type === 'abort') return new Response(null, { status: 499 });
             if (value.type === 'start-step') break;
           }
         } finally {
@@ -179,6 +188,7 @@ export const Route = createFileRoute("/api/chat")({
           originalMessages: messages,
           sendReasoning: true,
           onError: (error) => {
+            if (isAiCancellation(error, request.signal)) return 'Response stopped.';
             console.error("Tutor request failed", error instanceof Error ? error.message : "Unknown error");
             if (error instanceof Error && error.message.startsWith("[AI_")) return error.message;
             const status = (error as { statusCode?: number })?.statusCode;
@@ -189,6 +199,7 @@ export const Route = createFileRoute("/api/chat")({
         });
         return withLovableAiGatewayRunIdHeader(response, gateway);
         } catch (error) {
+          if (isAiCancellation(error, request.signal)) return new Response(null, { status: 499 });
           const e = error as { message?: string; statusCode?: number };
           console.error('Tutor startup failed', e.message ?? 'Unknown error');
           return new Response(e.message?.startsWith('[AI_') ? e.message : 'The tutor could not start. Your saved study is still available.', { status: e.statusCode ?? 503 });

@@ -96,7 +96,11 @@ export async function withLovableAiGatewayRunIdHeader(
   }
 
   const reader = response.body.getReader();
-  const firstChunk = reader.read();
+  // Attach rejection handling immediately, before waiting for upstream headers.
+  const firstChunk = reader.read().then(
+    value => ({ ok: true as const, value }),
+    error => ({ ok: false as const, error }),
+  );
   const runId = options.waitForUpstreamHeaders === false ? gateway.getRunId() : await gateway.waitForRunId();
   const headers = getLovableAiGatewayResponseHeaders(undefined, response.headers);
   new Headers(init).forEach((value, name) => headers.set(name, value));
@@ -105,7 +109,9 @@ export async function withLovableAiGatewayRunIdHeader(
   const body = new ReadableStream({
     async start(controller) {
       try {
-        const first = await firstChunk;
+        const firstResult = await firstChunk;
+        if (!firstResult.ok) throw firstResult.error;
+        const first = firstResult.value;
         if (first.done) {
           controller.close();
           return;

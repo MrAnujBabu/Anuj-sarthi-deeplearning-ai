@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { VoiceQuizPlayback } from '@/lib/voice-quiz-playback';
+import { liveEndpoint } from '@/lib/live-endpoint';
 
 export type LiveEvent = {
   type: string;
@@ -68,9 +69,7 @@ export function useLiveVoice(
     }
     let endpoint: URL;
     try {
-      endpoint = new URL(latest.current.url ?? "/api/live", window.location.href);
-      if (endpoint.protocol === "https:") endpoint.protocol = "wss:";
-      if (endpoint.protocol === "http:") endpoint.protocol = "ws:";
+      endpoint = new URL(liveEndpoint(window.location.href, latest.current.url));
     } catch {
       setCall((previous) => ({ ...previous, error: "Invalid voice connection URL." }));
       return;

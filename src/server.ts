@@ -48,7 +48,7 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
-      if (new URL(request.url).pathname === "/api/live") {
+      if (["/api/live", "/api/public/live"].includes(new URL(request.url).pathname)) {
         return handleLiveRequest(request);
       }
       const handler = await getServerEntry();

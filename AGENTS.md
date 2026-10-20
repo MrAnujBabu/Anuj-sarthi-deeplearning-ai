@@ -14,11 +14,11 @@
 - Admin document retention defaults to extracted text only; originals are uploaded only when retained or needed for reading, with temporary uploads cleaned on failure/success to avoid needless Cloud growth.
 - Mount TooltipProvider around the root outlet so portalled controls never crash on a missing provider.
 - Sidebar collapse stays inside DoubtSidebar with a persistent visible reopen control; composer controls use fixed-size AI Elements buttons and a two-track footer to prevent overlap.
-- SnapSolve is the repository-root application; keep the previous Python application under legacy/ so hosting detection selects the web app.
-- Use vite.vercel.config.ts to pin Nitro's Vercel preset for external deployments; preserve vite.config.ts for Lovable's own deployment target.
+- SnapSolve stays at repo root, Python under legacy/, for correct hosting detection.
+- Separate hosting configs; encrypt Vercel secrets, refresh/redeploy after moves; auto-deploy needs GitHub App. Vercel voice uses a published Worker relay with exact-origin checks, not serverless sockets.
 - Sidebar Settings shares device appearance/quiz preferences; timer overrides keep the cached admin default; physical numpad maps to A–D and dialogs block shortcuts to prevent accidental answers.
 - PCB outlines are per-chapter admin memory (Botany/Zoology mapped to Biology, original branch and provenance kept); never claim official syllabus verification.
-- AI tutor calls run only in the `/api/chat` server route (Claude via Lovable AI Gateway Messages API, streamed); keeps the key and prompt server-side.
+- Chat uses `/api/chat` (Claude/Gateway Messages, streamed), keeping keys/prompts server-side. Shared cancellation detection treats Stop as 499 before streaming, not a crash; header wrappers handle pending reads immediately.
 - Doubts use browser threads at `/doubt/$threadId`; downscale photos, throttle streamed renders, and await IndexedDB PDF writes before saving pointers to avoid jank and broken backups.
 - Prompt forms disable controls until hydration and use native dialog submission as a no-navigation fallback, preventing question text from leaking into URLs before React handles submissions.
 - Assistant text normalizes inline equation delimiters before markdown rendering, preserves display equations and code, and uses scoped KaTeX sizing so equations follow the surrounding text.
@@ -35,4 +35,4 @@
 - Browser quota failures preserve prior threads and return a save failure; media cleanup replaces attachments/extracted documents with markers and clears IndexedDB only after thread cleanup, keeping answers and revision cards intact.
 - Admin link reads reuse the bounded student document reader; file paths are content-addressed to avoid repeat uploads, and memory saves compare content/normalized URLs before inserting.
 - Admin imports share parsers/Sheets auth; MIME puts linked PDFs in PDF view. Drive needs authorization; PYQs require sourced evidence. PPTX reads text only; scanned PDFs use explicit lazy browser OCR without silent truncation. Admin/quiz share a device label preference; submissions stay A–D to preserve grading.
-- Voice uses Claude delegation and one-use quiz IDs. Publish question/options atomically after its observed playback (manual fallback); ignore stale answer events so expiry cannot reopen old choices. Timer drafts commit on blur/Enter. Only real heartbeats permit check-ins; no paid auto-reconnect. OS suspension can end calls. Model migration preserves later choices; usage stays confirmed.
+- Voice uses Claude delegation and one-use quiz IDs; atomic question/options follow observed playback (manual fallback). Ignore stale answers; timer drafts commit on blur/Enter. Real heartbeats only, no paid auto-reconnect; OS suspension can end calls. History tracking is a no-op without database imports; relay retains confirmed usage and cleanup.

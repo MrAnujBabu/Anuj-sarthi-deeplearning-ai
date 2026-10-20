@@ -165,7 +165,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
 
   const busy = status === "submitted" || status === "streaming";
   const last = messages[messages.length - 1];
-  const quizSource = busy ? [...messages].reverse().find(m => m.role === "assistant" && parseQuizTag(m.parts.map(p => p.type === "text" ? p.text : "").join("\n"))) : last?.role === "assistant" ? last : undefined;
+  const quizSource = last?.role === "assistant" ? last : undefined;
   const openQuizText = quizSource?.parts.map((p) => p.type === "text" ? p.text : "").join("\n") ?? "";
   const openQuizOptions = quiz ? parseQuizTag(openQuizText) : null;
   const openQuiz = openQuizOptions ? extractQuizOptions(openQuizText, openQuizOptions) : null;

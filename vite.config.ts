@@ -13,5 +13,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  vite: { plugins: [liveVoiceDev()] },
+  vite: {
+    plugins: [liveVoiceDev()],
+    // Pre-bundle late-discovered chat deps so a dev re-optimization never invalidates open tabs.
+    optimizeDeps: { include: ["use-stick-to-bottom"] },
+  },
 });

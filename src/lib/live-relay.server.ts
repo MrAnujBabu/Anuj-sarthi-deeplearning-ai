@@ -9,6 +9,7 @@ import { confirmedSeconds, documentMetadata, type VoiceDocument } from '@/lib/vo
 import { VOICE_TUTOR_MODEL, CLAUDE_OUTPUT_BUDGET } from '@/lib/models';
 import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
+import { VERCEL_APP_ORIGIN } from '@/lib/live-endpoint';
 
 export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; search: boolean; context: string; documents: VoiceDocument[] };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
@@ -108,7 +109,7 @@ async function gatewayRejection(response: Response) {
 
 export function validateLiveUpgrade(request: Request, options: { allowMissingOrigin?: boolean } = {}): Response | null {
   const origin = request.headers.get("origin");
-  if (origin === null ? !options.allowMissingOrigin : origin !== new URL(request.url).origin) {
+  if (origin === null ? !options.allowMissingOrigin : origin !== new URL(request.url).origin && origin !== VERCEL_APP_ORIGIN) {
     return new Response("Voice connection origin rejected", { status: 403 });
   }
   if (request.method !== "GET" || request.headers.get("upgrade")?.toLowerCase() !== "websocket") {

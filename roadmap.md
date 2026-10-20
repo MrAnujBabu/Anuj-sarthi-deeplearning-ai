@@ -1,9 +1,52 @@
 # Roadmap
 
+## Live voice failure recheck (Oct 20, 04:22 UTC)
+- [x] Keep the already published website at https://snapsolveanuj.vercel.app/; no domain change requested.
+- [x] Recheck hosted endpoints: Vercel /api/live returns 500; separate Lovable /api/public/live returns 404 with 'No published build'. Website publication does not publish the separate call service.
+- [ ] Publish the separate call service with owner approval, then sync/deploy the Vercel client and verify a real hosted call; audible and screen-off behavior remain unverified.
+
+## New workspace move (Oct 20, 04:04 UTC)
+- [x] Fresh-link Firecrawl, GitHub API, Parallel and Perplexity; ignore every previous connection ID.
+- [x] Check Supabase binding: external project dsazygocmjgjfqkqkwcp remains connected, service-role binding present; display name My Personal Agent cannot be independently verified. Existing notes/accounts unchanged.
+- [x] ElevenLabs requires its own connector/provider credits, not the Lovable AI key; existing voice models unchanged.
+
+## Workspace deployment automation (Oct 20, 03:45 UTC)
+- [ ] Fix voice startup on Vercel: owner chose separate relay with website unchanged. Direct secure relay endpoint and exact-origin checks passed 11 focused tests; build OK. Two publish approval calls cancelled by incoming questions, so nothing published. Await completed publish approval before syncing/deploying Vercel client; hosted audio unverified. Claude stays on Lovable credits, no Anthropic key.
+- [x] Verify GitHub main: 285106c4 includes Step 2 and earlier voice timer synchronization, but newer no-history, stale-chat-options and cancellation fixes differ or are missing. No merge/push performed by this verification.
+- [x] Verify Vercel GitHub link now points to MrAnujBabu/Anuj-sarthi-deeplearning-ai main; latest deploy is still manual redeploy, so actual push-to-live automation remains unverified. Live pages return 200, timer 27 persists, backup downloads; chat returns 402.
+- [x] Diagnose live AI pause: current workspace has 6.80 credits; shared Supabase still holds workspace credits pause from Oct 20 03:40:39 UTC. No gateway requests recorded; do not reset automatically.
+- [x] Owner approved resuming AI: removed only matching old workspace credits pause; live Vercel chat returns 200 and answers F = 6 N, retained after reload, no page errors. Other pauses and study data preserved.
+- [x] Step 2 saved in memory and GitHub WORKSPACE-DEPLOYMENT.md (commit 285106c4). Home, Practice, Voice and signed-out Admin return 200 without page errors; chat remains AI-paused. Practice grading, signed-in admin, audible voice, quiz/search/upload still unverified in this deployment.
+- [x] Rotate Lovable AI Gateway key (Claude uses this, not a separate Anthropic key); authenticated models check returns 200.
+- [x] Refresh four Vercel runtime keys securely and redeploy production; deployment READY.
+- [x] Live site returns 200; browser tutor check reaches persisted 'Not enough credits / AI is paused' state, so answer verification stopped without retry or pause reset.
+- [ ] Verify first GitHub-triggered deployment — repository/main link now confirmed; waiting on a requested code push to prove automatic deployment, keys must never be committed.
+- [x] Save recurring workspace-move deployment preference without storing any credentials in memory.
+
+## Latest requests (Oct 20, 03:41 UTC)
+- [x] Check current Supabase binding after new workspace move: connected external project responds with 94 memory items; project display name not independently verified. No connection switch or database changes made.
+- [x] Fresh-link Firecrawl, GitHub API, Parallel and Perplexity in the new workspace; all four linked and accessible, previous connection IDs ignored.
+- [x] Diagnose voice startup: Vercel /api/live upgrade probe returns 500, local Vite returns 101; browser test stops at ICE network setup timeout before opening its control socket. Hosted relay uses Worker-specific WebSocket APIs; audible call remains unverified.
+- [ ] Restore hosted voice compatibility — requires choosing and deploying a supported long-lived voice relay; no deployment changes requested yet.
+
+## Latest workspace connections (Oct 20, 02:19 UTC)
+- [x] Fresh-link Firecrawl, GitHub API, Parallel and Perplexity; previous workspace connections do not apply.
+- [ ] Connect the user's existing My Personal Agent project — user must select it in Settings → General → External Supabase → Connect; chat cannot link an external project. Keep application voice-call history disabled.
+
+## Current deep feature audit (Oct 20)
+- [x] Handle AI cancellation as 499 before streaming; suppress expected SDK abort logs and attach first-chunk rejection handling immediately. Real browser Stop during thinking, fresh Claude answer and reload passed with no page errors; 192 tests pass, 1 opt-in skipped.
+- [x] Stop all application voice-call history writes; no database client import/work remains. Test confirms no writes, warnings or queued history work; live usage/cleanup unchanged. Existing rows untouched.
+- [x] Reverify voice timer auto-skip, atomic next-question/options and usable next options: 21 focused tests pass; real Claude expiry-to-next-question test passes.
+- [x] Explain external connection setup shown in screenshot; user must complete Connect in Settings, current external link remains unverified.
+- [x] Diagnose history warning: missing server database configuration. Intentionally disabled history rather than connecting a backend or weakening security.
+- [x] Complete regression suite: 189 passed, 1 opt-in live test skipped; separately real Claude test passed. Earlier browser chat, practice, timer, backup, PDF and search checks passed. Latest voice Start has no page errors but ICE/network setup timed out; audible auto-skip remains blocked.
+- [ ] Real audible voice auto-skip/screen-off verification — blocked by local ICE/network setup timeout; needs a working device call.
+- [x] Prevent chat-quiz fallback to earlier assistant questions and exclude hidden graded-card payloads from option extraction; 23 targeted tests pass. Real model response omission cannot itself be prevented, but old options no longer populate new answers.
+
 ## Current voice quiz synchronization
 - [x] Fresh-link Firecrawl, GitHub API, Parallel and Perplexity after Oct 20 workspace move; disregard all previous connections
 - [x] Fix premature next-option transitions; 44 targeted tests and simulated browser flow verify atomic question/options, 3-second skip once and next B tap; real audio remains unverified
-- [ ] Export latest tested voice quiz/timer/settings changes to GitHub
+- [x] Export latest tested voice quiz/timer/settings changes to GitHub main: 57c3e668; 189 regression tests pass, 1 opt-in live test skipped; simulated browser sync flow passes
 - [x] Display question with its option IDs; pause countdown until observed audio silence plus final-option captions, with explicit timer-start fallback
 - [x] Add typed seconds to voice Settings; 27 seconds saves and survives browser reload
 - [x] 52 targeted regression tests pass; voice Settings browser check has no page errors
@@ -134,3 +177,5 @@
 - [x] Voice quiz expiry/selection tested in component and relay; actual audible next-question flow remains unverified
 
 - [ ] Confirm Supabase project "My Personal Agent" is the linked backend (ref dsazygocmjgjfqkqkwcp)
+
+- [ ] Voice must work on https://snapsolveanuj.vercel.app itself (user-facing address unchanged); needs voice relay published, then Vercel redeploy
