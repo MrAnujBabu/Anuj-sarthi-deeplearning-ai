@@ -137,3 +137,8 @@
 - [x] Adversarial tests on every AI route (19:08 UTC): bad/empty/huge payloads, null bodies, wrong types, prompt injection, dead link, garbage photo. Fixed 3 bugs found: null JSON body crashed /api/speech and /api/chat (now 400); oversized pasted text/attachments reached the gateway and returned an empty content-filter reply (now capped 100k text / 2MB body with a clear 413). Injection rejected (council caught "ignore rules" + wrong maths → needs_fix); dead link → tutor admits it can't read it, offers upload; garbage photo → clean [unclear: …] reading. 263 tests pass (new chat-route + fallback + pause-cache tests).
 - [ ] Research which AI has the most natural Hindi / Indian voice (Perplexity, Parallel, Firecrawl), test it, add it (user asked 18:49)
 - [ ] Final report: rating + pros/cons
+
+## Admin panel verify (19:17 UTC, user request)
+- [ ] Login as the user's admin account (inline credentials, use once, never echo) and verify the admin panel end to end
+- [x] Check Vercel deploy of d07210b finished READY + pages 200 (19:22 UTC)
+- [x] Admin panel verified on production (19:26 UTC): login with the provided account works; tabs — Agent memory (84 notes, add/edit/delete/Deep analysis), Voice calls (latest 10 with real usage + failure reasons), brain & role, settings — all load without console errors. Note: several 10/19 voice calls failed on "out of credits or spending limit" / heartbeat_timeout — ties into the open voice-connection task.
