@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import { ArrowLeft, Download, FileText, GraduationCap, Globe, Maximize2, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
+import { ArrowLeft, Download, EyeOff, FileText, GraduationCap, Globe, Maximize2, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -179,6 +179,10 @@ function LiveVoicePage() {
     setDockVisible(true);
     if (dockTimer.current) clearTimeout(dockTimer.current);
     dockTimer.current = setTimeout(() => setDockVisible(false), 3000);
+  }, []);
+  const hideDock = useCallback(() => {
+    if (dockTimer.current) clearTimeout(dockTimer.current);
+    setDockVisible(false);
   }, []);
   useEffect(() => {
     if (live) pokeDock();
@@ -442,6 +446,12 @@ function LiveVoicePage() {
                   <PhoneOff className="size-5" /> End
                 </Button>
                 <span className="text-[11px] text-muted-foreground">{voice.status === "stopping" ? "Ending…" : "End call"}</span>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <Button type="button" size="icon" variant="ghost" className="voice-dock-btn size-14 rounded-full" onClick={hideDock} aria-label="Hide buttons" title="Buttons chhupao — screen pe tap karke wapas lao">
+                  <EyeOff className="size-6" />
+                </Button>
+                <span className="text-[11px] text-muted-foreground">Hide</span>
               </div>
             </>
           )}
