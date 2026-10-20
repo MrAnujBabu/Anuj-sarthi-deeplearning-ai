@@ -52,6 +52,11 @@ describe("voice reply formatting", () => {
     expect(card).toContain("| b. Tuber | ii. Ginger |");
     expect(card).not.toContain("**(A)**");
   });
+  it("shows the Match table on the card even with no options and a 'Column I ko Column II' lead-in", () => {
+    const o = formatVoiceReply("Column I ko Column II se match karo. Column I: a. Marginal b. Axile Column II: i. Mustard ii. Pea", { options: false });
+    expect(o).toContain("| a. Marginal | i. Mustard |");
+    expect(o).toContain("| b. Axile | ii. Pea |");
+  });
   it("keeps a half-spoken Match column in one paragraph", () => {
     expect(formatVoiceReply("Sahi match karo. Column I: a. Rhizome, b. Tuber, c. Bulb, d. Corm.")).not.toContain("a.\n");
   });

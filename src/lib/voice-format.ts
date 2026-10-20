@@ -19,12 +19,13 @@ function format(raw: string): string {
   t = spokenOptions(t);
 
   const marker = t.match(/((?:Chalo,?\s*)?(?:(?:agla|next)\s+(?:prashn|prashna|question|sawal|sawaal)(?:,?\s*(?:number|no\.?)\s*\w+)?|(?:question|prashn|sawal|sawaal)\s+(?:number|no\.?)\s*\w+)[.,:!]?)/i);
-  const hasOptions = OPTION_START.test(t);
+  const hasOptions = OPTION_START.test(t) || MATCH_COLUMNS.test(t);
   let feedback = t;
   let next = "";
   let label = "";
   // Only split off a question card when options actually follow; "skip karke agla sawal" alone is plain text.
-  if (marker && marker.index !== undefined && OPTION_START.test(t.slice(marker.index + marker[0].length).trim())) {
+  const after = marker?.index !== undefined ? t.slice(marker.index + marker[0].length).trim() : "";
+  if (marker && marker.index !== undefined && (OPTION_START.test(after) || MATCH_COLUMNS.test(after))) {
     feedback = t.slice(0, marker.index).trim();
     next = t.slice(marker.index + marker[0].length).trim();
     label = marker[0];
@@ -181,7 +182,15 @@ function formatQuestion(t: string, label: string, separate: boolean): string {
 
 /** "Column I: a. X, b. Y … Column II: i. P, ii. Q …" → markdown table. */
 function matchTable(t: string): string {
-  const m = t.match(/Column\s*(?:I|1|one)\s*[:\-]?\s*(.+?)\s*Column\s*(?:II|2|two)\s*[:\-]?\s*(.+?)(?=(?:Options?\b|\(A\)|\bA\s*[:)])|$)/i);
+  const m = t.match(MATCH_COLUMNS);
+  if (!m) return t;
+  return buildTable(t, m);
+}
+
+// "Column I: a. … Column II: i. …" — the labels must follow, so "Column I ko Column II se match karo" is not a table.
+const MATCH_COLUMNS = /Column\s*(?:I|1|one)\s*[:\-]?\s*(\(?a[.)]\s.+?)\s*Column\s*(?:II|2|two)\s*[:\-]?\s*(\(?i[.)]\s.+?)(?=(?:Options?\b|\(A\)|\bA\s*[:)])|$)/i;
+
+function buildTable(t: string, m: RegExpMatchArray): string {
   if (!m) return t;
   const items = (s: string, re: RegExp) => s.split(re).map((x) => x.replace(/^[\s,.;:]+|[\s,.;]+$/g, "")).filter(Boolean);
   const left = items(m[1] ?? "", /\b\(?[a-d]\)?[.)]\s+/i);
