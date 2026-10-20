@@ -28,10 +28,10 @@ describe('transcription route safety', () => {
     expect((await handler({ request: request('application/pdf') })).status).toBe(415);
     expect(mocks.fetch).not.toHaveBeenCalled();
   });
-  it('relays successful bytes and retains the existing transcription model', async () => {
+  it('relays successful bytes and uses the configured transcription model', async () => {
     mocks.fetch.mockResolvedValue(new Response('data: test\n\n', { headers: { 'content-type': 'text/event-stream' } }));
     const result = await handler({ request: request() });
     expect(await result.text()).toBe('data: test\n\n');
-    expect(mocks.fetch.mock.calls[0]?.[1].body.get('model')).toBe('openai/gpt-transcribe');
+    expect(mocks.fetch.mock.calls[0]?.[1].body.get('model')).toBe('google/gemini-3.5-transcribe');
   });
 });

@@ -3,7 +3,7 @@ import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 
 const MAX_BYTES = 20 * 1024 * 1024;
-const MODEL = "openai/gpt-transcribe";
+const MODEL = "google/gemini-3.5-transcribe";
 const json = (body: unknown, status = 200) => Response.json(body, { status });
 
 export const Route = createFileRoute("/api/transcribe")({

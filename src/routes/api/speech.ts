@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const MODEL = "google/gemini-3.1-flash-tts-preview";
+const MODEL = "google/gemini-2.5-pro-tts";
 const MAX_CHARS = 1500;
 const VOICES: Record<string, string> = { female: "Kore", male: "Charon" };
 

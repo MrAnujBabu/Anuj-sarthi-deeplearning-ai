@@ -73,4 +73,28 @@
 - [x] Verify Home/Practice/Voice/Admin all HTTP 200; relay still project 069fc516 (published)
 - [ ] AI chat / voice reply not exercised this move (credit-spending tests need user's go-ahead)
 
-- [ ] Voice credits out: new key → republish relay + Vercel update (Oct 20)
+- [x] Voice credits out: relay moved + Vercel updated (Oct 20)
+
+- [x] Workspace move: connectors + Vercel keys + redeploy done
+- [x] Voice relay moved to this project (new workspace), published; probe OK
+- [x] Supabase "My Personal Agent" connected
+- [x] Mobile voice buttons, grouped chat history, pause/resume + auto-resume on reconnect (pushed fec3d78)
+
+## Voice connection drop + controls (16:54 UTC)
+- [x] Fix "Voice control connection lost" (heartbeat 1s + 8s ack timeout; auto-reconnect on drop, max 2)
+- [x] Pause/Resume button in voice call dock (Stop = End already there)
+- [x] Push to GitHub (1196250) + Vercel redeploy READY + pages 200
+
+## Workspace move (17:02 UTC)
+- [x] Connect Firecrawl (std_01m5d47t70ej6r3z46yk21qxvs), GitHub API (std_01m5d4aadpfw5ajs46pctcqvaz), Parallel (std_01m5d4b63fff1s64qb9hdwrhyk), Perplexity (std_01m5d4bw98f8m85fpm4y3fq40x)
+- [x] Vercel 4 keys updated to new workspace, deploy dpl_ARpwVbb3YMffrJ2SYzERqr2TuRSt READY, Home/Practice/Voice/Admin 200
+- [x] Relay probe OK (SDP offer error = key sahi)
+- [ ] Supabase "My Personal Agent" — user khud Settings → General → External Supabase me jode
+- [ ] Real phone par voice call + pause/resume test (user)
+
+## Premium AI models (17:35 UTC)
+- [x] Lovable AI Gateway enabled (workspace-level, no API keys needed)
+- [x] Chat/tutor already top premium (Fable 5.1 default) — untouched
+- [x] TTS -> gemini-2.5-pro-tts, dictation STT -> gemini-3.5-transcribe, doc text extraction -> claude-sonnet-5 (all live-tested on gateway)
+- [ ] Push to GitHub + Vercel deploy + pages 200
+- [x] Claude/Anthropic untouched on user instruction (doc extraction reverted to Haiku 4.5)
