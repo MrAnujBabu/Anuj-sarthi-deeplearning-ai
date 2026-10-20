@@ -140,6 +140,12 @@ type LiveOptions = {
   onEvent: (event: LiveEvent) => void;
 };
 
+/** A mobile-data blink up to this long must not end the call. */
+export const ACK_GRACE_MS = 15_000;
+export const MEDIA_GRACE_MS = 15_000;
+/** Public STUN so phones behind carrier NAT get a reachable candidate. */
+export const ICE_SERVERS: RTCIceServer[] = [{ urls: "stun:stun.l.google.com:19302" }];
+
 function createLiveVoice(options: LiveOptions) {
   let state: "idle" | "starting" | "active" | "stopping" | "closed" = "idle";
   let socket: WebSocket | undefined;
@@ -152,6 +158,7 @@ function createLiveVoice(options: LiveOptions) {
   let cancelGathering: (() => void) | undefined;
   let lastAck = 0;
   let lastHeartbeat = 0;
+  let mediaLostAt = 0;
   let answerReceived = false;
   let finalized = false;
   let muted = false;
@@ -294,17 +301,22 @@ function createLiveVoice(options: LiveOptions) {
     return peer?.connectionState === "connected" && channel?.readyState === "open";
   }
 
-  // Heartbeat every second once media is ready; the call only fails after 8
-  // seconds without any ack, so one delayed or lost ack on mobile data no
-  // longer kills the call.
+  // Heartbeat every second while the call is active. A mobile-data blink can
+  // briefly mark media "disconnected" while WebRTC recovers on its own, so we
+  // keep heartbeating through it and only fail after MEDIA_GRACE_MS without
+  // media or ACK_GRACE_MS without any ack.
   function pulse() {
     if (state !== "active") return;
-    if (Date.now() - lastAck >= 8000) return fail("Voice control connection lost");
-    if (!mediaReady()) return;
-    if (Date.now() - lastHeartbeat < 1000) return;
+    const now = Date.now();
+    if (now - lastAck >= ACK_GRACE_MS) return fail("Voice control connection lost");
+    if (mediaReady()) mediaLostAt = 0;
+    else if (!mediaLostAt) mediaLostAt = now;
+    else if (now - mediaLostAt >= MEDIA_GRACE_MS) return fail("Voice media connection lost. Start a new call to retry.");
+    if (now - lastHeartbeat < 1000) return;
+    if (socket?.readyState !== WebSocket.OPEN) return;
     try {
       send({ type: "gateway.heartbeat" });
-      lastHeartbeat = Date.now();
+      lastHeartbeat = now;
     } catch {
       fail("Voice control connection failed");
     }
@@ -429,7 +441,7 @@ function createLiveVoice(options: LiveOptions) {
         stream.getTracks().forEach((track) => track.stop());
         return;
       }
-      const connection = new RTCPeerConnection();
+      const connection = new RTCPeerConnection({ iceServers: ICE_SERVERS });
       peer = connection;
       for (const track of stream.getAudioTracks()) {
         track.enabled = !muted;
