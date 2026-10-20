@@ -9,6 +9,15 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
+## ⚡ One rule for every workspace / GitHub account move (read first)
+
+- **Everything runs on Vercel** (chat, voice, speech, transcribe) using the Vercel env var `LOVABLE_API_KEY`. Voice is talk-and-listen (mic → `/api/transcribe` → `/api/chat` → `/api/speech`). No dependency on any Lovable project ID.
+- The key bills **the Lovable workspace it belongs to**.
+- **Credits khatam / "Not enough credits" / workspace move** → do NOT rotate blindly. Put the LOVABLE_API_KEY of a workspace that has credits into Vercel (Production), plus FIRECRAWL/PARALLEL/PERPLEXITY keys; never touch `SUPABASE_*`. Redeploy, then verify.
+- **Rotate only** if the key leaked or the gateway rejects the key itself. After rotation the old key works ~1 hour.
+- Verify: Home, Practice, Voice, Admin open; `/api/transcribe`, `/api/chat`, `/api/speech` return 200.
+- Agent prompt that does it all: **"rotate AI key"** or **"workspace badla, Vercel update karo"** — agent runs connectors → key → Vercel env → redeploy → verify, no questions.
+
 ## Architecture
 - Admin device recovery exports only application memory/settings, validates reselected backups, merges restores, and clears only unchanged backed-up text-only rows; preserves original-file entries, accounts and AI pause to prevent destructive resets.
 - Admin document retention defaults to extracted text only; originals are uploaded only when retained or needed for reading, with temporary uploads cleaned on failure/success to avoid needless Cloud growth.
