@@ -2,9 +2,9 @@ import { createParser } from 'eventsource-parser';
 
 export type TalkMessage = { id: string; role: 'user' | 'assistant'; text: string };
 
-/** Hosts that cannot keep a live voice call open (serverless). They use talk-and-listen turns instead. */
-export function usesTalkTurns(origin: string) {
-  return /\.vercel\.app$/i.test(new URL(origin).hostname);
+/** Live calls run everywhere: Vercel pages connect to this project's published relay. Talk turns stay as a manual fallback only. */
+export function usesTalkTurns(_origin: string) {
+  return false;
 }
 
 export function toUIMessages(history: TalkMessage[]) {
