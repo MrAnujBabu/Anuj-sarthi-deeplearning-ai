@@ -35,6 +35,13 @@ describe("voice reply formatting", () => {
     expect(o).not.toContain("❓");
     expect(o).toContain("Ya skip karke agla sawal sunoge?");
   });
+  it("reads options spoken with commas", () => {
+    const o = formatVoiceReply("Nahi, A galat hai. Sahi jawab C hai, triploid. Agla sawaal, exine kis padarth se bani hai? A, cellulose, B, pectin, C, lignin, D, sporopollenin. Kya lagta hai?");
+    expect(o).toContain("> **✅ Sahi jawab: (C) — triploid**");
+    expect(o).toContain("#### ❓ Agla sawal");
+    expect(o).toContain("- **(D)** sporopollenin");
+    expect(o).toContain("*🎤 Kya lagta hai?*");
+  });
   it("boxes Assertion and Reason", () => {
     const a = formatVoiceReply("Assertion: Potato is a stem. Reason: It has nodes. Option A: Both true. B: A true, R false. C: A false. D: Both false.");
     expect(a).toContain("> **Assertion (A):** Potato is a stem.");

@@ -8,14 +8,15 @@ export function formatVoiceReply(raw: string): string {
   let t = raw.replace(/\s+/g, " ").trim();
   if (!t) return t;
   t = stripFillers(t);
+  t = spokenOptions(t);
 
-  const marker = t.match(/((?:Chalo,?\s*)?(?:(?:agla|next)\s+(?:prashn|prashna|question|sawal|sawaal)|(?:question|prashn|sawal)\s+(?:number|no\.?)\s*\w+)[^.?!]*[.?!]?)/i);
+  const marker = t.match(/((?:Chalo,?\s*)?(?:(?:agla|next)\s+(?:prashn|prashna|question|sawal|sawaal)(?:,?\s*(?:number|no\.?)\s*\w+)?|(?:question|prashn|sawal|sawaal)\s+(?:number|no\.?)\s*\w+)[.,:!]?)/i);
   const hasOptions = OPTION_START.test(t);
   let feedback = t;
   let next = "";
   let label = "";
   // Only split off a question card when options actually follow; "skip karke agla sawal" alone is plain text.
-  if (marker && marker.index !== undefined && OPTION_START.test(t.slice(marker.index + marker[0].length))) {
+  if (marker && marker.index !== undefined && OPTION_START.test(t.slice(marker.index + marker[0].length).trim())) {
     feedback = t.slice(0, marker.index).trim();
     next = t.slice(marker.index + marker[0].length).trim();
     label = marker[0];
@@ -28,6 +29,13 @@ export function formatVoiceReply(raw: string): string {
   if (feedback) parts.push(formatFeedback(feedback));
   if (next || label) parts.push(formatQuestion(next, label, !!feedback));
   return parts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+/** "Option A, X. Option B, Y…" or "A, X, B, Y, C, Z, D, W." → "Option A: X. B: Y. C: Z. D: W." */
+function spokenOptions(t: string): string {
+  const o = String.raw`(?:Option\s+)?`;
+  const re = new RegExp(String.raw`(^|[.?!:]\s+)${o}A\s*,\s+(.+?)[.,]?\s+${o}B\s*,\s+(.+?)[.,]?\s+${o}C\s*,\s+(.+?)[.,]?\s+${o}D\s*,\s+(.+?)(?=[.?!](?:\s|$)|$)`);
+  return t.replace(re, (_m, pre: string, a: string, b: string, c: string, d: string) => `${pre}Option A: ${a}. B: ${b}. C: ${c}. D: ${d}`);
 }
 
 const OPTION_START = /(?:^|[.?!:|]\s*|\n\s*)(?:Options?\s+)?\(?A\)?\s*[:)]\s+\S/;
@@ -77,11 +85,15 @@ function formatFeedback(t: string): string {
     const verdict = list[vIdx] ?? "";
     const wrong = /chook|galat|wrong|incorrect|nahi,? sahi|not correct|close tha/i.test(reaction + " " + verdict);
     const right = !wrong && /shabash|bilkul|sahi (?:jawab )?diya|correct|great|well done|excellent|perfect|zabardast|badhiya/i.test(reaction);
-    const heading = reaction || (wrong ? "Galat jawab" : right ? "Sahi jawab!" : "Result");
+    // A long lead-in (e.g. the end of the question read aloud) stays as text above a short heading.
+    const shortReaction = reaction.length <= 80 ? reaction : "";
+    if (reaction && !shortReaction) out.push(emphasize(reaction));
+    const heading = shortReaction || (wrong ? "Galat jawab" : right ? "Sahi jawab!" : "Result");
     out.push(`#### ${wrong ? "❌" : right ? "🎉" : "📝"} ${heading.replace(/[.!]+$/, "")}`);
     const vm = verdict.match(/(Sahi jawab|Correct answer|Right answer|Sahi answer)\s+(?:option\s+)?\(?([A-D])\)?\s*(?:hai|is)?\s*[—–:-]?\s*([^.]*)\.?\s*(.*)$/i);
     if (vm) {
-      out.push(`> **✅ ${vm[1]}: (${vm[2]})${vm[3]?.trim() ? ` — ${vm[3].trim()}` : ""}**`);
+      const what = (vm[3] ?? "").replace(/^[\s,;:—–-]+/, "").trim();
+      out.push(`> **✅ ${vm[1]}: (${vm[2]})${what ? ` — ${what}` : ""}**`);
       rest = [...(vm[4]?.trim() ? [vm[4].trim()] : []), ...list.slice(vIdx + 1)];
     } else {
       out.push(`> **✅ ${verdict}**`);
@@ -123,6 +135,7 @@ function formatQuestion(t: string, label: string, separate: boolean): string {
   let stem = opt >= 0 ? t.slice(0, opt + (/^[.?!:|]/.test(t.slice(opt)) ? 1 : 0)).trim() : t;
   const optText = opt >= 0 ? t.slice(opt).replace(/^[.?!:|]?\s*/, "") : "";
 
+  stem = stem.charAt(0).toUpperCase() + stem.slice(1);
   stem = stem.replace(/^Options?\s*[:\-]?\s*$/i, "").replace(/\s*Options?\s*[:\-]?\s*$/i, "");
   const ar = stem.match(/^(.*?)Assertion\s*(?:\(A\))?\s*[:\-]\s*(.+?)\s*Reason\s*(?:\(R\))?\s*[:\-]\s*(.+)$/i);
   if (ar) {
@@ -145,7 +158,10 @@ function formatQuestion(t: string, label: string, separate: boolean): string {
       lines.push(`- **(${segs[i]})** ${body.replace(/[.]$/, "")}`);
     }
     out.push(lines.join("\n"));
-    if (prompt) out.push(`*🎤 ${prompt}*`);
+    // Anything after the closing prompt (e.g. the grading of an answer) is its own reply.
+    const [ask, ...after] = sentences(prompt);
+    if (ask) out.push(`*🎤 ${ask}*`);
+    if (after.length) out.push(formatVoiceReply(after.join(" ")));
   }
   return out.join("\n\n");
 }

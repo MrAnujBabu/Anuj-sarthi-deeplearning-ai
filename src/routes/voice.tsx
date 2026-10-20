@@ -40,6 +40,7 @@ export const Route = createFileRoute("/voice")({
 type Row = VoiceRow;
 type Attachment = { name: string; text: string; pages: number; method: string };
 const CONTEXT_LIMIT = 38_000;
+const TURN_GAP_MS = 2500;
 
 async function readAttachment(file: File, ocr: boolean, progress: (message: string) => void): Promise<Omit<Attachment, 'name'>> {
   if (file.type === "application/pdf" || /\.pdf$/i.test(file.name)) {
@@ -81,6 +82,7 @@ function LiveVoicePage() {
   const pinned = useRef(true);
   const fileInput = useRef<HTMLInputElement>(null);
   const importInput = useRef<HTMLInputElement>(null);
+  const turnRef = useRef<Record<"user" | "assistant", { id: string; at: number } | null>>({ user: null, assistant: null });
 
   const onEvent = useCallback((event: LiveEvent) => {
     dispatchQuiz(event);
@@ -112,10 +114,19 @@ function LiveVoicePage() {
       const role = event.type === "session.input_transcript.delta" ? "user" : "assistant";
       const delta = typeof event["delta"] === "string" ? event["delta"] : "";
       if (!delta) return;
+      // Student and tutor captions arrive interleaved while both talk; keep each
+      // ongoing turn in one row instead of splitting it into fragments.
+      const now = Date.now();
+      const turn = turnRef.current[role];
+      const fresh = !turn || now - turn.at > TURN_GAP_MS;
+      const id = fresh ? crypto.randomUUID() : turn.id;
+      turnRef.current[role] = { id, at: now };
       setRows((prev) => {
         const last = prev[prev.length - 1];
-        if (last && last.role === role) return [...prev.slice(0, -1), { ...last, text: last.text + delta }];
-        return [...prev, { id: crypto.randomUUID(), role, text: delta }];
+        if (last && last.role === role) { turnRef.current[role] = { id: last.id, at: now }; return [...prev.slice(0, -1), { ...last, text: last.text + delta }]; }
+        const at = fresh ? -1 : prev.findIndex((r) => r.id === id);
+        if (at >= 0) return prev.map((r, i) => (i === at ? { ...r, text: r.text + delta } : r));
+        return [...prev, { id, role, text: delta }];
       });
     } else if (event.type === "app.delegation.pending") {
       setThinking(true);

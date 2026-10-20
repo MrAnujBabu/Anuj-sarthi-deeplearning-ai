@@ -32,7 +32,7 @@ export function parseCallPrefs(raw: unknown): CallPrefs {
 export function quizStyle(prefs: Pick<CallPrefs, "matchQ" | "assertionQ" | "deep">): string {
   const parts: string[] = [];
   const types = [prefs.matchQ && "Match the Following", prefs.assertionQ && "Assertion–Reason"].filter(Boolean);
-  if (types.length) parts.push(` Ask ONLY these NEET question types${types.length > 1 ? ", alternating" : ""}: ${types.join(" and ")}.`);
+  if (types.length) parts.push(` Ask ONLY these NEET question types${types.length > 1 ? ", alternating" : ""}: ${types.join(" and ")}. Never ask a plain one-line MCQ while these are on, including the first question.`);
   if (prefs.matchQ) parts.push(" Match the Following: write Column I items as a., b., c., d. and Column II as i., ii., iii., iv. on separate short lines, then options like (A) a-iii, b-i, c-iv, d-ii.");
   if (prefs.assertionQ) parts.push(" Assertion–Reason: write 'Assertion (A): …' and 'Reason (R): …' on separate lines, then (A) Both true, R explains A (B) Both true, R does not explain A (C) A true, R false (D) A false, R true.");
   if (prefs.deep) parts.push(" DEEP MODE: make hard, NEET-advanced questions built strictly from NCERT Class 11/12 Biology lines (exceptions, examples, diagrams, tables) and from any student-attached material; use multi-concept reasoning, never trivia outside NCERT; when grading, cite the NCERT chapter.");
@@ -277,7 +277,7 @@ export async function answerQuestion(
       "To display a study schedule for the current request, call plan_study_schedule with its total minutes and days. " +
       "Ask for missing details instead of guessing. The tool only calculates a draft plan; " +
       "it does not save calendar events." +
-      (prefs.quiz ? " QUIZ MODE: give exactly one NEET MCQ with options labelled (A) (B) (C) (D), each on its own line (convert (1)-(4) numbering to A-D), no answer or check the student's spoken answer briefly and give the next MCQ." : "") +
+      (prefs.quiz ? " QUIZ MODE: give exactly one NEET question with options labelled (A) (B) (C) (D), each on its own line (convert (1)-(4) numbering to A-D), no answer or check the student's spoken answer briefly and give the next question." : "") +
       (prefs.quiz ? quizStyle(prefs) : "") +
       (prefs.search ? " Use web_search for current facts when needed." : "") +
       (prefs.context ? `\n\nStudent-attached material (use it when relevant):\n${prefs.context}` : ""),
