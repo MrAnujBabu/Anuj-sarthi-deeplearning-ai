@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import { ArrowLeft, Download, FileText, GraduationCap, Globe, Mic, MicOff, Paperclip, Pause, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
+import { ArrowLeft, Download, FileText, GraduationCap, Globe, Maximize2, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -170,6 +170,8 @@ function LiveVoicePage() {
   const appliedKey = useRef(settingsKey);
   const restartWanted = useRef(false);
   const [reconnecting, setReconnecting] = useState(false);
+  // Distraction-free full page: header, tabs and chips hide; transcript + quiz + call controls stay.
+  const [zen, setZen] = useState(false);
   useEffect(() => {
     if (canStart) { appliedKey.current = settingsKey; return; }
     if (!live || settingsKey === appliedKey.current) return;
@@ -197,7 +199,7 @@ function LiveVoicePage() {
     return () => clearTimeout(t);
   }, [canStart]);
   const quizVisible = quiz && !!(question || pending);
-  const showQuestion = quizVisible && quizView === 'question';
+  const showQuestion = quizVisible && quizView === 'question' && !zen;
   const displayedQuestion = pending ?? question;
 
   useEffect(() => {
@@ -263,6 +265,7 @@ function LiveVoicePage() {
 
   return (
     <main className="mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6">
+      {!zen && (
       <header className="flex shrink-0 items-center gap-2 border-b pb-2">
         <Link to="/" aria-label="Back" className="grid size-9 place-items-center rounded-full hover:bg-muted">
           <ArrowLeft className="size-5" />
@@ -300,10 +303,11 @@ function LiveVoicePage() {
         </Sheet>
         <input ref={importInput} type="file" accept=".md,.markdown,.txt,.json" hidden onChange={(e) => { void importCall(e.target.files?.[0]); e.target.value = ""; }} />
       </header>
+      )}
 
       {readProgress && <p role="status" className="mt-2 text-xs text-primary">{readProgress}</p>}
 
-      {quizVisible && <nav aria-label="Voice quiz view" className="grid shrink-0 grid-cols-2 gap-1 border-b py-2">
+      {quizVisible && !zen && <nav aria-label="Voice quiz view" className="grid shrink-0 grid-cols-2 gap-1 border-b py-2">
         <Button variant={quizView === 'question' ? 'secondary' : 'ghost'} className="min-h-11" aria-pressed={quizView === 'question'} onClick={() => setQuizView('question')}><GraduationCap className="size-4 shrink-0" />Question</Button>
         <Button variant={quizView === 'conversation' ? 'secondary' : 'ghost'} className="min-h-11" aria-pressed={quizView === 'conversation'} onClick={() => setQuizView('conversation')}><FileText className="size-4 shrink-0" />Conversation{thinking && <span className="size-2 shrink-0 animate-pulse rounded-full bg-primary" aria-hidden />}</Button>
       </nav>}
@@ -341,7 +345,7 @@ function LiveVoicePage() {
         )}
       </section>
 
-      {quizVisible && displayedQuestion && <section className={`voice-quiz study-text study-text-${textSize} min-h-0 flex-1 flex-col py-3 ${showQuestion ? 'flex' : 'hidden'}`} aria-label="Voice quiz">
+      {quizVisible && displayedQuestion && (zen || showQuestion) && <section className={`voice-quiz study-text study-text-${textSize} min-h-0 flex-1 flex-col py-3 flex`} aria-label="Voice quiz">
         <div ref={questionScrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain rounded-lg border bg-card p-3 sm:p-4">
           {pending && <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 border-b pb-2 text-xs text-muted-foreground" role="status"><span className="inline-flex min-w-0 items-center gap-1"><Timer className="size-3.5 shrink-0" />Next question · listening</span><Button size="icon" variant="outline" className="size-11 shrink-0" aria-label="Show question and start timer" title="Show question and start timer" disabled={!live || voice.playbackBlocked} onClick={() => dispatchQuiz({ type: 'app.quiz.manual.ready', questionId: pending.id })}><Play className="size-4" /></Button></div>}
           <div className="voice-caption min-w-0 break-words pb-3 text-foreground" aria-label="Current quiz question"><AssistantAnswer text={formatVoiceReply(displayedQuestion.text, { options: false })} isAnimating={false} compact boldQuestion /></div>
@@ -355,7 +359,7 @@ function LiveVoicePage() {
         </div>
       </section>}
 
-      {files.length > 0 && (
+      {files.length > 0 && !zen && (
         <div className="flex shrink-0 gap-2 overflow-x-auto pb-2" aria-label="Attached study material">
           {files.map((f, i) => (
             <span key={i} className="flex min-w-0 max-w-full shrink-0 items-center gap-1.5 rounded-full border bg-card px-3 py-1 text-xs">
@@ -372,11 +376,19 @@ function LiveVoicePage() {
       <footer className="voice-dock relative z-10 -mx-3 shrink-0 border-t bg-background/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:-mx-6 sm:px-6">
         <div className="mx-auto flex max-w-md items-end justify-center gap-5">
           <div className="flex flex-col items-center gap-1">
+            <Button type="button" size="icon" variant={zen ? "secondary" : "outline"} className="voice-dock-btn size-14 rounded-full" aria-pressed={zen} onClick={() => setZen((z) => !z)} aria-label={zen ? "Normal view" : "Full page distraction-free"} title={zen ? "Normal view" : "Full page — sirf baat-cheet, baaki sab gayab"}>
+              {zen ? <Minimize2 className="size-6" /> : <Maximize2 className="size-6" />}
+            </Button>
+            <span className="text-[11px] text-muted-foreground">{zen ? "Normal" : "Full"}</span>
+          </div>
+          {!zen && (
+          <div className="flex flex-col items-center gap-1">
             <Button type="button" size="icon" variant="outline" className="voice-dock-btn size-14 rounded-full" disabled={locked || reading} onClick={() => fileInput.current?.click()} aria-label="Attach PDF or notes" title="Attach PDF, notes, Word, PPTX">
               <Paperclip className="size-6" />
             </Button>
             <span className="text-[11px] text-muted-foreground">Attach</span>
           </div>
+          )}
           <input ref={fileInput} type="file" multiple hidden accept="application/pdf,.pdf,.md,.txt,.docx,.pptx" onChange={(e) => { void addFiles(e.target.files); e.target.value = ""; }} />
           {voice.playbackBlocked && (
             <div className="flex flex-col items-center gap-1">
