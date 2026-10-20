@@ -4,7 +4,15 @@
  * callouts, Match tables, Assertion–Reason boxes and the next question as its own card
  * with options listed A–D. Display only — the spoken audio is unchanged.
  */
-export function formatVoiceReply(raw: string): string {
+export function formatVoiceReply(raw: string, opts: { options?: boolean } = {}): string {
+  showOptions = opts.options !== false;
+  try { return format(raw); } finally { showOptions = true; }
+}
+
+/** The quiz card renders A–D as answer buttons, so it hides the spoken option list. */
+let showOptions = true;
+
+function format(raw: string): string {
   let t = raw.replace(/\s+/g, " ").trim();
   if (!t) return t;
   t = stripFillers(t);
@@ -38,7 +46,7 @@ function spokenOptions(t: string): string {
   return t.replace(re, (_m, pre: string, a: string, b: string, c: string, d: string) => `${pre}Option A: ${a}. B: ${b}. C: ${c}. D: ${d}`);
 }
 
-const OPTION_START = /(?:^|[.?!:|]\s*|\n\s*)(?:Options?\s+)?\(?A\)?\s*[:)]\s+\S/;
+const OPTION_START = /(?:^|[.?!:;|]\s*|\n\s*|(?<!Assertion)\s(?=\(A\)\s))(?:Options?\s+)?(?:\(A\)\s*[:.]?|A\s*[:)])\s*\S/;
 const NUMBERS: Record<string, string> = { ek: "1", one: "1", do: "2", two: "2", teen: "3", three: "3", char: "4", chaar: "4", four: "4", paanch: "5", panch: "5", five: "5", chhe: "6", che: "6", six: "6", saat: "7", seven: "7", aath: "8", eight: "8", nau: "9", nine: "9", das: "10", ten: "10" };
 
 function stripFillers(t: string): string {
@@ -46,7 +54,7 @@ function stripFillers(t: string): string {
   while (prev !== t) {
     prev = t;
     t = t
-      .replace(/^(?:Hmm+|Umm+|Uh+|Achha|Accha|Okay|Ok|Haan)[,.!]?\s+/i, "")
+      .replace(/^(?:Hmm+|Umm+|Mm+|Uh+|Achha|Accha|Okay|Ok|Haan)[,.!]?\s+/i, "")
       .replace(/^Ek (?:second|minute|sec)[,.!]?\s*(?:main\s+)?(?:check|dekh)\s*(?:kar)?(?:ti|ta)\s+hoon[.!]?\s*/i, "")
       .replace(/^Ek (?:second|minute|sec)[,.!]\s*/i, "");
   }
@@ -54,7 +62,8 @@ function stripFillers(t: string): string {
 }
 
 function sentences(t: string): string[] {
-  return t.split(/(?<=[.?!]["”']?)\s+(?=["“(]?[A-Z0-9])/).map((s) => s.trim()).filter(Boolean);
+  // Never split after list labels such as "a." or "ii." (Match columns read aloud).
+  return t.split(/(?<=(?<!\b(?:[a-dA-D]|i{1,3}|iv))[.?!]["”']?)\s+(?=["“(]?[A-Z0-9])/).map((s) => s.trim()).filter(Boolean);
 }
 
 const emphasize = (s: string) => s.replace(/(["“])([^"”]{1,40})(["”])/g, "**$1$2$3**");
@@ -146,7 +155,11 @@ function formatQuestion(t: string, label: string, separate: boolean): string {
   }
 
   if (optText) {
-    const segs = optText.split(/(?:^|(?<=[.?!,;]\s*)|\s+)(?:Options?\s+)?\(?([A-D])\)?\s*[:)]\s+/).slice(1);
+    const segs = optText.split(/(?:^|(?<=[.?!,;]\s*)|\s+)(?:Options?\s+)?(?:\(([A-D])\)\s*[:.]?|([A-D])\s*[:)])\s+/).slice(1);
+    // split() yields [letterInParens, bareLetter, body, ...]; fold to [letter, body, ...].
+    const folded: string[] = [];
+    for (let i = 0; i < segs.length; i += 3) folded.push(segs[i] ?? segs[i + 1] ?? "", segs[i + 2] ?? "");
+    segs.splice(0, segs.length, ...folded);
     const lines: string[] = [];
     let prompt = "";
     for (let i = 0; i < segs.length; i += 2) {
@@ -155,20 +168,20 @@ function formatQuestion(t: string, label: string, separate: boolean): string {
         const cut = body.match(/^(.+?[.?!])\s+(.+)$/);
         if (cut && !/^[a-d]-/i.test(cut[2] ?? "")) { body = cut[1] ?? body; prompt = cut[2] ?? ""; }
       }
-      lines.push(`- **(${segs[i]})** ${body.replace(/[.]$/, "")}`);
+      lines.push(`- **(${segs[i]})** ${body.replace(/[.;,]$/, "")}`);
     }
-    out.push(lines.join("\n"));
+    if (showOptions) out.push(lines.join("\n"));
     // Anything after the closing prompt (e.g. the grading of an answer) is its own reply.
     const [ask, ...after] = sentences(prompt);
-    if (ask) out.push(`*🎤 ${ask}*`);
-    if (after.length) out.push(formatVoiceReply(after.join(" ")));
+    if (ask && showOptions) out.push(`*🎤 ${ask}*`);
+    if (after.length) out.push(format(after.join(" ")));
   }
   return out.join("\n\n");
 }
 
 /** "Column I: a. X, b. Y … Column II: i. P, ii. Q …" → markdown table. */
 function matchTable(t: string): string {
-  const m = t.match(/Column\s*(?:I|1|one)\s*[:\-]?\s*(.+?)\s*Column\s*(?:II|2|two)\s*[:\-]?\s*(.+?)(?=(?:Options?\b|\(?A\)?\s*[:)])|$)/i);
+  const m = t.match(/Column\s*(?:I|1|one)\s*[:\-]?\s*(.+?)\s*Column\s*(?:II|2|two)\s*[:\-]?\s*(.+?)(?=(?:Options?\b|\(A\)|\bA\s*[:)])|$)/i);
   if (!m) return t;
   const items = (s: string, re: RegExp) => s.split(re).map((x) => x.replace(/^[\s,.;:]+|[\s,.;]+$/g, "")).filter(Boolean);
   const left = items(m[1] ?? "", /\b\(?[a-d]\)?[.)]\s+/i);

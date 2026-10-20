@@ -42,9 +42,25 @@ describe("voice reply formatting", () => {
     expect(o).toContain("- **(D)** sporopollenin");
     expect(o).toContain("*🎤 Kya lagta hai?*");
   });
+  it("formats a quiz card with unseparated columns and (A) options", () => {
+    const o = formatVoiceReply("Mm. Sahi match karo. Column I: a. Rhizome b. Tuber c. Bulb d. Corm Column II: i. Potato ii. Ginger iii. Colocasia iv. Onion\n(A) a-ii, b-i, c-iv, d-iii\n(B) a-i, b-ii, c-iii, d-iv\n(C) a-ii, b-iii, c-iv, d-i\n(D) a-iii, b-i, c-ii, d-iv Apna answer bolo, A, B, C ya D");
+    expect(o).toContain("| a. Rhizome | i. Potato |");
+    expect(o).toContain("| d. Corm | iv. Onion |");
+    expect(o).toContain("- **(B)** a-i, b-ii, c-iii, d-iv");
+    expect(o).not.toContain("Mm.");
+    const card = formatVoiceReply("Column I: a. Rhizome b. Tuber Column II: i. Potato ii. Ginger (A) a-ii, b-i (B) a-i, b-ii (C) x (D) y", { options: false });
+    expect(card).toContain("| b. Tuber | ii. Ginger |");
+    expect(card).not.toContain("**(A)**");
+  });
+  it("keeps a half-spoken Match column in one paragraph", () => {
+    expect(formatVoiceReply("Sahi match karo. Column I: a. Rhizome, b. Tuber, c. Bulb, d. Corm.")).not.toContain("a.\n");
+  });
   it("boxes Assertion and Reason", () => {
     const a = formatVoiceReply("Assertion: Potato is a stem. Reason: It has nodes. Option A: Both true. B: A true, R false. C: A false. D: Both false.");
     expect(a).toContain("> **Assertion (A):** Potato is a stem.");
     expect(a).toContain("> **Reason (R):** It has nodes.");
+    const b = formatVoiceReply("Assertion (A): Potato is a stem. Reason (R): It has nodes. (A) Both true (B) A true, R false (C) A false (D) Both false");
+    expect(b).toContain("> **Assertion (A):** Potato is a stem.");
+    expect(b).toContain("- **(C)** A false");
   });
 });

@@ -292,7 +292,7 @@ function LiveVoicePage() {
       )}
       {quiz && pending && <div className="flex shrink-0 items-center justify-between gap-2 pb-2 text-xs text-muted-foreground" role="status"><span className="inline-flex items-center gap-1"><Timer className="size-3.5" />Next question · listening</span><Button size="icon" variant="ghost" aria-label="Show question and start timer" title="Show question and start timer" disabled={!live || voice.playbackBlocked} onClick={() => dispatchQuiz({ type: 'app.quiz.manual.ready', questionId: pending.id })}><Play className="size-3.5" /></Button></div>}
       {quiz && question && <div className="max-h-[40dvh] shrink-0 overflow-y-auto pb-2" aria-busy={!!pending}>
-        <div className="break-words pb-2 text-sm text-foreground" aria-label="Current quiz question"><AssistantAnswer text={formatVoiceReply(question.text)} isAnimating={false} compact boldQuestion /></div>
+        <div className="break-words pb-2 text-sm text-foreground" aria-label="Current quiz question"><AssistantAnswer text={formatVoiceReply(question.text, { options: false })} isAnimating={false} compact boldQuestion /></div>
         <QuizActions key={question.id} answersOnly timed timerPaused={!!pending || !quizState.ready || voice.playbackBlocked} retryKey={quizRetry} options={VOICE_ANSWERS} labels={question.labels} questionKey={question.id} selectedAnswer={picked === VOICE_SKIP ? undefined : picked} disabled={!live || thinking || !!picked || !!pending} onSend={(answer) => {
           if (!voice.submitAnswer(answer, question.id)) { toast.error("Start a connected call before answering."); return false; }
           dispatchQuiz({ type: 'app.quiz.submitted', questionId: question.id, answer });
