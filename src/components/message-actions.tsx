@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Check, Copy, MoreHorizontal, Share2, Square, ThumbsDown, ThumbsUp, Volume2 } from "lucide-react";
 import { toast } from "sonner";
 import { streamSpeech } from "@/lib/stream-speech";
@@ -29,7 +29,7 @@ export function getVote(id: string): Vote {
 }
 
 /** Like / unlike / copy / share actions under an agent reply. Stored locally per message id. */
-export function MessageActions({ messageId, text }: { messageId: string; text: string }) {
+export function MessageActions({ messageId, text, children }: { messageId: string; text: string; children?: ReactNode }) {
   const [vote, setVoteState] = useState<Vote>(null);
   const [copied, setCopied] = useState(false);
   useEffect(() => setVoteState(getVote(messageId)), [messageId]);
@@ -91,6 +91,7 @@ export function MessageActions({ messageId, text }: { messageId: string; text: s
       <Button variant="ghost" size="icon" className={btn} aria-label="Copy answer" onClick={copy}>
         {copied ? <Check className="size-3.5 text-primary" /> : <Copy className="size-3.5" />}
       </Button>
+      {children}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className={btn} aria-label="More actions">

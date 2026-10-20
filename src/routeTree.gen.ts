@@ -16,6 +16,8 @@ import { Route as VoiceRouteImport } from './routes/voice'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiSpeechRouteImport } from './routes/api/speech'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
+import { Route as ApiVerifyRouteImport } from './routes/api/verify'
+import { Route as ApiVisionReadRouteImport } from './routes/api/vision-read'
 import { Route as DoubtThreadIdRouteImport } from './routes/doubt.$threadId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +55,16 @@ const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   path: '/api/transcribe',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiVerifyRoute = ApiVerifyRouteImport.update({
+  id: '/api/verify',
+  path: '/api/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiVisionReadRoute = ApiVisionReadRouteImport.update({
+  id: '/api/vision-read',
+  path: '/api/vision-read',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DoubtThreadIdRoute = DoubtThreadIdRouteImport.update({
   id: '/doubt/$threadId',
   path: '/doubt/$threadId',
@@ -67,6 +79,8 @@ export interface FileRoutesByFullPath {
   '/api/chat': typeof ApiChatRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/verify': typeof ApiVerifyRoute
+  '/api/vision-read': typeof ApiVisionReadRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +91,8 @@ export interface FileRoutesByTo {
   '/api/chat': typeof ApiChatRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/verify': typeof ApiVerifyRoute
+  '/api/vision-read': typeof ApiVisionReadRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRoutesById {
@@ -88,6 +104,8 @@ export interface FileRoutesById {
   '/api/chat': typeof ApiChatRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/verify': typeof ApiVerifyRoute
+  '/api/vision-read': typeof ApiVisionReadRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +118,8 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/api/speech'
     | '/api/transcribe'
+    | '/api/verify'
+    | '/api/vision-read'
     | '/doubt/$threadId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +130,8 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/api/speech'
     | '/api/transcribe'
+    | '/api/verify'
+    | '/api/vision-read'
     | '/doubt/$threadId'
   id:
     | '__root__'
@@ -120,6 +142,8 @@ export interface FileRouteTypes {
     | '/api/chat'
     | '/api/speech'
     | '/api/transcribe'
+    | '/api/verify'
+    | '/api/vision-read'
     | '/doubt/$threadId'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +155,8 @@ export interface RootRouteChildren {
   ApiChatRoute: typeof ApiChatRoute
   ApiSpeechRoute: typeof ApiSpeechRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
+  ApiVerifyRoute: typeof ApiVerifyRoute
+  ApiVisionReadRoute: typeof ApiVisionReadRoute
   DoubtThreadIdRoute: typeof DoubtThreadIdRoute
 }
 
@@ -185,6 +211,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiTranscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/verify': {
+      id: '/api/verify'
+      path: '/api/verify'
+      fullPath: '/api/verify'
+      preLoaderRoute: typeof ApiVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/vision-read': {
+      id: '/api/vision-read'
+      path: '/api/vision-read'
+      fullPath: '/api/vision-read'
+      preLoaderRoute: typeof ApiVisionReadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/doubt/$threadId': {
       id: '/doubt/$threadId'
       path: '/doubt/$threadId'
@@ -203,6 +243,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiChatRoute: ApiChatRoute,
   ApiSpeechRoute: ApiSpeechRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
+  ApiVerifyRoute: ApiVerifyRoute,
+  ApiVisionReadRoute: ApiVisionReadRoute,
   DoubtThreadIdRoute: DoubtThreadIdRoute,
 }
 export const routeTree = rootRouteImport

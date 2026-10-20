@@ -3,7 +3,7 @@ import { BookOpen, Settings, Shield } from 'lucide-react';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Switch } from './ui/switch';
-import { STUDY_TEXT_SIZES, useBoldQuestions, useHideChatWidget, useHideTopBar, useNumericAnswerLabels, useQuizKeyboardShortcuts, useStudyTextSize, useVoiceChoice, VOICE_CHOICES, type VoiceChoiceId, useThemeChoice, type ThemeChoice } from '@/lib/quiz-label-preference';
+import { STUDY_TEXT_SIZES, useAutoVerify, usePhotoReading, useBoldQuestions, useHideChatWidget, useHideTopBar, useNumericAnswerLabels, useQuizKeyboardShortcuts, useStudyTextSize, useVoiceChoice, VOICE_CHOICES, type VoiceChoiceId, useThemeChoice, type ThemeChoice } from '@/lib/quiz-label-preference';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { BackupControls } from './backup-controls';
 import { QuizTimerSettings } from './quiz-timer-settings';
@@ -15,6 +15,8 @@ export function StudySettings() {
   const [size, setSize] = useStudyTextSize();
   const [hidden, setHidden] = useHideChatWidget();
   const [topBarHidden, setTopBarHidden] = useHideTopBar();
+  const [autoVerify, setAutoVerify] = useAutoVerify();
+  const [photoReading, setPhotoReading] = usePhotoReading();
   return <Dialog>
     <DialogTrigger asChild><Button variant="ghost" className="h-9 w-full justify-start gap-2 px-3"><Settings className="size-4" />Settings</Button></DialogTrigger>
     <DialogContent className="max-h-[85dvh] w-[calc(100%-2rem)] overflow-y-auto rounded-lg">
@@ -26,6 +28,8 @@ export function StudySettings() {
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Keyboard answers <span className="mt-1 block text-xs text-muted-foreground">1–4 · top row + numeric keypad</span></span><Switch checked={keyboard} onCheckedChange={setKeyboard} aria-label="Keyboard quiz answers" /></label>
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Hide Chat Widget <span className="mt-1 block text-xs text-muted-foreground">Quiz</span></span><Switch checked={hidden} onCheckedChange={setHidden} aria-label="Hide Chat Widget" /></label>
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Hide top bar <span className="mt-1 block text-xs text-muted-foreground">Full-screen mobile · menu stays in the corner</span></span><Switch checked={topBarHidden} onCheckedChange={setTopBarHidden} aria-label="Hide top bar" /></label>
+        <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Auto-verify answers <span className="mt-1 block text-xs text-muted-foreground">Gemini 3.1 Pro + GPT-6 Astra check each answer · Claude rules on objections</span></span><Switch checked={autoVerify} onCheckedChange={setAutoVerify} aria-label="Auto-verify answers" /></label>
+        <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Photo reading <span className="mt-1 block text-xs text-muted-foreground">Gemini 3.1 Pro reads doubt photos first, then the tutor answers</span></span><Switch checked={photoReading} onCheckedChange={setPhotoReading} aria-label="Photo reading by Gemini" /></label>
         <ThemeRow />
         <VoiceChoiceRow />
         <QuizTimerSettings />

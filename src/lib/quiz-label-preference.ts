@@ -96,3 +96,17 @@ export function useThemeChoice() {
   return [choice, update] as const;
 }
 export const THEME_BOOT_SCRIPT = `try{var t=localStorage.getItem('${THEME_KEY}');if(t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}`;
+
+/** Second-opinion fact check on tutor answers (Gemini + GPT). Default ON. */
+export function useAutoVerify() {
+  return useDeviceBoolean('snapsolve.auto-verify', 'snapsolve:auto-verify', true);
+}
+
+/** Gemini reads doubt photos first and hands the text to the tutor. Default ON. */
+export function usePhotoReading() {
+  return useDeviceBoolean('snapsolve.photo-reading', 'snapsolve:photo-reading', true);
+}
+
+export function readDeviceFlag(key: string, defaultValue: boolean) {
+  try { const v = localStorage.getItem(key); return v === null ? defaultValue : v === '1'; } catch { return defaultValue; }
+}

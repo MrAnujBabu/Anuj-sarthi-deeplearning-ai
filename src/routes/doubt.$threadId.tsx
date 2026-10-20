@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
-import { ArrowLeft, FileDown, FileText, PanelBottomOpen, Pause, Play } from "lucide-react";
+import { ArrowLeft, FileDown, FileText, PanelBottomOpen, Pause, Play, ScanText } from "lucide-react";
 import { RESUME_TEXT, isConnectionError, isResumeText, pausedKey } from "@/lib/chat-resume";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
 import {
@@ -17,7 +17,9 @@ import { DoubtSidebar, MobileStudyMenu } from "@/components/doubt-sidebar";
 import { SnapComposer } from "@/components/snap-composer";
 import { compressImage, getThread, pendingFirstMessage, titleFrom, upsertThread } from "@/lib/threads";
 import { AssistantAnswer } from "@/components/assistant-answer";
-import { MessageActions } from "@/components/message-actions";
+import { AnswerFooter } from "@/components/answer-footer";
+import { answerTextFor, councilInputFor, isWorthChecking } from "@/lib/council-input";
+import { COUNCIL_MODELS, PHOTO_OPEN, splitPhotoReading, wrapPhotoReading } from "@/lib/verify";
 import { ToolStep } from "@/components/tool-step";
 import { ChatControls } from "@/components/chat-controls";
 import { restoreDocs, stripDocs } from "@/lib/doc-store";
@@ -30,7 +32,7 @@ import { exportThreadMarkdown } from "@/lib/export-chat";
 import { extractQuizOptions } from "@/lib/quiz-options";
 import { emphasizeQuizQuestion } from "@/lib/quiz-emphasis";
 import { DOC_RE, pdfsToText } from "@/lib/pdf-text";
-import { useBoldQuestions, useHideChatWidget, useHideTopBar, useStudyTextSize } from '@/lib/quiz-label-preference';
+import { readDeviceFlag, useAutoVerify, useBoldQuestions, useHideChatWidget, useHideTopBar, useStudyTextSize } from '@/lib/quiz-label-preference';
 
 export const Route = createFileRoute("/doubt/$threadId")({
   head: () => ({
@@ -121,8 +123,38 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
     transport: new DefaultChatTransport({ api: "/api/chat" }),
     onError: (e) => toast.error(displayAiError(e.message) || "Couldn't reach the tutor. Check your connection and try again."),
   });
-  const sendMessage = (m: Parameters<typeof rawSend>[0], mode: "quiz" | "solve" = quiz ? "quiz" : "solve") =>
-    rawSend(m, { body: { mode, model, effort, search } });
+  const [autoVerify] = useAutoVerify();
+  // Photo reading: Gemini transcribes doubt photos first; the tutor gets the text plus the image.
+  const [reading, setReading] = useState(false);
+  const readCtrl = useRef<AbortController | null>(null);
+  const sendMessage = async (m: Parameters<typeof rawSend>[0], mode: "quiz" | "solve" = quiz ? "quiz" : "solve") => {
+    let msg = m;
+    const files = m && "files" in m && Array.isArray(m.files) ? m.files : [];
+    const photos = files.filter((f) => f.mediaType?.startsWith("image/") && f.url.startsWith("data:image/"));
+    const text = m && "text" in m && typeof m.text === "string" ? m.text : null;
+    if (mode === "solve" && photos.length && text !== null && !text.includes(PHOTO_OPEN) && readDeviceFlag("snapsolve.photo-reading", true)) {
+      const ctrl = new AbortController();
+      readCtrl.current = ctrl;
+      setReading(true);
+      try {
+        const res = await fetch("/api/vision-read", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ images: photos.slice(0, 4).map((f) => f.url) }),
+          signal: ctrl.signal,
+        });
+        const j = (await res.json().catch(() => ({}))) as { text?: string };
+        if (res.ok && j.text) msg = { ...m, text: wrapPhotoReading(j.text) + text } as typeof m;
+        else if (res.status === 402) toast.message("Photo reading paused (AI credits) — the tutor will read the photo directly.");
+      } catch {
+        /* Skipped or offline: the tutor still reads the photo itself. */
+      } finally {
+        if (readCtrl.current === ctrl) readCtrl.current = null;
+        setReading(false);
+      }
+    }
+    return rawSend(msg, { body: { mode, model, effort, search } });
+  };
   const toggleQuiz = (on: boolean) => {
     setQuiz(on);
     localStorage.setItem(quizKey, on ? "1" : "0");
@@ -166,6 +198,9 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
 
   const busy = status === "submitted" || status === "streaming";
   const last = messages[messages.length - 1];
+  // Auto-verify only answers that finish streaming in this session (never old history, never paused partials).
+  const [autoTarget, setAutoTarget] = useState<string | null>(null);
+  const prevStatus = useRef(status);
 
   // Pause / resume: pausing stops the stream but keeps the partial answer; resuming asks the tutor to continue from the last word.
   const [paused, setPaused] = useState(false);
@@ -181,6 +216,14 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
     void sendMessage({ text: RESUME_TEXT });
   };
   useEffect(() => { if (error && !busy && isConnectionError(error.message)) { setInterrupted(true); markPaused(true); } }, [error, busy]);
+  useEffect(() => {
+    const was = prevStatus.current;
+    prevStatus.current = status;
+    if ((was === "streaming" || was === "submitted") && status === "ready" && !paused) {
+      const l = messages[messages.length - 1];
+      if (l?.role === "assistant") setAutoTarget(l.id);
+    }
+  }, [status, messages, paused]);
   useEffect(() => {
     const up = () => setOnline(true), down = () => setOnline(false);
     setOnline(navigator.onLine);
@@ -210,7 +253,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
               This doubt is empty. Snap a question below to get started.
             </div>
           )}
-          {messages.map((m) => (
+          {messages.map((m, idx) => (
             <Message key={m.id} from={m.role} className="msg-in">
               <MessageContent
                 className={
@@ -244,24 +287,27 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
                       isResumeText(p.text) ? (
                         <span key={i} className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs text-muted-foreground"><Play className="size-3" />Resumed</span>
                       ) : (
-                      <div key={i} className="space-y-2">
-                        {[...p.text.matchAll(DOC_RE)].map((d, j) => (
-                          <div key={j} className="flex w-fit items-center gap-2 rounded-lg border bg-card px-3 py-2 text-sm"><FileText className="size-4" /> {d[1]}</div>
-                        ))}
-                        <p className={`study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl rounded-br-md border border-primary/20 bg-user-bubble px-4 py-2.5 text-foreground shadow-sm`}>{p.text.replace(DOC_RE, "")}</p>
-                      </div>
+                      <UserText key={i} text={p.text} />
                       )
                     );
                   if (p.type.startsWith("tool-")) return <ToolStep key={i} part={p as never} />;
                   return null;
                 })}
               </MessageContent>
-              {m.role === "assistant" && !busy && (
-                <MessageActions
-                  messageId={m.id}
-                  text={m.parts.map((p) => (p.type === "text" ? p.text : "")).join("\n")}
-                />
-              )}
+              {m.role === "assistant" && !busy && (() => {
+                const answer = answerTextFor(messages, idx);
+                const input = councilInputFor(messages, idx);
+                return (
+                  <AnswerFooter
+                    messageId={m.id}
+                    text={answer}
+                    question={input.question}
+                    images={input.images}
+                    canVerify={!quiz && !!input.question && !!answer}
+                    autoStart={autoVerify && autoTarget === m.id && isWorthChecking(answer)}
+                  />
+                );
+              })()}
             </Message>
           ))}
           {!quiz && !busy && last?.role === "assistant" && (
@@ -274,6 +320,13 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
             </div>
           )}
           {openQuizOptions && openQuiz && quizSource && <QuizActions questionKey={quizSource.id} options={openQuizOptions} labels={openQuiz.labels} selectedAnswer={selectedAnswer} disabled={busy} chatHidden={chatHidden} onChatHidden={setChatHidden} onSend={(t) => { if (t === 'stop quiz') setChatHidden(false); sendMessage({ text: t }, "quiz"); }} />}
+          {reading && (
+            <div className="msg-in flex items-center gap-3 px-1" role="status">
+              <ScanText className="size-4 shrink-0 text-primary" aria-hidden />
+              <Shimmer>{`${COUNCIL_MODELS.gemini.name} is reading your photo…`}</Shimmer>
+              <Button type="button" variant="ghost" size="sm" className="h-8 px-2 text-xs" onClick={() => readCtrl.current?.abort()}>Skip</Button>
+            </div>
+          )}
           {waiting && (
             <div className="msg-in flex items-center gap-3 px-1" role="status">
               <span className="flex gap-1" aria-hidden>{[0,1,2].map(i => <span key={i} className="think-dot size-1.5 rounded-full bg-primary" />)}</span>
@@ -329,8 +382,8 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
             <FileDown className="size-4" />
           </Button>
           }
-          status={status}
-          onStop={pause}
+          status={reading ? "submitted" : status}
+          onStop={() => { if (reading) readCtrl.current?.abort(); else pause(); }}
           placeholder={
             quiz && search
               ? "Type your answer — quiz + live search both on…"
@@ -342,7 +395,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
           }
 
           onSubmit={async (msg) => {
-            if (busy) return;
+            if (busy || reading) return;
             markPaused(false); setInterrupted(false);
             const docs = await pdfsToText(msg.files);
             const files = await Promise.all(docs.files.map((f) => compressImage(f)));
@@ -351,5 +404,24 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
         />
       </div>
     </>
+  );
+}
+
+/** Student turn: PDF chips, Gemini's folded photo reading, then the question bubble. */
+function UserText({ text }: { text: string }) {
+  const { reading, rest } = splitPhotoReading(text);
+  return (
+    <div className="space-y-2">
+      {[...rest.matchAll(DOC_RE)].map((d, j) => (
+        <div key={j} className="flex w-fit items-center gap-2 rounded-lg border bg-card px-3 py-2 text-sm"><FileText className="size-4" /> {d[1]}</div>
+      ))}
+      {reading && (
+        <details className="group w-fit max-w-full rounded-lg border bg-card px-3 py-2 text-sm">
+          <summary className="flex cursor-pointer list-none items-center gap-2 text-xs text-muted-foreground"><ScanText className="size-3.5 text-primary" />Photo read by {COUNCIL_MODELS.gemini.name}</summary>
+          <p className="mt-2 whitespace-pre-wrap text-sm text-foreground">{reading}</p>
+        </details>
+      )}
+      <p className="study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl rounded-br-md border border-primary/20 bg-user-bubble px-4 py-2.5 text-foreground shadow-sm">{rest.replace(DOC_RE, "")}</p>
+    </div>
   );
 }

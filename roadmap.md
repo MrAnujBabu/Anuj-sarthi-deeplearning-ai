@@ -96,5 +96,20 @@
 - [x] Lovable AI Gateway enabled (workspace-level, no API keys needed)
 - [x] Chat/tutor already top premium (Fable 5.1 default) — untouched
 - [x] TTS -> gemini-2.5-pro-tts, dictation STT -> gemini-3.5-transcribe, doc text extraction -> claude-sonnet-5 (all live-tested on gateway)
-- [ ] Push to GitHub + Vercel deploy + pages 200
+- [x] Push to GitHub (08959c1) + Vercel deploy dpl_3oq2nxj14YieKpEaA35Z4GhoJqtb READY + pages 200
 - [x] Claude/Anthropic untouched on user instruction (doc extraction reverted to Haiku 4.5)
+
+## Best model per job + Verify (17:46 UTC)
+- [x] /api/verify route (Gemini 3.1 Pro + GPT-6 Astra + Claude Fable 5.1 council, Perplexity/Parallel sources)
+- [x] /api/vision-read route (Gemini 3.1 Pro photo transcription)
+- [x] src/lib/verify.ts, src/lib/gateway-chat.server.ts, settings hooks useAutoVerify/usePhotoReading (default ON)
+- [x] verify-card.tsx + Verify button in message-actions (auto when setting ON, skip quiz)
+- [x] Settings toggles (Auto-verify, Photo reading) in study-settings.tsx
+- [x] Photo pre-read in doubt sendMessage (solve mode, images, setting ON)
+- [x] Council: Gemini 3.1 Pro (Google-grounded facts) + GPT-6 Astra (maths) review, debate when verdicts differ, Claude Fable 5.1 rules (web research confirmed Astra > 6.1 Sol)
+- [x] Tests (council rules, parsing, routes) + live tests: photo read 200, wrong answer → needs_fix (ruled), right answer → verified by all 3, quiz → 400
+- [ ] Push GitHub + Vercel env keys (new workspace) + deploy READY
+
+## Workspace move #3 (18:11 UTC)
+- [x] Reconnect Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
+- [x] Update Vercel env keys (LOVABLE_API_KEY + 3 connector keys) after reconnect, redeploy

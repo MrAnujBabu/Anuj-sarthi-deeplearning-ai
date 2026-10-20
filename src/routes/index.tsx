@@ -7,7 +7,6 @@ import { compressImage, pendingFirstMessage } from "@/lib/threads";
 import { pdfsToText } from "@/lib/pdf-text";
 import { useEffect, useState } from "react";
 import { ChatControls } from "@/components/chat-controls";
-import { BackupControls } from '@/components/backup-controls';
 import { Button } from '@/components/ui/button';
 import { DEFAULT_MODEL, upgradedTutorPreference, type Effort } from '@/lib/models';
 import { RevisionCard } from "@/components/revision-card";
@@ -97,7 +96,7 @@ function Index() {
               </div>
             ))}
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t pt-4"><p className="text-xs text-muted-foreground">Saved in this browser</p><BackupControls/></div>
+          <p className="mt-8 border-t pt-4 text-xs text-muted-foreground">Saved in this browser · Backup, Restore aur media clear karna ab Settings → Study data mein hai.</p>
         </div>
       </main>
     </div>

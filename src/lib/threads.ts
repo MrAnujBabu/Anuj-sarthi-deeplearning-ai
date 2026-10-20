@@ -63,7 +63,10 @@ export function titleFrom(messages: UIMessage[]): string {
   const first = messages.find((m) => m.role === "user");
   const text = first?.parts.find((p) => p.type === "text") as { text?: string } | undefined;
   // Skip PDF text the browser inlined (<doc …>…</doc>) so the title shows the student's question.
-  const t = text?.text?.replace(/<doc name="[^"]*">[\s\S]*?<\/doc>\s*/g, "").trim();
+  const t = text?.text
+    ?.replace(/<doc name="[^"]*">[\s\S]*?<\/doc>\s*/g, "")
+    .replace(/<photo-reading[^>]*>[\s\S]*?<\/photo-reading>\s*/g, "")
+    .trim();
   if (t) return t.length > 60 ? t.slice(0, 57) + "…" : t;
   return "Snapped doubt";
 }
