@@ -119,3 +119,7 @@
 ## Workspace move #3 (18:11 UTC)
 - [x] Reconnect Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
 - [x] Update Vercel env keys (LOVABLE_API_KEY + 3 connector keys) after reconnect, redeploy
+
+## Workspace move #4 (18:31 UTC)
+- [x] Reconnect Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
+- [x] Update Vercel env keys (LOVABLE_API_KEY + 3 connector keys) and redeploy
