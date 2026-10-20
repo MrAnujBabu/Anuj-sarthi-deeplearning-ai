@@ -11,4 +11,7 @@ describe('talk-and-listen voice', () => {
   it('never reads hidden tags aloud', () => {
     expect(speakableText('Sahi! <!--card {"q":"x"}--> **Score: 1/1**')).toBe('Sahi! Score: 1/1');
   });
+  it('never reads diagram code aloud', () => {
+    expect(speakableText('Mitochondria.\n```svg\n<svg></svg>\n```\nDone')).toBe('Mitochondria. Done');
+  });
 });
