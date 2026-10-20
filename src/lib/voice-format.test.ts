@@ -62,5 +62,8 @@ describe("voice reply formatting", () => {
     const b = formatVoiceReply("Assertion (A): Potato is a stem. Reason (R): It has nodes. (A) Both true (B) A true, R false (C) A false (D) Both false");
     expect(b).toContain("> **Assertion (A):** Potato is a stem.");
     expect(b).toContain("- **(C)** A false");
+    const c = formatVoiceReply("Dhyan se suniye. Assertion, aloo ek underground stem hai. Reason, potato par eyes hote hain. (A) dono sahi (B) dono sahi, R explain nahi karta (C) A sahi, R galat (D) A galat, R sahi");
+    expect(c).toContain("> **Assertion (A):** aloo ek underground stem hai.");
+    expect(c).toContain("> **Reason (R):** potato par eyes hote hain.");
   });
 });

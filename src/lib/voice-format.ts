@@ -146,7 +146,7 @@ function formatQuestion(t: string, label: string, separate: boolean): string {
 
   stem = stem.charAt(0).toUpperCase() + stem.slice(1);
   stem = stem.replace(/^Options?\s*[:\-]?\s*$/i, "").replace(/\s*Options?\s*[:\-]?\s*$/i, "");
-  const ar = stem.match(/^(.*?)Assertion\s*(?:\(A\))?\s*[:\-]\s*(.+?)\s*Reason\s*(?:\(R\))?\s*[:\-]\s*(.+)$/i);
+  const ar = stem.match(/^(.*?)\bAssertion\s*(?:\(A\))?\s*[:,\-]\s*(.+?)\s*\bReason\s*(?:\(R\))?\s*[:,\-]\s*(.+)$/i);
   if (ar) {
     if (ar[1]?.trim()) out.push(`**${ar[1].trim()}**`);
     out.push(`> **Assertion (A):** ${ar[2]?.trim()}\n>\n> **Reason (R):** ${ar[3]?.trim()}`);
