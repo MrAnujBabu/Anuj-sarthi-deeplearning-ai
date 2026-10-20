@@ -172,6 +172,19 @@ function LiveVoicePage() {
   const [reconnecting, setReconnecting] = useState(false);
   // Distraction-free full page: header, tabs and chips hide; transcript + quiz + call controls stay.
   const [zen, setZen] = useState(false);
+  // Auto-hide the call dock 3s after the last touch during a live call; any tap brings it back.
+  const [dockVisible, setDockVisible] = useState(true);
+  const dockTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pokeDock = useCallback(() => {
+    setDockVisible(true);
+    if (dockTimer.current) clearTimeout(dockTimer.current);
+    dockTimer.current = setTimeout(() => setDockVisible(false), 3000);
+  }, []);
+  useEffect(() => {
+    if (live) pokeDock();
+    else { setDockVisible(true); if (dockTimer.current) clearTimeout(dockTimer.current); }
+    return () => { if (dockTimer.current) clearTimeout(dockTimer.current); };
+  }, [live, pokeDock]);
   useEffect(() => {
     if (canStart) { appliedKey.current = settingsKey; return; }
     if (!live || settingsKey === appliedKey.current) return;
@@ -264,7 +277,7 @@ function LiveVoicePage() {
   const status = reconnecting ? "Reconnecting…" : voice.status === "connecting" ? "Connecting…" : live ? (voice.paused ? "Paused" : thinking ? "Soch raha hai…" : voice.muted ? "Muted" : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
 
   return (
-    <main className="mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6">
+    <main className="mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6" onPointerDown={pokeDock}>
       {!zen && (
       <header className="flex shrink-0 items-center gap-2 border-b pb-2">
         <Link to="/" aria-label="Back" className="grid size-9 place-items-center rounded-full hover:bg-muted">
@@ -373,7 +386,14 @@ function LiveVoicePage() {
         <p role="alert" className="mb-2 max-h-24 shrink-0 overflow-y-auto rounded-md border border-destructive px-3 py-2 text-sm text-destructive">{voice.error}</p>
       )}
       <audio ref={voice.audioRef} className="sr-only" />
-      <footer className="voice-dock relative z-10 -mx-3 shrink-0 border-t bg-background/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:-mx-6 sm:px-6">
+      {!dockVisible && live && (
+        <div className="relative z-10 flex shrink-0 justify-center pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <Button type="button" size="sm" variant="outline" className="rounded-full px-4 text-xs text-muted-foreground" onClick={pokeDock} aria-label="Show call controls">
+            <Mic className="size-4" /> Controls
+          </Button>
+        </div>
+      )}
+      <footer hidden={!dockVisible && live} className="voice-dock relative z-10 -mx-3 shrink-0 border-t bg-background/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:-mx-6 sm:px-6">
         <div className="mx-auto flex max-w-md items-end justify-center gap-5">
           <div className="flex flex-col items-center gap-1">
             <Button type="button" size="icon" variant={zen ? "secondary" : "outline"} className="voice-dock-btn size-14 rounded-full" aria-pressed={zen} onClick={() => setZen((z) => !z)} aria-label={zen ? "Normal view" : "Full page distraction-free"} title={zen ? "Normal view" : "Full page — sirf baat-cheet, baaki sab gayab"}>
