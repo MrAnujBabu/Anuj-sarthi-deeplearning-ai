@@ -14,7 +14,8 @@ export function formatVoiceReply(raw: string): string {
   let feedback = t;
   let next = "";
   let label = "";
-  if (marker && marker.index !== undefined) {
+  // Only split off a question card when options actually follow; "skip karke agla sawal" alone is plain text.
+  if (marker && marker.index !== undefined && OPTION_START.test(t.slice(marker.index + marker[0].length))) {
     feedback = t.slice(0, marker.index).trim();
     next = t.slice(marker.index + marker[0].length).trim();
     label = marker[0];

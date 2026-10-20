@@ -30,6 +30,11 @@ describe("voice reply formatting", () => {
     expect(m).toContain("| d. Bulb | iv. Colocasia |");
     expect(m).toContain("- **(A)** a-ii, b-i, c-iv, d-iii");
   });
+  it("keeps a mention of the next question as plain text when no options follow", () => {
+    const o = formatVoiceReply("Pehla sawaal abhi pending hai. Kya use dobara sunna hai? Ya skip karke agla sawal sunoge?");
+    expect(o).not.toContain("❓");
+    expect(o).toContain("Ya skip karke agla sawal sunoge?");
+  });
   it("boxes Assertion and Reason", () => {
     const a = formatVoiceReply("Assertion: Potato is a stem. Reason: It has nodes. Option A: Both true. B: A true, R false. C: A false. D: Both false.");
     expect(a).toContain("> **Assertion (A):** Potato is a stem.");
