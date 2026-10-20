@@ -43,6 +43,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
+    // A page opened before a site update can request code files that no longer exist; reload once.
+    if (/dynamically imported module|Importing a module script failed|Failed to fetch dynamically|Unable to preload CSS/i.test(String(error?.message ?? error))
+      && !sessionStorage.getItem("snapsolve.chunk-reload")) {
+      sessionStorage.setItem("snapsolve.chunk-reload", "1");
+      window.location.reload();
+      return;
+    }
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
