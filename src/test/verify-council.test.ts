@@ -90,3 +90,13 @@ describe('what the council checks', () => {
     expect(isWorthChecking('x'.repeat(200))).toBe(true);
   });
 });
+
+describe('asking the tutor about a correction', () => {
+  it('lists every accepted mistake with its fix', async () => {
+    const { correctionRequest } = await import('@/lib/verify');
+    const t = correctionRequest([{ line: 'F = 2 + 3 = 5 N', fix: 'F = 2 × 3 = 6 N' }]);
+    expect(t).toContain('Wrong: "F = 2 + 3 = 5 N"');
+    expect(t).toContain('Correct: "F = 2 × 3 = 6 N"');
+    expect(t).toContain('this mistake');
+  });
+});

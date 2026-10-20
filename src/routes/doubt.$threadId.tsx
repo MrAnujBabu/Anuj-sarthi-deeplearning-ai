@@ -305,6 +305,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
                     images={input.images}
                     canVerify={!quiz && !!input.question && !!answer}
                     autoStart={autoVerify && autoTarget === m.id && isWorthChecking(answer)}
+                    onAskTutor={(t) => { void sendMessage({ text: t }, "solve"); }}
                   />
                 );
               })()}

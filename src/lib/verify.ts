@@ -101,6 +101,13 @@ export function councilNextStep(round: 1 | 2, g: Pick<CheckResult, 'verdict' | '
   return 'ruling';
 }
 
+/** Follow-up the student can send so the tutor explains the council's accepted corrections. */
+export function correctionRequest(issues: Issue[]) {
+  const clean = (t: string) => t.replace(/\*\*/g, '').trim();
+  const list = issues.map((i, n) => `${n + 1}. Wrong: "${clean(i.line)}"\n   Correct: "${clean(i.fix)}"`).join('\n');
+  return `Answer check (${COUNCIL_MODELS.gemini.name} + ${COUNCIL_MODELS.openai.name}, ruled by ${COUNCIL_MODELS.chair.name}) found ${issues.length === 1 ? 'this mistake' : 'these mistakes'} in your answer:\n${list}\n\nPlease re-check, explain where it went wrong, and give the corrected final answer.`;
+}
+
 /** Parse one NDJSON line from /api/verify. */
 export function parseCouncilLine(line: string): CouncilEvent | null {
   try {

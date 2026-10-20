@@ -1,8 +1,8 @@
-import { AlertTriangle, Check, ChevronDown, ExternalLink, HelpCircle, Loader2, RotateCcw, ShieldCheck, Square, X } from 'lucide-react';
+import { AlertTriangle, Check, ChevronDown, ExternalLink, HelpCircle, Loader2, MessageSquareReply, RotateCcw, ShieldCheck, Square, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MessageResponse } from '@/components/ai-elements/message';
 import { normalizeMath } from '@/lib/math-format';
-import { COUNCIL_MODELS, type CheckResult, type CouncilStage, type Verdict } from '@/lib/verify';
+import { COUNCIL_MODELS, correctionRequest, type CheckResult, type CouncilStage, type Verdict } from '@/lib/verify';
 import type { CouncilState } from '@/lib/verify-client';
 
 const VERDICT_UI: Record<Verdict, { label: string; Icon: typeof Check; tone: string }> = {
@@ -77,7 +77,7 @@ function Progress({ state, onStop }: { state: CouncilState; onStop: () => void }
   );
 }
 
-function Result({ state, onRecheck }: { state: CouncilState; onRecheck: () => void }) {
+function Result({ state, onRecheck, onAskTutor }: { state: CouncilState; onRecheck: () => void; onAskTutor?: (text: string) => void }) {
   const r = state.result!;
   const { Icon, tone, label } = VERDICT_UI[r.verdict];
   const headline = r.verdict === 'verified' && r.decidedBy === 'all-agree' ? 'Verified by all 3 AIs' : label;
@@ -133,6 +133,11 @@ function Result({ state, onRecheck }: { state: CouncilState; onRecheck: () => vo
           ))}
         </div>
       </details>
+      {r.verdict === 'needs_fix' && r.issues.length > 0 && onAskTutor && (
+        <Button variant="outline" size="sm" className="h-9 w-full justify-center" onClick={() => onAskTutor(correctionRequest(r.issues))}>
+          <MessageSquareReply className="size-4" />Ask the tutor to explain the correction
+        </Button>
+      )}
       <div className="flex items-center justify-between gap-2">
         <span className="text-xs text-muted-foreground">Claude's answer above is unchanged.</span>
         <Button variant="ghost" size="sm" className="h-8 px-2 text-xs" onClick={onRecheck}><RotateCcw className="size-3" />Re-check</Button>
@@ -142,12 +147,12 @@ function Result({ state, onRecheck }: { state: CouncilState; onRecheck: () => vo
 }
 
 /** Answer-check panel shown under an answer while checking or when opened. */
-export function VerifyPanel({ state, onStart, onStop }: { state: CouncilState; onStart: () => void; onStop: () => void }) {
+export function VerifyPanel({ state, onStart, onStop, onAskTutor }: { state: CouncilState; onStart: () => void; onStop: () => void; onAskTutor?: (text: string) => void }) {
   if (state.status === 'idle') return null;
   return (
     <section aria-label="Answer check" className="msg-in mt-2 w-full max-w-xl rounded-lg border border-border bg-card/70 p-3">
       {state.status === 'running' && <Progress state={state} onStop={onStop} />}
-      {state.status === 'done' && state.result && <Result state={state} onRecheck={onStart} />}
+      {state.status === 'done' && state.result && <Result state={state} onRecheck={onStart} {...(onAskTutor ? { onAskTutor } : {})} />}
       {state.status === 'error' && (
         <div className="flex items-start gap-2 text-sm" role="alert">
           <AlertTriangle className="mt-0.5 size-4 shrink-0 text-destructive" />

@@ -4,7 +4,7 @@ import { VerifyButton, VerifyPanel } from '@/components/verify-card';
 import { useCouncil } from '@/lib/verify-client';
 
 /** Actions under one tutor answer plus its Gemini + GPT + Claude answer check. */
-export function AnswerFooter({ messageId, text, question, images, canVerify, autoStart }: {
+export function AnswerFooter({ messageId, text, question, images, canVerify, autoStart, onAskTutor }: {
   messageId: string;
   text: string;
   question: string;
@@ -13,6 +13,8 @@ export function AnswerFooter({ messageId, text, question, images, canVerify, aut
   canVerify: boolean;
   /** Start automatically (auto-verify ON and this answer just finished). */
   autoStart: boolean;
+  /** Send the council's corrections to the tutor as a follow-up. */
+  onAskTutor?: (text: string) => void;
 }) {
   const { state, start, stop } = useCouncil({ messageId, question, answer: text, images }, { autoStart, enabled: canVerify });
   // Results loaded from this device's cache stay folded; a check run now opens when it finishes.
@@ -36,7 +38,7 @@ export function AnswerFooter({ messageId, text, question, images, canVerify, aut
           />
         )}
       </MessageActions>
-      {showPanel && <VerifyPanel state={state} onStart={() => { setOpen(true); void start(); }} onStop={stop} />}
+      {showPanel && <VerifyPanel state={state} onStart={() => { setOpen(true); void start(); }} onStop={stop} {...(onAskTutor ? { onAskTutor } : {})} />}
     </>
   );
 }

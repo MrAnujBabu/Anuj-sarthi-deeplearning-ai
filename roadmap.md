@@ -108,7 +108,13 @@
 - [x] Photo pre-read in doubt sendMessage (solve mode, images, setting ON)
 - [x] Council: Gemini 3.1 Pro (Google-grounded facts) + GPT-6 Astra (maths) review, debate when verdicts differ, Claude Fable 5.1 rules (web research confirmed Astra > 6.1 Sol)
 - [x] Tests (council rules, parsing, routes) + live tests: photo read 200, wrong answer → needs_fix (ruled), right answer → verified by all 3, quiz → 400
-- [ ] Push GitHub + Vercel env keys (new workspace) + deploy READY
+- [x] Push GitHub (b4324ff) + Vercel env keys (new workspace) + deploy READY; live test on Vercel: photo read 200, council needs_fix ruled in 16s
+- [x] "Ask the tutor to explain the correction" button when the council finds a mistake
+
+## Next ideas (ready)
+- [ ] Long PDFs: Gemini 3.1 Pro reads big PDFs/scans and hands the tutor a page-cited summary (today the browser extracts text only)
+- [ ] Voice mode: optional council check of the tutor's spoken explanation, shown in the transcript after the turn
+- [ ] Practice: council-checked revision cards before they enter the review queue
 
 ## Workspace move #3 (18:11 UTC)
 - [x] Reconnect Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
