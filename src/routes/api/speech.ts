@@ -13,8 +13,9 @@ export const Route = createFileRoute("/api/speech")({
   server: { handlers: { POST: async ({ request }) => {
     const apiKey = process.env["LOVABLE_API_KEY"];
     if (!apiKey) return Response.json({ error: "Voice is not configured." }, { status: 503 });
-    let body: { text?: unknown; voice?: unknown };
+    let body: { text?: unknown; voice?: unknown } | null;
     try { body = await request.json(); } catch { return Response.json({ error: "Bad request." }, { status: 400 }); }
+    if (!body || typeof body !== "object") return Response.json({ error: "Bad request." }, { status: 400 });
     const text = typeof body.text === "string" ? body.text.replace(/[#*_`>|]/g, " ").replace(/\s+/g, " ").trim().slice(0, MAX_CHARS) : "";
     if (!text) return Response.json({ error: "Nothing to read." }, { status: 400 });
     const voiceName = VOICES[body.voice === "male" ? "male" : "female"];

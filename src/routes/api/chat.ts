@@ -93,19 +93,28 @@ export const Route = createFileRoute("/api/chat")({
         if (!apiKey) {
           return new Response(encodeAiFailure({ kind: 'configuration', message: 'AI is not configured for this workspace. Ask the workspace owner to restore the Lovable AI connection.', status: 503 }), { status: 503 });
         }
-        let body: { messages?: UIMessage[]; mode?: string; model?: string; effort?: string; search?: boolean };
+        let body: { messages?: UIMessage[]; mode?: string; model?: string; effort?: string; search?: boolean } | null;
         try {
           body = await request.json();
         } catch (error) {
           if (isAiCancellation(error, request.signal)) return new Response(null, { status: 499 });
           return Response.json({ error: "Invalid request." }, { status: 400 });
         }
+        if (!body || typeof body !== "object") return Response.json({ error: "Invalid request." }, { status: 400 });
         const messages = body.messages;
         if (!Array.isArray(messages) || messages.length === 0) {
           return Response.json({ error: "No messages provided." }, { status: 400 });
         }
         if (messages.some((m) => !m || typeof m !== "object" || !Array.isArray((m as UIMessage).parts))) {
           return Response.json({ error: "Invalid message format." }, { status: 400 });
+        }
+        // Bound the request so an oversized paste can't reach the gateway (it would return an empty content-filter reply).
+        if (JSON.stringify(body).length > 2_000_000) {
+          return Response.json({ error: "This message is too large. Paste the relevant part and try again." }, { status: 413 });
+        }
+        const totalText = messages.reduce((n, m) => n + (m as UIMessage).parts.reduce((s, p) => s + (p.type === "text" ? p.text.length : 0), 0), 0);
+        if (totalText > 100_000) {
+          return Response.json({ error: "The pasted text is too long (about 100k characters). Paste the relevant part and try again." }, { status: 413 });
         }
 
         const selected = resolveModel(body.model);
