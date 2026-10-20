@@ -11,18 +11,32 @@ import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 import { VERCEL_APP_ORIGIN } from '@/lib/live-endpoint';
 
-export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; search: boolean; context: string; documents: VoiceDocument[] };
+export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; context: string; documents: VoiceDocument[] };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
 export function parseCallPrefs(raw: unknown): CallPrefs {
-  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "search" | "context" | "documents", unknown>>;
+  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "matchQ" | "assertionQ" | "deep" | "search" | "context" | "documents", unknown>>;
   return {
     voice: typeof r.voice === "string" && VOICES.has(r.voice) ? r.voice : "marin",
     accent: r.accent === "neutral" ? "neutral" : "indian",
     quiz: r.quiz === true,
+    matchQ: r.matchQ === true,
+    assertionQ: r.assertionQ === true,
+    deep: r.deep === true,
     search: r.search === true,
     context: typeof r.context === "string" ? r.context.slice(0, 40_000) : "",
     documents: documentMetadata(r.documents),
   };
+}
+
+/** Extra quiz-question styles chosen in voice settings (Match the Following, Assertion–Reason, deep NCERT). */
+export function quizStyle(prefs: Pick<CallPrefs, "matchQ" | "assertionQ" | "deep">): string {
+  const parts: string[] = [];
+  const types = [prefs.matchQ && "Match the Following", prefs.assertionQ && "Assertion–Reason"].filter(Boolean);
+  if (types.length) parts.push(` Ask ONLY these NEET question types${types.length > 1 ? ", alternating" : ""}: ${types.join(" and ")}.`);
+  if (prefs.matchQ) parts.push(" Match the Following: write Column I items as a., b., c., d. and Column II as i., ii., iii., iv. on separate short lines, then options like (A) a-iii, b-i, c-iv, d-ii.");
+  if (prefs.assertionQ) parts.push(" Assertion–Reason: write 'Assertion (A): …' and 'Reason (R): …' on separate lines, then (A) Both true, R explains A (B) Both true, R does not explain A (C) A true, R false (D) A false, R true.");
+  if (prefs.deep) parts.push(" DEEP MODE: make hard, NEET-advanced questions built strictly from NCERT Class 11/12 Biology lines (exceptions, examples, diagrams, tables) and from any student-attached material; use multi-concept reasoning, never trivia outside NCERT; when grading, cite the NCERT chapter.");
+  return parts.join("");
 }
 
 function callInstructions(prefs: CallPrefs) {
@@ -30,7 +44,7 @@ function callInstructions(prefs: CallPrefs) {
   if (prefs.accent === "indian")
     extra.push("Accent: Speak with a natural Indian English accent and Indian pronunciation, like a friendly Indian teacher; never an American accent.");
   if (prefs.quiz)
-    extra.push("Quiz mode is ON: delegate to the backend to get one NEET MCQ at a time, read the question and options A-D aloud, wait for the student's spoken answer, then delegate again to check it and continue.");
+    extra.push("Quiz mode is ON: delegate to the backend to get one NEET MCQ at a time, read the question and options A-D aloud, wait for the student's spoken answer, then delegate again to check it and continue." + quizStyle(prefs));
   if (prefs.search) extra.push("Live search is ON: the backend can look up current information on the web.");
   if (prefs.context) extra.push("The student attached study material or a previous conversation; the backend has it. Delegate questions about it.");
   return [conversationInstructions, ...extra].join("\n");
@@ -264,6 +278,7 @@ export async function answerQuestion(
       "Ask for missing details instead of guessing. The tool only calculates a draft plan; " +
       "it does not save calendar events." +
       (prefs.quiz ? " QUIZ MODE: give exactly one NEET MCQ with options labelled (A) (B) (C) (D), each on its own line (convert (1)-(4) numbering to A-D), no answer or check the student's spoken answer briefly and give the next MCQ." : "") +
+      (prefs.quiz ? quizStyle(prefs) : "") +
       (prefs.search ? " Use web_search for current facts when needed." : "") +
       (prefs.context ? `\n\nStudent-attached material (use it when relevant):\n${prefs.context}` : ""),
     messages: endWithUserTurn(messages),

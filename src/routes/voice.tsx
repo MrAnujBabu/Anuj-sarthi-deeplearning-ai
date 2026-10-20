@@ -20,6 +20,8 @@ import { QuizTimerSettings } from '@/components/quiz-timer-settings';
 import { TalkVoice } from '@/components/talk-voice';
 import { usesTalkTurns } from '@/lib/talk-turn';
 import { initialVoiceQuizState, reduceVoiceQuiz } from '@/lib/voice-quiz-state';
+import { AssistantAnswer } from '@/components/assistant-answer';
+import { formatVoiceReply } from '@/lib/voice-format';
 
 export const Route = createFileRoute("/voice")({
   head: () => ({
@@ -61,6 +63,9 @@ function LiveVoicePage() {
   const quizStateRef = useRef(quizState);
   quizStateRef.current = quizState;
   const [quiz, setQuiz] = useState(false);
+  const [matchQ, setMatchQ] = useState(false);
+  const [assertionQ, setAssertionQ] = useState(false);
+  const [deep, setDeep] = useState(false);
   const [search, setSearch] = useState(false);
   const [files, setFiles] = useState<Attachment[]>([]);
   const [reading, setReading] = useState(false);
@@ -124,8 +129,8 @@ function LiveVoicePage() {
     const c = VOICE_CHOICES.find((v) => v.id === choice) ?? VOICE_CHOICES[0];
     const previous = rows.length ? `Previous conversation:\n${rows.map((r) => `${r.role === "user" ? "Student" : "Tutor"}: ${r.text}`).join("\n")}\n\n` : "";
     const docs = files.map((f) => `<doc name=${JSON.stringify(f.name)}>\n${f.text}\n</doc>`).join("\n\n");
-    return { voice: c.voice, accent: c.accent, quiz, search, context: previous.slice(-Math.max(0, CONTEXT_LIMIT - docs.length)) + docs, documents: files.map(({ name, pages, method, text }) => ({ name, pages, method, chars: text.length })) };
-  }, [choice, quiz, search, files, rows]);
+    return { voice: c.voice, accent: c.accent, quiz, matchQ, assertionQ, deep, search, context: previous.slice(-Math.max(0, CONTEXT_LIMIT - docs.length)) + docs, documents: files.map(({ name, pages, method, text }) => ({ name, pages, method, chars: text.length })) };
+  }, [choice, quiz, matchQ, assertionQ, deep, search, files, rows]);
 
   const voice = useLiveVoice({ onEvent, prefs });
   const canStart = voice.status === "idle" || voice.status === "closed";
@@ -202,6 +207,11 @@ function LiveVoicePage() {
           <SheetContent side="right" className="w-[min(90vw,340px)] overflow-y-auto"><SheetTitle>Voice settings</SheetTitle><SheetDescription>Claude {resolveModel(VOICE_TUTOR_MODEL)?.name}</SheetDescription>
       <div className="mt-6 flex flex-col items-stretch gap-5 text-sm">
         <label className="flex items-center justify-between gap-2"><GraduationCap className="size-4 text-muted-foreground" />Quiz<Switch checked={quiz} disabled={locked} onCheckedChange={setQuiz} aria-label="Voice quiz mode" /></label>
+        {quiz && <div className="space-y-3 border-l-2 border-primary/40 pl-3">
+          <label className="flex items-center justify-between gap-2 text-sm">Match the Following<Switch checked={matchQ} disabled={locked} onCheckedChange={setMatchQ} aria-label="Match the Following questions" /></label>
+          <label className="flex items-center justify-between gap-2 text-sm">Assertion–Reason<Switch checked={assertionQ} disabled={locked} onCheckedChange={setAssertionQ} aria-label="Assertion Reason questions" /></label>
+          <label className="flex items-center justify-between gap-2 text-sm">Advanced · deep NCERT Biology<Switch checked={deep} disabled={locked} onCheckedChange={setDeep} aria-label="Advanced deep NCERT questions" /></label>
+        </div>}
         <label className="flex items-center justify-between gap-2"><Globe className="size-4 text-muted-foreground" />Search<Switch checked={search} disabled={locked} onCheckedChange={setSearch} aria-label="Voice live search" /></label>
         <label className="flex items-center justify-between gap-2"><FileText className="size-4 text-muted-foreground" />Read scans<Switch checked={ocr} disabled={locked || reading} onCheckedChange={setOcr} aria-label="Read scanned PDFs" /></label>
         <Select value={choice} onValueChange={(v) => setChoice(v as VoiceChoiceId)} disabled={locked}>
@@ -241,7 +251,11 @@ function LiveVoicePage() {
         {rows.map((r) => (
           <div key={r.id} className={cn("msg-in min-w-0", r.role === "user" ? "ml-auto max-w-[90%]" : "w-full")}>
             <p className={cn("mb-1.5 text-xs font-medium text-muted-foreground", r.role === "user" && "text-right")}>{r.role === "user" ? 'You' : 'SnapSolve'}</p>
-            <p className={cn("voice-caption whitespace-pre-wrap break-words text-foreground", r.role === "user" && "rounded-lg border border-primary/15 bg-user-bubble px-3 py-2")}>{r.text}</p>
+            {r.role === "user" ? (
+              <p className="voice-caption whitespace-pre-wrap break-words rounded-lg border border-primary/15 bg-user-bubble px-3 py-2 text-foreground">{r.text}</p>
+            ) : (
+              <div className="voice-caption break-words text-foreground"><AssistantAnswer text={formatVoiceReply(r.text)} isAnimating={false} compact /></div>
+            )}
           </div>
         ))}
         {thinking && (
@@ -267,7 +281,7 @@ function LiveVoicePage() {
       )}
       {quiz && pending && <div className="flex shrink-0 items-center justify-between gap-2 pb-2 text-xs text-muted-foreground" role="status"><span className="inline-flex items-center gap-1"><Timer className="size-3.5" />Next question · listening</span><Button size="icon" variant="ghost" aria-label="Show question and start timer" title="Show question and start timer" disabled={!live || voice.playbackBlocked} onClick={() => dispatchQuiz({ type: 'app.quiz.manual.ready', questionId: pending.id })}><Play className="size-3.5" /></Button></div>}
       {quiz && question && <div className="max-h-[40dvh] shrink-0 overflow-y-auto pb-2" aria-busy={!!pending}>
-        <p className="whitespace-pre-wrap break-words pb-2 text-sm text-foreground" aria-label="Current quiz question">{question.text}</p>
+        <div className="break-words pb-2 text-sm text-foreground" aria-label="Current quiz question"><AssistantAnswer text={formatVoiceReply(question.text)} isAnimating={false} compact boldQuestion /></div>
         <QuizActions key={question.id} answersOnly timed timerPaused={!!pending || !quizState.ready || voice.playbackBlocked} retryKey={quizRetry} options={VOICE_ANSWERS} labels={question.labels} questionKey={question.id} selectedAnswer={picked === VOICE_SKIP ? undefined : picked} disabled={!live || thinking || !!picked || !!pending} onSend={(answer) => {
           if (!voice.submitAnswer(answer, question.id)) { toast.error("Start a connected call before answering."); return false; }
           dispatchQuiz({ type: 'app.quiz.submitted', questionId: question.id, answer });

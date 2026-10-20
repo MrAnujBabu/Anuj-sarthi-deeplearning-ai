@@ -211,3 +211,11 @@
 /* Diagrams use dark strokes; give them a paper backdrop */
 .assistant-answer svg[viewBox] { background: oklch(0.95 0.012 85); border-radius: var(--radius); padding: .5rem; }
 @media (prefers-reduced-motion: reduce) { .msg-in, .think-dot { animation: none; } }
+
+/* Quiz tables (Match the Following) and Assertion–Reason blocks, phone-friendly */
+.assistant-answer table { width: 100%; border-collapse: collapse; font-size: .92em; }
+.assistant-answer th, .assistant-answer td { border: 1px solid var(--border); padding: .4rem .55rem; vertical-align: top; text-align: left; }
+.assistant-answer th { background: var(--muted); font-weight: 600; }
+.assistant-answer [data-streamdown="table-wrapper"], .assistant-answer div:has(> table) { overflow-x: auto; max-width: 100%; }
+.assistant-answer blockquote { border-left: 3px solid var(--primary); background: var(--muted); padding: .5rem .75rem; margin: .5rem 0; border-radius: 0 var(--radius) var(--radius) 0; font-style: normal; }
+.assistant-answer blockquote p { margin: .2rem 0; }
