@@ -8,7 +8,7 @@ import {
   withLovableAiGatewayRunIdHeader,
 } from "@/lib/ai/run-id";
 
-import { resolveModel, resolveEffort } from '@/lib/models';
+import { resolveModel, resolveEffort, CLAUDE_OUTPUT_BUDGET, DEFAULT_MODEL } from '@/lib/models';
 import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 import { loadTeacherMemory, loadAgentBrain } from '@/lib/memory.server';
@@ -145,13 +145,13 @@ export const Route = createFileRoute("/api/chat")({
           : basePrompt;
         const result = streamText({
           model: anthropic(selected.id),
-          ...(selected.effort ? { providerOptions: { anthropic: { thinking: { type: 'adaptive' }, effort: body.mode === 'quiz' ? 'low' : resolveEffort(body.effort) } } } : {}),
+          ...(selected.effort ? { providerOptions: { anthropic: { thinking: { type: 'adaptive' }, effort: resolveEffort(body.effort ?? 'high') } } } : {}),
           // Cache the large stable prefix (rules + memory) and the conversation so far; later turns re-read it cheaply.
           system: [{ role: 'system', content: systemPrompt, providerOptions: { anthropic: { cacheControl: { type: 'ephemeral' } } } }],
           messages: markLastForCache(await convertToModelMessages(body.mode === 'quiz' ? trimQuizHistory(messages) : messages)),
           tools: createAgentTools({ webSearch: searchOn }),
           stopWhen: stepCountIs(50),
-          maxOutputTokens: 12000,
+          maxOutputTokens: selected.id === DEFAULT_MODEL ? CLAUDE_OUTPUT_BUDGET : 12000,
           maxRetries: 0,
           abortSignal: request.signal,
           onStepFinish: ({ rawFinishReason }) => {

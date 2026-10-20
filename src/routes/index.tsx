@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { ChatControls } from "@/components/chat-controls";
 import { BackupControls } from '@/components/backup-controls';
 import { Button } from '@/components/ui/button';
-import { DEFAULT_MODEL, resolveModel, resolveEffort, type Effort } from '@/lib/models';
+import { DEFAULT_MODEL, upgradedTutorPreference, type Effort } from '@/lib/models';
 import { RevisionCard } from "@/components/revision-card";
 import { getQuizTimer } from "@/lib/memory.functions";
 
@@ -43,7 +43,7 @@ function Index() {
   useEffect(() => setSearch(localStorage.getItem("snapsolve.search") === "1"), []);
   const [model,setModel] = useState<string>(DEFAULT_MODEL);
   const [effort,setEffort] = useState<Effort>('medium');
-  useEffect(()=>{const m=localStorage.getItem('snapsolve.model');if(resolveModel(m))setModel(m ?? DEFAULT_MODEL);setEffort(resolveEffort(localStorage.getItem('snapsolve.effort')));},[]);
+  useEffect(()=>{const prefs=upgradedTutorPreference(localStorage);setModel(prefs.model);setEffort(prefs.effort);},[]);
   useEffect(()=>{getQuizTimer().then((r)=>{if(r.defaultMode==='quiz')setQuiz(true);}).catch(()=>{});},[]);
   return (
     <div className="flex h-screen bg-background">

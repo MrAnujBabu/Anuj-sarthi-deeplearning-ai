@@ -6,8 +6,7 @@ import { Switch } from './ui/switch';
 import { STUDY_TEXT_SIZES, useBoldQuestions, useHideChatWidget, useHideTopBar, useNumericAnswerLabels, useQuizKeyboardShortcuts, useStudyTextSize, useVoiceChoice, VOICE_CHOICES, type VoiceChoiceId, useThemeChoice, type ThemeChoice } from '@/lib/quiz-label-preference';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { BackupControls } from './backup-controls';
-import { Input } from './ui/input';
-import { useQuizTimerPreference } from '@/lib/quiz-timer-preference';
+import { QuizTimerSettings } from './quiz-timer-settings';
 
 export function StudySettings() {
   const [numeric, setNumeric] = useNumericAnswerLabels();
@@ -16,7 +15,6 @@ export function StudySettings() {
   const [size, setSize] = useStudyTextSize();
   const [hidden, setHidden] = useHideChatWidget();
   const [topBarHidden, setTopBarHidden] = useHideTopBar();
-  const timer = useQuizTimerPreference();
   return <Dialog>
     <DialogTrigger asChild><Button variant="ghost" className="h-9 w-full justify-start gap-2 px-3"><Settings className="size-4" />Settings</Button></DialogTrigger>
     <DialogContent className="max-h-[85dvh] w-[calc(100%-2rem)] overflow-y-auto rounded-lg">
@@ -30,10 +28,7 @@ export function StudySettings() {
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Hide top bar <span className="mt-1 block text-xs text-muted-foreground">Full-screen mobile · menu stays in the corner</span></span><Switch checked={topBarHidden} onCheckedChange={setTopBarHidden} aria-label="Hide top bar" /></label>
         <ThemeRow />
         <VoiceChoiceRow />
-        <div className="space-y-3 py-3">
-          <div className="flex items-center justify-between gap-4"><span className="text-sm">Quiz timer <span className="mt-1 block text-xs text-muted-foreground">Admin default: {timer.adminSeconds ? `${timer.adminSeconds}s` : 'Off'}</span></span><Select value={timer.override === null ? 'admin' : 'device'} onValueChange={value => timer.update(value === 'admin' ? null : timer.seconds)}><SelectTrigger aria-label="Quiz timer source" className="w-36"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="admin">Admin default</SelectItem><SelectItem value="device">This device</SelectItem></SelectContent></Select></div>
-          {timer.override !== null && <div className="flex items-center justify-between gap-4"><label htmlFor="device-quiz-seconds" className="text-xs text-muted-foreground">Seconds · 0 = off</label><Input id="device-quiz-seconds" aria-label="Quiz timer seconds" type="number" min={0} max={600} step={1} className="w-28" value={timer.override} onChange={event => timer.update(Number(event.target.value))} /></div>}
-        </div>
+        <QuizTimerSettings />
         <section className="py-4"><h2 className="mb-2 text-sm font-medium">Study data</h2><BackupControls /></section>
       </div>
       <div className="flex flex-wrap gap-2 border-t pt-4">

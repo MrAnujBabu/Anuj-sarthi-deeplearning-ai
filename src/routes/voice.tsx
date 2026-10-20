@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowLeft, Download, FileText, GraduationCap, Globe, Mic, MicOff, Paperclip, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal } from "lucide-react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+import { ArrowLeft, Download, FileText, GraduationCap, Globe, Mic, MicOff, Paperclip, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -16,6 +16,8 @@ import { readVoicePdf } from '@/lib/voice-pdf';
 import { Sheet, SheetTrigger, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { resolveModel, VOICE_TUTOR_MODEL } from '@/lib/models';
 import { billableSeconds, confirmedSeconds } from '@/lib/voice-usage';
+import { QuizTimerSettings } from '@/components/quiz-timer-settings';
+import { initialVoiceQuizState, reduceVoiceQuiz } from '@/lib/voice-quiz-state';
 
 export const Route = createFileRoute("/voice")({
   head: () => ({
@@ -45,14 +47,10 @@ async function readAttachment(file: File, ocr: boolean, progress: (message: stri
 function VoicePage() {
   const [rows, setRows] = useState<Row[]>([]);
   const [thinking, setThinking] = useState(false);
-  // Never leave quiz buttons locked if a reply is slow or lost.
-  useEffect(() => {
-    if (!thinking) return;
-    const t = setTimeout(() => setThinking(false), 45_000);
-    return () => clearTimeout(t);
-  }, [thinking]);
-  const [question, setQuestion] = useState<{ id: string; labels: Record<string, string> } | null>(null);
-  const [picked, setPicked] = useState<string>();
+  const [quizState, dispatchQuiz] = useReducer(reduceVoiceQuiz, initialVoiceQuizState);
+  const { question, pending, picked, retry: quizRetry } = quizState;
+  const quizStateRef = useRef(quizState);
+  quizStateRef.current = quizState;
   const [quiz, setQuiz] = useState(false);
   const [search, setSearch] = useState(false);
   const [files, setFiles] = useState<Attachment[]>([]);
@@ -71,6 +69,7 @@ function VoicePage() {
   const importInput = useRef<HTMLInputElement>(null);
 
   const onEvent = useCallback((event: LiveEvent) => {
+    dispatchQuiz(event);
     if (event.type === 'app.call.record') {
       setCallId(typeof event['callId'] === 'string' ? event['callId'] : '');
       setCreated(false); setUsage(null); setFinalUsage(false);
@@ -82,22 +81,23 @@ function VoicePage() {
     }
     if (event.type === 'app.history.error') toast.error(event.error?.message ?? 'Call history save failed.');
     if (event.type === "app.quiz.question" && typeof event.questionId === "string" && event.labels && typeof event.labels === "object") {
-      setQuestion({ id: event.questionId, labels: event.labels as Record<string, string> });
-      setPicked(undefined);
+      setThinking(false);
+    } else if (event.type === 'app.quiz.playback.ready' && typeof event.questionId === 'string') {
+      if (quizStateRef.current.pending?.id === event.questionId) setThinking(false);
     } else if (event.type === "app.quiz.accepted" && event.answer === VOICE_SKIP) {
-      setPicked(VOICE_SKIP);
+      if (event.questionId !== quizStateRef.current.question?.id) return;
       setRows((prev) => [...prev, { id: crypto.randomUUID(), role: "user", text: "Skipped (time up)" }]);
     } else if (event.type === "app.quiz.accepted" && validVoiceAnswer(event.answer)) {
-      setPicked(event.answer);
+      if (event.questionId !== quizStateRef.current.question?.id) return;
       setRows((prev) => [...prev, { id: crypto.randomUUID(), role: "user", text: `Answer ${event.answer}` }]);
     } else if (event.type === "app.quiz.rejected") {
+      if (event['retryable'] === false || event.questionId !== quizStateRef.current.question?.id || quizStateRef.current.pending) return;
       setThinking(false);
       toast.error(event.error?.message ?? "Answer could not be accepted.");
     } else if (event.type === "session.input_transcript.delta" || event.type === "session.output_transcript.delta") {
       const role = event.type === "session.input_transcript.delta" ? "user" : "assistant";
       const delta = typeof event["delta"] === "string" ? event["delta"] : "";
       if (!delta) return;
-      if (role === "assistant") setThinking(false);
       setRows((prev) => {
         const last = prev[prev.length - 1];
         if (last && last.role === role) return [...prev.slice(0, -1), { ...last, text: last.text + delta }];
@@ -105,8 +105,9 @@ function VoicePage() {
       });
     } else if (event.type === "app.delegation.pending") {
       setThinking(true);
-    } else if (event.type === "app.delegation.error" || event.type === "app.closed") {
+    } else if (event.type === "app.delegation.completed" || event.type === "app.delegation.error" || event.type === "app.closed") {
       setThinking(false);
+      if (event.type === 'app.delegation.error') toast.error(event.error?.message ?? 'Tutor answer could not finish.');
     }
   }, []);
 
@@ -200,6 +201,7 @@ function VoicePage() {
         </Select>
         {locked && <p className="w-full text-xs text-muted-foreground">Ye options call ke dauran fixed hain — badalne ke liye End karke dobara Start karo.</p>}
         <Select value={textSize} onValueChange={(v) => setTextSize(v as StudyTextSize)}><SelectTrigger aria-label="Voice transcript text size"><SelectValue /></SelectTrigger><SelectContent>{STUDY_TEXT_SIZES.map((size) => <SelectItem key={size} value={size}>{size} px</SelectItem>)}</SelectContent></Select>
+        <QuizTimerSettings />
         <div className="flex gap-2 border-t pt-3">        <Button variant="ghost" size="icon" className="size-9" aria-label="Export conversation" title="Export conversation (.md)" onClick={exportCall}><Download className="size-4" /></Button>
         <Button variant="ghost" size="icon" className="size-9" aria-label="Import conversation" title="Import conversation (.md / .json)" disabled={locked} onClick={() => importInput.current?.click()}><Upload className="size-4" /></Button>
 </div>
@@ -254,10 +256,14 @@ function VoicePage() {
       {voice.error && (
         <p role="alert" className="mb-2 rounded-md border border-destructive px-3 py-2 text-sm text-destructive">{voice.error}</p>
       )}
-      {quiz && question && <div className="max-h-[40dvh] shrink-0 overflow-y-auto pb-2">
-        <QuizActions answersOnly timed options={VOICE_ANSWERS} labels={question.labels} questionKey={question.id} selectedAnswer={picked === VOICE_SKIP ? undefined : picked} disabled={!live || thinking || !!picked} onSend={(answer) => {
-          if (!voice.submitAnswer(answer, question.id)) { toast.error("Start a connected call before answering."); return; }
+      {quiz && pending && <div className="flex shrink-0 items-center justify-between gap-2 pb-2 text-xs text-muted-foreground" role="status"><span className="inline-flex items-center gap-1"><Timer className="size-3.5" />Next question · listening</span><Button size="icon" variant="ghost" aria-label="Show question and start timer" title="Show question and start timer" disabled={!live || voice.playbackBlocked} onClick={() => dispatchQuiz({ type: 'app.quiz.manual.ready', questionId: pending.id })}><Play className="size-3.5" /></Button></div>}
+      {quiz && question && <div className="max-h-[40dvh] shrink-0 overflow-y-auto pb-2" aria-busy={!!pending}>
+        <p className="whitespace-pre-wrap break-words pb-2 text-sm text-foreground" aria-label="Current quiz question">{question.text}</p>
+        <QuizActions key={question.id} answersOnly timed timerPaused={!!pending || !quizState.ready || voice.playbackBlocked} retryKey={quizRetry} options={VOICE_ANSWERS} labels={question.labels} questionKey={question.id} selectedAnswer={picked === VOICE_SKIP ? undefined : picked} disabled={!live || thinking || !!picked || !!pending} onSend={(answer) => {
+          if (!voice.submitAnswer(answer, question.id)) { toast.error("Start a connected call before answering."); return false; }
+          dispatchQuiz({ type: 'app.quiz.submitted', questionId: question.id, answer });
           setThinking(true);
+          return true;
         }} />
       </div>}
       <audio ref={voice.audioRef} className="sr-only" />

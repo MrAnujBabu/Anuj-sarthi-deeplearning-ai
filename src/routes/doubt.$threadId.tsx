@@ -21,7 +21,7 @@ import { ToolStep } from "@/components/tool-step";
 import { ChatControls } from "@/components/chat-controls";
 import { restoreDocs, stripDocs } from "@/lib/doc-store";
 import { parseCards, parseQuizTag, recordResults } from "@/lib/srs";
-import { DEFAULT_MODEL, resolveModel, resolveEffort, type Effort } from '@/lib/models';
+import { DEFAULT_MODEL, upgradedTutorPreference, type Effort } from '@/lib/models';
 import { displayAiError, isCreditError, isConfigurationError } from '@/lib/ai/errors';
 import { Button } from '@/components/ui/button';
 import { QuizActions } from "@/components/quiz-actions";
@@ -100,7 +100,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
   const [model, setModel] = useState<string>(DEFAULT_MODEL);
   const [effort, setEffort] = useState<Effort>('medium');
   const [settingsReady, setSettingsReady] = useState(false);
-  useEffect(() => { const id=localStorage.getItem('snapsolve.model'); if(resolveModel(id)) setModel(id ?? DEFAULT_MODEL); setEffort(resolveEffort(localStorage.getItem('snapsolve.effort'))); setSettingsReady(true); }, []);
+  useEffect(() => { const prefs=upgradedTutorPreference(localStorage); setModel(prefs.model); setEffort(prefs.effort); setSettingsReady(true); }, []);
   const quizKey = `snapsolve.quiz.${threadId}`;
   const [quiz, setQuiz] = useState(false);
   const [chatHidden, setChatHidden] = useHideChatWidget();

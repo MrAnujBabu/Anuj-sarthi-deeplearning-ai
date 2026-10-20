@@ -6,7 +6,9 @@ import { createAgentTools } from "@/lib/agent/tools.server";
 import { validVoiceAnswer, voiceQuizOptions, VOICE_SKIP } from "@/lib/voice-quiz";
 import { createVoiceTracking } from '@/lib/voice-tracking.server';
 import { confirmedSeconds, documentMetadata, type VoiceDocument } from '@/lib/voice-usage';
-import { VOICE_TUTOR_MODEL } from '@/lib/models';
+import { VOICE_TUTOR_MODEL, CLAUDE_OUTPUT_BUDGET } from '@/lib/models';
+import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
+import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 
 export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; search: boolean; context: string; documents: VoiceDocument[] };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
@@ -194,7 +196,7 @@ export function endWithUserTurn(messages: ModelMessage[]): ModelMessage[] {
   return copy;
 }
 
-async function answerQuestion(
+export async function answerQuestion(
   messages: ModelMessage[],
   config: LiveConfig,
   correlation: { runID: string; sessionID: string | undefined; delegationID: string },
@@ -205,16 +207,29 @@ async function answerQuestion(
   onSearch: () => void = () => {},
 ) {
   signal.throwIfAborted();
+  const paused = await getAiPause() ?? await getAiPause(config.backendModel);
+  if (paused) throw new Error(paused.message);
   const provider = createAnthropic({
     baseURL: gatewayAPIBase(config.baseURL),
     apiKey: config.key,
     headers: { "X-Lovable-AIG-SDK": "vercel-ai-sdk" },
+    fetch: async (input, init) => {
+      const response = await fetch(input, init);
+      if (!response.ok) {
+        const details: unknown = await response.clone().json().catch(() => ({}));
+        const failure = classifyAiFailure(response.status, details);
+        if (failure.kind === 'credits') await setAiPause(failure);
+        if (failure.kind === 'denied' && !/provider_not_available_in_region|model_requires_retention_consent|model_vendor_not_enabled/.test(JSON.stringify(details))) await setAiPause(failure, config.backendModel);
+        throw new Error(encodeAiFailure(failure));
+      }
+      return response;
+    },
   });
   let responseCursor = 0;
   consumeInput();
   const result = streamText({
     model: provider(config.backendModel),
-    maxOutputTokens: 16000, // Required Messages budget includes adaptive thinking.
+    maxOutputTokens: CLAUDE_OUTPUT_BUDGET,
     abortSignal: signal,
     maxRetries: 0,
     stopWhen: stepCountIs(50),
@@ -236,7 +251,7 @@ async function answerQuestion(
       }),
     },
     providerOptions: {
-      anthropic: { thinking: { type: "adaptive" }, effort: "low" },
+      anthropic: { thinking: { type: "adaptive" }, effort: "high" },
     },
     system:
       "Help a spoken NEET 2027 tutor answer the latest student question (Physics, Chemistry, Biology; follow NCERT). " +
@@ -276,7 +291,9 @@ async function answerQuestion(
       if (part.rawValue.type === "response.failed" || part.rawValue.type === "response.incomplete") failed = true;
     }
     if (part.type === "finish-step") stepCompleted = true;
-    if (part.type === "error" || part.type === "abort") failed = true;
+    if (part.type === "error") throw part.error;
+    if (part.type === "abort") failed = true;
+    if (part.type === 'finish-step' && part.rawFinishReason === 'refusal') throw new Error('The model declined this request. This request has stopped.');
     if (part.type === "finish") completed = part.finishReason === "stop" && stepCompleted;
   }
   signal.throwIfAborted();
@@ -352,20 +369,19 @@ export function bindLiveConnection(
   let greetingRequested = false;
   let greetingCommand: { id: string; type: "instructions" | "commentary" } | undefined;
   let greetingTimer: ReturnType<typeof setTimeout> | undefined;
-  // Live ends a session after ~120 s without transcript activity. When the
-  // student goes quiet, the tutor briefly checks in (real speech, not a faked
-  // heartbeat) so pauses don't drop the call; capped so an abandoned call ends.
+  // Only real transcript activity extends provider inactivity. A connected,
+  // silent student gets a short spoken check-in; never manufacture heartbeats.
   const IDLE_CHECKIN_MS = 70_000;
-  const MAX_IDLE_CHECKINS = 6;
   let lastTranscriptAt = Date.now();
-  let idleCheckins = 0;
+  let lastBrowserHeartbeatAt = 0;
+  let lastCheckinAt = 0;
   const idleTimer = setInterval(() => {
     if (closing || !browserReady || !sessionID || task || greetingCommand) return;
     if (gateway?.readyState !== 1) return;
+    if (Date.now() - lastBrowserHeartbeatAt >= 5000) return;
     if (Date.now() - lastTranscriptAt < IDLE_CHECKIN_MS) return;
-    if (idleCheckins >= MAX_IDLE_CHECKINS) return;
-    idleCheckins++;
-    lastTranscriptAt = Date.now();
+    if (Date.now() - lastCheckinAt < IDLE_CHECKIN_MS) return;
+    lastCheckinAt = Date.now();
     try {
       gateway.send(
         JSON.stringify({
@@ -373,7 +389,7 @@ export function bindLiveConnection(
           event_id: crypto.randomUUID(),
           delegation_id: null,
           content:
-            "The student has been silent for a while. In one short, warm Hinglish sentence, check whether they are still there or want to continue, then listen. Do not repeat earlier content.",
+            "Main yahin hoon. Jab taiyaar ho, apna agla sawaal bolo.",
         }),
       );
     } catch {
@@ -488,7 +504,7 @@ export function bindLiveConnection(
   function scheduleDelegation() {
     clearTimeout(restartTimer);
     if (closing || task || pendingDelegations.length === 0) return;
-    restartTimer = setTimeout(() => void runDelegation(), 300);
+    restartTimer = setTimeout(() => execution.waitUntil(runDelegation()), 300);
   }
 
   function deliverResult(delegationID: string, answer: string, plan?: ReturnType<typeof planStudySchedule>) {
@@ -511,6 +527,7 @@ export function bindLiveConnection(
         openQuiz = { id: crypto.randomUUID(), answered: false };
         emit({ type: "app.quiz.question", questionId: openQuiz.id, text: answer, labels });
       }
+      emit({ type: "app.delegation.completed", delegation_id: delegationID });
       completedDelegation = pendingDelegations.shift();
     } catch {
       stop();
@@ -550,7 +567,7 @@ export function bindLiveConnection(
       answerCount++;
       if (tracked) track({ answer_count: answerCount, search_count: searchCount });
       deliverResult(id, answer.trim(), pending.plan);
-    } catch {
+    } catch (error) {
       if (closing || controller.signal.aborted) return;
       backendMessages.push({
         role: "assistant",
@@ -558,7 +575,8 @@ export function bindLiveConnection(
           "The backend attempt failed. Completed tool results remain valid; verify uncertain external actions before any retry.",
       });
       if (taskRevision !== revision) return;
-      deliverResult(id, "The backend could not finish the answer. Ask whether the user wants to try again.");
+      emit({ type: 'app.delegation.error', delegation_id: id, error: { message: error instanceof Error ? error.message : 'The tutor could not finish this answer.' } });
+      pendingDelegations.shift(); // Failure is terminal for this task; never replay it automatically.
     } finally {
       if (task === controller) task = undefined;
       scheduleDelegation();
@@ -626,7 +644,6 @@ export function bindLiveConnection(
         const role = event.type === "session.input_transcript.delta" ? "user" : "assistant";
         if (!event.delta?.trim()) return;
         lastTranscriptAt = Date.now();
-        if (role === "user") idleCheckins = 0;
         const listeningSound = role === "user" && Boolean(task) && isListeningSound(event.delta);
         transcripts.push({
           role,
@@ -675,6 +692,9 @@ export function bindLiveConnection(
   async function startSession(sdp: string) {
     if (closing || browser.readyState !== 1) return;
     clearTimeout(startTimer);
+    const paused = await getAiPause() ?? await getAiPause(config.backendModel);
+    if (paused) throw new Error(paused.message);
+    if (closing || browser.readyState !== 1) return;
     startupTimer = setTimeout(() => {
       emit({ type: "app.error", error: { message: "Voice startup timed out" } });
       stop();
@@ -753,7 +773,7 @@ export function bindLiveConnection(
       if (event.type === "app.quiz.answer") {
         const skipped = event.answer === VOICE_SKIP;
         if (!prefs.quiz || !openQuiz || openQuiz.answered || event.questionId !== openQuiz.id || (!skipped && !validVoiceAnswer(event.answer))) {
-          emit({ type: "app.quiz.rejected", error: { message: "This question is no longer accepting answers." } });
+          emit({ type: "app.quiz.rejected", questionId: event.questionId, retryable: false, error: { message: "This question is no longer accepting answers." } });
           return;
         }
         openQuiz.answered = true;
@@ -769,6 +789,7 @@ export function bindLiveConnection(
         throw new Error("Unsupported client event");
       }
       if (gateway.readyState !== 1) return stop();
+      lastBrowserHeartbeatAt = Date.now();
       gateway.send(data);
     } catch {
       emit({ type: "app.error", error: { message: "Voice connection could not be started or continued" } });

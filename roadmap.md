@@ -1,5 +1,21 @@
 # Roadmap
 
+## Current voice quiz synchronization
+- [x] Fresh-link Firecrawl, GitHub API, Parallel and Perplexity after Oct 20 workspace move; disregard all previous connections
+- [x] Fix premature next-option transitions; 44 targeted tests and simulated browser flow verify atomic question/options, 3-second skip once and next B tap; real audio remains unverified
+- [ ] Export latest tested voice quiz/timer/settings changes to GitHub
+- [x] Display question with its option IDs; pause countdown until observed audio silence plus final-option captions, with explicit timer-start fallback
+- [x] Add typed seconds to voice Settings; 27 seconds saves and survives browser reload
+- [x] 52 targeted regression tests pass; voice Settings browser check has no page errors
+- [ ] Verify real audible synchronized quiz transitions — requires a working microphone/WebRTC call; local earlier ICE timeout blocks audible verification
+
+## Current model and voice reliability audit
+- [x] Chat + voice delegate use catalog's most capable Claude Fable 5.1 at high reasoning; chat UI and real voice-delegate Messages calls verified
+- [x] Voice quiz uses wall-clock expiry, completion events and rejected-send resets; skip/answer races and fresh IDs tested
+- [x] Remove arbitrary six-check-in silence cap; check-ins need recent real browser heartbeats, only transcripts count as activity; delegate tasks use runtime waitUntil
+- [ ] Physical locked-screen/silent audible call verification — local browser ICE gathering timed out before opening a paid call; OS suspension still cannot be prevented by web code
+- [x] Regression suite: 182 pass; live delegate test separately passed; physical/deployed call results not claimed
+
 ## Current voice polish
 - [x] Explain publishing, workspace credit exhaustion/recovery and supported lower-friction credit management; no automated workspace move or documented runtime balance API
 - [x] Compact voice screen; Search/voice controls in side panel, shared transcript text sizing; imported conversation verified at desktop/390px
@@ -114,5 +130,7 @@
 - [ ] Genuine Indian regional voice/model — blocked: authenticated catalog checked before move exposes GPT Live only; documented regional voices do not establish an Indian-native voice, no arbitrary model substitution
 
 ## Voice (Oct 19)
-- [x] Voice call stays connected through silent pauses / screen lock (tutor check-in, worker heartbeat clock, wake lock)
-- [x] Voice quiz: option buttons always appear, never freeze; timer expiry auto-skips to next question
+- [x] Voice silence mitigations implemented; screen lock can still suspend browser and end call, not verified as uninterrupted
+- [x] Voice quiz expiry/selection tested in component and relay; actual audible next-question flow remains unverified
+
+- [ ] Confirm Supabase project "My Personal Agent" is the linked backend (ref dsazygocmjgjfqkqkwcp)

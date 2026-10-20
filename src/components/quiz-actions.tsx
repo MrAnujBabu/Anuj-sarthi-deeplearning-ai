@@ -9,27 +9,39 @@ import { useNumericAnswerLabels, useQuizKeyboardShortcuts } from '@/lib/quiz-lab
 import { quizAnswerForKey } from '@/lib/quiz-shortcuts';
 
 /** Compact checkbox-card answer list for the open quiz question, with optional auto-skip timer. */
-export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden, answersOnly = false, timed = false }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void; answersOnly?: boolean; timed?: boolean }) {
+export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden, answersOnly = false, timed = false, timerPaused = false, retryKey = 0 }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void | boolean; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void; answersOnly?: boolean; timed?: boolean; timerPaused?: boolean; retryKey?: number }) {
   const [picked, setPicked] = useState<string | null>(null);
   const [numericLabels] = useNumericAnswerLabels();
   const [keyboardEnabled] = useQuizKeyboardShortcuts();
   const { seconds: limit } = useQuizTimerPreference();
   const [left, setLeft] = useState(0);
   const answered = useRef(false);
+  const expiresAt = useRef<number | null>(null);
+  const remainingSeconds = useRef(limit);
+  const latestSend = useRef(onSend);
+  latestSend.current = onSend;
 
-  useEffect(() => { answered.current = false; setPicked(null); setLeft(limit); }, [questionKey]);
-  useEffect(() => { setLeft(limit); }, [limit]);
+  useEffect(() => { answered.current = false; setPicked(null); setLeft(limit); remainingSeconds.current = limit; expiresAt.current = null; }, [questionKey, retryKey]);
+  useEffect(() => { setLeft(limit); remainingSeconds.current = limit; expiresAt.current = null; }, [limit]);
   useEffect(() => {
-    if ((answersOnly && !timed) || disabled || !limit || picked || answered.current || options.length === 0) return;
-    const t = setTimeout(() => {
-      if (left <= 1) { answered.current = true; setLeft(0); onSend('skip'); }
-      else setLeft((s) => s - 1);
-    }, 1000);
-    return () => clearTimeout(t);
-  }, [left, limit, picked, options.length, disabled, answersOnly, timed]);
+    if ((answersOnly && !timed) || timerPaused || disabled || selectedAnswer || !limit || picked || answered.current || options.length === 0) return;
+    expiresAt.current ??= Date.now() + remainingSeconds.current * 1000;
+    const tick = () => {
+      if (answered.current || expiresAt.current === null) return;
+      const remaining = Math.max(0, Math.ceil((expiresAt.current - Date.now()) / 1000));
+      setLeft(remaining);
+      if (remaining === 0) {
+        answered.current = true;
+        if (latestSend.current('skip') === false) { answered.current = false; expiresAt.current = Date.now() + 1000; }
+      }
+    };
+    const t = setInterval(tick, 250);
+    document.addEventListener('visibilitychange', tick);
+    return () => { clearInterval(t); document.removeEventListener('visibilitychange', tick); if (expiresAt.current !== null) { remainingSeconds.current = Math.max(0, Math.ceil((expiresAt.current - Date.now()) / 1000)); expiresAt.current = null; } };
+  }, [limit, picked, options.length, disabled, selectedAnswer, answersOnly, timed, timerPaused, questionKey, retryKey]);
 
-  const choose = (o: string) => { if (disabled || answered.current) return; answered.current = true; setPicked(o); onSend(o); };
-  const command = (text: string) => { if (disabled || answered.current) return; answered.current = true; onSend(text); };
+  const choose = (o: string) => { if (disabled || answered.current) return; answered.current = true; if (onSend(o) === false) { answered.current = false; return; } setPicked(o); };
+  const command = (text: string) => { if (disabled || answered.current) return; answered.current = true; if (onSend(text) === false) answered.current = false; };
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => {
       const target = event.target;
@@ -60,6 +72,7 @@ export function QuizActions({ options, labels = {}, onSend, questionKey, selecte
                 aria-keyshortcuts={String(['A','B','C','D'].indexOf(o) + 1)}
                 title={`Answer ${o} · ${['A','B','C','D'].indexOf(o) + 1}`}
                 aria-checked={active}
+                 disabled={disabled || !!picked || !!selectedAnswer}
                 aria-disabled={disabled || !!picked}
                 onClick={() => choose(o)}
                 className={`h-auto min-h-10 w-full min-w-0 items-start justify-start whitespace-normal text-left select-none gap-2.5 rounded-lg border px-3 py-2 text-sm leading-snug transition-colors ${

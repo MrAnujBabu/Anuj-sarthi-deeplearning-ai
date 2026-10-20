@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { VoiceQuizPlayback } from '@/lib/voice-quiz-playback';
 
 export type LiveEvent = {
   type: string;
@@ -150,6 +151,29 @@ function createLiveVoice(options: LiveOptions) {
   let answerReceived = false;
   let finalized = false;
   let muted = false;
+  const quizPlayback = new VoiceQuizPlayback();
+  let audioContext: AudioContext | undefined;
+  let analyser: AnalyserNode | undefined;
+  let audioSamples: Float32Array<ArrayBuffer> | undefined;
+  let playbackTimer: ReturnType<typeof setInterval> | undefined;
+
+  function observePlayback() {
+    if (!options.prefs['quiz'] || !playback || analyser) return;
+    try {
+      audioContext = new AudioContext();
+      analyser = audioContext.createAnalyser(); analyser.fftSize = 2048;
+      audioContext.createMediaStreamSource(playback).connect(analyser);
+      audioSamples = new Float32Array(analyser.fftSize);
+      void audioContext.resume().catch(() => {});
+      playbackTimer = setInterval(() => {
+        if (!analyser || !audioSamples || state !== 'active') return;
+        analyser.getFloatTimeDomainData(audioSamples);
+        const level = Math.sqrt(audioSamples.reduce((sum, value) => sum + value * value, 0) / audioSamples.length);
+        const id = quizPlayback.sample(level, performance.now(), !options.audio.paused && audioContext?.state === 'running');
+        if (id) options.onEvent({ type: 'app.quiz.playback.ready', questionId: id });
+      }, 100);
+    } catch { /* Explicit timer start remains available if observation is unavailable. */ }
+  }
 
   function starting() {
     return state === "starting";
@@ -160,6 +184,9 @@ function createLiveVoice(options: LiveOptions) {
   }
 
   function stopAudio() {
+    clearInterval(playbackTimer);
+    void audioContext?.close().catch(() => {});
+    audioContext = undefined; analyser = undefined;
     microphone?.getTracks().forEach((track) => track.stop());
     if (playback && options.audio.srcObject === playback) {
       options.audio.pause();
@@ -214,6 +241,8 @@ function createLiveVoice(options: LiveOptions) {
     if ((state !== "starting" && state !== "active") || !options.audio.srcObject) return;
     try {
       await options.audio.play();
+      observePlayback();
+      void audioContext?.resume().catch(() => {});
       if (state === "starting" || state === "active") options.onEvent({ type: "app.playback.resumed" });
     } catch {
       if (state === "starting" || state === "active") options.onEvent({ type: "app.playback.blocked" });
@@ -231,7 +260,7 @@ function createLiveVoice(options: LiveOptions) {
     const messages: Record<string, string> = {
       startup_timeout: "Voice startup timed out. Start a new call to retry.",
       initial_heartbeat_timeout: "Voice media did not connect. Start a new call to retry.",
-      heartbeat_timeout: "Voice connection was lost. Start a new call to retry.",
+      heartbeat_timeout: document.visibilityState === 'hidden' ? "The phone suspended the voice connection while the screen was off. Return to this page and start a new call." : "Voice connection was lost. Start a new call to retry.",
       gateway_shutdown: "The voice service restarted. Start a new call to reconnect.",
       inactivity_timeout: "The voice call ended after inactivity.",
       duration_limit: "The voice call reached its duration limit. Start a new call to continue.",
@@ -259,8 +288,8 @@ function createLiveVoice(options: LiveOptions) {
     }
   }
 
-  // Background/locked-screen pages throttle main-thread timers, which can
-  // starve heartbeats. A worker clock keeps ticking; fall back to setInterval.
+  // Worker ticks reduce background throttling, but still depend on the page
+  // processing messages: an OS-suspended browser cannot keep a paid call alive.
   let ticker: Worker | undefined;
   let tickerUrl: string | undefined;
   function startTicker() {
@@ -292,14 +321,17 @@ function createLiveVoice(options: LiveOptions) {
   async function keepAwake() {
     try {
       const nav = navigator as Navigator & { wakeLock?: { request(t: "screen"): Promise<{ release(): Promise<void> }> } };
-      if (state === "active" && document.visibilityState === "visible" && nav.wakeLock) {
-        wakeLock = await nav.wakeLock.request("screen");
+      if (state === "active" && document.visibilityState === "visible" && nav.wakeLock && !wakeLock) {
+        const lock = await nav.wakeLock.request("screen");
+        if (state !== 'active' || document.visibilityState !== 'visible') { await lock.release(); return; }
+        wakeLock = lock;
       }
     } catch {
       /* optional */
     }
   }
   function onVisible() {
+    if (document.visibilityState === 'hidden') { void wakeLock?.release().catch(() => {}); wakeLock = undefined; }
     if (document.visibilityState === "visible" && state === "active") {
       pulse();
       void keepAwake();
@@ -375,7 +407,7 @@ function createLiveVoice(options: LiveOptions) {
       peer = connection;
       for (const track of stream.getAudioTracks()) {
         track.enabled = !muted;
-        track.addEventListener("ended", stop);
+        track.addEventListener("ended", () => fail("The phone stopped microphone capture. Start a new call when this page is active."));
         connection.addTrack(track, stream);
       }
       connection.addEventListener("track", ({ track }) => {
@@ -440,6 +472,11 @@ function createLiveVoice(options: LiveOptions) {
             if (event.type === "gateway.session.closing") reportUnexpectedClosure(event.reason);
             options.onEvent(event);
             return stop();
+          }
+          if (event.type === 'app.quiz.question' && typeof event.questionId === 'string') {
+            quizPlayback.begin(event.questionId, event.labels?.['D'] ?? '');
+          } else if (event.type === 'session.output_transcript.delta' && typeof event['delta'] === 'string') {
+            quizPlayback.transcript(event['delta']);
           }
           options.onEvent(event);
         } catch {
