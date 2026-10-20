@@ -322,28 +322,45 @@ function LiveVoicePage() {
         <p role="alert" className="mb-2 max-h-24 shrink-0 overflow-y-auto rounded-md border border-destructive px-3 py-2 text-sm text-destructive">{voice.error}</p>
       )}
       <audio ref={voice.audioRef} className="sr-only" />
-      <footer className="flex shrink-0 flex-wrap items-center justify-center gap-2 border-t py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
-        <Button size="icon" variant="outline" className="size-10 rounded-full" disabled={locked || reading} onClick={() => fileInput.current?.click()} aria-label="Attach PDF or notes" title="Attach PDF, notes, Word, PPTX">
-          <Paperclip className="size-5" />
-        </Button>
-        <input ref={fileInput} type="file" multiple hidden accept="application/pdf,.pdf,.md,.txt,.docx,.pptx" onChange={(e) => { void addFiles(e.target.files); e.target.value = ""; }} />
-        {voice.playbackBlocked && (
-          <Button variant="outline" onClick={voice.resumePlayback}><Volume2 className="size-4" /> Play voice</Button>
-        )}
-        {canStart ? (
-          <Button size="lg" className="rounded-full px-8" onClick={voice.start} disabled={reading}>
-            <Phone className="size-4" /> {reading ? "Reading file…" : rows.length ? "Start again" : "Start"}
-          </Button>
-        ) : (
-          <>
-            <Button size="icon" variant="outline" className="size-10 rounded-full" disabled={!live} onClick={() => voice.setMuted(!voice.muted)} aria-label={voice.muted ? "Unmute" : "Mute"}>
-              {voice.muted ? <MicOff className="size-5" /> : <Mic className="size-5" />}
+      <footer className="voice-dock relative z-10 -mx-3 shrink-0 border-t bg-background/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:-mx-6 sm:px-6">
+        <div className="mx-auto flex max-w-md items-end justify-center gap-5">
+          <div className="flex flex-col items-center gap-1">
+            <Button type="button" size="icon" variant="outline" className="voice-dock-btn size-14 rounded-full" disabled={locked || reading} onClick={() => fileInput.current?.click()} aria-label="Attach PDF or notes" title="Attach PDF, notes, Word, PPTX">
+              <Paperclip className="size-6" />
             </Button>
-            <Button size="lg" variant="destructive" className="rounded-full px-8" disabled={voice.status === "stopping"} onClick={voice.stop}>
-              <PhoneOff className="size-4" /> End
-            </Button>
-          </>
-        )}
+            <span className="text-[11px] text-muted-foreground">Attach</span>
+          </div>
+          <input ref={fileInput} type="file" multiple hidden accept="application/pdf,.pdf,.md,.txt,.docx,.pptx" onChange={(e) => { void addFiles(e.target.files); e.target.value = ""; }} />
+          {voice.playbackBlocked && (
+            <div className="flex flex-col items-center gap-1">
+              <Button type="button" size="icon" variant="outline" className="voice-dock-btn size-14 rounded-full" onClick={voice.resumePlayback} aria-label="Play voice"><Volume2 className="size-6" /></Button>
+              <span className="text-[11px] text-muted-foreground">Play</span>
+            </div>
+          )}
+          {canStart ? (
+            <div className="flex flex-col items-center gap-1">
+              <Button type="button" size="lg" className="voice-dock-btn h-14 min-w-36 rounded-full px-8 text-base" onClick={voice.start} disabled={reading}>
+                <Phone className="size-5" /> {reading ? "Reading…" : rows.length ? "Start again" : "Start"}
+              </Button>
+              <span className="text-[11px] text-muted-foreground">Call</span>
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-col items-center gap-1">
+                <Button type="button" size="icon" variant={voice.muted ? "secondary" : "outline"} className="voice-dock-btn size-14 rounded-full" disabled={!live} aria-pressed={voice.muted} onClick={() => voice.setMuted(!voice.muted)} aria-label={voice.muted ? "Unmute" : "Mute"}>
+                  {voice.muted ? <MicOff className="size-6" /> : <Mic className="size-6" />}
+                </Button>
+                <span className="text-[11px] text-muted-foreground">{voice.muted ? "Unmute" : "Mute"}</span>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <Button type="button" size="lg" variant="destructive" className="voice-dock-btn h-14 min-w-36 rounded-full px-8 text-base" disabled={voice.status === "stopping"} onClick={voice.stop}>
+                  <PhoneOff className="size-5" /> End
+                </Button>
+                <span className="text-[11px] text-muted-foreground">{voice.status === "stopping" ? "Ending…" : "End call"}</span>
+              </div>
+            </>
+          )}
+        </div>
       </footer>
     </main>
   );

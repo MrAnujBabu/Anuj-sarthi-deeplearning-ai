@@ -4,7 +4,7 @@ import { validateLiveUpgrade } from './live-relay.server';
 
 describe('Vercel voice hosting', () => {
   it('keeps the Vercel website while connecting directly to the separate relay', () => {
-    expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice')).toBe('wss://project--069fc516-1b8b-4ac5-b64e-37250cf7e8bb.lovable.app/api/public/live');
+    expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice')).toBe('wss://project--a3b72608-4a7c-4e2f-ae13-9096b40d7082.lovable.app/api/public/live');
     expect(liveEndpoint('http://localhost:8080/voice')).toBe('ws://localhost:8080/api/live');
   });
   it('preserves secure overrides and rejects insecure published connections', () => {

@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Plus, Trash2, BookOpen, AudioLines, Menu, FileDown, PanelLeftClose, PanelLeftOpen } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Plus, Trash2, BookOpen, AudioLines, Menu, FileDown, PanelLeftClose, PanelLeftOpen, Search } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
 import { deleteThread, loadThreads, type Thread } from "@/lib/threads";
 import { exportAllMarkdown } from "@/lib/export-chat";
+import { groupThreads, threadMeta } from "@/lib/thread-groups";
 import { Button } from './ui/button';
+import { Input } from './ui/input';
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from './ui/sheet';
 import { StudySettings } from './study-settings';
@@ -13,6 +15,8 @@ import { StudySettings } from './study-settings';
 export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: string | undefined; mobileContent?: boolean }) {
   const [threads, setThreads] = useState<Thread[]>([]);
   const [collapsed, setCollapsed] = useState(false);
+  const [query, setQuery] = useState("");
+  const groups = useMemo(() => groupThreads(threads, query), [threads, query]);
   useEffect(() => { setCollapsed(localStorage.getItem('snapsolve.sidebar.hidden') === '1'); }, []);
   const navigate = useNavigate();
 
@@ -64,32 +68,42 @@ export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: s
       >
         <FileDown className="size-4" /> Export all (.md / Obsidian)
       </Button>
-      <div className="mt-4 px-5 text-xs font-medium uppercase tracking-wide text-muted-foreground">Past doubts</div>
-      <nav className="mt-2 flex-1 space-y-0.5 overflow-y-auto px-3 pb-4">
+      <div className="mt-4 flex items-center justify-between px-5 text-xs font-medium uppercase tracking-wide text-muted-foreground"><span>Past doubts</span><span className="tabular-nums normal-case">{threads.length}</span></div>
+      {threads.length > 4 && (
+        <div className="relative mx-3 mt-2">
+          <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+          <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search doubts…" aria-label="Search past doubts" className="h-9 pl-8 text-sm" />
+        </div>
+      )}
+      <nav className="mt-2 flex-1 overflow-y-auto px-3 pb-4" aria-label="Past doubts">
         {threads.length === 0 && <p className="px-2 py-2 text-sm text-muted-foreground">No doubts yet.</p>}
-        {threads.map((t) => (
-          <div
-            key={t.id}
-            className={cn(
-              "group flex items-center rounded-lg text-sm hover:bg-sidebar-accent",
-              t.id === activeId && "bg-sidebar-accent font-medium",
-            )}
-          >
-            <Link to="/doubt/$threadId" params={{ threadId: t.id }} className="min-w-0 flex-1 truncate px-2 py-2">
-              {t.title}
-            </Link>
-            <Button
-              variant="ghost" size="icon"
-              aria-label="Delete doubt"
-              onClick={() => {
-                deleteThread(t.id);
-                if (t.id === activeId) navigate({ to: "/" });
-              }}
-              className="mr-1 rounded p-1 text-muted-foreground opacity-0 hover:text-destructive group-hover:opacity-100"
-            >
-              <Trash2 className="size-3.5" />
-            </Button>
-          </div>
+        {threads.length > 0 && groups.length === 0 && <p className="px-2 py-2 text-sm text-muted-foreground">No match.</p>}
+        {groups.map(([label, items]) => (
+          <section key={label} className="mb-3">
+            <h3 className="sticky top-0 z-10 bg-sidebar px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/80">{label}</h3>
+            <div className="space-y-0.5">
+              {items.map((t) => (
+                <div key={t.id} className={cn("group flex items-center rounded-lg text-sm hover:bg-sidebar-accent", t.id === activeId && "bg-sidebar-accent")}>
+                  <Link to="/doubt/$threadId" params={{ threadId: t.id }} className="min-w-0 flex-1 px-2 py-2">
+                    <span className={cn("block truncate", t.id === activeId && "font-medium")}>{t.title}</span>
+                    <span className="block truncate text-[11px] text-muted-foreground">{threadMeta(t)}</span>
+                  </Link>
+                  <Button
+                    variant="ghost" size="icon"
+                    aria-label={`Delete ${t.title}`}
+                    onClick={() => {
+                      if (!window.confirm(`Delete "${t.title}"?`)) return;
+                      deleteThread(t.id);
+                      if (t.id === activeId) navigate({ to: "/" });
+                    }}
+                    className="touch-btn mr-1 size-9 shrink-0 rounded-md text-muted-foreground hover:text-destructive md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100"
+                  >
+                    <Trash2 className="size-4" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </section>
         ))}
       </nav>
       <div className="border-t p-3"><StudySettings /></div>

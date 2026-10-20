@@ -1,6 +1,6 @@
 // Public addresses only, never credentials.
 export const VERCEL_APP_ORIGIN = 'https://snapsolveanuj.vercel.app';
-export const HOSTED_LIVE_ENDPOINT = 'https://project--069fc516-1b8b-4ac5-b64e-37250cf7e8bb.lovable.app/api/public/live';
+export const HOSTED_LIVE_ENDPOINT = 'https://project--a3b72608-4a7c-4e2f-ae13-9096b40d7082.lovable.app/api/public/live';
 
 export function liveEndpoint(pageUrl: string, override?: string): string {
   const page = new URL(pageUrl);

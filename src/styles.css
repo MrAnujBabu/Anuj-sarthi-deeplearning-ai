@@ -236,3 +236,8 @@
 .voice-quiz [role="checkbox"]:disabled[aria-checked="true"] { opacity: 1; }
 .voice-quiz .assistant-answer [data-streamdown="table-wrapper"] { min-width: 0; }
 .voice-quiz .assistant-answer div:has(> table) { max-height: none; height: auto; overflow: visible; }
+
+/* Mobile-friendly bottom controls: large hit area, no double-tap zoom, press feedback. */
+.voice-dock-btn, .touch-btn { touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: transform 120ms ease, box-shadow 160ms ease; }
+.voice-dock-btn:not(:disabled):active, .touch-btn:not(:disabled):active { transform: scale(0.94); }
+.voice-dock-btn:not(:disabled) { box-shadow: 0 6px 18px -10px color-mix(in oklab, var(--foreground) 45%, transparent); }

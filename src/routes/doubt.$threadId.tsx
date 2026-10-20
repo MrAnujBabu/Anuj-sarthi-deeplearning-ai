@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
-import { ArrowLeft, FileDown, FileText, PanelBottomOpen } from "lucide-react";
+import { ArrowLeft, FileDown, FileText, PanelBottomOpen, Pause, Play } from "lucide-react";
+import { RESUME_TEXT, isConnectionError, isResumeText, pausedKey } from "@/lib/chat-resume";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
@@ -165,6 +166,33 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
 
   const busy = status === "submitted" || status === "streaming";
   const last = messages[messages.length - 1];
+
+  // Pause / resume: pausing stops the stream but keeps the partial answer; resuming asks the tutor to continue from the last word.
+  const [paused, setPaused] = useState(false);
+  const [interrupted, setInterrupted] = useState(false);
+  const [online, setOnline] = useState(true);
+  useEffect(() => { setPaused(localStorage.getItem(pausedKey(threadId)) === "1"); }, [threadId]);
+  const markPaused = (on: boolean) => { setPaused(on); if (on) localStorage.setItem(pausedKey(threadId), "1"); else localStorage.removeItem(pausedKey(threadId)); };
+  const pause = () => { if (!busy) return; stop(); markPaused(true); };
+  const resume = () => {
+    if (busy) return;
+    markPaused(false);
+    setInterrupted(false);
+    void sendMessage({ text: RESUME_TEXT });
+  };
+  useEffect(() => { if (error && !busy && isConnectionError(error.message)) { setInterrupted(true); markPaused(true); } }, [error, busy]);
+  useEffect(() => {
+    const up = () => setOnline(true), down = () => setOnline(false);
+    setOnline(navigator.onLine);
+    window.addEventListener("online", up); window.addEventListener("offline", down);
+    return () => { window.removeEventListener("online", up); window.removeEventListener("offline", down); };
+  }, []);
+  // Connection came back after a drop → continue automatically where it left off.
+  useEffect(() => {
+    if (!online || !interrupted || busy) return;
+    const t = setTimeout(() => { toast.success("Connection back — continuing the answer."); resume(); }, 1200);
+    return () => clearTimeout(t);
+  }, [online, interrupted, busy]);
   const quizSource = last?.role === "assistant" ? last : undefined;
   const openQuizText = quizSource?.parts.map((p) => p.type === "text" ? p.text : "").join("\n") ?? "";
   const openQuizOptions = quiz ? parseQuizTag(openQuizText) : null;
@@ -213,12 +241,16 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
                       />
 
                     ) : (
+                      isResumeText(p.text) ? (
+                        <span key={i} className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs text-muted-foreground"><Play className="size-3" />Resumed</span>
+                      ) : (
                       <div key={i} className="space-y-2">
                         {[...p.text.matchAll(DOC_RE)].map((d, j) => (
                           <div key={j} className="flex w-fit items-center gap-2 rounded-lg border bg-card px-3 py-2 text-sm"><FileText className="size-4" /> {d[1]}</div>
                         ))}
                         <p className={`study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl rounded-br-md border border-primary/20 bg-user-bubble px-4 py-2.5 text-foreground shadow-sm`}>{p.text.replace(DOC_RE, "")}</p>
                       </div>
+                      )
                     );
                   if (p.type.startsWith("tool-")) return <ToolStep key={i} part={p as never} />;
                   return null;
@@ -248,7 +280,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
               <Shimmer>Reading your question and working it out…</Shimmer>
             </div>
           )}
-          {error && !busy && (
+          {error && !busy && !interrupted && (
             <div role="alert" className="space-y-3 border-l-2 border-destructive pl-4 text-sm">
               <p className="text-destructive">{displayAiError(error.message)}</p>
               {isCreditError(error.message) && <p>AI is paused. Your saved questions, answers and revision cards are still available.</p>}
@@ -259,8 +291,21 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
         </ConversationContent>
         <ConversationScrollButton />
       </Conversation>
-      {quiz && chatHidden && <div className="mx-auto flex w-full max-w-3xl shrink-0 items-center justify-end gap-2 border-t px-4 py-1"><Button variant="ghost" size="sm" onClick={() => setChatHidden(false)}><PanelBottomOpen className="size-4" />Show Chat Widget</Button>{busy && <Button variant="outline" size="sm" onClick={stop}>Stop response</Button>}</div>}
-      <div hidden={quiz && chatHidden} className="mx-auto w-full max-w-3xl border-t bg-background/85 px-4 pb-2 pt-2 backdrop-blur md:pb-4 md:pt-3">
+      {quiz && chatHidden && <div className="mx-auto flex w-full max-w-3xl shrink-0 items-center justify-end gap-2 border-t px-4 py-1"><Button variant="ghost" size="sm" onClick={() => setChatHidden(false)}><PanelBottomOpen className="size-4" />Show Chat Widget</Button>{busy ? <Button variant="outline" size="sm" onClick={pause}><Pause className="size-4" />Pause</Button> : paused && <Button size="sm" onClick={resume}><Play className="size-4" />Resume</Button>}</div>}
+      {(busy || paused) && !(quiz && chatHidden) && (
+        <div className="mx-auto flex w-full max-w-3xl shrink-0 items-center gap-3 px-4 pt-2" role="status">
+          <span className={`size-2 shrink-0 rounded-full ${busy ? "animate-pulse bg-primary" : interrupted && !online ? "bg-destructive" : "bg-muted-foreground"}`} aria-hidden />
+          <span className="min-w-0 flex-1 truncate text-xs text-muted-foreground">
+            {busy ? "Tutor is working…" : interrupted ? (online ? "Connection dropped — resuming…" : "Offline — will continue automatically when you're back online") : "Paused — answer saved so far"}
+          </span>
+          {busy ? (
+            <Button type="button" variant="outline" className="touch-btn h-10 shrink-0 rounded-full px-4" onClick={pause}><Pause className="size-4" />Pause</Button>
+          ) : (
+            <Button type="button" className="touch-btn h-10 shrink-0 rounded-full px-4" onClick={resume} disabled={!online}><Play className="size-4" />Resume</Button>
+          )}
+        </div>
+      )}
+      <div hidden={quiz && chatHidden} className="mx-auto w-full max-w-3xl border-t bg-background/85 px-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur md:pb-4 md:pt-3">
         <SnapComposer
           controls={<ChatControls model={model} effort={effort} onModel={v=>{setModel(v);localStorage.setItem('snapsolve.model',v);}} onEffort={v=>{setEffort(v);localStorage.setItem('snapsolve.effort',v);}} quiz={quiz} onQuiz={toggleQuiz} search={search} onSearch={toggleSearch} disabled={busy} />}
           actions={
@@ -285,7 +330,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
           </Button>
           }
           status={status}
-          onStop={stop}
+          onStop={pause}
           placeholder={
             quiz && search
               ? "Type your answer — quiz + live search both on…"
@@ -298,6 +343,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
 
           onSubmit={async (msg) => {
             if (busy) return;
+            markPaused(false); setInterrupted(false);
             const docs = await pdfsToText(msg.files);
             const files = await Promise.all(docs.files.map((f) => compressImage(f)));
             await sendMessage({ text: docs.text + (msg.text.trim() || "Solve this question step by step."), files });
