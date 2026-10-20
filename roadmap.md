@@ -124,9 +124,16 @@
 - [x] Reconnect Firecrawl, GitHub API, Parallel, Perplexity in the new workspace
 - [x] Update Vercel env keys (LOVABLE_API_KEY + 3 connector keys) and redeploy
 
+## Project move prep (18:52 UTC)
+- [x] Backup to Files: clean source ZIP, handoff report with continue-prompt, helper/test scripts (private)
+- [x] Commit handoff report + roadmap to GitHub (user asked 18:54)
+- [ ] After move: reconnect Firecrawl, GitHub API, Parallel, Perplexity; update Vercel keys; redeploy
+- [ ] In the moved project, continue the open "Test + optimise" tasks from the handoff report (user asked 18:53)
+
 ## Test + optimise (18:41 UTC)
 - [x] Save all finished work to GitHub before testing (user asked 18:41)
 - [ ] Measure answer-check + web search speed (Perplexity, Parallel, Firecrawl), make it faster without losing accuracy
 - [ ] Voice call: connection must not drop — test a real call (fake mic), network drop + recovery
 - [ ] Adversarial tests: bad inputs / injection / huge payloads on every AI route, fix what breaks
+- [ ] Research which AI has the most natural Hindi / Indian voice (Perplexity, Parallel, Firecrawl), test it, add it (user asked 18:49)
 - [ ] Final report: rating + pros/cons
