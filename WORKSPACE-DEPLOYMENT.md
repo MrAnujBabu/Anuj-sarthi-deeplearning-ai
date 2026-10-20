@@ -1,5 +1,15 @@
 # Workspace move and deployment checklist
 
+## ⚡ One rule for every workspace / GitHub account move (read first)
+
+- **Everything runs on Vercel** (chat, voice, speech, transcribe) using the Vercel env var `LOVABLE_API_KEY`. Voice is talk-and-listen (mic → `/api/transcribe` → `/api/chat` → `/api/speech`). No dependency on any Lovable project ID.
+- The key bills **the Lovable workspace it belongs to**.
+- **Credits khatam / "Not enough credits" / workspace move** → do NOT rotate blindly. Put the LOVABLE_API_KEY of a workspace that has credits into Vercel (Production), plus FIRECRAWL/PARALLEL/PERPLEXITY keys; never touch `SUPABASE_*`. Redeploy, then verify.
+- **Rotate only** if the key leaked or the gateway rejects the key itself. After rotation the old key works ~1 hour.
+- Verify: Home, Practice, Voice, Admin open; `/api/transcribe`, `/api/chat`, `/api/speech` return 200.
+- Agent prompt that does it all: **"rotate AI key"** or **"workspace badla, Vercel update karo"** — agent runs connectors → key → Vercel env → redeploy → verify, no questions.
+
+
 ## Lovable agent: one-prompt automation
 When the owner says "rotate AI key" (or "workspace move"), the Lovable agent runs everything below automatically, without asking:
 1. Link GitHub API, Firecrawl, Parallel and Perplexity to the Lovable project (connect any that are missing).
