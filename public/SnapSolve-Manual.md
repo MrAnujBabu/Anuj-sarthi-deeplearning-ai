@@ -29,6 +29,20 @@ Solve mode में Search चालू करें। Public readable PDF/pag
 ## 5. Voice
 Input के पास mic दबाएँ और browser में microphone अनुमति दें। बोलना समाप्त करके recording रोकें; transcript आने पर उसे सुधारें और फिर भेजें। Voice स्वयं प्रश्न नहीं भेजती। Voice AI credits उपयोग करती है; real phone microphone की गुणवत्ता browser/device/network पर निर्भर करती है।
 
+### मोबाइल डेटा पर voice call की जाँच (फोन पर)
+1. Wi-Fi बंद करें, मोबाइल डेटा चालू रखें (4G/5G, कम से कम 2 signal bar)।
+2. Chrome/Safari में live site खोलें → `/voice` page पर जाएँ → microphone अनुमति दें।
+3. Call शुरू करें; 10 सेकंड के अंदर अभिवादन (greeting) सुनाई देना चाहिए।
+4. एक doubt पूछें (जैसे "mitochondria kya hai?") — जवाब साफ़ और बिना कटे आना चाहिए।
+5. Quiz चालू करके एक प्रश्न लें; screen पर A–D option tap करें या बोलकर जवाब दें — जवाब स्वीकार होना चाहिए।
+6. Network झटका: 5–10 सेकंड के लिए airplane mode चालू करके बंद करें। Call 15 सेकंड तक की रुकावट सह लेती है और फिर जारी रहनी चाहिए।
+7. Screen चालू रखें — screen बंद करने या दूसरे app पर जाने से phone call रोक सकता है (यह phone की सीमा है)।
+8. कुल 3–5 मिनट बात करें, फिर call स्वयं समाप्त करें।
+9. Admin → Voice call history में नई call देखें: status, अवधि और कोई error।
+10. यदि "credits/spending limit" error आए तो यह code की गलती नहीं है — workspace में credits top-up करें या AI usage limit बढ़ाएँ।
+
+सफल माना जाए यदि: greeting 10 सेकंड में आए, network झटके के बाद call जारी रहे, और history में call सही अवधि के साथ दिखे।
+
 ## 6. Saved practice
 Saved practice में उपलब्ध saved question/card खोलें। Reveal saved answer → Remembered या Needs revision चुनें। Progress इसी browser में रहता है और reload पर session जारी रहता है। यह सुविधा tutor call नहीं करती और AI credits समाप्त होने पर भी saved material से चलती है।
 
