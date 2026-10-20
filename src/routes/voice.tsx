@@ -17,6 +17,8 @@ import { Sheet, SheetTrigger, SheetContent, SheetTitle, SheetDescription } from 
 import { resolveModel, VOICE_TUTOR_MODEL } from '@/lib/models';
 import { billableSeconds, confirmedSeconds } from '@/lib/voice-usage';
 import { QuizTimerSettings } from '@/components/quiz-timer-settings';
+import { TalkVoice } from '@/components/talk-voice';
+import { usesTalkTurns } from '@/lib/talk-turn';
 import { initialVoiceQuizState, reduceVoiceQuiz } from '@/lib/voice-quiz-state';
 
 export const Route = createFileRoute("/voice")({
@@ -45,6 +47,13 @@ async function readAttachment(file: File, ocr: boolean, progress: (message: stri
 }
 
 function VoicePage() {
+  const [talk, setTalk] = useState<boolean | null>(null);
+  useEffect(() => { setTalk(usesTalkTurns(window.location.origin)); }, []);
+  if (talk === null) return null;
+  return talk ? <TalkVoice /> : <LiveVoicePage />;
+}
+
+function LiveVoicePage() {
   const [rows, setRows] = useState<Row[]>([]);
   const [thinking, setThinking] = useState(false);
   const [quizState, dispatchQuiz] = useReducer(reduceVoiceQuiz, initialVoiceQuizState);
