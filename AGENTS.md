@@ -9,33 +9,24 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-## ⚡ One rule for every workspace / GitHub account move (read first)
-
-- **Everything runs on Vercel** (chat, voice, speech, transcribe) using the Vercel env var `LOVABLE_API_KEY`. Voice is talk-and-listen (mic → `/api/transcribe` → `/api/chat` → `/api/speech`). No dependency on any Lovable project ID.
-- The key bills **the Lovable workspace it belongs to**.
-- **Credits khatam / "Not enough credits" / workspace move** → do NOT rotate blindly. Put the LOVABLE_API_KEY of a workspace that has credits into Vercel (Production), plus FIRECRAWL/PARALLEL/PERPLEXITY keys; never touch `SUPABASE_*`. Redeploy, then verify.
-- **Rotate only** if the key leaked or the gateway rejects the key itself. After rotation the old key works ~1 hour.
-- Verify: Home, Practice, Voice, Admin open; `/api/transcribe`, `/api/chat`, `/api/speech` return 200.
-- Agent prompt that does it all: **"rotate AI key"** or **"workspace badla, Vercel update karo"** — agent runs connectors → key → Vercel env → redeploy → verify, no questions.
-
 ## Architecture
 - Admin device recovery exports only application memory/settings, validates reselected backups, merges restores, and clears only unchanged backed-up text-only rows; preserves original-file entries, accounts and AI pause to prevent destructive resets.
 - Admin document retention defaults to extracted text only; originals are uploaded only when retained or needed for reading, with temporary uploads cleaned on failure/success to avoid needless Cloud growth.
-- Mount TooltipProvider around the root outlet so portalled controls never crash on a missing provider.
+- Mount TooltipProvider around the root outlet for portalled controls.
+- Active Voice quizzes own a scrollable reading area and separate conversation view; call controls stay outside to prevent overlap.
 - Sidebar collapse stays inside DoubtSidebar with a persistent visible reopen control; composer controls use fixed-size AI Elements buttons and a two-track footer to prevent overlap.
 - SnapSolve stays at repo root, Python under legacy/, for correct hosting detection.
-- Separate hosting configs; encrypt Vercel secrets, refresh/redeploy after moves; auto-deploy needs GitHub App. Vercel voice uses the Worker relay via stable project-- alias (renames break slugs), exact-origin checks.
+- Separate hosting configs; encrypt Vercel secrets and redeploy after moves. Vercel live voice uses the published Lovable relay; serverless cannot hold calls.
 - Sidebar Settings shares device appearance/quiz preferences; timer overrides keep the cached admin default; physical numpad maps to A–D and dialogs block shortcuts to prevent accidental answers.
 - PCB outlines are per-chapter admin memory (Botany/Zoology mapped to Biology, original branch and provenance kept); never claim official syllabus verification.
 - Chat uses `/api/chat` (Claude/Gateway Messages, streamed), keeping keys/prompts server-side. Shared cancellation detection treats Stop as 499 before streaming, not a crash; header wrappers handle pending reads immediately.
 - Doubts use browser threads at `/doubt/$threadId`; downscale photos, throttle streamed renders, and await IndexedDB PDF writes before saving pointers to avoid jank and broken backups.
 - Prompt forms disable controls until hydration and use native dialog submission as a no-navigation fallback, preventing question text from leaking into URLs before React handles submissions.
 - Assistant text normalizes inline equation delimiters before markdown rendering, preserves display equations and code, and uses scoped KaTeX sizing so equations follow the surrounding text.
-- Saved practice extracts existing answers and revision cards and grades recall locally through the shared SRS persistence API; it never calls the tutor endpoint.
+- Saved practice extracts answers/revision cards and grades locally via shared SRS, never the tutor; stable card-ID queues/completed IDs prevent due-date skips on reload; new material joins next session.
 - Study backup exports only browser study data and embedded attachments, with validated non-destructive imports; source ZIPs and Cloud exports are separate backups.
 - Tutor models use a shared server-validated catalog; terminal AI pauses are persisted server-side and never reset by public browser requests.
 - Load Mermaid through the lazy diagram adapter only when rendering a diagram; graph dependency initialization failures must not prevent chat or practice routes from opening.
-- Saved practice persists a stable card-ID queue and completed IDs; due-date changes must not skip cards on reload, and newly saved material joins the next session.
 - Agent memory lives in Cloud table memory_items, editable only by admins (has_role); /api/chat ranks active chapter outlines against bounded recent conversation context, excludes unmatched chapters and injects size-capped memory so follow-ups retain context.
 - Chat exports Obsidian markdown and zipped notes; attachments remain placeholders, never data URLs.
 - Web search: `createAgentTools({ webSearch })` adds a `web_search` tool (Perplexity + Parallel in parallel, deduped by URL) only when the client sends `search: true`; /api/chat appends a search instruction to the system prompt and disables it in quiz mode.

@@ -10,6 +10,7 @@ import { VOICE_TUTOR_MODEL, CLAUDE_OUTPUT_BUDGET } from '@/lib/models';
 import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 import { VERCEL_APP_ORIGIN } from '@/lib/live-endpoint';
+import { createNcertDeck, ncertDeckPrompt } from "@/lib/ncert-biology-bank";
 
 export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; context: string; documents: VoiceDocument[] };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
@@ -35,7 +36,7 @@ export function quizStyle(prefs: Pick<CallPrefs, "matchQ" | "assertionQ" | "deep
   if (types.length) parts.push(` Ask ONLY these NEET question types${types.length > 1 ? ", alternating" : ""}: ${types.join(" and ")}. Never ask a plain one-line MCQ while these are on, including the first question.`);
   if (prefs.matchQ) parts.push(" Match the Following: write Column I items as a., b., c., d. and Column II as i., ii., iii., iv. on separate short lines, then options like (A) a-iii, b-i, c-iv, d-ii.");
   if (prefs.assertionQ) parts.push(" Assertion–Reason: write 'Assertion (A): …' and 'Reason (R): …' on separate lines, then (A) Both true, R explains A (B) Both true, R does not explain A (C) A true, R false (D) A false, R true.");
-  if (prefs.deep) parts.push(" DEEP MODE: make hard, NEET-advanced questions built strictly from NCERT Class 11/12 Biology lines (exceptions, examples, diagrams, tables) and from any student-attached material; use multi-concept reasoning, never trivia outside NCERT; when grading, cite the NCERT chapter.");
+  if (prefs.deep) parts.push(" DEEP MODE: make hard, NEET-advanced questions built strictly from NCERT Class 11/12 Biology lines (exceptions, examples, diagrams, tables) and from any student-attached material; use multi-concept reasoning, never trivia outside NCERT; when grading, cite the NCERT chapter. Before each question say its chapter line exactly as given (NCERT Class, Chapter number and official chapter name); never rename a chapter.");
   return parts.join("");
 }
 
@@ -220,6 +221,7 @@ export async function answerQuestion(
   onPlan: (plan: ReturnType<typeof planStudySchedule>) => void,
   prefs: CallPrefs = parseCallPrefs(null),
   onSearch: () => void = () => {},
+  ncertPrompt = "",
 ) {
   signal.throwIfAborted();
   const paused = await getAiPause() ?? await getAiPause(config.backendModel);
@@ -266,7 +268,8 @@ export async function answerQuestion(
       }),
     },
     providerOptions: {
-      anthropic: { thinking: { type: "adaptive" }, effort: "high" },
+      // Bank questions only need copying and grading against a known key: answer quickly.
+      anthropic: { thinking: { type: "adaptive" }, effort: ncertPrompt ? "medium" : "high" },
     },
     system:
       "Help a spoken NEET 2027 tutor answer the latest student question (Physics, Chemistry, Biology; follow NCERT). " +
@@ -279,6 +282,7 @@ export async function answerQuestion(
       "it does not save calendar events." +
       (prefs.quiz ? " QUIZ MODE: give exactly one NEET question with options labelled (A) (B) (C) (D), each on its own line (convert (1)-(4) numbering to A-D), no answer or check the student's spoken answer briefly and give the next question." : "") +
       (prefs.quiz ? quizStyle(prefs) : "") +
+      ncertPrompt +
       (prefs.search ? " Use web_search for current facts when needed." : "") +
       (prefs.context ? `\n\nStudent-attached material (use it when relevant):\n${prefs.context}` : ""),
     messages: endWithUserTurn(messages),
@@ -374,6 +378,7 @@ export function bindLiveConnection(
   let completedDelegation: (typeof pendingDelegations)[number] | undefined;
   const backendMessages: ModelMessage[] = [];
   let prefs = parseCallPrefs(null);
+  let ncertDeck: ReturnType<typeof createNcertDeck> | undefined;
   let openQuiz: { id: string; answered: boolean } | undefined;
   const typedAnswers = new Set<string>();
   let transcriptCursor = 0;
@@ -537,6 +542,7 @@ export function bindLiveConnection(
           }),
         );
       }
+      ncertDeck?.observe(answer);
       if (plan) emit({ type: "app.study_schedule.plan", delegation_id: delegationID, plan });
       const labels = prefs.quiz ? voiceQuizOptions(answer) : null;
       if (labels) {
@@ -577,6 +583,7 @@ export function bindLiveConnection(
         },
         prefs,
         () => { searchCount++; },
+        ncertDeck ? ncertDeckPrompt(ncertDeck.next(), ncertDeck.pending()) : "",
       );
       if (closing || controller.signal.aborted) return;
       if (taskRevision !== revision) return;
@@ -765,6 +772,7 @@ export function bindLiveConnection(
         }
         starting = true;
         prefs = parseCallPrefs(event.prefs);
+        if (prefs.quiz && prefs.deep) ncertDeck = createNcertDeck(prefs);
         tracked = true;
         track({ voice: prefs.voice, accent: prefs.accent, quiz: prefs.quiz, search: prefs.search, documents: prefs.documents, status: 'starting' });
         emit({ type: 'app.call.record', callId: runID });

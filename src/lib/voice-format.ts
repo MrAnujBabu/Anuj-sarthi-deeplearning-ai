@@ -1,3 +1,5 @@
+import { chapterLabel, takeChapter } from "@/lib/ncert-biology";
+
 /**
  * Turn a spoken tutor reply (one long run-on paragraph) into structured study notes:
  * result heading, highlighted correct answer, explanation bullets, NCERT and memory-tip
@@ -13,13 +15,17 @@ export function formatVoiceReply(raw: string, opts: { options?: boolean } = {}):
 let showOptions = true;
 
 function format(raw: string): string {
+  // Structured quiz payloads already have meaningful table rows; do not flatten them.
+  if (/^\s*\|.+\|\s*$/m.test(raw) && /^\s*\|\s*:?-{3,}/m.test(raw)) {
+    return showOptions ? raw.trim() : raw.split(/^\s*(?:Options?\s*:|(?:[-*]\s*)?(?:\*\*)?\(?A[).:]\s)/mi)[0]?.trim() ?? raw.trim();
+  }
   let t = raw.replace(/\s+/g, " ").trim();
   if (!t) return t;
   t = stripFillers(t);
   t = spokenOptions(t);
 
   const marker = t.match(/((?:Chalo,?\s*)?(?:(?:agla|next)\s+(?:prashn|prashna|question|sawal|sawaal)(?:,?\s*(?:number|no\.?)\s*\w+)?|(?:question|prashn|sawal|sawaal)\s+(?:number|no\.?)\s*\w+)[.,:!]?)/i);
-  const hasOptions = OPTION_START.test(t) || MATCH_COLUMNS.test(t);
+  const hasOptions = OPTION_START.test(t) || MATCH_COLUMNS.test(t) || /\bAssertion\s*(?:\(A\))?\s*:\s*.+\bReason\s*(?:\(R\))?\s*:/i.test(t);
   let feedback = t;
   let next = "";
   let label = "";
@@ -85,7 +91,13 @@ function callout(s: string): string | null {
   return null;
 }
 
-function formatFeedback(t: string): string {
+function formatFeedback(raw: string): string {
+  const ch = takeChapter(raw);
+  const out = formatFeedbackBody(ch.text);
+  return ch.chapter ? `${out}\n\n> 📖 **NCERT chapter:** ${chapterLabel(ch.chapter).replace(/^NCERT /, "")}`.trim() : out;
+}
+
+function formatFeedbackBody(t: string): string {
   const out: string[] = [];
   const list = sentences(t);
   const vIdx = list.findIndex((s) => /\b(?:Sahi jawab|Correct answer|Right answer|Sahi answer)\b/i.test(s));
@@ -138,6 +150,9 @@ function formatQuestion(t: string, label: string, separate: boolean): string {
   const num = label.match(/(?:number|no\.?|question|prashn|sawal)\s*(\d+|[a-z]+)\s*[.?!]?$/i)?.[1]?.toLowerCase();
   const n = num && (/^\d+$/.test(num) ? num : NUMBERS[num]);
   out.push(`#### ❓ ${n ? `Question ${n}` : label ? "Agla sawal" : "Question"}`);
+  const ch = takeChapter(t);
+  t = ch.text;
+  if (ch.chapter) out.push(`> 📖 **${chapterLabel(ch.chapter)}**`);
   if (!t) return out.join("\n\n");
 
   t = matchTable(t);

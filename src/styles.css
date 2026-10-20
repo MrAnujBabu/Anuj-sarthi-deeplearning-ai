@@ -226,3 +226,13 @@
 .voice-caption .assistant-answer li { margin: .2rem 0; }
 .voice-caption .assistant-answer blockquote ul { padding-left: 1rem; }
 .voice-caption .assistant-answer hr { margin: 1rem 0; border-color: var(--border); }
+
+/* Active Voice quizzes scroll independently from captions and call controls. */
+.voice-quiz .voice-caption { font-size: var(--study-size); line-height: 1.65; letter-spacing: 0; }
+.voice-quiz .assistant-answer table { table-layout: fixed; min-width: 0; }
+.voice-quiz .assistant-answer th, .voice-quiz .assistant-answer td { overflow-wrap: anywhere; white-space: normal; }
+.voice-quiz .assistant-answer th:first-child, .voice-quiz .assistant-answer td:first-child { width: 40%; }
+.voice-quiz [role="checkbox"] { min-height: 3rem; font-size: var(--study-size); }
+.voice-quiz [role="checkbox"]:disabled[aria-checked="true"] { opacity: 1; }
+.voice-quiz .assistant-answer [data-streamdown="table-wrapper"] { min-width: 0; }
+.voice-quiz .assistant-answer div:has(> table) { max-height: none; height: auto; overflow: visible; }
