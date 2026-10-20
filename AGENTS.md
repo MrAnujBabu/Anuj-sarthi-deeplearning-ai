@@ -15,7 +15,7 @@
 - Mount TooltipProvider around the root outlet so portalled controls never crash on a missing provider.
 - Sidebar collapse stays inside DoubtSidebar with a persistent visible reopen control; composer controls use fixed-size AI Elements buttons and a two-track footer to prevent overlap.
 - SnapSolve stays at repo root, Python under legacy/, for correct hosting detection.
-- Separate hosting configs; encrypt Vercel secrets, refresh/redeploy after moves; auto-deploy needs GitHub App. Vercel voice uses the published Worker relay via the stable project-- alias (slug renames break named URLs) with exact-origin checks, not serverless sockets.
+- Separate hosting configs; encrypt Vercel secrets, refresh/redeploy after moves; auto-deploy needs GitHub App. Vercel voice uses the Worker relay via stable project-- alias (renames break slugs), exact-origin checks.
 - Sidebar Settings shares device appearance/quiz preferences; timer overrides keep the cached admin default; physical numpad maps to A–D and dialogs block shortcuts to prevent accidental answers.
 - PCB outlines are per-chapter admin memory (Botany/Zoology mapped to Biology, original branch and provenance kept); never claim official syllabus verification.
 - Chat uses `/api/chat` (Claude/Gateway Messages, streamed), keeping keys/prompts server-side. Shared cancellation detection treats Stop as 499 before streaming, not a crash; header wrappers handle pending reads immediately.
