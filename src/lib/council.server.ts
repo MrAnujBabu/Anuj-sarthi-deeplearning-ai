@@ -218,15 +218,17 @@ export async function runCouncil(input: CouncilInput, signal: AbortSignal, emit:
   };
 
   emit({ type: 'stage', stage: 'search' });
+  const checks: CheckResult[] = [];
+  const record = (c: CheckResult) => { checks.push(c); emit({ type: 'check', check: c }); return c; };
+  // Gemini has its own Google Search grounding — start it now instead of waiting for the web search.
+  const geminiReview1 = geminiReview(ctx, input, 'No live web evidence yet — rely on your own knowledge and Google Search.', 1).then(record);
   const { evidence, sources } = await gatherEvidence(input.question);
   emit({ type: 'sources', sources });
   if (signal.aborted) return;
 
   emit({ type: 'stage', stage: 'review' });
-  const checks: CheckResult[] = [];
-  const record = (c: CheckResult) => { checks.push(c); emit({ type: 'check', check: c }); return c; };
   let [g, o] = await Promise.all([
-    geminiReview(ctx, input, evidence, 1).then(record),
+    geminiReview1,
     openaiReview(ctx, input, evidence, 1).then(record),
   ]);
   if (credit) { emit({ type: 'error', message: (credit as AiFailure).message || 'AI credits are used up.', status: 402 }); return; }

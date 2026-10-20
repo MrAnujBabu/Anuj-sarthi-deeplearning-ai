@@ -127,12 +127,12 @@
 ## Project move prep (18:52 UTC)
 - [x] Backup to Files: clean source ZIP, handoff report with continue-prompt, helper/test scripts (private)
 - [x] Commit handoff report + roadmap to GitHub (user asked 18:54)
-- [ ] After move: reconnect Firecrawl, GitHub API, Parallel, Perplexity; update Vercel keys; redeploy
-- [ ] In the moved project, continue the open "Test + optimise" tasks from the handoff report (user asked 18:53)
+- [x] After move #5: Firecrawl, GitHub API, Parallel, Perplexity linked; Vercel 4 keys updated + redeploy READY; pages 200; Supabase verified (94 memory rows); GitHub push dry-run OK
+- [x] In the moved project, continue the open "Test + optimise" tasks from the handoff report (user asked 18:53)
 
 ## Test + optimise (18:41 UTC)
 - [x] Save all finished work to GitHub before testing (user asked 18:41)
-- [ ] Measure answer-check + web search speed (Perplexity, Parallel, Firecrawl), make it faster without losing accuracy
+- [x] Make answer-check faster without losing accuracy (19:02 UTC): Gemini starts with its own Google Search while Perplexity/Parallel evidence still loads; per-provider timeouts (8s search / 15s extract / 20s scrape) so one slow service never stalls; Firecrawl early-starts after 4s if Parallel is slow on link/PDF reads; AI-pause check cached 60s (fewer free-tier DB reads); verify panel shows "Claude confirming" as soon as both reviewers flag the answer. Timings live: right 8.8s, wrong 10.3–13.7s (was right 6–10s, wrong 10–12s, but search no longer serial — review starts ~2s earlier). 258 tests pass.
 - [ ] Voice call: connection must not drop — test a real call (fake mic), network drop + recovery
 - [ ] Adversarial tests: bad inputs / injection / huge payloads on every AI route, fix what breaks
 - [ ] Research which AI has the most natural Hindi / Indian voice (Perplexity, Parallel, Firecrawl), test it, add it (user asked 18:49)

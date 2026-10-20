@@ -70,7 +70,7 @@ function Progress({ state, onStop }: { state: CouncilState; onStop: () => void }
         <StepRow done={at > 0} active={at === 0} label="Searching live sources" sub="Perplexity + Parallel" />
         <StepRow done={at > 1 || r1.length >= 2} active={at === 1} label="Independent review" sub={reviewers} />
         {at >= 2 && <StepRow done={at > 2} active={at === 2} label="Debate round" sub="Each reviewer answers the other's objections" />}
-        {at >= 3 && <StepRow done={false} active label={`${COUNCIL_MODELS.chair.name} rules`} sub="Accepts or rejects every objection" />}
+        {at >= 3 && <StepRow done={false} active label={`${COUNCIL_MODELS.chair.name} confirming`} sub="Weighs every objection before the final ruling" />}
       </ol>
       <Button variant="ghost" size="sm" className="h-8 px-2 text-xs" onClick={onStop}><Square className="size-3" />Stop check</Button>
     </div>

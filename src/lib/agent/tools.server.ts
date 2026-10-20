@@ -1,10 +1,17 @@
 import { tool } from "ai";
 import { z } from "zod";
 import { isNcertUrl, MAX_TOOL_CALLS, NCERT_BOOKS, bookKey, textbookUrl, trim } from "./ncert";
+import { earlyFallback } from "./fallback";
 
 const GW = "https://connector-gateway.lovable.dev";
 
-async function gw(connector: string, keyName: string, path: string, body: unknown) {
+// Per-provider cap so one slow service never stalls the answer (the gateway itself allows ~60s).
+const SEARCH_TIMEOUT_MS = 8000;
+const EXTRACT_TIMEOUT_MS = 15000;
+const PDF_EXTRACT_TIMEOUT_MS = 25000;
+const SCRAPE_TIMEOUT_MS = 20000;
+
+async function gw(connector: string, keyName: string, path: string, body: unknown, timeoutMs = 15000) {
   const lovable = process.env["LOVABLE_API_KEY"];
   const key = process.env[keyName];
   if (!lovable || !key) throw new Error(`${connector} not configured`);
@@ -16,6 +23,7 @@ async function gw(connector: string, keyName: string, path: string, body: unknow
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(timeoutMs),
   });
   if (!res.ok) {
     const t = await res.text();
@@ -50,13 +58,13 @@ export function createAgentTools(opts?: { webSearch?: boolean }) {
         results.push({ title: r.title, url, snippet: trim(r.snippet ?? (r.excerpts ?? []).join(" … "), 500) });
       };
       const [ppx, par] = await Promise.allSettled([
-        gw("perplexity", "PERPLEXITY_API_KEY", "/search", { query, max_results: 5 }),
+        gw("perplexity", "PERPLEXITY_API_KEY", "/search", { query, max_results: 5 }, SEARCH_TIMEOUT_MS),
         gw("parallel", "PARALLEL_API_KEY", "/v1/search", {
           objective: `Find accurate, current information for: ${query}`,
           search_queries: [query.slice(0, 190)],
           mode: "fast",
           advanced_settings: { max_results: 5, excerpt_settings: { max_chars_per_result: 600 } },
-        }),
+        }, SEARCH_TIMEOUT_MS),
       ]);
       if (ppx.status === "fulfilled") (ppx.value.results ?? []).forEach(push);
       if (par.status === "fulfilled") (par.value.results ?? []).forEach(push);
@@ -88,7 +96,7 @@ export function createAgentTools(opts?: { webSearch?: boolean }) {
               source_policy: { include_domains: ["ncert.nic.in"] },
               excerpt_settings: { max_chars_per_result: 900 },
             },
-          });
+          }, SEARCH_TIMEOUT_MS);
           const results = (data.results ?? []).map((r: any) => ({
             title: r.title,
             url: r.url,
@@ -110,28 +118,35 @@ export function createAgentTools(opts?: { webSearch?: boolean }) {
       execute: async ({ url, focus }) => {
         if (!isNcertUrl(url)) return { error: "Only ncert.nic.in pages can be read." };
         guard();
-        try {
-          const data = await gw("parallel", "PARALLEL_API_KEY", "/v1/extract", {
-            urls: [url],
-            objective: focus,
-            advanced_settings: { excerpt_settings: { max_chars_per_result: 3000 } },
-          });
-          const r = data.results?.[0];
-          if (r) return { url, title: r.title, text: trim((r.excerpts ?? []).join("\n…\n")) };
-        } catch {
-          /* fall through to Firecrawl */
-        }
-        try {
-          const data = await gw("firecrawl", "FIRECRAWL_API_KEY", "/v2/scrape", {
-            url,
-            formats: ["markdown"],
-            onlyMainContent: true,
-          });
-          const md = data.markdown ?? data.data?.markdown ?? "";
-          return { url, text: trim(md) };
-        } catch (e) {
-          return { url, error: String(e) };
-        }
+        const parallelExtract = async (): Promise<{ url: string; title?: string; text?: string; error?: string }> => {
+          try {
+            const data = await gw("parallel", "PARALLEL_API_KEY", "/v1/extract", {
+              urls: [url],
+              objective: focus,
+              advanced_settings: { excerpt_settings: { max_chars_per_result: 3000 } },
+            }, PDF_EXTRACT_TIMEOUT_MS);
+            const r = data.results?.[0];
+            if (r) return { url, title: r.title, text: trim((r.excerpts ?? []).join("\n…\n")) };
+          } catch {
+            /* fall through to Firecrawl */
+          }
+          return { url, text: "", error: "No readable text found on this page." };
+        };
+        const firecrawlScrape = async (): Promise<{ url: string; title?: string; text?: string; error?: string }> => {
+          try {
+            const data = await gw("firecrawl", "FIRECRAWL_API_KEY", "/v2/scrape", {
+              url,
+              formats: ["markdown"],
+              onlyMainContent: true,
+            }, SCRAPE_TIMEOUT_MS);
+            const md = data.markdown ?? data.data?.markdown ?? "";
+            return { url, text: trim(md) };
+          } catch (e) {
+            return { url, error: String(e) };
+          }
+        };
+        // Parallel extracts faster; if it is slow, Firecrawl starts too and the first usable text wins.
+        return earlyFallback(parallelExtract(), firecrawlScrape, 4000, (r) => !!r.text);
       },
     }),
 
@@ -142,30 +157,36 @@ export function createAgentTools(opts?: { webSearch?: boolean }) {
       execute: async ({ url }) => {
         if (!/^https?:\/\//i.test(url)) return { error: "Not a web link." };
         guard();
-        // Public PDF extraction is faster via Parallel; keep Firecrawl as fallback.
-        try {
-          const data = await gw("parallel", "PARALLEL_API_KEY", "/v1/extract", {
-            urls: [url],
-            objective: "Read the student's document, preserving questions, options, answer keys and page references.",
-            advanced_settings: { full_content: true, excerpt_settings: { max_chars_per_result: 12000 } },
-          });
-          const result = data.results?.[0];
-          const text = result?.full_content || (result?.excerpts ?? []).join("\n");
-          if (text?.trim()) return { url, title: result.title, text: trim(text, 12000), truncated: text.length > 12000 };
-        } catch { /* Fall back to the existing reader. */ }
-        try {
-          const data = await gw("firecrawl", "FIRECRAWL_API_KEY", "/v2/scrape", {
-            url,
-            formats: ["markdown"],
-            onlyMainContent: true,
-          });
-          const md = data.markdown ?? data.data?.markdown ?? "";
-          const title = data.metadata?.title ?? data.data?.metadata?.title;
-          if (!md.trim()) return { url, error: "This link returned no readable text. Upload the PDF instead; do not guess its contents." };
-          return { url, title, text: trim(md, 12000), truncated: md.length > 12000 };
-        } catch (e) {
-          return { url, error: String(e) };
-        }
+        const parallelRead = async (): Promise<{ url: string; title?: string; text?: string; truncated?: boolean; error?: string }> => {
+          try {
+            const data = await gw("parallel", "PARALLEL_API_KEY", "/v1/extract", {
+              urls: [url],
+              objective: "Read the student's document, preserving questions, options, answer keys and page references.",
+              advanced_settings: { full_content: true, excerpt_settings: { max_chars_per_result: 12000 } },
+            }, EXTRACT_TIMEOUT_MS);
+            const result = data.results?.[0];
+            const text = result?.full_content || (result?.excerpts ?? []).join("\n");
+            if (text?.trim()) return { url, title: result.title, text: trim(text, 12000), truncated: text.length > 12000 };
+          } catch { /* Fall back to the existing reader. */ }
+          return { url, text: "", error: "This link returned no readable text. Upload the PDF instead; do not guess its contents." };
+        };
+        const firecrawlRead = async (): Promise<{ url: string; title?: string; text?: string; truncated?: boolean; error?: string }> => {
+          try {
+            const data = await gw("firecrawl", "FIRECRAWL_API_KEY", "/v2/scrape", {
+              url,
+              formats: ["markdown"],
+              onlyMainContent: true,
+            }, SCRAPE_TIMEOUT_MS);
+            const md = data.markdown ?? data.data?.markdown ?? "";
+            const title = data.metadata?.title ?? data.data?.metadata?.title;
+            if (!md.trim()) return { url, error: "This link returned no readable text. Upload the PDF instead; do not guess its contents." };
+            return { url, title, text: trim(md, 12000), truncated: md.length > 12000 };
+          } catch (e) {
+            return { url, error: String(e) };
+          }
+        };
+        // Public PDF extraction is faster via Parallel; if it is slow, Firecrawl starts too and the first usable text wins.
+        return earlyFallback(parallelRead(), firecrawlRead, 4000, (r) => !!r.text);
       },
     }),
 
@@ -178,7 +199,7 @@ export function createAgentTools(opts?: { webSearch?: boolean }) {
           const data = await gw("perplexity", "PERPLEXITY_API_KEY", "/search", {
             query: `NEET previous year questions ${topic}`,
             max_results: 4,
-          });
+          }, SEARCH_TIMEOUT_MS);
           return {
             results: (data.results ?? []).map((r: any) => ({
               title: r.title,
