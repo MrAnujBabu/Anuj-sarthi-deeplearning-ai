@@ -62,34 +62,18 @@ function verdictLine(status: QuizResult["status"], answer: string | undefined, c
     "> *Is sawal ka jawab nahi diya gaya.*";
 }
 
-/**
- * Active-recall layout (Obsidian): question + options stay visible, the answer
- * hides in a fold ("pehle khud socho"), and the tutor's explanation sits in a
- * second, nested fold — so revising means trying first, then revealing in depth.
- */
-function recallBlock(rows: VoiceRow[], { entry, correct, status }: QuizResult): string {
-  const opts = LETTERS.filter((l) => entry.labels[l]).map((l) => `- **(${l})** ${cell(entry.labels[l] ?? "")}`).join("\n");
-  const answerLine = correct ? `**✅ Sahi jawab: (${correct}) ${cell(entry.labels[correct] ?? "")}**` : "**Sahi jawab:** tutor ke verdict me dekho";
-  const explanation = explanationFor(rows, entry);
-  const inner = [verdictLine(status, entry.answer, correct), answerLine];
-  if (explanation) inner.push(`<details>\n<summary>📖 Tutor ki explanation (depth)</summary>\n\n${explanation}\n\n</details>`);
-  return [opts, `<details>\n<summary>🧠 Jawab dekho — pehle khud socho</summary>\n\n${inner.join("\n\n")}\n\n</details>`].join("\n\n");
-}
-
-function quizSection(rows: VoiceRow[], quiz: VoiceQuizEntry[], style: "obsidian" | "plain"): string {
+function quizSection(rows: VoiceRow[], quiz: VoiceQuizEntry[]): string {
   const results = quizResults(rows, quiz);
   const checked = results.filter((r) => r.status === "right" || r.status === "wrong");
   const right = checked.filter((r) => r.status === "right").length;
   const skipped = results.filter((r) => r.status === "skipped").length;
   const score = checked.length ? ` · Score ${right}/${checked.length}` : "";
   const out = [`## 📝 Quiz — ${quiz.length} sawal${score}${skipped ? ` · ${skipped} skip` : ""}`];
-  if (style === "obsidian") out.push("> [!tip] 🧠 Active recall\n> Har sawaal pehle khud solve karo, phir fold kholo. Galat hua to explanation fold padho aur card dobara karo.");
   results.forEach((result, i) => {
     const { entry, correct, status } = result;
     out.push(`### Q${i + 1}`);
     const stem = questionStem(entry.text);
     if (stem) out.push(stem);
-    if (style === "obsidian") { out.push(recallBlock(rows, result)); return; }
     const rowsMd = LETTERS.filter((l) => entry.labels[l]).map((l) => {
       const marks = [l === correct ? "✅ Sahi jawab" : "", l === entry.answer ? (status === "wrong" ? "❌ Tumhara jawab" : "👉 Tumhara jawab") : ""].filter(Boolean).join(" · ");
       return `| **${l}** | ${cell(entry.labels[l] ?? "")} | ${marks} |`;
@@ -200,12 +184,76 @@ export function toObsidianMarkdown(md: string): string {
 export function voiceTranscriptMarkdown(rows: VoiceRow[], quiz: VoiceQuizEntry[] = [], options: { embedData?: boolean; date?: Date; style?: "obsidian" | "plain" } = {}) {
   const { embedData = true, date = new Date(), style = "obsidian" } = options;
   const lines = rows.map((r) => (r.role === "user" ? `**Me:** ${r.text.trim()}` : `**SnapSolve:**\n\n${formatVoiceReply(r.text).trim()}`));
-  const parts = [`---\ntype: voice-call\ndate: ${date.toISOString()}\ntags: [snapsolve, voice-call]\nquiz_questions: ${quiz.length}\n---`, "# Voice call"];
-  if (quiz.length) parts.push(quizSection(rows, quiz, style), "## 💬 Conversation");
+  const tags = style === "obsidian" ? "tags:\n  - snapsolve\n  - voice-call\n  - NEET\n  - QandA\ncategories: \"[[Categories/Recall|Recall]]\"" : "tags: [snapsolve, voice-call]";
+  const parts = [`---\ntype: voice-call\ndate: ${date.toISOString()}\n${tags}\nquiz_questions: ${quiz.length}\n---`, "# Voice call"];
+  if (style === "obsidian") {
+    const recall = recallSection(rows, quiz);
+    if (recall) parts.push(recall);
+    parts.push("## 💬 Poori baat-cheet");
+  } else if (quiz.length) parts.push(quizSection(rows, quiz), "## 💬 Conversation");
   parts.push(...lines);
   if (embedData) parts.push(`<!-- ${DATA_MARK}${encodeData({ rows, quiz })} -->`);
   const md = `${parts.join("\n\n")}\n`;
   return style === "obsidian" ? toObsidianMarkdown(md) : md;
+}
+
+export type RecallLevel = "red" | "yellow" | "green";
+type RecallCard = { q: string; a: string; level: RecallLevel };
+
+const quote = (s: string) => s.split("\n").map((l) => (l.trim() ? `> ${l}` : ">")).join("\n");
+/** Toggles flatten to bold headings inside a card — a card is already one fold. */
+const flatten = (s: string) => s.replace(/<details>\s*<summary>([\s\S]*?)<\/summary>/g, (_m, t: string) => `**${t.trim()}**`).replace(/<\/details>/g, "").replace(/\n{3,}/g, "\n\n").trim();
+
+/** Traffic-light difficulty for a conversation card: numbers/traps/multi-part → red, short direct → green. */
+export function recallLevel(question: string, answer: string): RecallLevel {
+  if (/\d+\s*[:%]|\bratio\b|\btrap\b|\bexception\b|\bdifference\b|\bvs\b|antar|farak/i.test(`${question} ${answer}`) || /\?.*\?/.test(question)) return "red";
+  if (answer.length < 280) return "green";
+  return "yellow";
+}
+
+/** A student turn counts as a recall question when it asks something (not a quiz answer or a one-word reply). */
+function isQuestion(text: string): boolean {
+  const t = text.trim();
+  if (/^(answer|option|jawab)\b/i.test(t) || /^\(?[a-d]\)?$/i.test(t)) return false;
+  return t.split(/\s+/).length >= 3 && (/\?/.test(t) || /\b(kya|kyun|kyon|kaise|kaun|kitne|kitni|kab|kahan|explain|samjhao|batao|what|why|how|which|define|difference)\b/i.test(t));
+}
+
+/** Q&A flashcards in the user's Obsidian recall format: `> [!recall-<level>]- Qn. …` / `> **Answer:** …`. */
+function recallSection(rows: VoiceRow[], quiz: VoiceQuizEntry[]): string {
+  const quizCards: RecallCard[] = quizResults(rows, quiz).map(({ entry, correct, status }) => {
+    const stem = questionStem(entry.text).replace(/\n+/g, " ").trim() || "Quiz question";
+    const opts = LETTERS.filter((l) => entry.labels[l]).map((l) => `(${l}) ${cell(entry.labels[l] ?? "")}`).join(" · ");
+    const body = [
+      correct ? `**Answer:** **(${correct}) ${cell(entry.labels[correct] ?? "")}**` : "**Answer:** tutor ka verdict transcript me dekho",
+      entry.answer ? `**Tumhara jawab:** ${entry.answer === "skip" ? "skip (time up)" : `(${entry.answer})`}${status === "right" ? " ✅" : status === "wrong" ? " ❌" : ""}` : "",
+      flatten(explanationFor(rows, entry)) ? `**Explanation:**\n${flatten(explanationFor(rows, entry))}` : "",
+    ].filter(Boolean).join("\n");
+    const level: RecallLevel = status === "wrong" || status === "skipped" ? "red" : status === "right" ? "green" : "yellow";
+    return { q: `${stem}${opts ? `<br>${opts}` : ""}`, a: body, level };
+  });
+  const answerIds = new Set(quiz.map((e) => e.answerRowId));
+  const talkCards: RecallCard[] = [];
+  rows.forEach((r, i) => {
+    if (r.role !== "user" || answerIds.has(r.id) || !isQuestion(r.text)) return;
+    const reply = rows.slice(i + 1).find((x) => x.role === "assistant");
+    if (!reply) return;
+    const a = flatten(formatVoiceReply(reply.text, { options: false }));
+    if (!a) return;
+    const q = r.text.trim().replace(/\s+/g, " ");
+    talkCards.push({ q, a: `**Answer:**\n${a}`, level: recallLevel(q, a) });
+  });
+  const all = [...quizCards, ...talkCards];
+  if (!all.length) return "";
+  const count = (l: RecallLevel) => all.filter((c) => c.level === l).length;
+  let n = 0;
+  const card = (c: RecallCard) => `> [!recall-${c.level}]- Q${++n}. ${c.q}\n${quote(c.a)}`;
+  const out = [
+    "> [!tip]\n> Har question ke arrow se jawab kholo — **pehle khud socho**, phir check karo.",
+    `**Traffic-light legend:**\n- 🔴 **\`recall-red\`** = Galat / skip / traps — **${count("red")}**\n- 🟡 **\`recall-yellow\`** = Medium — **${count("yellow")}**\n- 🟢 **\`recall-green\`** = Sahi / direct — **${count("green")}**`,
+  ];
+  if (quizCards.length) out.push("---", "## 📝 Quiz recall", ...quizCards.map(card));
+  if (talkCards.length) out.push("---", "## 💬 Baat-cheet recall", ...talkCards.map(card));
+  return out.join("\n\n");
 }
 
 /** Restore a call from a SnapSolve .md export (lossless when it carries its data copy) or a .json backup. */

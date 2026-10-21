@@ -88,19 +88,25 @@ describe('Obsidian-style markdown export', () => {
   });
 });
 
-describe('active recall export (Obsidian)', () => {
-  it('keeps question visible, hides answer in a fold and explanation in a nested fold', () => {
+describe('recall flashcards export (Obsidian)', () => {
+  it('turns a wrong quiz answer into a red card with the answer hidden in the fold', () => {
     const md = voiceTranscriptMarkdown(quizRows, [wrong]);
-    const q = md.indexOf('Cell ka powerhouse kaun hai?');
-    const fold = md.indexOf('> [!question]- 🧠 Jawab dekho');
-    expect(q).toBeGreaterThan(-1);
-    expect(fold).toBeGreaterThan(q);
-    expect(md).toContain('- **(C)** Ribosome');
-    expect(md).toContain('> **✅ Sahi jawab: (B) Mitochondria**');
-    expect(md).toContain('> > [!example]- 📖 Tutor ki explanation');
+    expect(md).toMatch(/> \[!recall-red\]- Q1\. .*Cell ka powerhouse kaun hai\?/);
+    expect(md).toContain('> **Answer:** **(B) Mitochondria**');
+    expect(md).toContain('> **Tumhara jawab:** (C) ❌');
     expect(md).not.toContain('<details>');
-    // the answer must not leak above the fold
-    expect(md.slice(0, fold)).not.toContain('Sahi jawab: (B)');
+  });
+  it('turns a spoken student question into a Q&A card with the tutor reply as answer', () => {
+    const rows: VoiceRow[] = [
+      { id: 'u', role: 'user', text: 'Mitochondria ko powerhouse kyun kehte hain?' },
+      { id: 'a', role: 'assistant', text: 'Kyunki ATP yahin banta hai.' },
+    ];
+    const md = voiceTranscriptMarkdown(rows, []);
+    expect(md).toContain('> [!recall-green]- Q1. Mitochondria ko powerhouse kyun kehte hain?');
+    expect(md).toContain('ATP yahin banta hai');
+  });
+  it('does not make a card from a quiz answer or a one-word reply', () => {
+    const md = voiceTranscriptMarkdown([{ id: 'u', role: 'user', text: 'haan' }, { id: 'a', role: 'assistant', text: 'Theek hai.' }], []);
+    expect(md).not.toContain('[!recall-');
   });
 });
-
