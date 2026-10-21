@@ -11,7 +11,9 @@ export const CLEAN_MIC: MediaTrackConstraints = {
   ...({ voiceIsolation: true } as Record<string, boolean>),
 };
 
-const TAG = /[[(（【<*♪]\s*(?:whisper\w*|inaudible|noise|background\s*noise|static|silence|music|breath\w*|cough\w*|laugh\w*|sigh\w*|unclear|blank_audio|no\s*speech|applause|foreign|hiss\w*|फुसफुस\w*|शोर)[^\])）】>*♪]*[\])）】>*♪]?/giu;
+// Traffic, vehicle, machinery, crowd, weather and animal sounds the speech model
+// tags instead of speech — these must never reach the tutor or the transcript.
+const TAG = /[[(（【<*♪]\s*(?:whisper\w*|inaudible|noise|background\s*noise|static|silence|music|breath\w*|cough\w*|laugh\w*|sigh\w*|unclear|blank_audio|no\s*speech|applause|foreign|hiss\w*|engine|horn\w*|honk\w*|traffic|vehicle|car|bus|train|bike|motorcycle|scooter|machine\w*|factory|crowd|chatter|wind|rain|thunder|dog|bark\w*|siren|construction|fan|फुसफुस\w*|शोर|ट्रैफिक|हॉर्न|गाड़ी|इंजन|भीड़|हवा)[^\])）】>*♪]*[\])）】>*♪]?/giu;
 
 const PHANTOMS = [
   /thank(?:s| you)(?: so much)? for watching[.!]*/giu,
