@@ -22,11 +22,37 @@ export const fetchNcertPdf = createServerFn({ method: "POST" })
     const { supabase, userId } = context as { supabase: any; userId: string };
     const { data: ok, error } = await supabase.rpc("has_role", { _user_id: userId, _role: "admin" });
     if (error || !ok) throw new Error("Access denied");
-    const res = await fetch(data.url, { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36", Referer: "https://ncert.nic.in/textbook.php", Accept: "application/pdf,*/*" } });
-    if (!res.ok) throw new Error(`NCERT site ne PDF nahi diya [${res.status}]`);
-    const buf = new Uint8Array(await res.arrayBuffer());
-    if (buf.byteLength > MAX_BYTES) throw new Error("PDF 15 MB se bada hai");
-    let bin = "";
-    for (let i = 0; i < buf.length; i += 0x8000) bin += String.fromCharCode(...buf.subarray(i, i + 0x8000));
-    return { base64: btoa(bin), name: data.url.split("/").pop() ?? "ncert.pdf" };
+    const name = data.url.split("/").pop() ?? "ncert.pdf";
+    try {
+      const res = await fetch(data.url, { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36", Referer: "https://ncert.nic.in/textbook.php", Accept: "application/pdf,*/*" } });
+      if (!res.ok) throw new Error(`NCERT [${res.status}]`);
+      const buf = new Uint8Array(await res.arrayBuffer());
+      if (buf.byteLength > MAX_BYTES) throw new Error("PDF 15 MB se bada hai");
+      let bin = "";
+      for (let i = 0; i < buf.length; i += 0x8000) bin += String.fromCharCode(...buf.subarray(i, i + 0x8000));
+      return { base64: btoa(bin), name, text: "" };
+    } catch {
+      // NCERT often blocks non-Indian servers: read the PDF through Firecrawl (India location) instead.
+      return { base64: "", name, text: await firecrawlPdfText(data.url) };
+    }
   });
+
+/** Firecrawl separates PDF pages with "---"; turn them into [Page N] markers for the chunker. */
+export function pagesFromFirecrawl(md: string): string {
+  return md.split(/\n-{3,}\n/).map((t, i) => `[Page ${i + 1}]\n${t.trim()}`).join("\n\n");
+}
+
+async function firecrawlPdfText(url: string): Promise<string> {
+  const lovable = process.env["LOVABLE_API_KEY"], fc = process.env["FIRECRAWL_API_KEY"];
+  if (!lovable || !fc) throw new Error("PDF reader configured nahi hai");
+  const res = await fetch("https://connector-gateway.lovable.dev/firecrawl/v2/scrape", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${lovable}`, "X-Connection-Api-Key": fc, "Content-Type": "application/json" },
+    body: JSON.stringify({ url, formats: ["markdown"], parsers: ["pdf"], location: { country: "IN" } }),
+  });
+  if (!res.ok) throw new Error(`PDF read nahi hua [${res.status}]: ${(await res.text()).slice(0, 200)}`);
+  const json = (await res.json()) as { data?: { markdown?: string }; markdown?: string };
+  const md = json.data?.markdown ?? json.markdown ?? "";
+  if (md.trim().length < 200) throw new Error("PDF me padhne layak text nahi mila");
+  return pagesFromFirecrawl(md);
+}

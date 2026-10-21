@@ -20,3 +20,10 @@ describe("retrieval query parsing", () => {
     expect(isAllowedPdfUrl("https://evil.com/kebo108.pdf")).toBe(false);
   });
 });
+
+import { pagesFromFirecrawl } from "@/lib/rag/fetch-pdf.functions";
+describe("link import page numbers", () => {
+  it("numbers Firecrawl PDF pages in order", () => {
+    expect(pagesFromFirecrawl("one\n---\ntwo")).toBe("[Page 1]\none\n\n[Page 2]\ntwo");
+  });
+});

@@ -35,29 +35,39 @@ export function RagLibrary() {
         setBusy(`${file.name} padh raha hoon…`);
         const text = await pdfFileToText(file);
         if (!text) { setMsg(`${file.name}: text nahi mila (scanned PDF). Text wala NCERT PDF lagao.`); continue; }
-        const ch = chapter.trim() || file.name.replace(/\.pdf$/i, "");
-        const chunks = chunkText(text);
-        const groups = batches(chunks, 64);
-        for (const [i, g] of groups.entries()) {
-          setBusy(`${file.name}: ${i + 1}/${groups.length} hissa save ho raha hai…`);
-          const { vectors } = await embed({ data: { texts: g.map((c) => c.text) } });
-          await addChunks(g.map((c, j) => ({ id: `${book}-${hash(ch)}-${hash(c.text)}`, book, chapter: ch, page: c.page, text: c.text, vector: vectors[j] ?? [] })));
-        }
-        setMsg(`✅ ${file.name}: ${chunks.length} hisse library me save.`);
+        await saveText(file.name, text);
       }
     } catch (e) {
       setMsg(`❌ ${e instanceof Error ? e.message : "Import fail hua"}`);
     } finally { setBusy(""); await refresh(); }
   }
 
+  async function saveText(name: string, text: string) {
+    const ch = chapter.trim() || name.replace(/\.pdf$/i, "");
+    const chunks = chunkText(text);
+    const groups = batches(chunks, 64);
+    for (const [i, g] of groups.entries()) {
+      setBusy(`${name}: ${i + 1}/${groups.length} hissa save ho raha hai…`);
+      const { vectors } = await embed({ data: { texts: g.map((c) => c.text) } });
+      await addChunks(g.map((c, j) => ({ id: `${book}-${hash(ch)}-${hash(c.text)}`, book, chapter: ch, page: c.page, text: c.text, vector: vectors[j] ?? [] })));
+    }
+    setMsg(`✅ ${name}: ${chunks.length} hisse library me save.`);
+  }
+
+  async function importText(name: string, text: string) {
+    try { await saveText(name, text); }
+    catch (e) { setMsg(`❌ ${e instanceof Error ? e.message : "Import fail hua"}`); }
+    finally { setBusy(""); await refresh(); }
+  }
+
   async function importLink() {
     if (!link.trim()) return;
     setBusy("NCERT site se PDF la raha hoon…");
     try {
-      const { base64, name } = await fetchPdf({ data: { url: link.trim() } });
-      const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+      const { base64, name, text } = await fetchPdf({ data: { url: link.trim() } });
       setLink("");
-      await importPdfs([new File([bytes], name, { type: "application/pdf" })]);
+      if (text) await importText(name, text);
+      else await importPdfs([new File([Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))], name, { type: "application/pdf" })]);
     } catch (e) { setMsg(`❌ ${e instanceof Error ? e.message : "Link fail"}`); setBusy(""); }
   }
 
