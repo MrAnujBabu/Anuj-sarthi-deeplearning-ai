@@ -65,7 +65,7 @@ export function chunkText(
           const donePage = currentPage;
           flush();
           current = tail ? `${tail} ${piece}` : piece;
-          currentPage = donePage;
+          currentPage = tail && donePage !== seg.page ? seg.page : donePage;
         } else {
           current = current ? `${current} ${piece}` : piece;
         }

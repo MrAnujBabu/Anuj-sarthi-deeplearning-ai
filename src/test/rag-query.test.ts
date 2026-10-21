@@ -27,3 +27,13 @@ describe("link import page numbers", () => {
     expect(pagesFromFirecrawl("one\n---\ntwo")).toBe("[Page 1]\none\n\n[Page 2]\ntwo");
   });
 });
+
+import { chunkText } from "@/lib/rag/chunk";
+describe("chunk page numbers", () => {
+  it("later chunks carry their own page, not page 1", () => {
+    const para = (n: number) => Array.from({ length: 6 }, () => `Sentence about topic ${n} with enough words to fill space.`).join(" ");
+    const raw = [1, 2, 3, 4].map((p) => `[Page ${p}]\n${para(p)}\n\n${para(p)}`).join("\n\n");
+    const pages = chunkText(raw).map((c) => c.page);
+    expect(Math.max(...pages)).toBeGreaterThanOrEqual(3);
+  });
+});
