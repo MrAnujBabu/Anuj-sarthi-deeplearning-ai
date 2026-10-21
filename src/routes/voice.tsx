@@ -210,9 +210,21 @@ function LiveVoicePage() {
   // Distraction-free full page: header, tabs and chips hide; transcript + quiz + call controls stay.
   const [zen, setZen] = useState(false);
   // The eye button alone hides and shows the call buttons during a live call:
-  // no auto-hide timer and no tap-anywhere reveal. Outside a call they always show.
+  // it auto-hides after 3s of no taps; any tap on the call screen brings it back.
+  // Outside a call the call buttons always show.
   const [dockVisible, setDockVisible] = useState(true);
-  useEffect(() => { if (!live) setDockVisible(true); }, [live]);
+  const [eyeVisible, setEyeVisible] = useState(true);
+  const eyeTimer = useRef<number | null>(null);
+  const pokeEye = useCallback(() => {
+    setEyeVisible(true);
+    if (eyeTimer.current !== null) clearTimeout(eyeTimer.current);
+    eyeTimer.current = window.setTimeout(() => setEyeVisible(false), 3000);
+  }, []);
+  useEffect(() => {
+    if (!live) { setDockVisible(true); setEyeVisible(true); if (eyeTimer.current !== null) clearTimeout(eyeTimer.current); return; }
+    pokeEye();
+    return () => { if (eyeTimer.current !== null) clearTimeout(eyeTimer.current); };
+  }, [live, pokeEye]);
   // Warm a relay on another site (Vercel) so the first Start does not pay its cold start.
   useEffect(() => { prewarmLiveRelay(window.location.href); }, []);
   // Show how fast the call connected for a few seconds after it goes live.
@@ -353,11 +365,14 @@ function LiveVoicePage() {
     }
   };
 
+  // Eye toggle during a live call hides the details too (header, quiz tabs,
+  // attached-file chips) along with the call buttons; the markdown transcript stays.
+  const chromeHidden = !dockVisible && live;
   const status = reconnecting ? "Reconnecting…" : voice.status === "connecting" ? (voice.stage ? STAGE_LABEL[voice.stage] : "Connecting…") : live ? (voice.paused ? "Paused" : thinking ? "Soch raha hai…" : voice.muted ? "Muted" : connectedNote ? `Live · ${connectedNote}` : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
 
   return (
-    <main className="relative mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6">
-      {!zen && (
+    <main className="relative mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6" onPointerDown={live ? pokeEye : undefined}>
+      {!zen && !chromeHidden && (
       <header className="flex shrink-0 items-center gap-2 border-b pb-2">
         <Link to="/" aria-label="Back" className="grid size-9 place-items-center rounded-full hover:bg-muted">
           <ArrowLeft className="size-5" />
@@ -405,7 +420,7 @@ function LiveVoicePage() {
 
       {readProgress && <p role="status" className="mt-2 text-xs text-primary">{readProgress}</p>}
 
-      {quizVisible && !zen && <nav aria-label="Voice quiz view" className="grid shrink-0 grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-1 border-b py-2">
+      {quizVisible && !zen && !chromeHidden && <nav aria-label="Voice quiz view" className="grid shrink-0 grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-1 border-b py-2">
         <Button variant={quizView === 'question' ? 'secondary' : 'ghost'} className="min-h-11 min-w-0 px-2" aria-pressed={quizView === 'question'} onClick={() => setQuizView('question')}><GraduationCap className="size-4 shrink-0" /><span className="truncate">Question</span></Button>
         <Button variant={quizView === 'conversation' ? 'secondary' : 'ghost'} className="min-h-11 min-w-0 px-2" aria-pressed={quizView === 'conversation'} onClick={() => setQuizView('conversation')}><FileText className="size-4 shrink-0" /><span className="truncate">Conversation</span>{thinking && <span className="size-2 shrink-0 animate-pulse rounded-full bg-primary" aria-hidden />}</Button>
         {speedSelect("h-11 w-[5.5rem] gap-1 px-2")}
@@ -466,7 +481,7 @@ function LiveVoicePage() {
         </div>
       </section>}
 
-      {files.length > 0 && !zen && (
+      {files.length > 0 && !zen && !chromeHidden && (
         <div className="flex shrink-0 gap-2 overflow-x-auto pb-2" aria-label="Attached study material">
           {files.map((f, i) => (
             <span key={i} className="flex min-w-0 max-w-full shrink-0 items-center gap-1.5 rounded-full border bg-card px-3 py-1 text-xs">
@@ -551,10 +566,10 @@ function LiveVoicePage() {
           )}
         </div>
       </footer>
-      {/* Eye button: the only control that hides or shows the call buttons during a live call. */}
-      {live && (
-        <div className={`pointer-events-none absolute inset-x-0 z-20 flex justify-end px-3 transition-all duration-300 ${dockVisible ? (chat ? "bottom-[calc(11rem+env(safe-area-inset-bottom))]" : "bottom-[calc(7.5rem+env(safe-area-inset-bottom))]") : chat ? "bottom-[calc(4.5rem+env(safe-area-inset-bottom))]" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"}`}>
-          <Button type="button" size="icon" variant="outline" className="pointer-events-auto size-12 rounded-full bg-background/95 shadow-lg backdrop-blur" aria-pressed={!dockVisible} onClick={() => setDockVisible((v) => !v)} aria-label={dockVisible ? "Hide call buttons" : "Show call buttons"} title={dockVisible ? "Neeche ke buttons chhupao — dobara dabao to wapas aayenge" : "Neeche ke buttons wapas dikhao"}>
+      {/* Eye button: hides/shows the call buttons; auto-hides after 3s, any tap brings it back. */}
+      {live && eyeVisible && (
+        <div className={`pointer-events-none absolute inset-x-0 z-20 flex justify-end px-3 opacity-100 transition-all duration-300 ${dockVisible ? (chat ? "bottom-[calc(11rem+env(safe-area-inset-bottom))]" : "bottom-[calc(7.5rem+env(safe-area-inset-bottom))]") : chat ? "bottom-[calc(4.5rem+env(safe-area-inset-bottom))]" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"}`}>
+          <Button type="button" size="icon" variant="outline" className="pointer-events-auto size-12 rounded-full bg-background/95 shadow-lg backdrop-blur" aria-pressed={!dockVisible} onClick={() => setDockVisible((v) => !v)} aria-label={dockVisible ? "Hide call buttons" : "Show call buttons"} title={dockVisible ? "Neeche ke buttons chhupao — dobara dabao to wapas aayenge (3 sec me khud chhup jayega)" : "Neeche ke buttons wapas dikhao"}>
             {dockVisible ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
           </Button>
         </div>
