@@ -55,6 +55,10 @@ export function mdToHtml(md: string): string {
       }
       continue;
     }
+    // Collapsible toggle blocks from the voice transcript pass through as HTML.
+    if (/^<\/?details>$/.test(t)) { flush(); out.push(t); i++; continue; }
+    const sum = t.match(/^<summary>(.*)<\/summary>$/);
+    if (sum) { flush(); out.push(`<summary>${inlineMd(sum[1] ?? "")}</summary>`); i++; continue; }
     const h = t.match(/^(#{1,6})\s+(.*)$/);
     if (h) { flush(); const level = Math.min(h[1]?.length ?? 1, 6); out.push(`<h${level}>${inlineMd(h[2] ?? "")}</h${level}>`); i++; continue; }
     if (/^-{3,}$/.test(t)) { flush(); out.push("<hr>"); i++; continue; }
