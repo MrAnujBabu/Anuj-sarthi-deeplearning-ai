@@ -144,6 +144,19 @@
 - [x] Admin panel verified on production (19:26 UTC): login with the provided account works; tabs — Agent memory (84 notes, add/edit/delete/Deep analysis), Voice calls (latest 10 with real usage + failure reasons), brain & role, settings — all load without console errors. Note: several 10/19 voice calls failed on "out of credits or spending limit" / heartbeat_timeout — ties into the open voice-connection task.
 
 ## 2026-10-21 tasks
-- [ ] Fix "LOVABLE_API_KEY is not registered" (rotate once, update Vercel, republish)
-- [ ] End-to-end test: quiz option select, PDF quiz, voice
-- [ ] Add mobile-data voice call test steps to the app manual
+- [x] Fix "LOVABLE_API_KEY is not registered" (rotate once, update Vercel, republish)
+- [x] End-to-end test: quiz option select, PDF quiz (real phone voice call: waits on user)
+- [x] Add mobile-data voice call test steps to the app manual
+
+## New workspace setup (21 Oct)
+- [x] Connect Firecrawl
+- [x] Connect GitHub API
+- [x] Connect Parallel
+- [x] Connect Perplexity
+- [x] Connect Supabase project "My Personal Agent" (already linked, data verified)
+
+## Voice transcript PDF/Word export + Vercel keys (21 Oct, 01:55 UTC)
+- [ ] /voice: PDF + Word export buttons (md format intact — tables, lists, callouts)
+- [ ] Tests for the md→document conversion
+- [ ] Workspace moved: update Vercel API keys (LOVABLE_API_KEY + connector keys), redeploy
+- [ ] Push to GitHub + verify live site
