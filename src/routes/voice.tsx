@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import { ArrowLeft, Download, Eye, EyeOff, FileText, GraduationCap, Globe, Maximize2, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
+import { ArrowLeft, Download, Eye, EyeOff, FileDown, FileText, FileType, Gauge, GraduationCap, Globe, Maximize2, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useLiveVoice, type LiveEvent } from "@/hooks/use-live-voice";
+import { useLiveVoice, PLAYBACK_SPEEDS, type LiveEvent } from "@/hooks/use-live-voice";
 import { useVoiceChoice, useStudyTextSize, STUDY_TEXT_SIZES, VOICE_CHOICES, type VoiceChoiceId, type StudyTextSize } from "@/lib/quiz-label-preference";
 import { extractLocally } from "@/lib/file-extract";
 import { cn } from "@/lib/utils";
@@ -22,6 +22,7 @@ import { usesTalkTurns } from '@/lib/talk-turn';
 import { initialVoiceQuizState, reduceVoiceQuiz } from '@/lib/voice-quiz-state';
 import { AssistantAnswer } from '@/components/assistant-answer';
 import { formatVoiceReply } from '@/lib/voice-format';
+import { exportTranscriptWord, openTranscriptPdf } from '@/lib/transcript-export';
 
 export const Route = createFileRoute("/voice")({
   head: () => ({
@@ -266,6 +267,17 @@ function LiveVoicePage() {
     URL.revokeObjectURL(a.href);
   };
 
+  const exportCallWord = () => {
+    if (!rows.length) { toast.error("Abhi koi baat-cheet nahi hai."); return; }
+    exportTranscriptWord(rows);
+    toast.success("Word file download ho rahi hai — tables aur lists waise hi rahenge.");
+  };
+
+  const exportCallPdf = () => {
+    if (!rows.length) { toast.error("Abhi koi baat-cheet nahi hai."); return; }
+    if (!openTranscriptPdf(rows)) toast.error("Popup block ho gaya — browser me popups allow karo, phir dobara dabao.");
+  };
+
   const importCall = async (file: File | undefined) => {
     if (!file) return;
     try {
@@ -303,6 +315,12 @@ function LiveVoicePage() {
           <label className="flex items-center justify-between gap-2 text-sm">Advanced · deep NCERT Biology<Switch checked={deep} disabled={locked} onCheckedChange={setDeep} aria-label="Advanced deep NCERT questions" /></label>
         </div>}
         <label className="flex items-center justify-between gap-2"><Globe className="size-4 text-muted-foreground" />Search<Switch checked={search} disabled={locked} onCheckedChange={setSearch} aria-label="Voice live search" /></label>
+        <label className="flex items-center justify-between gap-2"><Gauge className="size-4 text-muted-foreground" />Speed
+          <Select value={String(voice.rate)} onValueChange={(v) => voice.setRate(Number(v))}>
+            <SelectTrigger aria-label="Voice playback speed" className="w-28"><SelectValue /></SelectTrigger>
+            <SelectContent>{PLAYBACK_SPEEDS.map((s) => <SelectItem key={s} value={String(s)}>{s}×</SelectItem>)}</SelectContent>
+          </Select>
+        </label>
         <label className="flex items-center justify-between gap-2"><FileText className="size-4 text-muted-foreground" />Read scans<Switch checked={ocr} disabled={locked || reading} onCheckedChange={setOcr} aria-label="Read scanned PDFs" /></label>
         <Select value={choice} onValueChange={(v) => setChoice(v as VoiceChoiceId)} disabled={locked}>
           <SelectTrigger aria-label="Voice" className="w-full"><SelectValue /></SelectTrigger>
@@ -312,6 +330,8 @@ function LiveVoicePage() {
         <Select value={textSize} onValueChange={(v) => setTextSize(v as StudyTextSize)}><SelectTrigger aria-label="Voice transcript text size"><SelectValue /></SelectTrigger><SelectContent>{STUDY_TEXT_SIZES.map((size) => <SelectItem key={size} value={size}>{size} px</SelectItem>)}</SelectContent></Select>
         <QuizTimerSettings />
         <div className="flex gap-2 border-t pt-3">        <Button variant="ghost" size="icon" className="size-9" aria-label="Export conversation" title="Export conversation (.md)" onClick={exportCall}><Download className="size-4" /></Button>
+        <Button variant="ghost" size="icon" className="size-9" aria-label="Export as Word" title="Export conversation (Word .doc — tables aur lists intact)" onClick={exportCallWord}><FileType className="size-4" /></Button>
+        <Button variant="ghost" size="icon" className="size-9" aria-label="Export as PDF" title="Export conversation (PDF — print dialog me Save as PDF chuno)" onClick={exportCallPdf}><FileDown className="size-4" /></Button>
         <Button variant="ghost" size="icon" className="size-9" aria-label="Import conversation" title="Import conversation (.md / .json)" disabled={locked} onClick={() => importInput.current?.click()}><Upload className="size-4" /></Button>
 </div>
       </div>
