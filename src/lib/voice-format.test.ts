@@ -82,3 +82,17 @@ describe("voice reply formatting", () => {
     expect(o).not.toContain("1. ");
   });
 });
+
+describe('toggle sections', () => {
+  it('turns "Detail mein: …" into a collapsible details block', () => {
+    const out = formatVoiceReply('Detail mein: mitochondria ke do membrane hote hain, outer smooth aur inner folded.');
+    expect(out).toContain('<details>');
+    expect(out).toContain('<summary>📂 ');
+    expect(out).toContain('mitochondria ke do membrane');
+    expect(out).toContain('</details>');
+  });
+  it('ignores short or non-toggle uses of the word detail', () => {
+    const out = formatVoiceReply('Ye detail yaad rakho.');
+    expect(out).not.toContain('<details>');
+  });
+});
