@@ -70,9 +70,9 @@ export async function addChunks(records: RagChunkRecord[]): Promise<number> {
 }
 
 /** Top-k chunks by hybrid search (BM25 + vectors, RRF-fused); optionally restricted to one book. */
-export async function searchRag(query: string, queryVector: number[], k = 5, book?: string): Promise<RagChunkRecord[]> {
+export async function searchRag(query: string, queryVector: number[], k = 5, filter?: (c: RagChunkRecord) => boolean): Promise<RagChunkRecord[]> {
   let all = await getAll<RagChunkRecord>(CHUNKS);
-  if (book) all = all.filter((c) => c.book === book);
+  if (filter) all = all.filter(filter);
   return hybridSearch(query, queryVector, all, k);
 }
 

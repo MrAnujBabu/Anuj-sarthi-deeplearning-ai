@@ -7,10 +7,16 @@ import { embedTexts } from "@/lib/rag/embed.functions";
 import { chunkText } from "@/lib/rag/chunk";
 import { addChunks, addPyqs, clearPyqs, clearRagBook, pyqStats, ragStats } from "@/lib/rag/store";
 import { batches, csvToPyqs, hash, pdfFileToText } from "@/lib/rag/ingest";
+import { fetchNcertPdf } from "@/lib/rag/fetch-pdf.functions";
+import { buildRagContext } from "@/lib/rag/context";
 
 /** Admin: build the device-stored NCERT library (PDF → chunks → embeddings) and PYQ bank (CSV). */
 export function RagLibrary() {
   const embed = useServerFn(embedTexts);
+  const fetchPdf = useServerFn(fetchNcertPdf);
+  const [link, setLink] = useState("");
+  const [probe, setProbe] = useState("");
+  const [probeOut, setProbeOut] = useState("");
   const [book, setBook] = useState("11-biology");
   const [chapter, setChapter] = useState("");
   const [busy, setBusy] = useState("");
@@ -21,7 +27,7 @@ export function RagLibrary() {
   const refresh = async () => { setBooks(await ragStats()); setPyq(await pyqStats()); };
   useEffect(() => { void refresh().catch(() => {}); }, []);
 
-  async function importPdfs(files: FileList | null) {
+  async function importPdfs(files: FileList | File[] | null) {
     if (!files?.length) return;
     setMsg("");
     try {
@@ -42,6 +48,23 @@ export function RagLibrary() {
     } catch (e) {
       setMsg(`❌ ${e instanceof Error ? e.message : "Import fail hua"}`);
     } finally { setBusy(""); await refresh(); }
+  }
+
+  async function importLink() {
+    if (!link.trim()) return;
+    setBusy("NCERT site se PDF la raha hoon…");
+    try {
+      const { base64, name } = await fetchPdf({ data: { url: link.trim() } });
+      const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+      setLink("");
+      await importPdfs([new File([bytes], name, { type: "application/pdf" })]);
+    } catch (e) { setMsg(`❌ ${e instanceof Error ? e.message : "Link fail"}`); setBusy(""); }
+  }
+
+  async function runProbe() {
+    setProbeOut("Dhoondh raha hoon…");
+    const out = await buildRagContext(probe);
+    setProbeOut(out || "Library me kuch match nahi hua.");
   }
 
   async function importCsv(files: FileList | null) {
@@ -71,6 +94,11 @@ export function RagLibrary() {
         </label>
       </div>
 
+      <div className="flex gap-2">
+        <Input placeholder="https://ncert.nic.in/textbook/pdf/kebo108.pdf" value={link} onChange={(e) => setLink(e.target.value)} />
+        <Button variant="secondary" disabled={!!busy || !link.trim()} onClick={() => void importLink()}>Link se jodo</Button>
+      </div>
+
       <div className="flex flex-wrap items-center gap-2">
         <label className="inline-flex h-9 cursor-pointer items-center rounded-md border border-input px-3 text-sm">
           PYQ CSV jodo
@@ -93,6 +121,14 @@ export function RagLibrary() {
           <span>PYQ: {pyq.count} sawaal{pyq.years.length ? ` (${pyq.years.at(-1)}–${pyq.years[0]})` : ""}</span>
           {pyq.count > 0 && <Button size="sm" variant="ghost" onClick={async () => { if (confirm("Saare PYQ hatayein?")) { await clearPyqs(); await refresh(); } }}>Hatao</Button>}
         </div>
+      </div>
+      <div className="space-y-2 border-t border-border pt-3">
+        <p className="text-sm font-medium">Search test (tutor ko kya milega)</p>
+        <div className="flex gap-2">
+          <Input placeholder="Koi sawaal likho…" value={probe} onChange={(e) => setProbe(e.target.value)} />
+          <Button variant="secondary" disabled={probe.trim().length < 12} onClick={() => void runProbe()}>Test</Button>
+        </div>
+        {probeOut && <pre className="max-h-64 overflow-auto whitespace-pre-wrap rounded-md bg-muted p-2 text-xs">{probeOut}</pre>}
       </div>
     </section>
   );

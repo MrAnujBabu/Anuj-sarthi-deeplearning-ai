@@ -155,7 +155,9 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
       }
     }
     // Offline NCERT library + PYQ bank: retrieve matching excerpts from this device before asking the tutor.
-    const rag = text ? await buildRagContext(text) : "";
+    const prevUser = [...messages].reverse().find((m) => m.role === "user");
+    const prevText = prevUser?.parts.map((p) => (p.type === "text" ? p.text : "")).join(" ");
+    const rag = text ? await buildRagContext(text, prevText) : "";
     return rawSend(msg, { body: { mode, model, effort, search, ...(rag ? { rag } : {}) } });
   };
   const toggleQuiz = (on: boolean) => {

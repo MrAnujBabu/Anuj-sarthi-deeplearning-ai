@@ -1,0 +1,22 @@
+import { describe, expect, it } from "vitest";
+import { detectSubject, expandFollowUp } from "@/lib/rag/query";
+import { isAllowedPdfUrl } from "@/lib/rag/fetch-pdf.functions";
+
+describe("retrieval query parsing", () => {
+  it("narrows a mitochondria question to biology", () => {
+    expect(detectSubject("Mitochondria ko powerhouse kyun kehte hain?")).toBe("biology");
+  });
+  it("leaves mixed-subject questions unfiltered", () => {
+    expect(detectSubject("energy of a cell in respiration")).toBeNull();
+  });
+  it("short follow-up borrows the previous question", () => {
+    expect(expandFollowUp("aur example?", "What is osmosis in plant cells")).toContain("osmosis");
+  });
+  it("full new question is not expanded", () => {
+    expect(expandFollowUp("Explain the structure of chloroplast thylakoid membranes", "osmosis")).not.toContain("osmosis");
+  });
+  it("link import only accepts ncert.nic.in PDFs", () => {
+    expect(isAllowedPdfUrl("https://ncert.nic.in/textbook/pdf/kebo108.pdf")).toBe(true);
+    expect(isAllowedPdfUrl("https://evil.com/kebo108.pdf")).toBe(false);
+  });
+});
