@@ -1,3 +1,4 @@
+import { CLEAN_MIC } from "@/lib/noise-filter";
 // Records microphone audio as a complete mono WAV file (decodable by every transcription model).
 export function encodeWav(chunks: readonly Float32Array[], sampleRate: number): Blob {
   const length = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
@@ -32,7 +33,7 @@ export function encodeWav(chunks: readonly Float32Array[], sampleRate: number): 
 export type Recording = { stop: () => Promise<File>; cancel: () => void; level: () => number };
 
 export async function recordWav(): Promise<Recording> {
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: CLEAN_MIC });
   let context: AudioContext | undefined;
   try {
     // 16 kHz keeps files small (~32 KB/s) while staying ideal for speech.
