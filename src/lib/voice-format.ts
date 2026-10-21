@@ -97,6 +97,21 @@ function formatFeedback(raw: string): string {
   return ch.chapter ? `${out}\n\n> 📖 **NCERT chapter:** ${chapterLabel(ch.chapter).replace(/^NCERT /, "")}`.trim() : out;
 }
 
+/** Spoken ordinals ("Pehla …, doosra …") become a real numbered list. */
+const ORDINALS: Record<string, number> = { pehla: 1, pahla: 1, first: 1, doosra: 2, dusra: 2, second: 2, teesra: 3, tisra: 3, third: 3, chautha: 4, choutha: 4, fourth: 4, paanchvaan: 5, paanchwan: 5, panchvaan: 5, fifth: 5, chhata: 6, sixth: 6 };
+
+function ordinalPoint(s: string): { n: number; rest: string } | null {
+  // A comma/colon/dash must follow the ordinal; "Pehla sawaal pending hai" is an adjective, not a list.
+  const m = s.match(/^(pehla|pahla|first|doosra|dusra|second|teesra|tisra|third|chautha|choutha|fourth|paanchvaan|paanchwan|panchvaan|fifth|chhata|sixth)(?:\s+(?:point|cheez|baat|step|kaaran|reason|number))?\s*[:,;\-–—]\s+/i);
+  if (!m) return null;
+  const n = ORDINALS[m[1]?.toLowerCase() ?? ""];
+  if (!n) return null;
+  const rest = s.slice(m[0].length);
+  return { n, rest: rest.charAt(0).toUpperCase() + rest.slice(1) };
+}
+
+const isListItem = (b: string) => b.startsWith("- ") || /^\d+\. /.test(b);
+
 function formatFeedbackBody(t: string): string {
   const out: string[] = [];
   const list = sentences(t);
@@ -130,6 +145,8 @@ function formatFeedbackBody(t: string): string {
   for (const s of rest) {
     const c = callout(s);
     if (c) { flush(); body.push(c); continue; }
+    const o = ordinalPoint(s);
+    if (o) { flush(); body.push(`${o.n}. ${emphasize(o.rest)}`); continue; }
     const l = expandList(s, bullets ? "  " : "");
     if (bullets) body.push(`- ${l ?? emphasize(s)}`);
     else if (l) { flush(); body.push(l); }
@@ -139,7 +156,7 @@ function formatFeedbackBody(t: string): string {
   if (body.length) {
     if (vIdx >= 0) out.push("#### 📘 Explanation");
     // Keep consecutive bullets as one list; other blocks get blank lines around them.
-    out.push(body.reduce((acc, b, i) => acc + (i === 0 ? "" : b.startsWith("- ") && body[i - 1]?.startsWith("- ") ? "\n" : "\n\n") + b, ""));
+    out.push(body.reduce((acc, b, i) => acc + (i === 0 ? "" : isListItem(b) && isListItem(body[i - 1] ?? "") ? "\n" : "\n\n") + b, ""));
   }
   return out.join("\n\n");
 }
