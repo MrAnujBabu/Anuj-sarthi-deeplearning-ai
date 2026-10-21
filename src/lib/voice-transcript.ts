@@ -107,21 +107,52 @@ function cleanQuiz(raw: unknown): VoiceQuizEntry[] {
     }));
 }
 
+/** Emoji labels the voice formatter puts on blockquotes, mapped to Obsidian callout types. */
+const CALLOUT_TYPES: Record<string, string> = { "🎉": "success", "✅": "success", "❌": "failure", "💡": "tip", "📘": "note", "⚠️": "warning", "⏭️": "quote" };
+
+/**
+ * Rewrite the export's markdown so Obsidian renders it natively:
+ * `<details>` toggles become foldable callouts (`> [!note]- Title`) and emoji
+ * blockquote labels become typed callouts (`> [!success]`, `> [!tip]`, …).
+ * Display pipelines and Word/PDF exports keep the original style.
+ */
+export function toObsidianMarkdown(md: string): string {
+  const folded = md.replace(/<details>\n<summary>([^\n]*)<\/summary>\n\n([\s\S]*?)\n+<\/details>/g, (_m, summary: string, body: string) => {
+    const quoted = body.split("\n").map((l) => (l.trim() ? `> ${l}` : ">")).join("\n");
+    return `> [!note]- ${summary.trim()}\n${quoted}`;
+  });
+  return folded
+    .split("\n")
+    .map((line) => {
+      const m = line.match(/^> \*\*((?:🎉|✅|❌|💡|📘|⚠️|⏭️)[^*]*)\*\*\s*(.*)$/u);
+      if (!m) return line;
+      const label = m[1] ?? "";
+      const type = Object.keys(CALLOUT_TYPES).find((e) => label.startsWith(e));
+      if (!type) return line;
+      const rest = (m[2] ?? "").trim();
+      return `> [!${CALLOUT_TYPES[type]}] ${label.trim()}${rest ? `\n> ${rest}` : ""}`;
+    })
+    .join("\n");
+}
+
 /**
  * Revision notes for a voice call: quiz questions with every A–D option, the
  * student's answer and the tutor's verdict, then the conversation with the
  * same structure the screen shows (lists, tables, callouts, toggles).
  * `embedData` adds a hidden copy of the raw call so a later import is lossless;
- * Word/PDF exports leave it out.
+ * Word/PDF exports leave it out. `style: "obsidian"` (default) emits
+ * Obsidian-native callouts and folds; `"plain"` keeps the screen style for
+ * Word/PDF conversion.
  */
-export function voiceTranscriptMarkdown(rows: VoiceRow[], quiz: VoiceQuizEntry[] = [], options: { embedData?: boolean; date?: Date } = {}) {
-  const { embedData = true, date = new Date() } = options;
+export function voiceTranscriptMarkdown(rows: VoiceRow[], quiz: VoiceQuizEntry[] = [], options: { embedData?: boolean; date?: Date; style?: "obsidian" | "plain" } = {}) {
+  const { embedData = true, date = new Date(), style = "obsidian" } = options;
   const lines = rows.map((r) => (r.role === "user" ? `**Me:** ${r.text.trim()}` : `**SnapSolve:**\n\n${formatVoiceReply(r.text).trim()}`));
-  const parts = [`---\ntype: voice-call\ndate: ${date.toISOString()}\nquiz_questions: ${quiz.length}\n---`, "# Voice call"];
+  const parts = [`---\ntype: voice-call\ndate: ${date.toISOString()}\ntags: [snapsolve, voice-call]\nquiz_questions: ${quiz.length}\n---`, "# Voice call"];
   if (quiz.length) parts.push(quizSection(rows, quiz), "## 💬 Conversation");
   parts.push(...lines);
   if (embedData) parts.push(`<!-- ${DATA_MARK}${encodeData({ rows, quiz })} -->`);
-  return `${parts.join("\n\n")}\n`;
+  const md = `${parts.join("\n\n")}\n`;
+  return style === "obsidian" ? toObsidianMarkdown(md) : md;
 }
 
 /** Restore a call from a SnapSolve .md export (lossless when it carries its data copy) or a .json backup. */

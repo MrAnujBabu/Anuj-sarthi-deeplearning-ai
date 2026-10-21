@@ -343,13 +343,13 @@ function LiveVoicePage() {
 
   const exportCallWord = () => {
     if (nothingToExport()) return;
-    exportTranscriptWord(voiceTranscriptMarkdown(rows, quizLog, { embedData: false }));
+    exportTranscriptWord(voiceTranscriptMarkdown(rows, quizLog, { embedData: false, style: "plain" }));
     toast.success(quizLog.length ? "Word file download ho rahi hai — har sawal ke A–D options aur tumhara jawab saath me." : "Word file download ho rahi hai — tables aur lists waise hi rahenge.");
   };
 
   const exportCallPdf = () => {
     if (nothingToExport()) return;
-    if (!openTranscriptPdf(voiceTranscriptMarkdown(rows, quizLog, { embedData: false }))) toast.error("Popup block ho gaya — browser me popups allow karo, phir dobara dabao.");
+    if (!openTranscriptPdf(voiceTranscriptMarkdown(rows, quizLog, { embedData: false, style: "plain" }))) toast.error("Popup block ho gaya — browser me popups allow karo, phir dobara dabao.");
   };
 
   const importCall = async (file: File | undefined) => {

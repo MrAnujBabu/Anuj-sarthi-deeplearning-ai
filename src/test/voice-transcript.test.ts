@@ -53,10 +53,37 @@ describe('voice quiz in exports', () => {
     expect(session.quiz).toEqual([wrong]);
   });
   it('keeps the hidden import copy out of Word/PDF while the option table stays a table', () => {
-    const md = voiceTranscriptMarkdown(quizRows, [wrong], { embedData: false });
+    const md = voiceTranscriptMarkdown(quizRows, [wrong], { embedData: false, style: "plain" });
     expect(md).not.toContain('snapsolve-voice-data');
-    const html = mdToHtml(voiceTranscriptMarkdown(quizRows, [wrong]));
+    const html = mdToHtml(voiceTranscriptMarkdown(quizRows, [wrong], { style: "plain" }));
     expect(html).not.toContain('snapsolve-voice-data');
     expect(html).toContain('<td>Mitochondria</td>');
+  });
+});
+
+describe('Obsidian-style markdown export', () => {
+  it('turns verdict blockquotes into typed callouts', () => {
+    const md = voiceTranscriptMarkdown(quizRows, [wrong]);
+    expect(md).toContain('> [!failure] ❌ Galat');
+    expect(md).not.toContain('> **❌ Galat**');
+    expect(md).toContain('tags: [snapsolve, voice-call]');
+  });
+  it('turns detail toggles into foldable callouts', () => {
+    const md = voiceTranscriptMarkdown([
+      { id: 'a', role: 'assistant', text: 'Shabash! Sahi jawab (B) hai — Mitochondria. Detail mein: ATP yahin banta hai aur isliye ise powerhouse kehte hain.' },
+    ]);
+    expect(md).toContain('> [!note]- 📂 ATP yahin banta hai');
+    expect(md).toContain('> ATP yahin banta hai aur isliye ise powerhouse kehte hain.');
+    expect(md).not.toContain('<details>');
+  });
+  it('plain style keeps the screen style for Word/PDF', () => {
+    const md = voiceTranscriptMarkdown(quizRows, [wrong], { style: "plain" });
+    expect(md).toContain('> **❌ Galat**');
+    expect(md).not.toContain('[!failure]');
+  });
+  it('still re-imports losslessly from Obsidian-style exports', () => {
+    const session = parseVoiceSession(voiceTranscriptMarkdown(quizRows, [wrong]));
+    expect(session.rows).toEqual(quizRows);
+    expect(session.quiz).toEqual([wrong]);
   });
 });
