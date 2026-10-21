@@ -112,6 +112,19 @@ function ordinalPoint(s: string): { n: number; rest: string } | null {
 
 const isListItem = (b: string) => b.startsWith("- ") || /^\d+\. /.test(b);
 
+/** Spoken "Detail mein: …" becomes a collapsible toggle section in the transcript. */
+const TOGGLE_START = /^(?:detail|details|vistar|vistaar|expand)(?:\s+(?:mein|me|se|karke))?\s*[:,]\s*(.+)$/i;
+
+function toggleBlock(s: string): { summary: string; body: string } | null {
+  const m = s.match(TOGGLE_START);
+  if (!m) return null;
+  const body = (m[1] ?? "").trim();
+  if (body.length < 12) return null;
+  const first = body.split(/[.?!]/)[0]?.trim() ?? "";
+  const summary = first.length > 70 ? first.slice(0, 67) + "…" : first || "Detail";
+  return { summary, body };
+}
+
 function formatFeedbackBody(t: string): string {
   const out: string[] = [];
   const list = sentences(t);
@@ -145,6 +158,8 @@ function formatFeedbackBody(t: string): string {
   for (const s of rest) {
     const c = callout(s);
     if (c) { flush(); body.push(c); continue; }
+    const tg = toggleBlock(s);
+    if (tg) { flush(); body.push(`<details>\n<summary>📂 ${emphasize(tg.summary)}</summary>\n\n${emphasize(tg.body)}\n</details>`); continue; }
     const o = ordinalPoint(s);
     if (o) { flush(); body.push(`${o.n}. ${emphasize(o.rest)}`); continue; }
     const l = expandList(s, bullets ? "  " : "");
