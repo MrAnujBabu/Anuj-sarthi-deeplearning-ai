@@ -65,3 +65,12 @@ describe("transcriptDocumentHtml", () => {
     expect(html).toContain("<ul><li>point</li></ul>");
   });
 });
+
+describe('toggle blocks in exports', () => {
+  it('passes details/summary through and bolds the summary text', () => {
+    const html = mdToHtml("<details>\n<summary>📂 **Mitochondria detail**</summary>\n\nDo membrane hote hain.\n</details>");
+    expect(html).toContain("<details>");
+    expect(html).toContain("<summary>📂 <strong>Mitochondria detail</strong></summary>");
+    expect(html).toContain("</details>");
+  });
+});
