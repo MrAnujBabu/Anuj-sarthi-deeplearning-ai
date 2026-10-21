@@ -177,7 +177,7 @@
 - [x] Voice call connect time under ~10s → as low as possible (parallel mic/socket/gateway, fast ICE, early greeting, relay prewarm, stage display)
 - [x] PDF quiz view: speed control + toggle (collapsible) format in the quiz card
 - [x] Transcript export (MD/Word/PDF) includes quiz questions with A–D options and the chosen answer
-- [x] Voice mode eye button (03:50 UTC): tap hides the bottom call buttons, tap again shows them; no auto-hide, no tap-anywhere show
+- [x] Voice mode eye button (03:50 UTC): tap hides the bottom call buttons, tap again shows them; auto-hides after 3s of no taps during a live call, any tap on the call screen brings it back
 - [x] Voice settings "Chat" toggle (04:07 UTC): type messages to the tutor during a voice call; tutor answers aloud + in transcript (relay probe: typed message → Claude answer in ~5s)
 - [x] Tests, push to GitHub, Vercel deploy READY, relay republish
 
@@ -190,4 +190,30 @@
 - [x] Vercel env keys (LOVABLE_API_KEY + 3 connector keys) update to this workspace — blocked: VERCEL_TOKEN not saved in this workspace yet
 
 ## Lock-screen call drop (21 Oct, 05:47 UTC, user report)
-- [ ] Phone suspends voice connection when screen turns off — keep call alive (screen wake lock during call), then push + redeploy + republish relay
+- [x] Phone suspends voice connection when screen turns off — client now warns the relay on screen-off, relay holds the call with heartbeats up to 3 min (BACKGROUND_GRACE_MS); pushed (d8996a2), Vercel deployed, relay republished + probed, 317 tests pass. Real-phone check still recommended.
+
+## Final end-to-end + wrap-up (21 Oct, 05:55 UTC)
+- [x] Full test suite: 317 pass, 1 skipped (65 files)
+- [x] Browser end-to-end: /, /practice, /voice, /admin all render in preview, zero page errors
+- [x] Live site snapsolveanuj.vercel.app: all 4 pages HTTP 200
+- [x] Project wrapped up — no open code tasks; only user-side checks remain (real phone call on mobile data, lock-screen hold test)
+
+## Eye toggle hides info too (21 Oct, 06:32 UTC, user report)
+- [x] Eye toggle should also hide header details (title/status), quiz tabs, and attached-file chips during a live call — not just the bottom call buttons; markdown transcript stays visible
+
+## Markdown toggle depth (21 Oct, 06:35 UTC, user request)
+- [ ] Collapsible toggles in markdown must properly contain structured content: H1/H2 headings, bullet lists, numbered lists, tables, callouts — all hidden/shown inside the toggle
+
+## Workspace move #2 (21 Oct, 06:39 UTC, user report)
+- [x] Markdown toggle depth: splitToggles parser + real <details> rendering in AssistantAnswer (body re-rendered as markdown — headings/lists/tables/callouts stay inside); 323 tests pass; pushed 3e368a0
+- [x] Connect Firecrawl (std_01m5ek4381...), GitHub (std_01m5ek5q47...), Parallel (std_01m5ek6c6t...), Perplexity (std_01m5ek6yw9...) — all gateway-backed
+- [x] Supabase verified read-only: memory 94, roles 1 (admin), settings 1, pause 0, voice calls 10, profiles 1
+- [x] Vercel env keys updated to this workspace + redeploy READY (dpl_BWhm3RGNTHkC5bAps1idMFSorY2b)
+- [x] Relay republished + probe OK (capabilities prepare/speed/chat) + Vercel 4 pages 200
+
+## Workspace move #3 (07:13 UTC)
+- [ ] Reconnect Firecrawl, GitHub, Parallel, Perplexity
+- [ ] Verify Supabase read-only + refresh Vercel keys + redeploy
+- [ ] Republish relay, verify endpoint
+- [ ] Finish NCERT RAG + PYQ bank (in progress)
+- [x] Disable Cloud request: answered — Cloud was never enabled; external database stays.
