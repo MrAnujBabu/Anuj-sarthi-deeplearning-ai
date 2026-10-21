@@ -27,7 +27,7 @@ const wrong: VoiceQuizEntry = { id: 'q1', text: quizRows[0]!.text, labels, answe
 
 describe('voice quiz in exports', () => {
   it('lists every A–D option with the right answer and the student answer', () => {
-    const md = voiceTranscriptMarkdown(quizRows, [wrong]);
+    const md = voiceTranscriptMarkdown(quizRows, [wrong], { style: 'plain' });
     expect(md).toContain('| **A** | Nucleus |  |');
     expect(md).toContain('| **B** | Mitochondria | ✅ Sahi jawab |');
     expect(md).toContain('| **C** | Ribosome | ❌ Tumhara jawab |');
@@ -87,3 +87,20 @@ describe('Obsidian-style markdown export', () => {
     expect(session.quiz).toEqual([wrong]);
   });
 });
+
+describe('active recall export (Obsidian)', () => {
+  it('keeps question visible, hides answer in a fold and explanation in a nested fold', () => {
+    const md = voiceTranscriptMarkdown(quizRows, [wrong]);
+    const q = md.indexOf('Cell ka powerhouse kaun hai?');
+    const fold = md.indexOf('> [!question]- 🧠 Jawab dekho');
+    expect(q).toBeGreaterThan(-1);
+    expect(fold).toBeGreaterThan(q);
+    expect(md).toContain('- **(C)** Ribosome');
+    expect(md).toContain('> **✅ Sahi jawab: (B) Mitochondria**');
+    expect(md).toContain('> > [!example]- 📖 Tutor ki explanation');
+    expect(md).not.toContain('<details>');
+    // the answer must not leak above the fold
+    expect(md.slice(0, fold)).not.toContain('Sahi jawab: (B)');
+  });
+});
+

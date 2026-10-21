@@ -43,29 +43,59 @@ function questionStem(text: string): string {
 
 const cell = (s: string) => s.replace(/\s*\n+\s*/g, " ").replace(/\|/g, "∣").trim();
 
-function quizSection(rows: VoiceRow[], quiz: VoiceQuizEntry[]): string {
+/** The tutor's explanation that followed the student's answer (the next question is cut off). */
+function explanationFor(rows: VoiceRow[], entry: VoiceQuizEntry): string {
+  const at = rows.findIndex((r) => r.id === entry.answerRowId);
+  if (at < 0) return "";
+  const reply = rows.slice(at + 1).find((r) => r.role === "assistant");
+  if (!reply) return "";
+  const formatted = formatVoiceReply(reply.text, { options: false });
+  const cut = formatted.lastIndexOf("#### ❓");
+  return (cut > 0 ? formatted.slice(0, cut) : formatted).replace(/^---\s*$/gm, "").trim();
+}
+
+function verdictLine(status: QuizResult["status"], answer: string | undefined, correct: string | null): string {
+  return status === "right" ? `> **🎉 Sahi!** Tumhara jawab (${answer})` :
+    status === "wrong" ? `> **❌ Galat** — tumhara jawab (${answer}), sahi jawab (${correct})` :
+    status === "skipped" ? `> **⏭️ Skip (time up)**${correct ? ` — sahi jawab (${correct})` : ""}` :
+    status === "unchecked" ? `> **Tumhara jawab:** (${answer}) — tutor ka verdict transcript me dekho` :
+    "> *Is sawal ka jawab nahi diya gaya.*";
+}
+
+/**
+ * Active-recall layout (Obsidian): question + options stay visible, the answer
+ * hides in a fold ("pehle khud socho"), and the tutor's explanation sits in a
+ * second, nested fold — so revising means trying first, then revealing in depth.
+ */
+function recallBlock(rows: VoiceRow[], { entry, correct, status }: QuizResult): string {
+  const opts = LETTERS.filter((l) => entry.labels[l]).map((l) => `- **(${l})** ${cell(entry.labels[l] ?? "")}`).join("\n");
+  const answerLine = correct ? `**✅ Sahi jawab: (${correct}) ${cell(entry.labels[correct] ?? "")}**` : "**Sahi jawab:** tutor ke verdict me dekho";
+  const explanation = explanationFor(rows, entry);
+  const inner = [verdictLine(status, entry.answer, correct), answerLine];
+  if (explanation) inner.push(`<details>\n<summary>📖 Tutor ki explanation (depth)</summary>\n\n${explanation}\n\n</details>`);
+  return [opts, `<details>\n<summary>🧠 Jawab dekho — pehle khud socho</summary>\n\n${inner.join("\n\n")}\n\n</details>`].join("\n\n");
+}
+
+function quizSection(rows: VoiceRow[], quiz: VoiceQuizEntry[], style: "obsidian" | "plain"): string {
   const results = quizResults(rows, quiz);
   const checked = results.filter((r) => r.status === "right" || r.status === "wrong");
   const right = checked.filter((r) => r.status === "right").length;
   const skipped = results.filter((r) => r.status === "skipped").length;
   const score = checked.length ? ` · Score ${right}/${checked.length}` : "";
   const out = [`## 📝 Quiz — ${quiz.length} sawal${score}${skipped ? ` · ${skipped} skip` : ""}`];
-  results.forEach(({ entry, correct, status }, i) => {
+  if (style === "obsidian") out.push("> [!tip] 🧠 Active recall\n> Har sawaal pehle khud solve karo, phir fold kholo. Galat hua to explanation fold padho aur card dobara karo.");
+  results.forEach((result, i) => {
+    const { entry, correct, status } = result;
     out.push(`### Q${i + 1}`);
     const stem = questionStem(entry.text);
     if (stem) out.push(stem);
+    if (style === "obsidian") { out.push(recallBlock(rows, result)); return; }
     const rowsMd = LETTERS.filter((l) => entry.labels[l]).map((l) => {
       const marks = [l === correct ? "✅ Sahi jawab" : "", l === entry.answer ? (status === "wrong" ? "❌ Tumhara jawab" : "👉 Tumhara jawab") : ""].filter(Boolean).join(" · ");
       return `| **${l}** | ${cell(entry.labels[l] ?? "")} | ${marks} |`;
     });
     out.push(`| Option | Answer | Result |\n|---|---|---|\n${rowsMd.join("\n")}`);
-    const verdict =
-      status === "right" ? `> **🎉 Sahi!** Tumhara jawab (${entry.answer})` :
-      status === "wrong" ? `> **❌ Galat** — tumhara jawab (${entry.answer}), sahi jawab (${correct})` :
-      status === "skipped" ? `> **⏭️ Skip (time up)**${correct ? ` — sahi jawab (${correct})` : ""}` :
-      status === "unchecked" ? `> **Tumhara jawab:** (${entry.answer}) — tutor ka verdict transcript me dekho` :
-      "> *Is sawal ka jawab nahi diya gaya.*";
-    out.push(verdict);
+    out.push(verdictLine(status, entry.answer, correct));
   });
   return out.join("\n\n");
 }
@@ -116,12 +146,34 @@ const CALLOUT_TYPES: Record<string, string> = { "🎉": "success", "✅": "succe
  * blockquote labels become typed callouts (`> [!success]`, `> [!tip]`, …).
  * Display pipelines and Word/PDF exports keep the original style.
  */
-export function toObsidianMarkdown(md: string): string {
-  const folded = md.replace(/<details>\n<summary>([^\n]*)<\/summary>\n\n([\s\S]*?)\n+<\/details>/g, (_m, summary: string, body: string) => {
+const FOLD_TYPES: Record<string, string> = { "🧠": "question", "📖": "example" };
+const OPEN = /<details>\s*<summary>([^\n]*?)<\/summary>/;
+
+/** `<details>` → foldable callouts, recursively, so a fold inside a fold nests as `> > [!x]-`. */
+function foldDetails(md: string): string {
+  let out = "";
+  let rest = md;
+  for (;;) {
+    const m = OPEN.exec(rest);
+    if (!m) return out + rest;
+    out += rest.slice(0, m.index);
+    const tags = /<details>|<\/details>/g;
+    tags.lastIndex = m.index + m[0].length;
+    let depth = 1;
+    let close: RegExpExecArray | null = null;
+    while ((close = tags.exec(rest))) { depth += close[0] === "<details>" ? 1 : -1; if (!depth) break; }
+    if (!close) return out + rest.slice(m.index);
+    const summary = (m[1] ?? "").trim();
+    const body = foldDetails(rest.slice(m.index + m[0].length, close.index).trim());
+    const type = Object.keys(FOLD_TYPES).find((e) => summary.startsWith(e));
     const quoted = body.split("\n").map((l) => (l.trim() ? `> ${l}` : ">")).join("\n");
-    return `> [!note]- ${summary.trim()}\n${quoted}`;
-  });
-  return folded
+    out += `> [!${type ? FOLD_TYPES[type] : "note"}]- ${summary}\n${quoted}`;
+    rest = rest.slice(close.index + close[0].length);
+  }
+}
+
+export function toObsidianMarkdown(md: string): string {
+  const typed = md
     .split("\n")
     .map((line) => {
       const m = line.match(/^> \*\*((?:🎉|✅|❌|💡|📘|⚠️|⏭️)[^*]*)\*\*\s*(.*)$/u);
@@ -133,6 +185,7 @@ export function toObsidianMarkdown(md: string): string {
       return `> [!${CALLOUT_TYPES[type]}] ${label.trim()}${rest ? `\n> ${rest}` : ""}`;
     })
     .join("\n");
+  return foldDetails(typed);
 }
 
 /**
@@ -148,7 +201,7 @@ export function voiceTranscriptMarkdown(rows: VoiceRow[], quiz: VoiceQuizEntry[]
   const { embedData = true, date = new Date(), style = "obsidian" } = options;
   const lines = rows.map((r) => (r.role === "user" ? `**Me:** ${r.text.trim()}` : `**SnapSolve:**\n\n${formatVoiceReply(r.text).trim()}`));
   const parts = [`---\ntype: voice-call\ndate: ${date.toISOString()}\ntags: [snapsolve, voice-call]\nquiz_questions: ${quiz.length}\n---`, "# Voice call"];
-  if (quiz.length) parts.push(quizSection(rows, quiz), "## 💬 Conversation");
+  if (quiz.length) parts.push(quizSection(rows, quiz, style), "## 💬 Conversation");
   parts.push(...lines);
   if (embedData) parts.push(`<!-- ${DATA_MARK}${encodeData({ rows, quiz })} -->`);
   const md = `${parts.join("\n\n")}\n`;
