@@ -49,6 +49,7 @@ export function useLiveVoice(
   const mounted = useRef(false);
   const latest = useRef(options);
   const [call, setCall] = useState(initialState);
+  const [rate, setRateState] = useState(1);
 
   useEffect(() => {
     latest.current = options;
@@ -130,8 +131,18 @@ export function useLiveVoice(
   const submitAnswer = useCallback((answer: string, questionId: string) => {
     return controller.current?.submitAnswer(answer, questionId) ?? false;
   }, []);
+  // Speed applies to the live audio element directly, so it works mid-call without reconnecting.
+  const setRate = useCallback((value: number) => {
+    const next = clampPlaybackRate(value);
+    const audio = audioRef.current;
+    if (audio) {
+      audio.playbackRate = next;
+      audio.preservesPitch = true;
+    }
+    setRateState(next);
+  }, []);
 
-  return { ...call, audioRef, start, stop, setMuted, setPaused, resumePlayback, submitAnswer };
+  return { ...call, rate, audioRef, start, stop, setMuted, setPaused, resumePlayback, submitAnswer, setRate };
 }
 
 type LiveOptions = {
@@ -140,6 +151,14 @@ type LiveOptions = {
   audio: HTMLAudioElement;
   onEvent: (event: LiveEvent) => void;
 };
+
+/** Playback speed choices for the voice settings sheet (1× = normal tutor speed). */
+export const PLAYBACK_SPEEDS = [0.75, 1, 1.25, 1.5, 1.75, 2] as const;
+/** Keep the rate inside what browsers can play clearly. */
+export function clampPlaybackRate(rate: number): number {
+  if (!Number.isFinite(rate)) return 1;
+  return Math.min(3, Math.max(0.5, rate));
+}
 
 /** A mobile-data blink up to this long must not end the call. */
 export const ACK_GRACE_MS = 15_000;
