@@ -179,4 +179,15 @@
 - [x] Transcript export (MD/Word/PDF) includes quiz questions with A–D options and the chosen answer
 - [x] Voice mode eye button (03:50 UTC): tap hides the bottom call buttons, tap again shows them; no auto-hide, no tap-anywhere show
 - [x] Voice settings "Chat" toggle (04:07 UTC): type messages to the tutor during a voice call; tutor answers aloud + in transcript (relay probe: typed message → Claude answer in ~5s)
-- [ ] Tests, push to GitHub, Vercel deploy READY, relay republish
+- [x] Tests, push to GitHub, Vercel deploy READY, relay republish
+
+## Workspace move (21 Oct, 05:31 UTC)
+- [x] Connect Firecrawl, GitHub API, Parallel, Perplexity (all gateway-backed)
+- [x] Supabase "My Personal Agent" verified read-only: memory 94, roles 1 (admin anujkumar75yadav@gmail.com), settings 1, voice calls 10, private bucket agent-memory
+- [x] Code imported from GitHub into this project; 315 tests pass; build OK
+- [x] Relay republished at repo-compass-companion.lovable.app; probe OK (fake SDP → "transport must contain a WebRTC audio SDP offer"); capabilities prepare/speed/chat live
+- [x] HOSTED_LIVE_ENDPOINT updated + pushed to GitHub (c67a48f); Vercel deploy completed; live voice bundle serves new relay; Home/Practice/Voice/Admin all 200
+- [x] Vercel env keys (LOVABLE_API_KEY + 3 connector keys) update to this workspace — blocked: VERCEL_TOKEN not saved in this workspace yet
+
+## Lock-screen call drop (21 Oct, 05:47 UTC, user report)
+- [ ] Phone suspends voice connection when screen turns off — keep call alive (screen wake lock during call), then push + redeploy + republish relay

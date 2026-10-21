@@ -435,8 +435,18 @@ function createLiveVoice(options: LiveOptions) {
     }
   }
   function onVisible() {
-    if (document.visibilityState === 'hidden') { void wakeLock?.release().catch(() => {}); wakeLock = undefined; }
+    if (document.visibilityState === 'hidden') {
+      void wakeLock?.release().catch(() => {});
+      wakeLock = undefined;
+      // Tell the relay before the OS suspends the page so it can hold the call.
+      if (state === "active") send({ type: "app.background" });
+      return;
+    }
     if (document.visibilityState === "visible" && state === "active") {
+      // The relay held the session while away; queued acks may not have been
+      // processed yet, so don't let a stale ack timestamp end the call.
+      lastAck = Date.now();
+      send({ type: "app.foreground" });
       pulse();
       void keepAwake();
     }

@@ -146,6 +146,14 @@ export function validateLiveUpgrade(request: Request, options: { allowMissingOri
   return null;
 }
 
+/** A phone that reports its screen off gets its paid call held only this long. */
+export const BACKGROUND_GRACE_MS = 180_000;
+
+/** True once a screen-off hold has run past its grace and the call must end. */
+export function backgroundHoldExpired(backgroundedAt: number, now: number): boolean {
+  return backgroundedAt > 0 && now - backgroundedAt >= BACKGROUND_GRACE_MS;
+}
+
 function workerSocket(socket: WorkerSocket): LiveSocket {
   return {
     get readyState() {
@@ -417,6 +425,10 @@ export function bindLiveConnection(
   const IDLE_CHECKIN_MS = 70_000;
   let lastTranscriptAt = Date.now();
   let lastBrowserHeartbeatAt = 0;
+  // Screen-off hold: the browser warns before the OS suspends it, and the
+  // relay heartbeats on its behalf for a bounded grace so the call survives.
+  let browserBackgroundedAt = 0;
+  let backgroundHeartbeat: ReturnType<typeof setInterval> | undefined;
   let lastCheckinAt = 0;
   const idleTimer = setInterval(() => {
     if (closing || !browserReady || !sessionID || task || greetingCommand) return;
@@ -549,12 +561,33 @@ export function bindLiveConnection(
     task?.abort();
   }
 
+  function stopBackgroundHold() {
+    clearInterval(backgroundHeartbeat);
+    backgroundHeartbeat = undefined;
+    browserBackgroundedAt = 0;
+  }
+
+  function startBackgroundHold() {
+    if (backgroundHeartbeat || !browserBackgroundedAt) return;
+    backgroundHeartbeat = setInterval(() => {
+      if (closing || !browserBackgroundedAt) return stopBackgroundHold();
+      if (backgroundHoldExpired(browserBackgroundedAt, Date.now())) return stop();
+      if (gateway?.readyState !== 1) return stop();
+      try {
+        gateway.send(JSON.stringify({ type: "gateway.heartbeat" }));
+      } catch {
+        stop();
+      }
+    }, 1000);
+  }
+
   function finish() {
     if (finished) return;
     finished = closing = true;
     if (tracked) track({ status: lastError ? 'failed' : finalUsage ? 'closed' : 'unconfirmed', finalized: finalUsage, confirmed_seconds: usageSeconds, answer_count: answerCount, search_count: searchCount, last_error: lastError, ended_at: new Date().toISOString() });
     clearTimeout(startTimer);
     clearInterval(idleTimer);
+    stopBackgroundHold();
     clearTimeout(startupTimer);
     clearTimeout(closeTimer);
     clearTimeout(restartTimer);
@@ -921,6 +954,16 @@ export function bindLiveConnection(
           typedAnswers.add(id);
           queueDelegation({ type: "app.chat.message", delegation: { id, target: "client" } });
         }
+        return;
+      }
+      if (event.type === "app.background") {
+        if (!browserBackgroundedAt) browserBackgroundedAt = Date.now();
+        startBackgroundHold();
+        return;
+      }
+      if (event.type === "app.foreground") {
+        stopBackgroundHold();
+        lastBrowserHeartbeatAt = Date.now();
         return;
       }
       if (event.type !== "gateway.heartbeat") {
