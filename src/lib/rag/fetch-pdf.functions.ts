@@ -22,7 +22,7 @@ export const fetchNcertPdf = createServerFn({ method: "POST" })
     const { supabase, userId } = context as { supabase: any; userId: string };
     const { data: ok, error } = await supabase.rpc("has_role", { _user_id: userId, _role: "admin" });
     if (error || !ok) throw new Error("Access denied");
-    const res = await fetch(data.url, { headers: { "User-Agent": "Mozilla/5.0 SnapSolve" } });
+    const res = await fetch(data.url, { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36", Referer: "https://ncert.nic.in/textbook.php", Accept: "application/pdf,*/*" } });
     if (!res.ok) throw new Error(`NCERT site ne PDF nahi diya [${res.status}]`);
     const buf = new Uint8Array(await res.arrayBuffer());
     if (buf.byteLength > MAX_BYTES) throw new Error("PDF 15 MB se bada hai");

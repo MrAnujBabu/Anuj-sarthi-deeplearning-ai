@@ -217,3 +217,4 @@
 - [ ] Republish relay, verify endpoint
 - [ ] Finish NCERT RAG + PYQ bank (in progress)
 - [x] Disable Cloud request: answered — Cloud was never enabled; external database stays.
+- [ ] Live test of NCERT link import with admin login
