@@ -14,6 +14,7 @@ import { STUDY_KINDS, isStudyKind, csvToStudyItems, ankiToStudyItems, validateIm
 import { pendingFirstMessage } from '@/lib/threads';
 import { useNumericAnswerLabels } from '@/lib/quiz-label-preference';
 import { AdminVoiceHistory } from '@/components/admin-voice-history';
+import { RagLibrary } from '@/components/rag-library';
 
 export const Route = createFileRoute("/admin")({
   ssr: false,
@@ -80,7 +81,7 @@ function AdminPage() {
         {state === "loading" && <p className="text-muted-foreground">Loading…</p>}
         {state === "out" && <SignIn onDone={refresh} />}
         {state === "denied" && <p className="text-destructive">Access denied — this account is not an admin.</p>}
-        {state === "in" && <><nav aria-label="Admin sections" className="mb-8 flex gap-2 border-b border-border pb-3"><Button variant={section === 'memory' ? 'secondary' : 'ghost'} onClick={() => setSection('memory')}>Agent memory</Button><Button variant={section === 'voice' ? 'secondary' : 'ghost'} onClick={() => setSection('voice')}>Voice calls</Button></nav>{section === 'voice' ? <AdminVoiceHistory /> : <div className="space-y-10"><BrainSettings key={`brain-${recoveryVersion}`} /><Library key={`library-${recoveryVersion}`} /><AdminRecovery onChanged={() => setRecoveryVersion(v => v + 1)} /><PasswordChange /></div>}</>}
+        {state === "in" && <><nav aria-label="Admin sections" className="mb-8 flex gap-2 border-b border-border pb-3"><Button variant={section === 'memory' ? 'secondary' : 'ghost'} onClick={() => setSection('memory')}>Agent memory</Button><Button variant={section === 'voice' ? 'secondary' : 'ghost'} onClick={() => setSection('voice')}>Voice calls</Button></nav>{section === 'voice' ? <AdminVoiceHistory /> : <div className="space-y-10"><BrainSettings key={`brain-${recoveryVersion}`} /><Library key={`library-${recoveryVersion}`} /><RagLibrary /><AdminRecovery onChanged={() => setRecoveryVersion(v => v + 1)} /><PasswordChange /></div>}</>}
       </main>
     </div>
   );
