@@ -1,4 +1,5 @@
 import { createParser } from 'eventsource-parser';
+import { cleanTranscript } from '@/lib/noise-filter';
 
 /** Consume split SSE frames without buffering the visible transcript. */
 export async function readTranscript(response: Response, onText: (text: string) => void) {
@@ -16,11 +17,11 @@ export async function readTranscript(response: Response, onText: (text: string) 
       failure = new Error(value.error?.message || value.message || 'Transcription stopped.');
     } else if (value.type === 'transcript.text.delta') {
       text += value.delta || '';
-      onText(text);
+      onText(cleanTranscript(text));
     } else if (value.type === 'transcript.text.done') {
       text = value.text ?? text;
       complete = true;
-      onText(text);
+      onText(cleanTranscript(text));
     }
   } });
   const reader = response.body.getReader();
@@ -35,6 +36,7 @@ export async function readTranscript(response: Response, onText: (text: string) 
     parser.feed(decoder.decode());
     if (failure) throw failure;
     if (!complete) throw new Error('Voice typing was interrupted. Partial text is kept; check it before sending.');
+    text = cleanTranscript(text);
     if (!text.trim()) throw new Error('Kuch samajh nahi aaya — dobara bolo.');
     return text.trim();
   } finally {
