@@ -39,9 +39,8 @@ export const Route = createFileRoute("/api/transcribe")({
       if (!(file instanceof File)) return json({ error: 'No audio received.' }, 400);
       if (!file.size || file.size > MAX_BYTES) return json({ error: 'Recording too long — keep it under 10 minutes.' }, 413);
       if (!file.type.startsWith('audio/')) return json({ error: 'Only audio is accepted.' }, 415);
-      const paused = await getAiPause();
+      const [paused, modelPause] = await Promise.all([getAiPause(), getAiPause(MODEL)]);
       if (paused) return json({ error: encodeAiFailure({ kind: paused.kind === 'credits' ? 'credits' : 'denied', message: paused.message, status: paused.kind === 'credits' ? 402 : 403 }) }, paused.kind === 'credits' ? 402 : 403);
-      const modelPause = await getAiPause(MODEL);
       if (modelPause) return json({ error: encodeAiFailure({ kind: 'denied', message: modelPause.message, status: 403 }) }, 403);
       const body = new FormData();
       body.append('model', MODEL);

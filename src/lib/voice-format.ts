@@ -6,13 +6,40 @@ import { chapterLabel, takeChapter } from "@/lib/ncert-biology";
  * callouts, Match tables, Assertion–Reason boxes and the next question as its own card
  * with options listed A–D. Display only — the spoken audio is unchanged.
  */
-export function formatVoiceReply(raw: string, opts: { options?: boolean } = {}): string {
+export function formatVoiceReply(raw: string, opts: { options?: boolean; feedbackToggle?: boolean } = {}): string {
   showOptions = opts.options !== false;
-  try { return format(raw); } finally { showOptions = true; }
+  toggleFeedback = opts.feedbackToggle === true;
+  try { return format(raw); } finally { showOptions = true; toggleFeedback = false; }
 }
 
 /** The quiz card renders A–D as answer buttons, so it hides the spoken option list. */
 let showOptions = true;
+/** The quiz card folds the previous answer's grading into a toggle so the new question leads. */
+let toggleFeedback = false;
+
+const escapeSummary = (s: string) => s.replace(/\*\*|\*/g, "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
+
+/** Verdict heading + correct-answer line become the toggle summary; the explanation goes inside. */
+function feedbackToggleBlock(md: string): string {
+  const summary: string[] = [];
+  const body: string[] = [];
+  for (const block of md.split(/\n{2,}/)) {
+    const heading = block.match(/^#### ([🎉❌📝].*)$/u);
+    if (heading && summary.length === 0) { summary.push(heading[1] ?? ""); continue; }
+    const verdict = block.match(/^> \*\*(✅[^\n]*)\*\*$/u);
+    if (verdict && summary.length <= 1 && body.length === 0) { summary.push(verdict[1] ?? ""); continue; }
+    body.push(block);
+  }
+  const title = escapeSummary(summary.join(" · ")) || "📘 Pichhle sawal ka jawab";
+  // One tap opens the whole explanation: no heading or second toggle inside the fold.
+  const inner = body
+    .filter((b) => b !== "#### 📘 Explanation")
+    .join("\n\n")
+    .replace(/<details>\n<summary>[^\n]*<\/summary>\n\n([\s\S]*?)\n<\/details>/g, "$1")
+    .trim();
+  if (!inner) return `> **${title}**`;
+  return `<details>\n<summary>${title}</summary>\n\n${inner}\n\n</details>`;
+}
 
 function format(raw: string): string {
   // Structured quiz payloads already have meaningful table rows; do not flatten them.
@@ -41,8 +68,10 @@ function format(raw: string): string {
   }
 
   const parts: string[] = [];
-  if (feedback) parts.push(formatFeedback(feedback));
-  if (next || label) parts.push(formatQuestion(next, label, !!feedback));
+  const question = !!(next || label);
+  const folded = toggleFeedback && question;
+  if (feedback) parts.push(folded ? feedbackToggleBlock(formatFeedback(feedback)) : formatFeedback(feedback));
+  if (question) parts.push(formatQuestion(next, label, !!feedback && !folded));
   return parts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 

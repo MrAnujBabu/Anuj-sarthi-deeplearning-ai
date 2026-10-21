@@ -30,3 +30,12 @@ describe('AI pause cache (free-tier database stays quiet)', () => {
     expect(maybeSingle).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('workspace and model pauses are cached separately', () => {
+  it('alternating workspace/model reads hit the database once each per minute', async () => {
+    vi.advanceTimersByTime(120_000);
+    maybeSingle.mockClear();
+    for (let i = 0; i < 3; i++) { await getAiPause(); await getAiPause('anthropic/claude-fable-5-1'); }
+    expect(maybeSingle).toHaveBeenCalledTimes(2);
+  });
+});

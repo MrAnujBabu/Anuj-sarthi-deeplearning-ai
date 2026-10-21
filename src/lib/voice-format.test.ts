@@ -96,3 +96,12 @@ describe('toggle sections', () => {
     expect(out).not.toContain('<details>');
   });
 });
+
+describe("quiz card folds the previous answer", () => {
+  it("puts the verdict in a toggle summary and keeps the next question outside", () => {
+    const md = formatVoiceReply("Shabash! Sahi jawab (B) hai — Mitochondria. Detail mein: ATP yahin banta hai aur isliye ise powerhouse kehte hain. Agla sawal: Ribosome kahan milte hain? (A) Nucleus (B) Cytoplasm (C) Vacuole (D) Cell wall", { options: false, feedbackToggle: true });
+    expect(md).toMatch(/^<details>\n<summary>🎉 Shabash · ✅ Sahi jawab: \(B\) — Mitochondria<\/summary>/);
+    expect(md.match(/<details>/g)).toHaveLength(1);
+    expect(md.indexOf("Ribosome kahan milte hain?")).toBeGreaterThan(md.indexOf("</details>"));
+  });
+});

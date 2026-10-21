@@ -12,11 +12,13 @@ import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 import { VERCEL_APP_ORIGIN } from '@/lib/live-endpoint';
 import { createNcertDeck, ncertDeckPrompt } from "@/lib/ncert-biology-bank";
+import { paceInstruction, paceUpdate, voiceSpeed, type VoiceSpeed } from "@/lib/voice-speed";
+import { voiceChatText } from "@/lib/voice-chat";
 
-export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; context: string; documents: VoiceDocument[] };
+export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; context: string; documents: VoiceDocument[]; speed: VoiceSpeed };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
 export function parseCallPrefs(raw: unknown): CallPrefs {
-  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "matchQ" | "assertionQ" | "deep" | "search" | "context" | "documents", unknown>>;
+  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "matchQ" | "assertionQ" | "deep" | "search" | "context" | "documents" | "speed", unknown>>;
   return {
     voice: typeof r.voice === "string" && VOICES.has(r.voice) ? r.voice : "marin",
     accent: r.accent === "neutral" ? "neutral" : "indian",
@@ -27,6 +29,7 @@ export function parseCallPrefs(raw: unknown): CallPrefs {
     search: r.search === true,
     context: typeof r.context === "string" ? r.context.slice(0, 40_000) : "",
     documents: documentMetadata(r.documents),
+    speed: voiceSpeed(r.speed) ?? 1,
   };
 }
 
@@ -47,6 +50,7 @@ function callInstructions(prefs: CallPrefs) {
   ];
   if (prefs.accent === "indian")
     extra.push("Accent: Speak with a natural Indian English accent and Indian pronunciation, like a friendly Indian teacher; never an American accent.");
+  if (prefs.speed !== 1) extra.push(paceInstruction(prefs.speed));
   if (prefs.quiz)
     extra.push("Quiz mode is ON: delegate to the backend to get one NEET MCQ at a time, read the question and options A-D aloud, wait for the student's spoken answer, then delegate again to check it and continue." + quizStyle(prefs));
   if (prefs.search) extra.push("Live search is ON: the backend can look up current information on the web.");
@@ -117,6 +121,12 @@ export function getLiveConfig(): LiveConfig {
 
 function gatewayAPIBase(baseURL: string) {
   return `${baseURL.replace(/\/+$/, "").replace(/\/v1$/, "")}/v1`;
+}
+
+/** Workspace pause, then the model's own pause — read together so call start and answers never wait twice. */
+async function currentPause(model: string) {
+  const [workspace, modelPause] = await Promise.all([getAiPause(), getAiPause(model)]);
+  return workspace ?? modelPause;
 }
 
 async function gatewayRejection(response: Response) {
@@ -228,7 +238,7 @@ export async function answerQuestion(
   ncertPrompt = "",
 ) {
   signal.throwIfAborted();
-  const paused = await getAiPause() ?? await getAiPause(config.backendModel);
+  const paused = await currentPause(config.backendModel);
   if (paused) throw new Error(paused.message);
   const provider = createAnthropic({
     baseURL: gatewayAPIBase(config.baseURL),
@@ -286,7 +296,7 @@ export async function answerQuestion(
       "To display a study schedule for the current request, call plan_study_schedule with its total minutes and days. " +
       "Ask for missing details instead of guessing. The tool only calculates a draft plan; " +
       "it does not save calendar events." +
-      (prefs.quiz ? " QUIZ MODE: give exactly one NEET question with options labelled (A) (B) (C) (D), each on its own line (convert (1)-(4) numbering to A-D), no answer or check the student's spoken answer briefly and give the next question." : "") +
+      (prefs.quiz ? " QUIZ MODE: give exactly one NEET question with options labelled (A) (B) (C) (D), each on its own line (convert (1)-(4) numbering to A-D), no answer or check the student's spoken answer briefly and give the next question. When checking an answer, first say the verdict and 'Sahi jawab (X) hai — <option text>' in one sentence, then 'Detail mein: …' with a two or three sentence NCERT-based explanation (from the attached material when there is any), then the next question." : "") +
       (prefs.quiz ? quizStyle(prefs) : "") +
       ncertPrompt +
       (prefs.search ? " Use web_search for current facts when needed." : "") +
@@ -394,7 +404,13 @@ export function bindLiveConnection(
   let finishDrain: (() => void) | undefined;
   let browserReady = false;
   let greetingRequested = false;
-  let greetingCommand: { id: string; type: "instructions" | "commentary" } | undefined;
+  let greetingCommand: { id: string; type: "commentary" } | undefined;
+  // Faster startup: the browser may send app.prepare as soon as its socket opens,
+  // so the pause check and the Gateway connection run while it still gathers ICE.
+  let prepared = false;
+  let warm: Promise<{ socket: LiveSocket; alive: () => boolean } | undefined> | undefined;
+  let pauseCheck: ReturnType<typeof currentPause> | undefined;
+  let startedSpeed: VoiceSpeed = 1;
   let greetingTimer: ReturnType<typeof setTimeout> | undefined;
   // Only real transcript activity extends provider inactivity. A connected,
   // silent student gets a short spoken check-in; never manufacture heartbeats.
@@ -423,10 +439,11 @@ export function bindLiveConnection(
       /* the gateway close path handles a broken socket */
     }
   }, 5000);
-  const startTimer = setTimeout(() => {
+  const startupMessageTimeout = () => {
     emit({ type: "app.error", error: { message: "Voice startup message timed out" } });
     stop();
-  }, 5000);
+  };
+  let startTimer = setTimeout(startupMessageTimeout, 5000);
   const transcripts: Transcript[] = [];
   const delegations = new Set<string>();
 
@@ -453,28 +470,74 @@ export function bindLiveConnection(
     greetingCommand = undefined;
   }
 
-  function requestGreeting() {
-    const content = (
+  function openingInstructions() {
+    return (
       config.openingInstructions ??
-      "Start now in Hinglish: greet the student briefly as their NEET tutor and ask which doubt or topic they want to discuss today, then listen."
+      "When you are told to begin: greet the student briefly in Hinglish as their NEET tutor and ask which doubt or topic they want to discuss today, then listen."
     ).trim();
-    if (!content || !browserReady || !sessionID || greetingRequested || closing) return;
+  }
+
+  // The opening rule already travels in session.start, so once media is ready a
+  // single commentary starts the greeting — no extra round trip before speaking.
+  function requestGreeting() {
+    if (!openingInstructions() || !browserReady || !sessionID || greetingRequested || closing) return;
     greetingRequested = true;
-    if (new TextEncoder().encode(content).length > 480) {
-      emit({ type: "app.greeting.error", error: { message: "The opening instructions are too long" } });
-      return;
-    }
-    greetingCommand = { id: crypto.randomUUID(), type: "instructions" };
+    greetingCommand = { id: crypto.randomUUID(), type: "commentary" };
     greetingTimer = setTimeout(() => {
       clearGreeting();
       emit({ type: "app.greeting.error", error: { message: "The opening could not be confirmed" } });
     }, 10_000);
     gateway?.send(
       JSON.stringify({
-        type: "session.instructions.append",
+        type: "session.commentary.append",
         event_id: greetingCommand.id,
         delegation_id: null,
-        content,
+        content: "Begin the conversation now, following the instructions provided.",
+      }),
+    );
+  }
+
+  function gatewayTarget() {
+    return {
+      url: new URL(`${gatewayAPIBase(config.baseURL)}/live/sessions`).href,
+      headers: {
+        "Lovable-API-Key": config.key,
+        "X-Lovable-AIG-SDK": "fetch",
+        "X-Lovable-AIG-Run-ID": runID,
+      },
+    };
+  }
+
+  // Open the Gateway control socket early. No session exists (and nothing is
+  // billed) until session.start; a socket that dies before then is replaced.
+  function preconnect() {
+    if (warm || closing) return;
+    const target = gatewayTarget();
+    warm = connect(target.url, target.headers, setupAbort.signal).then(
+      (socket) => {
+        let alive = true;
+        socket.onClose(() => { alive = false; });
+        socket.onError(() => { alive = false; });
+        if (closing) {
+          close(socket);
+          return undefined;
+        }
+        return { socket, alive: () => alive && socket.readyState === 1 };
+      },
+      () => undefined,
+    );
+  }
+
+  function applySpeed(speed: VoiceSpeed) {
+    prefs = { ...prefs, speed };
+    if (!sessionID || gateway?.readyState !== 1 || speed === startedSpeed) return;
+    startedSpeed = speed;
+    gateway.send(
+      JSON.stringify({
+        type: "session.instructions.append",
+        event_id: crypto.randomUUID(),
+        delegation_id: null,
+        content: paceUpdate(speed),
       }),
     );
   }
@@ -498,6 +561,8 @@ export function bindLiveConnection(
     clearGreeting();
     discardPendingWork();
     setupAbort.abort();
+    void warm?.then((w) => close(w?.socket));
+    warm = undefined;
     close(gateway);
     close(browser);
     finishDrain?.();
@@ -644,6 +709,8 @@ export function bindLiveConnection(
         sessionID = event.session?.id;
         if (tracked) track({ session_id: sessionID ?? null, status: 'connected' });
         clearTimeout(startupTimer);
+        // A speed change made while the session was being created applies now.
+        applySpeed(prefs.speed);
         requestGreeting();
       }
       if (
@@ -651,20 +718,8 @@ export function bindLiveConnection(
         event.type === `session.${greetingCommand.type}.appended` &&
         event.client_event_id === greetingCommand.id
       ) {
-        if (greetingCommand.type === "instructions") {
-          greetingCommand = { id: crypto.randomUUID(), type: "commentary" };
-          gateway?.send(
-            JSON.stringify({
-              type: "session.commentary.append",
-              event_id: greetingCommand.id,
-              delegation_id: null,
-              content: "Begin the conversation now, following the instructions provided.",
-            }),
-          );
-        } else {
-          clearGreeting();
-          emit({ type: "app.greeting.accepted" });
-        }
+        clearGreeting();
+        emit({ type: "app.greeting.accepted" });
       } else if (greetingCommand && event.type === "error" && event.error?.client_event_id === greetingCommand.id) {
         clearGreeting();
         emit({ type: "app.greeting.error", error: { message: event.error.message ?? "The opening was rejected" } });
@@ -726,22 +781,27 @@ export function bindLiveConnection(
   async function startSession(sdp: string) {
     if (closing || browser.readyState !== 1) return;
     clearTimeout(startTimer);
-    const paused = await getAiPause() ?? await getAiPause(config.backendModel);
-    if (paused) throw new Error(paused.message);
-    if (closing || browser.readyState !== 1) return;
     startupTimer = setTimeout(() => {
       emit({ type: "app.error", error: { message: "Voice startup timed out" } });
       stop();
     }, 40_000);
-    const accepted = await connect(
-      new URL(`${gatewayAPIBase(config.baseURL)}/live/sessions`).href,
-      {
-        "Lovable-API-Key": config.key,
-        "X-Lovable-AIG-SDK": "fetch",
-        "X-Lovable-AIG-Run-ID": runID,
-      },
-      setupAbort.signal,
-    );
+    // The pause check and the Gateway socket run in parallel; a prepared call
+    // usually has both finished already, so session.start goes out at once.
+    const early = warm;
+    warm = undefined;
+    const target = gatewayTarget();
+    const socket = (early ?? Promise.resolve(undefined)).then((w) => {
+      if (w?.alive()) return w.socket;
+      close(w?.socket);
+      return connect(target.url, target.headers, setupAbort.signal);
+    });
+    const pending = pauseCheck ?? currentPause(config.backendModel);
+    pauseCheck = undefined;
+    const [paused, accepted] = await Promise.all([pending, socket]);
+    if (paused) {
+      close(accepted);
+      throw new Error(paused.message);
+    }
     if (closing || browser.readyState !== 1) {
       close(accepted);
       return;
@@ -762,7 +822,7 @@ export function bindLiveConnection(
         type: "session.start",
         session: {
           model: config.liveModel,
-          instructions: callInstructions(prefs),
+          instructions: [callInstructions(prefs), openingInstructions() && `Opening: ${openingInstructions()}`].filter(Boolean).join("\n"),
           audio: { output: { voice: prefs.voice } },
           delegation: { type: "client" },
         },
@@ -777,12 +837,24 @@ export function bindLiveConnection(
       const event = JSON.parse(data);
       if (event.type === "session.close") return stop();
       if (closing) return;
+      if (event.type === "app.prepare" && !gateway) {
+        if (prepared || starting) throw new Error("Voice startup message required");
+        prepared = true;
+        prefs = parseCallPrefs(event.prefs);
+        // The browser still needs its microphone and network offer: give it time.
+        clearTimeout(startTimer);
+        startTimer = setTimeout(startupMessageTimeout, 20_000);
+        pauseCheck = currentPause(config.backendModel);
+        preconnect();
+        return;
+      }
       if (!gateway) {
         if (starting || event.type !== "app.start" || typeof event.sdp !== "string" || !event.sdp.trim()) {
           throw new Error("Voice startup message required");
         }
         starting = true;
-        prefs = parseCallPrefs(event.prefs);
+        if (event.prefs !== undefined || !prepared) prefs = parseCallPrefs(event.prefs);
+        startedSpeed = prefs.speed;
         if (prefs.quiz && prefs.deep) ncertDeck = createNcertDeck(prefs);
         tracked = true;
         track({ voice: prefs.voice, accent: prefs.accent, quiz: prefs.quiz, search: prefs.search, documents: prefs.documents, status: 'starting' });
@@ -805,6 +877,14 @@ export function bindLiveConnection(
         requestGreeting();
         return;
       }
+      if (event.type === "app.speed") {
+        const speed = voiceSpeed(event.speed);
+        if (speed === null) throw new Error("Unsupported speed");
+        if (gateway.readyState !== 1) return stop();
+        applySpeed(speed);
+        emit({ type: "app.speed.applied", speed });
+        return;
+      }
       if (event.type === "app.quiz.answer") {
         const skipped = event.answer === VOICE_SKIP;
         if (!prefs.quiz || !openQuiz || openQuiz.answered || event.questionId !== openQuiz.id || (!skipped && !validVoiceAnswer(event.answer))) {
@@ -820,6 +900,29 @@ export function bindLiveConnection(
         queueDelegation({ type: "app.quiz.answer", delegation: { id, target: "client" } });
         return;
       }
+      if (event.type === "app.chat.message") {
+        // A typed message is student text like speech, never trusted instructions.
+        const text = voiceChatText(event.text);
+        const clientId = typeof event.id === "string" && event.id.length <= 64 ? event.id : undefined;
+        if (!text || !sessionID || gateway.readyState !== 1) {
+          emit({ type: "app.chat.rejected", id: clientId, error: { message: text ? "Call abhi judi nahi hai — judne ke baad bhejo." : "Message khaali ya 1000 akshar se lamba hai." } });
+          return;
+        }
+        lastTranscriptAt = Date.now();
+        transcripts.push({ role: "user", text, start_ms: 0, end_ms: 0, listeningSound: false });
+        revision++;
+        emit({ type: "app.chat.accepted", id: clientId, text });
+        // A tutor answer already on its way picks up the new message (no duplicate reply).
+        if (pendingDelegations.length) {
+          emit({ type: "app.delegation.pending", delegation_id: pendingDelegations[0]?.event.delegation?.id });
+          scheduleDelegation();
+        } else {
+          const id = crypto.randomUUID();
+          typedAnswers.add(id);
+          queueDelegation({ type: "app.chat.message", delegation: { id, target: "client" } });
+        }
+        return;
+      }
       if (event.type !== "gateway.heartbeat") {
         throw new Error("Unsupported client event");
       }
@@ -833,4 +936,7 @@ export function bindLiveConnection(
   });
   browser.onClose(stop);
   browser.onError(stop);
+  // Newer browsers use these to start early, change speed and type mid-call; older
+  // browsers ignore it and keep the original app.start-only startup.
+  emit({ type: "app.capabilities", prepare: true, speed: true, chat: true });
 }

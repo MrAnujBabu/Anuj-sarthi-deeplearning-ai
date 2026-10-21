@@ -1,11 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import { liveEndpoint } from './live-endpoint';
+import { liveEndpoint, relayWarmupUrl } from './live-endpoint';
 import { validateLiveUpgrade } from './live-relay.server';
 
 describe('Vercel voice hosting', () => {
-  it('keeps the Vercel website while connecting directly to the separate relay', () => {
-    expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice')).toBe('wss://project--a3b72608-4a7c-4e2f-ae13-9096b40d7082.lovable.app/api/public/live');
+  it("connects the Vercel website to this project's published relay", () => {
+    expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice')).toBe('wss://snap-solve-study-spark.lovable.app/api/public/live');
     expect(liveEndpoint('http://localhost:8080/voice')).toBe('ws://localhost:8080/api/live');
+  });
+  it('warms only a relay on another site before the call', () => {
+    expect(relayWarmupUrl('https://snapsolveanuj.vercel.app/voice')).toBe('https://snap-solve-study-spark.lovable.app/api/public/live');
+    expect(relayWarmupUrl('https://snap-solve-study-spark.lovable.app/voice')).toBeNull();
+    expect(relayWarmupUrl('http://localhost:8080/voice')).toBeNull();
   });
   it('preserves secure overrides and rejects insecure published connections', () => {
     expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice', 'wss://relay.example/api/live')).toBe('wss://relay.example/api/live');

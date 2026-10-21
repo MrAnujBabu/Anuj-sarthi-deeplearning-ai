@@ -2,6 +2,7 @@ import { CLEAN_MIC } from "@/lib/noise-filter";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { VoiceQuizPlayback } from '@/lib/voice-quiz-playback';
 import { liveEndpoint } from '@/lib/live-endpoint';
+import { VOICE_SPEEDS, VOICE_SPEED_KEY, clampPlaybackRate, voiceSpeed, type VoiceSpeed } from '@/lib/voice-speed';
 
 export type LiveEvent = {
   type: string;
@@ -16,8 +17,14 @@ export type LiveEvent = {
   [key: string]: unknown;
 };
 
+/** Startup steps shown while connecting, so a slow step is visible. */
+export type LiveStage = "mic" | "network" | "tutor" | "media";
+export type LiveTimings = Partial<Record<"mic" | "socket" | "offer" | "answer" | "media", number>> & { total: number };
+
 type LiveState = {
   status: "idle" | "connecting" | "connected" | "stopping" | "closed";
+  stage: LiveStage | null;
+  connectMs: number | null;
   error: string | null;
   hasConnected: boolean;
   finalized: boolean | null;
@@ -28,6 +35,8 @@ type LiveState = {
 
 const initialState: LiveState = {
   status: "idle",
+  stage: null,
+  connectMs: null,
   error: null,
   hasConnected: false,
   finalized: null,
@@ -49,7 +58,15 @@ export function useLiveVoice(
   const mounted = useRef(false);
   const latest = useRef(options);
   const [call, setCall] = useState(initialState);
-  const [rate, setRateState] = useState(1);
+  const [rate, setRateState] = useState<VoiceSpeed>(1);
+  const rateRef = useRef<VoiceSpeed>(1);
+  // Saved speed loads after hydration so server and browser render the same first frame.
+  useEffect(() => {
+    try {
+      const saved = voiceSpeed(Number(window.localStorage.getItem(VOICE_SPEED_KEY)));
+      if (saved) { rateRef.current = saved; setRateState(saved); }
+    } catch { /* storage unavailable */ }
+  }, []);
 
   useEffect(() => {
     latest.current = options;
@@ -80,12 +97,16 @@ export function useLiveVoice(
     }
     const voice = createLiveVoice({
       url: endpoint.href,
-      prefs: latest.current.prefs?.() ?? {},
+      prefs: { ...(latest.current.prefs?.() ?? {}), speed: rateRef.current },
       audio,
       onEvent(event) {
         if (!mounted.current || controller.current !== voice) return;
-        if (event.type === "app.connected") {
-          setCall((previous) => ({ ...previous, status: "connected", hasConnected: true }));
+        if (event.type === "app.stage" && typeof event["stage"] === "string") {
+          const stage = event["stage"] as LiveStage;
+          setCall((previous) => (previous.status === "connecting" ? { ...previous, stage } : previous));
+        } else if (event.type === "app.connected") {
+          const total = (event["timings"] as LiveTimings | undefined)?.total;
+          setCall((previous) => ({ ...previous, status: "connected", stage: null, hasConnected: true, connectMs: typeof total === "number" ? total : null }));
         } else if (event.type === "app.stopping") {
           setCall((previous) => ({ ...previous, status: "stopping", playbackBlocked: false }));
         } else if (event.type === "app.closed") {
@@ -131,18 +152,22 @@ export function useLiveVoice(
   const submitAnswer = useCallback((answer: string, questionId: string) => {
     return controller.current?.submitAnswer(answer, questionId) ?? false;
   }, []);
-  // Speed applies to the live audio element directly, so it works mid-call without reconnecting.
+  /** Typed message to the tutor during a connected call; false when it could not be sent. */
+  const sendText = useCallback((text: string, id: string) => {
+    return controller.current?.sendText(text, id) ?? false;
+  }, []);
+  // A live stream always plays at 1× in the browser, so speed is the tutor's
+  // own speaking pace: sent at call start and updated mid-call without reconnecting.
+  // Returns true when a connected call picked up the change right away.
   const setRate = useCallback((value: number) => {
-    const next = clampPlaybackRate(value);
-    const audio = audioRef.current;
-    if (audio) {
-      audio.playbackRate = next;
-      audio.preservesPitch = true;
-    }
+    const next = voiceSpeed(value) ?? 1;
+    rateRef.current = next;
     setRateState(next);
+    try { window.localStorage.setItem(VOICE_SPEED_KEY, String(next)); } catch { /* storage unavailable */ }
+    return controller.current?.setSpeed(next) ?? false;
   }, []);
 
-  return { ...call, rate, audioRef, start, stop, setMuted, setPaused, resumePlayback, submitAnswer, setRate };
+  return { ...call, rate, audioRef, start, stop, setMuted, setPaused, resumePlayback, submitAnswer, sendText, setRate };
 }
 
 type LiveOptions = {
@@ -152,12 +177,27 @@ type LiveOptions = {
   onEvent: (event: LiveEvent) => void;
 };
 
-/** Playback speed choices for the voice settings sheet (1× = normal tutor speed). */
-export const PLAYBACK_SPEEDS = [0.75, 1, 1.25, 1.5, 1.75, 2] as const;
-/** Keep the rate inside what browsers can play clearly. */
-export function clampPlaybackRate(rate: number): number {
-  if (!Number.isFinite(rate)) return 1;
-  return Math.min(3, Math.max(0.5, rate));
+/** Speaking-speed choices for the voice settings (1× = normal tutor pace). */
+export const PLAYBACK_SPEEDS = VOICE_SPEEDS;
+export { clampPlaybackRate };
+
+/** Send the offer once it can reach the voice server: a public (STUN) address, gathering done, or local candidates after a short settle. */
+export const ICE_SETTLE_MS = 800;
+export const ICE_MAX_MS = 3_000;
+export function iceOfferReady(state: { elapsedMs: number; types: readonly string[]; complete: boolean }): boolean {
+  if (state.complete) return true;
+  if (state.types.some((type) => type === "srflx" || type === "relay")) return true;
+  return state.types.length > 0 && state.elapsedMs >= ICE_SETTLE_MS;
+}
+
+/** True when the browser already allows the microphone, so the call socket can open alongside it. */
+async function micAlreadyAllowed() {
+  try {
+    const status = await navigator.permissions?.query({ name: "microphone" as PermissionName });
+    return status?.state === "granted";
+  } catch {
+    return false;
+  }
 }
 
 /** A mobile-data blink up to this long must not end the call. */
@@ -188,6 +228,16 @@ function createLiveVoice(options: LiveOptions) {
   let analyser: AnalyserNode | undefined;
   let audioSamples: Float32Array<ArrayBuffer> | undefined;
   let playbackTimer: ReturnType<typeof setInterval> | undefined;
+  // Startup runs in parallel: the control socket opens while the microphone and
+  // network offer are prepared; app.start goes out once both are ready.
+  let offer: string | undefined;
+  let startSent = false;
+  let prepareSent = false;
+  let capabilities = { prepare: false, speed: false, chat: false };
+  let began = 0;
+  const timings: Partial<Record<"mic" | "socket" | "offer" | "answer" | "media", number>> = {};
+  const mark = (step: keyof typeof timings) => { timings[step] ??= Math.round(performance.now() - began); };
+  const stage = (value: LiveStage) => options.onEvent({ type: "app.stage", stage: value });
 
   function observePlayback() {
     if (!options.prefs['quiz'] || !playback || analyser) return;
@@ -396,6 +446,7 @@ function createLiveVoice(options: LiveOptions) {
     if (!answerReceived || !mediaReady()) return;
     if (starting()) {
       state = "active";
+      mark("media");
       clearTimeout(deadline);
       lastAck = Date.now();
       lastHeartbeat = Date.now();
@@ -405,7 +456,9 @@ function createLiveVoice(options: LiveOptions) {
       pulse();
       if (state !== "active") return;
       send({ type: "app.ready" });
-      options.onEvent({ type: "app.connected" });
+      const report = { ...timings, total: Math.round(performance.now() - began) };
+      console.info("[voice] connected in", report.total, "ms", report);
+      options.onEvent({ type: "app.connected", timings: report });
     } else pulse();
   }
 
@@ -415,6 +468,8 @@ function createLiveVoice(options: LiveOptions) {
       throw new Error("Invalid voice session answer");
     }
     answerReceived = true;
+    mark("answer");
+    stage("media");
     clearTimeout(deadline);
     deadline = setTimeout(
       () => fail("Voice media did not connect within 12 seconds. Start a new call to retry."),
@@ -424,35 +479,127 @@ function createLiveVoice(options: LiveOptions) {
     activate();
   }
 
+  // Waiting for "complete" can take the whole timeout on phones (extra
+  // interfaces, IPv6, slow STUN). The voice server only needs one reachable
+  // address, so send the offer as soon as iceOfferReady says it is usable.
   async function gatherCandidates(connection: RTCPeerConnection) {
     if (connection.iceGatheringState === "complete") return;
+    const gatherStart = performance.now();
+    const types: string[] = [];
     await new Promise<void>((resolve, reject) => {
-      // Some phones/networks never report "complete"; continue with the candidates already gathered.
-      const timeout = setTimeout(() => {
-        const sdp = connection.localDescription?.sdp ?? "";
-        finish(/a=candidate/.test(sdp) ? undefined : new Error("Voice network setup timed out"));
-      }, 3_000);
+      const check = () => {
+        if (iceOfferReady({ elapsedMs: performance.now() - gatherStart, types, complete: connection.iceGatheringState === "complete" })) finish();
+      };
+      const settle = setTimeout(check, ICE_SETTLE_MS);
+      // At the cap send what we have, as before: the voice server still learns
+      // the phone's address from its connectivity checks (peer-reflexive).
+      const timeout = setTimeout(() => finish(), ICE_MAX_MS);
       function finish(error?: Error) {
         clearTimeout(timeout);
-        connection.removeEventListener("icegatheringstatechange", changed);
+        clearTimeout(settle);
+        connection.removeEventListener("icegatheringstatechange", check);
+        connection.removeEventListener("icecandidate", candidate);
         cancelGathering = undefined;
         if (error) reject(error);
         else resolve();
       }
-      function changed() {
-        if (connection.iceGatheringState === "complete") finish();
+      function candidate(event: RTCPeerConnectionIceEvent) {
+        if (!event.candidate || !event.candidate.candidate) return finish();
+        types.push(event.candidate.type ?? "host");
+        check();
       }
       cancelGathering = () => finish(new Error("Call ended"));
-      connection.addEventListener("icegatheringstatechange", changed);
-      changed();
+      connection.addEventListener("icegatheringstatechange", check);
+      connection.addEventListener("icecandidate", candidate);
+      check();
     });
+  }
+
+  function sendStart() {
+    if (startSent || !offer || socket?.readyState !== WebSocket.OPEN) return;
+    startSent = true;
+    send({ type: "app.start", sdp: offer, prefs: options.prefs });
+  }
+
+  function openSocket() {
+    if (socket) return;
+    socket = new WebSocket(options.url);
+    deadline = setTimeout(() => fail("Voice session did not start"), 50_000);
+    socket.onopen = () => {
+      if (!starting()) return release();
+      mark("socket");
+      sendStart();
+    };
+    socket.onmessage = ({ data }) => {
+      try {
+        const event: LiveEvent = JSON.parse(data);
+        if (event.type === "app.capabilities") {
+          capabilities = { prepare: event["prepare"] === true, speed: event["speed"] === true, chat: event["chat"] === true };
+          // The relay starts its checks and Gateway connection while the offer is still being prepared.
+          if (capabilities.prepare && !startSent && !prepareSent && starting()) {
+            prepareSent = true;
+            send({ type: "app.prepare", prefs: options.prefs });
+          }
+          return;
+        }
+        if (event.type === "gateway.session.created") {
+          void applyAnswer(event).catch(() => fail("Voice media negotiation failed"));
+        } else if (event.type === "session.started") {
+          activate();
+        } else if (event.type === "gateway.heartbeat.ack") {
+          lastAck = Date.now();
+        } else if (event.type === "session.closed") {
+          finalized =
+            typeof event.usage?.seconds === "number" &&
+            Number.isFinite(event.usage.seconds) &&
+            event.usage.seconds >= 0;
+          reportUnexpectedClosure(event.reason);
+          options.onEvent(event);
+          // Network-side endings can be retried with a fresh call; inactivity
+          // and duration limits are intentional and stay ended.
+          if (["startup_timeout", "initial_heartbeat_timeout", "heartbeat_timeout", "gateway_shutdown"].includes(event.reason ?? "")) {
+            options.onEvent({ type: "app.dropped" });
+          }
+          return release();
+        } else if (
+          event.type === "gateway.session.closing" ||
+          event.type === "gateway.error" ||
+          event.type === "app.error"
+        ) {
+          if (event.type === "gateway.session.closing") reportUnexpectedClosure(event.reason);
+          options.onEvent(event);
+          return stop();
+        }
+        if (event.type === 'app.quiz.question' && typeof event.questionId === 'string') {
+          quizPlayback.begin(event.questionId, event.labels?.['D'] ?? '');
+        } else if (event.type === 'session.output_transcript.delta' && typeof event['delta'] === 'string') {
+          quizPlayback.transcript(event['delta']);
+        }
+        options.onEvent(event);
+      } catch {
+        fail("Invalid voice event");
+      }
+    };
+    socket.onerror = () => fail("Voice connection failed");
+    socket.onclose = () => {
+      if (state !== "stopping" && state !== "closed") {
+        options.onEvent({ type: "app.error", error: { message: "Voice control connection closed" } });
+        options.onEvent({ type: "app.dropped" });
+      }
+      release();
+    };
   }
 
   async function start() {
     if (state !== "idle") return;
     state = "starting";
+    began = performance.now();
     window.addEventListener("pagehide", stop);
     try {
+      stage("mic");
+      // With the microphone already allowed, the socket and relay warm-up run alongside it.
+      if (await micAlreadyAllowed()) openSocket();
+      if (!starting()) return;
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: CLEAN_MIC,
       });
@@ -461,6 +608,9 @@ function createLiveVoice(options: LiveOptions) {
         stream.getTracks().forEach((track) => track.stop());
         return;
       }
+      mark("mic");
+      openSocket();
+      stage("network");
       const connection = new RTCPeerConnection({ iceServers: ICE_SERVERS });
       peer = connection;
       for (const track of stream.getAudioTracks()) {
@@ -499,64 +649,26 @@ function createLiveVoice(options: LiveOptions) {
       if (!starting()) return;
       const sdp = connection.localDescription?.sdp;
       if (!sdp) throw new Error("Missing voice session offer");
-      socket = new WebSocket(options.url);
-      deadline = setTimeout(() => fail("Voice session did not start"), 50_000);
-      socket.onopen = () => {
-        if (!starting()) return release();
-        send({ type: "app.start", sdp, prefs: options.prefs });
-      };
-      socket.onmessage = ({ data }) => {
-        try {
-          const event: LiveEvent = JSON.parse(data);
-          if (event.type === "gateway.session.created") {
-            void applyAnswer(event).catch(() => fail("Voice media negotiation failed"));
-          } else if (event.type === "session.started") {
-            activate();
-          } else if (event.type === "gateway.heartbeat.ack") {
-            lastAck = Date.now();
-          } else if (event.type === "session.closed") {
-            finalized =
-              typeof event.usage?.seconds === "number" &&
-              Number.isFinite(event.usage.seconds) &&
-              event.usage.seconds >= 0;
-            reportUnexpectedClosure(event.reason);
-            options.onEvent(event);
-            // Network-side endings can be retried with a fresh call; inactivity
-            // and duration limits are intentional and stay ended.
-            if (["startup_timeout", "initial_heartbeat_timeout", "heartbeat_timeout", "gateway_shutdown"].includes(event.reason ?? "")) {
-              options.onEvent({ type: "app.dropped" });
-            }
-            return release();
-          } else if (
-            event.type === "gateway.session.closing" ||
-            event.type === "gateway.error" ||
-            event.type === "app.error"
-          ) {
-            if (event.type === "gateway.session.closing") reportUnexpectedClosure(event.reason);
-            options.onEvent(event);
-            return stop();
-          }
-          if (event.type === 'app.quiz.question' && typeof event.questionId === 'string') {
-            quizPlayback.begin(event.questionId, event.labels?.['D'] ?? '');
-          } else if (event.type === 'session.output_transcript.delta' && typeof event['delta'] === 'string') {
-            quizPlayback.transcript(event['delta']);
-          }
-          options.onEvent(event);
-        } catch {
-          fail("Invalid voice event");
-        }
-      };
-      socket.onerror = () => fail("Voice connection failed");
-      socket.onclose = () => {
-        if (state !== "stopping" && state !== "closed") {
-          options.onEvent({ type: "app.error", error: { message: "Voice control connection closed" } });
-          options.onEvent({ type: "app.dropped" });
-        }
-        release();
-      };
+      mark("offer");
+      offer = sdp;
+      stage("tutor");
+      sendStart();
     } catch (error) {
       fail(error instanceof Error ? error.message : "Microphone startup failed");
     }
+  }
+
+  /** Mid-call speed change: the relay turns it into a speaking-pace instruction. */
+  function setSpeed(speed: number) {
+    if (state !== "active" || !capabilities.speed || socket?.readyState !== WebSocket.OPEN) return false;
+    try { send({ type: "app.speed", speed }); return true; }
+    catch { return false; }
+  }
+
+  function sendText(text: string, id: string) {
+    if (state !== "active" || !capabilities.chat || socket?.readyState !== WebSocket.OPEN) return false;
+    try { send({ type: "app.chat.message", text, id }); return true; }
+    catch { return false; }
   }
 
   function submitAnswer(answer: string, questionId: string) {
@@ -565,5 +677,5 @@ function createLiveVoice(options: LiveOptions) {
     catch { fail("The quiz answer could not be sent."); return false; }
   }
 
-  return { start, stop, setMuted, setPaused, resumePlayback, submitAnswer };
+  return { start, stop, setMuted, setPaused, resumePlayback, submitAnswer, sendText, setSpeed };
 }

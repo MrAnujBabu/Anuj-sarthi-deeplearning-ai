@@ -120,9 +120,9 @@ export const Route = createFileRoute("/api/chat")({
         const selected = resolveModel(body.model);
         if (!selected) return new Response(encodeAiFailure({ kind: 'configuration', message: 'Unknown model. This model selection is not recognized by this app. Check the model configuration after a workspace move; this is not a credit-balance error.', status: 400 }), { status: 400 });
         try {
-        const paused = await getAiPause();
+        // Both pause reads run together (each is cached per id for a minute).
+        const [paused, providerPause] = await Promise.all([getAiPause(), getAiPause(selected.id)]);
         if (paused) return new Response(encodeAiFailure({ kind: paused.kind === 'credits' ? 'credits' : 'denied', message: paused.message, status: paused.kind === 'credits' ? 402 : 403 }), { status: paused.kind === 'credits' ? 402 : 403 });
-        const providerPause = await getAiPause(selected.id);
         if (providerPause) return new Response(encodeAiFailure({ kind: 'denied', message: providerPause.message, status: 403 }), { status: 403 });
         const gateway = createLovableAiGatewayRunIdFetch(getLovableAiGatewayRunId(request));
         const anthropic = createAnthropic({

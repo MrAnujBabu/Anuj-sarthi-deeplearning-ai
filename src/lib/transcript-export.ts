@@ -1,4 +1,3 @@
-import { voiceTranscriptMarkdown, type VoiceRow } from "@/lib/voice-transcript";
 
 /**
  * Export the voice-call transcript to Word (.doc) and PDF without breaking the
@@ -55,8 +54,11 @@ export function mdToHtml(md: string): string {
       }
       continue;
     }
-    // Collapsible toggle blocks from the voice transcript pass through as HTML.
-    if (/^<\/?details>$/.test(t)) { flush(); out.push(t); i++; continue; }
+    // Hidden notes (the import copy of the call) never reach the document.
+    if (t.startsWith("<!--")) { flush(); while (i < lines.length && !(lines[i] ?? "").includes("-->")) i++; i++; continue; }
+    // Collapsible toggle blocks pass through as HTML, opened so print and Word show their content.
+    if (/^<details(?:\s+open)?>$/.test(t)) { flush(); out.push("<details open>"); i++; continue; }
+    if (t === "</details>") { flush(); out.push(t); i++; continue; }
     const sum = t.match(/^<summary>(.*)<\/summary>$/);
     if (sum) { flush(); out.push(`<summary>${inlineMd(sum[1] ?? "")}</summary>`); i++; continue; }
     const h = t.match(/^(#{1,6})\s+(.*)$/);
@@ -106,6 +108,8 @@ const PAGE_CSS = `
   hr { border: none; border-top: 1px solid #ccc; margin: 14px 0; }
   code { background: #f0f0f0; padding: 1px 4px; border-radius: 3px; }
   tr, blockquote, li { break-inside: avoid; }
+  details { margin: 8px 0; padding: 4px 10px; border: 1px solid #ddd; border-radius: 6px; }
+  summary { font-weight: 600; }
 `;
 
 /** Full printable HTML document for the transcript (Word opens this too). */
@@ -114,8 +118,8 @@ export function transcriptDocumentHtml(title: string, md: string): string {
 }
 
 /** Word export: an HTML document saved as .doc — Word and Google Docs open it with formatting intact. */
-export function exportTranscriptWord(rows: VoiceRow[]): void {
-  const html = transcriptDocumentHtml("SnapSolve voice call", voiceTranscriptMarkdown(rows));
+export function exportTranscriptWord(md: string): void {
+  const html = transcriptDocumentHtml("SnapSolve voice call", md);
   downloadBlob(transcriptFileName("doc"), new Blob(["\ufeff", html], { type: "application/msword" }));
 }
 
@@ -124,10 +128,10 @@ export function exportTranscriptWord(rows: VoiceRow[]): void {
  * "Save as PDF". window.open must run synchronously in the click handler or
  * the popup blocker stops it. Returns false when the popup was blocked.
  */
-export function openTranscriptPdf(rows: VoiceRow[]): boolean {
+export function openTranscriptPdf(md: string): boolean {
   const win = window.open("", "_blank");
   if (!win) return false;
-  win.document.write(transcriptDocumentHtml("SnapSolve voice call", voiceTranscriptMarkdown(rows)));
+  win.document.write(transcriptDocumentHtml("SnapSolve voice call", md));
   win.document.close();
   win.focus();
   win.print();

@@ -156,7 +156,27 @@
 - [x] Connect Supabase project "My Personal Agent" (already linked, data verified)
 
 ## Voice transcript PDF/Word export + Vercel keys (21 Oct, 01:55 UTC)
-- [ ] /voice: PDF + Word export buttons (md format intact — tables, lists, callouts)
-- [ ] Tests for the md→document conversion
-- [ ] Workspace moved: update Vercel API keys (LOVABLE_API_KEY + connector keys), redeploy
-- [ ] Push to GitHub + verify live site
+- [x] /voice: PDF + Word export buttons (md format intact — tables, lists, callouts); PDF via print dialog (Save as PDF), Word as .doc
+- [x] Tests for the md→document conversion (9 new, 282 total pass)
+- [x] Workspace moved: Vercel keys updated (LOVABLE_API_KEY rotated once + 3 connector keys), redeploy dpl_3Zq6pyhCZ3rr6MApsAtefUJsjJBx READY
+- [x] Push to GitHub (5ed6eb5) + live pages 200; also synced 5 stale voice files (speed, transcript format) that had never been pushed
+- [ ] Real phone voice call on mobile data (user)
+
+## Voice toggles + traffic-noise filter (21 Oct, 02:02 UTC)
+- [x] Toggle format: spoken "Detail mein: …" → collapsible section in transcript, Word/PDF exports keep it
+- [x] Noise filter extended: car/bus/train/bike horn, engine, factory machine, crowd, wind, rain, dog, siren tags (EN+HI) dropped; real speech untouched
+- [x] Tutor + delegation instructions ask for toggle phrasing; 288 tests pass
+- [x] Pushed to GitHub (a3df100), Vercel deploy dpl_F5udWFnkzNWviRoghNYhGtWThybE READY, pages 200, relay republished
+
+## Voice connect speed + PDF quiz extras (21 Oct, 03:20 UTC)
+- [x] Workspace move (03:28 UTC): connect Firecrawl, GitHub API, Parallel, Perplexity (all gateway-backed)
+- [x] Workspace move (03:43 UTC): connect Firecrawl, GitHub API, Parallel, Perplexity again (all gateway-backed)
+- [x] Workspace move (03:56 UTC): connect Firecrawl, GitHub API, Parallel, Perplexity again (all gateway-backed)
+- [x] Workspace move (04:14 UTC): connect Firecrawl, GitHub API, Parallel, Perplexity again (all gateway-backed)
+- [x] Workspace move (04:15 UTC): Supabase "My Personal Agent" linked; data intact (memory 94, roles 1, settings 1, voice calls 10, private bucket)
+- [x] Voice call connect time under ~10s → as low as possible (parallel mic/socket/gateway, fast ICE, early greeting, relay prewarm, stage display)
+- [x] PDF quiz view: speed control + toggle (collapsible) format in the quiz card
+- [x] Transcript export (MD/Word/PDF) includes quiz questions with A–D options and the chosen answer
+- [x] Voice mode eye button (03:50 UTC): tap hides the bottom call buttons, tap again shows them; no auto-hide, no tap-anywhere show
+- [x] Voice settings "Chat" toggle (04:07 UTC): type messages to the tutor during a voice call; tutor answers aloud + in transcript (relay probe: typed message → Claude answer in ~5s)
+- [ ] Tests, push to GitHub, Vercel deploy READY, relay republish

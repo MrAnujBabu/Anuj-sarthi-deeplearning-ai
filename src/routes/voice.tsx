@@ -1,15 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import { ArrowLeft, Download, Eye, EyeOff, FileDown, FileText, FileType, Gauge, GraduationCap, Globe, Maximize2, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
+import { ArrowLeft, Download, Eye, EyeOff, FileDown, FileText, FileType, Gauge, GraduationCap, Globe, Maximize2, MessageSquare, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, SendHorizontal, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
+import { VOICE_CHAT_KEY, VOICE_CHAT_MAX, voiceChatText } from "@/lib/voice-chat";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useLiveVoice, PLAYBACK_SPEEDS, type LiveEvent } from "@/hooks/use-live-voice";
+import { useLiveVoice, PLAYBACK_SPEEDS, type LiveEvent, type LiveStage } from "@/hooks/use-live-voice";
 import { useVoiceChoice, useStudyTextSize, STUDY_TEXT_SIZES, VOICE_CHOICES, type VoiceChoiceId, type StudyTextSize } from "@/lib/quiz-label-preference";
 import { extractLocally } from "@/lib/file-extract";
 import { cn } from "@/lib/utils";
-import { parseVoiceTranscript, voiceTranscriptMarkdown, type VoiceRow } from "@/lib/voice-transcript";
+import { parseVoiceSession, voiceTranscriptMarkdown, type VoiceQuizEntry, type VoiceRow } from "@/lib/voice-transcript";
+import { prewarmLiveRelay } from "@/lib/live-endpoint";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { QuizActions } from "@/components/quiz-actions";
 import { VOICE_ANSWERS, VOICE_SKIP, validVoiceAnswer } from "@/lib/voice-quiz";
 import { readVoicePdf } from '@/lib/voice-pdf';
@@ -42,6 +46,7 @@ type Row = VoiceRow;
 type Attachment = { name: string; text: string; pages: number; method: string };
 const CONTEXT_LIMIT = 38_000;
 const TURN_GAP_MS = 2500;
+const STAGE_LABEL: Record<LiveStage, string> = { mic: "Mic chalu…", network: "Network jod rahe…", tutor: "Tutor jud raha…", media: "Awaaz jod rahe…" };
 
 async function readAttachment(file: File, ocr: boolean, progress: (message: string) => void): Promise<Omit<Attachment, 'name'>> {
   if (file.type === "application/pdf" || /\.pdf$/i.test(file.name)) {
@@ -59,6 +64,8 @@ function VoicePage() {
 
 function LiveVoicePage() {
   const [rows, setRows] = useState<Row[]>([]);
+  // Every quiz question with its A–D options and the tapped answer, for revision exports.
+  const [quizLog, setQuizLog] = useState<VoiceQuizEntry[]>([]);
   const [thinking, setThinking] = useState(false);
   const [quizState, dispatchQuiz] = useReducer(reduceVoiceQuiz, initialVoiceQuizState);
   const { question, pending, picked, retry: quizRetry } = quizState;
@@ -86,6 +93,16 @@ function LiveVoicePage() {
   const fileInput = useRef<HTMLInputElement>(null);
   const importInput = useRef<HTMLInputElement>(null);
   const turnRef = useRef<Record<"user" | "assistant", { id: string; at: number } | null>>({ user: null, assistant: null });
+  // Chat toggle: a text box to type to the tutor during the call (saved on this device).
+  const [chat, setChat] = useState(false);
+  const [draft, setDraft] = useState('');
+  const typedRows = useRef(new Set<string>());
+  const sentTyped = useRef(new Map<string, string>());
+  useEffect(() => { try { setChat(window.localStorage.getItem(VOICE_CHAT_KEY) === "1"); } catch { /* storage unavailable */ } }, []);
+  const changeChat = (on: boolean) => {
+    setChat(on);
+    try { window.localStorage.setItem(VOICE_CHAT_KEY, on ? "1" : "0"); } catch { /* storage unavailable */ }
+  };
 
   // Auto-reconnect when the network drops an established call (max 2 tries).
   const wasLive = useRef(false);
@@ -117,18 +134,37 @@ function LiveVoicePage() {
     if (event.type === 'app.history.error') toast.error(event.error?.message ?? 'Call history save failed.');
     if (event.type === "app.quiz.question" && typeof event.questionId === "string" && event.labels && typeof event.labels === "object") {
       setThinking(false);
+      const entry: VoiceQuizEntry = { id: event.questionId, text: typeof event['text'] === 'string' ? event['text'] : '', labels: event.labels };
+      setQuizLog((prev) => (prev.some((q) => q.id === entry.id) ? prev : [...prev, entry]));
     } else if (event.type === 'app.quiz.playback.ready' && typeof event.questionId === 'string') {
       if (quizStateRef.current.pending?.id === event.questionId) setThinking(false);
-    } else if (event.type === "app.quiz.accepted" && event.answer === VOICE_SKIP) {
-      if (event.questionId !== quizStateRef.current.question?.id) return;
-      setRows((prev) => [...prev, { id: crypto.randomUUID(), role: "user", text: "Skipped (time up)" }]);
-    } else if (event.type === "app.quiz.accepted" && validVoiceAnswer(event.answer)) {
-      if (event.questionId !== quizStateRef.current.question?.id) return;
-      setRows((prev) => [...prev, { id: crypto.randomUUID(), role: "user", text: `Answer ${event.answer}` }]);
+    } else if (event.type === "app.quiz.accepted" && (event.answer === VOICE_SKIP || validVoiceAnswer(event.answer))) {
+      const current = quizStateRef.current.question;
+      if (!current || event.questionId !== current.id || !event.answer) return;
+      const answer = event.answer;
+      const rowId = crypto.randomUUID();
+      const label = answer === VOICE_SKIP ? '' : current.labels[answer] ?? '';
+      setRows((prev) => [...prev, { id: rowId, role: "user", text: answer === VOICE_SKIP ? "Skipped (time up)" : `Answer ${answer}${label ? ` — ${label}` : ''}` }]);
+      setQuizLog((prev) => prev.map((q) => (q.id === current.id ? { ...q, answer, answerRowId: rowId } : q)));
     } else if (event.type === "app.quiz.rejected") {
       if (event['retryable'] === false || event.questionId !== quizStateRef.current.question?.id || quizStateRef.current.pending) return;
       setThinking(false);
       toast.error(event.error?.message ?? "Answer could not be accepted.");
+    } else if (event.type === "app.chat.accepted" && typeof event['text'] === 'string') {
+      const id = typeof event['id'] === 'string' && event['id'] ? event['id'] : crypto.randomUUID();
+      const text = event['text'];
+      sentTyped.current.delete(id);
+      // A typed message is its own row and a turn boundary: later speech and the tutor's reply start new rows.
+      typedRows.current.add(id);
+      turnRef.current = { user: null, assistant: null };
+      setRows((prev) => (prev.some((r) => r.id === id) ? prev : [...prev, { id, role: "user", text }]));
+      setThinking(true);
+    } else if (event.type === "app.chat.rejected") {
+      const id = typeof event['id'] === 'string' ? event['id'] : '';
+      const text = sentTyped.current.get(id);
+      sentTyped.current.delete(id);
+      if (text) setDraft((d) => d || text);
+      toast.error(event.error?.message ?? "Message nahi gaya.");
     } else if (event.type === "session.input_transcript.delta" || event.type === "session.output_transcript.delta") {
       const role = event.type === "session.input_transcript.delta" ? "user" : "assistant";
       const delta = typeof event["delta"] === "string" ? event["delta"] : "";
@@ -142,7 +178,7 @@ function LiveVoicePage() {
       turnRef.current[role] = { id, at: now };
       setRows((prev) => {
         const last = prev[prev.length - 1];
-        if (last && last.role === role) { turnRef.current[role] = { id: last.id, at: now }; return [...prev.slice(0, -1), { ...last, text: last.text + delta }]; }
+        if (last && last.role === role && !typedRows.current.has(last.id)) { turnRef.current[role] = { id: last.id, at: now }; return [...prev.slice(0, -1), { ...last, text: last.text + delta }]; }
         const at = fresh ? -1 : prev.findIndex((r) => r.id === id);
         if (at >= 0) return prev.map((r, i) => (i === at ? { ...r, text: r.text + delta } : r));
         return [...prev, { id, role, text: delta }];
@@ -173,23 +209,32 @@ function LiveVoicePage() {
   const [reconnecting, setReconnecting] = useState(false);
   // Distraction-free full page: header, tabs and chips hide; transcript + quiz + call controls stay.
   const [zen, setZen] = useState(false);
-  // Auto-hide the call dock 3s after the last touch during a live call; any tap brings it back.
+  // The eye button alone hides and shows the call buttons during a live call:
+  // no auto-hide timer and no tap-anywhere reveal. Outside a call they always show.
   const [dockVisible, setDockVisible] = useState(true);
-  const dockTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const pokeDock = useCallback(() => {
-    setDockVisible(true);
-    if (dockTimer.current) clearTimeout(dockTimer.current);
-    dockTimer.current = setTimeout(() => setDockVisible(false), 3000);
-  }, []);
-  const hideDock = useCallback(() => {
-    if (dockTimer.current) clearTimeout(dockTimer.current);
-    setDockVisible(false);
-  }, []);
+  useEffect(() => { if (!live) setDockVisible(true); }, [live]);
+  // Warm a relay on another site (Vercel) so the first Start does not pay its cold start.
+  useEffect(() => { prewarmLiveRelay(window.location.href); }, []);
+  // Show how fast the call connected for a few seconds after it goes live.
+  const [connectedNote, setConnectedNote] = useState<string | null>(null);
   useEffect(() => {
-    if (live) pokeDock();
-    else { setDockVisible(true); if (dockTimer.current) clearTimeout(dockTimer.current); }
-    return () => { if (dockTimer.current) clearTimeout(dockTimer.current); };
-  }, [live, pokeDock]);
+    if (!live || voice.connectMs === null) return;
+    setConnectedNote(`${(voice.connectMs / 1000).toFixed(1)}s me juda`);
+    const t = setTimeout(() => setConnectedNote(null), 6000);
+    return () => clearTimeout(t);
+  }, [live, voice.connectMs]);
+  const changeSpeed = (value: string) => {
+    const speed = Number(value);
+    const applied = voice.setRate(speed);
+    const pace = speed === 1 ? "normal speed" : speed < 1 ? "dheere" : "tez";
+    toast(applied ? `Speed ${speed}× — tutor ab ${pace} bolega.` : live ? `Speed ${speed}× save hui — agli call se lagu hogi.` : `Speed ${speed}× — call shuru hote hi tutor ${pace} bolega.`);
+  };
+  const speedSelect = (className: string) => (
+    <Select value={String(voice.rate)} onValueChange={changeSpeed}>
+      <SelectTrigger aria-label="Tutor speaking speed" title="Tutor ki bolne ki speed" className={className}><Gauge className="size-4 shrink-0 text-muted-foreground" /><SelectValue /></SelectTrigger>
+      <SelectContent>{PLAYBACK_SPEEDS.map((sp) => <SelectItem key={sp} value={String(sp)}>{sp}×</SelectItem>)}</SelectContent>
+    </Select>
+  );
   useEffect(() => {
     if (canStart) { appliedKey.current = settingsKey; return; }
     if (!live || settingsKey === appliedKey.current) return;
@@ -257,9 +302,26 @@ function LiveVoicePage() {
     }
   };
 
+  const sendChat = (event?: { preventDefault: () => void }) => {
+    event?.preventDefault();
+    const text = voiceChatText(draft);
+    if (!text) {
+      if (draft.trim()) toast.error(`Message ${VOICE_CHAT_MAX} akshar tak hi ho sakta hai.`);
+      return;
+    }
+    const id = crypto.randomUUID();
+    if (!voice.sendText(text, id)) {
+      toast.error(live ? "Message nahi gaya — ek baar dobara bhejo." : "Pehle call shuru karo, phir likh kar bhejo.");
+      return;
+    }
+    sentTyped.current.set(id, text);
+    setDraft('');
+  };
+
+  const nothingToExport = () => { if (rows.length || quizLog.length) return false; toast.error("Abhi koi baat-cheet nahi hai."); return true; };
   const exportCall = () => {
-    if (!rows.length) { toast.error("Abhi koi baat-cheet nahi hai."); return; }
-    const blob = new Blob([voiceTranscriptMarkdown(rows)], { type: "text/markdown" });
+    if (nothingToExport()) return;
+    const blob = new Blob([voiceTranscriptMarkdown(rows, quizLog)], { type: "text/markdown" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = `snapsolve-voice-${new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-")}.md`;
@@ -268,32 +330,33 @@ function LiveVoicePage() {
   };
 
   const exportCallWord = () => {
-    if (!rows.length) { toast.error("Abhi koi baat-cheet nahi hai."); return; }
-    exportTranscriptWord(rows);
-    toast.success("Word file download ho rahi hai — tables aur lists waise hi rahenge.");
+    if (nothingToExport()) return;
+    exportTranscriptWord(voiceTranscriptMarkdown(rows, quizLog, { embedData: false }));
+    toast.success(quizLog.length ? "Word file download ho rahi hai — har sawal ke A–D options aur tumhara jawab saath me." : "Word file download ho rahi hai — tables aur lists waise hi rahenge.");
   };
 
   const exportCallPdf = () => {
-    if (!rows.length) { toast.error("Abhi koi baat-cheet nahi hai."); return; }
-    if (!openTranscriptPdf(rows)) toast.error("Popup block ho gaya — browser me popups allow karo, phir dobara dabao.");
+    if (nothingToExport()) return;
+    if (!openTranscriptPdf(voiceTranscriptMarkdown(rows, quizLog, { embedData: false }))) toast.error("Popup block ho gaya — browser me popups allow karo, phir dobara dabao.");
   };
 
   const importCall = async (file: File | undefined) => {
     if (!file) return;
     try {
-      const imported = parseVoiceTranscript(await file.text());
-      if (!imported.length) throw new Error();
-      setRows(imported);
-      toast.success(`${imported.length} messages import hue — Start dabao, tutor wahi se aage badhega.`);
+      const imported = parseVoiceSession(await file.text());
+      if (!imported.rows.length) throw new Error();
+      setRows(imported.rows);
+      setQuizLog(imported.quiz);
+      toast.success(`${imported.rows.length} messages${imported.quiz.length ? ` + ${imported.quiz.length} quiz sawal` : ''} import hue — Start dabao, tutor wahi se aage badhega.`);
     } catch {
       toast.error("Ye file SnapSolve voice export nahi lagti.");
     }
   };
 
-  const status = reconnecting ? "Reconnecting…" : voice.status === "connecting" ? "Connecting…" : live ? (voice.paused ? "Paused" : thinking ? "Soch raha hai…" : voice.muted ? "Muted" : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
+  const status = reconnecting ? "Reconnecting…" : voice.status === "connecting" ? (voice.stage ? STAGE_LABEL[voice.stage] : "Connecting…") : live ? (voice.paused ? "Paused" : thinking ? "Soch raha hai…" : voice.muted ? "Muted" : connectedNote ? `Live · ${connectedNote}` : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
 
   return (
-    <main className="relative mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6" onPointerDown={pokeDock}>
+    <main className="relative mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6">
       {!zen && (
       <header className="flex shrink-0 items-center gap-2 border-b pb-2">
         <Link to="/" aria-label="Back" className="grid size-9 place-items-center rounded-full hover:bg-muted">
@@ -315,12 +378,10 @@ function LiveVoicePage() {
           <label className="flex items-center justify-between gap-2 text-sm">Advanced · deep NCERT Biology<Switch checked={deep} disabled={locked} onCheckedChange={setDeep} aria-label="Advanced deep NCERT questions" /></label>
         </div>}
         <label className="flex items-center justify-between gap-2"><Globe className="size-4 text-muted-foreground" />Search<Switch checked={search} disabled={locked} onCheckedChange={setSearch} aria-label="Voice live search" /></label>
-        <label className="flex items-center justify-between gap-2"><Gauge className="size-4 text-muted-foreground" />Speed
-          <Select value={String(voice.rate)} onValueChange={(v) => voice.setRate(Number(v))}>
-            <SelectTrigger aria-label="Voice playback speed" className="w-28"><SelectValue /></SelectTrigger>
-            <SelectContent>{PLAYBACK_SPEEDS.map((s) => <SelectItem key={s} value={String(s)}>{s}×</SelectItem>)}</SelectContent>
-          </Select>
-        </label>
+        <label className="flex items-center justify-between gap-2"><MessageSquare className="size-4 text-muted-foreground" />Chat<Switch checked={chat} onCheckedChange={changeChat} aria-label="Voice chat box" /></label>
+        <p className="-mt-3 text-xs text-muted-foreground">Call ke dauraan likh kar bhi sawal bhejo — tutor bol kar jawab dega aur transcript me dikhega.</p>
+        <div className="flex items-center justify-between gap-2"><span>Bolne ki speed</span>{speedSelect("w-28")}</div>
+        <p className="-mt-3 text-xs text-muted-foreground">Tutor khud tez ya dheere bolta hai — call ke beech me bhi badlo, reconnect nahi hota.</p>
         <label className="flex items-center justify-between gap-2"><FileText className="size-4 text-muted-foreground" />Read scans<Switch checked={ocr} disabled={locked || reading} onCheckedChange={setOcr} aria-label="Read scanned PDFs" /></label>
         <Select value={choice} onValueChange={(v) => setChoice(v as VoiceChoiceId)} disabled={locked}>
           <SelectTrigger aria-label="Voice" className="w-full"><SelectValue /></SelectTrigger>
@@ -344,9 +405,18 @@ function LiveVoicePage() {
 
       {readProgress && <p role="status" className="mt-2 text-xs text-primary">{readProgress}</p>}
 
-      {quizVisible && !zen && <nav aria-label="Voice quiz view" className="grid shrink-0 grid-cols-2 gap-1 border-b py-2">
-        <Button variant={quizView === 'question' ? 'secondary' : 'ghost'} className="min-h-11" aria-pressed={quizView === 'question'} onClick={() => setQuizView('question')}><GraduationCap className="size-4 shrink-0" />Question</Button>
-        <Button variant={quizView === 'conversation' ? 'secondary' : 'ghost'} className="min-h-11" aria-pressed={quizView === 'conversation'} onClick={() => setQuizView('conversation')}><FileText className="size-4 shrink-0" />Conversation{thinking && <span className="size-2 shrink-0 animate-pulse rounded-full bg-primary" aria-hidden />}</Button>
+      {quizVisible && !zen && <nav aria-label="Voice quiz view" className="grid shrink-0 grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-1 border-b py-2">
+        <Button variant={quizView === 'question' ? 'secondary' : 'ghost'} className="min-h-11 min-w-0 px-2" aria-pressed={quizView === 'question'} onClick={() => setQuizView('question')}><GraduationCap className="size-4 shrink-0" /><span className="truncate">Question</span></Button>
+        <Button variant={quizView === 'conversation' ? 'secondary' : 'ghost'} className="min-h-11 min-w-0 px-2" aria-pressed={quizView === 'conversation'} onClick={() => setQuizView('conversation')}><FileText className="size-4 shrink-0" /><span className="truncate">Conversation</span>{thinking && <span className="size-2 shrink-0 animate-pulse rounded-full bg-primary" aria-hidden />}</Button>
+        {speedSelect("h-11 w-[5.5rem] gap-1 px-2")}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild><Button variant="ghost" size="icon" className="size-11" aria-label="Export quiz with options" title="Quiz + options export (MD / Word / PDF)"><Download className="size-4" /></Button></DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onSelect={exportCall}><Download className="size-4" />Markdown (.md)</DropdownMenuItem>
+            <DropdownMenuItem onSelect={exportCallWord}><FileType className="size-4" />Word (.doc)</DropdownMenuItem>
+            <DropdownMenuItem onSelect={exportCallPdf}><FileDown className="size-4" />PDF</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </nav>}
 
       <section
@@ -385,7 +455,7 @@ function LiveVoicePage() {
       {quizVisible && displayedQuestion && (zen || showQuestion) && <section className={`voice-quiz study-text study-text-${textSize} min-h-0 flex-1 flex-col py-3 flex`} aria-label="Voice quiz">
         <div ref={questionScrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain rounded-lg border bg-card p-3 sm:p-4">
           {pending && <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 border-b pb-2 text-xs text-muted-foreground" role="status"><span className="inline-flex min-w-0 items-center gap-1"><Timer className="size-3.5 shrink-0" />Next question · listening</span><Button size="icon" variant="outline" className="size-11 shrink-0" aria-label="Show question and start timer" title="Show question and start timer" disabled={!live || voice.playbackBlocked} onClick={() => dispatchQuiz({ type: 'app.quiz.manual.ready', questionId: pending.id })}><Play className="size-4" /></Button></div>}
-          <div className="voice-caption min-w-0 break-words pb-3 text-foreground" aria-label="Current quiz question"><AssistantAnswer text={formatVoiceReply(displayedQuestion.text, { options: false })} isAnimating={false} compact boldQuestion /></div>
+          <div className="voice-caption min-w-0 break-words pb-3 text-foreground" aria-label="Current quiz question"><AssistantAnswer text={formatVoiceReply(displayedQuestion.text, { options: false, feedbackToggle: true })} isAnimating={false} compact boldQuestion /></div>
         <QuizActions key={displayedQuestion.id} answersOnly timed timerPaused={!!pending || !quizState.ready || voice.playbackBlocked} retryKey={quizRetry} options={VOICE_ANSWERS} labels={displayedQuestion.labels} questionKey={displayedQuestion.id} selectedAnswer={pending || picked === VOICE_SKIP ? undefined : picked} disabled={!live || thinking || !!picked || !!pending} onSend={(answer) => {
           if (!question || !voice.submitAnswer(answer, question.id)) { toast.error("Start a connected call before answering."); return false; }
           dispatchQuiz({ type: 'app.quiz.submitted', questionId: question.id, answer });
@@ -408,6 +478,23 @@ function LiveVoicePage() {
       )}
       {voice.error && (
         <p role="alert" className="mb-2 max-h-24 shrink-0 overflow-y-auto rounded-md border border-destructive px-3 py-2 text-sm text-destructive">{voice.error}</p>
+      )}
+      {chat && (
+        <form onSubmit={sendChat} className={cn("mb-2 flex shrink-0 items-end gap-2", !dockVisible && live && "pb-[env(safe-area-inset-bottom)]")} aria-label="Type to the tutor">
+          <Textarea
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); sendChat(); } }}
+            rows={1}
+            maxLength={VOICE_CHAT_MAX}
+            disabled={!live}
+            enterKeyHint="send"
+            placeholder={live ? "Likh kar pucho… tutor bol kar jawab dega" : "Call shuru karo, phir yahan likho"}
+            aria-label="Message to tutor"
+            className="min-h-11 max-h-32 flex-1 resize-none py-2.5"
+          />
+          <Button type="submit" size="icon" className="size-11 shrink-0" disabled={!live || !draft.trim()} aria-label="Send message" title="Bhejo (Enter)"><SendHorizontal className="size-4" /></Button>
+        </form>
       )}
       <audio ref={voice.audioRef} className="sr-only" />
       <footer hidden={!dockVisible && live} className="voice-dock relative z-10 -mx-3 shrink-0 border-t bg-background/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:-mx-6 sm:px-6">
@@ -464,10 +551,10 @@ function LiveVoicePage() {
           )}
         </div>
       </footer>
-      {/* Floating Hide/Controls button: follows the same 3s auto-hide + tap-to-show rules as the dock, and is the single control for both. */}
+      {/* Eye button: the only control that hides or shows the call buttons during a live call. */}
       {live && (
-        <div className={`pointer-events-none absolute inset-x-0 z-20 flex justify-end px-3 transition-all duration-300 ${dockVisible ? "bottom-[calc(7.5rem+env(safe-area-inset-bottom))]" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"}`}>
-          <Button type="button" size="icon" variant="outline" className="pointer-events-auto size-12 rounded-full bg-background/95 shadow-lg backdrop-blur" onPointerDown={(e) => e.stopPropagation()} onClick={dockVisible ? hideDock : pokeDock} aria-label={dockVisible ? "Hide buttons" : "Show call controls"} title={dockVisible ? "Buttons chhupao — screen pe tap karke wapas lao" : "Controls wapas lao — 3 second me khud chhup jayenge"}>
+        <div className={`pointer-events-none absolute inset-x-0 z-20 flex justify-end px-3 transition-all duration-300 ${dockVisible ? (chat ? "bottom-[calc(11rem+env(safe-area-inset-bottom))]" : "bottom-[calc(7.5rem+env(safe-area-inset-bottom))]") : chat ? "bottom-[calc(4.5rem+env(safe-area-inset-bottom))]" : "bottom-[max(0.75rem,env(safe-area-inset-bottom))]"}`}>
+          <Button type="button" size="icon" variant="outline" className="pointer-events-auto size-12 rounded-full bg-background/95 shadow-lg backdrop-blur" aria-pressed={!dockVisible} onClick={() => setDockVisible((v) => !v)} aria-label={dockVisible ? "Hide call buttons" : "Show call buttons"} title={dockVisible ? "Neeche ke buttons chhupao — dobara dabao to wapas aayenge" : "Neeche ke buttons wapas dikhao"}>
             {dockVisible ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
           </Button>
         </div>
