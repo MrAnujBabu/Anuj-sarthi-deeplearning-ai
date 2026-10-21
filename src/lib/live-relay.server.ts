@@ -7,6 +7,7 @@ import { validVoiceAnswer, voiceQuizOptions, VOICE_SKIP } from "@/lib/voice-quiz
 import { createVoiceTracking } from '@/lib/voice-tracking.server';
 import { confirmedSeconds, documentMetadata, type VoiceDocument } from '@/lib/voice-usage';
 import { VOICE_TUTOR_MODEL, CLAUDE_OUTPUT_BUDGET } from '@/lib/models';
+import { cleanTranscript, isNoiseOnly } from "@/lib/noise-filter";
 import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
 import { VERCEL_APP_ORIGIN } from '@/lib/live-endpoint';
@@ -41,7 +42,9 @@ export function quizStyle(prefs: Pick<CallPrefs, "matchQ" | "assertionQ" | "deep
 }
 
 function callInstructions(prefs: CallPrefs) {
-  const extra: string[] = [];
+  const extra: string[] = [
+    "Audio: Speak clearly at a steady pace. Ignore background noise, whispers, TV or other people's voices; respond only to the student's clear speech. If speech is unclear, briefly ask them to repeat instead of guessing.",
+  ];
   if (prefs.accent === "indian")
     extra.push("Accent: Speak with a natural Indian English accent and Indian pronunciation, like a friendly Indian teacher; never an American accent.");
   if (prefs.quiz)
@@ -666,6 +669,11 @@ export function bindLiveConnection(
       if (event.type === "session.input_transcript.delta" || event.type === "session.output_transcript.delta") {
         const role = event.type === "session.input_transcript.delta" ? "user" : "assistant";
         if (!event.delta?.trim()) return;
+        // Whisper/noise tags and silence phantoms never reach captions or the tutor.
+        if (role === "user") {
+          if (isNoiseOnly(event.delta)) return;
+          event.delta = cleanTranscript(event.delta);
+        }
         lastTranscriptAt = Date.now();
         const listeningSound = role === "user" && Boolean(task) && isListeningSound(event.delta);
         transcripts.push({
