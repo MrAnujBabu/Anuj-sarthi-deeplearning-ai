@@ -71,4 +71,14 @@ describe("voice reply formatting", () => {
     expect(c).toContain("> **Assertion (A):** aloo ek underground stem hai.");
     expect(c).toContain("> **Reason (R):** potato par eyes hote hain.");
   });
+  it("turns spoken ordinals into a numbered list", () => {
+    const o = formatVoiceReply("Iske teen kaaran hain. Pehla, light energy chemical energy mein convert hoti hai. Doosra, water split hokar oxygen deta hai. Teesra, ATP aur NADPH bante hain.");
+    expect(o).toContain("1. Light energy chemical energy mein convert hoti hai.");
+    expect(o).toContain("2. Water split hokar oxygen deta hai.");
+    expect(o).toContain("3. ATP aur NADPH bante hain.");
+  });
+  it("keeps a single ordinal mention as plain text", () => {
+    const o = formatVoiceReply("Pehla sawaal abhi pending hai. Kya use dobara sunna hai?");
+    expect(o).not.toContain("1. ");
+  });
 });
