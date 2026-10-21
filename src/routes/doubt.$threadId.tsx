@@ -28,6 +28,7 @@ import { DEFAULT_MODEL, upgradedTutorPreference, type Effort } from '@/lib/model
 import { displayAiError, isCreditError, isConfigurationError } from '@/lib/ai/errors';
 import { Button } from '@/components/ui/button';
 import { QuizActions } from "@/components/quiz-actions";
+import { buildRagContext } from "@/lib/rag/context";
 import { exportThreadMarkdown } from "@/lib/export-chat";
 import { extractQuizOptions } from "@/lib/quiz-options";
 import { emphasizeQuizQuestion } from "@/lib/quiz-emphasis";
@@ -153,7 +154,9 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
         setReading(false);
       }
     }
-    return rawSend(msg, { body: { mode, model, effort, search } });
+    // Offline NCERT library + PYQ bank: retrieve matching excerpts from this device before asking the tutor.
+    const rag = text ? await buildRagContext(text) : "";
+    return rawSend(msg, { body: { mode, model, effort, search, ...(rag ? { rag } : {}) } });
   };
   const toggleQuiz = (on: boolean) => {
     setQuiz(on);
