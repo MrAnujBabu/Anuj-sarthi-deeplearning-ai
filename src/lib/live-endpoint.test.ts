@@ -4,12 +4,12 @@ import { validateLiveUpgrade } from './live-relay.server';
 
 describe('Vercel voice hosting', () => {
   it("connects the Vercel website to this project's published relay", () => {
-    expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice')).toBe('wss://repo-compass-companion.lovable.app/api/public/live');
+    expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice')).toBe('wss://sarthi-ai-bridge.lovable.app/api/public/live');
     expect(liveEndpoint('http://localhost:8080/voice')).toBe('ws://localhost:8080/api/live');
   });
   it('warms only a relay on another site before the call', () => {
-    expect(relayWarmupUrl('https://snapsolveanuj.vercel.app/voice')).toBe('https://repo-compass-companion.lovable.app/api/public/live');
-    expect(relayWarmupUrl('https://repo-compass-companion.lovable.app/voice')).toBeNull();
+    expect(relayWarmupUrl('https://snapsolveanuj.vercel.app/voice')).toBe('https://sarthi-ai-bridge.lovable.app/api/public/live');
+    expect(relayWarmupUrl('https://sarthi-ai-bridge.lovable.app/voice')).toBeNull();
     expect(relayWarmupUrl('http://localhost:8080/voice')).toBeNull();
   });
   it('preserves secure overrides and rejects insecure published connections', () => {
