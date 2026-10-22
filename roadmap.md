@@ -14,3 +14,4 @@
 - [x] Prompt updated: voice-credits-pause-fix-prompt.md (Case A credits, Case B not-registered)
 - [ ] Restore DB export (waiting on user)
 - [ ] Live tests (real voice call, quiz, PDF quiz, read-aloud) after data restore
+- [x] Screen-lock call hold raised to 2 hours; quiz prev/next; Notion Toggle MCQ export; live Hindi dictation tested

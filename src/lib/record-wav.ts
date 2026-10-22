@@ -30,7 +30,17 @@ export function encodeWav(chunks: readonly Float32Array[], sampleRate: number): 
   return new Blob([bytes], { type: "audio/wav" });
 }
 
-export type Recording = { stop: () => Promise<File>; cancel: () => void; level: () => number };
+export type Recording = {
+  stop: () => Promise<File>;
+  cancel: () => void;
+  level: () => number;
+  /** Seconds of audio recorded since the last take(). */
+  pending: () => number;
+  /** Cut the audio since the last take() into its own WAV (null if too short). Used for live dictation. */
+  take: () => File | null;
+  /** Stop and return only the audio not yet taken. */
+  finish: () => Promise<File | null>;
+};
 
 export async function recordWav(): Promise<Recording> {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: CLEAN_MIC });
@@ -43,6 +53,7 @@ export async function recordWav(): Promise<Recording> {
     const source = ctx.createMediaStreamSource(stream);
     const node = ctx.createScriptProcessor(4096, 1, 1);
     const chunks: Float32Array[] = [];
+    let taken = 0;
     let lastLevel = 0;
     node.onaudioprocess = (event) => {
       const data = new Float32Array(event.inputBuffer.getChannelData(0));
@@ -61,8 +72,22 @@ export async function recordWav(): Promise<Recording> {
       source.disconnect();
       node.onaudioprocess = null;
     };
+    const cut = () => {
+      const part = chunks.slice(taken);
+      taken = chunks.length;
+      const blob = encodeWav(part, ctx.sampleRate);
+      return blob.size < 16000 ? null : new File([blob], "dictation.wav", { type: "audio/wav" });
+    };
     return {
       level: () => lastLevel,
+      pending: () => ((chunks.length - taken) * 4096) / ctx.sampleRate,
+      take: cut,
+      async finish() {
+        if (!stopped) release();
+        const file = cut();
+        await ctx.close().catch(() => {});
+        return file;
+      },
       cancel() {
         if (stopped) return;
         release();

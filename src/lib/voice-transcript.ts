@@ -222,14 +222,16 @@ function isQuestion(text: string): boolean {
 function recallSection(rows: VoiceRow[], quiz: VoiceQuizEntry[]): string {
   const quizCards: RecallCard[] = quizResults(rows, quiz).map(({ entry, correct, status }) => {
     const stem = questionStem(entry.text).replace(/\n+/g, " ").trim() || "Quiz question";
-    const opts = LETTERS.filter((l) => entry.labels[l]).map((l) => `(${l}) ${cell(entry.labels[l] ?? "")}`).join(" · ");
+    // Notion Toggle plugin MCQ format: tickable `- [ ]` options inside the toggle, correct one ticked.
+    const opts = LETTERS.filter((l) => entry.labels[l]).map((l) => `- [${l === correct ? "x" : " "}] (${l}) ${cell(entry.labels[l] ?? "")}`).join("\n");
     const body = [
+      opts,
       correct ? `**Answer:** **(${correct}) ${cell(entry.labels[correct] ?? "")}**` : "**Answer:** tutor ka verdict transcript me dekho",
       entry.answer ? `**Tumhara jawab:** ${entry.answer === "skip" ? "skip (time up)" : `(${entry.answer})`}${status === "right" ? " ✅" : status === "wrong" ? " ❌" : ""}` : "",
       flatten(explanationFor(rows, entry)) ? `**Explanation:**\n${flatten(explanationFor(rows, entry))}` : "",
     ].filter(Boolean).join("\n");
     const level: RecallLevel = status === "wrong" || status === "skipped" ? "red" : status === "right" ? "green" : "yellow";
-    return { q: `${stem}${opts ? `<br>${opts}` : ""}`, a: body, level };
+    return { q: stem, a: body, level };
   });
   const answerIds = new Set(quiz.map((e) => e.answerRowId));
   const talkCards: RecallCard[] = [];
@@ -246,7 +248,7 @@ function recallSection(rows: VoiceRow[], quiz: VoiceQuizEntry[]): string {
   if (!all.length) return "";
   const count = (l: RecallLevel) => all.filter((c) => c.level === l).length;
   let n = 0;
-  const card = (c: RecallCard) => `> [!recall-${c.level}]- Q${++n}. ${c.q}\n${quote(c.a)}`;
+  const card = (c: RecallCard) => `> [!recall-${c.level}]- **Q${++n}. ${c.q.replace(/\*\*/g, "")}**\n${quote(c.a)}`;
   const out = [
     "> [!tip]\n> Har question ke arrow se jawab kholo — **pehle khud socho**, phir check karo.",
     `**Traffic-light legend:**\n- 🔴 **\`recall-red\`** = Galat / skip / traps — **${count("red")}**\n- 🟡 **\`recall-yellow\`** = Medium — **${count("yellow")}**\n- 🟢 **\`recall-green\`** = Sahi / direct — **${count("green")}**`,
