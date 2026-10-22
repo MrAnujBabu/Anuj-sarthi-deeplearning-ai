@@ -1,7 +1,7 @@
 // Public addresses only, never credentials.
 export const VERCEL_APP_ORIGIN = 'https://snapsolveanuj.vercel.app';
 /** This project's published relay: its address survives workspace moves and gets every relay update on publish. */
-export const HOSTED_LIVE_ENDPOINT = 'https://repo-compass-companion.lovable.app/api/public/live';
+export const HOSTED_LIVE_ENDPOINT = 'https://sarthi-ai-bridge.lovable.app/api/public/live';
 
 export function liveEndpoint(pageUrl: string, override?: string): string {
   const page = new URL(pageUrl);
