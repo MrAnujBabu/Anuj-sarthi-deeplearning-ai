@@ -6,7 +6,7 @@ import { createAgentTools } from "@/lib/agent/tools.server";
 import { validVoiceAnswer, voiceQuizOptions, VOICE_SKIP } from "@/lib/voice-quiz";
 import { createVoiceTracking } from '@/lib/voice-tracking.server';
 import { confirmedSeconds, documentMetadata, type VoiceDocument } from '@/lib/voice-usage';
-import { VOICE_TUTOR_MODEL, CLAUDE_OUTPUT_BUDGET } from '@/lib/models';
+import { VOICE_TUTOR_MODEL, CLAUDE_OUTPUT_BUDGET, resolveModel, resolveEffort, type Effort } from '@/lib/models';
 import { cleanTranscript, isNoiseOnly } from "@/lib/noise-filter";
 import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
@@ -15,10 +15,10 @@ import { createNcertDeck, ncertDeckPrompt } from "@/lib/ncert-biology-bank";
 import { paceInstruction, paceUpdate, voiceSpeed, type VoiceSpeed } from "@/lib/voice-speed";
 import { voiceChatText } from "@/lib/voice-chat";
 
-export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; context: string; documents: VoiceDocument[]; speed: VoiceSpeed };
+export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; context: string; documents: VoiceDocument[]; speed: VoiceSpeed; model?: string | undefined; effort: Effort };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
 export function parseCallPrefs(raw: unknown): CallPrefs {
-  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "matchQ" | "assertionQ" | "deep" | "search" | "context" | "documents" | "speed", unknown>>;
+  const r = (raw && typeof raw === "object" ? raw : {}) as Partial<Record<"voice" | "accent" | "quiz" | "matchQ" | "assertionQ" | "deep" | "search" | "context" | "documents" | "speed" | "model" | "effort", unknown>>;
   return {
     voice: typeof r.voice === "string" && VOICES.has(r.voice) ? r.voice : "marin",
     accent: r.accent === "neutral" ? "neutral" : "indian",
@@ -30,6 +30,8 @@ export function parseCallPrefs(raw: unknown): CallPrefs {
     context: typeof r.context === "string" ? r.context.slice(0, 40_000) : "",
     documents: documentMetadata(r.documents),
     speed: voiceSpeed(r.speed) ?? 1,
+    model: r.model === undefined ? undefined : resolveModel(r.model)?.id,
+    effort: resolveEffort(r.effort ?? 'high'),
   };
 }
 
@@ -291,7 +293,7 @@ export async function answerQuestion(
     },
     providerOptions: {
       // Bank questions only need copying and grading against a known key: answer quickly.
-      anthropic: { thinking: { type: "adaptive" }, effort: ncertPrompt ? "medium" : "high" },
+      anthropic: resolveModel(config.backendModel)?.effort === false ? {} : { thinking: { type: "adaptive" }, effort: prefs.effort },
     },
     system:
       "Help a spoken NEET 2027 tutor answer the latest student question (Physics, Chemistry, Biology; follow NCERT). " +
@@ -485,7 +487,7 @@ export function bindLiveConnection(
   function openingInstructions() {
     return (
       config.openingInstructions ??
-      "When you are told to begin: greet the student briefly in Hinglish as their NEET tutor and ask which doubt or topic they want to discuss today, then listen."
+      "When you are told to begin: greet the student briefly in Hinglish as Anuj ka NEET teacher who solves doubts — say something like 'Main Anuj ka NEET teacher hoon, doubts solve karta hoon' — then ask which topic or doubt they want to start with today, then listen."
     ).trim();
   }
 
@@ -874,6 +876,7 @@ export function bindLiveConnection(
         if (prepared || starting) throw new Error("Voice startup message required");
         prepared = true;
         prefs = parseCallPrefs(event.prefs);
+        if (prefs.model) config.backendModel = prefs.model;
         // The browser still needs its microphone and network offer: give it time.
         clearTimeout(startTimer);
         startTimer = setTimeout(startupMessageTimeout, 20_000);
@@ -887,6 +890,7 @@ export function bindLiveConnection(
         }
         starting = true;
         if (event.prefs !== undefined || !prepared) prefs = parseCallPrefs(event.prefs);
+        if (prefs.model) config.backendModel = prefs.model;
         startedSpeed = prefs.speed;
         if (prefs.quiz && prefs.deep) ncertDeck = createNcertDeck(prefs);
         tracked = true;
@@ -916,6 +920,33 @@ export function bindLiveConnection(
         if (gateway.readyState !== 1) return stop();
         applySpeed(speed);
         emit({ type: "app.speed.applied", speed });
+        return;
+      }
+      if (event.type === "app.settings") {
+        const raw = event.prefs as Record<string, unknown> | undefined;
+        if (!sessionID || gateway.readyState !== 1 || !raw || typeof raw !== 'object' ||
+          (raw['model'] !== undefined && !resolveModel(raw['model']))) {
+          emit({ type: 'app.settings.rejected', error: { message: 'Settings could not be applied to this call.' } });
+          return;
+        }
+        // Only teaching preferences change in-place; voice, files and transport stay fixed.
+        const next = parseCallPrefs({ ...prefs, ...raw });
+        const quizChanged = next.quiz !== prefs.quiz;
+        const bankChanged = quizChanged || next.deep !== prefs.deep || next.matchQ !== prefs.matchQ || next.assertionQ !== prefs.assertionQ;
+        prefs = { ...prefs, quiz: next.quiz, matchQ: next.matchQ, assertionQ: next.assertionQ, deep: next.deep, search: next.search, model: next.model, effort: next.effort };
+        if (prefs.model) config.backendModel = prefs.model;
+        if (bankChanged) ncertDeck = prefs.quiz && prefs.deep ? createNcertDeck(prefs) : undefined;
+        if (!prefs.quiz) openQuiz = undefined;
+        gateway.send(JSON.stringify({ type: 'session.instructions.append', event_id: crypto.randomUUID(), delegation_id: null,
+          content: `Teaching settings changed: Quiz ${prefs.quiz ? 'ON' : 'OFF'}; Match ${prefs.matchQ ? 'ON' : 'OFF'}; Assertion-Reason ${prefs.assertionQ ? 'ON' : 'OFF'}; Deep NCERT ${prefs.deep ? 'ON' : 'OFF'}; Search ${prefs.search ? 'ON' : 'OFF'}. Use the backend for all new questions and grading; its current settings replace earlier teaching settings. Keep this call open.` }));
+        emit({ type: 'app.settings.applied', prefs: { quiz: prefs.quiz, matchQ: prefs.matchQ, assertionQ: prefs.assertionQ, deep: prefs.deep, search: prefs.search, model: config.backendModel, effort: prefs.effort } });
+        if (quizChanged && prefs.quiz) {
+          transcripts.push({ role: 'user', text: 'Start quiz mode now: ask me one NEET question on our current topic, or ask which chapter if no topic is known.', start_ms: 0, end_ms: 0, listeningSound: false });
+          revision++;
+          const id = crypto.randomUUID();
+          typedAnswers.add(id);
+          queueDelegation({ type: 'app.settings', delegation: { id, target: 'client' } });
+        }
         return;
       }
       if (event.type === "app.quiz.answer") {
@@ -981,5 +1012,5 @@ export function bindLiveConnection(
   browser.onError(stop);
   // Newer browsers use these to start early, change speed and type mid-call; older
   // browsers ignore it and keep the original app.start-only startup.
-  emit({ type: "app.capabilities", prepare: true, speed: true, chat: true });
+  emit({ type: "app.capabilities", prepare: true, speed: true, chat: true, settings: true });
 }

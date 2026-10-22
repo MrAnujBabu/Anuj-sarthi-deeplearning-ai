@@ -4,7 +4,7 @@ vi.mock('./ai/pause.server', () => ({ getAiPause: async () => null, setAiPause: 
 import { answerQuestion, getLiveConfig, parseCallPrefs } from './live-relay.server';
 it.skipIf(process.env['VERIFY_LIVE_TUTOR'] !== '1')('real voice delegate uses advanced Claude and generates a selectable next MCQ', async () => {
   const config = getLiveConfig();
-  expect(config.backendModel).toBe('anthropic/claude-fable-5-1');
+  expect(config.backendModel).toBe('anthropic/claude-opus-5-5');
   const answer = await answerQuestion([
     { role: 'user', content: 'Ask one simple NEET mitochondria MCQ with A-D options.' },
   ], config, { runID: crypto.randomUUID(), sessionID: undefined, delegationID: crypto.randomUUID() }, new AbortController().signal, () => {}, () => {}, parseCallPrefs({ quiz: true }));

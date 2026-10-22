@@ -14,6 +14,28 @@ const config = { baseURL: "https://example.com/v1", key: "test", liveModel: "tes
 afterEach(() => vi.useRealTimers());
 
 describe("fast voice call startup", () => {
+  it('updates all teaching toggles on the same call, without changing audio or creating another session', async () => {
+    vi.useFakeTimers();
+    const browser = socket(), gateway = socket();
+    const connect = vi.fn(async () => gateway.value);
+    bindLiveConnection(browser.value, config, { waitUntil: () => {} }, connect);
+    browser.receive({ type: 'app.start', sdp: 'offer', prefs: { voice: 'marin' } });
+    await vi.advanceTimersByTimeAsync(0);
+    gateway.receive({ type: 'gateway.session.created', session: { id: 'existing' } });
+    const prefs = { quiz: true, matchQ: true, assertionQ: true, deep: true, search: true, model: 'anthropic/claude-opus-5-5', effort: 'high', voice: 'willow' };
+    browser.receive({ type: 'app.settings', prefs });
+    expect(browser.events.find(e => e.type === 'app.settings.applied')?.['prefs']).toEqual({ quiz: true, matchQ: true, assertionQ: true, deep: true, search: true, model: 'anthropic/claude-opus-5-5', effort: 'high' });
+    expect(connect).toHaveBeenCalledTimes(1);
+    expect(gateway.events.filter(e => e.type === 'session.start')).toHaveLength(1);
+    expect(gateway.events.some(e => e.type === 'session.close')).toBe(false);
+    expect(browser.events.some(e => e.type === 'app.delegation.pending')).toBe(true);
+    browser.receive({ type: 'app.settings', prefs: { quiz: false } });
+    expect(browser.events.filter(e => e.type === 'app.settings.applied').at(-1)?.['prefs']).toMatchObject({ quiz: false, search: true });
+    browser.receive({ type: 'app.settings', prefs: { model: 'unavailable' } });
+    expect(browser.events.some(e => e.type === 'app.settings.rejected')).toBe(true);
+    expect(gateway.events.some(e => e.type === 'session.close')).toBe(false);
+    browser.receive({ type: 'session.close' }); gateway.receive({ type: 'session.closed' });
+  });
   it("tells newer browsers they can prepare early and change speed", () => {
     const browser = socket();
     bindLiveConnection(browser.value, config, { waitUntil: () => {} }, async () => socket().value);

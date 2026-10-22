@@ -18,7 +18,8 @@ import { QuizActions } from "@/components/quiz-actions";
 import { VOICE_ANSWERS, VOICE_SKIP, validVoiceAnswer } from "@/lib/voice-quiz";
 import { readVoicePdf } from '@/lib/voice-pdf';
 import { Sheet, SheetTrigger, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-import { resolveModel, VOICE_TUTOR_MODEL } from '@/lib/models';
+import { resolveModel, VOICE_TUTOR_MODEL, type Effort } from '@/lib/models';
+import { ModelPicker } from '@/components/model-picker';
 import { billableSeconds, confirmedSeconds } from '@/lib/voice-usage';
 import { QuizTimerSettings } from '@/components/quiz-timer-settings';
 import { TalkVoice } from '@/components/talk-voice';
@@ -27,6 +28,7 @@ import { initialVoiceQuizState, reduceVoiceQuiz } from '@/lib/voice-quiz-state';
 import { AssistantAnswer } from '@/components/assistant-answer';
 import { formatVoiceReply } from '@/lib/voice-format';
 import { exportTranscriptWord, openTranscriptPdf } from '@/lib/transcript-export';
+import { voiceSettingsLocked } from '@/lib/voice-session';
 
 export const Route = createFileRoute("/voice")({
   head: () => ({
@@ -78,6 +80,8 @@ function LiveVoicePage() {
   const [quizView, setQuizView] = useState<'question' | 'conversation'>('question');
   const questionScrollRef = useRef<HTMLDivElement>(null);
   const [search, setSearch] = useState(false);
+  const [model, setModel] = useState<string>(VOICE_TUTOR_MODEL);
+  const [effort, setEffort] = useState<Effort>('high');
   const [files, setFiles] = useState<Attachment[]>([]);
   const [reading, setReading] = useState(false);
   const [ocr, setOcr] = useState(false);
@@ -104,24 +108,9 @@ function LiveVoicePage() {
     try { window.localStorage.setItem(VOICE_CHAT_KEY, on ? "1" : "0"); } catch { /* storage unavailable */ }
   };
 
-  // Auto-reconnect when the network drops an established call (max 2 tries).
-  const wasLive = useRef(false);
-  const dropRetries = useRef(0);
-  const dropReconnect = useRef(false);
-
   const onEvent = useCallback((event: LiveEvent) => {
     dispatchQuiz(event);
-    if (event.type === 'app.connected') { wasLive.current = true; dropRetries.current = 0; }
-    if (event.type === 'app.closed') wasLive.current = false;
-    if (event.type === 'app.dropped') {
-      if (wasLive.current && dropRetries.current < 2) {
-        dropRetries.current += 1;
-        dropReconnect.current = true;
-        wasLive.current = false;
-        setReconnecting(true);
-        toast("Connection tooti — call apne aap reconnect ho rahi hai…");
-      }
-    }
+    if (event.type === 'app.settings.rejected') toast.error(event.error?.message ?? 'Settings apply nahi hui.');
     if (event.type === 'app.call.record') {
       setCallId(typeof event['callId'] === 'string' ? event['callId'] : '');
       setCreated(false); setUsage(null); setFinalUsage(false);
@@ -195,18 +184,26 @@ function LiveVoicePage() {
     const c = VOICE_CHOICES.find((v) => v.id === choice) ?? VOICE_CHOICES[0];
     const previous = rows.length ? `Previous conversation:\n${rows.map((r) => `${r.role === "user" ? "Student" : "Tutor"}: ${r.text}`).join("\n")}\n\n` : "";
     const docs = files.map((f) => `<doc name=${JSON.stringify(f.name)}>\n${f.text}\n</doc>`).join("\n\n");
-    return { voice: c.voice, accent: c.accent, quiz, matchQ, assertionQ, deep, search, context: previous.slice(-Math.max(0, CONTEXT_LIMIT - docs.length)) + docs, documents: files.map(({ name, pages, method, text }) => ({ name, pages, method, chars: text.length })) };
-  }, [choice, quiz, matchQ, assertionQ, deep, search, files, rows]);
+    return { voice: c.voice, accent: c.accent, quiz, matchQ, assertionQ, deep, search, model, effort, context: previous.slice(-Math.max(0, CONTEXT_LIMIT - docs.length)) + docs, documents: files.map(({ name, pages, method, text }) => ({ name, pages, method, chars: text.length })) };
+  }, [choice, quiz, matchQ, assertionQ, deep, search, model, effort, files, rows]);
 
   const voice = useLiveVoice({ onEvent, prefs });
   const canStart = voice.status === "idle" || voice.status === "closed";
   const live = voice.status === "connected";
-  // Settings stay editable during a call; a change reconnects the call with the new settings and keeps the conversation.
-  const locked = voice.status === "connecting" || voice.status === "stopping";
-  const settingsKey = `${choice}|${quiz}|${matchQ}|${assertionQ}|${deep}|${search}|${files.map((f) => f.name).join(",")}`;
-  const appliedKey = useRef(settingsKey);
-  const restartWanted = useRef(false);
-  const [reconnecting, setReconnecting] = useState(false);
+  // Audio/files stay fixed; teaching preferences update on the same live session.
+  const locked = voiceSettingsLocked(voice.status);
+  const teachingLocked = voice.status === 'connecting' || voice.status === 'stopping';
+  const changeTeaching = (patch: Partial<{ quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; model: string; effort: Effort }>) => {
+    if (teachingLocked) return;
+    if (live && !voice.updateSettings(patch)) { toast.error('Is call par settings apply nahi hui.'); return; }
+    if (patch.quiz !== undefined) setQuiz(patch.quiz);
+    if (patch.matchQ !== undefined) setMatchQ(patch.matchQ);
+    if (patch.assertionQ !== undefined) setAssertionQ(patch.assertionQ);
+    if (patch.deep !== undefined) setDeep(patch.deep);
+    if (patch.search !== undefined) setSearch(patch.search);
+    if (patch.model !== undefined) setModel(patch.model);
+    if (patch.effort !== undefined) setEffort(patch.effort);
+  };
   // Distraction-free full page: header, tabs and chips hide; transcript + quiz + call controls stay.
   const [zen, setZen] = useState(false);
   // The eye button alone hides and shows the call buttons during a live call:
@@ -247,32 +244,6 @@ function LiveVoicePage() {
       <SelectContent>{PLAYBACK_SPEEDS.map((sp) => <SelectItem key={sp} value={String(sp)}>{sp}×</SelectItem>)}</SelectContent>
     </Select>
   );
-  useEffect(() => {
-    if (canStart) { appliedKey.current = settingsKey; return; }
-    if (!live || settingsKey === appliedKey.current) return;
-    const t = setTimeout(() => {
-      appliedKey.current = settingsKey;
-      restartWanted.current = true;
-      setReconnecting(true);
-      toast("Settings badli — call naye settings ke saath reconnect ho rahi hai…");
-      voice.stop();
-    }, 600);
-    return () => clearTimeout(t);
-  }, [settingsKey, live, canStart]);
-  useEffect(() => {
-    if (!canStart || !restartWanted.current) return;
-    restartWanted.current = false;
-    const t = setTimeout(() => { void Promise.resolve(voice.start()).finally(() => setReconnecting(false)); }, 300);
-    return () => clearTimeout(t);
-  }, [canStart]);
-  // Reconnect after a network drop: the conversation rows stay, so the tutor
-  // picks up with the same context once the new call connects.
-  useEffect(() => {
-    if (!canStart || !dropReconnect.current) return;
-    dropReconnect.current = false;
-    const t = setTimeout(() => { void Promise.resolve(voice.start()).finally(() => setReconnecting(false)); }, 800);
-    return () => clearTimeout(t);
-  }, [canStart]);
   const quizVisible = quiz && !!(question || pending);
   const showQuestion = quizVisible && quizView === 'question' && !zen;
   const displayedQuestion = pending ?? question;
@@ -368,7 +339,7 @@ function LiveVoicePage() {
   // Eye toggle during a live call hides the details too (header, quiz tabs,
   // attached-file chips) along with the call buttons; the markdown transcript stays.
   const chromeHidden = !dockVisible && live;
-  const status = reconnecting ? "Reconnecting…" : voice.status === "connecting" ? (voice.stage ? STAGE_LABEL[voice.stage] : "Connecting…") : live ? (voice.paused ? "Paused" : thinking ? "Soch raha hai…" : voice.muted ? "Muted" : connectedNote ? `Live · ${connectedNote}` : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
+  const status = voice.status === "connecting" ? (voice.stage ? STAGE_LABEL[voice.stage] : "Connecting…") : live ? (voice.paused ? "Paused" : thinking ? "Soch raha hai…" : voice.muted ? "Muted" : connectedNote ? `Live · ${connectedNote}` : "Live · bolo") : voice.status === "stopping" ? "Ending…" : "Ready";
 
   return (
     <main className="relative mx-auto flex h-dvh min-h-0 w-full max-w-3xl flex-col overflow-hidden px-3 pt-2 sm:px-6" onPointerDown={live ? pokeEye : undefined}>
@@ -377,22 +348,23 @@ function LiveVoicePage() {
         <Link to="/" aria-label="Back" className="grid size-9 place-items-center rounded-full hover:bg-muted">
           <ArrowLeft className="size-5" />
         </Link>
-        <div className="min-w-0 flex-1"><h1 className="text-base font-semibold">Voice mode</h1><p className="text-xs text-muted-foreground">Claude {resolveModel(VOICE_TUTOR_MODEL)?.name}</p></div>
+        <div className="min-w-0 flex-1"><h1 className="text-base font-semibold">Voice mode</h1><p className="text-xs text-muted-foreground">Claude {resolveModel(model)?.name}</p></div>
         <span role="status" className={cn("flex shrink-0 items-center gap-1.5 text-xs", live ? "text-primary" : "text-muted-foreground")}>
           {live && <span className="size-2 animate-pulse rounded-full bg-primary" aria-hidden />}
           {status}
         </span>
         <Sheet>
           <SheetTrigger asChild><Button variant="ghost" size="icon" className="size-9 shrink-0" aria-label="Voice settings and search" title="Voice settings and search">{search ? <Globe className="size-4 text-primary" /> : <SlidersHorizontal className="size-4" />}</Button></SheetTrigger>
-          <SheetContent side="right" className="w-[min(90vw,340px)] overflow-y-auto"><SheetTitle>Voice settings</SheetTitle><SheetDescription>Claude {resolveModel(VOICE_TUTOR_MODEL)?.name}</SheetDescription>
+          <SheetContent side="right" className="w-[min(90vw,340px)] overflow-y-auto"><SheetTitle>Voice settings</SheetTitle><SheetDescription>Claude {resolveModel(model)?.name}</SheetDescription>
       <div className="mt-6 flex flex-col items-stretch gap-5 text-sm">
-        <label className="flex items-center justify-between gap-2"><GraduationCap className="size-4 text-muted-foreground" />Quiz<Switch checked={quiz} disabled={locked} onCheckedChange={setQuiz} aria-label="Voice quiz mode" /></label>
+        <ModelPicker model={model} effort={effort} onModel={(model) => changeTeaching({ model })} onEffort={(effort) => changeTeaching({ effort })} disabled={teachingLocked} />
+        <label className="flex items-center justify-between gap-2"><GraduationCap className="size-4 text-muted-foreground" />Quiz<Switch checked={quiz} disabled={teachingLocked} onCheckedChange={(quiz) => changeTeaching({ quiz })} aria-label="Voice quiz mode" /></label>
         {quiz && <div className="space-y-3 border-l-2 border-primary/40 pl-3">
-          <label className="flex items-center justify-between gap-2 text-sm">Match the Following<Switch checked={matchQ} disabled={locked} onCheckedChange={setMatchQ} aria-label="Match the Following questions" /></label>
-          <label className="flex items-center justify-between gap-2 text-sm">Assertion–Reason<Switch checked={assertionQ} disabled={locked} onCheckedChange={setAssertionQ} aria-label="Assertion Reason questions" /></label>
-          <label className="flex items-center justify-between gap-2 text-sm">Advanced · deep NCERT Biology<Switch checked={deep} disabled={locked} onCheckedChange={setDeep} aria-label="Advanced deep NCERT questions" /></label>
+          <label className="flex items-center justify-between gap-2 text-sm">Match the Following<Switch checked={matchQ} disabled={teachingLocked} onCheckedChange={(matchQ) => changeTeaching({ matchQ })} aria-label="Match the Following questions" /></label>
+          <label className="flex items-center justify-between gap-2 text-sm">Assertion–Reason<Switch checked={assertionQ} disabled={teachingLocked} onCheckedChange={(assertionQ) => changeTeaching({ assertionQ })} aria-label="Assertion Reason questions" /></label>
+          <label className="flex items-center justify-between gap-2 text-sm">Advanced · deep NCERT Biology<Switch checked={deep} disabled={teachingLocked} onCheckedChange={(deep) => changeTeaching({ deep })} aria-label="Advanced deep NCERT questions" /></label>
         </div>}
-        <label className="flex items-center justify-between gap-2"><Globe className="size-4 text-muted-foreground" />Search<Switch checked={search} disabled={locked} onCheckedChange={setSearch} aria-label="Voice live search" /></label>
+        <label className="flex items-center justify-between gap-2"><Globe className="size-4 text-muted-foreground" />Search<Switch checked={search} disabled={teachingLocked} onCheckedChange={(search) => changeTeaching({ search })} aria-label="Voice live search" /></label>
         <label className="flex items-center justify-between gap-2"><MessageSquare className="size-4 text-muted-foreground" />Chat<Switch checked={chat} onCheckedChange={changeChat} aria-label="Voice chat box" /></label>
         <p className="-mt-3 text-xs text-muted-foreground">Call ke dauraan likh kar bhi sawal bhejo — tutor bol kar jawab dega aur transcript me dikhega.</p>
         <div className="flex items-center justify-between gap-2"><span>Bolne ki speed</span>{speedSelect("w-28")}</div>
@@ -402,7 +374,6 @@ function LiveVoicePage() {
           <SelectTrigger aria-label="Voice" className="w-full"><SelectValue /></SelectTrigger>
           <SelectContent>{VOICE_CHOICES.map((c) => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
         </Select>
-        {!canStart && <p className="w-full text-xs text-muted-foreground">Call chalte hue bhi badal sakte ho — call apne aap naye settings ke saath reconnect hogi, baat-cheet wahi se aage chalegi.</p>}
         <Select value={textSize} onValueChange={(v) => setTextSize(v as StudyTextSize)}><SelectTrigger aria-label="Voice transcript text size"><SelectValue /></SelectTrigger><SelectContent>{STUDY_TEXT_SIZES.map((size) => <SelectItem key={size} value={size}>{size} px</SelectItem>)}</SelectContent></Select>
         <QuizTimerSettings />
         <div className="flex gap-2 border-t pt-3">        <Button variant="ghost" size="icon" className="size-9" aria-label="Export conversation" title="Export conversation (.md)" onClick={exportCall}><Download className="size-4" /></Button>
@@ -414,7 +385,7 @@ function LiveVoicePage() {
       {callId && <p className="mt-2 text-xs text-muted-foreground" title={callId}>Call {callId.slice(0, 8)} · {billableSeconds(usage, created) ?? '—'} billable seconds · {finalUsage ? 'Final usage received' : 'Final usage pending'} · Credits unconfirmed</p>}
           </SheetContent>
         </Sheet>
-        <input ref={importInput} type="file" accept=".md,.markdown,.txt,.json" hidden onChange={(e) => { void importCall(e.target.files?.[0]); e.target.value = ""; }} />
+        <input ref={importInput} type="file" accept=".md,.markdown,.txt,.json" disabled={locked} hidden onChange={(e) => { void importCall(e.target.files?.[0]); e.target.value = ""; }} />
       </header>
       )}
 
@@ -528,7 +499,7 @@ function LiveVoicePage() {
             <span className="text-[11px] text-muted-foreground">Attach</span>
           </div>
           )}
-          <input ref={fileInput} type="file" multiple hidden accept="application/pdf,.pdf,.md,.txt,.docx,.pptx" onChange={(e) => { void addFiles(e.target.files); e.target.value = ""; }} />
+          <input ref={fileInput} type="file" multiple disabled={locked} hidden accept="application/pdf,.pdf,.md,.txt,.docx,.pptx" onChange={(e) => { void addFiles(e.target.files); e.target.value = ""; }} />
           {voice.playbackBlocked && (
             <div className="flex flex-col items-center gap-1">
               <Button type="button" size="icon" variant="outline" className="voice-dock-btn size-14 rounded-full" onClick={voice.resumePlayback} aria-label="Play voice"><Volume2 className="size-6" /></Button>

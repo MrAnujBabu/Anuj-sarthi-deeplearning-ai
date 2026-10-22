@@ -6,7 +6,7 @@ export const initialVoiceQuizState: VoiceQuizState = { question: null, pending: 
 
 /** Publish a complete question/options pair only once its own playback is ready. */
 export function reduceVoiceQuiz(state: VoiceQuizState, event: LiveEvent): VoiceQuizState {
-  if (event.type === 'app.closed') return initialVoiceQuizState;
+  if (event.type === 'app.closed' || (event.type === 'app.settings.applied' && (event['prefs'] as { quiz?: boolean } | undefined)?.quiz === false)) return initialVoiceQuizState;
   if (event.type === 'app.quiz.question' && typeof event.questionId === 'string' && typeof event['text'] === 'string' && event.labels && ['A', 'B', 'C', 'D'].every(key => typeof event.labels?.[key] === 'string' && event.labels[key].trim())) {
     if (state.question?.id === event.questionId || state.pending?.id === event.questionId) return state;
     return { ...state, pending: { id: event.questionId, text: event['text'], labels: event.labels } };

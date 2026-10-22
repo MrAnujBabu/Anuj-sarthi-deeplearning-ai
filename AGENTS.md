@@ -13,6 +13,8 @@
 - Admin device recovery exports only app memory/settings, validates and merges restores, clears only unchanged backed-up text rows; never resets file entries, accounts or AI pause.
 - Admin documents keep extracted text by default; originals upload only when retained or needed, temp uploads always cleaned (limits Cloud growth).
 - Voice quizzes own a scrollable reading area and separate conversation view; call controls stay outside to prevent overlap.
+- Voice/audio and attachment creation settings stay locked during calls; validated teaching toggles and backend model preferences update through app.settings on the same session without hangups or paid replacements.
+- Quiz ON during a text answer queues one start until successful readiness; OFF cancels the queue, while Search applies to subsequent requests.
 - Sidebar collapse stays inside DoubtSidebar with a visible reopen control; composer uses fixed-size AI Elements buttons and a two-track footer to prevent overlap.
 - SnapSolve stays at repo root, Python under legacy/, for correct hosting detection.
 - Separate hosting configs; encrypt Vercel secrets, redeploy after moves. Vercel live voice uses the published Lovable relay; serverless cannot hold calls.

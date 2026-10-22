@@ -156,6 +156,9 @@ export function useLiveVoice(
   const sendText = useCallback((text: string, id: string) => {
     return controller.current?.sendText(text, id) ?? false;
   }, []);
+  const updateSettings = useCallback((prefs: Record<string, unknown>) => {
+    return controller.current?.updateSettings(prefs) ?? false;
+  }, []);
   // A live stream always plays at 1× in the browser, so speed is the tutor's
   // own speaking pace: sent at call start and updated mid-call without reconnecting.
   // Returns true when a connected call picked up the change right away.
@@ -167,7 +170,7 @@ export function useLiveVoice(
     return controller.current?.setSpeed(next) ?? false;
   }, []);
 
-  return { ...call, rate, audioRef, start, stop, setMuted, setPaused, resumePlayback, submitAnswer, sendText, setRate };
+  return { ...call, rate, audioRef, start, stop, setMuted, setPaused, resumePlayback, submitAnswer, sendText, setRate, updateSettings };
 }
 
 type LiveOptions = {
@@ -233,7 +236,7 @@ function createLiveVoice(options: LiveOptions) {
   let offer: string | undefined;
   let startSent = false;
   let prepareSent = false;
-  let capabilities = { prepare: false, speed: false, chat: false };
+  let capabilities = { prepare: false, speed: false, chat: false, settings: false };
   let began = 0;
   const timings: Partial<Record<"mic" | "socket" | "offer" | "answer" | "media", number>> = {};
   const mark = (step: keyof typeof timings) => { timings[step] ??= Math.round(performance.now() - began); };
@@ -544,7 +547,7 @@ function createLiveVoice(options: LiveOptions) {
       try {
         const event: LiveEvent = JSON.parse(data);
         if (event.type === "app.capabilities") {
-          capabilities = { prepare: event["prepare"] === true, speed: event["speed"] === true, chat: event["chat"] === true };
+          capabilities = { prepare: event["prepare"] === true, speed: event["speed"] === true, chat: event["chat"] === true, settings: event["settings"] === true };
           // The relay starts its checks and Gateway connection while the offer is still being prepared.
           if (capabilities.prepare && !startSent && !prepareSent && starting()) {
             prepareSent = true;
@@ -687,5 +690,11 @@ function createLiveVoice(options: LiveOptions) {
     catch { fail("The quiz answer could not be sent."); return false; }
   }
 
-  return { start, stop, setMuted, setPaused, resumePlayback, submitAnswer, sendText, setSpeed };
+  function updateSettings(prefs: Record<string, unknown>) {
+    if (state !== "active" || !capabilities.settings || socket?.readyState !== WebSocket.OPEN) return false;
+    try { send({ type: "app.settings", prefs }); return true; }
+    catch { return false; }
+  }
+
+  return { start, stop, setMuted, setPaused, resumePlayback, submitAnswer, sendText, setSpeed, updateSettings };
 }

@@ -34,6 +34,7 @@ import { extractQuizOptions } from "@/lib/quiz-options";
 import { emphasizeQuizQuestion } from "@/lib/quiz-emphasis";
 import { DOC_RE, pdfsToText } from "@/lib/pdf-text";
 import { readDeviceFlag, useAutoVerify, useBoldQuestions, useHideChatWidget, useHideTopBar, useStudyTextSize } from '@/lib/quiz-label-preference';
+import { useQuizStart } from '@/hooks/use-quiz-start';
 
 export const Route = createFileRoute("/doubt/$threadId")({
   head: () => ({
@@ -160,10 +161,13 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
     const rag = text ? await buildRagContext(text, prevText) : "";
     return rawSend(msg, { body: { mode, model, effort, search, ...(rag ? { rag } : {}) } });
   };
+  const requestQuizStart = useQuizStart(status === 'ready' && !reading && settingsReady, () => {
+    void sendMessage({ text: "Quiz mode ON — is topic par mujhse NEET practice questions poochho." }, "quiz");
+  });
   const toggleQuiz = (on: boolean) => {
     setQuiz(on);
     localStorage.setItem(quizKey, on ? "1" : "0");
-    if (on && !busy) sendMessage({ text: "Quiz mode ON — is topic par mujhse NEET practice questions poochho." }, "quiz");
+    requestQuizStart(on);
   };
   useEffect(() => {
     const pending = pendingFirstMessage.get(threadId);
