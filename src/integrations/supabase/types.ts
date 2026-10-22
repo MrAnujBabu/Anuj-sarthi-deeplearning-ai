@@ -152,6 +152,268 @@ export type Database = {
         }
         Relationships: []
       }
+      vedantu_class_notes: {
+        Row: {
+          created_at: string
+          fetched_at: string
+          markdown: string
+          sections: number
+          session_id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          fetched_at?: string
+          markdown?: string
+          sections?: number
+          session_id: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          fetched_at?: string
+          markdown?: string
+          sections?: number
+          session_id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      vedantu_classes: {
+        Row: {
+          attended_seconds: number
+          batch_id: string
+          chapter: string
+          created_at: string
+          description: string
+          ends_at: string | null
+          enrollment_id: string
+          has_notes_pdf: boolean
+          has_smart_notes: boolean
+          session_id: string
+          starts_at: string | null
+          subject: string
+          teacher: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          attended_seconds?: number
+          batch_id?: string
+          chapter?: string
+          created_at?: string
+          description?: string
+          ends_at?: string | null
+          enrollment_id: string
+          has_notes_pdf?: boolean
+          has_smart_notes?: boolean
+          session_id: string
+          starts_at?: string | null
+          subject?: string
+          teacher?: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          attended_seconds?: number
+          batch_id?: string
+          chapter?: string
+          created_at?: string
+          description?: string
+          ends_at?: string | null
+          enrollment_id?: string
+          has_notes_pdf?: boolean
+          has_smart_notes?: boolean
+          session_id?: string
+          starts_at?: string | null
+          subject?: string
+          teacher?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vedantu_classes_enrollment_id_fkey"
+            columns: ["enrollment_id"]
+            isOneToOne: false
+            referencedRelation: "vedantu_courses"
+            referencedColumns: ["enrollment_id"]
+          },
+        ]
+      }
+      vedantu_courses: {
+        Row: {
+          banner_url: string | null
+          batches: Json
+          bundle_id: string
+          classroom_id: string
+          course_type: string
+          created_at: string
+          enrollment_id: string
+          language: string
+          last_accessed_at: string | null
+          stats: Json
+          status: string
+          synced_at: string | null
+          title: string
+          updated_at: string
+          valid_till: string | null
+        }
+        Insert: {
+          banner_url?: string | null
+          batches?: Json
+          bundle_id: string
+          classroom_id: string
+          course_type?: string
+          created_at?: string
+          enrollment_id: string
+          language?: string
+          last_accessed_at?: string | null
+          stats?: Json
+          status?: string
+          synced_at?: string | null
+          title: string
+          updated_at?: string
+          valid_till?: string | null
+        }
+        Update: {
+          banner_url?: string | null
+          batches?: Json
+          bundle_id?: string
+          classroom_id?: string
+          course_type?: string
+          created_at?: string
+          enrollment_id?: string
+          language?: string
+          last_accessed_at?: string | null
+          stats?: Json
+          status?: string
+          synced_at?: string | null
+          title?: string
+          updated_at?: string
+          valid_till?: string | null
+        }
+        Relationships: []
+      }
+      vedantu_sync_state: {
+        Row: {
+          counts: Json
+          created_at: string
+          finished_at: string | null
+          id: string
+          lease_id: string | null
+          lease_until: string | null
+          message: string
+          started_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          counts?: Json
+          created_at?: string
+          finished_at?: string | null
+          id?: string
+          lease_id?: string | null
+          lease_until?: string | null
+          message?: string
+          started_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          counts?: Json
+          created_at?: string
+          finished_at?: string | null
+          id?: string
+          lease_id?: string | null
+          lease_until?: string | null
+          message?: string
+          started_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      vedantu_tests: {
+        Row: {
+          attempted_at: string | null
+          closes_at: string | null
+          content_id: string
+          content_state: string
+          created_at: string
+          duration_minutes: number | null
+          enrollment_id: string
+          marks: number | null
+          opens_at: string | null
+          questions: number | null
+          result_at: string | null
+          result_url: string | null
+          series: string
+          status: string
+          subjects: string[]
+          test_id: string
+          test_url: string | null
+          title: string
+          total_marks: number | null
+          updated_at: string
+        }
+        Insert: {
+          attempted_at?: string | null
+          closes_at?: string | null
+          content_id: string
+          content_state?: string
+          created_at?: string
+          duration_minutes?: number | null
+          enrollment_id: string
+          marks?: number | null
+          opens_at?: string | null
+          questions?: number | null
+          result_at?: string | null
+          result_url?: string | null
+          series?: string
+          status?: string
+          subjects?: string[]
+          test_id?: string
+          test_url?: string | null
+          title?: string
+          total_marks?: number | null
+          updated_at?: string
+        }
+        Update: {
+          attempted_at?: string | null
+          closes_at?: string | null
+          content_id?: string
+          content_state?: string
+          created_at?: string
+          duration_minutes?: number | null
+          enrollment_id?: string
+          marks?: number | null
+          opens_at?: string | null
+          questions?: number | null
+          result_at?: string | null
+          result_url?: string | null
+          series?: string
+          status?: string
+          subjects?: string[]
+          test_id?: string
+          test_url?: string | null
+          title?: string
+          total_marks?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vedantu_tests_enrollment_id_fkey"
+            columns: ["enrollment_id"]
+            isOneToOne: false
+            referencedRelation: "vedantu_courses"
+            referencedColumns: ["enrollment_id"]
+          },
+        ]
+      }
       voice_calls: {
         Row: {
           accent: string

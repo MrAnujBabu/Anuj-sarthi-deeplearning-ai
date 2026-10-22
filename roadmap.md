@@ -15,3 +15,5 @@
 - [ ] Restore DB export (waiting on user)
 - [ ] Live tests (real voice call, quiz, PDF quiz, read-aloud) after data restore
 - [x] Screen-lock call hold raised to 2 hours; quiz prev/next; Notion Toggle MCQ export; live Hindi dictation tested
+- [ ] Voice call real-phone test (blocked: needs user's phone; sandbox has no WebRTC)
+- [ ] New workspace: re-link integrations (GitHub API, then others) from scratch
