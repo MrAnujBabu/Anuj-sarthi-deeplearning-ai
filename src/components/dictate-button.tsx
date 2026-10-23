@@ -24,48 +24,12 @@ export function DictateButton({ disabled }: { disabled?: boolean }) {
   useEffect(() => { mounted.current = true; return () => {
     mounted.current = false; rec.current?.cancel(); controller.current?.abort();
   }; }, []);
-  // Live mode: text committed so far, the in-flight segment queue, and the composer prefix.
-  const live = useRef<{ prefix: string; done: string; queue: Promise<void>; textarea?: HTMLTextAreaElement | null | undefined; abort: AbortController; failed?: string | undefined } | null>(null);
   useEffect(() => {
     if (state !== 'rec') return;
     const started = Date.now();
-    const timer = setInterval(() => {
-      setSecs(Math.floor((Date.now() - started) / 1000));
-      const r = rec.current, l = live.current;
-      if (!r || !l) return;
-      // Cut on a natural pause (≥1.5 s spoken) or force a cut every 6 s so words appear while speaking.
-      const p = r.pending();
-      if ((p >= 1.5 && r.level() < 0.02) || p >= 6) { const f = r.take(); if (f) enqueue(f); }
-    }, 250);
-    // Screen lock / app switch: send what was said so far right away, keep recording if the phone allows.
-    const onHide = () => { if (document.visibilityState === 'hidden') { const f = rec.current?.take(); if (f) enqueue(f); } };
-    document.addEventListener('visibilitychange', onHide);
-    return () => { clearInterval(timer); document.removeEventListener('visibilitychange', onHide); };
+    const timer = setInterval(() => setSecs(Math.floor((Date.now() - started) / 1000)), 250);
+    return () => clearInterval(timer);
   }, [state]);
-
-  const show = (partial = '') => {
-    const l = live.current; if (!l?.textarea || !mounted.current || l.abort.signal.aborted) return;
-    const joined = [l.done, partial].filter(Boolean).join(' ');
-    setTextarea(l.textarea, l.prefix + joined);
-  };
-  const enqueue = (file: File) => {
-    const l = live.current; if (!l) return;
-    l.queue = l.queue.then(async () => {
-      if (l.abort.signal.aborted || l.failed) return;
-      try {
-        const body = new FormData(); body.append('file', file);
-        const response = await fetch('/api/transcribe', { method: 'POST', body, signal: l.abort.signal });
-        const text = await readTranscript(response, t => show(t.trim()));
-        l.done = [l.done, text].filter(Boolean).join(' ');
-        show();
-      } catch (e) {
-        if (l.abort.signal.aborted) return;
-        const message = e instanceof Error ? e.message : 'Voice typing failed.';
-        if (/samajh nahi aaya/i.test(message)) { show(); return; } // silent / noise-only segment
-        l.failed = message;
-      }
-    });
-  };
 
   const start = async () => {
     if (!navigator.mediaDevices?.getUserMedia) { toast.error('Is browser mein mic support nahi hai.'); return; }
@@ -73,10 +37,6 @@ export function DictateButton({ disabled }: { disabled?: boolean }) {
     try {
       const recording = await recordWav();
       if (!mounted.current) { recording.cancel(); return; }
-      const textarea = btn.current?.closest('form')?.querySelector('textarea');
-      const original = textarea?.value || '';
-      const abort = new AbortController(); controller.current = abort;
-      live.current = { prefix: original && !/\s$/.test(original) ? original + ' ' : original, done: '', queue: Promise.resolve(), textarea, abort };
       rec.current = recording; setSecs(0); setState('rec');
     } catch (e) {
       if (!mounted.current) return;
@@ -86,26 +46,31 @@ export function DictateButton({ disabled }: { disabled?: boolean }) {
   };
   const cancel = () => {
     rec.current?.cancel(); rec.current = null;
-    if (live.current?.textarea) setTextarea(live.current.textarea, live.current.prefix.trimEnd());
-    controller.current?.abort(); controller.current = null; live.current = null; setState('idle');
+    controller.current?.abort(); controller.current = null; setState('idle');
   };
   const stop = async () => {
-    const recording = rec.current, l = live.current;
-    if (!recording || !l) return;
-    rec.current = null; setState('busy');
+    const recording = rec.current;
+    if (!recording) return;
+    rec.current = null;
+    const textarea = btn.current?.closest('form')?.querySelector('textarea');
+    const original = textarea?.value || '';
+    const prefix = original && !/\s$/.test(original) ? original + ' ' : original;
+    const abort = new AbortController(); controller.current = abort; setState('busy');
     try {
-      const rest = await recording.finish();
-      if (rest) enqueue(rest);
-      await l.queue;
-      if (l.abort.signal.aborted || !mounted.current) return;
-      if (l.failed) {
-        if (isCreditError(l.failed)) setCreditError(displayAiError(l.failed));
-        toast.error(displayAiError(l.failed));
-      } else if (!l.done) toast.error('Kuch samajh nahi aaya — dobara bolo.');
-      const textarea = l.textarea;
-      if (textarea) { textarea.focus(); textarea.setSelectionRange(textarea.value.length, textarea.value.length); }
+      const file = await recording.stop();
+      const body = new FormData(); body.append('file', file);
+      const response = await fetch('/api/transcribe', { method: 'POST', body, signal: abort.signal });
+      await readTranscript(response, text => {
+        if (textarea && mounted.current && !abort.signal.aborted) setTextarea(textarea, prefix + text);
+      });
+      if (textarea && mounted.current) { textarea.focus(); textarea.setSelectionRange(textarea.value.length, textarea.value.length); }
+    } catch (e) {
+      if (abort.signal.aborted || !mounted.current) return;
+      const message = e instanceof Error ? e.message : 'Voice typing failed.';
+      if (isCreditError(message)) setCreditError(displayAiError(message));
+      toast.error(displayAiError(message));
     } finally {
-      if (controller.current === l.abort) { controller.current = null; live.current = null; if (mounted.current) setState('idle'); }
+      if (controller.current === abort) { controller.current = null; if (mounted.current) setState('idle'); }
     }
   };
   useEffect(() => { if (state === 'rec' && secs >= 600) void stop(); }, [secs, state]);

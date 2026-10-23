@@ -2,7 +2,7 @@
 - [x] Quiz ON queues during answers; voice teaching toggles update the same session; premium Opus 5.5 + high reasoning verified with real tutor and next-MCQ calls, browser quiz and regression tests
 - [ ] Audible two-way voice and in-call teaching toggle verification (requires real microphone/speaker conversation; simulated session/UI and real delegated tutor verified)
 - [x] Prevent settings-driven voice endings and automatic paid replacements; retain service/network safety cleanup (12 safeguard tests passed)
-- [ ] New workspace: GitHub API awaits project-owner Can use access; Firecrawl, Parallel and Perplexity linked
+- [x] New workspace: GitHub API re-linked (fresh connection, commit 8bdb9088 pushed); Firecrawl, Parallel and Perplexity linked
 - [ ] External Supabase is linked; My Personal Agent display name awaits confirmation in Project Settings
 - [x] Link GitHub, Firecrawl, Parallel, Perplexity
 - [x] Copy code from GitHub repo and check preview
@@ -14,7 +14,11 @@
 - [x] Prompt updated: voice-credits-pause-fix-prompt.md (Case A credits, Case B not-registered)
 - [ ] Restore DB export (waiting on user)
 - [ ] Live tests (real voice call, quiz, PDF quiz, read-aloud) after data restore
-- [x] Screen-lock call hold raised to 2 hours; quiz prev/next; Notion Toggle MCQ export; live Hindi dictation tested
-- [ ] Voice call real-phone test (blocked: needs user's phone; sandbox has no WebRTC)
-- [x] New workspace: GitHub API re-linked (connection created in this workspace)
-- [ ] New workspace: re-link remaining integrations (database, search tools) from scratch
+- [x] Workspace move (Oct 22): Firecrawl, GitHub API, Parallel, Perplexity freshly linked
+- [x] Workspace move (Oct 22, second): Firecrawl, GitHub API, Parallel, Perplexity re-linked
+- [x] Supabase (ref dsazygocmjgjfqkqkwcp) still connected: 1 user, 1 admin, 94 memory items, 10 voice calls
+- [x] Vedantu login saved securely; direct server login works (no OTP); 9 courses visible
+- [x] Vedantu sync: all My Courses batches, schedule, tests, performance available to the agent (backend + Mera Batch page)
+- [x] Vedantu lecture notes PDFs (prod-recordings.vedantu.com/NOTES/...) readable by the agent (smart notes cached, PDF URL pattern confirmed)
+- [ ] Mera Batch page in-app verification (sync run, notes fetch, padhao/quiz buttons) with real admin session
+- [ ] Batch chooser + mistake tracker (plan drafted)

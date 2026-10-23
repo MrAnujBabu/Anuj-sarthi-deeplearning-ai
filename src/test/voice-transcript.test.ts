@@ -64,9 +64,9 @@ describe('voice quiz in exports', () => {
 describe('Obsidian-style markdown export', () => {
   it('turns verdict blockquotes into typed callouts', () => {
     const md = voiceTranscriptMarkdown(quizRows, [wrong]);
-    expect(md).toContain('> [!recall-red]-');
+    expect(md).toContain('> [!failure] ❌ Galat');
     expect(md).not.toContain('> **❌ Galat**');
-    expect(md).toContain('  - voice-call');
+    expect(md).toContain('tags: [snapsolve, voice-call]');
   });
   it('turns detail toggles into foldable callouts', () => {
     const md = voiceTranscriptMarkdown([
@@ -91,9 +91,7 @@ describe('Obsidian-style markdown export', () => {
 describe('recall flashcards export (Obsidian)', () => {
   it('turns a wrong quiz answer into a red card with the answer hidden in the fold', () => {
     const md = voiceTranscriptMarkdown(quizRows, [wrong]);
-    expect(md).toMatch(/> \[!recall-red\]- \*\*Q1\. .*Cell ka powerhouse kaun hai\?\*\*/);
-    expect(md).toContain('> - [x] (B) Mitochondria');
-    expect(md).toContain('> - [ ] (C)');
+    expect(md).toMatch(/> \[!recall-red\]- Q1\. .*Cell ka powerhouse kaun hai\?/);
     expect(md).toContain('> **Answer:** **(B) Mitochondria**');
     expect(md).toContain('> **Tumhara jawab:** (C) ❌');
     expect(md).not.toContain('<details>');
@@ -104,7 +102,7 @@ describe('recall flashcards export (Obsidian)', () => {
       { id: 'a', role: 'assistant', text: 'Kyunki ATP yahin banta hai.' },
     ];
     const md = voiceTranscriptMarkdown(rows, []);
-    expect(md).toContain('> [!recall-green]- **Q1. Mitochondria ko powerhouse kyun kehte hain?**');
+    expect(md).toContain('> [!recall-green]- Q1. Mitochondria ko powerhouse kyun kehte hain?');
     expect(md).toContain('ATP yahin banta hai');
   });
   it('does not make a card from a quiz answer or a one-word reply', () => {

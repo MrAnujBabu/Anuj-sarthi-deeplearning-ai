@@ -149,7 +149,7 @@ export function validateLiveUpgrade(request: Request, options: { allowMissingOri
 }
 
 /** A phone that reports its screen off gets its paid call held only this long. */
-export const BACKGROUND_GRACE_MS = 2 * 60 * 60_000;
+export const BACKGROUND_GRACE_MS = 180_000;
 
 /** True once a screen-off hold has run past its grace and the call must end. */
 export function backgroundHoldExpired(backgroundedAt: number, now: number): boolean {

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import { ArrowLeft, Download, Eye, EyeOff, FileDown, FileText, FileType, Gauge, GraduationCap, Globe, Maximize2, MessageSquare, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, SendHorizontal, Upload, Volume2, X, SlidersHorizontal, Timer, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Download, Eye, EyeOff, FileDown, FileText, FileType, Gauge, GraduationCap, Globe, Maximize2, MessageSquare, Mic, MicOff, Minimize2, Paperclip, Pause, PhoneOff, Phone, SendHorizontal, Upload, Volume2, X, SlidersHorizontal, Timer, Play } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -247,13 +247,6 @@ function LiveVoicePage() {
   const quizVisible = quiz && !!(question || pending);
   const showQuestion = quizVisible && quizView === 'question' && !zen;
   const displayedQuestion = pending ?? question;
-  // Browse earlier quiz questions (read-only) without disturbing the live one; null = live question.
-  const [browseIdx, setBrowseIdx] = useState<number | null>(null);
-  const liveIdx = displayedQuestion ? quizLog.findIndex((q) => q.id === displayedQuestion.id) : -1;
-  const lastIdx = liveIdx >= 0 ? liveIdx : quizLog.length;
-  const reviewed = browseIdx !== null && browseIdx < lastIdx ? quizLog[browseIdx] : undefined;
-  useEffect(() => { setBrowseIdx(null); }, [displayedQuestion?.id]);
-  const shownIdx = reviewed ? browseIdx! : lastIdx;
 
   useEffect(() => {
     if (pending?.id || question?.id) setQuizView('question');
@@ -448,16 +441,6 @@ function LiveVoicePage() {
       {quizVisible && displayedQuestion && (zen || showQuestion) && <section className={`voice-quiz study-text study-text-${textSize} min-h-0 flex-1 flex-col py-3 flex`} aria-label="Voice quiz">
         <div ref={questionScrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain rounded-lg border bg-card p-3 sm:p-4">
           {pending && <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 border-b pb-2 text-xs text-muted-foreground" role="status"><span className="inline-flex min-w-0 items-center gap-1"><Timer className="size-3.5 shrink-0" />Next question · listening</span><Button size="icon" variant="outline" className="size-11 shrink-0" aria-label="Show question and start timer" title="Show question and start timer" disabled={!live || voice.playbackBlocked} onClick={() => dispatchQuiz({ type: 'app.quiz.manual.ready', questionId: pending.id })}><Play className="size-4" /></Button></div>}
-          {lastIdx > 0 && <div className="mb-3 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 border-b pb-2 text-xs text-muted-foreground">
-            <Button size="icon" variant="outline" className="size-11" aria-label="Previous question" disabled={shownIdx <= 0} onClick={() => setBrowseIdx(shownIdx - 1)}><ChevronLeft className="size-4" /></Button>
-            <span className="truncate text-center tabular-nums">{reviewed ? `Sawal ${shownIdx + 1} / ${lastIdx + 1} · purana` : `Sawal ${lastIdx + 1} · abhi wala`}</span>
-            <Button size="icon" variant="outline" className="size-11" aria-label="Next question" disabled={!reviewed} onClick={() => setBrowseIdx(shownIdx + 1 >= lastIdx ? null : shownIdx + 1)}><ChevronRight className="size-4" /></Button>
-          </div>}
-          {reviewed ? <div className="min-w-0 break-words pb-3 text-foreground" aria-label="Previous quiz question">
-            <AssistantAnswer text={formatVoiceReply(reviewed.text, { options: false, feedbackToggle: true })} isAnimating={false} compact boldQuestion />
-            <ul className="mt-3 space-y-2">{Object.entries(reviewed.labels).map(([k, v]) => <li key={k} className={cn("rounded-md border px-3 py-2", reviewed.answer === k && "border-primary bg-primary/10")}><b>{k}.</b> {v}{reviewed.answer === k && " · aapka jawab"}</li>)}</ul>
-            {!reviewed.answer && <p className="mt-2 text-muted-foreground">Is sawal ka jawab nahi diya.</p>}
-          </div> : <>
           <div className="voice-caption min-w-0 break-words pb-3 text-foreground" aria-label="Current quiz question"><AssistantAnswer text={formatVoiceReply(displayedQuestion.text, { options: false, feedbackToggle: true })} isAnimating={false} compact boldQuestion /></div>
         <QuizActions key={displayedQuestion.id} answersOnly timed timerPaused={!!pending || !quizState.ready || voice.playbackBlocked} retryKey={quizRetry} options={VOICE_ANSWERS} labels={displayedQuestion.labels} questionKey={displayedQuestion.id} selectedAnswer={pending || picked === VOICE_SKIP ? undefined : picked} disabled={!live || thinking || !!picked || !!pending} onSend={(answer) => {
           if (!question || !voice.submitAnswer(answer, question.id)) { toast.error("Start a connected call before answering."); return false; }
@@ -465,7 +448,7 @@ function LiveVoicePage() {
           setThinking(true);
           setQuizView('conversation');
           return true;
-        }} /></>}
+        }} />
         </div>
       </section>}
 

@@ -31,7 +31,7 @@
 - Agent memory lives in Cloud table memory_items, editable only by admins (has_role); /api/chat ranks active chapter outlines against bounded recent context, excludes unmatched chapters, injects size-capped memory so follow-ups keep context.
 - Chat exports Obsidian markdown/zipped notes; attachments stay placeholders, never data URLs. Voice .md: Obsidian callouts/folds, Word/PDF plain.
 - `web_search` (Perplexity + Parallel, URL-deduped) exists only when the client sends `search: true`; quiz mode gets a stricter search note.
-- Dictation records 16 kHz WAV, cuts live segments on pauses (max 6 s) transcribed in order, only via `/api/transcribe` (SSE forwarded unchanged, shared parser, no timeout retries); text lands in composer for review; voice/dictation share noise-filter settings and transcript cleanup.
+- Dictation records 16 kHz WAV and transcribes only via `/api/transcribe` (SSE forwarded unchanged, shared parser, no timeout retries); text lands in composer for review; voice/dictation share noise-filter settings and transcript cleanup.
 - Student links use Parallel extraction with Firecrawl fallback and explicit empty/truncated results, so answers never claim to have read an unavailable page.
 - Browser quota failures keep prior threads and report a save failure; media cleanup swaps attachments for markers, clearing IndexedDB only after thread cleanup (answers/cards kept).
 - Admin link reads reuse the bounded student reader; files are content-addressed and memory saves dedupe by content/normalized URL.

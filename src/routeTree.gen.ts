@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BatchRouteImport } from './routes/batch'
 import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as VoiceRouteImport } from './routes/voice'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BatchRoute = BatchRouteImport.update({
+  id: '/batch',
+  path: '/batch',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PracticeRoute = PracticeRouteImport.update({
@@ -74,6 +80,7 @@ const DoubtThreadIdRoute = DoubtThreadIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/batch'
     | '/practice'
     | '/voice'
     | '/api/chat'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/batch'
     | '/practice'
     | '/voice'
     | '/api/chat'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/batch'
     | '/practice'
     | '/voice'
     | '/api/chat'
@@ -150,6 +162,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  BatchRoute: typeof BatchRoute
   PracticeRoute: typeof PracticeRoute
   VoiceRoute: typeof VoiceRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/batch': {
+      id: '/batch'
+      path: '/batch'
+      fullPath: '/batch'
+      preLoaderRoute: typeof BatchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/practice': {
@@ -238,6 +258,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  BatchRoute: BatchRoute,
   PracticeRoute: PracticeRoute,
   VoiceRoute: VoiceRoute,
   ApiChatRoute: ApiChatRoute,

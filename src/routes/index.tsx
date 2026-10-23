@@ -57,7 +57,8 @@ function Index() {
             <MobileStudyMenu/>
             <Button variant="secondary" size="sm" className="rounded-full">Chat</Button>
             <Button variant="ghost" size="sm" className="hidden rounded-full sm:inline-flex" disabled title="Background connection required">Cowork · unavailable</Button>
-            <Button variant="ghost" size="sm" asChild className="ml-auto shrink-0 rounded-full"><Link to="/practice">Saved practice</Link></Button>
+            <Button variant="ghost" size="sm" asChild className="ml-auto hidden shrink-0 rounded-full sm:inline-flex"><Link to="/batch">Mera Batch</Link></Button>
+            <Button variant="ghost" size="sm" asChild className="ml-auto shrink-0 rounded-full sm:ml-0"><Link to="/practice">Saved practice</Link></Button>
           </div>
           <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground"><Sparkles className="size-5 text-primary"/>NEET 2027 · NCERT Class 11 & 12</div>
           <h1 className="font-display text-3xl font-medium leading-tight md:text-5xl">SnapSolve, your study companion.</h1>
