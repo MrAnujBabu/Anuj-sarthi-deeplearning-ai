@@ -1,0 +1,27 @@
+name: Vedantu daily sync
+on:
+  schedule:
+    - cron: '30 18 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: vedantu-daily-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - name: Sync private Vedantu mirror
+        run: bun scripts/sync-vedantu.ts
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          VEDANTU_LOGIN_ID: ${{ secrets.VEDANTU_LOGIN_ID }}
+          VEDANTU_PASSWORD: ${{ secrets.VEDANTU_PASSWORD }}
