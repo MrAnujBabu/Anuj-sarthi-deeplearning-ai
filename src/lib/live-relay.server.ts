@@ -15,6 +15,7 @@ import { createNcertDeck, ncertDeckPrompt } from "@/lib/ncert-biology-bank";
 import { paceInstruction, paceUpdate, voiceSpeed, type VoiceSpeed } from "@/lib/voice-speed";
 import { voiceChatText } from "@/lib/voice-chat";
 import { INDIAN_TEACHER_DELIVERY } from '@/lib/teacher-voice-style';
+import { VOICE_TABLE_GUIDANCE } from '@/lib/voice-table';
 
 export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; context: string; documents: VoiceDocument[]; speed: VoiceSpeed; model?: string | undefined; effort: Effort };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
@@ -192,7 +193,7 @@ export function handleLiveRequest(request: Request): Response {
 const conversationInstructions = `You are SnapSolve, a warm NEET 2027 tutor for an Indian student.
 Language: Speak natural Hinglish (Hindi + English mix, Roman-style Indian accent). If the student speaks pure English or pure Hindi, match them.
 Speak in short, clear spoken sentences. Never read out formulas symbol by symbol; say them the way a teacher explains aloud.
-Structure: For answers with multiple points, speak them as a numbered sequence ("Pehla …, doosra …, teesra …") so the on-screen transcript shows a clean numbered list; for comparisons, speak them as "Column I … Column II …" pairs so the transcript shows a table; for a longer deep-dive, start it with "Detail mein: …" so the transcript shows it as a collapsible toggle the student can open when revising.
+Structure: For answers with multiple points, speak them as a numbered sequence ("Pehla …, doosra …, teesra …") so the on-screen transcript shows a clean numbered list. ${VOICE_TABLE_GUIDANCE} Match-the-column quizzes still use "Column I … Column II …". For a longer deep-dive, start it with "Detail mein: …" so the transcript shows it as a collapsible toggle.
 Backchannel policy: Use light listening sounds without taking over.
 Interruption policy: Stop your answer and listen when the student interrupts.
 Delegation policy:
@@ -200,7 +201,8 @@ Backend tools: A careful NEET tutor (Physics, Chemistry, Biology from NCERT) tha
 Delegate to the backend when: The student asks any concept, doubt, numerical, MCQ, NCERT fact, revision or study-plan question,
 or a correction changes a question already being worked on.
 Do not delegate to the backend when: Greeting, small talk, clarifying the question, or repeating a still-current answer.
-Wait for the backend result before presenting its answer, then explain it conversationally.`;
+Wait for the backend result before presenting its answer, then explain it conversationally.
+Tables: whenever the backend answer contains a "Table: … Table khatam." or "Tulna: … Tulna khatam." block, speak that block word for word, one row per sentence, including the opening and "khatam" lines; never paraphrase, merge or skip its rows, because the screen builds the table from exactly those words. If the student asks for a table and the backend gave none, speak one yourself in the same pattern.`;
 
 const studyScheduleInput = z
   .object({
@@ -298,7 +300,7 @@ export async function answerQuestion(
     },
     system:
       "Help a spoken NEET 2027 tutor answer the latest student question (Physics, Chemistry, Biology; follow NCERT). " +
-      "Reply in the student's language (Hinglish by default), written for speaking aloud: no tables, no LaTeX, no markdown. " +
+      "Reply in the student's language (Hinglish by default), written for speaking aloud: no LaTeX, no markdown symbols. " + VOICE_TABLE_GUIDANCE + " " +
       "When listing multiple points, phrase them as 'Pehla …, doosra …, teesra …' so they can be shown as a numbered list. " +
       "For a longer deep-dive, start it with 'Detail mein: …' so it can be shown as a collapsible section. " +
       "Transcripts may be incomplete or corrected. Use the latest correction. " +

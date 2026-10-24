@@ -1,4 +1,5 @@
 import { chapterLabel, takeChapter } from "@/lib/ncert-biology";
+import { dynamicVoiceTable, spokenTableColumns } from "@/lib/voice-table";
 
 /**
  * Turn a spoken tutor reply (one long run-on paragraph) into structured study notes:
@@ -48,6 +49,8 @@ function format(raw: string): string {
   }
   let t = raw.replace(/\s+/g, " ").trim();
   if (!t) return t;
+  const cmp = comparisonTable(t);
+  if (cmp) return [cmp.before && format(cmp.before), cmp.table, cmp.after && format(cmp.after)].filter(Boolean).join("\n\n");
   t = stripFillers(t);
   t = spokenOptions(t);
 
@@ -275,4 +278,52 @@ function buildTable(t: string, m: RegExpMatchArray): string {
   const roman = ["i", "ii", "iii", "iv"];
   const rows = left.map((l, k) => `| ${"abcd"[k]}. ${l} | ${roman[k]}. ${right[k]} |`).join("\n");
   return t.replace(m[0], `\n\n| Column I | Column II |\n|---|---|\n${rows}\n\n`);
+}
+
+/**
+ * Spoken comparison → markdown table.
+ * "Tulna: Mitosis aur Meiosis. Cells — Mitosis: 2, Meiosis: 4. Division — Mitosis: ek baar, Meiosis: do baar. Tulna khatam."
+ * Needs at least two rows whose cells name every compared item; otherwise the text stays prose.
+ */
+export function comparisonTable(t: string): { before: string; table: string; after: string } | null {
+  const dynamic = dynamicVoiceTable(t);
+  if (dynamic) return dynamic;
+  const head = t.match(/\b(?:Tulna|Comparison|Table)\s*:\s*([^.:]+?)\s*\./i);
+  if (!head || head.index === undefined) return null;
+  const cols = spokenTableColumns(head[1] ?? "");
+  if (cols.length < 2) return null;
+  const rest = t.slice(head.index + head[0].length);
+  const endM = rest.match(/\b(?:Tulna|Comparison|Table)\s+(?:khatam|end|over)\b[.!]?/i);
+  const body = endM?.index !== undefined ? rest.slice(0, endM.index) : rest;
+  const after = endM?.index !== undefined ? rest.slice(endM.index + endM[0].length).trim() : "";
+  const esc = (s: string) => s.replace(/\|/g, "/").trim();
+  const rows: string[][] = [];
+  let tail = "";
+  let plain: boolean | null = null; // plain rows: "Skull — 22 bones." fill the named columns directly
+  const q = (x: string) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  for (const sentence of body.split(/(?<=[.;])\s+/)) {
+    const s = sentence.trim().replace(/[.;]\s*$/, "");
+    const m = s.match(/^([^—–:]+?)\s+[—–-]\s+(.+)$/);
+    let row: string[] | null = null;
+    if (m && plain !== true) {
+      const cells = cols.map((c) => m[2]?.match(new RegExp(`${q(c)}\\s*:\\s*(.+?)(?=,\\s*(?:${cols.map(q).join("|")})\\s*:|$)`, "i"))?.[1]?.replace(/[,;]\s*$/, "") ?? null);
+      if (cells.every((c) => c)) { row = [m[1] ?? "", ...(cells as string[])]; plain = false; }
+    }
+    if (!row && plain !== false) {
+      // Spoken transcripts may join rows with commas or use "Skull: 22" instead of a dash.
+      const sep = cols.length === 2 ? /\s+[—–-]\s+|\s*:\s+/ : /\s+[—–-]\s+/;
+      const cut = (x: string) => x.split(sep).map((y) => y.trim());
+      const whole = cut(s);
+      const subs = s.split(/,\s+(?=[^,]+?(?:\s+[—–-]\s+|:\s))/).map(cut);
+      const ok = (r: string[]) => r.length === cols.length && r.every(Boolean);
+      if (ok(whole)) { row = whole; plain = true; }
+      else if (subs.length > 1 && subs.every(ok) && !tail) { rows.push(...subs.map((r) => r.map(esc))); plain = true; continue; }
+    }
+    if (row && !tail) rows.push(row.map(esc));
+    else if (s) tail += (tail ? " " : "") + sentence.trim();
+  }
+  if (rows.length < 2) return null;
+  const header = plain ? cols : ["Feature", ...cols];
+  const table = [`| ${header.map(esc).join(" | ")} |`, `|${"---|".repeat(header.length)}`, ...rows.map((r) => `| ${r.join(" | ")} |`)].join("\n");
+  return { before: t.slice(0, head.index).trim(), table, after: [tail, after].filter(Boolean).join(" ").trim() };
 }
