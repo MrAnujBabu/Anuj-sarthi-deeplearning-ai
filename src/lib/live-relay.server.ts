@@ -14,6 +14,7 @@ import { VERCEL_APP_ORIGIN } from '@/lib/live-endpoint';
 import { createNcertDeck, ncertDeckPrompt } from "@/lib/ncert-biology-bank";
 import { paceInstruction, paceUpdate, voiceSpeed, type VoiceSpeed } from "@/lib/voice-speed";
 import { voiceChatText } from "@/lib/voice-chat";
+import { INDIAN_TEACHER_DELIVERY } from '@/lib/teacher-voice-style';
 
 export type CallPrefs = { voice: string; accent: "indian" | "neutral"; quiz: boolean; matchQ: boolean; assertionQ: boolean; deep: boolean; search: boolean; context: string; documents: VoiceDocument[]; speed: VoiceSpeed; model?: string | undefined; effort: Effort };
 const VOICES = new Set(["marin", "meridian", "gleam", "vesper", "willow"]);
@@ -51,7 +52,7 @@ function callInstructions(prefs: CallPrefs) {
     "Audio: Speak clearly at a steady pace. Ignore background noise, whispers, TV or other people's voices; respond only to the student's clear speech. If speech is unclear, briefly ask them to repeat instead of guessing.",
   ];
   if (prefs.accent === "indian")
-    extra.push("Accent: Speak with a natural Indian English accent and Indian pronunciation, like a friendly Indian teacher; never an American accent.");
+    extra.push("Accent: Speak with a natural Indian English accent and Indian pronunciation, like a friendly Indian teacher; never an American accent.", INDIAN_TEACHER_DELIVERY);
   if (prefs.speed !== 1) extra.push(paceInstruction(prefs.speed));
   if (prefs.quiz)
     extra.push("Quiz mode is ON: delegate to the backend to get one NEET MCQ at a time, read the question and options A-D aloud, wait for the student's spoken answer, then delegate again to check it and continue." + quizStyle(prefs));
@@ -487,7 +488,7 @@ export function bindLiveConnection(
   function openingInstructions() {
     return (
       config.openingInstructions ??
-      "When you are told to begin: greet the student briefly in Hinglish as Anuj ka NEET teacher who solves doubts — say something like 'Main Anuj ka NEET teacher hoon, doubts solve karta hoon' — then ask which topic or doubt they want to start with today, then listen."
+      "Shuru karne ko kaha jaaye toh warm Hinglish mein chhota welcome bolo: 'Achha, chalo shuru karte hain. Aaj kaunsa topic ya doubt samajhna hai?' Phir student ko suno; pehle se koi topic ya personal detail assume mat karo."
     ).trim();
   }
 

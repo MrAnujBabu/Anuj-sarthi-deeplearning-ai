@@ -1,9 +1,28 @@
 # Roadmap
+- [x] Oct 24 deep-test checks completed: reproduced asynchronous echo-gate cancellation leaving the sender silent, serialized swaps/recovery, and verified regression; 49 targeted tests passed, build OK. Real browser playback completed two lines per voice: first audio Kore 1273 ms, Aoede 561 ms, Leda 497 ms; this is text-to-audio, not full conversation.
+- [ ] Oct 24 full conversation verification blocked: all three real call attempts reached Gateway session creation then initial_heartbeat_timeout after 12 seconds; patched Kore retest still had peer/ICE state new, no candidate stats, no media readiness or spoken exchange. Local automated playback cannot verify the user's hosted phone disconnect or acoustic echo; needs working WebRTC and same hosted revision/phone path, not another paid automatic call.
+- [x] Reduce avoidable Kore/Aoede/Leda reply latency: immediate completed-thought flushing, bounded look-ahead, scoped cancellation, visible speech errors; six real browser speech runs first audio 576–1020 ms, 20 tests passed, build OK. This measures text-to-audio, not question-to-answer latency.
+- [ ] Resolve reported live connection loss: reproduced 'Voice media did not connect' on real call start; speech endpoint/playback works for all three voices, but media transport did not establish in this environment. No paid automatic reconnect; live two-way result remains blocked on a working media connection.
+- [x] Oct 23 (new workspace): GitHub API re-linked, repo read verified 200; Supabase (ref dsazygocmjgjfqkqkwcp) already linked and live — 94 memory items, 1 profile, 1 role, 10 voice calls, 9 Vedantu courses readable; display name "My Personal Agent" cannot be read from here, user to confirm in Project Settings
+- [x] Restore original continuous live-call page and uncluttered Start/Attach/Settings layout; mobile/desktop browser checked, 14 tests passed; Start still fails media connection after 12 seconds, audible live conversation unverified. Speech voice auditions remain in settings, separate from actual live identity.
+- [ ] Use Kore/Aoede/Leda as continuous live identities (blocked: these Gemini TTS identities are not supported GPT Live voices).
+- [x] Explain changed Voice Mode screenshot: /voice now always renders speak-then-listen TalkVoice instead of the previous LiveVoicePage; no restoration requested yet.
+- [x] Retry uploaded-audio → tutor → spoken-answer flow: transcribe/chat/speech 200, Aoede playback completed (2740 chunks, 2630197 samples), no browser errors; ElevenLabs connection remains unavailable, uploaded speaker cloning blocked.
+- [x] Use selected Kore/Aoede/Leda for new spoken answers; uploaded microphone recording → transcription 200 → tutor 200 → Aoede speech 200 verified. Delivery pause guidance tuned, waveform comparison is not speaker similarity verification.
+- [ ] Make uploaded speakers actual live-call identities and verify end-to-end (blocked: no eligible custom-cloning provider access; current speech uses preset voices, not uploads).
+- [x] Add Kore/Aoede/Leda sample options to the same voice menu in voice/study settings; each selected sample played in browser without changing stored live identity, 3 regression tests passed.
+- [x] Add true Pause/Resume and Replay; Kore/Aoede/Leda passed real browser controls and quality checks, 3 regression tests passed. Kore/Aoede have no near-clipping; Leda has 0.0033% near-clipping. Listening-based realism ranking remains unverified.
+- [x] Add three saved Gemini Hindi/Hinglish alternatives; all six originals/alternatives played in the real browser, desktop/mobile checked, 10 regression tests passed.
+- [x] Remove American/British choices and migrate saved choices; add all three uploaded original recordings with Play/Stop and download.
+- [ ] Replace live tutor identity with uploaded voices (blocked: custom cloning is unavailable through workspace credits; originals are playback only, existing Indian live voices remain).
+- [x] Explain options without paid ElevenLabs and whether Lovable workspace credits cover cloning; no paid connection completed.
+- [x] Apply similar Indian Hindi/Hinglish teacher delivery using existing available voices; eight regression tests passed and build OK, without claiming sample cloning.
+- [ ] Confirm audible similarity in Voice Mode (fresh call test still reports "Voice media did not connect", no live output audio received; sample playback itself verified).
 - [x] Quiz ON queues during answers; voice teaching toggles update the same session; premium Opus 5.5 + high reasoning verified with real tutor and next-MCQ calls, browser quiz and regression tests
 - [ ] Audible two-way voice and in-call teaching toggle verification (requires real microphone/speaker conversation; simulated session/UI and real delegated tutor verified)
 - [x] Prevent settings-driven voice endings and automatic paid replacements; retain service/network safety cleanup (12 safeguard tests passed)
 - [x] New workspace: GitHub API re-linked (fresh connection, commit 8bdb9088 pushed); Firecrawl, Parallel and Perplexity linked
-- [ ] External Supabase is linked; My Personal Agent display name awaits confirmation in Project Settings
+- [ ] Oct 23 workspace move: GitHub API re-linked and repo read verified; external Supabase (ref dsazygocmjgjfqkqkwcp) still connected, "My Personal Agent" display name awaits confirmation in Project Settings
 - [x] Link GitHub, Firecrawl, Parallel, Perplexity
 - [x] Copy code from GitHub repo and check preview
 - [x] DB read-only check (all tables empty, bucket agent-memory exists, no admin role yet)
@@ -22,3 +41,5 @@
 - [x] Vedantu lecture notes PDFs (prod-recordings.vedantu.com/NOTES/...) readable by the agent (smart notes cached, PDF URL pattern confirmed)
 - [ ] Mera Batch page in-app verification (sync run, notes fetch, padhao/quiz buttons) with real admin session
 - [ ] Batch chooser + mistake tracker (plan drafted)
+- [x] Kore/Aoede/Leda: mic gated during speech (no self-talk), faster flash TTS + prefetch, whole-sentence chunks (no cut words). Live call audibly unverified.
+- Kore/Aoede/Leda call drop ("Voice connection was lost"): silent-track echo gate, shared speaker, merged+buffered requests, busy retries, short TTS prompt. Needs a real phone call to confirm.

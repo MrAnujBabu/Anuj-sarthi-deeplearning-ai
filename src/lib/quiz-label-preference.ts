@@ -60,9 +60,6 @@ export function useStudyTextSize() {
 export const VOICE_CHOICES = [
   { id: 'indian-f', label: 'Indian style · Marin', voice: 'marin', accent: 'indian' },
   { id: 'indian-m', label: 'Indian style · Meridian', voice: 'meridian', accent: 'indian' },
-  { id: 'us-f', label: 'American · female', voice: 'gleam', accent: 'neutral' },
-  { id: 'us-m', label: 'American · male', voice: 'meridian', accent: 'neutral' },
-  { id: 'uk-m', label: 'British · male', voice: 'vesper', accent: 'neutral' },
 ] as const;
 export type VoiceChoiceId = (typeof VOICE_CHOICES)[number]['id'];
 
@@ -71,7 +68,7 @@ export function useVoiceChoice() {
   const key = 'snapsolve.voice-choice', event = 'snapsolve:voice-choice';
   const [choice, setChoice] = useState<VoiceChoiceId>('indian-f');
   useEffect(() => {
-    const refresh = () => { try { const v = localStorage.getItem(key); if (VOICE_CHOICES.some(c => c.id === v)) setChoice(v as VoiceChoiceId); } catch { /* storage unavailable */ } };
+    const refresh = () => { try { const v = localStorage.getItem(key); const valid = VOICE_CHOICES.find(c => c.id === v); setChoice(valid?.id ?? 'indian-f'); if (v && !valid) localStorage.setItem(key, 'indian-f'); } catch { /* storage unavailable */ } };
     refresh();
     window.addEventListener(event, refresh);
     return () => window.removeEventListener(event, refresh);

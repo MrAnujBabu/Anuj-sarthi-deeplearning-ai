@@ -1,7 +1,21 @@
 import { afterEach, expect, it } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { useBoldQuestions, useHideChatWidget, useNumericAnswerLabels, useStudyTextSize } from '@/lib/quiz-label-preference';
+import { useBoldQuestions, useHideChatWidget, useNumericAnswerLabels, useStudyTextSize, useVoiceChoice, VOICE_CHOICES } from '@/lib/quiz-label-preference';
 afterEach(() => { cleanup(); localStorage.clear(); });
+it('removes American and British voice identities from selectable choices', () => {
+  expect(VOICE_CHOICES.map(c => c.id)).not.toContain('us-f');
+  expect(VOICE_CHOICES.map(c => c.id)).not.toContain('us-m');
+  expect(VOICE_CHOICES.map(c => c.id)).not.toContain('uk-m');
+});
+function VoicePreference() {
+  const [value] = useVoiceChoice();
+  return <output aria-label="saved voice">{value}</output>;
+}
+it.each(['us-f', 'us-m', 'uk-m'])('replaces removed saved voice %s on reload', value => {
+  localStorage.setItem('snapsolve.voice-choice', value);
+  render(<VoicePreference />);
+  expect(localStorage.getItem('snapsolve.voice-choice')).toBe('indian-f');
+});
 function Preference({ name }: { name: string }) {
   const [value, update] = useNumericAnswerLabels();
   return <input aria-label={name} type="checkbox" checked={value} onChange={e => update(e.target.checked)} />;

@@ -10,6 +10,8 @@
 <!-- LOVABLE:END -->
 
 ## Architecture
+- Voice page defaults to continuous LiveVoicePage on its existing relay; Gemini voices mute live audio, swap the mic for a generated silent track while speaking, and play through one shared speaker per call. Serialize mic swaps and recovery using the latest gate intent so cancellation cannot leave a silent sender; silent RTP does not prove control-heartbeat health or explain a call's closure. Their speech queue merges waiting thoughts into one look-ahead request read eagerly, retries busy/network failures before audio with bounded backoff, cuts runaway audio without stopping, and stops only on terminal failures; no paid automatic reconnect.
+- Live Indian-accent delivery and fallback speech share browser-safe teacher delivery guidance; keep voice identity and provider selection separate from style so prompting never masquerades as cloning.
 - Admin device recovery exports only app memory/settings, validates and merges restores, clears only unchanged backed-up text rows; never resets file entries, accounts or AI pause.
 - Admin documents keep extracted text by default; originals upload only when retained or needed, temp uploads always cleaned (limits Cloud growth).
 - Voice quizzes own a scrollable reading area and separate conversation view; call controls stay outside to prevent overlap.
@@ -40,3 +42,6 @@
 - Answer-check council (`/api/verify`, NDJSON): Gemini (grounded facts) and GPT (maths) review, debate only when verdicts differ, Claude rules. Tutor answer never rewritten, quiz turns never checked, results cached per device only; council ids live only in `COUNCIL_MODELS`, keeping the frozen tutor catalog untouched.
 - `/api/vision-read` transcribes doubt photos before the tutor inside `<photo-reading>` tags (folded in UI, stripped from titles/search); failure or Skip sends the photo unchanged.
 - Subdirectories have their own `AGENTS.md`; read them before changing files there.
+
+# Source origin
+- The web app in this repository was imported from GitHub (MrAnujBabu/Anuj-sarthi-deeplearning-ai) into this Lovable project; treat that repo as upstream source and this project as the live working copy.
