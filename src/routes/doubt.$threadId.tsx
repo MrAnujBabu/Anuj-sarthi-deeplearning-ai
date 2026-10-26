@@ -23,14 +23,14 @@ import { COUNCIL_MODELS, PHOTO_OPEN, splitPhotoReading, wrapPhotoReading } from 
 import { ToolStep } from "@/components/tool-step";
 import { ChatControls } from "@/components/chat-controls";
 import { restoreDocs, stripDocs } from "@/lib/doc-store";
-import { parseCards, parseQuizTag, recordResults } from "@/lib/srs";
+import { parseCards, recordResults } from "@/lib/srs";
 import { DEFAULT_MODEL, upgradedTutorPreference, type Effort } from '@/lib/models';
 import { displayAiError, isCreditError, isConfigurationError } from '@/lib/ai/errors';
 import { Button } from '@/components/ui/button';
 import { QuizActions } from "@/components/quiz-actions";
 import { buildRagContext } from "@/lib/rag/context";
 import { exportThreadMarkdown } from "@/lib/export-chat";
-import { extractQuizOptions } from "@/lib/quiz-options";
+import { answerableQuiz } from "@/lib/quiz-options";
 import { emphasizeQuizQuestion } from "@/lib/quiz-emphasis";
 import { DOC_RE, pdfsToText } from "@/lib/pdf-text";
 import { readDeviceFlag, useAutoVerify, useBoldQuestions, useHideChatWidget, useHideTopBar, useStudyTextSize } from '@/lib/quiz-label-preference';
@@ -247,11 +247,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
     return () => clearTimeout(t);
   }, [online, interrupted, busy]);
   const quizSource = last?.role === "assistant" ? last : undefined;
-  const openQuizText = quizSource?.parts.map((p) => p.type === "text" ? p.text : "").join("\n") ?? "";
-  const openQuizOptions = quiz ? parseQuizTag(openQuizText) : null;
-  const openQuiz = openQuizOptions ? extractQuizOptions(openQuizText, openQuizOptions) : null;
-  const submittedAnswer = busy ? [...messages].reverse().find(m => m.role === "user")?.parts.find(p => p.type === "text") : undefined;
-  const selectedAnswer = submittedAnswer?.type === "text" && /^[A-D]$/.test(submittedAnswer.text.trim()) ? submittedAnswer.text.trim() : undefined;
+  const openQuiz = answerableQuiz(last, quiz, busy);
   const waiting = busy && (last?.role === "user" || !last?.parts.some((p) => p.type === "text" && p.text));
 
   return (
@@ -347,7 +343,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
               ))}
             </div>
           )}
-          {openQuizOptions && openQuiz && quizSource && <QuizActions questionKey={quizSource.id} options={openQuizOptions} labels={openQuiz.labels} selectedAnswer={selectedAnswer} disabled={busy} chatHidden={chatHidden} onChatHidden={setChatHidden} onSend={(t) => { if (t === 'stop quiz') setChatHidden(false); sendMessage({ text: t }, "quiz"); }} />}
+          {openQuiz && <QuizActions questionKey={openQuiz.id} options={openQuiz.options} labels={openQuiz.labels} chatHidden={chatHidden} onChatHidden={setChatHidden} onSend={(t) => { if (t === 'stop quiz') setChatHidden(false); void sendMessage({ text: t }, "quiz"); }} />}
           {reading && (
             <div className="msg-in flex items-center gap-3 px-1" role="status">
               <ScanText className="size-4 shrink-0 text-primary" aria-hidden />

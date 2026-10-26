@@ -39,3 +39,16 @@ describe('workspace and model pauses are cached separately', () => {
     expect(maybeSingle).toHaveBeenCalledTimes(2);
   });
 });
+
+describe('stale key rows never block new requests', () => {
+  it("ignores a saved 'key not registered' pause left by an older build", async () => {
+    vi.advanceTimersByTime(120_000);
+    maybeSingle.mockResolvedValue({ data: { id: 'anthropic/claude-fable-5-1', kind: 'denied', message: 'LOVABLE_API_KEY is not registered for this project' }, error: null });
+    expect(await getAiPause('anthropic/claude-fable-5-1')).toBeNull();
+  });
+  it('keeps a genuine provider denial in place', async () => {
+    vi.advanceTimersByTime(120_000);
+    maybeSingle.mockResolvedValue({ data: { id: 'anthropic/claude-opus-5', kind: 'denied', message: 'Access denied by provider' }, error: null });
+    expect(await getAiPause('anthropic/claude-opus-5')).toMatchObject({ kind: 'denied' });
+  });
+});

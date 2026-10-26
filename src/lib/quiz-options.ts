@@ -1,4 +1,15 @@
 import { stripCards } from './srs';
+import { parseQuizTag } from './srs';
+import type { UIMessage } from 'ai';
+
+/** A streamed question is still prose; answer cards belong only to a finished question. */
+export function answerableQuiz(message: UIMessage | undefined, quiz: boolean, busy: boolean) {
+  if (!quiz || busy || message?.role !== 'assistant') return null;
+  const text = message.parts.map(part => part.type === 'text' ? part.text : '').join('\n');
+  const options = parseQuizTag(text);
+  if (!options) return null;
+  return { id: message.id, options, ...extractQuizOptions(text, options) };
+}
 
 /**
  * Pull the option text for an open quiz question so the answer cards can show it,

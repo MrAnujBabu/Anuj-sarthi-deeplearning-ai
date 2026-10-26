@@ -1,4 +1,12 @@
 # Roadmap
+- [x] Oct 26: "LOVABLE_API_KEY is not registered" came only from the Vercel site (stale key); preview key registered and tutor answered. Vercel key updated + redeployed; stale-key errors are now configuration failures and old stale pause rows are ignored (no rotation needed).
+- [x] Oct 26: Sarvam voice fixed: key saved in this workspace and on Vercel; real speech returned audio on preview and Vercel. Wrong/old Sarvam keys no longer persist a pause.
+- [x] Oct 26: latest GitHub main (412a62b) pulled into this project; kept the quiz answer-card fix and restored the voice-table wiring that the upstream session copy had dropped.
+- [ ] Oct 26: Admin AI-key system — automatic Lovable email/password key switching declined (no official login/key method, stored-password risk, multi-account credit use against Lovable terms); legitimate alternative (own Google/Anthropic keys from Admin) awaits the user's choice.
+- [x] GitHub API reconnected in the new workspace (mbbs's GitHub API).
+- [ ] New workspace still missing: Firecrawl, Parallel, Perplexity connections and external Supabase link (admin, memory, batch, AI pauses on preview); Vedantu login secrets.
+- [x] Quiz answer cards appear only after generation finishes and never carry the previous answer; two consecutive questions + reload verified.
+- [x] Dynamic voice tables (any column count) committed as b69eaed; real tutor four-column answer rendered on desktop/mobile. Audible call unverified.
 - [ ] Deliver current source to MrAnujBabu/Anuj-sarthi-deeplearning-ai main (user approved). Preserve remote dynamic-table changes and commit history. Blocked: reauthorization initially worked, but repository/account probes returned Bad credentials (401) again before upload; no remote write succeeded. Do not loop reconnect; user must decide next authorization step.
 - [x] Verified recorded Sarvam v4 code commits through c94d37a; working tree clean. Lovable manages commits/sync; remote GitHub delivery is not independently verified.
 - [x] Upgraded Sarvam to Bulbul v4-flash with 9 curated Hindi personas and migrated legacy device choices; all 9 returned real audio, selected Aparna playback and reload verified, 70 regression tests passed, build OK. Official PAYG v4 ₹1 vs v3 ₹3 per 1,000 characters (excluding GST); account balance not inspected. Full live two-way call retains the existing transport blocker below.

@@ -33,7 +33,9 @@ export const Route = createFileRoute('/api/sarvam-speech')({
         let parsed: unknown = detail;
         try { parsed = JSON.parse(detail); } catch { /* Keep provider explanation. */ }
         const failure = classifyAiFailure(upstream.status, parsed);
-        if (upstream.status === 402 || upstream.status === 403) await setAiPause(failure, pauseId);
+        // A wrong or old Sarvam key is fixed by saving the right key; persisting it would keep the voice blocked afterwards.
+        const keyProblem = failure.kind === 'configuration' || /invalid[^.]{0,40}(api|subscription)[^.]{0,10}key|api[_ -]?key[^.]{0,20}(invalid|missing|expired)/i.test(detail);
+        if ((upstream.status === 402 || upstream.status === 403) && !keyProblem) await setAiPause(failure, pauseId);
         return Response.json({ error: encodeAiFailure(failure) }, { status: upstream.status });
       }
       if (!upstream.body) return Response.json({ error: 'Sarvam returned no audio.' }, { status: 502 });

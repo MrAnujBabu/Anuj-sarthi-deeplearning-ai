@@ -37,3 +37,18 @@ describe("quiz options with full-text tags", () => {
     expect(r.text).toBe("**Q1.** Strips made of?");
   });
 });
+
+describe("stale app AI key after a workspace move", () => {
+  it("treats 'LOVABLE_API_KEY is not registered' as a setup issue, not a model denial or credits", () => {
+    const f = classifyAiFailure(403, { error: { type: "lovable_api_key_not_registered", message: "LOVABLE_API_KEY is not registered for this project" } });
+    expect(f.kind).toBe("configuration");
+    expect(isCreditError(encodeAiFailure(f))).toBe(false);
+    expect(isConfigurationError(encodeAiFailure(f))).toBe(true);
+  });
+  it("recognises the message even when the error type is missing", () => {
+    expect(classifyAiFailure(403, { message: "LOVABLE_API_KEY is not registered for this project" }).kind).toBe("configuration");
+  });
+  it("still treats a real provider refusal as denied", () => {
+    expect(classifyAiFailure(403, { error: { type: "permission_error", message: "Access denied by provider" } }).kind).toBe("denied");
+  });
+});

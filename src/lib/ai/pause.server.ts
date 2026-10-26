@@ -1,4 +1,4 @@
-import type { AiFailure } from './errors';
+import { isKeyRegistryProblem, type AiFailure } from './errors';
 // Pause state is advisory: if the database is unreachable, the tutor keeps working.
 // Every AI route reads it, so one cached read per id per minute keeps the free-tier database quiet.
 async function loadPause(id: string) {
@@ -17,9 +17,12 @@ export async function getAiPause(id = 'workspace') {
   const hit = cache.get(id);
   if (hit && Date.now() - hit.at < TTL_MS) return hit.value;
   try {
-    const data = await loadPause(id);
+    const row = await loadPause(id);
+    // Older builds saved "key not registered" as a model denial. That is a key setup
+    // problem, fixed by updating the key, so such rows never block new requests.
+    const data = row && typeof row.message === 'string' && isKeyRegistryProblem(row.message) ? null : row;
     cache.set(id, { at: Date.now(), value: data ?? null });
-    return data;
+    return data ?? null;
   } catch (e) {
     console.error('[getAiPause] pause state unavailable, continuing', e instanceof Error ? e.message : e);
     return null;
