@@ -849,6 +849,14 @@ export const PromptInput = ({
       event.preventDefault();
 
       const form = event.currentTarget;
+      const submittedFiles = [...files];
+      const restoreDraft = () => {
+        if (!usingProvider) {
+          setItems((current) => [...submittedFiles.filter((file) => !current.some((item) => item.id === file.id)), ...current]);
+          const draft = form.elements.namedItem("message");
+          if (draft instanceof HTMLTextAreaElement && !draft.value) draft.value = text;
+        }
+      };
       const text = usingProvider
         ? controller.textInput.value
         : (() => {
@@ -868,7 +876,7 @@ export const PromptInput = ({
       try {
         // Convert blob URLs to data URLs asynchronously
         const convertedFiles: FileUIPart[] = await Promise.all(
-          files.map(async ({ id: _id, ...item }) => {
+          submittedFiles.map(async ({ id: _id, ...item }) => {
             if (item.url?.startsWith("blob:")) {
               const dataUrl = await convertBlobUrlToDataUrl(item.url);
               // If conversion failed, keep the original blob URL
@@ -881,28 +889,36 @@ export const PromptInput = ({
           })
         );
 
+        // Detach this submission immediately, without revoking its URLs yet.
+        // A streamed answer can take minutes; the composer belongs to the next draft.
+        if (!usingProvider) {
+          const ids = new Set(submittedFiles.map((file) => file.id));
+          setItems((current) => current.filter((file) => !ids.has(file.id)));
+        }
         const result = onSubmit({ files: convertedFiles, text }, event);
 
         // Handle both sync and async onSubmit
         if (result instanceof Promise) {
           try {
             await result;
-            clear();
+            if (usingProvider) clear();
+            else for (const file of submittedFiles) URL.revokeObjectURL(file.url);
             if (usingProvider) {
               controller.textInput.clear();
             }
           } catch {
-            // Don't clear on error - user may want to retry
+            restoreDraft();
           }
         } else {
           // Sync function completed without throwing, clear inputs
-          clear();
+          if (usingProvider) clear();
+          else for (const file of submittedFiles) URL.revokeObjectURL(file.url);
           if (usingProvider) {
             controller.textInput.clear();
           }
         }
       } catch {
-        // Don't clear on error - user may want to retry
+        restoreDraft();
       }
     },
     [usingProvider, controller, files, onSubmit, clear]

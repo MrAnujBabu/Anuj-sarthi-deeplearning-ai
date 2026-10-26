@@ -58,8 +58,12 @@ export function useStudyTextSize() {
   return [size, update] as const;
 }
 export const VOICE_CHOICES = [
-  { id: 'indian-f', label: 'Indian style · Marin', voice: 'marin', accent: 'indian' },
-  { id: 'indian-m', label: 'Indian style · Meridian', voice: 'meridian', accent: 'indian' },
+  { id: 'indian-f', label: 'Polished Indian teacher · Marin', voice: 'marin', accent: 'indian' },
+  { id: 'indian-bright-f', label: 'Bright Indian female · Willow', voice: 'willow', accent: 'indian' },
+  { id: 'indian-m', label: 'Indian male dubbing · Meridian', voice: 'meridian', accent: 'indian' },
+  { id: 'us-f', label: 'American · female', voice: 'gleam', accent: 'neutral' },
+  { id: 'us-m', label: 'American · male', voice: 'meridian', accent: 'neutral' },
+  { id: 'uk-m', label: 'British · male', voice: 'vesper', accent: 'neutral' },
 ] as const;
 export type VoiceChoiceId = (typeof VOICE_CHOICES)[number]['id'];
 
@@ -68,7 +72,7 @@ export function useVoiceChoice() {
   const key = 'snapsolve.voice-choice', event = 'snapsolve:voice-choice';
   const [choice, setChoice] = useState<VoiceChoiceId>('indian-f');
   useEffect(() => {
-    const refresh = () => { try { const v = localStorage.getItem(key); const valid = VOICE_CHOICES.find(c => c.id === v); setChoice(valid?.id ?? 'indian-f'); if (v && !valid) localStorage.setItem(key, 'indian-f'); } catch { /* storage unavailable */ } };
+    const refresh = () => { try { const v = localStorage.getItem(key); if (VOICE_CHOICES.some(c => c.id === v)) setChoice(v as VoiceChoiceId); } catch { /* storage unavailable */ } };
     refresh();
     window.addEventListener(event, refresh);
     return () => window.removeEventListener(event, refresh);
@@ -102,6 +106,11 @@ export function useAutoVerify() {
 /** Gemini reads doubt photos first and hands the text to the tutor. Default ON. */
 export function usePhotoReading() {
   return useDeviceBoolean('snapsolve.photo-reading', 'snapsolve:photo-reading', true);
+}
+
+/** Mera Batch: tutor sees today's classes, upcoming tests and the AITS tracker. Default OFF. */
+export function useBatchContext() {
+  return useDeviceBoolean('snapsolve.batch-context', 'snapsolve:batch-context', false);
 }
 
 export function readDeviceFlag(key: string, defaultValue: boolean) {

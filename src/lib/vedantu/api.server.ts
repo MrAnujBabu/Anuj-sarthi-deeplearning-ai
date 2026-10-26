@@ -21,6 +21,7 @@ export const VEDANTU = {
   attendance: "https://scheduling.vedantu.com/scheduling/attendance-aggregate/getLatestAttendanceQuizData",
   homework: "https://lms.vedantu.com/lms/cmds/contentInfo/getHomeworkData",
   smartNotes: "https://scheduling.vedantu.com/scheduling/replay-session/smart-notes",
+  transcript: "https://scheduling.vedantu.com/scheduling/replay-session/transcript-data",
 } as const;
 
 export type VedantuErrorKind = "config" | "login" | "auth" | "http" | "network";

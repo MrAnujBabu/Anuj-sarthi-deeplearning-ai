@@ -5,8 +5,8 @@ export const MODELS = [
   { id: 'anthropic/claude-opus-5', name: 'Opus 5', description: 'Advanced analysis', effort: true },
   { id: 'anthropic/claude-haiku-4-5', name: 'Haiku 4.5', description: 'Quick questions', effort: false },
 ] as const;
-export const DEFAULT_MODEL = 'anthropic/claude-opus-5-5';
-export const VOICE_TUTOR_MODEL = 'anthropic/claude-opus-5-5';
+export const DEFAULT_MODEL = 'anthropic/claude-fable-5-1';
+export const VOICE_TUTOR_MODEL = 'anthropic/claude-fable-5-1';
 export const CLAUDE_OUTPUT_BUDGET = 64000; // Messages requires a budget, including adaptive thinking.
 /** Apply the owner's advanced-tutor upgrade once; later explicit selections remain intact. */
 export function upgradedTutorPreference(storage: Pick<Storage, 'getItem' | 'setItem'>) {

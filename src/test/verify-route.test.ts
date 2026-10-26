@@ -58,11 +58,11 @@ describe('photo reading route', () => {
     expect(res.status).toBe(402);
     expect(mocks.set).toHaveBeenCalledWith(expect.objectContaining({ kind: 'credits' }));
   });
-  it('sends photos to Gemini 3.1 Pro and returns its reading', async () => {
+  it('sends photos to Gemini 4 Argon and returns its reading', async () => {
     mocks.fetch.mockResolvedValue(new Response('data: {"choices":[{"delta":{"content":"Q. Find F"}}]}\n\ndata: [DONE]\n\n', { headers: { 'content-type': 'text/event-stream' } }));
     const res = await post(VisionRoute)({ request: req('/api/vision-read', photo) });
     expect(res.status).toBe(200);
     expect((await res.json()).text).toBe('Q. Find F');
-    expect(JSON.parse(mocks.fetch.mock.calls[0]?.[1].body).model).toBe('google/gemini-3.1-pro-preview');
+    expect(JSON.parse(mocks.fetch.mock.calls[0]?.[1].body).model).toBe('google/gemini-4-argon');
   });
 });

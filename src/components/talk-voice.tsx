@@ -6,10 +6,9 @@ import { recordWav, type Recording } from "@/lib/record-wav";
 import { readTranscript } from "@/lib/transcription";
 import { streamSpeech } from "@/lib/stream-speech";
 import { displayAiError, isCreditError } from "@/lib/ai/errors";
+import { readDeviceFlag } from "@/lib/quiz-label-preference";
+import { batchRequestHeaders } from '@/lib/batch-request-headers';
 import { readTutorAnswer, speakableText, toUIMessages, type TalkMessage } from "@/lib/talk-turn";
-import { VoiceSamples } from '@/components/voice-samples';
-import { VoicePicker } from '@/components/voice-picker';
-import { useSpeechVoice } from '@/lib/speech-voice';
 
 type Phase = 'idle' | 'listening' | 'hearing' | 'thinking' | 'speaking';
 const LABEL: Record<Phase, string> = {
@@ -21,7 +20,6 @@ const LABEL: Record<Phase, string> = {
 };
 
 export function TalkVoice() {
-  const [speechVoice] = useSpeechVoice();
   const [phase, setPhase] = useState<Phase>('idle');
   const [messages, setMessages] = useState<TalkMessage[]>([]);
   const [error, setError] = useState('');
@@ -51,11 +49,11 @@ export function TalkVoice() {
       const history = [...messages, user];
       setMessages([...history, { id: answerId, role: 'assistant', text: '' }]);
       setPhase('thinking');
-      const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctrl.signal, body: JSON.stringify({ messages: toUIMessages(history), mode: 'doubt' }) });
+      const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json', ...await batchRequestHeaders() }, signal: ctrl.signal, body: JSON.stringify({ messages: toUIMessages(history), mode: 'doubt', batch: readDeviceFlag('snapsolve.batch-context', false) }) });
       const answer = await readTutorAnswer(response, text => setMessages(m => m.map(x => x.id === answerId ? { ...x, text } : x)));
       if (ctrl.signal.aborted) return;
       setPhase('speaking');
-      await streamSpeech('/api/speech', speakableText(answer), ctrl.signal, speechVoice);
+      await streamSpeech('/api/speech', speakableText(answer), ctrl.signal);
     } catch (e) {
       if (ctrl.signal.aborted) return;
       const message = e instanceof Error ? e.message : 'Kuch gadbad ho gayi.';
@@ -72,8 +70,6 @@ export function TalkVoice() {
         <Button variant="ghost" size="icon" asChild><Link to="/" aria-label="Back"><ArrowLeft className="size-5" /></Link></Button>
         <div><h1 className="text-xl font-semibold">Voice mode</h1><p className="text-sm text-muted-foreground">Bolo, phir jawab suno</p></div>
       </header>
-      <div className="py-4"><VoicePicker disabled={phase !== 'idle'} /></div>
-      {phase === 'idle' && messages.length === 0 && <div className="py-4"><VoiceSamples /></div>}
       <section className="flex-1 space-y-3 overflow-y-auto py-6" aria-live="polite">
         {messages.length === 0 && <p className="text-center text-muted-foreground">Apna NEET doubt bolkar poochho — jawab likha bhi aayega aur sunai bhi dega.</p>}
         {messages.map(m => (

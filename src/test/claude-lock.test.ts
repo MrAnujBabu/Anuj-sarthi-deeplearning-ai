@@ -4,8 +4,8 @@ import { DEFAULT_MODEL, MODELS, VOICE_TUTOR_MODEL } from '@/lib/models';
 
 // Claude/Anthropic settings are frozen by the user. Change only on explicit request.
 test('Claude tutor models stay unchanged', () => {
-  expect(DEFAULT_MODEL).toBe('anthropic/claude-opus-5-5');
-  expect(VOICE_TUTOR_MODEL).toBe('anthropic/claude-opus-5-5');
+  expect(DEFAULT_MODEL).toBe('anthropic/claude-fable-5-1');
+  expect(VOICE_TUTOR_MODEL).toBe('anthropic/claude-fable-5-1');
   expect(MODELS.map((m) => m.id)).toEqual([
     'anthropic/claude-opus-5-5',
     'anthropic/claude-fable-5-1',

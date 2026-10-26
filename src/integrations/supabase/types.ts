@@ -113,6 +113,36 @@ export type Database = {
         }
         Relationships: []
       }
+      ncert_snippets: {
+        Row: {
+          chapter_key: string
+          content: string
+          created_at: string
+          id: string
+          source_url: string | null
+          topic: string
+          verified: boolean
+        }
+        Insert: {
+          chapter_key: string
+          content: string
+          created_at?: string
+          id?: string
+          source_url?: string | null
+          topic: string
+          verified?: boolean
+        }
+        Update: {
+          chapter_key?: string
+          content?: string
+          created_at?: string
+          id?: string
+          source_url?: string | null
+          topic?: string
+          verified?: boolean
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

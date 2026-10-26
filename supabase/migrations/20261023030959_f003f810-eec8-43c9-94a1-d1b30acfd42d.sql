@@ -1,0 +1,1 @@
+DELETE FROM public.ai_pause_state WHERE id = 'workspace' AND kind = 'credits';

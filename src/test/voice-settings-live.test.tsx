@@ -7,7 +7,7 @@ vi.mock('@/lib/live-endpoint', () => ({ prewarmLiveRelay: () => {} }));
 vi.mock('@/lib/memory.functions', () => ({ getQuizTimer: async () => ({ seconds: 0 }) }));
 vi.mock('@/hooks/use-live-voice', () => ({
   PLAYBACK_SPEEDS: [1],
-  useLiveVoice: () => ({ status: 'connected', rate: 1, connectMs: null, audioRef: { current: null }, updateSettings, start, stop, setRate: () => true, setEchoGate: vi.fn() }),
+  useLiveVoice: () => ({ status: 'connected', rate: 1, connectMs: null, audioRef: { current: null }, updateSettings, start, stop, setRate: () => true }),
 }));
 import { Route } from '@/routes/voice';
 afterEach(() => { cleanup(); vi.clearAllMocks(); });

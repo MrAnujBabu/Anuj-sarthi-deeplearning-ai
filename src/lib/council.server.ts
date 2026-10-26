@@ -1,6 +1,6 @@
 // Server-only: the answer-checking council. Three platforms, one Lovable AI key.
 //   1. Evidence  — Perplexity + Parallel live web search (connector gateway)
-//   2. Review    — Gemini 3.1 Pro (Google Search grounded) ‖ GPT-6 Astra (maths/logic), independent
+//   2. Review    — Gemini 4 Argon (Google Search grounded) ‖ GPT-6 Astra (maths/logic), independent
 //   3. Debate    — only when their verdicts differ: each sees the other's report and revises once
 //   4. Ruling    — Claude Fable 5.1 (the tutor who wrote the answer) accepts or rejects each objection
 // Nothing is stored server-side; results go back to the browser only.
