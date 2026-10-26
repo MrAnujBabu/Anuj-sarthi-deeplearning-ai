@@ -15,6 +15,9 @@ import { Route as BatchRouteImport } from './routes/batch'
 import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as VoiceRouteImport } from './routes/voice'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiNcertDiagramRouteImport } from './routes/api/ncert-diagram'
+import { Route as ApiNcertScanRouteImport } from './routes/api/ncert-scan'
+import { Route as ApiSarvamSpeechRouteImport } from './routes/api/sarvam-speech'
 import { Route as ApiSpeechRouteImport } from './routes/api/speech'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiVerifyRouteImport } from './routes/api/verify'
@@ -51,6 +54,21 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiNcertDiagramRoute = ApiNcertDiagramRouteImport.update({
+  id: '/api/ncert-diagram',
+  path: '/api/ncert-diagram',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiNcertScanRoute = ApiNcertScanRouteImport.update({
+  id: '/api/ncert-scan',
+  path: '/api/ncert-scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSarvamSpeechRoute = ApiSarvamSpeechRouteImport.update({
+  id: '/api/sarvam-speech',
+  path: '/api/sarvam-speech',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiSpeechRoute = ApiSpeechRouteImport.update({
   id: '/api/speech',
   path: '/api/speech',
@@ -84,6 +102,9 @@ export interface FileRoutesByFullPath {
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/ncert-diagram': typeof ApiNcertDiagramRoute
+  '/api/ncert-scan': typeof ApiNcertScanRoute
+  '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
@@ -97,6 +118,9 @@ export interface FileRoutesByTo {
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/ncert-diagram': typeof ApiNcertDiagramRoute
+  '/api/ncert-scan': typeof ApiNcertScanRoute
+  '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
@@ -111,6 +135,9 @@ export interface FileRoutesById {
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/ncert-diagram': typeof ApiNcertDiagramRoute
+  '/api/ncert-scan': typeof ApiNcertScanRoute
+  '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
@@ -126,6 +153,9 @@ export interface FileRouteTypes {
     | '/practice'
     | '/voice'
     | '/api/chat'
+    | '/api/ncert-diagram'
+    | '/api/ncert-scan'
+    | '/api/sarvam-speech'
     | '/api/speech'
     | '/api/transcribe'
     | '/api/verify'
@@ -139,6 +169,9 @@ export interface FileRouteTypes {
     | '/practice'
     | '/voice'
     | '/api/chat'
+    | '/api/ncert-diagram'
+    | '/api/ncert-scan'
+    | '/api/sarvam-speech'
     | '/api/speech'
     | '/api/transcribe'
     | '/api/verify'
@@ -152,6 +185,9 @@ export interface FileRouteTypes {
     | '/practice'
     | '/voice'
     | '/api/chat'
+    | '/api/ncert-diagram'
+    | '/api/ncert-scan'
+    | '/api/sarvam-speech'
     | '/api/speech'
     | '/api/transcribe'
     | '/api/verify'
@@ -166,6 +202,9 @@ export interface RootRouteChildren {
   PracticeRoute: typeof PracticeRoute
   VoiceRoute: typeof VoiceRoute
   ApiChatRoute: typeof ApiChatRoute
+  ApiNcertDiagramRoute: typeof ApiNcertDiagramRoute
+  ApiNcertScanRoute: typeof ApiNcertScanRoute
+  ApiSarvamSpeechRoute: typeof ApiSarvamSpeechRoute
   ApiSpeechRoute: typeof ApiSpeechRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiVerifyRoute: typeof ApiVerifyRoute
@@ -217,6 +256,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/ncert-diagram': {
+      id: '/api/ncert-diagram'
+      path: '/api/ncert-diagram'
+      fullPath: '/api/ncert-diagram'
+      preLoaderRoute: typeof ApiNcertDiagramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ncert-scan': {
+      id: '/api/ncert-scan'
+      path: '/api/ncert-scan'
+      fullPath: '/api/ncert-scan'
+      preLoaderRoute: typeof ApiNcertScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/sarvam-speech': {
+      id: '/api/sarvam-speech'
+      path: '/api/sarvam-speech'
+      fullPath: '/api/sarvam-speech'
+      preLoaderRoute: typeof ApiSarvamSpeechRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/speech': {
       id: '/api/speech'
       path: '/api/speech'
@@ -262,6 +322,9 @@ const rootRouteChildren: RootRouteChildren = {
   PracticeRoute: PracticeRoute,
   VoiceRoute: VoiceRoute,
   ApiChatRoute: ApiChatRoute,
+  ApiNcertDiagramRoute: ApiNcertDiagramRoute,
+  ApiNcertScanRoute: ApiNcertScanRoute,
+  ApiSarvamSpeechRoute: ApiSarvamSpeechRoute,
   ApiSpeechRoute: ApiSpeechRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiVerifyRoute: ApiVerifyRoute,

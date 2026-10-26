@@ -83,7 +83,8 @@ export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: s
             <h3 className="sticky top-0 z-10 bg-sidebar px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/80">{label}</h3>
             <div className="space-y-0.5">
               {items.map((t) => (
-                <div key={t.id} className={cn("group flex items-center rounded-lg text-sm hover:bg-sidebar-accent", t.id === activeId && "bg-sidebar-accent")}>
+                <div key={t.id} className={cn("group relative flex items-center rounded-lg text-sm transition-colors hover:bg-sidebar-accent active:bg-sidebar-accent/80", t.id === activeId && "bg-sidebar-accent")}>
+                  {t.id === activeId && <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-sidebar-primary" aria-hidden />}
                   <Link to="/doubt/$threadId" params={{ threadId: t.id }} className="min-w-0 flex-1 px-2 py-2">
                     <span className={cn("block truncate", t.id === activeId && "font-medium")}>{t.title}</span>
                     <span className="block truncate text-[11px] text-muted-foreground">{threadMeta(t)}</span>

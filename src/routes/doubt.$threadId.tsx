@@ -259,12 +259,29 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
       <Conversation className="flex-1">
         <ConversationContent className={`study-text study-text-${textSize} mx-auto w-full max-w-3xl`}>
           {messages.length === 0 && !busy && (
-            <div className="py-20 text-center text-muted-foreground">
-              This doubt is empty. Snap a question below to get started.
+            <div className="flex flex-col items-center gap-4 py-16 text-center md:py-24">
+              <img src={logo} alt="" width={56} height={56} className="size-14 rounded-2xl shadow-sm" />
+              <div>
+                <p className="font-display text-lg font-medium">Kya doubt hai aaj?</p>
+                <p className="mt-1 text-sm text-muted-foreground">Photo snap karo ya neeche likho — step-by-step NCERT jawab milega.</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-2">
+                {["Ek formula samjhao", "NCERT line kahan hai?", "Is topic se MCQ do"].map((q) => (
+                  <button key={q} type="button" onClick={() => sendMessage({ text: q })} className="rounded-full border border-border bg-card px-3.5 py-1.5 text-sm text-muted-foreground shadow-sm transition-all hover:-translate-y-px hover:border-primary/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                    {q}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
           {messages.map((m, idx) => (
             <Message key={m.id} from={m.role} className="msg-in">
+              {m.role === "assistant" && messages[idx - 1]?.role !== "assistant" && (
+                <div className="mb-1 flex items-center gap-2 pl-1">
+                  <img src={logo} alt="" width={20} height={20} className="size-5 rounded-md" />
+                  <span className="text-xs font-medium text-muted-foreground">SnapSolve</span>
+                </div>
+              )}
               <MessageContent
                 className={
                   m.role === "user"
@@ -324,7 +341,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
           {!quiz && !busy && last?.role === "assistant" && (
             <div className="msg-in flex flex-wrap gap-2 pl-1" aria-label="Quick follow-ups">
               {["Explain simpler", "Give me a similar MCQ", "NCERT line kahan hai?", "Common trap kya hai?"].map((q) => (
-                <button key={q} type="button" onClick={() => sendMessage({ text: q })} className="rounded-full border border-border bg-card/60 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                <button key={q} type="button" onClick={() => sendMessage({ text: q })} className="rounded-full border border-border bg-card px-3.5 py-1.5 text-sm text-muted-foreground shadow-sm transition-all hover:-translate-y-px hover:border-primary/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                   {q}
                 </button>
               ))}
@@ -432,7 +449,7 @@ function UserText({ text }: { text: string }) {
           <p className="mt-2 whitespace-pre-wrap text-sm text-foreground">{reading}</p>
         </details>
       )}
-      <p className="study-question w-fit max-w-full whitespace-pre-wrap rounded-2xl rounded-br-md border border-primary/20 bg-user-bubble px-4 py-2.5 text-foreground shadow-sm">{rest.replace(DOC_RE, "")}</p>
+      <p className="study-question w-fit max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-br-md bg-user-bubble px-4 py-2.5 text-foreground shadow-sm md:max-w-[75%]">{rest.replace(DOC_RE, "")}</p>
     </div>
   );
 }

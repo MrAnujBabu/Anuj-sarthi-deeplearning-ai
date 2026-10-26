@@ -143,6 +143,7 @@ export function useLiveVoice(
   const setMuted = useCallback((muted: boolean) => {
     if (controller.current?.setMuted(muted)) setCall((previous) => ({ ...previous, muted }));
   }, []);
+  const setEchoGate = useCallback((on: boolean) => { controller.current?.setEchoGate(on); }, []);
   const setPaused = useCallback((paused: boolean) => {
     if (controller.current?.setPaused(paused)) setCall((previous) => ({ ...previous, paused }));
   }, []);
@@ -170,7 +171,7 @@ export function useLiveVoice(
     return controller.current?.setSpeed(next) ?? false;
   }, []);
 
-  return { ...call, rate, audioRef, start, stop, setMuted, setPaused, resumePlayback, submitAnswer, sendText, setRate, updateSettings };
+  return { ...call, rate, audioRef, start, stop, setMuted, setEchoGate, setPaused, resumePlayback, submitAnswer, sendText, setRate, updateSettings };
 }
 
 type LiveOptions = {
@@ -206,6 +207,8 @@ async function micAlreadyAllowed() {
 /** A mobile-data blink up to this long must not end the call. */
 export const ACK_GRACE_MS = 15_000;
 export const MEDIA_GRACE_MS = 15_000;
+/** Microphone reopen attempts per call before giving up (prevents a reopen loop). */
+export const MIC_RECOVERY_LIMIT = 3;
 /** Public STUN so phones behind carrier NAT get a reachable candidate. */
 export const ICE_SERVERS: RTCIceServer[] = [{ urls: "stun:stun.l.google.com:19302" }];
 
@@ -226,6 +229,7 @@ function createLiveVoice(options: LiveOptions) {
   let finalized = false;
   let muted = false;
   let paused = false;
+  let gated = false;
   const quizPlayback = new VoiceQuizPlayback();
   let audioContext: AudioContext | undefined;
   let analyser: AnalyserNode | undefined;
@@ -273,6 +277,9 @@ function createLiveVoice(options: LiveOptions) {
     void audioContext?.close().catch(() => {});
     audioContext = undefined; analyser = undefined;
     microphone?.getTracks().forEach((track) => track.stop());
+    silence?.track.stop();
+    void silence?.context.close().catch(() => {});
+    silence = undefined;
     if (playback && options.audio.srcObject === playback) {
       options.audio.pause();
       options.audio.srcObject = null;
@@ -317,9 +324,59 @@ function createLiveVoice(options: LiveOptions) {
     if (state !== "starting" && state !== "active") return false;
     muted = value;
     microphone?.getAudioTracks().forEach((track) => {
-      track.enabled = !muted && !paused;
+      track.enabled = !muted && !paused && !gated;
     });
     return true;
+  }
+
+  // Echo gate: while the app speaks a reply through a separate player
+  // (Kore/Aoede/Leda) the call sends a generated silent track instead of the
+  // mic, so the tutor never hears itself. Swapping keeps real audio packets
+  // flowing; a disabled mic track on phones could go quiet on the wire and the
+  // voice service then dropped the call ("Voice connection was lost").
+  let silence: { context: AudioContext; track: MediaStreamTrack } | undefined;
+  function silentTrack() {
+    try {
+      if (!silence) {
+        const context = new AudioContext();
+        const destination = context.createMediaStreamDestination();
+        const tone = context.createOscillator();
+        const gain = context.createGain();
+        gain.gain.value = 0;
+        tone.connect(gain).connect(destination);
+        tone.start();
+        const track = destination.stream.getAudioTracks()[0];
+        if (!track) { void context.close().catch(() => {}); return undefined; }
+        silence = { context, track };
+      }
+      void silence.context.resume().catch(() => {});
+      return silence.track;
+    } catch {
+      return undefined;
+    }
+  }
+  let micRouting: Promise<void> = Promise.resolve();
+  function routeMic() {
+    // Serialize swaps and read the latest intent when each starts. A gate-off
+    // during an in-flight gate-on must restore the mic AFTER that swap finishes.
+    micRouting = micRouting.then(async () => {
+      const mic = microphone?.getAudioTracks()[0];
+      const activeSender = sender;
+      if ((state !== 'starting' && state !== 'active') || !activeSender || !mic) return;
+      const quiet = gated ? silentTrack() : undefined;
+      mic.enabled = !muted && !paused && !(gated && !quiet);
+      const target = quiet ?? mic;
+      if (activeSender.track !== target) await activeSender.replaceTrack(target);
+    }).catch(() => {
+      const mic = microphone?.getAudioTracks()[0];
+      if (mic) mic.enabled = !muted && !paused && !gated;
+    });
+    return micRouting;
+  }
+  function setEchoGate(value: boolean) {
+    if (gated === value) return;
+    gated = value;
+    if (state === "starting" || state === "active") routeMic();
   }
 
   // Pause keeps the call connected but silences both sides: the microphone
@@ -328,7 +385,7 @@ function createLiveVoice(options: LiveOptions) {
     if (state !== "active") return false;
     paused = value;
     microphone?.getAudioTracks().forEach((track) => {
-      track.enabled = !muted && !paused;
+      track.enabled = !muted && !paused && !gated;
     });
     if (paused) options.audio.pause();
     else void resumePlayback();
@@ -387,6 +444,8 @@ function createLiveVoice(options: LiveOptions) {
     else if (now - mediaLostAt >= MEDIA_GRACE_MS) return fail("Voice media connection lost. Start a new call to retry.");
     if (now - lastHeartbeat < 1000) return;
     if (socket?.readyState !== WebSocket.OPEN) return;
+    // Evidence for drop reports: the voice service ends a call after ~5 s without a heartbeat.
+    if (lastHeartbeat && now - lastHeartbeat > 2500) console.warn("[voice] heartbeat gap", now - lastHeartbeat, "ms", document.visibilityState);
     try {
       send({ type: "gateway.heartbeat" });
       lastHeartbeat = now;
@@ -603,6 +662,36 @@ function createLiveVoice(options: LiveOptions) {
     };
   }
 
+  // When the phone ends microphone capture (audio focus change, another app or
+  // player), reopen it on the same call instead of ending a paid session.
+  let sender: RTCRtpSender | undefined;
+  let micRecoveries = 0;
+  function watchMic(track: MediaStreamTrack) {
+    track.addEventListener("ended", () => { void recoverMic(track); });
+  }
+  async function recoverMic(lost: MediaStreamTrack) {
+    if ((state !== "starting" && state !== "active") || !microphone?.getAudioTracks().includes(lost)) return;
+    const giveUp = () => fail("The phone stopped microphone capture. Start a new call when this page is active.");
+    if (!sender || micRecoveries >= MIC_RECOVERY_LIMIT || document.visibilityState === "hidden") return giveUp();
+    micRecoveries++;
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: CLEAN_MIC });
+      const track = stream.getAudioTracks()[0];
+      if (!track || (state !== "starting" && state !== "active")) {
+        stream.getTracks().forEach((t) => t.stop());
+        return track ? undefined : giveUp();
+      }
+      const old = microphone;
+      microphone = stream;
+      watchMic(track);
+      await routeMic();
+      old?.getTracks().forEach((t) => t.stop());
+      console.info("[voice] microphone reopened on the same call");
+    } catch {
+      giveUp();
+    }
+  }
+
   async function start() {
     if (state !== "idle") return;
     state = "starting";
@@ -627,9 +716,9 @@ function createLiveVoice(options: LiveOptions) {
       const connection = new RTCPeerConnection({ iceServers: ICE_SERVERS });
       peer = connection;
       for (const track of stream.getAudioTracks()) {
-        track.enabled = !muted;
-        track.addEventListener("ended", () => fail("The phone stopped microphone capture. Start a new call when this page is active."));
-        connection.addTrack(track, stream);
+        track.enabled = !muted && !gated;
+        sender = connection.addTrack(track, stream);
+        watchMic(track);
       }
       connection.addEventListener("track", ({ track }) => {
         if (state === "stopping" || state === "closed") return;
@@ -696,5 +785,5 @@ function createLiveVoice(options: LiveOptions) {
     catch { return false; }
   }
 
-  return { start, stop, setMuted, setPaused, resumePlayback, submitAnswer, sendText, setSpeed, updateSettings };
+  return { start, stop, setMuted, setEchoGate, setPaused, resumePlayback, submitAnswer, sendText, setSpeed, updateSettings };
 }

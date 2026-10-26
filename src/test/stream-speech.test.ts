@@ -1,5 +1,5 @@
-import { afterEach, expect, it, vi } from 'vitest';
-import { streamSpeech, decodePCM, bufferResponse, speakSentence, retryableSpeechError } from '@/lib/stream-speech';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { streamSpeech, decodePCM, bufferResponse, speakSentence, retryableSpeechError, speechAccessFailure } from '@/lib/stream-speech';
 afterEach(() => vi.unstubAllGlobals());
 
 it('preserves PCM samples split across SSE byte boundaries', () => {
@@ -48,4 +48,25 @@ it('credit and access refusals are never retried; busy and network failures are'
   expect(retryableSpeechError(new Error('TTS failed: 429 {}'))).toBe(true);
   expect(retryableSpeechError(new Error('TTS failed: 503 {}'))).toBe(true);
   expect(retryableSpeechError(new TypeError('network error'))).toBe(true);
+});
+
+import { nextStartTime as nst, SPEECH_FOLLOW_LEAD_S as FOLLOW, SPEECH_JITTER_LEAD_S as LEAD, SPEECH_SAMPLE_RATE as RATE } from '@/lib/stream-speech';
+describe('speech scheduling', () => {
+  it('uses a 24 kHz speaker so pieces join without resampling clicks', () => { expect(RATE).toBe(24000); });
+  it('starts the next sentence almost immediately after the previous one', () => { expect(nst(0, 10, 9.9)).toBeCloseTo(10 + FOLLOW); });
+  it('keeps the full cushion when playback ran dry long ago', () => { expect(nst(0, 10, 5)).toBeCloseTo(10 + LEAD); });
+  it('keeps pieces back-to-back while audio is still queued', () => { expect(nst(12, 10, 12)).toBe(12); });
+});
+it('a chunk with nothing to read ends quietly and the call keeps its voice', async () => {
+  vi.stubGlobal('AudioContext', class { state = 'running'; currentTime = 0; destination = {}; close = async () => {}; });
+  const fetchMock = vi.fn(async () => new Response('data: {"type":"speech.audio.skipped"}\n\n', { status: 200 }));
+  vi.stubGlobal('fetch', fetchMock);
+  await expect(speakSentence('/api/sarvam-speech', '❌', new AbortController().signal, 'shubh_hi_customer')).resolves.toBeUndefined();
+  expect(fetchMock).toHaveBeenCalledTimes(1);
+});
+it('only credits and access refusals end a voice for the whole call', () => {
+  expect(speechAccessFailure(new Error('TTS failed: 402 {"error":"credits"}'))).toBe(true);
+  expect(speechAccessFailure(new Error('TTS failed: 403 denied'))).toBe(true);
+  expect(speechAccessFailure(new Error('TTS failed: 400 nothing to read'))).toBe(false);
+  expect(speechAccessFailure(new Error('Incomplete speech stream'))).toBe(false);
 });

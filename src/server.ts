@@ -3,6 +3,7 @@ import "./lib/error-capture";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 import { handleLiveRequest } from "./lib/live-relay.server";
+import { isAiCancellation } from "./lib/ai/cancellation";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -53,8 +54,15 @@ export default {
       }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
+      if (request.signal.aborted) {
+        if (response.body) await response.body.cancel().catch(() => {});
+        return new Response(null, { status: 499 });
+      }
       return await normalizeCatastrophicSsrResponse(response);
     } catch (error) {
+      // TanStack can race the route handler with a disconnect and reject outside
+      // the route's own catch. A closed request is not an SSR/page crash.
+      if (isAiCancellation(error, request.signal)) return new Response(null, { status: 499 });
       console.error(error);
       return new Response(renderErrorPage(), {
         status: 500,

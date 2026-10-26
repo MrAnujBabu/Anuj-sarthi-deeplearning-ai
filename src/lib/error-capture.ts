@@ -1,5 +1,6 @@
 // Captures the original Error out-of-band so server.ts can recover the stack
 // when h3 has already swallowed the throw into a generic 500 Response.
+import { isAiCancellation } from './ai/cancellation';
 
 let lastCapturedError: { error: unknown; at: number } | undefined;
 const TTL_MS = 5_000;
@@ -54,6 +55,10 @@ function isErrorLike(value: unknown): value is Error {
 // recorded for consumeLastCapturedError and expanded before serialization.
 const originalConsoleError = console.error.bind(console);
 console.error = (...args: unknown[]) => {
+  // The HTTP adapter also logs disconnected requests after the route has
+  // handled them. Keep expected cancellation out of crash telemetry, but
+  // only when the actual Error/cause is AbortError (never by message text).
+  if (args.some(isCancellationLog)) return;
   const expanded = args.map((arg) => {
     if (!isErrorLike(arg)) return arg;
     record(arg);
@@ -61,6 +66,16 @@ console.error = (...args: unknown[]) => {
   });
   originalConsoleError(...expanded);
 };
+
+export function isCancellationLog(error: unknown): boolean {
+  let current = error;
+  for (let depth = 0; depth < CAUSE_DEPTH_LIMIT; depth++) {
+    if (isAiCancellation(current)) return true;
+    if (!(current instanceof Error) || (current.name !== 'HTTPError' && current.message !== 'HTTPError')) return false;
+    current = current.cause;
+  }
+  return false;
+}
 
 if (typeof globalThis.addEventListener === "function") {
   globalThis.addEventListener("error", (event) => record((event as ErrorEvent).error ?? event));

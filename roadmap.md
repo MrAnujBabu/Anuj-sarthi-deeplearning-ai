@@ -1,4 +1,18 @@
 # Roadmap
+- [ ] Deliver current source to MrAnujBabu/Anuj-sarthi-deeplearning-ai main (user approved). Preserve remote dynamic-table changes and commit history. Blocked: reauthorization initially worked, but repository/account probes returned Bad credentials (401) again before upload; no remote write succeeded. Do not loop reconnect; user must decide next authorization step.
+- [x] Verified recorded Sarvam v4 code commits through c94d37a; working tree clean. Lovable manages commits/sync; remote GitHub delivery is not independently verified.
+- [x] Upgraded Sarvam to Bulbul v4-flash with 9 curated Hindi personas and migrated legacy device choices; all 9 returned real audio, selected Aparna playback and reload verified, 70 regression tests passed, build OK. Official PAYG v4 ₹1 vs v3 ₹3 per 1,000 characters (excluding GST); account balance not inspected. Full live two-way call retains the existing transport blocker below.
+- [x] Chat window polish + realistic feel: warm empty state with starter chips, SnapSolve identity on assistant turns, capped user bubbles, sidebar active indicator, paper-grain texture, BookOpen replaces Sparkles; 449 tests passed, desktop/mobile/dark screenshots verified.
+- [x] Firecrawl + Perplexity connectors linked (both Lovable-managed, gateway-backed).
+- [x] NCERT Deep Scan end-to-end: /api/ncert-scan (Perplexity search → Firecrawl scrape → Gemini verification → Supabase ncert_snippets cache), /api/ncert-diagram (streamed labeled diagram generation), practice page section with chapter picker, snippet cards into SRS deck, diagram flashcards, chapter-wise structure quiz; real scan of Ch.8 verified 200, real mitochondria diagram generated with correct labels, 457 tests passed, build OK.
+- [ ] Confirm connected Supabase display name "My Personal Agent": external production project remains attached and unpaused, but available connection info exposes no display name; user can verify in project Supabase settings.
+- [ ] Verify Sarvam full live back-and-forth conversation: speech playback verified, but the existing live media connection blocker remains; no full-call success claimed.
+- [ ] Oct 24 full conversation verification blocked: all three real call attempts reached Gateway session creation then initial_heartbeat_timeout after 12 seconds; needs working WebRTC and same hosted revision/phone path, not another paid automatic call.
+- [ ] Resolve reported live connection loss: reproduced 'Voice media did not connect' on real call start; speech endpoint/playback works for all three voices, but media transport did not establish in this environment. No paid automatic reconnect; live two-way result remains blocked on a working media connection.
+- [ ] Use Kore/Aoede/Leda as continuous live identities (blocked: these Gemini TTS identities are not supported GPT Live voices).
+- [ ] Make uploaded speakers actual live-call identities and verify end-to-end (blocked: no eligible custom-cloning provider access; current speech uses preset voices, not uploads).
+
+## Preserved upstream tasks
 
 ## Done
 - Safe additive Git request (2026-10-24): read-only check found a clean working tree and latest local commit 0306d49 (Refined Indian female avatar tone); no existing code/history changed and no manual commit/push performed. Lovable manages commits; remote sync status is not available to the agent.

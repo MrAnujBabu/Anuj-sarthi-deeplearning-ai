@@ -1,0 +1,1 @@
+grant select on public.ncert_snippets to anon; grant select on public.ncert_snippets to authenticated; grant all on public.ncert_snippets to service_role;

@@ -54,12 +54,13 @@ function explanationFor(rows: VoiceRow[], entry: VoiceQuizEntry): string {
   return (cut > 0 ? formatted.slice(0, cut) : formatted).replace(/^---\s*$/gm, "").trim();
 }
 
+/** Verdict headline. Callers add their own blockquote prefix (cards quote the whole body). */
 function verdictLine(status: QuizResult["status"], answer: string | undefined, correct: string | null): string {
-  return status === "right" ? `> **🎉 Sahi!** Tumhara jawab (${answer})` :
-    status === "wrong" ? `> **❌ Galat** — tumhara jawab (${answer}), sahi jawab (${correct})` :
-    status === "skipped" ? `> **⏭️ Skip (time up)**${correct ? ` — sahi jawab (${correct})` : ""}` :
-    status === "unchecked" ? `> **Tumhara jawab:** (${answer}) — tutor ka verdict transcript me dekho` :
-    "> *Is sawal ka jawab nahi diya gaya.*";
+  return status === "right" ? `**🎉 Sahi!** Tumhara jawab (${answer})` :
+    status === "wrong" ? `**❌ Galat** — tumhara jawab (${answer}), sahi jawab (${correct})` :
+    status === "skipped" ? `**⏭️ Skip (time up)**${correct ? ` — sahi jawab (${correct})` : ""}` :
+    status === "unchecked" ? `**Tumhara jawab:** (${answer}) — tutor ka verdict transcript me dekho` :
+    "*Is sawal ka jawab nahi diya gaya.*";
 }
 
 function quizSection(rows: VoiceRow[], quiz: VoiceQuizEntry[]): string {
@@ -79,7 +80,7 @@ function quizSection(rows: VoiceRow[], quiz: VoiceQuizEntry[]): string {
       return `| **${l}** | ${cell(entry.labels[l] ?? "")} | ${marks} |`;
     });
     out.push(`| Option | Answer | Result |\n|---|---|---|\n${rowsMd.join("\n")}`);
-    out.push(verdictLine(status, entry.answer, correct));
+    out.push(`> ${verdictLine(status, entry.answer, correct)}`);
   });
   return out.join("\n\n");
 }
@@ -224,6 +225,7 @@ function recallSection(rows: VoiceRow[], quiz: VoiceQuizEntry[]): string {
     const stem = questionStem(entry.text).replace(/\n+/g, " ").trim() || "Quiz question";
     const opts = LETTERS.filter((l) => entry.labels[l]).map((l) => `(${l}) ${cell(entry.labels[l] ?? "")}`).join(" · ");
     const body = [
+      verdictLine(status, entry.answer, correct),
       correct ? `**Answer:** **(${correct}) ${cell(entry.labels[correct] ?? "")}**` : "**Answer:** tutor ka verdict transcript me dekho",
       entry.answer ? `**Tumhara jawab:** ${entry.answer === "skip" ? "skip (time up)" : `(${entry.answer})`}${status === "right" ? " ✅" : status === "wrong" ? " ❌" : ""}` : "",
       flatten(explanationFor(rows, entry)) ? `**Explanation:**\n${flatten(explanationFor(rows, entry))}` : "",

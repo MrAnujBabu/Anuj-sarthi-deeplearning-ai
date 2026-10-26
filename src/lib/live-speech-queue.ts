@@ -62,15 +62,19 @@ export class LiveSpeechQueue {
 }
 
 /** Flush complete thoughts as soon as punctuation arrives, even within a caption delta. */
-export function takeSpeechThoughts(buffer: string) {
+export function takeSpeechThoughts(buffer: string, options: { clauses?: boolean } = {}) {
+  const clauses = options.clauses ?? true;
   const thoughts: string[] = [];
   let end = 0;
   const boundaries = /[.!?।]["')\]]?(?=\s|$)|[,;:](?=\s|$)/g;
   for (const match of buffer.matchAll(boundaries)) {
     const next = (match.index ?? 0) + match[0].length;
     const text = buffer.slice(end, next).trim();
-    // Commas only split substantial clauses, not lists or numeric notation.
-    if (/[,;:]$/.test(text) && text.length < 35) continue;
+    // Commas split clauses early so the first audio starts within a breath of the
+    // caption; tiny fragments (lists, numeric notation) still stay together.
+    // Sarvam reads each request with its own intonation, so clause pieces sound
+    // broken there; it waits for whole sentences instead.
+    if (/[,;:]$/.test(text) && (!clauses || text.length < 12)) continue;
     if (/\d\.$/.test(text)) continue;
     if (text) thoughts.push(text);
     end = next;

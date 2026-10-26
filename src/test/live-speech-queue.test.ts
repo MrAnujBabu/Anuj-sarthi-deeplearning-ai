@@ -5,6 +5,10 @@ it('starts complete thoughts immediately and preserves the unfinished next thoug
   expect(takeSpeechThoughts('Haan. Cell energy banata hai। Agla shab')).toEqual({ thoughts: ['Haan.', 'Cell energy banata hai।'], remainder: ' Agla shab' });
   expect(takeSpeechThoughts('Value 1.5 hai')).toEqual({ thoughts: [], remainder: 'Value 1.5 hai' });
 });
+it('splits at commas early so the first audio starts with the caption, but keeps tiny fragments', () => {
+  expect(takeSpeechThoughts('Mitochondria cell ka powerhouse hai, kyunki yahan ATP')).toEqual({ thoughts: ['Mitochondria cell ka powerhouse hai,'], remainder: ' kyunki yahan ATP' });
+  expect(takeSpeechThoughts('A, B, C')).toEqual({ thoughts: [], remainder: 'A, B, C' });
+});
 it('limits paid requests to the active sentence and one look-ahead, playing in order', async () => {
   const finish: Array<() => void> = [];
   const request = vi.fn(async () => new Response('audio'));
@@ -48,4 +52,8 @@ it('a speech denial stops queued work and surfaces the actual error once', async
   finish[0]?.(); await new Promise(resolve => setTimeout(resolve, 0));
   expect(request).toHaveBeenCalledTimes(3);
   expect(request.mock.calls[2]?.[0]).toBe('three. four. five.');
+});
+it('Sarvam waits for whole sentences instead of comma pieces', () => {
+  expect(takeSpeechThoughts('Mitochondria cell ka powerhouse hai, kyunki yahan ATP', { clauses: false })).toEqual({ thoughts: [], remainder: 'Mitochondria cell ka powerhouse hai, kyunki yahan ATP' });
+  expect(takeSpeechThoughts('Powerhouse hai, kyunki ATP banta hai. Aur', { clauses: false })).toEqual({ thoughts: ['Powerhouse hai, kyunki ATP banta hai.'], remainder: ' Aur' });
 });

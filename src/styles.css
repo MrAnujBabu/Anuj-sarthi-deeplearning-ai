@@ -89,8 +89,8 @@
   --user-bubble: oklch(0.93 0.035 145);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0.01 85);
-  --border: oklch(0.89 0.006 85);
-  --input: oklch(0.88 0.02 85);
+  --border: oklch(0.865 0.008 85);
+  --input: oklch(0.86 0.02 85);
   --ring: oklch(0.48 0.09 150);
   --chart-1: oklch(0.48 0.09 150);
   --chart-2: oklch(0.6 0.13 70);
@@ -156,11 +156,19 @@
   }
   body {
     font-family: "Manrope", system-ui, sans-serif;
-    background-image: radial-gradient(120% 60% at 50% -10%, color-mix(in oklab, var(--primary) 7%, transparent), transparent 60%);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"),
+      radial-gradient(120% 60% at 50% -10%, color-mix(in oklab, var(--primary) 7%, transparent), transparent 60%);
     background-attachment: fixed;
     background-color: var(--color-background);
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
+  }
+
+  .dark body {
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"),
+      radial-gradient(120% 60% at 50% -10%, color-mix(in oklab, var(--primary) 9%, transparent), transparent 60%);
   }
 
   ::selection {

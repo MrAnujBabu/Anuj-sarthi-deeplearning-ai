@@ -64,8 +64,10 @@ describe('voice quiz in exports', () => {
 describe('Obsidian-style markdown export', () => {
   it('turns verdict blockquotes into typed callouts', () => {
     const md = voiceTranscriptMarkdown(quizRows, [wrong]);
-    expect(md).toContain('> [!success] ✅ Sahi jawab');
-    expect(md).toContain('- voice-call');
+    expect(md).toContain('> [!failure] ❌ Galat');
+    expect(md).not.toContain('> **❌ Galat**');
+    expect(md).toContain('  - snapsolve');
+    expect(md).toContain('  - voice-call');
   });
   it('turns detail toggles into foldable callouts', () => {
     const md = voiceTranscriptMarkdown([

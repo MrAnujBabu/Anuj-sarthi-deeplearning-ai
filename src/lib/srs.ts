@@ -129,6 +129,15 @@ export function revisionPrompt(cards: Card[]) {
   return `Spaced-repetition revision: ye ${Math.min(cards.length, 10)} sawaal aaj revise karne hain. Ek-ek karke poochho (answer mat batana), mere jawab ko check karo, aur card tag mein wahi id use karo.\n\n${list}`;
 }
 
+/** Merge fresh cards (e.g. from an NCERT scan) into the deck without grading them. */
+export function addCards(newCards: Card[]): Card[] {
+  const map = new Map(loadCards().map((c) => [c.id, c]));
+  for (const c of newCards) if (!map.has(c.id)) map.set(c.id, c);
+  const next = [...map.values()];
+  save(next);
+  return next;
+}
+
 /** Local recall grading never calls AI. */
 export function reviewLocalCard(card: Card, correct: boolean, now: number) {
   const cards = loadCards();

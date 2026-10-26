@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Atom, FlaskConical, Leaf, Sparkles } from "lucide-react";
+import { Atom, BookOpen, FlaskConical, Leaf } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { DoubtSidebar, MobileStudyMenu } from "@/components/doubt-sidebar";
 import { SnapComposer } from "@/components/snap-composer";
@@ -60,7 +60,7 @@ function Index() {
             <Button variant="ghost" size="sm" asChild className="ml-auto hidden shrink-0 rounded-full sm:inline-flex"><Link to="/batch">Mera Batch</Link></Button>
             <Button variant="ghost" size="sm" asChild className="ml-auto shrink-0 rounded-full sm:ml-0"><Link to="/practice">Saved practice</Link></Button>
           </div>
-          <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground"><Sparkles className="size-5 text-primary"/>NEET 2027 · NCERT Class 11 & 12</div>
+          <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground"><BookOpen className="size-4 text-primary"/>NEET 2027 · NCERT Class 11 & 12</div>
           <h1 className="font-display text-3xl font-medium leading-tight md:text-5xl">SnapSolve, your study companion.</h1>
           <p className="mt-2 text-base text-muted-foreground md:mt-4 md:text-lg">What are we learning today?</p>
 
