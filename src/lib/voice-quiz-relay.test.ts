@@ -58,10 +58,10 @@ describe("voice quiz relay", () => {
     expect(gateway.events.filter(e => e.type === 'session.commentary.append')).toHaveLength(8);
     browser.receive({ type: 'session.close' }); gateway.receive({ type: 'session.closed' });
   });
-  it('uses premium Claude Opus 5.5 for voice study without replacing live audio', () => {
+  it('uses Claude Fable 5.1 for voice study without replacing live audio', () => {
     vi.stubEnv('LOVABLE_API_KEY', 'test');
     try {
-      expect(getLiveConfig().backendModel).toBe('anthropic/claude-opus-5-5');
+      expect(getLiveConfig().backendModel).toBe('anthropic/claude-fable-5-1');
       expect(getLiveConfig().liveModel).toBe('openai/gpt-live-1');
     } finally { vi.unstubAllEnvs(); }
   });

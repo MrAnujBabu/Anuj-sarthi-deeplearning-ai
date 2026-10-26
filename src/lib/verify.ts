@@ -1,5 +1,5 @@
 // Shared (browser-safe) types and pure logic for the answer-checking council.
-// The council: Gemini 3.1 Pro (Google-grounded facts + photo reading) and GPT-6 Astra
+// The council: Gemini 4 Argon (Google-grounded facts + photo reading) and GPT-6 Astra
 // (maths / logic) review the tutor's answer; on disagreement they debate one round and
 // Claude Fable 5.1 (the tutor who wrote the answer) rules on every objection.
 
@@ -9,7 +9,7 @@ export type Source = { title?: string; url: string };
 export type CouncilRole = 'gemini' | 'openai' | 'chair';
 
 export const COUNCIL_MODELS = {
-  gemini: { id: 'google/gemini-3.1-pro-preview', name: 'Gemini 3.1 Pro', job: 'Facts, NCERT & Google sources' },
+  gemini: { id: 'google/gemini-4-argon', name: 'Gemini 4 Argon', job: 'Facts, NCERT & Google sources' },
   openai: { id: 'openai/gpt-6-astra', name: 'GPT-6 Astra', job: 'Maths, units & logic' },
   chair: { id: 'anthropic/claude-fable-5-1', name: 'Claude Fable 5.1', job: 'Tutor — weighs every objection' },
 } as const;

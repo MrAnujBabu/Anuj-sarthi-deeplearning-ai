@@ -55,44 +55,8 @@ export const getBatchOverview = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     await assertAdmin(context as Ctx);
-    const admin = await adminClient();
-    const now = new Date();
-    const day = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(now);
-    const dayStart = new Date(`${day}T00:00:00+05:30`);
-    const dayEnd = new Date(dayStart.getTime() + 86400000);
-    const nowIso = now.toISOString();
-
-    const [courses, sync, today, upcoming, recent, tests, testRows] = await Promise.all([
-      admin.from("vedantu_courses").select("enrollment_id,title,course_type,status,valid_till,batches,stats,synced_at").order("title"),
-      admin.from("vedantu_sync_state").select("status,message,started_at,finished_at,counts").eq("id", "main").maybeSingle(),
-      admin.from("vedantu_classes").select("*").gte("starts_at", dayStart.toISOString()).lt("starts_at", dayEnd.toISOString()).order("starts_at"),
-      admin.from("vedantu_classes").select("*").gte("starts_at", nowIso).order("starts_at").limit(40),
-      admin.from("vedantu_classes").select("*").lte("starts_at", nowIso).eq("has_smart_notes", true).order("starts_at", { ascending: false }).limit(15),
-      admin.from("vedantu_tests").select("*").eq("status", "upcoming").gte("closes_at", nowIso).order("opens_at").limit(40),
-      admin.from("vedantu_tests").select("status"),
-    ]);
-    const err = courses.error ?? sync.error ?? today.error ?? upcoming.error ?? recent.error ?? tests.error ?? testRows.error;
-    if (err) throw new Error(err.message);
-
-    const titleOf = new Map((courses.data ?? []).map((c) => [c.enrollment_id, c.title]));
-    const withCourse = (rows: any[] | null): BatchClass[] =>
-      (rows ?? []).map((r) => ({ ...r, course_title: titleOf.get(r.enrollment_id) ?? "" }));
-
-    const testStats = { upcoming: 0, attempted: 0, missed: 0, practice: 0 };
-    for (const r of testRows.data ?? []) {
-      const k = r.status as keyof typeof testStats;
-      if (k in testStats) testStats[k] += 1;
-    }
-
-    return {
-      courses: courses.data ?? [],
-      sync: sync.data ?? null,
-      todayClasses: withCourse(today.data),
-      upcomingClasses: withCourse(upcoming.data),
-      recentClasses: withCourse(recent.data),
-      upcomingTests: (tests.data ?? []) as BatchTest[],
-      testStats,
-    };
+    const { fetchOnlineOverview } = await import("./online.server");
+    return fetchOnlineOverview();
   });
 
 export const startBatchSync = createServerFn({ method: "POST" })
@@ -135,22 +99,27 @@ export const finishBatchSync = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
-/** Smart-notes markdown for one class; fetches from Vedantu on first view and caches it. */
+/** Smart notes fetched on demand, never stored in the database. */
 export const getClassNotes = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: { sessionId: string; title: string }) => d)
   .handler(async ({ data, context }) => {
     await assertAdmin(context as Ctx);
-    const admin = await adminClient();
-    const { data: cached } = await admin.from("vedantu_class_notes").select("markdown,sections").eq("session_id", data.sessionId).maybeSingle();
-    if (cached?.markdown) return { markdown: cached.markdown, cached: true };
-    const { data: cls } = await admin.from("vedantu_classes").select("has_smart_notes").eq("session_id", data.sessionId).maybeSingle();
-    if (!cls?.has_smart_notes) return { markdown: "", cached: false };
-    const { fetchAndStoreNotes, friendlySyncError } = await import("./sync.server");
-    try {
-      const notes = await fetchAndStoreNotes(admin, data.sessionId, data.title);
-      return { markdown: notes.markdown, cached: false };
-    } catch (e) {
-      throw new Error(friendlySyncError(e));
-    }
+    const { fetchOnlineNotes } = await import("./online.server");
+    const notes = await fetchOnlineNotes(data.sessionId);
+    return { markdown: notes.markdown, sections: notes.sections, sessionId: notes.sessionId, pdfUrl: notes.pdfUrl, cached: false };
+  });
+
+/** One lecture as an in-app viewer: timestamped smart-note sections, slide images and topic outline. Live, never stored. */
+export const getLecture = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { sessionId: string }) => {
+    if (typeof d?.sessionId !== "string" || !/^[a-zA-Z0-9]{8,40}$/.test(d.sessionId)) throw new Error("Invalid session id");
+    return d;
+  })
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context as Ctx);
+    const { fetchOnlineLecture } = await import("./online.server");
+    const l = await fetchOnlineLecture(data.sessionId);
+    return { sessionId: l.sessionId, notes: l.notes, topics: l.topics, summary: l.summary, pdfUrl: l.pdfUrl, smartNotesUrl: l.smartNotesUrl };
   });

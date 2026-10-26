@@ -1,13 +1,17 @@
 name: Vedantu daily sync
+
 on:
   schedule:
     - cron: '30 18 * * *'
   workflow_dispatch:
+
 permissions:
   contents: read
+
 concurrency:
   group: vedantu-daily-sync
   cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest

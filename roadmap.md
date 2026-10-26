@@ -1,45 +1,46 @@
 # Roadmap
-- [x] Oct 24 deep-test checks completed: reproduced asynchronous echo-gate cancellation leaving the sender silent, serialized swaps/recovery, and verified regression; 49 targeted tests passed, build OK. Real browser playback completed two lines per voice: first audio Kore 1273 ms, Aoede 561 ms, Leda 497 ms; this is text-to-audio, not full conversation.
-- [ ] Oct 24 full conversation verification blocked: all three real call attempts reached Gateway session creation then initial_heartbeat_timeout after 12 seconds; patched Kore retest still had peer/ICE state new, no candidate stats, no media readiness or spoken exchange. Local automated playback cannot verify the user's hosted phone disconnect or acoustic echo; needs working WebRTC and same hosted revision/phone path, not another paid automatic call.
-- [x] Reduce avoidable Kore/Aoede/Leda reply latency: immediate completed-thought flushing, bounded look-ahead, scoped cancellation, visible speech errors; six real browser speech runs first audio 576–1020 ms, 20 tests passed, build OK. This measures text-to-audio, not question-to-answer latency.
-- [ ] Resolve reported live connection loss: reproduced 'Voice media did not connect' on real call start; speech endpoint/playback works for all three voices, but media transport did not establish in this environment. No paid automatic reconnect; live two-way result remains blocked on a working media connection.
-- [x] Oct 23 (new workspace): GitHub API re-linked, repo read verified 200; Supabase (ref dsazygocmjgjfqkqkwcp) already linked and live — 94 memory items, 1 profile, 1 role, 10 voice calls, 9 Vedantu courses readable; display name "My Personal Agent" cannot be read from here, user to confirm in Project Settings
-- [x] Restore original continuous live-call page and uncluttered Start/Attach/Settings layout; mobile/desktop browser checked, 14 tests passed; Start still fails media connection after 12 seconds, audible live conversation unverified. Speech voice auditions remain in settings, separate from actual live identity.
-- [ ] Use Kore/Aoede/Leda as continuous live identities (blocked: these Gemini TTS identities are not supported GPT Live voices).
-- [x] Explain changed Voice Mode screenshot: /voice now always renders speak-then-listen TalkVoice instead of the previous LiveVoicePage; no restoration requested yet.
-- [x] Retry uploaded-audio → tutor → spoken-answer flow: transcribe/chat/speech 200, Aoede playback completed (2740 chunks, 2630197 samples), no browser errors; ElevenLabs connection remains unavailable, uploaded speaker cloning blocked.
-- [x] Use selected Kore/Aoede/Leda for new spoken answers; uploaded microphone recording → transcription 200 → tutor 200 → Aoede speech 200 verified. Delivery pause guidance tuned, waveform comparison is not speaker similarity verification.
-- [ ] Make uploaded speakers actual live-call identities and verify end-to-end (blocked: no eligible custom-cloning provider access; current speech uses preset voices, not uploads).
-- [x] Add Kore/Aoede/Leda sample options to the same voice menu in voice/study settings; each selected sample played in browser without changing stored live identity, 3 regression tests passed.
-- [x] Add true Pause/Resume and Replay; Kore/Aoede/Leda passed real browser controls and quality checks, 3 regression tests passed. Kore/Aoede have no near-clipping; Leda has 0.0033% near-clipping. Listening-based realism ranking remains unverified.
-- [x] Add three saved Gemini Hindi/Hinglish alternatives; all six originals/alternatives played in the real browser, desktop/mobile checked, 10 regression tests passed.
-- [x] Remove American/British choices and migrate saved choices; add all three uploaded original recordings with Play/Stop and download.
-- [ ] Replace live tutor identity with uploaded voices (blocked: custom cloning is unavailable through workspace credits; originals are playback only, existing Indian live voices remain).
-- [x] Explain options without paid ElevenLabs and whether Lovable workspace credits cover cloning; no paid connection completed.
-- [x] Apply similar Indian Hindi/Hinglish teacher delivery using existing available voices; eight regression tests passed and build OK, without claiming sample cloning.
-- [ ] Confirm audible similarity in Voice Mode (fresh call test still reports "Voice media did not connect", no live output audio received; sample playback itself verified).
-- [x] Quiz ON queues during answers; voice teaching toggles update the same session; premium Opus 5.5 + high reasoning verified with real tutor and next-MCQ calls, browser quiz and regression tests
-- [ ] Audible two-way voice and in-call teaching toggle verification (requires real microphone/speaker conversation; simulated session/UI and real delegated tutor verified)
-- [x] Prevent settings-driven voice endings and automatic paid replacements; retain service/network safety cleanup (12 safeguard tests passed)
-- [x] New workspace: GitHub API re-linked (fresh connection, commit 8bdb9088 pushed); Firecrawl, Parallel and Perplexity linked
-- [ ] Oct 23 workspace move: GitHub API re-linked and repo read verified; external Supabase (ref dsazygocmjgjfqkqkwcp) still connected, "My Personal Agent" display name awaits confirmation in Project Settings
-- [x] Link GitHub, Firecrawl, Parallel, Perplexity
-- [x] Copy code from GitHub repo and check preview
-- [x] DB read-only check (all tables empty, bucket agent-memory exists, no admin role yet)
-- [x] Vercel: old key archived, 4 keys updated, redeployed, 4 pages 200
-- [x] Republished; voice relay now points to sarthi-ai-bridge.lovable.app (committed to GitHub)
-- [x] "Not enough credits" fixed: stale ai_pause_state row removed (not credits/key)
-- [x] "Key not registered" fixed: key rotated, Vercel updated, redeployed, republished; tutor 200, relay handshake 101 OK
-- [x] Prompt updated: voice-credits-pause-fix-prompt.md (Case A credits, Case B not-registered)
-- [ ] Restore DB export (waiting on user)
-- [ ] Live tests (real voice call, quiz, PDF quiz, read-aloud) after data restore
-- [x] Workspace move (Oct 22): Firecrawl, GitHub API, Parallel, Perplexity freshly linked
-- [x] Workspace move (Oct 22, second): Firecrawl, GitHub API, Parallel, Perplexity re-linked
-- [x] Supabase (ref dsazygocmjgjfqkqkwcp) still connected: 1 user, 1 admin, 94 memory items, 10 voice calls
-- [x] Vedantu login saved securely; direct server login works (no OTP); 9 courses visible
-- [x] Vedantu sync: all My Courses batches, schedule, tests, performance available to the agent (backend + Mera Batch page)
-- [x] Vedantu lecture notes PDFs (prod-recordings.vedantu.com/NOTES/...) readable by the agent (smart notes cached, PDF URL pattern confirmed)
-- [ ] Mera Batch page in-app verification (sync run, notes fetch, padhao/quiz buttons) with real admin session
-- [ ] Batch chooser + mistake tracker (plan drafted)
-- [x] Kore/Aoede/Leda: mic gated during speech (no self-talk), faster flash TTS + prefetch, whole-sentence chunks (no cut words). Live call audibly unverified.
-- Kore/Aoede/Leda call drop ("Voice connection was lost"): silent-track echo gate, shared speaker, merged+buffered requests, busy retries, short TTS prompt. Needs a real phone call to confirm.
+
+## Done
+- Safe additive Git request (2026-10-24): read-only check found a clean working tree and latest local commit 0306d49 (Refined Indian female avatar tone); no existing code/history changed and no manual commit/push performed. Lovable manages commits; remote sync status is not available to the agent.
+- Uploaded Mithali scene used for general delivery polish only: bright female style now emphasizes clear open diction, gentle question intonation and smooth Hinglish, without scene effects; extracted WAV and approved default unchanged. Actual live-call sound remains unverified.
+- Requested female scene extracted (1:34:00–1:34:38) and general delivery analyzed; original Bright Indian female option added to live/read-aloud, approved default preserved; selection/reload and real streamed TTS verified, 15 focused tests passed. Actual live-call audio remains unverified.
+- Extracted scene WAV and clean source ZIP prepared for delivery; scene includes music/other speakers, source excludes secrets/dependencies/Git/generated output and is not a database/browser-data backup.
+- Read-only Git check: working tree clean, latest observed commit e99224c; Lovable manages sync, remote push cannot be verified or performed manually.
+- Mera Batch connected to live Voice (admin-verified once per call) and both Chat + Voice tutors gained batch_schedule / batch_class_notes tools; real check: 9 courses, 5 today, voice tutor listed today's classes + next test and made an MCQ from real class notes; 380 tests pass
+- Vedantu parse fix + credentials saved; live sync verified (9 courses, 20 batches, real classes)
+- Google Sheets linked; AITS section on /batch with padhao/quiz deeplinks; parser tests passing
+- Settings toggle "Mera Batch context": chat + voice send batch:true; /api/chat injects live batch snapshot — verified against real DB
+- Top models set: tutor/voice = Claude Fable 5.1, fact/photo check = Gemini 4 Argon, maths check = GPT-6 Astra; real gateway calls for all 3 succeed
+- Latest suite: 371 tests passed, 1 skipped; preview build OK
+- New workspace: GitHub API + Google Sheets connections re-linked and verified with real calls (repo readable, AITS sheet readable)
+- New workspace: Supabase "My Personal Agent" = already-connected project dsazygocmjgjfqkqkwcp; data intact (9 courses, 150 tests, 94 memory items)
+
+## Pending
+- GitHub sync/conflict verification (2026-10-24): agent cannot read Lovable's Git sync status; check Project settings → Git. Do not perform manual commits/pushes or rewrite history.
+- Restore voice funding (2026-10-24): workspace has 0.00 spendable AI credits; no configured credit limits were found. Blocked until owner restores AI-eligible credits; do not clear AI pauses or make paid probes before funding is restored.
+- Compare the user's actual Chat/Voice lecture exports for completeness; blocked until the user supplies those Markdown files and the reference lecture/transcript.
+- Signed-in batch/chat verification blocked by external unmanaged Supabase session; user must sign in as admin to check Settings → Mera Batch context → "aaj kya class hai?".
+- Live voice quiz remains unverified: credits pause removed after successful gateway probe, but browser call failed with "Voice media did not connect"; real-device audio test still needed.
+
+## Latest verification
+- Pending checks (2026-10-24): browser /batch displayed the admin sign-in gate; /voice displayed Ready with Start/Call controls after loading. External unmanaged Supabase prevents authenticated end-to-end checks. AI-eligible balance remains 0.00, so no paid call/TTS probe or new dubbing was attempted; real-device audio remains unverified. No application code or Git history changed.
+- New workspace (2026-10-23 14:32 UTC): all five connectors linked and verified with real calls — Firecrawl scrape HTTP 200, Parallel search HTTP 200, Perplexity search HTTP 200, Google Sheets AITS Schedule read HTTP 200, GitHub account MrAnujBabu with repo Anuj-sarthi-deeplearning-ai readable and daily-sync workflow run visible. Supabase "My Personal Agent" (dsazygocmjgjfqkqkwcp) already linked; read-only check: 9 courses, 150 tests, 94 memory items, 8 notes, 0 classes, 10 voice calls — no data changed.
+
+- Actual Obsidian desktop runtime launched under Xvfb with Notion Toggle 1.8.25 enabled. App-generated sample Chat-test.md and Voice-test.md opened separately: Chat rendered full sample text without toggles; Voice rendered one collapsed recall-green card, clicking revealed its answer, and the full conversation section retained the sample content. Screenshots reviewed. These were synthetic sample exports, not the user's real lecture notes; no automatic Vedantu lecture transcription established. Voice export tests: 13 passed.
+- New workspace: Firecrawl, GitHub API, Google Sheets, Parallel, and Perplexity linked successfully. GitHub repository and AITS spreadsheet returned HTTP 200. Existing external Supabase remains readable: 9 courses, 0 stored classes, 150 legacy tests, 94 memory items; no database replacement.
+- Fresh Vedantu read at 2026-10-23 04:28 UTC: 9 courses, 20 batches, 417 bounded fetched classes, 5 today, 40 upcoming, 15 recent, 1 upcoming test, 20 incompleteness warnings. On-demand notes returned 28,552 characters in 40 sections. No content persisted. Four focused test files passed (14 tests); signed-in admin UI and live Voice remain unverified.
+- Notion Toggle compatibility checked using its source-scanning logic and original quiz engine: a generated Voice export yielded two foldable recall cards (one red, one green), completed question → reveal → next → done, and re-imported losslessly. A plain Chat export yielded zero toggles. App export tests: 21 passed. Installed Obsidian rendering remains unverified.
+- Git commit request: read-only Git status was clean; latest observed local commit was 0ffd2f3 (Changes). No manual commit or push performed; Lovable manages Git state, and remote sync status is unavailable here.
+- Online-only Vedantu implemented: admin /batch and batch-enabled chat read Vedantu directly; notes load on demand. Daily GitHub fetch retains only lease/status metadata, never course/class/test/note content. Existing rows untouched. Real server read: 9 courses, 5 today classes, 40 upcoming classes, 1 upcoming test; 20 bounded-list warnings explicitly surfaced. Four focused test files passed (14 tests); signed-in UI remains unavailable with external unmanaged Supabase.
+- Search repair: restored Parallel, Perplexity, and Firecrawl app connections in the current workspace. App NCERT tool returned four official results, web search returned eight merged results; real mobile chat performed NCERT searches and chapter reading without page errors.
+- Current Vedantu read: 9 courses, 0 classes, 150 tests, 8 notes. Chat batch toggle reads the stored mirror plus optional Sheets snapshot; it does not fetch Vedantu on every question. Talk voice uses this chat path; live /voice now loads the same batch data (2026-10-23).
+- Fresh workspace GitHub API and Google Sheets connections linked; repository and AITS Schedule reads both returned HTTP 200. Supabase remains connected to the requested existing project; read-only check found 9 courses, 94 memory items, and 0 classes. No credentials or data changed.
+- Real PDF submission in a doubt conversation: composer attachment count was zero at 0.5 seconds, worksheet filename remained in the message, and tutor returned a worksheet-based MCQ. Both chat requests returned 200 with no page errors. Screenshots did not survive the workspace transition, so visual screenshot review was unavailable.
+- Sent attachments leave the composer before the async answer completes; failed submissions restore the draft, and later attachments survive completion. Five submission tests passed; real photo chat verified attachment retained in message and composer cleared.
+- GitHub daily sync configured at 18:30 UTC (00:00 IST), manual Sync now preserved; first real Actions job completed successfully at 03:34:41 UTC (GitHub scheduling may be delayed).
+- Real Vedantu sync completed: 9 courses, 1,874 classes, 236 test fetches, 8 notes, zero warnings; today's classes read back from storage.
+- Live Vedantu batch test at 2026-10-23 13:58 UTC with saved login: 9 courses, 417 bounded classes, 5 today (Gravitation-4 8:30 AM, Cell 2 10:30 AM, Atom-7 10:45 AM, Chemical Coordination-2 1:00 PM, Chemical Bonding 5:00 PM IST), 1 upcoming test (HWT-06 Biology, closes 24 Oct), on-demand Gravitation-4 notes = 26,622 chars / 26 sections; no content persisted. Screenshots: /mnt/documents/vedantu-batch-report.png and vedantu-batch-app.png (/batch sign-in gate, signed-out).
+- Uploaded credits repair instructions followed: removed only stale workspace credits pause; no API-key rotation or Supabase-key rotation.
+- Tutor screen returned 4 for "2 + 2"; signed-out private batch request returned 401; admin/non-admin access tests passed.
+- Scheduler-only GitHub commit cdc6dd1 activated without forcing history; encrypted Actions credentials configured.
+- Package server 429 during build (Oct 23): transient, no code change needed.

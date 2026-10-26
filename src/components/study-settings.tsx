@@ -3,12 +3,10 @@ import { BookOpen, Settings, Shield } from 'lucide-react';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Switch } from './ui/switch';
-import { STUDY_TEXT_SIZES, useAutoVerify, usePhotoReading, useBoldQuestions, useHideChatWidget, useHideTopBar, useNumericAnswerLabels, useQuizKeyboardShortcuts, useStudyTextSize, useVoiceChoice, VOICE_CHOICES, type VoiceChoiceId, useThemeChoice, type ThemeChoice } from '@/lib/quiz-label-preference';
+import { STUDY_TEXT_SIZES, useAutoVerify, usePhotoReading, useBoldQuestions, useHideChatWidget, useHideTopBar, useNumericAnswerLabels, useQuizKeyboardShortcuts, useStudyTextSize, useVoiceChoice, VOICE_CHOICES, type VoiceChoiceId, useThemeChoice, type ThemeChoice, useBatchContext } from '@/lib/quiz-label-preference';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { BackupControls } from './backup-controls';
 import { QuizTimerSettings } from './quiz-timer-settings';
-import { VoiceSamples } from './voice-samples';
-import { VoicePicker } from './voice-picker';
 
 export function StudySettings() {
   const [numeric, setNumeric] = useNumericAnswerLabels();
@@ -19,6 +17,7 @@ export function StudySettings() {
   const [topBarHidden, setTopBarHidden] = useHideTopBar();
   const [autoVerify, setAutoVerify] = useAutoVerify();
   const [photoReading, setPhotoReading] = usePhotoReading();
+  const [batchContext, setBatchContext] = useBatchContext();
   return <Dialog>
     <DialogTrigger asChild><Button variant="ghost" className="h-9 w-full justify-start gap-2 px-3"><Settings className="size-4" />Settings</Button></DialogTrigger>
     <DialogContent className="max-h-[85dvh] w-[calc(100%-2rem)] overflow-y-auto rounded-lg">
@@ -30,11 +29,11 @@ export function StudySettings() {
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Keyboard answers <span className="mt-1 block text-xs text-muted-foreground">1–4 · top row + numeric keypad</span></span><Switch checked={keyboard} onCheckedChange={setKeyboard} aria-label="Keyboard quiz answers" /></label>
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Hide Chat Widget <span className="mt-1 block text-xs text-muted-foreground">Quiz</span></span><Switch checked={hidden} onCheckedChange={setHidden} aria-label="Hide Chat Widget" /></label>
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Hide top bar <span className="mt-1 block text-xs text-muted-foreground">Full-screen mobile · menu stays in the corner</span></span><Switch checked={topBarHidden} onCheckedChange={setTopBarHidden} aria-label="Hide top bar" /></label>
-        <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Auto-verify answers <span className="mt-1 block text-xs text-muted-foreground">Gemini 3.1 Pro + GPT-6 Astra check each answer · Claude rules on objections</span></span><Switch checked={autoVerify} onCheckedChange={setAutoVerify} aria-label="Auto-verify answers" /></label>
-        <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Photo reading <span className="mt-1 block text-xs text-muted-foreground">Gemini 3.1 Pro reads doubt photos first, then the tutor answers</span></span><Switch checked={photoReading} onCheckedChange={setPhotoReading} aria-label="Photo reading by Gemini" /></label>
+        <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Auto-verify answers <span className="mt-1 block text-xs text-muted-foreground">Gemini 4 Argon + GPT-6 Astra check each answer · Claude rules on objections</span></span><Switch checked={autoVerify} onCheckedChange={setAutoVerify} aria-label="Auto-verify answers" /></label>
+        <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Photo reading <span className="mt-1 block text-xs text-muted-foreground">Gemini 4 Argon reads doubt photos first, then the tutor answers</span></span><Switch checked={photoReading} onCheckedChange={setPhotoReading} aria-label="Photo reading by Gemini" /></label>
+        <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Mera Batch context <span className="mt-1 block text-xs text-muted-foreground">Tutor ko aapki aaj ki classes, upcoming tests aur AITS tracker dikhta hai (chat + voice)</span></span><Switch checked={batchContext} onCheckedChange={setBatchContext} aria-label="Mera Batch context" /></label>
         <ThemeRow />
         <VoiceChoiceRow />
-        <div className="py-4"><VoiceSamples /></div>
         <QuizTimerSettings />
         <section className="py-4"><h2 className="mb-2 text-sm font-medium">Study data</h2><BackupControls /></section>
       </div>
@@ -46,10 +45,14 @@ export function StudySettings() {
   </Dialog>;
 }
 function VoiceChoiceRow() {
+  const [choice, setChoice] = useVoiceChoice();
   return (
-    <div className="flex min-h-16 flex-col gap-3 py-3">
+    <div className="flex min-h-16 items-center justify-between gap-4 py-3">
       <span className="text-sm">Voice mode awaaz <span className="mt-1 block text-xs text-muted-foreground">Next call se lagu hoti hai</span></span>
-      <VoicePicker label="Voice mode voice" />
+      <Select value={choice} onValueChange={v => setChoice(v as VoiceChoiceId)}>
+        <SelectTrigger aria-label="Voice mode voice" className="w-44"><SelectValue /></SelectTrigger>
+        <SelectContent>{VOICE_CHOICES.map(c => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
+      </Select>
     </div>
   );
 }

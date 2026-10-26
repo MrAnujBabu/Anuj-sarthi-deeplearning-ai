@@ -118,8 +118,23 @@ export function parseEnrollments(json: unknown): CourseRow[] {
 }
 
 export function parseBatches(json: unknown): BatchRef[] {
-  const list = (json as { courses?: unknown[] } | null)?.courses;
-  if (!Array.isArray(list)) return [];
+  // Vedantu has wrapped this list differently over time; accept every known shape.
+  const j = json as Raw;
+  const list = Array.isArray(j)
+    ? j
+    : Array.isArray(j?.courses)
+      ? j.courses
+      : Array.isArray(j?.data?.courses)
+        ? j.data.courses
+        : Array.isArray(j?.data)
+          ? j.data
+          : Array.isArray(j?.result?.courses)
+            ? j.result.courses
+            : [];
+  if (!list.length && json != null) {
+    const shape = j && typeof j === "object" ? Object.keys(j as object).slice(0, 10).join(",") : typeof json;
+    console.warn(`Vedantu batches: no courses parsed; top-level keys: ${shape}`);
+  }
   const out: BatchRef[] = [];
   for (const raw of list) {
     const c = raw as Raw;
@@ -327,6 +342,37 @@ export function smartNotesToMarkdown(json: unknown): { markdown: string; section
   let markdown = parts.join("\n\n");
   if (markdown.length > MAX_NOTES_CHARS) markdown = `${markdown.slice(0, MAX_NOTES_CHARS)}\n\n_…notes shortened._`;
   return { markdown, sections };
+}
+
+export type LectureNote = { section: string; title: string; start: string; end: string; type: string; markdown: string; images: string[] };
+export type LectureTopic = { at: string; title: string };
+const SLIDE_HOST = /^https:\/\/ai-contentsearch\.vedantu\.com\//;
+
+/** Keeps the smart notes as ordered, timestamped sections with their slide images (only Vedantu's own image host). */
+export function smartNotesToLecture(json: unknown): LectureNote[] {
+  const list = Array.isArray(json) ? json : Array.isArray((json as { notes?: unknown[] })?.notes) ? (json as { notes: unknown[] }).notes : [];
+  const out: LectureNote[] = [];
+  for (const raw of list) {
+    const n = raw as Raw;
+    const type = str(n.type, 40);
+    if (type.toLowerCase() === "promotional") continue;
+    const markdown = typeof n.markdown === "string" ? n.markdown.trim().slice(0, 20_000) : "";
+    const images = ((Array.isArray(n.images) ? n.images : []) as unknown[]).filter((u): u is string => typeof u === "string" && SLIDE_HOST.test(u)).slice(0, 12);
+    if (!markdown && !images.length) continue;
+    const t = (v: unknown) => (typeof v === "string" ? v.trim().slice(0, 12) : stamp(v));
+    out.push({ section: str(n.sectionTitle, 200), title: str(n.noteTitle, 200), start: t(n.timeStamp), end: t(n.endTimeStamp), type, markdown, images });
+    if (out.length >= 200) break;
+  }
+  return out;
+}
+
+/** Lecture topic outline (timestamps) from Vedantu's transcript-data endpoint. */
+export function parseLectureTopics(json: unknown): { topics: LectureTopic[]; summary: string } {
+  const j = (json ?? {}) as Raw;
+  const topics = ((Array.isArray(j.topics) ? j.topics : []) as unknown[]).map((x) => x as Raw).map((x: Raw) => ({ at: str(x.timeStamp, 12), title: str(x.title, 200) })).filter((x: { title: string }) => x.title).slice(0, 40);
+  const d = (j.description ?? {}) as Raw;
+  const summary = ((Array.isArray(d.sections) ? d.sections : []) as unknown[]).map((x) => str((x as Raw).md, 2000)).filter(Boolean).join("\n\n").slice(0, 4000);
+  return { topics, summary };
 }
 
 export function notesPdfUrl(sessionId: string): string {

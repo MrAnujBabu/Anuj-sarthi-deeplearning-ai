@@ -10,11 +10,11 @@ const unsure = { verdict: 'unsure' as const };
 const down = { verdict: 'unsure' as const, failed: true };
 
 describe('council line-up (top model per job)', () => {
-  it('Gemini 3.1 Pro checks facts and reads photos, GPT-6 Astra checks maths, Claude Fable 5.1 rules', () => {
-    expect(COUNCIL_MODELS.gemini.id).toBe('google/gemini-3.1-pro-preview');
+  it('Gemini 4 Argon checks facts and reads photos, GPT-6 Astra checks maths, Claude Fable 5.1 rules', () => {
+    expect(COUNCIL_MODELS.gemini.id).toBe('google/gemini-4-argon');
     expect(COUNCIL_MODELS.openai.id).toBe('openai/gpt-6-astra');
     expect(COUNCIL_MODELS.chair.id).toBe('anthropic/claude-fable-5-1');
-    expect(VISION_MODEL).toBe('google/gemini-3.1-pro-preview');
+    expect(VISION_MODEL).toBe('google/gemini-4-argon');
   });
 });
 
@@ -67,7 +67,7 @@ describe('reviewer reply parsing', () => {
 describe('photo reading', () => {
   it('wraps the reading for the tutor and folds it away for display', () => {
     const text = wrapPhotoReading('Q. Find the force. (A) 5 N (B) 6 N') + 'Solve this question step by step.';
-    expect(text).toContain('Gemini 3.1 Pro');
+    expect(text).toContain('Gemini 4 Argon');
     const { reading, rest } = splitPhotoReading(text);
     expect(reading).toBe('Q. Find the force. (A) 5 N (B) 6 N');
     expect(rest).toBe('Solve this question step by step.');

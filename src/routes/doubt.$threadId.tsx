@@ -35,6 +35,7 @@ import { emphasizeQuizQuestion } from "@/lib/quiz-emphasis";
 import { DOC_RE, pdfsToText } from "@/lib/pdf-text";
 import { readDeviceFlag, useAutoVerify, useBoldQuestions, useHideChatWidget, useHideTopBar, useStudyTextSize } from '@/lib/quiz-label-preference';
 import { useQuizStart } from '@/hooks/use-quiz-start';
+import { batchRequestHeaders } from '@/lib/batch-request-headers';
 
 export const Route = createFileRoute("/doubt/$threadId")({
   head: () => ({
@@ -122,7 +123,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
     id: threadId,
     experimental_throttle: 50,
     messages: initialMessages,
-    transport: new DefaultChatTransport({ api: "/api/chat" }),
+    transport: new DefaultChatTransport({ api: "/api/chat", headers: batchRequestHeaders }),
     onError: (e) => toast.error(displayAiError(e.message) || "Couldn't reach the tutor. Check your connection and try again."),
   });
   const [autoVerify] = useAutoVerify();
@@ -159,7 +160,7 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
     const prevUser = [...messages].reverse().find((m) => m.role === "user");
     const prevText = prevUser?.parts.map((p) => (p.type === "text" ? p.text : "")).join(" ");
     const rag = text ? await buildRagContext(text, prevText) : "";
-    return rawSend(msg, { body: { mode, model, effort, search, ...(rag ? { rag } : {}) } });
+    return rawSend(msg, { body: { mode, model, effort, search, batch: readDeviceFlag("snapsolve.batch-context", false), ...(rag ? { rag } : {}) } });
   };
   const requestQuizStart = useQuizStart(status === 'ready' && !reading && settingsReady, () => {
     void sendMessage({ text: "Quiz mode ON — is topic par mujhse NEET practice questions poochho." }, "quiz");

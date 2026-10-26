@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { VOICE_CHAT_KEY, VOICE_CHAT_MAX, voiceChatText } from "@/lib/voice-chat";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useLiveVoice, PLAYBACK_SPEEDS, type LiveEvent, type LiveStage } from "@/hooks/use-live-voice";
-import { useVoiceChoice, useStudyTextSize, STUDY_TEXT_SIZES, VOICE_CHOICES, type VoiceChoiceId, type StudyTextSize } from "@/lib/quiz-label-preference";
+import { useBatchContext, useVoiceChoice, useStudyTextSize, STUDY_TEXT_SIZES, VOICE_CHOICES, type VoiceChoiceId, type StudyTextSize } from "@/lib/quiz-label-preference";
 import { extractLocally } from "@/lib/file-extract";
 import { cn } from "@/lib/utils";
 import { parseVoiceSession, voiceTranscriptMarkdown, type VoiceQuizEntry, type VoiceRow } from "@/lib/voice-transcript";
@@ -22,15 +22,14 @@ import { resolveModel, VOICE_TUTOR_MODEL, type Effort } from '@/lib/models';
 import { ModelPicker } from '@/components/model-picker';
 import { billableSeconds, confirmedSeconds } from '@/lib/voice-usage';
 import { QuizTimerSettings } from '@/components/quiz-timer-settings';
+import { TalkVoice } from '@/components/talk-voice';
+import { usesTalkTurns } from '@/lib/talk-turn';
 import { initialVoiceQuizState, reduceVoiceQuiz } from '@/lib/voice-quiz-state';
 import { AssistantAnswer } from '@/components/assistant-answer';
 import { formatVoiceReply } from '@/lib/voice-format';
 import { exportTranscriptWord, openTranscriptPdf } from '@/lib/transcript-export';
 import { voiceSettingsLocked } from '@/lib/voice-session';
-import { VoiceSamples } from '@/components/voice-samples';
-import { SPEECH_VOICES, resolveSpeechVoice, useSpeechVoice, type SpeechVoice } from '@/lib/speech-voice';
-import { prefetchSpeech, speakSentence } from '@/lib/stream-speech';
-import { LiveSpeechQueue, takeSpeechThoughts } from '@/lib/live-speech-queue';
+import { supabase } from '@/integrations/supabase/client';
 
 export const Route = createFileRoute("/voice")({
   head: () => ({
@@ -60,7 +59,10 @@ async function readAttachment(file: File, ocr: boolean, progress: (message: stri
 }
 
 function VoicePage() {
-  return <LiveVoicePage />;
+  const [talk, setTalk] = useState<boolean | null>(null);
+  useEffect(() => { setTalk(usesTalkTurns(window.location.origin)); }, []);
+  if (talk === null) return null;
+  return talk ? <TalkVoice /> : <LiveVoicePage />;
 }
 
 function LiveVoicePage() {
@@ -90,58 +92,15 @@ function LiveVoicePage() {
   const [finalUsage, setFinalUsage] = useState(false);
   const [callId, setCallId] = useState('');
   const [choice, setChoice] = useVoiceChoice();
-  const [speechVoice, setSpeechVoice] = useSpeechVoice();
-  // 'tts' = the live call listens/thinks as before, but replies are spoken by Kore/Aoede/Leda.
-  const [engine, setEngine] = useState<'live' | 'tts'>('live');
-  useEffect(() => { try { if (localStorage.getItem('snapsolve.call-voice-engine') === 'tts') setEngine('tts'); } catch { /* default */ } }, []);
-  const ttsVoice = useRef<SpeechVoice | null>(null);
-  const ttsBuf = useRef('');
-  const ttsTimer = useRef<number | null>(null);
-  const ttsQueue = useRef<LiveSpeechQueue | null>(null);
-  const ttsFailed = useRef(false);
-  const echoGate = useRef<(on: boolean) => void>(() => {});
-  const ttsRelease = useRef<number | null>(null);
-  const ttsCancel = useCallback(() => {
-    if (ttsTimer.current !== null) clearTimeout(ttsTimer.current);
-    ttsTimer.current = null; ttsBuf.current = '';
-    ttsQueue.current?.cancel(); ttsQueue.current = null;
-    if (ttsRelease.current !== null) clearTimeout(ttsRelease.current); ttsRelease.current = null; echoGate.current(false);
+  // Mera Batch (Settings): the relay verifies this admin session once per call, then drops the token.
+  const [batchOn] = useBatchContext();
+  const batchToken = useRef('');
+  useEffect(() => {
+    let alive = true;
+    void supabase.auth.getSession().then(({ data }) => { if (alive) batchToken.current = data.session?.access_token ?? ''; });
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => { batchToken.current = session?.access_token ?? ''; });
+    return () => { alive = false; data.subscription.unsubscribe(); };
   }, []);
-  // One speaker for the whole call: opening/closing a new audio output per sentence
-  // disturbs the phone's call audio and microphone.
-  const ttsAudio = useRef<AudioContext | null>(null);
-  const ttsSpeaker = useCallback(() => {
-    try {
-      if (!ttsAudio.current || ttsAudio.current.state === 'closed') ttsAudio.current = new AudioContext();
-      void ttsAudio.current.resume().catch(() => {});
-    } catch { ttsAudio.current = null; }
-    return ttsAudio.current ?? undefined;
-  }, []);
-  const ttsEnqueue = useCallback((text: string) => {
-    const v = ttsVoice.current;
-    if (!text || !v || ttsFailed.current) return;
-    ttsQueue.current ??= new LiveSpeechQueue({
-      request: (text, signal) => prefetchSpeech('/api/speech', text, signal, v),
-      play: (text, signal, ready) => speakSentence('/api/speech', text, signal, v, ready, ttsSpeaker()),
-      busy: (on) => {
-        if (ttsRelease.current !== null) clearTimeout(ttsRelease.current);
-        ttsRelease.current = null;
-        if (on) echoGate.current(true);
-        else ttsRelease.current = window.setTimeout(() => { ttsRelease.current = null; echoGate.current(false); }, 700);
-      },
-      error: (error) => {
-        ttsFailed.current = true;
-        toast.error(`${v} ki awaaz ruk gayi — call chalu hai, jawab neeche likha hai. Agla sawaal bolo, awaaz phir aayegi.`, { description: error instanceof Error ? error.message : undefined });
-      },
-    });
-    ttsQueue.current.enqueue(text);
-  }, [ttsSpeaker]);
-  const ttsFlush = useCallback(() => {
-    ttsTimer.current = null;
-    const text = ttsBuf.current.trim(); ttsBuf.current = '';
-    ttsEnqueue(text);
-  }, [ttsEnqueue]);
-  useEffect(() => () => { ttsCancel(); void ttsAudio.current?.close().catch(() => {}); ttsAudio.current = null; }, [ttsCancel]);
   const [textSize, setTextSize] = useStudyTextSize();
   const scrollRef = useRef<HTMLElement>(null);
   const pinned = useRef(true);
@@ -209,18 +168,6 @@ function LiveVoicePage() {
       const role = event.type === "session.input_transcript.delta" ? "user" : "assistant";
       const delta = typeof event["delta"] === "string" ? event["delta"] : "";
       if (!delta) return;
-      if (ttsVoice.current) {
-        if (role === 'user') { ttsCancel(); ttsFailed.current = false; }
-        else {
-          ttsBuf.current += delta;
-          if (ttsTimer.current !== null) clearTimeout(ttsTimer.current);
-          const { thoughts, remainder } = takeSpeechThoughts(ttsBuf.current);
-          ttsBuf.current = remainder;
-          thoughts.forEach(ttsEnqueue);
-          // Only unfinished punctuation-free captions need a quiet-period fallback.
-          ttsTimer.current = ttsBuf.current.trim() ? window.setTimeout(ttsFlush, 600) : null;
-        }
-      }
       // Student and tutor captions arrive interleaved while both talk; keep each
       // ongoing turn in one row instead of splitting it into fragments.
       const now = Date.now();
@@ -235,26 +182,27 @@ function LiveVoicePage() {
         if (at >= 0) return prev.map((r, i) => (i === at ? { ...r, text: r.text + delta } : r));
         return [...prev, { id, role, text: delta }];
       });
+    } else if (event.type === 'app.batch') {
+      const status = event['status'];
+      if (status === 'denied') toast.error((event.error as { message?: string } | undefined)?.message ?? 'Mera Batch ke liye admin sign in karein.');
+      else if (status === 'unavailable') toast.message('Mera Batch abhi load nahi hua — call normal chalegi.');
+      else if (status === 'ready') toast.success('Mera Batch Voice mein ON hai.');
     } else if (event.type === "app.delegation.pending") {
       setThinking(true);
     } else if (event.type === "app.delegation.completed" || event.type === "app.delegation.error" || event.type === "app.closed") {
       setThinking(false);
-      if (event.type === 'app.closed') ttsCancel();
       if (event.type === 'app.delegation.error') toast.error(event.error?.message ?? 'Tutor answer could not finish.');
     }
-  }, [ttsCancel, ttsFlush, ttsEnqueue]);
+  }, []);
 
   const prefs = useCallback(() => {
-    ttsVoice.current = engine === 'tts' ? speechVoice : null;
     const c = VOICE_CHOICES.find((v) => v.id === choice) ?? VOICE_CHOICES[0];
     const previous = rows.length ? `Previous conversation:\n${rows.map((r) => `${r.role === "user" ? "Student" : "Tutor"}: ${r.text}`).join("\n")}\n\n` : "";
     const docs = files.map((f) => `<doc name=${JSON.stringify(f.name)}>\n${f.text}\n</doc>`).join("\n\n");
-    return { voice: c.voice, accent: c.accent, quiz, matchQ, assertionQ, deep, search, model, effort, context: previous.slice(-Math.max(0, CONTEXT_LIMIT - docs.length)) + docs, documents: files.map(({ name, pages, method, text }) => ({ name, pages, method, chars: text.length })) };
-  }, [choice, engine, speechVoice, quiz, matchQ, assertionQ, deep, search, model, effort, files, rows]);
+    return { voice: c.voice, accent: c.accent, quiz, matchQ, assertionQ, deep, search, model, effort, context: previous.slice(-Math.max(0, CONTEXT_LIMIT - docs.length)) + docs, documents: files.map(({ name, pages, method, text }) => ({ name, pages, method, chars: text.length })), ...(batchOn && batchToken.current ? { batch: true, batchToken: batchToken.current } : {}) };
+  }, [choice, quiz, matchQ, assertionQ, deep, search, model, effort, files, rows, batchOn]);
 
   const voice = useLiveVoice({ onEvent, prefs });
-  const [ttsSpeaking, setTtsSpeaking] = useState(false);
-  echoGate.current = (on: boolean) => { voice.setEchoGate(on); setTtsSpeaking(on); };
   const canStart = voice.status === "idle" || voice.status === "closed";
   const live = voice.status === "connected";
   // Audio/files stay fixed; teaching preferences update on the same live session.
@@ -437,19 +385,10 @@ function LiveVoicePage() {
         <div className="flex items-center justify-between gap-2"><span>Bolne ki speed</span>{speedSelect("w-28")}</div>
         <p className="-mt-3 text-xs text-muted-foreground">Tutor khud tez ya dheere bolta hai — call ke beech me bhi badlo, reconnect nahi hota.</p>
         <label className="flex items-center justify-between gap-2"><FileText className="size-4 text-muted-foreground" />Read scans<Switch checked={ocr} disabled={locked || reading} onCheckedChange={setOcr} aria-label="Read scanned PDFs" /></label>
-        <Select value={engine === 'tts' ? `tts:${speechVoice}` : choice} disabled={locked} onValueChange={(value) => {
-          const tts = value.startsWith('tts:') ? resolveSpeechVoice(value.slice(4)) : undefined;
-          if (tts) { setSpeechVoice(tts); setEngine('tts'); try { localStorage.setItem('snapsolve.call-voice-engine', 'tts'); } catch { /* keep */ } return; }
-          const valid = VOICE_CHOICES.find(option => option.id === value);
-          if (valid) { setChoice(valid.id); setEngine('live'); try { localStorage.setItem('snapsolve.call-voice-engine', 'live'); } catch { /* keep */ } }
-        }}>
-          <SelectTrigger aria-label="Voice"><SelectValue /></SelectTrigger>
-          <SelectContent>
-            <SelectGroup><SelectLabel>Live call</SelectLabel>{VOICE_CHOICES.map(option => <SelectItem key={option.id} value={option.id}>{option.label}</SelectItem>)}</SelectGroup>
-            <SelectGroup><SelectLabel>Live call · Hindi/Hinglish voice</SelectLabel>{SPEECH_VOICES.map(name => <SelectItem key={name} value={`tts:${name}`}>{name}</SelectItem>)}</SelectGroup>
-          </SelectContent>
+        <Select value={choice} onValueChange={(v) => setChoice(v as VoiceChoiceId)} disabled={locked}>
+          <SelectTrigger aria-label="Voice" className="w-full"><SelectValue /></SelectTrigger>
+          <SelectContent>{VOICE_CHOICES.map((c) => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
         </Select>
-        <VoiceSamples disabled={locked} />
         <Select value={textSize} onValueChange={(v) => setTextSize(v as StudyTextSize)}><SelectTrigger aria-label="Voice transcript text size"><SelectValue /></SelectTrigger><SelectContent>{STUDY_TEXT_SIZES.map((size) => <SelectItem key={size} value={size}>{size} px</SelectItem>)}</SelectContent></Select>
         <QuizTimerSettings />
         <div className="flex gap-2 border-t pt-3">        <Button variant="ghost" size="icon" className="size-9" aria-label="Export conversation" title="Export conversation (.md)" onClick={exportCall}><Download className="size-4" /></Button>
@@ -558,13 +497,7 @@ function LiveVoicePage() {
           <Button type="submit" size="icon" className="size-11 shrink-0" disabled={!live || !draft.trim()} aria-label="Send message" title="Bhejo (Enter)"><SendHorizontal className="size-4" /></Button>
         </form>
       )}
-      <audio ref={voice.audioRef} muted={engine === 'tts' && !canStart} className="sr-only" />
-      {live && ttsSpeaking && (
-        <div role="status" className="relative z-10 mx-auto mb-2 flex items-center gap-3 rounded-full border bg-background px-4 py-2 text-sm shadow-sm">
-          <span>{speechVoice} bol rahi hai — mic band hai</span>
-          <Button type="button" size="sm" variant="secondary" className="rounded-full" onClick={ttsCancel}>Roko, main bolunga</Button>
-        </div>
-      )}
+      <audio ref={voice.audioRef} className="sr-only" />
       <footer hidden={!dockVisible && live} className="voice-dock relative z-10 -mx-3 shrink-0 border-t bg-background/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:-mx-6 sm:px-6">
         <div className="mx-auto flex max-w-md items-end justify-center gap-5">
           <div className="flex flex-col items-center gap-1">
@@ -590,7 +523,7 @@ function LiveVoicePage() {
           )}
           {canStart ? (
             <div className="flex flex-col items-center gap-1">
-              <Button type="button" size="lg" className="voice-dock-btn h-14 min-w-36 rounded-full px-8 text-base" onClick={() => { ttsCancel(); ttsFailed.current = false; if (engine === 'tts') ttsSpeaker(); voice.start(); }} disabled={reading}>
+              <Button type="button" size="lg" className="voice-dock-btn h-14 min-w-36 rounded-full px-8 text-base" onClick={voice.start} disabled={reading}>
                 <Phone className="size-5" /> {reading ? "Reading…" : rows.length ? "Start again" : "Start"}
               </Button>
               <span className="text-[11px] text-muted-foreground">Call</span>
@@ -604,13 +537,13 @@ function LiveVoicePage() {
                 <span className="text-[11px] text-muted-foreground">{voice.muted ? "Unmute" : "Mute"}</span>
               </div>
               <div className="flex flex-col items-center gap-1">
-                <Button type="button" size="icon" variant={voice.paused ? "secondary" : "outline"} className="voice-dock-btn size-14 rounded-full" disabled={!live} aria-pressed={voice.paused} onClick={() => { ttsCancel(); voice.setPaused(!voice.paused); }} aria-label={voice.paused ? "Resume call" : "Pause call"} title={voice.paused ? "Resume — wahi se aage" : "Pause — mic aur awaaz ruk jayegi"}>
+                <Button type="button" size="icon" variant={voice.paused ? "secondary" : "outline"} className="voice-dock-btn size-14 rounded-full" disabled={!live} aria-pressed={voice.paused} onClick={() => voice.setPaused(!voice.paused)} aria-label={voice.paused ? "Resume call" : "Pause call"} title={voice.paused ? "Resume — wahi se aage" : "Pause — mic aur awaaz ruk jayegi"}>
                   {voice.paused ? <Play className="size-6" /> : <Pause className="size-6" />}
                 </Button>
                 <span className="text-[11px] text-muted-foreground">{voice.paused ? "Resume" : "Pause"}</span>
               </div>
               <div className="flex flex-col items-center gap-1">
-                <Button type="button" size="lg" variant="destructive" className="voice-dock-btn h-14 min-w-36 rounded-full px-8 text-base" disabled={voice.status === "stopping"} onClick={() => { ttsCancel(); voice.stop(); }}>
+                <Button type="button" size="lg" variant="destructive" className="voice-dock-btn h-14 min-w-36 rounded-full px-8 text-base" disabled={voice.status === "stopping"} onClick={voice.stop}>
                   <PhoneOff className="size-5" /> End
                 </Button>
                 <span className="text-[11px] text-muted-foreground">{voice.status === "stopping" ? "Ending…" : "End call"}</span>
