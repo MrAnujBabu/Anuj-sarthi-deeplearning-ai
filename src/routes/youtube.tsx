@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { createParser } from 'eventsource-parser';
-import { Play, Square, Youtube, AudioLines, ArrowLeft, Languages, Captions, ChevronDown, Link2, Upload, FileText, Ear, ShieldCheck } from 'lucide-react';
+import { Play, Square, Youtube, AudioLines, ArrowLeft, Languages, Captions, ChevronDown, Link2, Upload, FileText, Ear, ShieldCheck, Paperclip, Loader2, X } from 'lucide-react';
+import { readTranscriptFile, TRANSCRIPT_ACCEPT } from '@/lib/transcript-file';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -46,6 +47,10 @@ function YouTubeHindi() {
   const [url, setUrl] = useState('');
   const [transcript, setTranscript] = useState('');
   const [file, setFile] = useState<File | null>(null);
+  const [attached, setAttached] = useState<{ kind: 'text'; name: string; detail: string } | { kind: 'media'; file: File; name: string; detail: string } | null>(null);
+  const [reading, setReading] = useState<string | null>(null);
+  const attachInput = useRef<HTMLInputElement>(null);
+  const runIsFile = useRef(false);
   const [mediaObjectUrl, setMediaObjectUrl] = useState<string | null>(null);
   const [voice, setVoice] = useState<SarvamVoice>('ishita_hi_edtech');
   const [engine, setEngine] = useState<InterpreterId>(DEFAULT_INTERPRETER);
@@ -99,6 +104,27 @@ function YouTubeHindi() {
     } catch { setError('Hindi तैयार है, लेकिन इस device पर save नहीं हुआ।'); }
   }
 
+  async function attachTranscript(f: File) {
+    setError(''); setReading(`${f.name} पढ़ रहा हूँ…`);
+    try {
+      const out = await readTranscriptFile(f, message => setReading(message));
+      if (out.kind === 'media') {
+        setAttached({ kind: 'media', file: out.file, name: f.name, detail: `${(f.size / 1048576).toFixed(1)} MB · Gemini सुनेगा` });
+        return;
+      }
+      setTranscript(out.text);
+      const notes = [`${out.text.length.toLocaleString('en-IN')} अक्षर`, out.pages ? `${out.pages} page` : '', out.scanned ? 'scan से पढ़ा — जाँच लें' : '', out.truncated ? 'शुरुआती हिस्सा' : ''].filter(Boolean);
+      setAttached({ kind: 'text', name: f.name, detail: notes.join(' · ') });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'File नहीं पढ़ी जा सकी।');
+    } finally { setReading(null); }
+  }
+
+  function clearAttachment() {
+    if (attached?.kind === 'text') setTranscript('');
+    setAttached(null);
+  }
+
   async function convert(override?: { url: string }) {
     let input: RunInput;
     const linkUrl = override?.url ?? url;
@@ -108,10 +134,13 @@ function YouTubeHindi() {
     } else if (mode === 'file') {
       if (!file) { setError('पहले phone से video या audio चुनें।'); return; }
       input = { kind: 'file', file };
+    } else if (attached?.kind === 'media') {
+      input = { kind: 'file', file: attached.file };
     } else {
-      if (!transcript.trim()) { setError('पहले transcript paste करें।'); return; }
+      if (!transcript.trim()) { setError('पहले transcript paste करें या file लगाएँ।'); return; }
       input = { kind: 'text', transcript: transcript.trim(), url: url.trim() };
     }
+    runIsFile.current = input.kind === 'file';
     const cached = input.kind === 'link' ? library.find(e => e.url.trim() === linkUrl.trim() && e.result.engine === engine) : undefined;
     if (cached) { openEntry(cached); return; }
 
@@ -201,7 +230,7 @@ function YouTubeHindi() {
   // Live voice-over while the team is still interpreting (timed sources only).
   const live = run && run.timeline.length && run.hindi.some(Boolean) ? liveDub(run) : null;
   const liveVideoId = run?.videoId ?? null;
-  const liveMedia = run?.mediaUrl ?? (run?.origin === 'listened' && mode === 'file' ? mediaObjectUrl : null);
+  const liveMedia = run?.mediaUrl ?? (run?.origin === 'listened' && runIsFile.current ? mediaObjectUrl : null);
   const resultMedia = result?.source?.kind === 'upload' ? mediaObjectUrl : result?.source?.mediaUrl ?? null;
   const fallbackFor = (src: string | null) => (src && /^https?:/.test(src) ? proxied(src) : null);
   const engineName = interpreterInfo(engine).name;
@@ -236,7 +265,36 @@ function YouTubeHindi() {
           <p className="text-xs text-muted-foreground">Video इसी device पर खुलती है; सिर्फ़ आवाज़ के छोटे हिस्से सुनने के लिए भेजे जाते हैं।</p>
         </>}
         {mode === 'text' && <>
-          <Textarea value={transcript} disabled={locked} onChange={e => setTranscript(e.target.value)} rows={7} placeholder="Video का transcript यहाँ paste करें (YouTube → … → Show transcript)" aria-label="Transcript" />
+          <div
+            onDragOver={e => { e.preventDefault(); }}
+            onDrop={e => { e.preventDefault(); const f = e.dataTransfer.files?.[0]; if (f && !locked) void attachTranscript(f); }}
+            className="space-y-3"
+          >
+            {attached?.kind === 'media'
+              ? <div className="flex min-h-32 flex-col items-center justify-center gap-2 rounded-xl border border-dashed bg-card px-4 py-6 text-center">
+                  <Ear className="size-6 text-primary" />
+                  <p className="text-sm font-medium">{attached.file.name}</p>
+                  <p className="text-xs text-muted-foreground">Gemini 4 Argon इस file की आवाज़ सुनकर transcript बनाएगा।</p>
+                </div>
+              : <Textarea value={transcript} disabled={locked || reading !== null} onChange={e => { setTranscript(e.target.value); if (attached) setAttached(null); }} rows={7} placeholder="Video का transcript यहाँ paste करें, या नीचे से MD / PDF / subtitle / video file लगाएँ" aria-label="Transcript" />}
+            <div className="flex flex-wrap items-center gap-2">
+              <input ref={attachInput} type="file" accept={TRANSCRIPT_ACCEPT} className="sr-only" aria-label="Transcript file" tabIndex={-1}
+                onChange={e => { const f = e.target.files?.[0]; e.target.value = ''; if (f) void attachTranscript(f); }} />
+              <Button type="button" variant="outline" size="sm" disabled={locked || reading !== null} onClick={() => attachInput.current?.click()}>
+                {reading !== null ? <Loader2 className="size-4 animate-spin" /> : <Paperclip className="size-4" />}File लगाएँ
+              </Button>
+              <span className="text-xs text-muted-foreground">MD · TXT · PDF · DOCX · SRT · VTT · Video/Audio</span>
+            </div>
+            {reading !== null && <p className="text-xs text-muted-foreground" aria-live="polite">{reading}</p>}
+            {attached && reading === null && (
+              <div className="flex items-center gap-2 rounded-lg border bg-accent px-3 py-2 text-sm">
+                {attached.kind === 'media' ? <Upload className="size-4 shrink-0 text-primary" /> : <FileText className="size-4 shrink-0 text-primary" />}
+                <span className="min-w-0 flex-1 truncate">{attached.name}</span>
+                <span className="shrink-0 text-xs text-muted-foreground">{attached.detail}</span>
+                <Button type="button" variant="ghost" size="icon" className="size-7 shrink-0" disabled={locked} aria-label="File हटाओ" onClick={clearAttachment}><X className="size-4" /></Button>
+              </div>
+            )}
+          </div>
           <Input disabled={locked} value={url} onChange={e => setUrl(e.target.value)} placeholder="YouTube link (optional — साथ में Hindi voice चलाने के लिए)" aria-label="Optional YouTube link" />
         </>}
 
@@ -292,7 +350,7 @@ function YouTubeHindi() {
       )}
 
       {!run && <StudyLibrary entries={library} activeKey={activeKey} disabled={locked} onOpen={openEntry} onRemove={e => void removeEntry(e)} />}
-      {!result && !run && !library.length && mode === 'text' && <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground"><Captions className="size-4" />Transcript paste करने पर भी पूरी team वही expert जाँच करती है।</p>}
+      {!result && !run && !library.length && mode === 'text' && <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground"><Captions className="size-4" />Transcript या file लगाने पर भी पूरी team वही expert जाँच करती है।</p>}
     </main>
   );
 }

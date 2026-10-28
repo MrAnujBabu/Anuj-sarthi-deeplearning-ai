@@ -58,6 +58,8 @@
 - New workspace: Supabase "My Personal Agent" = already-connected project dsazygocmjgjfqkqkwcp; data intact (9 courses, 150 tests, 94 memory items)
 
 ## Pending
+- New workspace (2026-10-28 10:48): re-link GitHub API connection; other connections (Sarvam etc.) must be re-set up fresh here.
+- Workspace move checkpoint: handover (complete/pending/tests/video progress), code backup + screens in Files, connections & secret-name checklist (no values), saved-data backup note; no rebuild/reset/disconnect, never overwrite GitHub changes.
 - Video interpreter (2026-10-28): restored from ZIP, page wired to streamed three-model flow, real YouTube run verified (see HANDOFF-2026-10-28.md). Remaining: add SARVAM_API_KEY then test Hindi voice; run phone-upload and website-video listening end-to-end; long-video run.
 - GitHub sync/conflict verification (2026-10-24): agent cannot read Lovable's Git sync status; check Project settings → Git. Do not perform manual commits/pushes or rewrite history.
 - Restore voice funding (2026-10-24): workspace has 0.00 spendable AI credits; no configured credit limits were found. Blocked until owner restores AI-eligible credits; do not clear AI pauses or make paid probes before funding is restored.
@@ -66,6 +68,7 @@
 - Live voice quiz remains unverified: credits pause removed after successful gateway probe, but browser call failed with "Voice media did not connect"; real-device audio test still needed.
 
 ## Latest verification
+- 2026-10-28: Transcript tab attachments built + browser-verified (PDF text read, .md cleaned and explained in Hindi, video file shows "Gemini सुनेगा"); phone upload, website video (subtitles + Gemini listening) and 14-min TED talk all verified end-to-end.
 - Pending checks (2026-10-24): browser /batch displayed the admin sign-in gate; /voice displayed Ready with Start/Call controls after loading. External unmanaged Supabase prevents authenticated end-to-end checks. AI-eligible balance remains 0.00, so no paid call/TTS probe or new dubbing was attempted; real-device audio remains unverified. No application code or Git history changed.
 - New workspace (2026-10-23 14:32 UTC): all five connectors linked and verified with real calls — Firecrawl scrape HTTP 200, Parallel search HTTP 200, Perplexity search HTTP 200, Google Sheets AITS Schedule read HTTP 200, GitHub account MrAnujBabu with repo Anuj-sarthi-deeplearning-ai readable and daily-sync workflow run visible. Supabase "My Personal Agent" (dsazygocmjgjfqkqkwcp) already linked; read-only check: 9 courses, 150 tests, 94 memory items, 8 notes, 0 classes, 10 voice calls — no data changed.
 
