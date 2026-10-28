@@ -14,7 +14,10 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BatchRouteImport } from './routes/batch'
 import { Route as PracticeRouteImport } from './routes/practice'
 import { Route as VoiceRouteImport } from './routes/voice'
+import { Route as YoutubeRouteImport } from './routes/youtube'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiMediaListenRouteImport } from './routes/api/media-listen'
+import { Route as ApiMediaProxyRouteImport } from './routes/api/media-proxy'
 import { Route as ApiNcertDiagramRouteImport } from './routes/api/ncert-diagram'
 import { Route as ApiNcertScanRouteImport } from './routes/api/ncert-scan'
 import { Route as ApiSarvamSpeechRouteImport } from './routes/api/sarvam-speech'
@@ -22,6 +25,8 @@ import { Route as ApiSpeechRouteImport } from './routes/api/speech'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiVerifyRouteImport } from './routes/api/verify'
 import { Route as ApiVisionReadRouteImport } from './routes/api/vision-read'
+import { Route as ApiYoutubeChannelRouteImport } from './routes/api/youtube-channel'
+import { Route as ApiYoutubeHindiRouteImport } from './routes/api/youtube-hindi'
 import { Route as DoubtThreadIdRouteImport } from './routes/doubt.$threadId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -49,9 +54,24 @@ const VoiceRoute = VoiceRouteImport.update({
   path: '/voice',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YoutubeRoute = YoutubeRouteImport.update({
+  id: '/youtube',
+  path: '/youtube',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiMediaListenRoute = ApiMediaListenRouteImport.update({
+  id: '/api/media-listen',
+  path: '/api/media-listen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiMediaProxyRoute = ApiMediaProxyRouteImport.update({
+  id: '/api/media-proxy',
+  path: '/api/media-proxy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiNcertDiagramRoute = ApiNcertDiagramRouteImport.update({
@@ -89,6 +109,16 @@ const ApiVisionReadRoute = ApiVisionReadRouteImport.update({
   path: '/api/vision-read',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiYoutubeChannelRoute = ApiYoutubeChannelRouteImport.update({
+  id: '/api/youtube-channel',
+  path: '/api/youtube-channel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiYoutubeHindiRoute = ApiYoutubeHindiRouteImport.update({
+  id: '/api/youtube-hindi',
+  path: '/api/youtube-hindi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DoubtThreadIdRoute = DoubtThreadIdRouteImport.update({
   id: '/doubt/$threadId',
   path: '/doubt/$threadId',
@@ -101,7 +131,10 @@ export interface FileRoutesByFullPath {
   '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
+  '/youtube': typeof YoutubeRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/media-listen': typeof ApiMediaListenRoute
+  '/api/media-proxy': typeof ApiMediaProxyRoute
   '/api/ncert-diagram': typeof ApiNcertDiagramRoute
   '/api/ncert-scan': typeof ApiNcertScanRoute
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
@@ -109,6 +142,8 @@ export interface FileRoutesByFullPath {
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
   '/api/vision-read': typeof ApiVisionReadRoute
+  '/api/youtube-channel': typeof ApiYoutubeChannelRoute
+  '/api/youtube-hindi': typeof ApiYoutubeHindiRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRoutesByTo {
@@ -117,7 +152,10 @@ export interface FileRoutesByTo {
   '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
+  '/youtube': typeof YoutubeRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/media-listen': typeof ApiMediaListenRoute
+  '/api/media-proxy': typeof ApiMediaProxyRoute
   '/api/ncert-diagram': typeof ApiNcertDiagramRoute
   '/api/ncert-scan': typeof ApiNcertScanRoute
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
@@ -125,6 +163,8 @@ export interface FileRoutesByTo {
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
   '/api/vision-read': typeof ApiVisionReadRoute
+  '/api/youtube-channel': typeof ApiYoutubeChannelRoute
+  '/api/youtube-hindi': typeof ApiYoutubeHindiRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRoutesById {
@@ -134,7 +174,10 @@ export interface FileRoutesById {
   '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
   '/voice': typeof VoiceRoute
+  '/youtube': typeof YoutubeRoute
   '/api/chat': typeof ApiChatRoute
+  '/api/media-listen': typeof ApiMediaListenRoute
+  '/api/media-proxy': typeof ApiMediaProxyRoute
   '/api/ncert-diagram': typeof ApiNcertDiagramRoute
   '/api/ncert-scan': typeof ApiNcertScanRoute
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
@@ -142,6 +185,8 @@ export interface FileRoutesById {
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
   '/api/vision-read': typeof ApiVisionReadRoute
+  '/api/youtube-channel': typeof ApiYoutubeChannelRoute
+  '/api/youtube-hindi': typeof ApiYoutubeHindiRoute
   '/doubt/$threadId': typeof DoubtThreadIdRoute
 }
 export interface FileRouteTypes {
@@ -152,7 +197,10 @@ export interface FileRouteTypes {
     | '/batch'
     | '/practice'
     | '/voice'
+    | '/youtube'
     | '/api/chat'
+    | '/api/media-listen'
+    | '/api/media-proxy'
     | '/api/ncert-diagram'
     | '/api/ncert-scan'
     | '/api/sarvam-speech'
@@ -160,6 +208,8 @@ export interface FileRouteTypes {
     | '/api/transcribe'
     | '/api/verify'
     | '/api/vision-read'
+    | '/api/youtube-channel'
+    | '/api/youtube-hindi'
     | '/doubt/$threadId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -168,7 +218,10 @@ export interface FileRouteTypes {
     | '/batch'
     | '/practice'
     | '/voice'
+    | '/youtube'
     | '/api/chat'
+    | '/api/media-listen'
+    | '/api/media-proxy'
     | '/api/ncert-diagram'
     | '/api/ncert-scan'
     | '/api/sarvam-speech'
@@ -176,6 +229,8 @@ export interface FileRouteTypes {
     | '/api/transcribe'
     | '/api/verify'
     | '/api/vision-read'
+    | '/api/youtube-channel'
+    | '/api/youtube-hindi'
     | '/doubt/$threadId'
   id:
     | '__root__'
@@ -184,7 +239,10 @@ export interface FileRouteTypes {
     | '/batch'
     | '/practice'
     | '/voice'
+    | '/youtube'
     | '/api/chat'
+    | '/api/media-listen'
+    | '/api/media-proxy'
     | '/api/ncert-diagram'
     | '/api/ncert-scan'
     | '/api/sarvam-speech'
@@ -192,6 +250,8 @@ export interface FileRouteTypes {
     | '/api/transcribe'
     | '/api/verify'
     | '/api/vision-read'
+    | '/api/youtube-channel'
+    | '/api/youtube-hindi'
     | '/doubt/$threadId'
   fileRoutesById: FileRoutesById
 }
@@ -201,7 +261,10 @@ export interface RootRouteChildren {
   BatchRoute: typeof BatchRoute
   PracticeRoute: typeof PracticeRoute
   VoiceRoute: typeof VoiceRoute
+  YoutubeRoute: typeof YoutubeRoute
   ApiChatRoute: typeof ApiChatRoute
+  ApiMediaListenRoute: typeof ApiMediaListenRoute
+  ApiMediaProxyRoute: typeof ApiMediaProxyRoute
   ApiNcertDiagramRoute: typeof ApiNcertDiagramRoute
   ApiNcertScanRoute: typeof ApiNcertScanRoute
   ApiSarvamSpeechRoute: typeof ApiSarvamSpeechRoute
@@ -209,6 +272,8 @@ export interface RootRouteChildren {
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiVerifyRoute: typeof ApiVerifyRoute
   ApiVisionReadRoute: typeof ApiVisionReadRoute
+  ApiYoutubeChannelRoute: typeof ApiYoutubeChannelRoute
+  ApiYoutubeHindiRoute: typeof ApiYoutubeHindiRoute
   DoubtThreadIdRoute: typeof DoubtThreadIdRoute
 }
 
@@ -249,11 +314,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VoiceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/youtube': {
+      id: '/youtube'
+      path: '/youtube'
+      fullPath: '/youtube'
+      preLoaderRoute: typeof YoutubeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/chat': {
       id: '/api/chat'
       path: '/api/chat'
       fullPath: '/api/chat'
       preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/media-listen': {
+      id: '/api/media-listen'
+      path: '/api/media-listen'
+      fullPath: '/api/media-listen'
+      preLoaderRoute: typeof ApiMediaListenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/media-proxy': {
+      id: '/api/media-proxy'
+      path: '/api/media-proxy'
+      fullPath: '/api/media-proxy'
+      preLoaderRoute: typeof ApiMediaProxyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/ncert-diagram': {
@@ -305,6 +391,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiVisionReadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/youtube-channel': {
+      id: '/api/youtube-channel'
+      path: '/api/youtube-channel'
+      fullPath: '/api/youtube-channel'
+      preLoaderRoute: typeof ApiYoutubeChannelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/youtube-hindi': {
+      id: '/api/youtube-hindi'
+      path: '/api/youtube-hindi'
+      fullPath: '/api/youtube-hindi'
+      preLoaderRoute: typeof ApiYoutubeHindiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/doubt/$threadId': {
       id: '/doubt/$threadId'
       path: '/doubt/$threadId'
@@ -321,7 +421,10 @@ const rootRouteChildren: RootRouteChildren = {
   BatchRoute: BatchRoute,
   PracticeRoute: PracticeRoute,
   VoiceRoute: VoiceRoute,
+  YoutubeRoute: YoutubeRoute,
   ApiChatRoute: ApiChatRoute,
+  ApiMediaListenRoute: ApiMediaListenRoute,
+  ApiMediaProxyRoute: ApiMediaProxyRoute,
   ApiNcertDiagramRoute: ApiNcertDiagramRoute,
   ApiNcertScanRoute: ApiNcertScanRoute,
   ApiSarvamSpeechRoute: ApiSarvamSpeechRoute,
@@ -329,6 +432,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiVerifyRoute: ApiVerifyRoute,
   ApiVisionReadRoute: ApiVisionReadRoute,
+  ApiYoutubeChannelRoute: ApiYoutubeChannelRoute,
+  ApiYoutubeHindiRoute: ApiYoutubeHindiRoute,
   DoubtThreadIdRoute: DoubtThreadIdRoute,
 }
 export const routeTree = rootRouteImport

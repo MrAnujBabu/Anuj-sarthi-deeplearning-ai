@@ -4,12 +4,16 @@ import { getCurrentAiPause, setAiPause } from '@/lib/ai/pause.server';
 import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
 import { isAiCancellation } from '@/lib/ai/cancellation';
 
+const SARVAM_GATEWAY_URL = 'https://connector-gateway.lovable.dev/udc_sarvam_ai/text-to-speech/stream';
+
 export const Route = createFileRoute('/api/sarvam-speech')({
   server: { handlers: { POST: async ({ request }) => {
     try {
       if (request.signal.aborted) return new Response(null, { status: 499 });
       const key = process.env['SARVAM_API_KEY'];
-      if (!key) return Response.json({ error: 'Sarvam voice is not configured.' }, { status: 503 });
+      const connectionKey = process.env['UDC_SARVAM_AI_API_KEY'];
+      const appKey = process.env['LOVABLE_API_KEY'];
+      if (connectionKey ? !appKey : !key) return Response.json({ error: '[AI_CONFIGURATION] Sarvam voice is not configured. Connect Sarvam AI to restore speech.' }, { status: 503 });
       let body: { text?: unknown; voice?: unknown } | null;
       try { body = await request.json(); } catch (error) {
         if (isAiCancellation(error, request.signal)) return new Response(null, { status: 499 });
@@ -23,8 +27,16 @@ export const Route = createFileRoute('/api/sarvam-speech')({
       const paused = await getCurrentAiPause(pauseId);
       if (request.signal.aborted) return new Response(null, { status: 499 });
       if (paused) return Response.json({ error: paused.message }, { status: paused.kind === 'credits' ? 402 : 403 });
-      const upstream = await fetch(SARVAM_STREAM_URL, {
-        method: 'POST', headers: { 'api-subscription-key': key, 'Content-Type': 'application/json' },
+      // Linked connections use the gateway; preserve direct-key support for existing hosts.
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (connectionKey && appKey) {
+        headers['Authorization'] = `Bearer ${appKey}`;
+        headers['X-Connection-Api-Key'] = connectionKey;
+      } else if (key) {
+        headers['api-subscription-key'] = key;
+      }
+      const upstream = await fetch(connectionKey ? SARVAM_GATEWAY_URL : SARVAM_STREAM_URL, {
+        method: 'POST', headers,
         body: JSON.stringify(sarvamSpeechRequest(text, body.voice)), signal: request.signal,
       });
       if (!upstream.ok) {
