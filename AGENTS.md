@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Architecture
+- Sarvam speech prefers the linked Sarvam AI connector through the gateway and retains direct-key support only for hosts without that connection; connection keys must never reach the provider directly.
 - Sarvam's first-call SDK script stays in scripts/ and is not imported into the app; run only after user key confirmation so setup does not spend credits or replace the existing tutor/voice.
 - Sarvam request and stream cancellation use the shared realm-safe cancellation predicate; stream cleanup observes reader cancellation rejections so normal stop/disconnect never becomes an unhandled provider error.
 - Voice table prompts and explicit-row parsing share the browser-safe voice-table module; preserve completed rows during caption updates and keep legacy comparison/Match tables compatible so table display does not depend on a fixed subject or column count.
@@ -49,3 +50,6 @@
 ## Preserved upstream architecture
 - Voice delivery styles share browser-safe definitions and live-delivery mapping; the device voice selector drives live startup and read-aloud requests, preserving startup-only audio changes and existing model choices so both speech paths honor the same selection. Reference audio supplies general delivery traits only, never performer identity.
 - Vedantu daily online checks run in GitHub Actions with encrypted step-scoped secrets and a database lease/status row only; never persist fetched course/class/test/note content or use browser timers/database HTTP cron. Manual Sync now returns online data directly.
+- YouTube dub follows observed player/audio clocks with video-only speed fitting, pause/seek/buffering holds, bounded prefetch/reuse and run-scoped cleanup.
+- YouTube speech uses Sarvam with cooldown retry and validated persona-specific Lovable preset delivery; backup style is never voice cloning.
+- YouTube reuses timed text and restores validated device IndexedDB after hydration; downloads prepare ordered WAV before a separate save/share click.

@@ -670,7 +670,7 @@ function createLiveVoice(options: LiveOptions) {
     track.addEventListener("ended", () => { void recoverMic(track); });
   }
   async function recoverMic(lost: MediaStreamTrack) {
-    if ((state !== "starting" && state !== "active") || !microphone?.getAudioTracks().includes(lost)) return;
+    if ((state !== "starting" && state !== "active") || !microphone?.getAudioTracks().includes(lost as MediaStreamAudioTrack)) return;
     const giveUp = () => fail("The phone stopped microphone capture. Start a new call when this page is active.");
     if (!sender || micRecoveries >= MIC_RECOVERY_LIMIT || document.visibilityState === "hidden") return giveUp();
     micRecoveries++;
