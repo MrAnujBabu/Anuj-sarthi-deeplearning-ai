@@ -26,13 +26,14 @@
 - Separate hosting configs; encrypt Vercel secrets, redeploy after moves. Vercel live voice uses the published Lovable relay; serverless cannot hold calls.
 - Sidebar Settings shares device appearance/quiz preferences; timer overrides keep the cached admin default; physical numpad maps to A–D and dialogs block shortcuts to prevent accidental answers.
 - PCB outlines are per-chapter admin memory (Botany/Zoology mapped to Biology, original branch and provenance kept); never claim official syllabus verification.
+- Long interpretations checkpoint finished Hindi parts on the device (interpret-checkpoint) and resend them as `resume`; the server skips fully saved batches and reuses the saved brief, and only busy/network failures auto-continue (bounded), so stops never repay finished work.
 - Chat uses `/api/chat` (Claude/Gateway Messages, streamed), keeping keys/prompts server-side. Stop is a 499 cancellation, not a crash.
 - Doubts use browser threads at `/doubt/$threadId`; downscale photos, throttle streamed renders, and await IndexedDB PDF writes before saving pointers to avoid jank and broken backups.
 - Prompt forms disable controls until hydration and use native dialog submission so question text never leaks into URLs.
 - Assistant text normalizes inline equation delimiters before markdown, preserves display equations/code, and scopes KaTeX sizing to the surrounding text.
 - Saved practice extracts answers/revision cards and grades locally via shared SRS, never the tutor; stable card-ID queues/completed IDs prevent due-date skips on reload; new material joins next session.
 - Study backup exports only browser study data + embedded attachments with validated non-destructive imports; source ZIPs/Cloud exports are separate.
-- Tutor models use a shared server-validated catalog; terminal AI pauses are persisted server-side and never reset by public browser requests. Stale/unregistered app keys or wrong provider keys are configuration failures: never persisted, and old rows with that message are ignored, so updating the host key restores AI.
+- Tutor models use a shared server-validated catalog; terminal AI pauses are persisted server-side and never reset by public browser requests; a credits pause lets one atomically-claimed probe through per cooldown and a real AI success clears it, so added credits are noticed without owner action. Stale/unregistered app keys or wrong provider keys are configuration failures: never persisted, and old rows with that message are ignored, so updating the host key restores AI.
 - Mermaid loads lazily via the diagram adapter only when rendering; its init failures must never block chat or practice.
 - Agent memory lives in Cloud table memory_items, editable only by admins (has_role); /api/chat ranks active chapter outlines against bounded recent context, excludes unmatched chapters, injects size-capped memory so follow-ups keep context.
 - Chat exports Obsidian markdown/zipped notes; attachments stay placeholders, never data URLs. Voice .md: Obsidian callouts/folds, Word/PDF plain.

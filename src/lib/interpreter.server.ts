@@ -305,12 +305,20 @@ export const PARALLEL_BATCHES = 3;
 export async function interpretTimed(o: {
   segments: TimedSegment[]; context: Omit<BatchContext, 'before' | 'after'>; engine: InterpreterId; signal: AbortSignal;
   review?: boolean; onSegment(index: number, hindi: string): void; call?: Caller;
+  /** Hindi already finished in an earlier (interrupted) run, aligned to segments; those batches are not paid for again. */
+  saved?: string[];
 }) {
   const lines = Array<string>(o.segments.length).fill('');
   const used = new Set<string>();
   const quality: QualityStats = { reviewers: [], reviewed: 0, corrected: 0 };
   const batches: number[] = [];
-  for (let b = 0; b < o.segments.length; b += TIMED_BATCH) batches.push(b);
+  for (let b = 0; b < o.segments.length; b += TIMED_BATCH) {
+    const prior = o.saved && o.saved.length === o.segments.length ? o.saved.slice(b, b + TIMED_BATCH) : [];
+    const count = Math.min(TIMED_BATCH, o.segments.length - b);
+    if (prior.length === count && prior.every(line => line.trim())) {
+      prior.forEach((line, i) => { lines[b + i] = line; o.onSegment(b + i, line); });
+    } else batches.push(b);
+  }
   await pool(batches, PARALLEL_BATCHES, async start => {
     const segs = o.segments.slice(start, start + TIMED_BATCH);
     const user = timedBatchPrompt(segs, { ...o.context, before: o.segments[start - 1]?.text ?? '', after: o.segments[start + segs.length]?.text ?? '' });

@@ -22,6 +22,7 @@ import { StudyLibrary } from '@/components/interpreter/study-library';
 import { SourceBadges, TeamCard, BriefCard } from '@/components/interpreter/result-insights';
 import { runInterpretation, liveDub, IDLE_STATE, type RunInput, type RunState } from '@/lib/interpret-client';
 import { InterpretStreamError } from '@/lib/interpret-protocol';
+import { checkpointKey, doneCount, isResumable, loadCheckpoint, removeCheckpoint, saveCheckpoint, type Checkpoint, type CheckpointInput } from '@/lib/interpret-checkpoint';
 import { INTERPRETERS, DEFAULT_INTERPRETER, interpreterInfo, type InterpreterId } from '@/lib/interpreter-models';
 import {
   loadYouTubeStudy, saveYouTubeStudy, saveToLibrary, listLibrary, removeFromLibrary, libraryKey,
@@ -66,6 +67,7 @@ function YouTubeHindi() {
   const [dubbing, setDubbing] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [progress, setProgress] = useState('');
+  const [saved, setSaved] = useState<Checkpoint | null>(null);
   const stopRef = useRef<() => void>(() => {});
   const runCtl = useRef<AbortController | null>(null);
   const busy = run !== null;
@@ -125,6 +127,25 @@ function YouTubeHindi() {
     setAttached(null);
   }
 
+  function currentCheckpointInput(): CheckpointInput | null {
+    if (mode === 'link') return url.trim() ? { kind: 'link', url } : null;
+    if (mode === 'file') return file ? { kind: 'file', file } : null;
+    if (attached?.kind === 'media') return { kind: 'file', file: attached.file };
+    return transcript.trim() ? { kind: 'text', transcript, url } : null;
+  }
+  const savedKey = (() => { const i = currentCheckpointInput(); return i ? checkpointKey(i, engine, quality) : ''; })();
+  useEffect(() => {
+    if (!savedKey || busy) { if (!savedKey) setSaved(null); return; }
+    let dead = false;
+    const t = setTimeout(() => { void loadCheckpoint(savedKey).then(cp => { if (!dead) setSaved(isResumable(cp) ? cp : null); }).catch(() => {}); }, 250);
+    return () => { dead = true; clearTimeout(t); };
+  }, [savedKey, busy]);
+
+  async function discardSaved() {
+    if (saved) await removeCheckpoint(saved.key).catch(() => {});
+    setSaved(null);
+  }
+
   async function convert(override?: { url: string }) {
     let input: RunInput;
     const linkUrl = override?.url ?? url;
@@ -151,8 +172,20 @@ function YouTubeHindi() {
       if (mediaObjectUrl) URL.revokeObjectURL(mediaObjectUrl);
       setMediaObjectUrl(URL.createObjectURL(input.file));
     }
+    const key = checkpointKey(input.kind === 'file' ? { kind: 'file', file: input.file } : input, engine, quality);
+    const checkpoint = await loadCheckpoint(key).catch(() => null);
+    // Save finished parts at most every 2 s (and once at the end) so a stop never loses paid work.
+    let pending: Omit<Checkpoint, 'key' | 'savedAt'> | null = null, timer: ReturnType<typeof setTimeout> | null = null;
+    const flush = async () => { if (timer) { clearTimeout(timer); timer = null; } const cp = pending; pending = null; if (cp) await saveCheckpoint({ ...cp, key, savedAt: Date.now() }).catch(() => {}); };
+    const onCheckpoint = (cp: Omit<Checkpoint, 'key' | 'savedAt'>) => { pending = cp; timer ??= setTimeout(() => { void flush(); }, 2000); };
+    let finished = false;
     try {
-      const r = await runInterpretation({ input, engine, quality, signal: ctl.signal, onState: s => { if (!ctl.signal.aborted) setRun(s); } });
+      const r = await runInterpretation({ input, engine, quality, signal: ctl.signal, checkpoint, onCheckpoint, onState: s => { if (!ctl.signal.aborted) setRun(s); } });
+      finished = true;
+      if (timer) clearTimeout(timer);
+      pending = null;
+      await removeCheckpoint(key).catch(() => {});
+      setSaved(null);
       if (ctl.signal.aborted) return;
       setResult(r);
       if (input.kind === 'file') await saveUploadedMedia({ name: input.file.name, type: input.file.type, blob: input.file }).catch(() => false);
@@ -162,6 +195,11 @@ function YouTubeHindi() {
       if (e instanceof InterpretStreamError && e.needTranscript) { setMode('text'); setError(`${e.message} — YouTube → … → Show transcript से English text copy करके यहाँ paste करें।`); }
       else setError(e instanceof Error ? e.message : 'कुछ गड़बड़ हो गई।');
     } finally {
+      if (!finished) {
+        await flush();
+        const cp = await loadCheckpoint(key).catch(() => null);
+        setSaved(isResumable(cp) ? cp : null);
+      }
       if (runCtl.current === ctl) { runCtl.current = null; setRun(null); }
     }
   }
@@ -310,8 +348,14 @@ function YouTubeHindi() {
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="flex items-center gap-2"><Switch id="quality" checked={quality} onCheckedChange={setQuality} disabled={locked} /><Label htmlFor="quality" className="flex items-center gap-1.5 text-sm"><ShieldCheck className="size-4" />दूसरे model से दोबारा जाँच</Label></div>
-          <Button className="h-11 sm:ml-auto" onClick={() => void convert()} disabled={restoring || locked}><Languages className="size-4" />Hindi में समझाओ</Button>
+          <Button className="h-11 sm:ml-auto" onClick={() => void convert()} disabled={restoring || locked}><Languages className="size-4" />{saved && !busy ? 'जहाँ रुका वहीं से आगे' : 'Hindi में समझाओ'}</Button>
         </div>
+        {saved && !busy && (
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg bg-accent/60 px-3 py-2 text-sm text-accent-foreground" data-testid="saved-progress">
+            <span>इस device पर {doneCount(saved.lines)}/{saved.lines.length} हिस्से save हैं — बचे हुए हिस्सों से आगे चलेगा, पुराने के credits दोबारा नहीं लगेंगे।</span>
+            <button type="button" className="underline underline-offset-2" onClick={() => void discardSaved()}>नए सिरे से</button>
+          </p>
+        )}
         {error && <p role="alert" className="rounded-lg border border-destructive px-3 py-2 text-sm text-destructive">{error}</p>}
       </div>
 
