@@ -70,7 +70,7 @@ The transcript can be in any language and may be automatic captions with mis-hea
 Return JSON only:
 - language: ISO 639-1 code of the main spoken language
 - domain: subject area, max 8 words, English
-- summary: what the video explains, max 45 words, English
+- summary: what the video explains, max 45 words, in simple spoken Hindi (Devanagari) for students; keep widely used English technical terms in Latin script
 - glossary: up to 15 key terms exactly as said in the video, each with how a good Indian teacher would say it in simple Hindi (keep widely used English technical terms in Latin script, e.g. "DNA", "machine learning")
 - corrections: up to 10 likely mis-heard words or names, each with the correct form (empty when the transcript is clean)
 Never invent content that is not in the transcript.`;
