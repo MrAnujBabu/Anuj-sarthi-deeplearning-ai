@@ -38,7 +38,28 @@ export const INTERPRET_EFFORT: Effort = 'medium';
 export const REVIEW_EFFORT: Effort = 'low';
 
 /** One plain-text call to a premium interpreter model. */
+const wait = (ms: number, signal: AbortSignal) => new Promise<void>((res, rej) => {
+  const t = setTimeout(res, ms);
+  signal.addEventListener('abort', () => { clearTimeout(t); rej(signal.reason); }, { once: true });
+});
+
+/** Bounded backoff for rate limits / transient 5xx (the workspace shares one rate budget). */
+export const RETRY_DELAYS_MS = [4000, 10000, 20000];
+
 export async function callInterpreter(engine: InterpreterId, system: string, user: string, signal: AbortSignal, effort: Effort = INTERPRET_EFFORT): Promise<string> {
+  for (let attempt = 0; ; attempt++) {
+    try { return await callInterpreterOnce(engine, system, user, signal, effort); }
+    catch (error) {
+      const f = describeFailure(error);
+      const retryable = f.status === 429 || (f.status >= 500 && f.status < 600 && !f.terminal);
+      if (!retryable || signal.aborted || attempt >= RETRY_DELAYS_MS.length) throw error;
+      const base = RETRY_DELAYS_MS[attempt] ?? 20000;
+      await wait(base + Math.random() * base * 0.5, signal);
+    }
+  }
+}
+
+async function callInterpreterOnce(engine: InterpreterId, system: string, user: string, signal: AbortSignal, effort: Effort): Promise<string> {
   if (engine === 'claude') {
     const r = await generateMessage({
       model: 'anthropic/claude-opus-5-5', max_tokens: 16000, system,
@@ -278,7 +299,7 @@ async function pool<T>(items: T[], limit: number, run: (item: T, index: number) 
 }
 
 export const TIMED_BATCH = 4;
-export const PARALLEL_BATCHES = 8;
+export const PARALLEL_BATCHES = 3;
 
 /** Timed segments → simple Hindi lines (same order), reporting each finished segment. */
 export async function interpretTimed(o: {

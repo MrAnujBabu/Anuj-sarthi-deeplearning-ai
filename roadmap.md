@@ -1,4 +1,9 @@
 # Roadmap
+- [x] Oct 28 11:57 UTC: Newest workspace — connect Firecrawl, GitHub, Google Sheets, Parallel, Perplexity.
+- [x] Oct 28 11:07 UTC: Playlist import — paste a YouTube playlist link, list its videos, pick one to interpret.
+- [x] Oct 28 11:00 UTC: Reconnect in this workspace (all linked 11:22 incl. Firecrawl, Sheets, Perplexity, Parallel, Vedantu secrets): Sarvam done 11:12 (own key, phone-size voice verified), Firecrawl, Google Sheets, Perplexity, Parallel, Vedantu login, external database connected 11:02 (My Personal Agent); real phone MP4 test (user); merge PR #2 when approved.
+- [x] Oct 28 10:58 UTC: Connect GitHub API in the newest workspace.
+- [x] Oct 28 10:58 UTC: Fix "AI busy" (429) on YouTube interpretation — lower parallel load, back off and retry.
 - [ ] Oct 28 05:33 UTC: Expert interpreter upgrade — premium Claude/Gemini/OpenAI panel (brief + interpretation + fallback), any-language YouTube (captions or Gemini deep listen), website video links and device uploads, timed simple Hindi, streamed progress, end-to-end verification.
 - [ ] Oct 28 06:03 UTC: Redesign the YouTube screen in the SnapSolve brand (existing tokens/fonts), polished on phone and desktop. Code changes are saved by Lovable automatically (agent cannot run git commands).
 - [ ] Oct 28 06:11 UTC: Open a GitHub pull request on MrAnujBabu/Anuj-sarthi-deeplearning-ai with the finished, tested work (new branch; never overwrite main or newer GitHub changes).
@@ -58,6 +63,7 @@
 - New workspace: Supabase "My Personal Agent" = already-connected project dsazygocmjgjfqkqkwcp; data intact (9 courses, 150 tests, 94 memory items)
 
 ## Pending
+- [ ] Oct 28 12:24: MP4 upload verified up to AI step (Opus-audio MP4 opened; test browser lacks AAC, real phones have it); blocked by 402 AI credits. Very long (10–24h) resumable chunking: blocked until AI credits return to test.
 - Post-move rule: read HANDOFF-2026-10-28.md + existing files first, never rebuild; verify continuity, then continue pending items only.
 - New workspace (2026-10-28 10:48): re-link GitHub API connection; other connections (Sarvam etc.) must be re-set up fresh here.
 - Workspace move checkpoint: handover (complete/pending/tests/video progress), code backup + screens in Files, connections & secret-name checklist (no values), saved-data backup note; no rebuild/reset/disconnect, never overwrite GitHub changes.

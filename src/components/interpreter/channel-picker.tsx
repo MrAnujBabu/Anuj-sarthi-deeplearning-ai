@@ -46,7 +46,7 @@ export function ChannelPicker({ disabled, onPick }: { disabled?: boolean; onPick
         ))}
       </div>
       <form className="flex gap-2" onSubmit={e => { e.preventDefault(); if (custom.trim()) void load(custom.trim(), 'custom'); }}>
-        <Input value={custom} onChange={e => setCustom(e.target.value)} disabled={disabled} placeholder="कोई और channel — @handle या link" aria-label="Channel link or handle" className="h-10" />
+        <Input value={custom} onChange={e => setCustom(e.target.value)} disabled={disabled} placeholder="Channel @handle या playlist link" aria-label="Channel or playlist link" className="h-10" />
         <Button type="submit" variant="secondary" size="icon" className="size-10 shrink-0" disabled={disabled || !custom.trim()} aria-label="Channel खोलो"><Search className="size-4" /></Button>
       </form>
       {loading && <div className="flex items-center gap-2 py-6 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />Latest videos ला रहा हूँ…</div>}

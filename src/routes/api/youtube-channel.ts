@@ -48,6 +48,16 @@ export function parseChannelVideos(data: unknown) {
       }
       return;
     }
+    const item = node['playlistVideoRenderer'];
+    if (item) {
+      const id = String(get(item, 'videoId') ?? '');
+      if (/^[\w-]{11}$/.test(id) && !seen.has(id)) {
+        seen.add(id);
+        const info = ((get(item, 'videoInfo', 'runs') as Node[] | undefined) ?? []).map(r => String(r['text'] ?? '')).join('');
+        videos.push({ id, title: String(get(item, 'title', 'runs', 0, 'text') ?? ''), duration: String(get(item, 'lengthText', 'simpleText') ?? ''), views: info.split('•')[0]?.trim() ?? '', published: info.split('•')[1]?.trim() ?? '', thumbnail: `https://i.ytimg.com/vi/${id}/mqdefault.jpg` });
+      }
+      return;
+    }
     const legacy = node['videoRenderer'];
     if (legacy) {
       const id = String(get(legacy, 'videoId') ?? '');
@@ -70,11 +80,20 @@ export const Route = createFileRoute('/api/youtube-channel')({
     const params = new URL(request.url).searchParams;
     const input = (params.get('channel') ?? '').slice(0, 300), more = (params.get('continuation') ?? '').slice(0, 4000);
     const ref = parseChannelInput(input);
-    if (!ref) return Response.json({ error: 'YouTube channel का link या @handle paste करें।' }, { status: 400 });
+    if (!ref) return Response.json({ error: 'YouTube channel / playlist का link या @handle paste करें।' }, { status: 400 });
     const key = `${input}|${more}`;
     const hit = cache.get(key);
     if (hit && Date.now() - hit.at < TTL) return Response.json(hit.page, { headers: { 'Cache-Control': 'private, max-age=300' } });
     try {
+      if (ref.kind === 'playlist') {
+        const data = more ? await innertube('browse', { continuation: more }, request.signal) : await innertube('browse', { browseId: `VL${ref.id}` }, request.signal);
+        const { videos, continuation } = parseChannelVideos(data);
+        const title = String(get(data, 'metadata', 'playlistMetadataRenderer', 'title') ?? get(data, 'header', 'pageHeaderRenderer', 'pageTitle') ?? 'Playlist');
+        if (!videos.length && !more) return Response.json({ error: 'इस playlist में videos नहीं मिलीं (private हो सकती है)।' }, { status: 404 });
+        const page: ChannelPage = { channel: { id: ref.id, title, avatar: videos[0]?.thumbnail ?? '' }, videos, continuation };
+        cache.set(key, { at: Date.now(), page });
+        return Response.json(page, { headers: { 'Cache-Control': 'private, max-age=300' } });
+      }
       const id = ref.kind === 'id' ? ref.id : await resolveChannelId(ref.url, request.signal);
       if (!id) return Response.json({ error: 'यह channel नहीं मिला।' }, { status: 404 });
       const data = more ? await innertube('browse', { continuation: more }, request.signal) : await innertube('browse', { browseId: id, params: VIDEOS_TAB }, request.signal);

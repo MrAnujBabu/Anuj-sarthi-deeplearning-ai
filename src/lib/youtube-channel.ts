@@ -17,12 +17,15 @@ export const SAVED_CHANNELS = [
   { id: 'UCQIycDaLsBpMKjOCeaKUYVg', title: 'CNBC Awaaz' },
 ] as const;
 
-export type ChannelRef = { kind: 'id'; id: string } | { kind: 'url'; url: string };
+export type ChannelRef = { kind: 'id'; id: string } | { kind: 'url'; url: string } | { kind: 'playlist'; id: string };
 
 /** Accepts a channel id, /channel/ link, @handle, /c/ or /user/ link. Video links are not channels. */
 export function parseChannelInput(input: string): ChannelRef | null {
   const s = input.trim();
   if (!s) return null;
+  // Playlist links (also watch?v=…&list=…) and bare playlist ids.
+  const list = s.match(/[?&]list=((?:PL|UU|OL|FL|RD)[\w-]{10,})/)?.[1] ?? s.match(/^((?:PL|OL)[\w-]{16,})$/)?.[1];
+  if (list && !list.startsWith('RD')) return { kind: 'playlist', id: list };
   const id = s.match(/(?:^|\/channel\/)(UC[\w-]{22})(?:$|[/?#])/)?.[1];
   if (id) return { kind: 'id', id };
   if (/^@[\w.-]{3,}$/.test(s)) return { kind: 'url', url: `https://www.youtube.com/${s}` };
