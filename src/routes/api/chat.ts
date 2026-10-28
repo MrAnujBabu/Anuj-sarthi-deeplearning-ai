@@ -10,7 +10,7 @@ import {
 
 import { resolveModel, resolveEffort, CLAUDE_OUTPUT_BUDGET, DEFAULT_MODEL } from '@/lib/models';
 import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
-import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
+import { getAiPause, noteAiSuccess, setAiPause } from '@/lib/ai/pause.server';
 import { loadTeacherMemory, loadAgentBrain } from '@/lib/memory.server';
 import { NCERT_REFERENCE_INSTRUCTION } from '@/lib/agent/ncert-reference-prompt';
 import { isAiCancellation } from '@/lib/ai/cancellation';
@@ -147,6 +147,7 @@ export const Route = createFileRoute("/api/chat")({
               }
               throw Object.assign(new Error(encodeAiFailure(failure)), { statusCode: response.status });
             }
+            void noteAiSuccess();
             return response;
           },
         });

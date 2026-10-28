@@ -53,6 +53,10 @@ export function splitForSpeech(text: string, max = 1200): string[] {
 
 /** Longest transcript interpreted (about four hours of fast podcast speech); longer videos are cut and the page says so. */
 export const MAX_TRANSCRIPT_CHARS = 260000;
+/** Timed captions/heard segments are worked through in saved, resumable batches, so they may run much longer (about 24 hours of fast speech). */
+export const MAX_TIMED_CHARS = 1_600_000;
+/** Most timed 30-second segments one request accepts (24 hours ≈ 2,880). */
+export const MAX_TIMED_SEGMENTS = 3000;
 /** Longest stretch of audio/video the AI listener hears when a video has no usable captions. */
 export const MAX_MEDIA_SECONDS = 45 * 60;
 /** Uploaded and web media are heard in 5-minute pieces so each request stays small. */

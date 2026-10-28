@@ -1,4 +1,7 @@
 # Roadmap
+- [x] Oct 28 15:21 UTC: Verify My Personal Agent database link; handover v4 + backup in Files (no overwrite, no reset/disconnect).
+- [x] Oct 28 15:18 UTC: Newest workspace — connect Firecrawl, GitHub, Google Sheets, Parallel, Perplexity.
+- [ ] Oct 28 12:45 UTC (code done, stale pause cleared; full 329-part run pending AI credits — earlier 20 parts lost in move): AI credits back (verified 200); stale 'credits खत्म' DB pause cleared and now self-heals; long video saves parts + resumes from where it stopped; hour-by-hour view for 10–24 h videos; run 2 h 49 min video (Lt54CX9DmS4) to the end.
 - [x] Oct 28 11:57 UTC: Newest workspace — connect Firecrawl, GitHub, Google Sheets, Parallel, Perplexity.
 - [x] Oct 28 11:07 UTC: Playlist import — paste a YouTube playlist link, list its videos, pick one to interpret.
 - [x] Oct 28 11:00 UTC: Reconnect in this workspace (all linked 11:22 incl. Firecrawl, Sheets, Perplexity, Parallel, Vedantu secrets): Sarvam done 11:12 (own key, phone-size voice verified), Firecrawl, Google Sheets, Perplexity, Parallel, Vedantu login, external database connected 11:02 (My Personal Agent); real phone MP4 test (user); merge PR #2 when approved.

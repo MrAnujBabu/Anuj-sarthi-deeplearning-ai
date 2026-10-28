@@ -4,6 +4,7 @@ import { readInterpretStream, InterpretStreamError, type InterpretBrief, type In
 import { groupCues, type Cue, type ListenResult } from './transcript-cues';
 import type { InterpreterId } from './interpreter-models';
 import type { DubSegment, TimedSegment } from './youtube-hindi';
+import { AUTO_CONTINUE_DELAYS_MS, isTransientFailure, type Checkpoint, type HeardMedia } from './interpret-checkpoint';
 
 export type RunInput =
   | { kind: 'link'; url: string; deepListen: boolean }
@@ -111,19 +112,54 @@ export async function listenToMedia(o: { file?: File; url?: string; signal: Abor
   } finally { o.signal.removeEventListener('abort', stop); }
 }
 
-type RunOptions = { input: RunInput; engine: InterpreterId; quality: boolean; signal: AbortSignal; onState(state: RunState): void };
+type RunOptions = {
+  input: RunInput; engine: InterpreterId; quality: boolean; signal: AbortSignal; onState(state: RunState): void;
+  /** Saved progress from an earlier run of the same source; finished parts are skipped. */
+  checkpoint?: Checkpoint | null;
+  /** Called whenever there is new progress worth saving on the device. */
+  onCheckpoint?(cp: Omit<Checkpoint, 'key' | 'savedAt'>): void;
+};
 
 /** Runs the full pipeline and returns the final result; state updates stream through onState. */
 export async function runInterpretation(o: RunOptions): Promise<InterpretResult> {
   let state: RunState = { ...IDLE_STATE };
-  const apply = (event: InterpretEvent) => { state = reduceEvent(state, event); o.onState(state); };
-  const post = async (body: Record<string, unknown>) => {
-    const res = await fetch('/api/youtube-hindi', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ engine: o.engine, quality: o.quality, ...body }), signal: o.signal });
+  let heard: HeardMedia | undefined = o.checkpoint?.heard;
+  // Lines to resume from: the device checkpoint first, then whatever this run finished before a drop.
+  let resumeLines: string[] | null = o.checkpoint?.lines.some(l => l.trim()) ? o.checkpoint.lines : null;
+  let resumeBrief: { brief: InterpretBrief | null; model?: string } | null = o.checkpoint?.brief ? { brief: o.checkpoint.brief, ...(o.checkpoint.briefModel ? { model: o.checkpoint.briefModel } : {}) } : null;
+  const snapshot = () => {
+    o.onCheckpoint?.({ title: state.title, lines: state.hindi, starts: state.timeline.map(t => t.start), brief: state.brief ?? null,
+      ...(state.briefModel ? { briefModel: state.briefModel } : {}), ...(heard ? { heard } : {}) });
+  };
+  const apply = (event: InterpretEvent) => {
+    state = reduceEvent(state, event); o.onState(state);
+    if (event.type === 'segment' || event.type === 'brief') snapshot();
+  };
+  const postOnce = async (body: Record<string, unknown>) => {
+    const resume = resumeLines ? { lines: resumeLines, ...(resumeBrief?.brief ? { brief: resumeBrief.brief, briefModel: resumeBrief.model ?? '' } : {}) } : undefined;
+    const res = await fetch('/api/youtube-hindi', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ engine: o.engine, quality: o.quality, ...body, ...(resume ? { resume } : {}) }), signal: o.signal });
     return readInterpretStream(res, apply, o.signal);
   };
+  /** Network drops and busy errors continue automatically (bounded) from the last finished part. */
+  const post = async (body: Record<string, unknown>) => {
+    for (let attempt = 0; ; attempt++) {
+      try { return await postOnce(body); }
+      catch (error) {
+        if (o.signal.aborted || !isTransientFailure(error) || attempt >= AUTO_CONTINUE_DELAYS_MS.length) throw error;
+        if (state.hindi.some(l => l.trim())) resumeLines = state.hindi.slice();
+        if (state.brief) resumeBrief = { brief: state.brief, ...(state.briefModel ? { model: state.briefModel } : {}) };
+        const delay = AUTO_CONTINUE_DELAYS_MS[attempt] ?? 30_000;
+        apply({ type: 'stage', stage: state.stage === 'idle' ? 'source' : state.stage, message: `Connection/AI रुक गया — ${Math.round(delay / 1000)} सेकंड में जहाँ रुका वहीं से फिर शुरू कर रहा हूँ (${attempt + 1}/${AUTO_CONTINUE_DELAYS_MS.length})…` });
+        await wait(delay, o.signal);
+      }
+    }
+  };
   const listenThenInterpret = async (media: { file?: File; url?: string }, source: Record<string, string>, title: string) => {
-    apply({ type: 'stage', stage: 'listen', message: 'Gemini 4 Argon video की आवाज़ ध्यान से सुन रहा है…' });
-    const heard = await listenToMedia({ ...media, signal: o.signal, onProgress: (reached, total) => apply({ type: 'listen', reached, total }) });
+    if (!heard) {
+      apply({ type: 'stage', stage: 'listen', message: 'Gemini 4 Argon video की आवाज़ ध्यान से सुन रहा है…' });
+      heard = await listenToMedia({ ...media, signal: o.signal, onProgress: (reached, total) => apply({ type: 'listen', reached, total }) });
+      snapshot();
+    }
     const final = await post({ segments: heard.segments, source, title, language: heard.language });
     if (final.type !== 'done') throw new InterpretStreamError('Video समझ नहीं आई।', 502);
     return { ...final.result, truncated: final.result.truncated || heard.truncated };

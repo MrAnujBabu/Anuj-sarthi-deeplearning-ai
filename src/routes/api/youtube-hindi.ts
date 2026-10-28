@@ -1,20 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router';
 import {
-  parseYouTubeId, timedTextCues, MAX_TRANSCRIPT_CHARS, MAX_MEDIA_SECONDS, type TimedSegment,
+  parseYouTubeId, timedTextCues, MAX_TRANSCRIPT_CHARS, MAX_TIMED_CHARS, MAX_TIMED_SEGMENTS, MAX_MEDIA_SECONDS, type TimedSegment,
 } from '@/lib/youtube-hindi';
 import { assembleHindiDub } from '@/lib/youtube-conversion';
 import { capSegments, chunkProse, groupCues, parsePastedTranscript, parseSubtitleFile, pickCaptionTrack, type CaptionTrack } from '@/lib/transcript-cues';
 import { DEFAULT_INTERPRETER, interpreterInfo, isInterpreterId, LISTENER, type InterpreterId } from '@/lib/interpreter-models';
-import { encodeEvent, type InterpretEvent, type InterpretResult, type SourceInfo, type SourceOrigin } from '@/lib/interpret-protocol';
+import { encodeEvent, type InterpretBrief, type InterpretEvent, type InterpretResult, type SourceInfo, type SourceOrigin } from '@/lib/interpret-protocol';
 
 type Send = (event: InterpretEvent) => void;
-type Body = { url?: unknown; transcript?: unknown; engine?: unknown; deepListen?: unknown; quality?: unknown; segments?: unknown; title?: unknown; language?: unknown; source?: unknown };
+type Body = { url?: unknown; transcript?: unknown; engine?: unknown; deepListen?: unknown; quality?: unknown; segments?: unknown; title?: unknown; language?: unknown; source?: unknown; resume?: unknown };
 
 const text = (value: unknown, max: number) => typeof value === 'string' ? value.trim().slice(0, max) : '';
 
 /** Timed segments heard in the browser-uploaded media path, validated and bounded. */
 function validSegments(value: unknown): TimedSegment[] | null {
-  if (!Array.isArray(value) || !value.length || value.length > 600) return null;
+  if (!Array.isArray(value) || !value.length || value.length > MAX_TIMED_SEGMENTS) return null;
   const out: TimedSegment[] = [];
   for (const item of value) {
     const s = item as Partial<TimedSegment>;
@@ -32,6 +32,17 @@ function validSource(value: unknown): Partial<SourceInfo> {
   const httpUrl = (u: unknown) => { const s = text(u, 2000); return /^https?:\/\//i.test(s) ? s : undefined; };
   const mediaUrl = httpUrl(v['mediaUrl']), pageUrl = httpUrl(v['pageUrl']), fileName = text(v['fileName'], 200) || undefined;
   return { ...(kind ? { kind } : {}), ...(mediaUrl ? { mediaUrl } : {}), ...(pageUrl ? { pageUrl } : {}), ...(fileName ? { fileName } : {}) };
+}
+
+/** Saved progress from an interrupted run: Hindi lines aligned to the segments, plus the earlier brief. Ignored unless it matches. */
+function validResume(value: unknown, count: number): { lines: string[]; brief: unknown; briefModel: string } | null {
+  if (!value || typeof value !== 'object' || !count) return null;
+  const v = value as Record<string, unknown>;
+  const lines = v['lines'];
+  if (!Array.isArray(lines) || lines.length !== count) return null;
+  const clean = lines.map(l => typeof l === 'string' ? l.slice(0, 8000) : '');
+  if (!clean.some(l => l.trim())) return null;
+  return { lines: clean, brief: v['brief'], briefModel: text(v['briefModel'], 60) };
 }
 
 type PlayerInfo = { title: string; lengthSeconds: number; tracks: CaptionTrack[]; status: string; reason: string };
@@ -56,7 +67,7 @@ async function fetchYouTube(id: string, signal: AbortSignal): Promise<PlayerInfo
 }
 
 async function run(body: Body, engine: InterpreterId, signal: AbortSignal, send: Send) {
-  const [{ InterpretError, makeBrief, interpretTimed, interpretProse, listenYouTube }, { resolveWebVideo, fetchCaptionsText }] = await Promise.all([
+  const [{ InterpretError, makeBrief, normalizeBrief, interpretTimed, interpretProse, listenYouTube }, { resolveWebVideo, fetchCaptionsText }] = await Promise.all([
     import('@/lib/interpreter.server'), import('@/lib/web-video.server'),
   ]);
   const pasted = text(body.transcript, 400_000), url = text(body.url, 2000);
@@ -123,7 +134,10 @@ async function run(body: Body, engine: InterpreterId, signal: AbortSignal, send:
     throw new InterpretError('पहले video link, file या transcript दें।', 400);
   }
 
-  if (timed.length) { const capped = capSegments(timed, MAX_TRANSCRIPT_CHARS); timed = capped.segments; truncated ||= capped.truncated; }
+  if (timed.length) {
+    const capped = capSegments(timed.slice(0, MAX_TIMED_SEGMENTS), MAX_TIMED_CHARS);
+    timed = capped.segments; truncated ||= capped.truncated || timed.length > MAX_TIMED_SEGMENTS;
+  }
   else { truncated ||= prose.length > MAX_TRANSCRIPT_CHARS; prose = prose.slice(0, MAX_TRANSCRIPT_CHARS); }
   const sourceText = timed.length ? timed.map(s => s.text).join(' ') : prose;
   if (!sourceText.trim()) throw new InterpretError('Transcript खाली है — दूसरी video आज़माएँ या transcript paste करें।', 422);
@@ -131,8 +145,16 @@ async function run(body: Body, engine: InterpreterId, signal: AbortSignal, send:
   const chunks = timed.length ? [] : chunkProse(prose, 2500);
   send({ type: 'source', title, language, origin, segments: timed.length || chunks.length, duration: timed.at(-1)?.end ?? 0, truncated, videoId, ...(timed.length ? { timeline: timed } : {}) });
 
-  send({ type: 'stage', stage: 'brief', message: 'GPT-6 Astra विषय, ज़रूरी शब्द और caption की गलतियाँ पहचान रहा है…' });
-  const { brief, model: briefModel } = await makeBrief(title, sourceText, signal);
+  const resume = validResume(body.resume, timed.length);
+  const savedBrief = resume ? normalizeBrief(resume.brief) : null;
+  let brief: InterpretBrief | null, briefModel: string | undefined;
+  if (savedBrief) {
+    send({ type: 'stage', stage: 'brief', message: 'पिछली बार का शब्द-कोश वापस लिया — बचे हुए हिस्सों से शुरू कर रहा हूँ…' });
+    brief = savedBrief; briefModel = resume?.briefModel || undefined;
+  } else {
+    send({ type: 'stage', stage: 'brief', message: 'GPT-6 Astra विषय, ज़रूरी शब्द और caption की गलतियाँ पहचान रहा है…' });
+    ({ brief, model: briefModel } = await makeBrief(title, sourceText, signal));
+  }
   send({ type: 'brief', brief, ...(briefModel ? { model: briefModel } : {}) });
 
   const review = body.quality !== false;
@@ -143,7 +165,7 @@ async function run(body: Body, engine: InterpreterId, signal: AbortSignal, send:
   if (timed.length) {
     let done = 0;
     const { lines, interpreters, quality } = await interpretTimed({
-      segments: timed, context, engine, signal, review,
+      segments: timed, context, engine, signal, review, ...(resume ? { saved: resume.lines } : {}),
       onSegment: (index, hindi) => {
         const seg = timed[index]; done++;
         if (seg) send({ type: 'segment', index, start: seg.start, end: seg.end, hindi, original: seg.text });
@@ -171,7 +193,7 @@ export const Route = createFileRoute('/api/youtube-hindi')({
     try { body = await request.json() as Body; } catch { return Response.json({ error: 'Bad request.' }, { status: 400 }); }
     if (!body || typeof body !== 'object') return Response.json({ error: 'Bad request.' }, { status: 400 });
     const engine = isInterpreterId(body.engine) ? body.engine : DEFAULT_INTERPRETER;
-    const { getAiPause, setAiPause } = await import('@/lib/ai/pause.server');
+    const { getAiPause, noteAiSuccess, setAiPause } = await import('@/lib/ai/pause.server');
     const paused = await getAiPause();
     if (paused?.kind === 'credits') return Response.json({ error: 'AI credits खत्म हो गए हैं — workspace में credits जोड़कर फिर चलाएँ।' }, { status: 402 });
     const signal = request.signal;
@@ -182,6 +204,7 @@ export const Route = createFileRoute('/api/youtube-hindi')({
         const send: Send = event => { if (!open) return; try { controller.enqueue(encoder.encode(encodeEvent(event))); } catch { open = false; } };
         try {
           await run(body, engine, signal, send);
+          void noteAiSuccess();
         } catch (error) {
           if (!signal.aborted) {
             const [{ describeFailure }, { WebVideoError }] = await Promise.all([import('@/lib/interpreter.server'), import('@/lib/web-video.server')]);

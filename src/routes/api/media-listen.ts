@@ -38,11 +38,12 @@ export const Route = createFileRoute('/api/media-listen')({
     if (!Number.isFinite(start) || start < 0 || start > 24 * 3600) return Response.json({ error: 'Bad offset.' }, { status: 400 });
     const audio = new Uint8Array(await file.arrayBuffer());
     if (String.fromCharCode(...audio.subarray(0, 4)) !== 'RIFF' || String.fromCharCode(...audio.subarray(8, 12)) !== 'WAVE') return Response.json({ error: 'WAV file सही नहीं है।' }, { status: 415 });
-    const [{ getAiPause, setAiPause }, { listenAudioChunk, describeFailure }] = await Promise.all([import('@/lib/ai/pause.server'), import('@/lib/interpreter.server')]);
+    const [{ getAiPause, noteAiSuccess, setAiPause }, { listenAudioChunk, describeFailure }] = await Promise.all([import('@/lib/ai/pause.server'), import('@/lib/interpreter.server')]);
     const paused = await getAiPause();
     if (paused?.kind === 'credits') return Response.json({ error: 'AI credits खत्म हो गए हैं — workspace में credits जोड़कर फिर चलाएँ।' }, { status: 402 });
     try {
       const heard = await listenAudioChunk(toBase64(audio), start, request.signal);
+      void noteAiSuccess();
       return Response.json(heard);
     } catch (error) {
       if (request.signal.aborted) return new Response(null, { status: 499 });
