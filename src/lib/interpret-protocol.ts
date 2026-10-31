@@ -10,15 +10,16 @@ export type SourceKind = 'youtube' | 'web' | 'upload' | 'text';
 export type SourceOrigin = 'captions' | 'auto-captions' | 'listened' | 'subtitles' | 'pasted';
 export type SourceInfo = {
   kind: SourceKind; origin: SourceOrigin; language?: string;
-  mediaUrl?: string; pageUrl?: string; fileName?: string;
+  mediaUrl?: string; pageUrl?: string; fileName?: string; mediaId?: string;
 };
-export type PanelInfo = { listener?: string; terminologist?: string; interpreters: string[]; reviewers?: string[]; reviewed?: number; corrected?: number };
+export type PanelInfo = { listener?: string; terminologist?: string; interpreters: string[]; reviewers?: string[]; reviewed?: number; corrected?: number; reviewRequested?: boolean; reviewTotal?: number };
 
 export type InterpretResult = {
   title: string; hindi: string; truncated: boolean; videoId?: string | null; dub?: DubSegment[];
   sourceChars?: number; source?: SourceInfo; brief?: InterpretBrief | null; panel?: PanelInfo;
   /** Original-language text for each dub segment, in the same order. */
   original?: string[]; engine?: InterpreterId;
+  pipeline?: string; deepListen?: boolean; sourceKey?: string;
 };
 
 export type Stage = 'source' | 'listen' | 'brief' | 'interpret';
@@ -27,7 +28,7 @@ export type InterpretEvent =
   | { type: 'stage'; stage: Stage; message: string }
   | { type: 'quality'; reviewed: number; corrected: number }
   | { type: 'listen'; reached: number; total?: number }
-  | { type: 'source'; title: string; language: string; origin: SourceOrigin; segments: number; duration: number; truncated: boolean; videoId?: string | null; timeline?: TimedSegment[] }
+  | { type: 'source'; title: string; language: string; origin: SourceOrigin; segments: number; duration: number; truncated: boolean; videoId?: string | null; timeline?: TimedSegment[]; sourceKey?: string }
   | { type: 'brief'; brief: InterpretBrief | null; model?: string }
   | { type: 'progress'; done: number; total: number }
   | { type: 'segment'; index: number; start: number; end: number; hindi: string; original: string }

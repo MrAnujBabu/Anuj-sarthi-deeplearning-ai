@@ -74,7 +74,8 @@ export async function loadYouTubeStudy(): Promise<SavedYouTubeStudy | undefined>
 /** Device library of finished interpretations; oldest entries beyond the cap are removed. */
 export const LIBRARY_LIMIT = 40;
 
-export function libraryKey(result: Pick<YouTubeResult, 'videoId' | 'title' | 'source'>, url: string, transcript: string) {
+export function libraryKey(result: Pick<YouTubeResult, 'videoId' | 'title' | 'source' | 'sourceKey'>, url: string, transcript: string) {
+  if (result.sourceKey) return `interpretation:${result.sourceKey}${result.source?.mediaId ? `:${result.source.mediaId}` : ''}`;
   if (result.videoId) return `video:${result.videoId}`;
   if (result.source?.fileName) return `file:${result.source.fileName}`;
   if (url.trim()) return `url:${url.trim()}`;
@@ -110,7 +111,7 @@ export async function removeFromLibrary(key: string) {
 
 /** The latest uploaded video stays on the device so its Hindi voice-over can replay after refresh. */
 export const MEDIA_LIMIT_BYTES = 600 * 1024 * 1024;
-export type SavedMedia = { name: string; type: string; blob: Blob };
+export type SavedMedia = { name: string; type: string; blob: Blob; id?: string };
 
 export async function saveUploadedMedia(media: SavedMedia) {
   if (media.blob.size > MEDIA_LIMIT_BYTES) return false;

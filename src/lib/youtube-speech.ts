@@ -7,8 +7,25 @@ export const YOUTUBE_SPEECH_MODEL = 'google/gemini-2.5-pro-tts';
 /** How long the backup voice is used before Sarvam is tried again (credits may be topped up). */
 export const SARVAM_RETRY_MS = 2 * 60 * 1000;
 
-/** Once Sarvam fails, the backup voice is used until `backupUntil`, then Sarvam is retried. */
-export const speechState = { useBackup: false, backupUntil: 0 };
+/** Voice-engine toggle: 'sarvam' = Sarvam first with automatic Lovable backup; 'lovable' = always the Lovable voice. */
+export type YouTubeVoiceEngine = 'sarvam' | 'lovable';
+export const YOUTUBE_VOICE_ENGINE_KEY = 'snapsolve.youtube-voice-engine';
+
+/** Once Sarvam fails, the backup voice is used until `backupUntil`, then Sarvam is retried. `forceBackup` is the user's engine toggle. */
+export const speechState = { useBackup: false, backupUntil: 0, forceBackup: false };
+
+/** Reads the saved engine choice; defaults to Sarvam-first. Browser-only (call from an effect). */
+export function readYouTubeVoiceEngine(): YouTubeVoiceEngine {
+  try { return localStorage.getItem(YOUTUBE_VOICE_ENGINE_KEY) === 'lovable' ? 'lovable' : 'sarvam'; }
+  catch { return 'sarvam'; }
+}
+
+/** Applies and saves the engine choice; returning to Sarvam clears any active backup hold. */
+export function setYouTubeVoiceEngine(engine: YouTubeVoiceEngine) {
+  speechState.forceBackup = engine === 'lovable';
+  if (!speechState.forceBackup) { speechState.useBackup = false; speechState.backupUntil = 0; }
+  try { localStorage.setItem(YOUTUBE_VOICE_ENGINE_KEY, engine); } catch { /* keep */ }
+}
 
 /** Each Sarvam voice gets its own closest-matching backup voice (pitch, gender, energy). */
 export const BACKUP_VOICE: Record<SarvamVoice, string> = {
@@ -28,9 +45,10 @@ export function shouldUseBackup(status: number | 'network') {
   return status === 'network' || status === 402 || status === 403 || status === 429 || status === 401 || status >= 500;
 }
 
-export async function fetchHindiSpeech(text: string, voice: SarvamVoice, signal: AbortSignal, now = Date.now()): Promise<Response> {
-  if (speechState.useBackup && now >= speechState.backupUntil) speechState.useBackup = false;
-  if (!speechState.useBackup) {
+export async function fetchHindiSpeech(text: string, voice: SarvamVoice, signal: AbortSignal, now = Date.now(), engine?: YouTubeVoiceEngine): Promise<Response> {
+  const forceBackup = engine ? engine === 'lovable' : speechState.forceBackup;
+  if (!forceBackup && speechState.useBackup && now >= speechState.backupUntil) speechState.useBackup = false;
+  if (!forceBackup && !speechState.useBackup) {
     let status: number | 'network' = 'network';
     try {
       const res = await fetch('/api/sarvam-speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, voice }), signal });

@@ -39,7 +39,7 @@ export function TeamCard({ result }: { result: InterpretResult }) {
       <ul className="mt-3 space-y-2">
         {rows.map(r => <li key={r.role} className="flex items-center gap-2.5 text-sm"><r.icon className="size-4 shrink-0 text-primary" /><span className="w-16 shrink-0 text-muted-foreground">{r.role}</span><span className="min-w-0 truncate">{r.who}</span></li>)}
       </ul>
-      {p.reviewed ? <p className="mt-3 rounded-lg bg-accent/60 px-3 py-2 text-xs text-accent-foreground">{p.reviewed} हिस्से जाँचे गए · {p.corrected ?? 0} में सुधार किया गया</p> : null}
+      {p.reviewRequested ? <p role={p.reviewed !== p.reviewTotal ? 'alert' : 'status'} className="mt-3 rounded-lg bg-accent/60 px-3 py-2 text-xs text-accent-foreground">{p.reviewed ?? 0}/{p.reviewTotal ?? 0} हिस्से जाँचे गए · {p.corrected ?? 0} में सुधार किया गया{p.reviewed !== p.reviewTotal ? ' · जाँच अधूरी है' : ''}</p> : null}
     </div>
   );
 }

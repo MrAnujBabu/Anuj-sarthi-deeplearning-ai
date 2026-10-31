@@ -1,5 +1,21 @@
 import { createParser } from 'eventsource-parser';
 import { decodePCM, SPEECH_SAMPLE_RATE } from './stream-speech';
+import { fetchHindiSpeech, speechState, SARVAM_RETRY_MS, type YouTubeVoiceEngine } from './youtube-speech';
+import type { SarvamVoice } from './sarvam-speech';
+
+/** Buffered consumers can retry once with Lovable after a broken Sarvam 200 stream.
+ * No audio has played yet, so fallback cannot duplicate audible speech. */
+export async function fetchDubAudio(text: string, voice: SarvamVoice, ctx: AudioContext, signal: AbortSignal, engine?: YouTubeVoiceEngine) {
+  const sarvamAttempt = engine !== 'lovable' && !speechState.forceBackup
+    && (!speechState.useBackup || Date.now() >= speechState.backupUntil);
+  const response = await fetchHindiSpeech(text, voice, signal, Date.now(), engine);
+  try { return await readDubAudio(response, ctx, signal); }
+  catch (error) {
+    if (signal.aborted || !sarvamAttempt || speechState.useBackup) throw error;
+    speechState.useBackup = true; speechState.backupUntil = Date.now() + SARVAM_RETRY_MS;
+    return readDubAudio(await fetchHindiSpeech(text, voice, signal, Date.now(), 'lovable'), ctx, signal);
+  }
+}
 
 export async function readDubAudio(response: Response, ctx: AudioContext, signal: AbortSignal) {
   if (!response.body) throw new Error('No audio.');

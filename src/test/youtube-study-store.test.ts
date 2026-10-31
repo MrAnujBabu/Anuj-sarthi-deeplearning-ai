@@ -1,6 +1,11 @@
 import 'fake-indexeddb/auto';
 import { expect, it } from 'vitest';
-import { isSavedYouTubeStudy, loadYouTubeStudy, saveYouTubeStudy, type SavedYouTubeStudy } from '@/lib/youtube-study-store';
+import { isSavedYouTubeStudy, loadYouTubeStudy, saveYouTubeStudy, libraryKey, type SavedYouTubeStudy } from '@/lib/youtube-study-store';
+
+it('keeps distinct conversions of the same video in separate library entries', () => {
+  expect(libraryKey({ title: 'T', videoId: 'Lt54CX9DmS4', sourceKey: 'reviewed' }, '', '')).
+    not.toBe(libraryKey({ title: 'T', videoId: 'Lt54CX9DmS4', sourceKey: 'fast' }, '', ''));
+});
 
 it('restores completed transcript, timestamps, URL and voice from device storage', async () => {
   const study: SavedYouTubeStudy = { version: 1, url: 'https://youtu.be/KA5kPbdkK2E', transcript: '', voice: 'ishita_hi_edtech',

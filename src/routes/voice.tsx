@@ -109,7 +109,9 @@ function LiveVoicePage() {
   useEffect(() => { try { const saved = localStorage.getItem(SARVAM_VOICE_KEY); const resolved = resolveSarvamVoice(saved); setSarvamVoice(resolved); if (saved && saved !== resolved) localStorage.setItem(SARVAM_VOICE_KEY, resolved); } catch { /* keep Shubh */ } }, []);
   // 'tts' = the live call listens/thinks as before, but replies are spoken by Kore/Aoede/Leda.
   const [engine, setEngine] = useState<'live' | 'tts' | 'sarvam'>('live');
-  useEffect(() => { try { const saved = localStorage.getItem('snapsolve.call-voice-engine'); if (saved === 'tts' || saved === 'sarvam') setEngine(saved); } catch { /* default */ } }, []);
+  // Voice-engine toggle: remembers which Lovable voice (live call or turn-based) to restore when Sarvam goes off.
+  const lastLovable = useRef<'live' | 'tts'>('live');
+  useEffect(() => { try { const saved = localStorage.getItem('snapsolve.call-voice-engine'); if (saved === 'tts' || saved === 'sarvam') { setEngine(saved); lastLovable.current = saved === 'tts' ? 'tts' : 'live'; } } catch { /* default */ } }, []);
   const ttsVoice = useRef<SpeechVoice | SarvamVoice | null>(null);
   const ttsBuf = useRef('');
   const ttsTimer = useRef<number | null>(null);
@@ -470,11 +472,21 @@ function LiveVoicePage() {
         <p className="-mt-3 text-xs text-muted-foreground">Tutor khud tez ya dheere bolta hai — call ke beech me bhi badlo, reconnect nahi hota.</p>
         <label className="flex items-center justify-between gap-2"><FileText className="size-4 text-muted-foreground" />Read scans<Switch checked={ocr} disabled={locked || reading} onCheckedChange={setOcr} aria-label="Read scanned PDFs" /></label>
         <div className="space-y-3">
+          <label className="flex items-center justify-between gap-2"><Volume2 className="size-4 text-muted-foreground" />Sarvam awaaz<Switch checked={engine === 'sarvam'} disabled={locked} aria-label="Voice engine: Sarvam ya Lovable" onCheckedChange={(on) => {
+            if (on) { setEngine('sarvam'); try { localStorage.setItem('snapsolve.call-voice-engine', 'sarvam'); } catch { /* keep */ }
+              // Warm the Sarvam connection now so the first real answer starts sooner.
+              void fetch('/api/sarvam-speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: 'Namaste.', voice: sarvamVoice }) }).then(r => { void r.body?.cancel().catch(() => {}); }).catch(() => {});
+              return;
+            }
+            setEngine(lastLovable.current);
+            try { localStorage.setItem('snapsolve.call-voice-engine', lastLovable.current); } catch { /* keep */ }
+          }} /></label>
+          <p className="-mt-3 text-xs text-muted-foreground">OFF karne par Lovable ki awaaz bolti hai (live call ya chuni hui voice).</p>
           <Select value={engine === 'sarvam' ? '' : engine === 'tts' ? `tts:${speechVoice}` : choice} disabled={locked} onValueChange={(value) => {
             const tts = value.startsWith('tts:') ? resolveSpeechVoice(value.slice(4)) : undefined;
-            if (tts) { setSpeechVoice(tts); setEngine('tts'); try { localStorage.setItem('snapsolve.call-voice-engine', 'tts'); } catch { /* keep */ } return; }
+            if (tts) { setSpeechVoice(tts); lastLovable.current = 'tts'; setEngine('tts'); try { localStorage.setItem('snapsolve.call-voice-engine', 'tts'); } catch { /* keep */ } return; }
             const valid = VOICE_CHOICES.find(option => option.id === value);
-            if (valid) { setChoice(valid.id); setEngine('live'); try { localStorage.setItem('snapsolve.call-voice-engine', 'live'); } catch { /* keep */ } }
+            if (valid) { setChoice(valid.id); lastLovable.current = 'live'; setEngine('live'); try { localStorage.setItem('snapsolve.call-voice-engine', 'live'); } catch { /* keep */ } }
           }}>
             <SelectTrigger aria-label="Voice"><SelectValue placeholder="Sarvam chali rahi hai — Live call band" /></SelectTrigger>
             <SelectContent>

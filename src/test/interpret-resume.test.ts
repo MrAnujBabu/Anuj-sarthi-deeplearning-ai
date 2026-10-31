@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { interpretTimed } from '@/lib/interpreter.server';
-import { checkpointKey, hourSections, isResumable, isTransientFailure } from '@/lib/interpret-checkpoint';
+import { checkpointKey, hourSections, isResumable, isRecoverable, isTransientFailure } from '@/lib/interpret-checkpoint';
 import { creditPauseDecision, CREDIT_PROBE_MS } from '@/lib/ai/pause-policy';
 import { InterpretStreamError } from '@/lib/interpret-protocol';
 
@@ -42,6 +42,8 @@ describe('resuming a long interpretation', () => {
     expect(isResumable({ ...base, lines: ['x', ''] })).toBe(true);
     expect(isResumable({ ...base, lines: ['x', 'y'] })).toBe(false);
     expect(isResumable({ ...base, lines: ['', ''] })).toBe(false);
+    expect(isRecoverable({ ...base, lines: ['x', 'y'] })).toBe(true);
+    expect(isRecoverable({ ...base, lines: ['', ''] })).toBe(false);
   });
 
   it('keys progress by source, interpreter and review setting', () => {

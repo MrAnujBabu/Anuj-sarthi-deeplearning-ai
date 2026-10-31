@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { SARVAM_VOICES, sarvamVoiceLabel, type SarvamVoice } from '@/lib/sarvam-speech';
-import { fetchHindiSpeech } from '@/lib/youtube-speech';
+import { fetchHindiSpeech, readYouTubeVoiceEngine, setYouTubeVoiceEngine, type YouTubeVoiceEngine } from '@/lib/youtube-speech';
 import { decodePCM, SPEECH_SAMPLE_RATE } from '@/lib/stream-speech';
 import { splitForSpeech } from '@/lib/youtube-hindi';
 import { YouTubeDub } from '@/components/youtube-dub';
@@ -22,7 +22,8 @@ import { StudyLibrary } from '@/components/interpreter/study-library';
 import { SourceBadges, TeamCard, BriefCard } from '@/components/interpreter/result-insights';
 import { runInterpretation, liveDub, IDLE_STATE, type RunInput, type RunState } from '@/lib/interpret-client';
 import { InterpretStreamError } from '@/lib/interpret-protocol';
-import { checkpointKey, doneCount, isResumable, loadCheckpoint, removeCheckpoint, saveCheckpoint, type Checkpoint, type CheckpointInput } from '@/lib/interpret-checkpoint';
+import { INTERPRET_PIPELINE } from '@/lib/interpret-identity';
+import { checkpointKey, doneCount, isRecoverable, loadCheckpoint, removeCheckpoint, saveCheckpoint, type Checkpoint, type CheckpointInput } from '@/lib/interpret-checkpoint';
 import { INTERPRETERS, DEFAULT_INTERPRETER, interpreterInfo, type InterpreterId } from '@/lib/interpreter-models';
 import {
   loadYouTubeStudy, saveYouTubeStudy, saveToLibrary, listLibrary, removeFromLibrary, libraryKey,
@@ -54,6 +55,7 @@ function YouTubeHindi() {
   const runIsFile = useRef(false);
   const [mediaObjectUrl, setMediaObjectUrl] = useState<string | null>(null);
   const [voice, setVoice] = useState<SarvamVoice>('ishita_hi_edtech');
+  const [voiceEngine, setVoiceEngineState] = useState<YouTubeVoiceEngine>('sarvam');
   const [engine, setEngine] = useState<InterpreterId>(DEFAULT_INTERPRETER);
   const [quality, setQuality] = useState(true);
   const [deepListen, setDeepListen] = useState(false);
@@ -75,6 +77,12 @@ function YouTubeHindi() {
 
   useEffect(() => () => { stopRef.current(); runCtl.current?.abort(); }, []);
   useEffect(() => () => { if (mediaObjectUrl) URL.revokeObjectURL(mediaObjectUrl); }, [mediaObjectUrl]);
+  // Voice-engine toggle: restore the saved Sarvam/Lovable choice before any speech runs.
+  useEffect(() => {
+    const engine = readYouTubeVoiceEngine();
+    setVoiceEngineState(engine);
+    setYouTubeVoiceEngine(engine);
+  }, []);
   useEffect(() => {
     let dead = false;
     void (async () => {
@@ -88,7 +96,7 @@ function YouTubeHindi() {
         setActiveKey(libraryKey(saved.result, saved.url, saved.transcript));
         if (saved.result.source?.kind === 'upload') {
           const media = await loadUploadedMedia().catch(() => undefined);
-          if (!dead && media) setMediaObjectUrl(URL.createObjectURL(media.blob));
+          if (!dead && media?.id && media.id === saved.result.source.mediaId) setMediaObjectUrl(URL.createObjectURL(media.blob));
         }
       } catch { if (!dead) setError('Saved video खोल नहीं पाए।'); }
       finally { if (!dead) setRestoring(false); }
@@ -102,8 +110,9 @@ function YouTubeHindi() {
     try {
       await saveYouTubeStudy({ version: 1, url: srcUrl, transcript: text, voice, result: r });
       await saveToLibrary({ key, savedAt: Date.now(), url: srcUrl, voice, result: r });
-      setLibrary(await listLibrary());
-    } catch { setError('Hindi तैयार है, लेकिन इस device पर save नहीं हुआ।'); }
+      setLibrary(await listLibrary().catch(() => library));
+      return true;
+    } catch { setError('Hindi तैयार है, लेकिन इस device पर save नहीं हुआ। पिछला checkpoint रखा गया है।'); return false; }
   }
 
   async function attachTranscript(f: File) {
@@ -133,17 +142,17 @@ function YouTubeHindi() {
     if (attached?.kind === 'media') return { kind: 'file', file: attached.file };
     return transcript.trim() ? { kind: 'text', transcript, url } : null;
   }
-  const savedKey = (() => { const i = currentCheckpointInput(); return i ? checkpointKey(i, engine, quality) : ''; })();
+  const savedKey = (() => { const i = currentCheckpointInput(); return i ? checkpointKey(i, engine, quality, deepListen) : ''; })();
   useEffect(() => {
     if (!savedKey || busy) { if (!savedKey) setSaved(null); return; }
     let dead = false;
-    const t = setTimeout(() => { void loadCheckpoint(savedKey).then(cp => { if (!dead) setSaved(isResumable(cp) ? cp : null); }).catch(() => {}); }, 250);
+    const t = setTimeout(() => { void loadCheckpoint(savedKey).then(cp => { if (!dead) setSaved(isRecoverable(cp) ? cp : null); }).catch(() => {}); }, 250);
     return () => { dead = true; clearTimeout(t); };
   }, [savedKey, busy]);
 
   async function discardSaved() {
-    if (saved) await removeCheckpoint(saved.key).catch(() => {});
-    setSaved(null);
+    try { if (saved) await removeCheckpoint(saved.key); setSaved(null); }
+    catch { setError('Saved progress हट नहीं पाया। फिर कोशिश करें।'); }
   }
 
   async function convert(override?: { url: string }) {
@@ -162,7 +171,9 @@ function YouTubeHindi() {
       input = { kind: 'text', transcript: transcript.trim(), url: url.trim() };
     }
     runIsFile.current = input.kind === 'file';
-    const cached = input.kind === 'link' ? library.find(e => e.url.trim() === linkUrl.trim() && e.result.engine === engine) : undefined;
+    const cached = input.kind === 'link' ? library.find(e => e.url.trim() === linkUrl.trim() && e.result.engine === engine
+      && e.result.pipeline === INTERPRET_PIPELINE && e.result.deepListen === deepListen
+      && (!quality || (e.result.panel?.reviewRequested === true && e.result.panel.reviewed === e.result.panel.reviewTotal))) : undefined;
     if (cached) { openEntry(cached); return; }
 
     stopRef.current(); runCtl.current?.abort();
@@ -172,33 +183,41 @@ function YouTubeHindi() {
       if (mediaObjectUrl) URL.revokeObjectURL(mediaObjectUrl);
       setMediaObjectUrl(URL.createObjectURL(input.file));
     }
-    const key = checkpointKey(input.kind === 'file' ? { kind: 'file', file: input.file } : input, engine, quality);
+    const key = checkpointKey(input.kind === 'file' ? { kind: 'file', file: input.file } : input, engine, quality, deepListen);
     const checkpoint = await loadCheckpoint(key).catch(() => null);
     // Save finished parts at most every 2 s (and once at the end) so a stop never loses paid work.
     let pending: Omit<Checkpoint, 'key' | 'savedAt'> | null = null, timer: ReturnType<typeof setTimeout> | null = null;
-    const flush = async () => { if (timer) { clearTimeout(timer); timer = null; } const cp = pending; pending = null; if (cp) await saveCheckpoint({ ...cp, key, savedAt: Date.now() }).catch(() => {}); };
+    let writes = Promise.resolve();
+    const flush = async () => {
+      if (timer) { clearTimeout(timer); timer = null; }
+      const cp = pending; pending = null;
+      if (cp) writes = writes.then(() => saveCheckpoint({ ...cp, key, savedAt: Date.now() })).catch(() => { setError('इस device पर प्रगति save नहीं हुई। पेज बंद करने पर काम खो सकता है।'); });
+      await writes;
+    };
     const onCheckpoint = (cp: Omit<Checkpoint, 'key' | 'savedAt'>) => { pending = cp; timer ??= setTimeout(() => { void flush(); }, 2000); };
     let finished = false;
     try {
-      const r = await runInterpretation({ input, engine, quality, signal: ctl.signal, checkpoint, onCheckpoint, onState: s => { if (!ctl.signal.aborted) setRun(s); } });
-      finished = true;
-      if (timer) clearTimeout(timer);
-      pending = null;
-      await removeCheckpoint(key).catch(() => {});
-      setSaved(null);
+      let r = await runInterpretation({ input, engine, quality, signal: ctl.signal, checkpoint, onCheckpoint, onState: s => { if (!ctl.signal.aborted) setRun(s); } });
+      await flush();
       if (ctl.signal.aborted) return;
       setResult(r);
-      if (input.kind === 'file') await saveUploadedMedia({ name: input.file.name, type: input.file.type, blob: input.file }).catch(() => false);
-      await remember(r, input.kind === 'link' ? input.url : input.kind === 'text' ? (input.url ?? '') : '', input.kind === 'text' ? input.transcript : '');
+      if (input.kind === 'file') {
+        const id = crypto.randomUUID();
+        r = { ...r, source: { kind: 'upload', origin: 'listened', ...r.source, mediaId: id } }; setResult(r);
+        const kept = await saveUploadedMedia({ name: input.file.name, type: input.file.type, blob: input.file, id }).catch(() => false);
+        if (!kept) setError('Hindi तैयार है; मूल video इस device पर save नहीं हुई।');
+      }
+      finished = await remember(r, input.kind === 'link' ? input.url : input.kind === 'text' ? (input.url ?? '') : '', input.kind === 'text' ? input.transcript : '');
+      if (finished) { await removeCheckpoint(key).catch(() => {}); setSaved(null); }
     } catch (e) {
       if (ctl.signal.aborted) return;
-      if (e instanceof InterpretStreamError && e.needTranscript) { setMode('text'); setError(`${e.message} — YouTube → … → Show transcript से English text copy करके यहाँ paste करें।`); }
+      if (e instanceof InterpretStreamError && e.needTranscript) { setMode('text'); setError(`${e.message} — Transcript किसी भी भाषा में जोड़ें, या Phone से अपनी video/audio file चुनें।`); }
       else setError(e instanceof Error ? e.message : 'कुछ गड़बड़ हो गई।');
     } finally {
       if (!finished) {
         await flush();
         const cp = await loadCheckpoint(key).catch(() => null);
-        setSaved(isResumable(cp) ? cp : null);
+        setSaved(isRecoverable(cp) ? cp : null);
       }
       if (runCtl.current === ctl) { runCtl.current = null; setRun(null); }
     }
@@ -208,11 +227,12 @@ function YouTubeHindi() {
 
   function openEntry(entry: LibraryEntry) {
     stopRef.current(); setError(''); setResult(entry.result); setActiveKey(entry.key); setVoice(entry.voice);
+    setMediaObjectUrl(null);
     if (entry.result.engine) setEngine(entry.result.engine);
     if (entry.url) setUrl(entry.url);
     void saveYouTubeStudy({ version: 1, url: entry.url, transcript: '', voice: entry.voice, result: entry.result }).catch(() => {});
     if (entry.result.source?.kind === 'upload') void loadUploadedMedia().then(m => {
-      if (m && m.name === entry.result.source?.fileName) { if (mediaObjectUrl) URL.revokeObjectURL(mediaObjectUrl); setMediaObjectUrl(URL.createObjectURL(m.blob)); }
+      if (m?.id && m.id === entry.result.source?.mediaId) setMediaObjectUrl(URL.createObjectURL(m.blob));
     }).catch(() => {});
   }
 
@@ -226,16 +246,17 @@ function YouTubeHindi() {
     const ctl = new AbortController();
     const ctx = new AudioContext({ sampleRate: SPEECH_SAMPLE_RATE });
     let playhead = ctx.currentTime + 0.2;
-    const sources: AudioBufferSourceNode[] = [];
-    stopRef.current = () => { ctl.abort(); sources.forEach(s => { try { s.stop(); } catch { /* done */ } }); void ctx.close(); setPlaying(false); setProgress(''); };
+    const sources = new Set<AudioBufferSourceNode>();
+    stopRef.current = () => { ctl.abort(); sources.forEach(s => { try { s.stop(); } catch { /* done */ } s.disconnect(); }); sources.clear(); void ctx.close(); setPlaying(false); setProgress(''); };
     setPlaying(true); setError('');
     const pieces = splitForSpeech(result.hindi);
     try {
       await ctx.resume();
       for (let i = 0; i < pieces.length; i++) {
+        while (playhead - ctx.currentTime > 30) { ctl.signal.throwIfAborted(); await new Promise(resolve => setTimeout(resolve, 200)); }
         setProgress(`Part ${i + 1} / ${pieces.length}`);
         const piece = pieces[i]; if (!piece) continue;
-        const res = await fetchHindiSpeech(piece, voice, ctl.signal);
+        const res = await fetchHindiSpeech(piece, voice, ctl.signal, Date.now(), voiceEngine);
         if (!res.body) throw new Error('No audio.');
         let pending: Uint8Array = new Uint8Array(0);
         let failure = '';
@@ -250,7 +271,8 @@ function YouTubeHindi() {
           buf.copyToChannel(out.samples as Float32Array<ArrayBuffer>, 0);
           const src = ctx.createBufferSource(); src.buffer = buf; src.connect(ctx.destination);
           playhead = Math.max(playhead, ctx.currentTime + 0.05);
-          src.start(playhead); playhead += buf.duration; sources.push(src);
+          src.onended = () => { sources.delete(src); src.disconnect(); };
+          src.start(playhead); playhead += buf.duration; sources.add(src);
         } });
         const reader = res.body.getReader(); const dec = new TextDecoder();
         for (;;) { const { done, value } = await reader.read(); if (done) break; parser.feed(dec.decode(value, { stream: true })); }
@@ -346,14 +368,20 @@ function YouTubeHindi() {
             <SelectContent>{SARVAM_VOICES.map(v => <SelectItem key={v} value={v}>{sarvamVoiceLabel(v)}</SelectItem>)}</SelectContent>
           </Select>
         </div>
+        <label className="flex items-center gap-2 text-sm" htmlFor="voice-engine">
+          <Switch id="voice-engine" checked={voiceEngine === 'sarvam'} disabled={locked} aria-label="Voice engine: Sarvam ya Lovable"
+            onCheckedChange={(on) => { const next = on ? 'sarvam' : 'lovable' as const; setVoiceEngineState(next); setYouTubeVoiceEngine(next); }} />
+          Sarvam awaaz
+          <span className="text-xs text-muted-foreground">{voiceEngine === 'sarvam' ? 'pehle Sarvam · fail hone par Lovable backup' : 'hamesha Lovable AI ki awaaz'}</span>
+        </label>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="flex items-center gap-2"><Switch id="quality" checked={quality} onCheckedChange={setQuality} disabled={locked} /><Label htmlFor="quality" className="flex items-center gap-1.5 text-sm"><ShieldCheck className="size-4" />दूसरे model से दोबारा जाँच</Label></div>
           <Button className="h-11 sm:ml-auto" onClick={() => void convert()} disabled={restoring || locked}><Languages className="size-4" />{saved && !busy ? 'जहाँ रुका वहीं से आगे' : 'Hindi में समझाओ'}</Button>
         </div>
         {saved && !busy && (
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg bg-accent/60 px-3 py-2 text-sm text-accent-foreground" data-testid="saved-progress">
-            <span>इस device पर {doneCount(saved.lines)}/{saved.lines.length} हिस्से save हैं — बचे हुए हिस्सों से आगे चलेगा, पुराने के credits दोबारा नहीं लगेंगे।</span>
-            <button type="button" className="underline underline-offset-2" onClick={() => void discardSaved()}>नए सिरे से</button>
+            <span>इस device पर {doneCount(saved.lines)}/{saved.lines.length} हिस्से save हैं। स्रोत मिलने पर पुराना Hindi दोबारा नहीं बनेगा; माँगी गई जाँच के credits लग सकते हैं।</span>
+            <Button type="button" variant="link" size="sm" onClick={() => void discardSaved()}>नए सिरे से</Button>
           </p>
         )}
         {error && <p role="alert" className="rounded-lg border border-destructive px-3 py-2 text-sm text-destructive">{error}</p>}
@@ -365,7 +393,7 @@ function YouTubeHindi() {
         <div className="mt-8 space-y-4">
           <RunProgress state={run} interpreter={engineName} quality={quality} onCancel={cancel} />
           {live && (liveVideoId || liveMedia) ? (
-            <YouTubeDub videoId={liveVideoId} mediaSrc={liveMedia} mediaFallbackSrc={fallbackFor(liveMedia)} segments={live} original={run.timeline.map(s => s.text)} voice={voice} onRunningChange={setDubbing} />
+            <YouTubeDub videoId={liveVideoId} mediaSrc={liveMedia} mediaFallbackSrc={fallbackFor(liveMedia)} segments={live} original={run.timeline.map(s => s.text)} voice={voice} voiceEngine={voiceEngine} onRunningChange={setDubbing} />
           ) : null}
         </div>
       )}
@@ -376,10 +404,10 @@ function YouTubeHindi() {
           <SourceBadges result={result} />
           {result.truncated && <p className="mt-2 text-xs text-muted-foreground">Video लंबा है — शुरुआती हिस्सा ही समझाया गया है।</p>}
           {result.dub?.length && (result.videoId || resultMedia) ? (
-            <div className="mt-4"><YouTubeDub videoId={result.videoId ?? null} mediaSrc={resultMedia} mediaFallbackSrc={fallbackFor(resultMedia)} segments={result.dub} {...(result.original ? { original: result.original } : {})} voice={voice} onRunningChange={setDubbing} /></div>
+            <div className="mt-4"><YouTubeDub videoId={result.videoId ?? null} mediaSrc={resultMedia} mediaFallbackSrc={fallbackFor(resultMedia)} segments={result.dub} {...(result.original ? { original: result.original } : {})} voice={voice} voiceEngine={voiceEngine} onRunningChange={setDubbing} /></div>
           ) : null}
           <div className="mt-4 grid gap-4 md:grid-cols-2"><TeamCard result={result} /><BriefCard result={result} /></div>
-          <YouTubeNarrationDownload text={result.hindi} voice={voice} videoId={result.videoId ?? null} disabled={busy || dubbing || playing} onBusyChange={setExporting} />
+          <YouTubeNarrationDownload text={result.hindi} voice={voice} voiceEngine={voiceEngine} videoId={result.videoId ?? null} disabled={busy || dubbing || playing} onBusyChange={setExporting} />
           <details className="mt-8 border-t pt-4" open={!result.dub?.length}>
             <summary className="flex cursor-pointer list-none items-center justify-between text-base font-medium">सरल Hindi explanation<ChevronDown className="size-4" /></summary>
             <div className="mt-3 flex items-center gap-3">

@@ -15,7 +15,14 @@ export function dubVideoRate(duration: number, window: number, available: number
 }
 
 export function segmentAtTime(segments: DubSegment[], time: number) {
-  return segments.findIndex((segment, i) => time < (segments[i + 1]?.start ?? segment.end));
+  // A gap belongs to the upcoming segment, never to already-finished speech.
+  return segments.findIndex(segment => time < segment.end);
+}
+
+/** Fit the remaining video to the observed audio clock, without changing voice speed/pitch. */
+export function dubAlignedRate(audioLeft: number, videoLeft: number, available: number[]) {
+  const rates = available.filter(rate => rate > 0 && rate <= 1);
+  return rates.sort((a, b) => Math.abs(videoLeft / a - audioLeft) - Math.abs(videoLeft / b - audioLeft))[0] ?? 1;
 }
 
 export function dubSeeked(previous: number, current: number, elapsed: number, rate: number, playing: boolean) {
@@ -55,15 +62,20 @@ export async function runDubPlayback(o: Options) {
     // Wait for the iframe to apply its initial seek before observing jumps.
     while (p.getPlayerState() !== 1) { signal.throwIfAborted(); await tick(); }
     let index = o.from;
+    let preserveNativePause = false;
     while (index < segments.length) {
       signal.throwIfAborted();
+      while (preserveNativePause && p.getPlayerState() === 2) { signal.throwIfAborted(); await tick(); }
+      preserveNativePause = false;
       const seg = segments[index]; if (!seg) break;
-      let lastGap = p.getCurrentTime();
       while (p.getCurrentTime() < seg.start - 0.05) {
         signal.throwIfAborted();
+        p.setPlaybackRate(originalRate);
+        if (o.paused()) p.pauseVideo();
         const now = p.getCurrentTime();
-        if (now < lastGap - 1) { const target = segmentAtTime(segments, now); if (target >= 0) { index = target; break; } }
-        lastGap = now;
+        const target = segmentAtTime(segments, now);
+        if (target !== index) { index = target < 0 ? segments.length : target; break; }
+        if (p.getPlayerState() === 0) { index = segments.length; break; }
         await tick();
       }
       if (segments[index] !== seg) continue;
@@ -74,34 +86,47 @@ export async function runDubPlayback(o: Options) {
         o.update(index, 'Hindi voice load हो रही है…');
         buffer = await o.getAudio(index); signal.throwIfAborted();
       }
-      if (p.getCurrentTime() >= (segments[index + 1]?.start ?? seg.end)) {
+      if (p.getCurrentTime() >= seg.end) {
         index = segmentAtTime(segments, p.getCurrentTime());
         if (index < 0) break;
         o.holding(false); continue;
       }
       const end = Math.min(seg.end, segments[index + 1]?.start ?? seg.end);
-      const rate = dubVideoRate(buffer.duration, Math.max(0.1, end - seg.start), p.getAvailablePlaybackRates());
+      const available = p.getAvailablePlaybackRates();
+      let rate = dubAlignedRate(buffer.duration, Math.max(0.1, end - seg.start), available);
       p.setPlaybackRate(rate);
-      const offset = Math.min(buffer.duration, Math.max(0, (p.getCurrentTime() - seg.start) / rate));
+      const offset = Math.min(buffer.duration, Math.max(0, (p.getCurrentTime() - seg.start) / Math.max(0.1, end - seg.start) * buffer.duration));
       if (index + 1 < segments.length) void o.getAudio(index + 1).catch(() => {});
       if (index + 2 < segments.length) void o.getAudio(index + 2).catch(() => {});
       o.update(index, `Hindi voice-over · ${index + 1}/${segments.length}`);
+      if (o.paused() || p.getPlayerState() !== 1) await ctx.suspend();
       source = ctx.createBufferSource(); source.buffer = buffer; source.connect(ctx.destination);
       let ended = false; source.onended = () => { ended = true; };
-      source.start(ctx.currentTime + 0.03, offset);
+      const audioStart = ctx.currentTime + 0.03;
+      source.start(audioStart, offset);
       let overrun = false;
       o.holding(false);
       if (!o.paused()) p.playVideo();
       let lastVideo = p.getCurrentTime(), lastWall = performance.now();
+      let lastCorrection = lastWall;
       let jumped = false;
       while (!ended) {
         signal.throwIfAborted();
         const now = performance.now(), time = p.getCurrentTime(), state = p.getPlayerState();
         if (dubSeeked(lastVideo, time, (now - lastWall) / 1000, rate, state === 1)) {
           const target = segmentAtTime(segments, time);
+          preserveNativePause = state === 2 && !overrun;
           stopSource(); index = target < 0 ? segments.length : target; jumped = true; break;
         }
         lastVideo = time; lastWall = now;
+        if (!overrun && state === 1 && now - lastCorrection >= 600) {
+          const audioLeft = buffer.duration - offset - Math.max(0, ctx.currentTime - audioStart);
+          if (audioLeft > 0.15 && end - time > 0.05) {
+            const aligned = dubAlignedRate(audioLeft, end - time, available);
+            if (aligned !== rate) { rate = aligned; p.setPlaybackRate(rate); }
+          }
+          lastCorrection = now;
+        }
         if (!overrun && time >= end - 0.06) { overrun = true; o.holding(true); p.pauseVideo(); }
         // A deliberate end-of-window hold is the ONLY case where speech continues on paused video.
         const speak = !o.paused() && (overrun || state === 1);
@@ -111,9 +136,9 @@ export async function runDubPlayback(o: Options) {
       }
       const nativePaused = !overrun && p.getPlayerState() === 2;
       stopSource(); o.holding(false);
+      if (jumped) { if (!o.paused() && !preserveNativePause) p.playVideo(); continue; }
       // Don't undo a native pause merely because the audio reached its end.
       while (nativePaused && p.getPlayerState() === 2) { signal.throwIfAborted(); await tick(); }
-      if (jumped) { if (!o.paused()) p.playVideo(); continue; }
       index++;
       while (o.paused()) { signal.throwIfAborted(); await tick(); }
       if (!o.paused()) p.playVideo();
