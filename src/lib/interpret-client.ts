@@ -19,6 +19,7 @@ export type RunState = {
   brief?: InterpretBrief | null; briefModel?: string;
   timeline: TimedSegment[]; hindi: string[]; done: number; total: number;
   quality?: { reviewed: number; corrected: number };
+  sourceKey?: string | undefined;
 };
 
 export const IDLE_STATE: RunState = { stage: 'idle', message: '', listening: false, title: '', language: '', duration: 0, truncated: false, videoId: null, timeline: [], hindi: [], done: 0, total: 0 };
@@ -31,7 +32,7 @@ export function reduceEvent(state: RunState, event: InterpretEvent): RunState {
     case 'source': {
       const timeline = event.timeline ?? [];
       return { ...state, title: event.title || state.title, language: event.language, origin: event.origin, duration: event.duration, truncated: event.truncated,
-        videoId: event.videoId ?? state.videoId, timeline, hindi: timeline.map(() => ''), total: event.segments, done: 0 };
+        videoId: event.videoId ?? state.videoId, sourceKey: event.sourceKey, timeline, hindi: timeline.map(() => ''), total: event.segments, done: 0 };
     }
     case 'brief': return { ...state, brief: event.brief, ...(event.model ? { briefModel: event.model } : {}) };
     case 'segment': {
@@ -126,9 +127,11 @@ export async function runInterpretation(o: RunOptions): Promise<InterpretResult>
   let heard: HeardMedia | undefined = o.checkpoint?.heard;
   // Lines to resume from: the device checkpoint first, then whatever this run finished before a drop.
   let resumeLines: string[] | null = o.checkpoint?.lines.some(l => l.trim()) ? o.checkpoint.lines : null;
+  let resumeSourceKey = o.checkpoint?.sourceKey;
   let resumeBrief: { brief: InterpretBrief | null; model?: string } | null = o.checkpoint?.brief ? { brief: o.checkpoint.brief, ...(o.checkpoint.briefModel ? { model: o.checkpoint.briefModel } : {}) } : null;
   const snapshot = () => {
     o.onCheckpoint?.({ title: state.title, lines: state.hindi, starts: state.timeline.map(t => t.start), brief: state.brief ?? null,
+      ...(state.sourceKey ? { sourceKey: state.sourceKey } : {}),
       ...(state.briefModel ? { briefModel: state.briefModel } : {}), ...(heard ? { heard } : {}) });
   };
   const apply = (event: InterpretEvent) => {
@@ -136,7 +139,7 @@ export async function runInterpretation(o: RunOptions): Promise<InterpretResult>
     if (event.type === 'segment' || event.type === 'brief') snapshot();
   };
   const postOnce = async (body: Record<string, unknown>) => {
-    const resume = resumeLines ? { lines: resumeLines, ...(resumeBrief?.brief ? { brief: resumeBrief.brief, briefModel: resumeBrief.model ?? '' } : {}) } : undefined;
+    const resume = resumeLines && resumeSourceKey ? { lines: resumeLines, sourceKey: resumeSourceKey, ...(resumeBrief?.brief ? { brief: resumeBrief.brief, briefModel: resumeBrief.model ?? '' } : {}) } : undefined;
     const res = await fetch('/api/youtube-hindi', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ engine: o.engine, quality: o.quality, ...body, ...(resume ? { resume } : {}) }), signal: o.signal });
     return readInterpretStream(res, apply, o.signal);
   };
@@ -147,6 +150,7 @@ export async function runInterpretation(o: RunOptions): Promise<InterpretResult>
       catch (error) {
         if (o.signal.aborted || !isTransientFailure(error) || attempt >= AUTO_CONTINUE_DELAYS_MS.length) throw error;
         if (state.hindi.some(l => l.trim())) resumeLines = state.hindi.slice();
+        resumeSourceKey = state.sourceKey;
         if (state.brief) resumeBrief = { brief: state.brief, ...(state.briefModel ? { model: state.briefModel } : {}) };
         const delay = AUTO_CONTINUE_DELAYS_MS[attempt] ?? 30_000;
         apply({ type: 'stage', stage: state.stage === 'idle' ? 'source' : state.stage, message: `Connection/AI रुक गया — ${Math.round(delay / 1000)} सेकंड में जहाँ रुका वहीं से फिर शुरू कर रहा हूँ (${attempt + 1}/${AUTO_CONTINUE_DELAYS_MS.length})…` });

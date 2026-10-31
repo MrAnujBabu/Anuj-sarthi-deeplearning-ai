@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { dubVideoRate, dubSeeked, segmentAtTime, runDubPlayback } from '@/lib/youtube-dub-sync';
+import { dubVideoRate, dubAlignedRate, dubSeeked, segmentAtTime, runDubPlayback } from '@/lib/youtube-dub-sync';
 import { youtubeVoiceProfile } from '@/lib/youtube-voice-profile';
 
 describe('YouTube synchronized narration', () => {
@@ -18,6 +18,40 @@ describe('YouTube synchronized narration', () => {
     expect(segmentAtTime(s, 35)).toBe(1);
     expect(segmentAtTime(s, 5)).toBe(0);
     expect(segmentAtTime(s, 60)).toBe(-1);
+  });
+  it('never replays finished narration when seeking into a silent gap', () => {
+    const s = [{ start: 1, end: 22, hindi: 'पहला।' }, { start: 40, end: 45, hindi: 'दूसरा।' }];
+    expect(segmentAtTime(s, 25)).toBe(1);
+    expect(segmentAtTime(s, 45)).toBe(-1);
+  });
+  it('corrects video timing towards the remaining natural-speed audio', () => {
+    expect(dubAlignedRate(8, 6, [0.25, 0.5, 0.75, 1, 1.5])).toBe(0.75);
+    expect(dubAlignedRate(5, 6, [0.5, 0.75, 1, 2])).toBe(1);
+    expect(dubAlignedRate(10, 6, [0.5, 0.75, 1])).toBe(0.5);
+  });
+  it('seeks into speech proportionally and corrects video drift without restarting the voice', async () => {
+    vi.useFakeTimers();
+    const wallClock = vi.spyOn(performance, 'now').mockImplementation(() => Date.now());
+    let time = 5, audioTime = 0;
+    const start = vi.fn(), stop = vi.fn();
+    const ctx = { state: 'running', get currentTime() { return audioTime; }, destination: {}, resume: vi.fn(), suspend: vi.fn(),
+      createBufferSource: () => ({ connect: vi.fn(), disconnect: vi.fn(), start, stop, onended: null }) } as unknown as AudioContext;
+    const p = { getCurrentTime: () => time, getPlayerState: () => 1, getPlaybackRate: () => 1, getAvailablePlaybackRates: () => [0.5, 0.75, 1],
+      setPlaybackRate: vi.fn(), mute: vi.fn(), unMute: vi.fn(), seekTo: vi.fn(), playVideo: vi.fn(), pauseVideo: vi.fn() };
+    const ctl = new AbortController();
+    const task = runDubPlayback({ player: p, context: ctx, segments: [{ start: 0, end: 20, hindi: 'test' }], from: 0,
+      signal: ctl.signal, getAudio: async () => ({ duration: 30 }) as AudioBuffer, update: vi.fn(), paused: () => false, holding: vi.fn() }).catch(e => e);
+    try {
+      await vi.advanceTimersByTimeAsync(120);
+      expect(start.mock.calls[0]?.[1]).toBe(7.5);
+      p.setPlaybackRate.mockClear();
+      for (let i = 0; i < 12; i++) { time += 0.3; audioTime += 0.06; await vi.advanceTimersByTimeAsync(60); }
+      expect(p.setPlaybackRate).toHaveBeenCalledWith(0.5);
+      expect(start).toHaveBeenCalledTimes(1);
+      expect(stop).not.toHaveBeenCalled();
+      ctl.abort(); await vi.advanceTimersByTimeAsync(120); await task;
+      expect(p.setPlaybackRate).toHaveBeenLastCalledWith(1);
+    } finally { wallClock.mockRestore(); vi.useRealTimers(); }
   });
   it('preserves distinct Ishita and Ratan delivery identities on backup', () => {
     expect(youtubeVoiceProfile('ishita_hi_edtech')?.voiceName).toBe('Kore');

@@ -12,7 +12,7 @@ export function parseClock(value: string): number | null {
   return h * 3600 + min * 60 + s + frac;
 }
 
-const isNoise = (text: string) => /^[[(（][^\])）]*[\])）]$/.test(text.trim()) || /^♪+$/.test(text.trim());
+const isNoise = (text: string) => /^[[(（]\s*(?:music|silence|applause|laughter|inaudible|संगीत|तालियाँ)\s*[\])）]$/i.test(text.trim()) || /^♪+$/.test(text.trim());
 const clean = (text: string) => text.replace(/<[^>]+>/g, '').replace(/\{\\[^}]*\}/g, '').replace(/\s+/g, ' ').trim();
 
 /** Closes each cue at the next cue's start when the source gives no end time. */
@@ -61,7 +61,7 @@ export function parseTimestampedText(text: string): Cue[] {
       continue;
     }
     // YouTube transcript copies may include "2 minutes, 5 seconds" accessibility lines.
-    if (/^\d+\s+(?:minutes?|seconds?|hours?)/i.test(line)) continue;
+    if (/^(?:\d+\s+(?:minutes?|seconds?|hours?)(?:,?\s*|$))+$/i.test(line)) continue;
     const body = clean(line);
     if (!body || isNoise(body)) continue;
     if (pending !== null) { cues.push({ start: pending, end: 0, text: body }); pending = null; }
@@ -77,7 +77,7 @@ export function parsePastedTranscript(text: string): Cue[] {
   return cues.length >= 2 ? cues : [];
 }
 
-export type ListenResult = { language: string; cues: Cue[] };
+export type ListenResult = { language: string; cues: Cue[]; truncated?: boolean };
 
 /** Parses the AI listener's "LANG=xx" header plus timestamped lines. */
 export function parseListenOutput(text: string, offset = 0): ListenResult {

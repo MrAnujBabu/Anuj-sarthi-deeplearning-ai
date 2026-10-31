@@ -249,3 +249,17 @@
 .voice-dock-btn, .touch-btn { touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: transform 120ms ease, box-shadow 160ms ease; }
 .voice-dock-btn:not(:disabled):active, .touch-btn:not(:disabled):active { transform: scale(0.94); }
 .voice-dock-btn:not(:disabled) { box-shadow: 0 6px 18px -10px color-mix(in oklab, var(--foreground) 45%, transparent); }
+
+/* Website soft-touch: opacity avoids creating containing blocks for fixed children.
+   Native haptics intentionally remain absent in the browser-only application. */
+.soft-touch-press { touch-action: manipulation; transition-property: color, background-color, border-color, opacity; transition-duration: 150ms; transition-timing-function: ease-out; }
+.soft-touch-press:not(:disabled):not([aria-disabled="true"]):active { opacity: .9; }
+@keyframes soft-touch-in { from { opacity: 0; } to { opacity: 1; } }
+.soft-touch-content[data-state="active"] { animation: soft-touch-in 150ms ease-out; }
+[data-soft-touch="off"] .soft-touch-press:active { opacity: 1; }
+[data-soft-touch="off"] .touch-btn:active { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .soft-touch-press, .voice-dock-btn, .touch-btn { transition: none; }
+  .soft-touch-content { animation: none !important; }
+  .voice-dock-btn:not(:disabled):active, .touch-btn:not(:disabled):active { transform: none; }
+}

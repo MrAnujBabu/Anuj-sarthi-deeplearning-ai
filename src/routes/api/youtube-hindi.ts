@@ -3,6 +3,8 @@ import {
   parseYouTubeId, timedTextCues, MAX_TRANSCRIPT_CHARS, MAX_TIMED_CHARS, MAX_TIMED_SEGMENTS, MAX_MEDIA_SECONDS, type TimedSegment,
 } from '@/lib/youtube-hindi';
 import { assembleHindiDub } from '@/lib/youtube-conversion';
+import { canTryYouTubeListening, isYouTubeRestricted } from '@/lib/youtube-access';
+import { interpretationIdentity, matchingResume, INTERPRET_PIPELINE } from '@/lib/interpret-identity';
 import { capSegments, chunkProse, groupCues, parsePastedTranscript, parseSubtitleFile, pickCaptionTrack, type CaptionTrack } from '@/lib/transcript-cues';
 import { DEFAULT_INTERPRETER, interpreterInfo, isInterpreterId, LISTENER, type InterpreterId } from '@/lib/interpreter-models';
 import { encodeEvent, type InterpretBrief, type InterpretEvent, type InterpretResult, type SourceInfo, type SourceOrigin } from '@/lib/interpret-protocol';
@@ -35,16 +37,6 @@ function validSource(value: unknown): Partial<SourceInfo> {
 }
 
 /** Saved progress from an interrupted run: Hindi lines aligned to the segments, plus the earlier brief. Ignored unless it matches. */
-function validResume(value: unknown, count: number): { lines: string[]; brief: unknown; briefModel: string } | null {
-  if (!value || typeof value !== 'object' || !count) return null;
-  const v = value as Record<string, unknown>;
-  const lines = v['lines'];
-  if (!Array.isArray(lines) || lines.length !== count) return null;
-  const clean = lines.map(l => typeof l === 'string' ? l.slice(0, 8000) : '');
-  if (!clean.some(l => l.trim())) return null;
-  return { lines: clean, brief: v['brief'], briefModel: text(v['briefModel'], 60) };
-}
-
 type PlayerInfo = { title: string; lengthSeconds: number; tracks: CaptionTrack[]; status: string; reason: string };
 
 async function fetchYouTube(id: string, signal: AbortSignal): Promise<PlayerInfo> {
@@ -108,23 +100,27 @@ async function run(body: Body, engine: InterpreterId, signal: AbortSignal, send:
     if (id) {
       videoId = id;
       const yt = await fetchYouTube(id, signal);
+      if (isYouTubeRestricted(yt)) throw new InterpretError('यह YouTube video private, हटाई गई या प्रतिबंधित है।', 422);
       title = yt.title || title;
       const picked = body.deepListen === true ? null : pickCaptionTrack(yt.tracks);
       if (picked) {
         try {
-          const xml = await (await fetch(picked.track.baseUrl, { signal })).text();
+          const captions = await fetch(picked.track.baseUrl, { signal });
+          if (!captions.ok) throw new Error(`YouTube captions unavailable (${captions.status}).`);
+          const xml = await captions.text();
           timed = groupCues(timedTextCues(xml), 30);
           origin = picked.automatic ? 'auto-captions' : 'captions';
           language = picked.track.languageCode.toLowerCase();
         } catch (error) { if (signal.aborted) throw error; timed = []; }
       }
       if (!timed.length) {
-        if (yt.status !== 'OK' && yt.status !== 'LIVE_STREAM_OFFLINE' && !yt.title) throw new InterpretError(yt.reason || 'यह YouTube video उपलब्ध नहीं है (private, हटाई गई या उम्र-प्रतिबंधित)।', 422);
+        if (!canTryYouTubeListening(yt)) throw new InterpretError('यह YouTube video उपलब्ध नहीं है (private, हटाई गई या उम्र-प्रतिबंधित)। अपनी उपलब्ध video/audio file दें या transcript जोड़ें।', 422);
         send({ type: 'stage', stage: 'listen', message: `${LISTENER.name} पूरी video सुन रहा है…` });
         const maxSeconds = Math.min(yt.lengthSeconds || MAX_MEDIA_SECONDS, MAX_MEDIA_SECONDS);
         if (yt.lengthSeconds) send({ type: 'listen', reached: 0, total: Math.min(yt.lengthSeconds, MAX_MEDIA_SECONDS) });
         const heard = await listenYouTube(id, maxSeconds, signal, reached => send({ type: 'listen', reached, ...(yt.lengthSeconds ? { total: Math.min(yt.lengthSeconds, MAX_MEDIA_SECONDS) } : {}) }));
         timed = groupCues(heard.cues, 30); origin = 'listened'; language = heard.language || language;
+        truncated ||= heard.truncated === true;
         if (yt.lengthSeconds > MAX_MEDIA_SECONDS) truncated = true;
       }
       source = { kind, origin, ...(language ? { language } : {}), ...(kind === 'web' ? { pageUrl: url } : {}) };
@@ -135,17 +131,20 @@ async function run(body: Body, engine: InterpreterId, signal: AbortSignal, send:
   }
 
   if (timed.length) {
+    const overSegments = timed.length > MAX_TIMED_SEGMENTS;
     const capped = capSegments(timed.slice(0, MAX_TIMED_SEGMENTS), MAX_TIMED_CHARS);
-    timed = capped.segments; truncated ||= capped.truncated || timed.length > MAX_TIMED_SEGMENTS;
+    timed = capped.segments; truncated ||= capped.truncated || overSegments;
   }
   else { truncated ||= prose.length > MAX_TRANSCRIPT_CHARS; prose = prose.slice(0, MAX_TRANSCRIPT_CHARS); }
   const sourceText = timed.length ? timed.map(s => s.text).join(' ') : prose;
   if (!sourceText.trim()) throw new InterpretError('Transcript खाली है — दूसरी video आज़माएँ या transcript paste करें।', 422);
   if (language) source.language = language;
   const chunks = timed.length ? [] : chunkProse(prose, 2500);
-  send({ type: 'source', title, language, origin, segments: timed.length || chunks.length, duration: timed.at(-1)?.end ?? 0, truncated, videoId, ...(timed.length ? { timeline: timed } : {}) });
+  const review = body.quality !== false;
+  const sourceKey = await interpretationIdentity(timed, language, JSON.stringify([url, source, prose]), engine, review, body.deepListen === true);
+  send({ type: 'source', title, language, origin, segments: timed.length || chunks.length, duration: timed.at(-1)?.end ?? 0, truncated, videoId, sourceKey, ...(timed.length ? { timeline: timed } : {}) });
 
-  const resume = validResume(body.resume, timed.length);
+  const resume = matchingResume(body.resume, timed.length, sourceKey);
   const savedBrief = resume ? normalizeBrief(resume.brief) : null;
   let brief: InterpretBrief | null, briefModel: string | undefined;
   if (savedBrief) {
@@ -157,7 +156,6 @@ async function run(body: Body, engine: InterpreterId, signal: AbortSignal, send:
   }
   send({ type: 'brief', brief, ...(briefModel ? { model: briefModel } : {}) });
 
-  const review = body.quality !== false;
   send({ type: 'stage', stage: 'interpret', message: `${interpreterInfo(engine).name} सरल Hindi बना रहा है${review ? ', दूसरा premium model हर हिस्सा जाँच रहा है' : ''}…` });
   const context = { title, language, brief };
   const panel = { ...(origin === 'listened' ? { listener: LISTENER.name } : {}), ...(briefModel ? { terminologist: briefModel } : {}) };
@@ -179,7 +177,9 @@ async function run(body: Body, engine: InterpreterId, signal: AbortSignal, send:
     const { lines, interpreters, quality } = await interpretProse({ chunks, context, engine, signal, review, onChunk: () => { done++; send({ type: 'progress', done, total: chunks.length }); } });
     result = { title, hindi: lines.join('\n\n'), truncated, videoId, sourceChars: sourceText.length, source, brief, panel: { ...panel, interpreters, ...qualityPanel(quality) }, engine };
   }
-  if (result.panel?.reviewed) send({ type: 'quality', reviewed: result.panel.reviewed, corrected: result.panel.corrected ?? 0 });
+  result = { ...result, pipeline: INTERPRET_PIPELINE, sourceKey, deepListen: body.deepListen === true,
+    panel: { interpreters: [], ...result.panel, reviewRequested: review, reviewTotal: timed.length || chunks.length, reviewed: result.panel?.reviewed ?? 0 } };
+  send({ type: 'quality', reviewed: result.panel?.reviewed ?? 0, corrected: result.panel?.corrected ?? 0 });
   send({ type: 'done', result });
 }
 

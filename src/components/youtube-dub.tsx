@@ -3,9 +3,9 @@ import { Loader2, Play, Square, Pause, AudioLines, Languages } from 'lucide-reac
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { fetchHindiSpeech, speechState } from '@/lib/youtube-speech';
+import { speechState, type YouTubeVoiceEngine } from '@/lib/youtube-speech';
 import { SPEECH_SAMPLE_RATE } from '@/lib/stream-speech';
-import { readDubAudio } from '@/lib/youtube-audio';
+import { fetchDubAudio } from '@/lib/youtube-audio';
 import { runDubPlayback, type DubPlayer } from '@/lib/youtube-dub-sync';
 import { htmlMediaDubPlayer } from '@/lib/html-media-player';
 import type { DubSegment } from '@/lib/youtube-hindi';
@@ -37,9 +37,9 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 250));
  * Segments may still be filling in (live interpretation); playback waits at a segment whose
  * Hindi is not ready yet, so long podcasts can start before the whole interpretation finishes.
  */
-export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, original, voice, onRunningChange }: {
+export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, original, voice, voiceEngine, onRunningChange }: {
   videoId?: string | null; mediaSrc?: string | null; mediaFallbackSrc?: string | null;
-  segments: DubSegment[]; original?: string[]; voice: SarvamVoice; onRunningChange?: (value: boolean) => void;
+  segments: DubSegment[]; original?: string[]; voice: SarvamVoice; voiceEngine?: YouTubeVoiceEngine; onRunningChange?: (value: boolean) => void;
 }) {
   const host = useRef<HTMLDivElement>(null), video = useRef<HTMLVideoElement>(null), player = useRef<DubPlayer | null>(null);
   const timestamps = useRef<HTMLOListElement>(null);
@@ -69,7 +69,7 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
     }
   }, [current]);
   // A new timeline or voice restarts; Hindi lines filling in during live interpretation do not.
-  useEffect(() => { stopRef.current(); buffers.current.clear(); }, [voice, timeline]);
+  useEffect(() => { stopRef.current(); buffers.current.clear(); }, [voice, voiceEngine, timeline]);
   useEffect(() => { setSrc(mediaSrc ?? null); }, [mediaSrc]);
 
   useEffect(() => {
@@ -105,6 +105,7 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
     const p = player.current; if (!p || !segments[from]) return;
     stopRef.current();
     const id = ++generation.current, ctl = new AbortController();
+    const originalRate = p.getPlaybackRate();
     const ctx = new AudioContext({ sampleRate: SPEECH_SAMPLE_RATE });
     intentPaused.current = false; setPaused(false); setRunning(true); setError('');
     let disposed = false;
@@ -112,7 +113,7 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
       if (disposed) return; disposed = true;
       ctl.abort(); void ctx.close().catch(() => {});
       if (generation.current !== id) return;
-      generation.current++; p.pauseVideo(); p.unMute(); setRunning(false); setCurrent(-1); setPaused(false);
+      generation.current++; p.setPlaybackRate(originalRate); p.pauseVideo(); p.unMute(); holding.current = false; setRunning(false); setCurrent(-1); setPaused(false);
       stopRef.current = () => {};
     };
     stopRef.current = () => { finish(); setStatus(''); };
@@ -125,16 +126,21 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
       const cached = buffers.current.get(i); if (cached) return Promise.resolve(cached);
       const existing = pending.get(i); if (existing) return existing;
       if (!segments[i]) return Promise.reject(new Error('Missing segment.'));
-      const promise = waitForText(i).then(text => fetchHindiSpeech(text, voice, ctl.signal)).then(response => readDubAudio(response, ctx, ctl.signal)).then(buffer => {
+      const promise = waitForText(i).then(text => fetchDubAudio(text, voice, ctx, ctl.signal, voiceEngine)).then(buffer => {
         if (generation.current === id) {
           buffers.current.set(i, buffer);
           // Bounded device memory: keep recent/look-ahead audio for replay, never an entire long lecture.
           while (buffers.current.size > 8) { const oldest = buffers.current.keys().next().value; if (oldest === undefined) break; buffers.current.delete(oldest); }
-          setProvider(speechState.useBackup ? 'Lovable AI · Gemini 2.5 Pro TTS' : 'Sarvam · Bulbul v4-flash');
+          setProvider(speechState.forceBackup || speechState.useBackup ? 'Lovable AI · Gemini 2.5 Pro TTS' : 'Sarvam · Bulbul v4-flash');
         }
         return buffer;
       });
-      promise.catch(() => {}); pending.set(i, promise); return promise;
+      pending.set(i, promise);
+      void promise.then(
+        () => { if (pending.get(i) === promise) pending.delete(i); },
+        () => { if (pending.get(i) === promise) pending.delete(i); },
+      );
+      return promise;
     };
     try {
       await runDubPlayback({ player: p, context: ctx, segments, from, signal: ctl.signal, getAudio,
@@ -154,7 +160,7 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
   }
   const hasOriginal = !!original?.length && original.length === segments.length;
   return (
-    <div className="overflow-hidden rounded-2xl border bg-card shadow-[0_24px_60px_-40px_color-mix(in_oklab,var(--foreground)_45%,transparent)]">
+    <div data-soft-touch="off" className="overflow-hidden rounded-2xl border bg-card shadow-[0_24px_60px_-40px_color-mix(in_oklab,var(--foreground)_45%,transparent)]">
       {videoId
         ? <div className="aspect-video w-full bg-muted [&_iframe]:size-full" ref={host} />
         : src ? <video ref={video} src={src} controls playsInline preload="metadata" className="aspect-video w-full bg-foreground/90" />

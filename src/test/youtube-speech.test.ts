@@ -3,7 +3,7 @@ import { fetchHindiSpeech, speechState, shouldUseBackup } from '@/lib/youtube-sp
 
 const ok = () => new Response('data: {}\n\n', { status: 200 });
 describe('YouTube Hindi speech backup', () => {
-  beforeEach(() => { speechState.useBackup = false; });
+  beforeEach(() => { speechState.useBackup = false; speechState.forceBackup = false; });
   it('switches to the backup voice when Sarvam credits run out (402)', async () => {
     const f = vi.fn().mockResolvedValueOnce(Response.json({ error: 'credits' }, { status: 402 })).mockResolvedValue(ok());
     vi.stubGlobal('fetch', f);

@@ -159,11 +159,11 @@ export async function makeBrief(title: string, transcript: string, signal: Abort
 
 const RULES = `Interpretation rules:
 1. Meaning first: convey what the speaker means, not word-by-word. Keep every fact, number, name, example, step and conclusion. Never add facts that were not said.
-2. Simple Hindi: everyday Hindustani that a 12-year-old understands, short sentences. Prefer familiar words (यूज़र, प्रोडक्ट, सिस्टम, डेटा) over formal Sanskritised ones (उपयोगकर्ता, उत्पाद).
+2. Simplest spoken Hindi: use everyday words and short, naturally connected sentences that a beginner understands on first hearing. Prefer familiar words (यूज़र, प्रोडक्ट, सिस्टम, डेटा) over formal Sanskritised ones (उपयोगकर्ता, उत्पाद). Avoid textbook phrasing and literal English sentence structure. Simplify the wording, never the underlying facts or reasoning.
 3. Terms: keep established technical/subject terms, names and acronyms in English (Latin script) the way Indian teachers say them. Follow the glossary exactly when one is given.
 4. Repair the source: transcripts may be automatic captions with mis-heard words. Use context, the title and the caption fixes to recover the intended meaning. Drop filler, false starts, repetition and [music]/[applause] tags.
-5. Culture: turn idioms, jokes and culture-specific references into natural Indian equivalents without changing the point.
-6. Voice: a friendly expert teacher speaking directly to the student in the "आप" form. The text is read aloud by text-to-speech: sentences end with "।", no markdown, bullets, emojis or brackets.
+5. Culture: express idioms and jokes naturally in Hindi without replacing the speaker's actual examples, places or cultural references with invented ones.
+6. Voice: sound as if this speaker originally recorded the video in Hindi. Preserve their point of view (I/we/you), questions, uncertainty, emotion and conversational tone. Do not turn narration into an extra lesson, address the listener when the source does not, or insert "देखिए", "तो दोस्तों" or explanations not in the source. Use "आप" only where the speaker addresses the listener. The text is read aloud by text-to-speech: use natural punctuation and short pauses, no markdown, bullets, emojis or brackets.
 7. Output only the numbered blocks, in order — no introductions, notes or explanations of your work.`;
 
 const TIMED_SYSTEM = `You are a senior professional interpreter and a gifted Indian teacher. You interpret recorded videos from ANY language into simple, natural spoken Hindi (Devanagari) for Indian students — faithful like a top conference interpreter, easy like the best teacher.
@@ -171,7 +171,7 @@ You receive numbered transcript segments, each with its video time window and a 
 ### <number>
 <Hindi interpretation of that segment>
 ${RULES}
-8. Timing: each block is spoken over its own video window. Stay within its word budget by condensing wording, never by dropping facts. Write complete sentences inside each block; when a sentence crosses into the next segment, finish the thought in the block where most of it was said.`;
+8. Timing: each block is spoken over its own video window. Stay within its word budget by condensing wording, never by dropping facts. Use neighbour context for a smooth transition, but interpret only this block's content: never move a fact to an earlier/later block or repeat it across boundaries. Keep natural short clauses when the source sentence continues into the next block; do not add an introduction or conclusion at a timestamp boundary.`;
 
 const PROSE_SYSTEM = `You are a senior professional interpreter and a gifted Indian teacher. You interpret lecture transcripts from ANY language into simple, natural spoken Hindi (Devanagari) for Indian students.
 You receive consecutive numbered parts of one transcript. For EVERY part output exactly:
@@ -234,9 +234,10 @@ export async function interpretBatch(o: { engine: InterpreterId; system: string;
 const REVIEW_SYSTEM = `You are the chief reviewer of a professional interpreting team. A colleague interpreted video transcript segments (any source language) into simple spoken Hindi for Indian students. Compare every Hindi interpretation with its source and fix only real problems:
 - a missing, added or changed fact, number, name, example, step or conclusion; any wrong meaning
 - glossary not followed, or a mis-heard caption word not repaired
-- formal or Sanskritised Hindi a 12-year-old would not understand; technical terms should stay in English (Latin script)
+- unnecessarily formal, literal or awkward Hindi; prefer the simplest natural spoken phrasing a beginner understands, with established technical terms in English (Latin script)
+- changed speaker viewpoint, uncertainty, questions or tone; added teacher commentary, invented cultural examples or facts moved/repeated between timestamp blocks
 - longer than the word budget (condense wording, never drop facts)
-- markdown, brackets, emojis, notes, or sentences that do not end with "।"
+- markdown, brackets, emojis or notes; fix punctuation minimally, preserving natural questions and already-good wording
 For EVERY segment output exactly:
 ### <number>
 OK
@@ -259,10 +260,10 @@ export function applyReview(lines: string[], raw: string) {
   const out = lines.map((line, i) => {
     const v = verdicts[i] ?? '';
     if (!v) return line;
-    reviewed++;
-    if (/^ok[.!।]?$/i.test(v) || v === line) return line;
+    if (/^ok[.!।]?$/i.test(v) || v === line) { reviewed++; return line; }
     // A real correction is Hindi prose, never a stray note from the reviewer.
     if (!/[\u0900-\u097F]/.test(v) || v.length < Math.min(12, line.length / 3)) return line;
+    reviewed++;
     corrected++;
     return v;
   });
@@ -315,14 +316,19 @@ export async function interpretTimed(o: {
   for (let b = 0; b < o.segments.length; b += TIMED_BATCH) {
     const prior = o.saved && o.saved.length === o.segments.length ? o.saved.slice(b, b + TIMED_BATCH) : [];
     const count = Math.min(TIMED_BATCH, o.segments.length - b);
-    if (prior.length === count && prior.every(line => line.trim())) {
+    if (o.review === false && prior.length === count && prior.every(line => line.trim())) {
       prior.forEach((line, i) => { lines[b + i] = line; o.onSegment(b + i, line); });
     } else batches.push(b);
   }
   await pool(batches, PARALLEL_BATCHES, async start => {
     const segs = o.segments.slice(start, start + TIMED_BATCH);
     const user = timedBatchPrompt(segs, { ...o.context, before: o.segments[start - 1]?.text ?? '', after: o.segments[start + segs.length]?.text ?? '' });
-    const first = await interpretBatch({ engine: o.engine, system: TIMED_SYSTEM, user, count: segs.length, signal: o.signal, ...(o.call ? { call: o.call } : {}) });
+    const prior = o.saved?.length === o.segments.length ? o.saved.slice(start, start + segs.length) : [];
+    // Device data is not proof of independent review. Recheck matching saved translations,
+    // without retranslating them, whenever review is requested.
+    const first = prior.length === segs.length && prior.every(line => line.trim())
+      ? { lines: prior, engine: o.engine }
+      : await interpretBatch({ engine: o.engine, system: TIMED_SYSTEM, user, count: segs.length, signal: o.signal, ...(o.call ? { call: o.call } : {}) });
     used.add(interpreterInfo(first.engine).name);
     let out = first.lines;
     if (o.review !== false) {
@@ -380,7 +386,7 @@ export async function listenYouTube(videoId: string, maxSeconds: number, signal:
       { role: 'user', content: [{ type: 'video_url', video_url: { url: `https://www.youtube.com/watch?v=${videoId}` } }, { type: 'text', text: 'Transcribe this video.' }] },
     ],
   }, { signal });
-  let text = '', reported = 0;
+  let text = '', reported = 0, truncated = false;
   for await (const event of stream) {
     const delta = (event as { choices?: { delta?: { content?: unknown } }[] }).choices?.[0]?.delta?.content;
     if (typeof delta !== 'string' || !delta) continue;
@@ -391,13 +397,13 @@ export async function listenYouTube(videoId: string, maxSeconds: number, signal:
       const parts = lastStamp.split(':').map(Number);
       const seconds = parts.length === 3 ? (parts[0] ?? 0) * 3600 + (parts[1] ?? 0) * 60 + (parts[2] ?? 0) : (parts[0] ?? 0) * 60 + (parts[1] ?? 0);
       if (seconds - reported >= 15) { reported = seconds; onReached(seconds); }
-      if (seconds > maxSeconds + 30) break;
+      if (seconds > maxSeconds + 30) { truncated = true; break; }
     }
-    if (text.length > MAX_LISTEN_CHARS) break;
+    if (text.length > MAX_LISTEN_CHARS) { truncated = true; text = text.slice(0, text.lastIndexOf('\n')); break; }
   }
   const result = parseListenOutput(text);
   if (!result.cues.length) throw new InterpretError('इस video में साफ़ बोली हुई बात नहीं मिली।', 422);
-  return result;
+  return { ...result, truncated };
 }
 
 /** Gemini 4 Argon listens to one 16 kHz WAV chunk; cue times are shifted by the chunk offset. */

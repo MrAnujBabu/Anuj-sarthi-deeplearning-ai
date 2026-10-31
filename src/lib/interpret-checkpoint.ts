@@ -13,6 +13,7 @@ export type Checkpoint = {
   /** Start time (seconds) per segment, for the hour-by-hour view. */
   starts: number[];
   brief: InterpretBrief | null; briefModel?: string;
+  sourceKey?: string;
   /** Speech the listener already heard (uploads / website media), so listening is not paid for twice. */
   heard?: HeardMedia;
 };
@@ -29,11 +30,11 @@ function hash(text: string) {
 }
 
 /** Same source + same interpreter + same review setting → same checkpoint. */
-export function checkpointKey(input: CheckpointInput, engine: InterpreterId, quality: boolean) {
+export function checkpointKey(input: CheckpointInput, engine: InterpreterId, quality: boolean, deepListen = false) {
   const src = input.kind === 'link' ? `link|${input.url.trim()}`
     : input.kind === 'file' ? `file|${input.file.name}|${input.file.size}|${input.file.lastModified}`
     : `text|${hash(input.transcript.trim())}|${(input.url ?? '').trim()}`;
-  return `${src}|${engine}|${quality ? 'review' : 'fast'}`;
+  return `${src}|${engine}|${quality ? 'review' : 'fast'}|${deepListen ? 'listen' : 'captions'}`;
 }
 
 export function doneCount(lines: string[]) { return lines.filter(l => l.trim()).length; }
@@ -41,6 +42,11 @@ export function doneCount(lines: string[]) { return lines.filter(l => l.trim()).
 /** True when a checkpoint has work saved but is not finished — worth offering "continue". */
 export function isResumable(cp: Checkpoint | null | undefined): cp is Checkpoint {
   return !!cp && cp.lines.length > 0 && doneCount(cp.lines) > 0 && doneCount(cp.lines) < cp.lines.length;
+}
+
+/** A complete checkpoint still matters when final library persistence failed. */
+export function isRecoverable(cp: Checkpoint | null | undefined): cp is Checkpoint {
+  return !!cp && cp.lines.length > 0 && doneCount(cp.lines) > 0;
 }
 
 export type HourSection = { hour: number; done: number; total: number };
