@@ -10,6 +10,13 @@ import { runDubPlayback, type DubPlayer } from '@/lib/youtube-dub-sync';
 import { htmlMediaDubPlayer } from '@/lib/html-media-player';
 import type { DubSegment } from '@/lib/youtube-hindi';
 import type { SarvamVoice } from '@/lib/sarvam-speech';
+import { spokenWords, spokenWordCount } from '@/lib/word-highlight';
+
+/** Karaoke-style caption: spoken words turn primary, the word being spoken is marked. */
+function SpokenCaption({ text, spoken, className }: { text: string; spoken: number; className?: string }) {
+  return <span className={className}>{spokenWords(text).map((word, i) =>
+    <span key={i} className={i < spoken ? 'text-primary' : i === spoken ? 'rounded bg-primary/15 px-0.5 font-medium text-primary' : undefined}>{word} </span>)}</span>;
+}
 
 type YTPlayer = DubPlayer & { destroy(): void };
 declare global { interface Window { YT?: { Player: new (el: HTMLElement, o: object) => YTPlayer }; onYouTubeIframeAPIReady?: () => void } }
@@ -50,6 +57,7 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
   const [ready, setReady] = useState(false), [running, setRunning] = useState(false);
   const [paused, setPaused] = useState(false), [status, setStatus] = useState('');
   const [current, setCurrent] = useState(-1), [error, setError] = useState('');
+  const [spokenCount, setSpokenCount] = useState(0);
   const [showOriginal, setShowOriginal] = useState(false);
   const [src, setSrc] = useState(mediaSrc ?? null);
   const [provider, setProvider] = useState('Sarvam · Bulbul v4-flash');
@@ -113,7 +121,7 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
       if (disposed) return; disposed = true;
       ctl.abort(); void ctx.close().catch(() => {});
       if (generation.current !== id) return;
-      generation.current++; p.setPlaybackRate(originalRate); p.pauseVideo(); p.unMute(); holding.current = false; setRunning(false); setCurrent(-1); setPaused(false);
+      generation.current++; p.setPlaybackRate(originalRate); p.pauseVideo(); p.unMute(); holding.current = false; setRunning(false); setCurrent(-1); setSpokenCount(0); setPaused(false);
       stopRef.current = () => {};
     };
     stopRef.current = () => { finish(); setStatus(''); };
@@ -147,7 +155,12 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
         readyAudio: i => buffers.current.get(i),
         active: () => generation.current === id,
         paused: () => intentPaused.current, holding: value => { if (generation.current === id) holding.current = value; },
-        update: (i, text) => { if (generation.current === id) { setCurrent(i); setStatus(i >= 0 && !latest.current[i]?.hindi.trim() ? 'यह हिस्सा अभी समझाया जा रहा है…' : text); } },
+        update: (i, text) => { if (generation.current === id) { setCurrent(i); setSpokenCount(0); setStatus(i >= 0 && !latest.current[i]?.hindi.trim() ? 'यह हिस्सा अभी समझाया जा रहा है…' : text); } },
+        progress: (i, fraction) => {
+          if (generation.current !== id) return;
+          const words = latest.current[i]?.hindi ?? '';
+          setSpokenCount(spokenWordCount(words, fraction));
+        },
       });
     } catch (e) {
       if (!ctl.signal.aborted && generation.current === id) setError(e instanceof Error ? e.message : 'Voice-over failed.');
@@ -187,14 +200,16 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
             <span className="mt-0.5 shrink-0 rounded-md bg-primary/10 px-1.5 py-0.5 font-mono text-[11px] text-primary tabular-nums">{formatTime(seg.start)}</span>
             <span className="min-w-0 space-y-1">
               {seg.hindi.trim()
-                ? <span className="block text-sm leading-relaxed text-foreground">{seg.hindi}</span>
+                ? i === current
+                  ? <SpokenCaption text={seg.hindi} spoken={spokenCount} className="block text-sm leading-relaxed text-foreground" />
+                  : <span className="block text-sm leading-relaxed text-foreground">{seg.hindi}</span>
                 : <span className="flex items-center gap-2 text-sm text-muted-foreground"><Languages className="size-3.5 animate-pulse text-primary" />समझा रहा हूँ…</span>}
               {showOriginal && hasOriginal && <span className="block text-xs leading-relaxed text-muted-foreground">{original?.[i]}</span>}
             </span>
           </Button>
         </li>)}
       </ol>
-      {current >= 0 && segments[current]?.hindi && <p className="border-t border-l-4 border-l-primary bg-muted/60 px-4 py-3 text-sm leading-relaxed" data-testid="dub-caption">{segments[current]?.hindi}</p>}
+      {current >= 0 && segments[current]?.hindi && <p className="border-t border-l-4 border-l-primary bg-muted/60 px-4 py-3 text-sm leading-relaxed" data-testid="dub-caption"><SpokenCaption text={segments[current]?.hindi ?? ''} spoken={spokenCount} /></p>}
     </div>
   );
 }
