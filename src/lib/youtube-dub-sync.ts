@@ -34,6 +34,8 @@ type Options = {
   signal: AbortSignal; getAudio(index: number): Promise<AudioBuffer>;
   readyAudio?(index: number): AudioBuffer | undefined;
   update(index: number, status: string): void;
+  /** Fraction (0–1) of the current segment's audio already spoken; freezes while paused. */
+  progress?(index: number, fraction: number): void;
   paused(): boolean; holding(value: boolean): void;
   active?(): boolean;
 };
@@ -107,12 +109,15 @@ export async function runDubPlayback(o: Options) {
       let overrun = false;
       o.holding(false);
       if (!o.paused()) p.playVideo();
+      o.progress?.(index, 0);
       let lastVideo = p.getCurrentTime(), lastWall = performance.now();
       let lastCorrection = lastWall;
       let jumped = false;
       while (!ended) {
         signal.throwIfAborted();
         const now = performance.now(), time = p.getCurrentTime(), state = p.getPlayerState();
+        // The audio clock freezes while suspended, so the highlight holds during pauses and holds.
+        o.progress?.(index, Math.min(1, Math.max(0, (ctx.currentTime - audioStart) / Math.max(0.01, buffer.duration - offset))));
         if (dubSeeked(lastVideo, time, (now - lastWall) / 1000, rate, state === 1)) {
           const target = segmentAtTime(segments, time);
           preserveNativePause = state === 2 && !overrun;
@@ -136,6 +141,7 @@ export async function runDubPlayback(o: Options) {
       }
       const nativePaused = !overrun && p.getPlayerState() === 2;
       stopSource(); o.holding(false);
+      if (!jumped) o.progress?.(index, 1);
       if (jumped) { if (!o.paused() && !preserveNativePause) p.playVideo(); continue; }
       // Don't undo a native pause merely because the audio reached its end.
       while (nativePaused && p.getPlayerState() === 2) { signal.throwIfAborted(); await tick(); }
