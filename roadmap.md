@@ -1,4 +1,16 @@
 # Roadmap
+
+## This workspace (Oct 31 2026)
+- [x] Confirm Supabase "My Personal Agent" (dsazygocmjgjfqkqkwcp) is the connected backend — it is; no re-link, reset or migration. Data verified: 94 memory items, 9 courses, 155 tests, 8 class notes, 10 voice calls.
+- [x] Bring in code from GitHub `MrAnujBabu/Anuj-sarthi-deeplearning-ai` main @ a2872894fa3f74319bb852464a18f08d4365d872 (2026-10-31T07:49:54Z). 574 tests pass, build OK, app renders.
+- [x] Add `SARVAM_API_KEY` as a project secret (direct-key path in `src/routes/api/sarvam-speech.ts`). Sarvam accepts the key but the Sarvam account itself has no credits, so speech returns 402 until credits are added there.
+- [x] Tutor verified answering end-to-end with a real question (200, streamed Claude answer); the stale workspace AI-credits pause cleared itself on that success. 18.40 Lovable credits remain.
+- [ ] Buy more Lovable credits — only a workspace owner or admin can; the purchase was refused for this account.
+- [ ] Add credits to the Sarvam AI account so Hindi voice works again.
+- [x] Restore the other upstream services this workspace is missing: Firecrawl, Google Sheets, Perplexity, Parallel connectors (all gateway-backed, linked 12:30 UTC) and Vedantu login secrets (saved via secure form).
+- [ ] Re-link the Sarvam AI connector (`UDC_SARVAM_AI_API_KEY`) if gateway speech is preferred over the direct key.
+- [x] Oct 31 12:29 UTC: Verify soft-touch logic — uploaded `soft-touch.zip` is byte-identical to `.agents/skills/soft-touch/SKILL.md`; app uses the deliberate web adaptation (opacity press, no browser haptics, reduced-motion honored, players exempt); 4/4 soft-touch tests pass.
+
 - [x] Oct 28 15:21 UTC: Verify My Personal Agent database link; handover v4 + backup in Files (no overwrite, no reset/disconnect).
 - [x] Oct 28 15:18 UTC: Newest workspace — connect Firecrawl, GitHub, Google Sheets, Parallel, Perplexity.
 - [ ] Oct 28 12:45 UTC (code done, stale pause cleared; full 329-part run pending AI credits — earlier 20 parts lost in move): AI credits back (verified 200); stale 'credits खत्म' DB pause cleared and now self-heals; long video saves parts + resumes from where it stopped; hour-by-hour view for 10–24 h videos; run 2 h 49 min video (Lt54CX9DmS4) to the end.
@@ -107,3 +119,5 @@
 - [x] YouTube→Hindi: transcript voice = timestamped Hindi voice-over
 - [x] YouTube→Hindi: clickable timestamp list synced with voice-over
 - [x] YouTube→Hindi: backup voice when Sarvam credits/fails
+- [ ] Oct 31 12:45 UTC: Word-level highlighting — highlight each Hindi word in the transcript as the voice speaks it (karaoke-style sync with narration playback).
+- [ ] Oct 31 12:48 UTC: Send this session's changes (transcript repeat fix, faster interpretation, word highlighting) to GitHub as a new branch + PR on MrAnujBabu/Anuj-sarthi-deeplearning-ai — never overwrite main.

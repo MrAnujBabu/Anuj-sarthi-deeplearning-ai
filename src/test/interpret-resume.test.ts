@@ -1,33 +1,34 @@
 import { describe, expect, it } from 'vitest';
-import { interpretTimed } from '@/lib/interpreter.server';
+import { interpretTimed, TIMED_BATCH } from '@/lib/interpreter.server';
 import { checkpointKey, hourSections, isResumable, isRecoverable, isTransientFailure } from '@/lib/interpret-checkpoint';
 import { creditPauseDecision, CREDIT_PROBE_MS } from '@/lib/ai/pause-policy';
 import { InterpretStreamError } from '@/lib/interpret-protocol';
 
-const segs = Array.from({ length: 8 }, (_, i) => ({ start: i * 30, end: i * 30 + 30, text: `part ${i}` }));
+const segs = Array.from({ length: TIMED_BATCH * 2 }, (_, i) => ({ start: i * 30, end: i * 30 + 30, text: `part ${i}` }));
 const answer = (count: number) => Array.from({ length: count }, (_, i) => `### ${i + 1}\nहिस्सा ${i + 1}।`).join('\n');
 
 describe('resuming a long interpretation', () => {
   it('does not pay again for batches already finished (only the unfinished batch is sent)', async () => {
     let calls = 0;
-    const saved = ['a।', 'b।', 'c।', 'd।', '', '', '', ''];
+    const done = Array.from({ length: TIMED_BATCH }, (_, i) => `s${i}।`);
+    const saved = [...done, ...Array(TIMED_BATCH).fill('')];
     const seen: number[] = [];
     const out = await interpretTimed({
       segments: segs, context: { title: 'T', brief: null }, engine: 'claude', signal: new AbortController().signal, review: false, saved,
       onSegment: i => seen.push(i),
-      call: async () => { calls++; return answer(4); },
+      call: async () => { calls++; return answer(TIMED_BATCH); },
     });
     expect(calls).toBe(1);
-    expect(out.lines.slice(0, 4)).toEqual(['a।', 'b।', 'c।', 'd।']);
-    expect(out.lines.slice(4).every(Boolean)).toBe(true);
-    expect(seen.sort((a, b) => a - b)).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
+    expect(out.lines.slice(0, TIMED_BATCH)).toEqual(done);
+    expect(out.lines.slice(TIMED_BATCH).every(Boolean)).toBe(true);
+    expect(seen.sort((a, b) => a - b)).toEqual(segs.map((_, i) => i));
   });
 
   it('ignores saved lines that do not match the segment count', async () => {
     let calls = 0;
     await interpretTimed({
       segments: segs, context: { title: 'T', brief: null }, engine: 'claude', signal: new AbortController().signal, review: false, saved: ['x।'],
-      onSegment: () => {}, call: async () => { calls++; return answer(4); },
+      onSegment: () => {}, call: async () => { calls++; return answer(TIMED_BATCH); },
     });
     expect(calls).toBe(2);
   });

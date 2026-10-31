@@ -299,8 +299,9 @@ async function pool<T>(items: T[], limit: number, run: (item: T, index: number) 
   }));
 }
 
-export const TIMED_BATCH = 4;
-export const PARALLEL_BATCHES = 3;
+// Speed: larger batches = fewer calls; more lanes = parts translate and get checked side by side.
+export const TIMED_BATCH = 6;
+export const PARALLEL_BATCHES = 6;
 
 /** Timed segments → simple Hindi lines (same order), reporting each finished segment. */
 export async function interpretTimed(o: {

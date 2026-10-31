@@ -80,6 +80,32 @@ describe('YouTube synchronized narration', () => {
       ctl.abort(); await vi.advanceTimersByTimeAsync(120); await task;
     } finally { vi.useRealTimers(); }
   });
+  it('reports spoken-audio progress from 0 to 1 for word highlighting', async () => {
+    vi.useFakeTimers();
+    let time = 0.1, state = 1, audioTime = 0;
+    const sources: { onended: (() => void) | null }[] = [];
+    const ctx = { get currentTime() { return audioTime; }, state: 'running', destination: {}, resume: vi.fn(), suspend: vi.fn(),
+      createBufferSource: () => { const source = { onended: null as (() => void) | null, connect: vi.fn(), disconnect: vi.fn(), start: vi.fn(), stop: vi.fn() }; sources.push(source); return source; } } as unknown as AudioContext;
+    const p = { getCurrentTime: () => time, getPlayerState: () => state, getPlaybackRate: () => 1, getAvailablePlaybackRates: () => [1],
+      setPlaybackRate: vi.fn(), mute: vi.fn(), unMute: vi.fn(), seekTo: vi.fn(), playVideo: vi.fn(() => { state = 1; }), pauseVideo: vi.fn(() => { state = 2; }) };
+    const ctl = new AbortController(), buffer = { duration: 0.8 } as AudioBuffer;
+    const seen: [number, number][] = [];
+    const task = runDubPlayback({ player: p, context: ctx, segments: [{ start: 0, end: 1, hindi: 'one two' }], from: 0,
+      signal: ctl.signal, getAudio: async () => buffer, readyAudio: () => buffer, update: vi.fn(), paused: () => false, holding: vi.fn(),
+      progress: (i, f) => { seen.push([i, f]); } }).catch(error => error);
+    try {
+      await vi.advanceTimersByTimeAsync(120);
+      expect(seen[0]).toEqual([0, 0]);
+      for (let i = 0; i < 5; i++) { audioTime += 0.1; time += 0.1; await vi.advanceTimersByTimeAsync(60); }
+      const mid = seen.filter(([, f]) => f > 0 && f < 1);
+      expect(mid.length).toBeGreaterThan(0);
+      for (let i = 1; i < mid.length; i++) expect(mid[i]![1]).toBeGreaterThanOrEqual(mid[i - 1]![1]);
+      audioTime = 1; sources[0]?.onended?.(); time = 1.01;
+      await vi.advanceTimersByTimeAsync(120);
+      expect(seen.at(-1)).toEqual([0, 1]);
+      ctl.abort(); await vi.advanceTimersByTimeAsync(120); await task;
+    } finally { vi.useRealTimers(); }
+  });
   it('suspends Hindi on native pause and buffering, resumes on playback, and stops on cancellation', async () => {
     vi.useFakeTimers();
     let state = 1, clockState = 'running';
