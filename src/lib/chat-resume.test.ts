@@ -1,15 +1,1 @@
-import { describe, expect, it } from "vitest";
-import { isConnectionError, isResumeText, RESUME_TEXT } from "./chat-resume";
-
-describe("chat pause/resume", () => {
-  it("auto-resumes only on dropped connections", () => {
-    expect(isConnectionError("Failed to fetch")).toBe(true);
-    expect(isConnectionError("network error")).toBe(true);
-    expect(isConnectionError("Not enough credits")).toBe(false);
-    expect(isConnectionError("Connection refused: 403 forbidden")).toBe(false);
-  });
-  it("recognises the resume message", () => {
-    expect(isResumeText(RESUME_TEXT)).toBe(true);
-    expect(isResumeText("continue please")).toBe(false);
-  });
-});
+aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBpc0Nvbm5lY3Rpb25FcnJvciwgaXNSZXN1bWVUZXh0LCBSRVNVTUVfVEVYVCB9IGZyb20gIi4vY2hhdC1yZXN1bWUiOwoKZGVzY3JpYmUoImNoYXQgcGF1c2UvcmVzdW1lIiwgKCkgPT4gewogIGl0KCJhdXRvLXJlc3VtZXMgb25seSBvbiBkcm9wcGVkIGNvbm5lY3Rpb25zIiwgKCkgPT4gewogICAgZXhwZWN0KGlzQ29ubmVjdGlvbkVycm9yKCJGYWlsZWQgdG8gZmV0Y2giKSkudG9CZSh0cnVlKTsKICAgIGV4cGVjdChpc0Nvbm5lY3Rpb25FcnJvcigibmV0d29yayBlcnJvciIpKS50b0JlKHRydWUpOwogICAgZXhwZWN0KGlzQ29ubmVjdGlvbkVycm9yKCJOb3QgZW5vdWdoIGNyZWRpdHMiKSkudG9CZShmYWxzZSk7CiAgICBleHBlY3QoaXNDb25uZWN0aW9uRXJyb3IoIkNvbm5lY3Rpb24gcmVmdXNlZDogNDAzIGZvcmJpZGRlbiIpKS50b0JlKGZhbHNlKTsKICB9KTsKICBpdCgicmVjb2duaXNlcyB0aGUgcmVzdW1lIG1lc3NhZ2UiLCAoKSA9PiB7CiAgICBleHBlY3QoaXNSZXN1bWVUZXh0KFJFU1VNRV9URVhUKSkudG9CZSh0cnVlKTsKICAgIGV4cGVjdChpc1Jlc3VtZVRleHQoImNvbnRpbnVlIHBsZWFzZSIpKS50b0JlKGZhbHNlKTsKICB9KTsKfSk7Cg==

@@ -1,12 +1,1 @@
-import type { DubSegment, TimedSegment } from './youtube-hindi';
-
-/** Reuse the complete ordered translation, instead of generating the same lecture twice. */
-export function assembleHindiDub(timed: TimedSegment[], lines: string[]) {
-  if (lines.length !== timed.length || lines.some(line => !line.trim())) {
-    throw new Error('Hindi transcript is incomplete. Please try again.');
-  }
-  const dub: DubSegment[] = timed.map((segment, index) => ({
-    start: segment.start, end: segment.end, hindi: lines[index]?.trim() ?? '',
-  }));
-  return { dub, hindi: dub.map(segment => segment.hindi).join('\n\n') };
-}
+aW1wb3J0IHR5cGUgeyBEdWJTZWdtZW50LCBUaW1lZFNlZ21lbnQgfSBmcm9tICcuL3lvdXR1YmUtaGluZGknOwoKLyoqIFJldXNlIHRoZSBjb21wbGV0ZSBvcmRlcmVkIHRyYW5zbGF0aW9uLCBpbnN0ZWFkIG9mIGdlbmVyYXRpbmcgdGhlIHNhbWUgbGVjdHVyZSB0d2ljZS4gKi8KZXhwb3J0IGZ1bmN0aW9uIGFzc2VtYmxlSGluZGlEdWIodGltZWQ6IFRpbWVkU2VnbWVudFtdLCBsaW5lczogc3RyaW5nW10pIHsKICBpZiAobGluZXMubGVuZ3RoICE9PSB0aW1lZC5sZW5ndGggfHwgbGluZXMuc29tZShsaW5lID0+ICFsaW5lLnRyaW0oKSkpIHsKICAgIHRocm93IG5ldyBFcnJvcignSGluZGkgdHJhbnNjcmlwdCBpcyBpbmNvbXBsZXRlLiBQbGVhc2UgdHJ5IGFnYWluLicpOwogIH0KICBjb25zdCBkdWI6IER1YlNlZ21lbnRbXSA9IHRpbWVkLm1hcCgoc2VnbWVudCwgaW5kZXgpID0+ICh7CiAgICBzdGFydDogc2VnbWVudC5zdGFydCwgZW5kOiBzZWdtZW50LmVuZCwgaGluZGk6IGxpbmVzW2luZGV4XT8udHJpbSgpID8/ICcnLAogIH0pKTsKICByZXR1cm4geyBkdWIsIGhpbmRpOiBkdWIubWFwKHNlZ21lbnQgPT4gc2VnbWVudC5oaW5kaSkuam9pbignXG5cbicpIH07Cn0=

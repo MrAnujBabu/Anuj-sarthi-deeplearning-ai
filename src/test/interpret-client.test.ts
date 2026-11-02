@@ -1,17 +1,1 @@
-import { describe, expect, it } from 'vitest';
-import { reduceEvent, liveDub, IDLE_STATE } from '@/lib/interpret-client';
-
-describe('streamed interpretation state', () => {
-  const timeline = [{ start: 0, end: 30, text: 'Hello' }, { start: 30, end: 60, text: 'World' }];
-  const withSource = reduceEvent(IDLE_STATE, { type: 'source', title: 'T', language: 'en', origin: 'captions', segments: 2, duration: 60, truncated: false, videoId: 'abc', timeline });
-
-  it('fills each Hindi part as it arrives, so voice can start before the end', () => {
-    const s = reduceEvent(withSource, { type: 'segment', index: 1, start: 30, end: 60, hindi: 'दुनिया', original: 'World' });
-    expect(liveDub(s)).toEqual([{ start: 0, end: 30, hindi: '' }, { start: 30, end: 60, hindi: 'दुनिया' }]);
-  });
-
-  it('ignores out-of-range parts', () => {
-    const s = reduceEvent(withSource, { type: 'segment', index: 5, start: 0, end: 1, hindi: 'x', original: 'x' });
-    expect(s.hindi).toEqual(['', '']);
-  });
-});
+aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyByZWR1Y2VFdmVudCwgbGl2ZUR1YiwgSURMRV9TVEFURSB9IGZyb20gJ0AvbGliL2ludGVycHJldC1jbGllbnQnOwoKZGVzY3JpYmUoJ3N0cmVhbWVkIGludGVycHJldGF0aW9uIHN0YXRlJywgKCkgPT4gewogIGNvbnN0IHRpbWVsaW5lID0gW3sgc3RhcnQ6IDAsIGVuZDogMzAsIHRleHQ6ICdIZWxsbycgfSwgeyBzdGFydDogMzAsIGVuZDogNjAsIHRleHQ6ICdXb3JsZCcgfV07CiAgY29uc3Qgd2l0aFNvdXJjZSA9IHJlZHVjZUV2ZW50KElETEVfU1RBVEUsIHsgdHlwZTogJ3NvdXJjZScsIHRpdGxlOiAnVCcsIGxhbmd1YWdlOiAnZW4nLCBvcmlnaW46ICdjYXB0aW9ucycsIHNlZ21lbnRzOiAyLCBkdXJhdGlvbjogNjAsIHRydW5jYXRlZDogZmFsc2UsIHZpZGVvSWQ6ICdhYmMnLCB0aW1lbGluZSB9KTsKCiAgaXQoJ2ZpbGxzIGVhY2ggSGluZGkgcGFydCBhcyBpdCBhcnJpdmVzLCBzbyB2b2ljZSBjYW4gc3RhcnQgYmVmb3JlIHRoZSBlbmQnLCAoKSA9PiB7CiAgICBjb25zdCBzID0gcmVkdWNlRXZlbnQod2l0aFNvdXJjZSwgeyB0eXBlOiAnc2VnbWVudCcsIGluZGV4OiAxLCBzdGFydDogMzAsIGVuZDogNjAsIGhpbmRpOiAn4KSm4KWB4KSo4KS/4KSv4KS+Jywgb3JpZ2luYWw6ICdXb3JsZCcgfSk7CiAgICBleHBlY3QobGl2ZUR1YihzKSkudG9FcXVhbChbeyBzdGFydDogMCwgZW5kOiAzMCwgaGluZGk6ICcnIH0sIHsgc3RhcnQ6IDMwLCBlbmQ6IDYwLCBoaW5kaTogJ+CkpuClgeCkqOCkv+Ckr+CkvicgfV0pOwogIH0pOwoKICBpdCgnaWdub3JlcyBvdXQtb2YtcmFuZ2UgcGFydHMnLCAoKSA9PiB7CiAgICBjb25zdCBzID0gcmVkdWNlRXZlbnQod2l0aFNvdXJjZSwgeyB0eXBlOiAnc2VnbWVudCcsIGluZGV4OiA1LCBzdGFydDogMCwgZW5kOiAxLCBoaW5kaTogJ3gnLCBvcmlnaW5hbDogJ3gnIH0pOwogICAgZXhwZWN0KHMuaGluZGkpLnRvRXF1YWwoWycnLCAnJ10pOwogIH0pOwp9KTsK

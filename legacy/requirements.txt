@@ -1,3 +1,1 @@
-streamlit
-google-generativeai>=0.8.3
-firebase-admin
+c3RyZWFtbGl0Cmdvb2dsZS1nZW5lcmF0aXZlYWk+PTAuOC4zCmZpcmViYXNlLWFkbWluCg==

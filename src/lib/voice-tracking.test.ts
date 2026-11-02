@@ -1,17 +1,1 @@
-import { it, expect, vi } from 'vitest';
-const { upsert } = vi.hoisted(() => ({ upsert: vi.fn(async (_row: unknown) => ({ error: null })) }));
-vi.mock('@/integrations/supabase/client.server', () => ({ supabaseAdmin: { from: () => ({ upsert }) } }));
-import { createVoiceTracking } from './voice-tracking.server';
-it('never saves voice call history or schedules database work, including final usage', async () => {
-  upsert.mockClear();
-  const tasks: Promise<unknown>[] = [];
-  const failure = vi.fn();
-  const track = createVoiceTracking('call-1', p => tasks.push(p), failure);
-  track({ voice: 'marin', quiz: true, documents: [{ name: 'test.pdf' }] });
-  track({ answer_count: 2 });
-  track({ confirmed_seconds: 90, finalized: true, status: 'closed' });
-  await Promise.all(tasks);
-  expect(upsert).not.toHaveBeenCalled();
-  expect(tasks).toHaveLength(0);
-  expect(failure).not.toHaveBeenCalled();
-});
+aW1wb3J0IHsgaXQsIGV4cGVjdCwgdmkgfSBmcm9tICd2aXRlc3QnOwpjb25zdCB7IHVwc2VydCB9ID0gdmkuaG9pc3RlZCgoKSA9PiAoeyB1cHNlcnQ6IHZpLmZuKGFzeW5jIChfcm93OiB1bmtub3duKSA9PiAoeyBlcnJvcjogbnVsbCB9KSkgfSkpOwp2aS5tb2NrKCdAL2ludGVncmF0aW9ucy9zdXBhYmFzZS9jbGllbnQuc2VydmVyJywgKCkgPT4gKHsgc3VwYWJhc2VBZG1pbjogeyBmcm9tOiAoKSA9PiAoeyB1cHNlcnQgfSkgfSB9KSk7CmltcG9ydCB7IGNyZWF0ZVZvaWNlVHJhY2tpbmcgfSBmcm9tICcuL3ZvaWNlLXRyYWNraW5nLnNlcnZlcic7Cml0KCduZXZlciBzYXZlcyB2b2ljZSBjYWxsIGhpc3Rvcnkgb3Igc2NoZWR1bGVzIGRhdGFiYXNlIHdvcmssIGluY2x1ZGluZyBmaW5hbCB1c2FnZScsIGFzeW5jICgpID0+IHsKICB1cHNlcnQubW9ja0NsZWFyKCk7CiAgY29uc3QgdGFza3M6IFByb21pc2U8dW5rbm93bj5bXSA9IFtdOwogIGNvbnN0IGZhaWx1cmUgPSB2aS5mbigpOwogIGNvbnN0IHRyYWNrID0gY3JlYXRlVm9pY2VUcmFja2luZygnY2FsbC0xJywgcCA9PiB0YXNrcy5wdXNoKHApLCBmYWlsdXJlKTsKICB0cmFjayh7IHZvaWNlOiAnbWFyaW4nLCBxdWl6OiB0cnVlLCBkb2N1bWVudHM6IFt7IG5hbWU6ICd0ZXN0LnBkZicgfV0gfSk7CiAgdHJhY2soeyBhbnN3ZXJfY291bnQ6IDIgfSk7CiAgdHJhY2soeyBjb25maXJtZWRfc2Vjb25kczogOTAsIGZpbmFsaXplZDogdHJ1ZSwgc3RhdHVzOiAnY2xvc2VkJyB9KTsKICBhd2FpdCBQcm9taXNlLmFsbCh0YXNrcyk7CiAgZXhwZWN0KHVwc2VydCkubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKICBleHBlY3QodGFza3MpLnRvSGF2ZUxlbmd0aCgwKTsKICBleHBlY3QoZmFpbHVyZSkubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKfSk7

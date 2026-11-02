@@ -1,13 +1,1 @@
-// @vitest-environment node
-import { describe, expect, it } from 'vitest';
-import { extractLocally } from '@/lib/file-extract';
-
-describe('Markdown memory import', () => {
-  it('preserves markdown, unicode and line breaks without AI extraction', async () => {
-    const text = '# Force\n\n**बल**\n\n| Symbol | Unit |\n| F | N |';
-    expect(await extractLocally(new File([text], 'notes.markdown', { type: 'text/markdown' }))).toBe(text);
-  });
-  it('caps saved markdown text at 400000 characters', async () => {
-    expect((await extractLocally(new File(['x'.repeat(400001)], 'notes.md')))?.length).toBe(400000);
-  });
-});
+Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGRlc2NyaWJlLCBleHBlY3QsIGl0IH0gZnJvbSAndml0ZXN0JzsKaW1wb3J0IHsgZXh0cmFjdExvY2FsbHkgfSBmcm9tICdAL2xpYi9maWxlLWV4dHJhY3QnOwoKZGVzY3JpYmUoJ01hcmtkb3duIG1lbW9yeSBpbXBvcnQnLCAoKSA9PiB7CiAgaXQoJ3ByZXNlcnZlcyBtYXJrZG93biwgdW5pY29kZSBhbmQgbGluZSBicmVha3Mgd2l0aG91dCBBSSBleHRyYWN0aW9uJywgYXN5bmMgKCkgPT4gewogICAgY29uc3QgdGV4dCA9ICcjIEZvcmNlXG5cbioq4KSs4KSyKipcblxufCBTeW1ib2wgfCBVbml0IHxcbnwgRiB8IE4gfCc7CiAgICBleHBlY3QoYXdhaXQgZXh0cmFjdExvY2FsbHkobmV3IEZpbGUoW3RleHRdLCAnbm90ZXMubWFya2Rvd24nLCB7IHR5cGU6ICd0ZXh0L21hcmtkb3duJyB9KSkpLnRvQmUodGV4dCk7CiAgfSk7CiAgaXQoJ2NhcHMgc2F2ZWQgbWFya2Rvd24gdGV4dCBhdCA0MDAwMDAgY2hhcmFjdGVycycsIGFzeW5jICgpID0+IHsKICAgIGV4cGVjdCgoYXdhaXQgZXh0cmFjdExvY2FsbHkobmV3IEZpbGUoWyd4Jy5yZXBlYXQoNDAwMDAxKV0sICdub3Rlcy5tZCcpKSk/Lmxlbmd0aCkudG9CZSg0MDAwMDApOwogIH0pOwp9KTs=

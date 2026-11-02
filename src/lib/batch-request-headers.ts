@@ -1,8 +1,1 @@
-import { supabase } from '@/integrations/supabase/client';
-import { readDeviceFlag } from '@/lib/quiz-label-preference';
-
-export async function batchRequestHeaders(): Promise<Record<string, string>> {
-  if (!readDeviceFlag('snapsolve.batch-context', false)) return {};
-  const { data } = await supabase.auth.getSession();
-  return data.session ? { Authorization: `Bearer ${data.session.access_token}` } : {};
-}
+aW1wb3J0IHsgc3VwYWJhc2UgfSBmcm9tICdAL2ludGVncmF0aW9ucy9zdXBhYmFzZS9jbGllbnQnOwppbXBvcnQgeyByZWFkRGV2aWNlRmxhZyB9IGZyb20gJ0AvbGliL3F1aXotbGFiZWwtcHJlZmVyZW5jZSc7CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gYmF0Y2hSZXF1ZXN0SGVhZGVycygpOiBQcm9taXNlPFJlY29yZDxzdHJpbmcsIHN0cmluZz4+IHsKICBpZiAoIXJlYWREZXZpY2VGbGFnKCdzbmFwc29sdmUuYmF0Y2gtY29udGV4dCcsIGZhbHNlKSkgcmV0dXJuIHt9OwogIGNvbnN0IHsgZGF0YSB9ID0gYXdhaXQgc3VwYWJhc2UuYXV0aC5nZXRTZXNzaW9uKCk7CiAgcmV0dXJuIGRhdGEuc2Vzc2lvbiA/IHsgQXV0aG9yaXphdGlvbjogYEJlYXJlciAke2RhdGEuc2Vzc2lvbi5hY2Nlc3NfdG9rZW59YCB9IDoge307Cn0=

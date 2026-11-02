@@ -1,16 +1,1 @@
-// @vitest-environment node
-import { expect, it } from 'vitest';
-import { zipSync, strToU8 } from 'fflate';
-import { pdfsToText } from '@/lib/pdf-text';
-
-it('reads PPTX in slide order into document text without retaining the binary', async () => {
-  const zip = zipSync({ 'ppt/slides/slide2.xml': strToU8('<a:p><a:t>Answer: 6 N</a:t></a:p>'), 'ppt/slides/slide1.xml': strToU8('<a:p><a:t>Force = mass x acceleration</a:t></a:p>') });
-  const url = `data:application/vnd.openxmlformats-officedocument.presentationml.presentation;base64,${Buffer.from(zip).toString('base64')}`;
-  const result = await pdfsToText([{ type: 'file', filename: 'lesson.pptx', mediaType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', url }]);
-  expect(result.files).toEqual([]);
-  expect(result.text).toContain('[Slide 1]\nForce = mass x acceleration');
-  expect(result.text).toContain('[Slide 2]\nAnswer: 6 N');
-});
-it('rejects legacy PPT instead of pretending it was read', async () => {
-  await expect(pdfsToText([{ type: 'file', filename: 'old.ppt', mediaType: 'application/vnd.ms-powerpoint', url: 'data:;base64,' }])).rejects.toThrow('Export it as PDF');
-});
+Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyB6aXBTeW5jLCBzdHJUb1U4IH0gZnJvbSAnZmZsYXRlJzsKaW1wb3J0IHsgcGRmc1RvVGV4dCB9IGZyb20gJ0AvbGliL3BkZi10ZXh0JzsKCml0KCdyZWFkcyBQUFRYIGluIHNsaWRlIG9yZGVyIGludG8gZG9jdW1lbnQgdGV4dCB3aXRob3V0IHJldGFpbmluZyB0aGUgYmluYXJ5JywgYXN5bmMgKCkgPT4gewogIGNvbnN0IHppcCA9IHppcFN5bmMoeyAncHB0L3NsaWRlcy9zbGlkZTIueG1sJzogc3RyVG9VOCgnPGE6cD48YTp0PkFuc3dlcjogNiBOPC9hOnQ+PC9hOnA+JyksICdwcHQvc2xpZGVzL3NsaWRlMS54bWwnOiBzdHJUb1U4KCc8YTpwPjxhOnQ+Rm9yY2UgPSBtYXNzIHggYWNjZWxlcmF0aW9uPC9hOnQ+PC9hOnA+JykgfSk7CiAgY29uc3QgdXJsID0gYGRhdGE6YXBwbGljYXRpb24vdm5kLm9wZW54bWxmb3JtYXRzLW9mZmljZWRvY3VtZW50LnByZXNlbnRhdGlvbm1sLnByZXNlbnRhdGlvbjtiYXNlNjQsJHtCdWZmZXIuZnJvbSh6aXApLnRvU3RyaW5nKCdiYXNlNjQnKX1gOwogIGNvbnN0IHJlc3VsdCA9IGF3YWl0IHBkZnNUb1RleHQoW3sgdHlwZTogJ2ZpbGUnLCBmaWxlbmFtZTogJ2xlc3Nvbi5wcHR4JywgbWVkaWFUeXBlOiAnYXBwbGljYXRpb24vdm5kLm9wZW54bWxmb3JtYXRzLW9mZmljZWRvY3VtZW50LnByZXNlbnRhdGlvbm1sLnByZXNlbnRhdGlvbicsIHVybCB9XSk7CiAgZXhwZWN0KHJlc3VsdC5maWxlcykudG9FcXVhbChbXSk7CiAgZXhwZWN0KHJlc3VsdC50ZXh0KS50b0NvbnRhaW4oJ1tTbGlkZSAxXVxuRm9yY2UgPSBtYXNzIHggYWNjZWxlcmF0aW9uJyk7CiAgZXhwZWN0KHJlc3VsdC50ZXh0KS50b0NvbnRhaW4oJ1tTbGlkZSAyXVxuQW5zd2VyOiA2IE4nKTsKfSk7Cml0KCdyZWplY3RzIGxlZ2FjeSBQUFQgaW5zdGVhZCBvZiBwcmV0ZW5kaW5nIGl0IHdhcyByZWFkJywgYXN5bmMgKCkgPT4gewogIGF3YWl0IGV4cGVjdChwZGZzVG9UZXh0KFt7IHR5cGU6ICdmaWxlJywgZmlsZW5hbWU6ICdvbGQucHB0JywgbWVkaWFUeXBlOiAnYXBwbGljYXRpb24vdm5kLm1zLXBvd2VycG9pbnQnLCB1cmw6ICdkYXRhOjtiYXNlNjQsJyB9XSkpLnJlamVjdHMudG9UaHJvdygnRXhwb3J0IGl0IGFzIFBERicpOwp9KTs=

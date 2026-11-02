@@ -1,12 +1,1 @@
-import { describe, expect, it } from 'vitest';
-import { isDuplicateMemory } from '@/lib/memory-duplicates';
-describe('admin memory duplicates', () => {
-  it('recognizes same extracted notes with a different title', () => {
-    expect(isDuplicateMemory({ title: 'renamed.pdf', content: 'Force = ma' }, { title: 'original.pdf', content: 'Force = ma' })).toBe(true);
-    expect(isDuplicateMemory({ title: 'renamed.pdf', content: 'Force = m/a' }, { title: 'original.pdf', content: 'Force = ma' })).toBe(false);
-  });
-  it('recognizes repeated link fragments without conflating distinct sheets', () => {
-    expect(isDuplicateMemory({ title: 'a', content: '', source_url: 'https://example.com/quiz#top' }, { title: 'b', content: '', source_url: 'https://example.com/quiz' })).toBe(true);
-    expect(isDuplicateMemory({ title: 'a', content: 'one', source_url: 'https://example.com/quiz?sheet=1' }, { title: 'b', content: 'two', source_url: 'https://example.com/quiz?sheet=2' })).toBe(false);
-  });
-});
+aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBpc0R1cGxpY2F0ZU1lbW9yeSB9IGZyb20gJ0AvbGliL21lbW9yeS1kdXBsaWNhdGVzJzsKZGVzY3JpYmUoJ2FkbWluIG1lbW9yeSBkdXBsaWNhdGVzJywgKCkgPT4gewogIGl0KCdyZWNvZ25pemVzIHNhbWUgZXh0cmFjdGVkIG5vdGVzIHdpdGggYSBkaWZmZXJlbnQgdGl0bGUnLCAoKSA9PiB7CiAgICBleHBlY3QoaXNEdXBsaWNhdGVNZW1vcnkoeyB0aXRsZTogJ3JlbmFtZWQucGRmJywgY29udGVudDogJ0ZvcmNlID0gbWEnIH0sIHsgdGl0bGU6ICdvcmlnaW5hbC5wZGYnLCBjb250ZW50OiAnRm9yY2UgPSBtYScgfSkpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoaXNEdXBsaWNhdGVNZW1vcnkoeyB0aXRsZTogJ3JlbmFtZWQucGRmJywgY29udGVudDogJ0ZvcmNlID0gbS9hJyB9LCB7IHRpdGxlOiAnb3JpZ2luYWwucGRmJywgY29udGVudDogJ0ZvcmNlID0gbWEnIH0pKS50b0JlKGZhbHNlKTsKICB9KTsKICBpdCgncmVjb2duaXplcyByZXBlYXRlZCBsaW5rIGZyYWdtZW50cyB3aXRob3V0IGNvbmZsYXRpbmcgZGlzdGluY3Qgc2hlZXRzJywgKCkgPT4gewogICAgZXhwZWN0KGlzRHVwbGljYXRlTWVtb3J5KHsgdGl0bGU6ICdhJywgY29udGVudDogJycsIHNvdXJjZV91cmw6ICdodHRwczovL2V4YW1wbGUuY29tL3F1aXojdG9wJyB9LCB7IHRpdGxlOiAnYicsIGNvbnRlbnQ6ICcnLCBzb3VyY2VfdXJsOiAnaHR0cHM6Ly9leGFtcGxlLmNvbS9xdWl6JyB9KSkudG9CZSh0cnVlKTsKICAgIGV4cGVjdChpc0R1cGxpY2F0ZU1lbW9yeSh7IHRpdGxlOiAnYScsIGNvbnRlbnQ6ICdvbmUnLCBzb3VyY2VfdXJsOiAnaHR0cHM6Ly9leGFtcGxlLmNvbS9xdWl6P3NoZWV0PTEnIH0sIHsgdGl0bGU6ICdiJywgY29udGVudDogJ3R3bycsIHNvdXJjZV91cmw6ICdodHRwczovL2V4YW1wbGUuY29tL3F1aXo/c2hlZXQ9MicgfSkpLnRvQmUoZmFsc2UpOwogIH0pOwp9KTs=

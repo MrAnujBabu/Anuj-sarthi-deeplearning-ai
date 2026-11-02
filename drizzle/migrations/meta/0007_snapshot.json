@@ -1,18 +1,1 @@
-{
-  "id": "56ffa204-016c-4e0a-9b74-75e5b1e0162f",
-  "prevId": "17c74880-2d9d-4b75-a7d9-9f0a0a8ca6e7",
-  "version": "7",
-  "dialect": "postgresql",
-  "tables": {},
-  "enums": {},
-  "schemas": {},
-  "views": {},
-  "sequences": {},
-  "roles": {},
-  "policies": {},
-  "_meta": {
-    "columns": {},
-    "schemas": {},
-    "tables": {}
-  }
-}
+ewogICJpZCI6ICI1NmZmYTIwNC0wMTZjLTRlMGEtOWI3NC03NWU1YjFlMDE2MmYiLAogICJwcmV2SWQiOiAiMTdjNzQ4ODAtMmQ5ZC00Yjc1LWE3ZDktOWYwYTBhOGNhNmU3IiwKICAidmVyc2lvbiI6ICI3IiwKICAiZGlhbGVjdCI6ICJwb3N0Z3Jlc3FsIiwKICAidGFibGVzIjoge30sCiAgImVudW1zIjoge30sCiAgInNjaGVtYXMiOiB7fSwKICAidmlld3MiOiB7fSwKICAic2VxdWVuY2VzIjoge30sCiAgInJvbGVzIjoge30sCiAgInBvbGljaWVzIjoge30sCiAgIl9tZXRhIjogewogICAgImNvbHVtbnMiOiB7fSwKICAgICJzY2hlbWFzIjoge30sCiAgICAidGFibGVzIjoge30KICB9Cn0K

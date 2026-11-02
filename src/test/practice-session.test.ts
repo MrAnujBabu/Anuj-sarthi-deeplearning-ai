@@ -1,17 +1,1 @@
-import { describe, expect, it } from 'vitest';
-import { completePracticeCard, nextPracticeId, restorePracticeSession } from '@/lib/practice-session';
-
-describe('credit-free practice session persistence',()=>{
-  it('keeps remaining order after review changes due-date ordering',()=>{
-    const session=completePracticeCard(restorePracticeSession(['a','b','c'],{}),'a');
-    const restored=restorePracticeSession(['b','c','a'],session);
-    expect(restored.queue).toEqual(['a','b','c']);
-    expect(nextPracticeId(restored)).toBe('b');
-  });
-  it('includes new material after a completed session',()=>{
-    expect(nextPracticeId(restorePracticeSession(['a','b'],{queue:['a'],completed:['a']}))).toBe('b');
-  });
-  it('retains a restarted session after reload',()=>{
-    expect(nextPracticeId(restorePracticeSession(['a','b'],{queue:['a','b'],completed:[]}))).toBe('a');
-  });
-});
+aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBjb21wbGV0ZVByYWN0aWNlQ2FyZCwgbmV4dFByYWN0aWNlSWQsIHJlc3RvcmVQcmFjdGljZVNlc3Npb24gfSBmcm9tICdAL2xpYi9wcmFjdGljZS1zZXNzaW9uJzsKCmRlc2NyaWJlKCdjcmVkaXQtZnJlZSBwcmFjdGljZSBzZXNzaW9uIHBlcnNpc3RlbmNlJywoKT0+ewogIGl0KCdrZWVwcyByZW1haW5pbmcgb3JkZXIgYWZ0ZXIgcmV2aWV3IGNoYW5nZXMgZHVlLWRhdGUgb3JkZXJpbmcnLCgpPT57CiAgICBjb25zdCBzZXNzaW9uPWNvbXBsZXRlUHJhY3RpY2VDYXJkKHJlc3RvcmVQcmFjdGljZVNlc3Npb24oWydhJywnYicsJ2MnXSx7fSksJ2EnKTsKICAgIGNvbnN0IHJlc3RvcmVkPXJlc3RvcmVQcmFjdGljZVNlc3Npb24oWydiJywnYycsJ2EnXSxzZXNzaW9uKTsKICAgIGV4cGVjdChyZXN0b3JlZC5xdWV1ZSkudG9FcXVhbChbJ2EnLCdiJywnYyddKTsKICAgIGV4cGVjdChuZXh0UHJhY3RpY2VJZChyZXN0b3JlZCkpLnRvQmUoJ2InKTsKICB9KTsKICBpdCgnaW5jbHVkZXMgbmV3IG1hdGVyaWFsIGFmdGVyIGEgY29tcGxldGVkIHNlc3Npb24nLCgpPT57CiAgICBleHBlY3QobmV4dFByYWN0aWNlSWQocmVzdG9yZVByYWN0aWNlU2Vzc2lvbihbJ2EnLCdiJ10se3F1ZXVlOlsnYSddLGNvbXBsZXRlZDpbJ2EnXX0pKSkudG9CZSgnYicpOwogIH0pOwogIGl0KCdyZXRhaW5zIGEgcmVzdGFydGVkIHNlc3Npb24gYWZ0ZXIgcmVsb2FkJywoKT0+ewogICAgZXhwZWN0KG5leHRQcmFjdGljZUlkKHJlc3RvcmVQcmFjdGljZVNlc3Npb24oWydhJywnYiddLHtxdWV1ZTpbJ2EnLCdiJ10sY29tcGxldGVkOltdfSkpKS50b0JlKCdhJyk7CiAgfSk7Cn0pOw==

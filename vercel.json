@@ -1,6 +1,1 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "tanstack-start",
-  "installCommand": "bun install --frozen-lockfile",
-  "buildCommand": "bun run build:vercel"
-}
+ewogICIkc2NoZW1hIjogImh0dHBzOi8vb3BlbmFwaS52ZXJjZWwuc2gvdmVyY2VsLmpzb24iLAogICJmcmFtZXdvcmsiOiAidGFuc3RhY2stc3RhcnQiLAogICJpbnN0YWxsQ29tbWFuZCI6ICJidW4gaW5zdGFsbCAtLWZyb3plbi1sb2NrZmlsZSIsCiAgImJ1aWxkQ29tbWFuZCI6ICJidW4gcnVuIGJ1aWxkOnZlcmNlbCIKfQ==

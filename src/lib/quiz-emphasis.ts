@@ -1,9 +1,1 @@
-const KEY_TERMS = /(?<!\*)\b(NOT|EXCEPT|INCORRECT|incorrect|not correct|false|FALSE|correct|CORRECT|true|TRUE|least|most|maximum|minimum|always|never|only)\b(?!\*)/g;
-
-/** Bold the words that flip a NEET question's meaning (NOT, EXCEPT, incorrect…) outside code and math. */
-export function emphasizeQuizQuestion(text: string): string {
-  return text
-    .split(/(```[\s\S]*?```|\$\$[\s\S]*?\$\$|\$[^$\n]*\$|<!--[\s\S]*?-->)/g)
-    .map((part, i) => (i % 2 === 1 ? part : part.replace(KEY_TERMS, "**$1**")))
-    .join("");
-}
+Y29uc3QgS0VZX1RFUk1TID0gLyg/PCFcKilcYihOT1R8RVhDRVBUfElOQ09SUkVDVHxpbmNvcnJlY3R8bm90IGNvcnJlY3R8ZmFsc2V8RkFMU0V8Y29ycmVjdHxDT1JSRUNUfHRydWV8VFJVRXxsZWFzdHxtb3N0fG1heGltdW18bWluaW11bXxhbHdheXN8bmV2ZXJ8b25seSlcYig/IVwqKS9nOwoKLyoqIEJvbGQgdGhlIHdvcmRzIHRoYXQgZmxpcCBhIE5FRVQgcXVlc3Rpb24ncyBtZWFuaW5nIChOT1QsIEVYQ0VQVCwgaW5jb3JyZWN04oCmKSBvdXRzaWRlIGNvZGUgYW5kIG1hdGguICovCmV4cG9ydCBmdW5jdGlvbiBlbXBoYXNpemVRdWl6UXVlc3Rpb24odGV4dDogc3RyaW5nKTogc3RyaW5nIHsKICByZXR1cm4gdGV4dAogICAgLnNwbGl0KC8oYGBgW1xzXFNdKj9gYGB8XCRcJFtcc1xTXSo/XCRcJHxcJFteJFxuXSpcJHw8IS0tW1xzXFNdKj8tLT4pL2cpCiAgICAubWFwKChwYXJ0LCBpKSA9PiAoaSAlIDIgPT09IDEgPyBwYXJ0IDogcGFydC5yZXBsYWNlKEtFWV9URVJNUywgIioqJDEqKiIpKSkKICAgIC5qb2luKCIiKTsKfQo=

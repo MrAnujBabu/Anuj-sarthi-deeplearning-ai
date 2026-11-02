@@ -1,6 +1,1 @@
-/** Num Lock off reports navigation keys; resolve the physical keypad too. */
-export function quizAnswerForKey(event: Pick<KeyboardEvent, 'key' | 'code'>): string | undefined {
-  const numbers: Record<string, string> = { '1': 'A', '2': 'B', '3': 'C', '4': 'D' };
-  const keypad: Record<string, string> = { Numpad1: 'A', Numpad2: 'B', Numpad3: 'C', Numpad4: 'D' };
-  return event.code.startsWith('Numpad') ? keypad[event.code] : numbers[event.key];
-}
+LyoqIE51bSBMb2NrIG9mZiByZXBvcnRzIG5hdmlnYXRpb24ga2V5czsgcmVzb2x2ZSB0aGUgcGh5c2ljYWwga2V5cGFkIHRvby4gKi8KZXhwb3J0IGZ1bmN0aW9uIHF1aXpBbnN3ZXJGb3JLZXkoZXZlbnQ6IFBpY2s8S2V5Ym9hcmRFdmVudCwgJ2tleScgfCAnY29kZSc+KTogc3RyaW5nIHwgdW5kZWZpbmVkIHsKICBjb25zdCBudW1iZXJzOiBSZWNvcmQ8c3RyaW5nLCBzdHJpbmc+ID0geyAnMSc6ICdBJywgJzInOiAnQicsICczJzogJ0MnLCAnNCc6ICdEJyB9OwogIGNvbnN0IGtleXBhZDogUmVjb3JkPHN0cmluZywgc3RyaW5nPiA9IHsgTnVtcGFkMTogJ0EnLCBOdW1wYWQyOiAnQicsIE51bXBhZDM6ICdDJywgTnVtcGFkNDogJ0QnIH07CiAgcmV0dXJuIGV2ZW50LmNvZGUuc3RhcnRzV2l0aCgnTnVtcGFkJykgPyBrZXlwYWRbZXZlbnQuY29kZV0gOiBudW1iZXJzW2V2ZW50LmtleV07Cn0=

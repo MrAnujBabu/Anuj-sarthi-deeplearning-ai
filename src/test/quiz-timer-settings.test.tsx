@@ -1,15 +1,1 @@
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { afterEach, expect, it, vi } from 'vitest';
-vi.mock('@/lib/memory.functions', () => ({ getQuizTimer: async () => ({ seconds: 45 }) }));
-import { QuizTimerSettings } from '@/components/quiz-timer-settings';
-afterEach(() => { cleanup(); localStorage.clear(); });
-it('accepts typed custom seconds, saves on Enter and restores after reload', async () => {
-  const view = render(<QuizTimerSettings />); await act(async () => { await Promise.resolve(); });
-  const field = screen.getByRole('spinbutton', { name: 'Quiz timer seconds' });
-  fireEvent.change(field, { target: { value: '' } });
-  expect(localStorage.getItem('snapsolve.quiz-timer')).toBeNull();
-  fireEvent.change(field, { target: { value: '27' } }); fireEvent.keyDown(field, { key: 'Enter' });
-  expect(localStorage.getItem('snapsolve.quiz-timer')).toBe('27');
-  view.unmount(); render(<QuizTimerSettings />); await act(async () => { await Promise.resolve(); });
-  expect((screen.getByRole('spinbutton') as HTMLInputElement).value).toBe('27');
-});
+aW1wb3J0IHsgYWN0LCBjbGVhbnVwLCBmaXJlRXZlbnQsIHJlbmRlciwgc2NyZWVuIH0gZnJvbSAnQHRlc3RpbmctbGlicmFyeS9yZWFjdCc7CmltcG9ydCB7IGFmdGVyRWFjaCwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwp2aS5tb2NrKCdAL2xpYi9tZW1vcnkuZnVuY3Rpb25zJywgKCkgPT4gKHsgZ2V0UXVpelRpbWVyOiBhc3luYyAoKSA9PiAoeyBzZWNvbmRzOiA0NSB9KSB9KSk7CmltcG9ydCB7IFF1aXpUaW1lclNldHRpbmdzIH0gZnJvbSAnQC9jb21wb25lbnRzL3F1aXotdGltZXItc2V0dGluZ3MnOwphZnRlckVhY2goKCkgPT4geyBjbGVhbnVwKCk7IGxvY2FsU3RvcmFnZS5jbGVhcigpOyB9KTsKaXQoJ2FjY2VwdHMgdHlwZWQgY3VzdG9tIHNlY29uZHMsIHNhdmVzIG9uIEVudGVyIGFuZCByZXN0b3JlcyBhZnRlciByZWxvYWQnLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgdmlldyA9IHJlbmRlcig8UXVpelRpbWVyU2V0dGluZ3MgLz4pOyBhd2FpdCBhY3QoYXN5bmMgKCkgPT4geyBhd2FpdCBQcm9taXNlLnJlc29sdmUoKTsgfSk7CiAgY29uc3QgZmllbGQgPSBzY3JlZW4uZ2V0QnlSb2xlKCdzcGluYnV0dG9uJywgeyBuYW1lOiAnUXVpeiB0aW1lciBzZWNvbmRzJyB9KTsKICBmaXJlRXZlbnQuY2hhbmdlKGZpZWxkLCB7IHRhcmdldDogeyB2YWx1ZTogJycgfSB9KTsKICBleHBlY3QobG9jYWxTdG9yYWdlLmdldEl0ZW0oJ3NuYXBzb2x2ZS5xdWl6LXRpbWVyJykpLnRvQmVOdWxsKCk7CiAgZmlyZUV2ZW50LmNoYW5nZShmaWVsZCwgeyB0YXJnZXQ6IHsgdmFsdWU6ICcyNycgfSB9KTsgZmlyZUV2ZW50LmtleURvd24oZmllbGQsIHsga2V5OiAnRW50ZXInIH0pOwogIGV4cGVjdChsb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnc25hcHNvbHZlLnF1aXotdGltZXInKSkudG9CZSgnMjcnKTsKICB2aWV3LnVubW91bnQoKTsgcmVuZGVyKDxRdWl6VGltZXJTZXR0aW5ncyAvPik7IGF3YWl0IGFjdChhc3luYyAoKSA9PiB7IGF3YWl0IFByb21pc2UucmVzb2x2ZSgpOyB9KTsKICBleHBlY3QoKHNjcmVlbi5nZXRCeVJvbGUoJ3NwaW5idXR0b24nKSBhcyBIVE1MSW5wdXRFbGVtZW50KS52YWx1ZSkudG9CZSgnMjcnKTsKfSk7

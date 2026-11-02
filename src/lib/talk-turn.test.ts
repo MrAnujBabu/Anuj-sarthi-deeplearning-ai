@@ -1,17 +1,1 @@
-import { describe, expect, it } from 'vitest';
-import { usesTalkTurns, speakableText } from './talk-turn';
-
-describe('talk-and-listen voice', () => {
-  it('uses the live call on the Vercel site', () => {
-    expect(usesTalkTurns('https://snapsolveanuj.vercel.app')).toBe(false);
-  });
-  it('keeps the live call on other hosts', () => {
-    expect(usesTalkTurns('https://project--069fc516-1b8b-4ac5-b64e-37250cf7e8bb.lovable.app')).toBe(false);
-  });
-  it('never reads hidden tags aloud', () => {
-    expect(speakableText('Sahi! <!--card {"q":"x"}--> **Score: 1/1**')).toBe('Sahi! Score: 1/1');
-  });
-  it('never reads diagram code aloud', () => {
-    expect(speakableText('Mitochondria.\n```svg\n<svg></svg>\n```\nDone')).toBe('Mitochondria. Done');
-  });
-});
+aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyB1c2VzVGFsa1R1cm5zLCBzcGVha2FibGVUZXh0IH0gZnJvbSAnLi90YWxrLXR1cm4nOwoKZGVzY3JpYmUoJ3RhbGstYW5kLWxpc3RlbiB2b2ljZScsICgpID0+IHsKICBpdCgndXNlcyB0aGUgbGl2ZSBjYWxsIG9uIHRoZSBWZXJjZWwgc2l0ZScsICgpID0+IHsKICAgIGV4cGVjdCh1c2VzVGFsa1R1cm5zKCdodHRwczovL3NuYXBzb2x2ZWFudWoudmVyY2VsLmFwcCcpKS50b0JlKGZhbHNlKTsKICB9KTsKICBpdCgna2VlcHMgdGhlIGxpdmUgY2FsbCBvbiBvdGhlciBob3N0cycsICgpID0+IHsKICAgIGV4cGVjdCh1c2VzVGFsa1R1cm5zKCdodHRwczovL3Byb2plY3QtLTA2OWZjNTE2LTFiOGItNGFjNS1iNjRlLTM3MjUwY2Y3ZThiYi5sb3ZhYmxlLmFwcCcpKS50b0JlKGZhbHNlKTsKICB9KTsKICBpdCgnbmV2ZXIgcmVhZHMgaGlkZGVuIHRhZ3MgYWxvdWQnLCAoKSA9PiB7CiAgICBleHBlY3Qoc3BlYWthYmxlVGV4dCgnU2FoaSEgPCEtLWNhcmQgeyJxIjoieCJ9LS0+ICoqU2NvcmU6IDEvMSoqJykpLnRvQmUoJ1NhaGkhIFNjb3JlOiAxLzEnKTsKICB9KTsKICBpdCgnbmV2ZXIgcmVhZHMgZGlhZ3JhbSBjb2RlIGFsb3VkJywgKCkgPT4gewogICAgZXhwZWN0KHNwZWFrYWJsZVRleHQoJ01pdG9jaG9uZHJpYS5cbmBgYHN2Z1xuPHN2Zz48L3N2Zz5cbmBgYFxuRG9uZScpKS50b0JlKCdNaXRvY2hvbmRyaWEuIERvbmUnKTsKICB9KTsKfSk7Cg==

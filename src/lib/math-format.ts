@@ -1,17 +1,1 @@
-/** Keep prose equations inline while preserving display equations and code. */
-export function normalizeMath(text: string): string {
-  // Code fences (including unfinished streamed fences) and inline code are opaque.
-  return text.split(/(`{3,}[^\n]*\n[\s\S]*?(?:\n`{3,}[^\n]*(?=\n|$)|$)|~{3,}[^\n]*\n[\s\S]*?(?:\n~{3,}[^\n]*(?=\n|$)|$)|`+[^`\n]*`+)/g)
-    .map((part, index) => {
-      if (index % 2 === 1) return part;
-      return part
-        .replace(/\\\(([^\n]*?)\\\)/g, (_, math: string) => `$${math}$`)
-        .replace(/\$\$([^\n]*?)\$\$/g, (match, math: string, offset: number, source: string) => {
-          const lineStart = source.lastIndexOf("\n", offset - 1) + 1;
-          const nextNewline = source.indexOf("\n", offset + match.length);
-          const before = source.slice(lineStart, offset);
-          const after = source.slice(offset + match.length, nextNewline === -1 ? source.length : nextNewline);
-          return !before.trim() && !after.trim() ? match : `$${math}$`;
-        });
-    }).join("");
-}
+LyoqIEtlZXAgcHJvc2UgZXF1YXRpb25zIGlubGluZSB3aGlsZSBwcmVzZXJ2aW5nIGRpc3BsYXkgZXF1YXRpb25zIGFuZCBjb2RlLiAqLwpleHBvcnQgZnVuY3Rpb24gbm9ybWFsaXplTWF0aCh0ZXh0OiBzdHJpbmcpOiBzdHJpbmcgewogIC8vIENvZGUgZmVuY2VzIChpbmNsdWRpbmcgdW5maW5pc2hlZCBzdHJlYW1lZCBmZW5jZXMpIGFuZCBpbmxpbmUgY29kZSBhcmUgb3BhcXVlLgogIHJldHVybiB0ZXh0LnNwbGl0KC8oYHszLH1bXlxuXSpcbltcc1xTXSo/KD86XG5gezMsfVteXG5dKig/PVxufCQpfCQpfH57Myx9W15cbl0qXG5bXHNcU10qPyg/OlxufnszLH1bXlxuXSooPz1cbnwkKXwkKXxgK1teYFxuXSpgKykvZykKICAgIC5tYXAoKHBhcnQsIGluZGV4KSA9PiB7CiAgICAgIGlmIChpbmRleCAlIDIgPT09IDEpIHJldHVybiBwYXJ0OwogICAgICByZXR1cm4gcGFydAogICAgICAgIC5yZXBsYWNlKC9cXFwoKFteXG5dKj8pXFxcKS9nLCAoXywgbWF0aDogc3RyaW5nKSA9PiBgJCR7bWF0aH0kYCkKICAgICAgICAucmVwbGFjZSgvXCRcJChbXlxuXSo/KVwkXCQvZywgKG1hdGNoLCBtYXRoOiBzdHJpbmcsIG9mZnNldDogbnVtYmVyLCBzb3VyY2U6IHN0cmluZykgPT4gewogICAgICAgICAgY29uc3QgbGluZVN0YXJ0ID0gc291cmNlLmxhc3RJbmRleE9mKCJcbiIsIG9mZnNldCAtIDEpICsgMTsKICAgICAgICAgIGNvbnN0IG5leHROZXdsaW5lID0gc291cmNlLmluZGV4T2YoIlxuIiwgb2Zmc2V0ICsgbWF0Y2gubGVuZ3RoKTsKICAgICAgICAgIGNvbnN0IGJlZm9yZSA9IHNvdXJjZS5zbGljZShsaW5lU3RhcnQsIG9mZnNldCk7CiAgICAgICAgICBjb25zdCBhZnRlciA9IHNvdXJjZS5zbGljZShvZmZzZXQgKyBtYXRjaC5sZW5ndGgsIG5leHROZXdsaW5lID09PSAtMSA/IHNvdXJjZS5sZW5ndGggOiBuZXh0TmV3bGluZSk7CiAgICAgICAgICByZXR1cm4gIWJlZm9yZS50cmltKCkgJiYgIWFmdGVyLnRyaW0oKSA/IG1hdGNoIDogYCQke21hdGh9JGA7CiAgICAgICAgfSk7CiAgICB9KS5qb2luKCIiKTsKfQ==

@@ -1,18 +1,1 @@
-export type PracticeSession = { queue: string[]; completed: string[] };
-
-export function restorePracticeSession(ids: string[], value: unknown): PracticeSession {
-  const raw = value && typeof value === "object" ? value as Record<string, unknown> : {};
-  const available = new Set(ids);
-  const saved = Array.isArray(raw['queue']) ? raw['queue'].filter((id): id is string => typeof id === 'string' && available.has(id)) : [];
-  const queue = [...new Set([...saved, ...ids])];
-  const completed = Array.isArray(raw['completed']) ? raw['completed'].filter((id): id is string => typeof id === 'string' && available.has(id)) : [];
-  return { queue, completed: [...new Set(completed)] };
-}
-
-export function completePracticeCard(session: PracticeSession, id: string): PracticeSession {
-  return { ...session, completed: [...new Set([...session.completed, id])] };
-}
-
-export function nextPracticeId(session: PracticeSession) {
-  return session.queue.find(id => !session.completed.includes(id));
-}
+ZXhwb3J0IHR5cGUgUHJhY3RpY2VTZXNzaW9uID0geyBxdWV1ZTogc3RyaW5nW107IGNvbXBsZXRlZDogc3RyaW5nW10gfTsKCmV4cG9ydCBmdW5jdGlvbiByZXN0b3JlUHJhY3RpY2VTZXNzaW9uKGlkczogc3RyaW5nW10sIHZhbHVlOiB1bmtub3duKTogUHJhY3RpY2VTZXNzaW9uIHsKICBjb25zdCByYXcgPSB2YWx1ZSAmJiB0eXBlb2YgdmFsdWUgPT09ICJvYmplY3QiID8gdmFsdWUgYXMgUmVjb3JkPHN0cmluZywgdW5rbm93bj4gOiB7fTsKICBjb25zdCBhdmFpbGFibGUgPSBuZXcgU2V0KGlkcyk7CiAgY29uc3Qgc2F2ZWQgPSBBcnJheS5pc0FycmF5KHJhd1sncXVldWUnXSkgPyByYXdbJ3F1ZXVlJ10uZmlsdGVyKChpZCk6IGlkIGlzIHN0cmluZyA9PiB0eXBlb2YgaWQgPT09ICdzdHJpbmcnICYmIGF2YWlsYWJsZS5oYXMoaWQpKSA6IFtdOwogIGNvbnN0IHF1ZXVlID0gWy4uLm5ldyBTZXQoWy4uLnNhdmVkLCAuLi5pZHNdKV07CiAgY29uc3QgY29tcGxldGVkID0gQXJyYXkuaXNBcnJheShyYXdbJ2NvbXBsZXRlZCddKSA/IHJhd1snY29tcGxldGVkJ10uZmlsdGVyKChpZCk6IGlkIGlzIHN0cmluZyA9PiB0eXBlb2YgaWQgPT09ICdzdHJpbmcnICYmIGF2YWlsYWJsZS5oYXMoaWQpKSA6IFtdOwogIHJldHVybiB7IHF1ZXVlLCBjb21wbGV0ZWQ6IFsuLi5uZXcgU2V0KGNvbXBsZXRlZCldIH07Cn0KCmV4cG9ydCBmdW5jdGlvbiBjb21wbGV0ZVByYWN0aWNlQ2FyZChzZXNzaW9uOiBQcmFjdGljZVNlc3Npb24sIGlkOiBzdHJpbmcpOiBQcmFjdGljZVNlc3Npb24gewogIHJldHVybiB7IC4uLnNlc3Npb24sIGNvbXBsZXRlZDogWy4uLm5ldyBTZXQoWy4uLnNlc3Npb24uY29tcGxldGVkLCBpZF0pXSB9Owp9CgpleHBvcnQgZnVuY3Rpb24gbmV4dFByYWN0aWNlSWQoc2Vzc2lvbjogUHJhY3RpY2VTZXNzaW9uKSB7CiAgcmV0dXJuIHNlc3Npb24ucXVldWUuZmluZChpZCA9PiAhc2Vzc2lvbi5jb21wbGV0ZWQuaW5jbHVkZXMoaWQpKTsKfQ==

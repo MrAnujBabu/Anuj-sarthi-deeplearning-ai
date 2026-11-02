@@ -1,16 +1,1 @@
-import { describe, expect, it } from 'vitest';
-import { readableMemoryText, retainedFilePath } from '@/lib/admin-retention';
-
-describe('admin text-only document retention', () => {
-  it('does not retain the original by default', () => {
-    expect(retainedFilePath('content-pdf', false)).toBeNull();
-  });
-  it('retains the original only when explicitly selected', () => {
-    expect(retainedFilePath('content-pdf', true)).toBe('content-pdf');
-  });
-  it('refuses empty extraction rather than saving unread memory', () => {
-    expect(() => readableMemoryText(' \n ')).toThrow('Document read nahi hua');
-    expect(() => readableMemoryText(null)).toThrow();
-    expect(readableMemoryText(' Question: What is inertia? ')).toBe('Question: What is inertia?');
-  });
-});
+aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyByZWFkYWJsZU1lbW9yeVRleHQsIHJldGFpbmVkRmlsZVBhdGggfSBmcm9tICdAL2xpYi9hZG1pbi1yZXRlbnRpb24nOwoKZGVzY3JpYmUoJ2FkbWluIHRleHQtb25seSBkb2N1bWVudCByZXRlbnRpb24nLCAoKSA9PiB7CiAgaXQoJ2RvZXMgbm90IHJldGFpbiB0aGUgb3JpZ2luYWwgYnkgZGVmYXVsdCcsICgpID0+IHsKICAgIGV4cGVjdChyZXRhaW5lZEZpbGVQYXRoKCdjb250ZW50LXBkZicsIGZhbHNlKSkudG9CZU51bGwoKTsKICB9KTsKICBpdCgncmV0YWlucyB0aGUgb3JpZ2luYWwgb25seSB3aGVuIGV4cGxpY2l0bHkgc2VsZWN0ZWQnLCAoKSA9PiB7CiAgICBleHBlY3QocmV0YWluZWRGaWxlUGF0aCgnY29udGVudC1wZGYnLCB0cnVlKSkudG9CZSgnY29udGVudC1wZGYnKTsKICB9KTsKICBpdCgncmVmdXNlcyBlbXB0eSBleHRyYWN0aW9uIHJhdGhlciB0aGFuIHNhdmluZyB1bnJlYWQgbWVtb3J5JywgKCkgPT4gewogICAgZXhwZWN0KCgpID0+IHJlYWRhYmxlTWVtb3J5VGV4dCgnIFxuICcpKS50b1Rocm93KCdEb2N1bWVudCByZWFkIG5haGkgaHVhJyk7CiAgICBleHBlY3QoKCkgPT4gcmVhZGFibGVNZW1vcnlUZXh0KG51bGwpKS50b1Rocm93KCk7CiAgICBleHBlY3QocmVhZGFibGVNZW1vcnlUZXh0KCcgUXVlc3Rpb246IFdoYXQgaXMgaW5lcnRpYT8gJykpLnRvQmUoJ1F1ZXN0aW9uOiBXaGF0IGlzIGluZXJ0aWE/Jyk7CiAgfSk7Cn0pOw==

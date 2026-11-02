@@ -1,8 +1,1 @@
-import type { Database } from '@/integrations/supabase/types';
-
-type CallWrite = Database['public']['Tables']['voice_calls']['Insert'];
-
-/** Intentionally disabled: live usage/cleanup remain owned by the relay, not history. */
-export function createVoiceTracking(_id: string, _waitUntil: (task: Promise<unknown>) => void, _onFailure: () => void) {
-  return (_patch: Omit<CallWrite, 'id'>) => {};
-}
+aW1wb3J0IHR5cGUgeyBEYXRhYmFzZSB9IGZyb20gJ0AvaW50ZWdyYXRpb25zL3N1cGFiYXNlL3R5cGVzJzsKCnR5cGUgQ2FsbFdyaXRlID0gRGF0YWJhc2VbJ3B1YmxpYyddWydUYWJsZXMnXVsndm9pY2VfY2FsbHMnXVsnSW5zZXJ0J107CgovKiogSW50ZW50aW9uYWxseSBkaXNhYmxlZDogbGl2ZSB1c2FnZS9jbGVhbnVwIHJlbWFpbiBvd25lZCBieSB0aGUgcmVsYXksIG5vdCBoaXN0b3J5LiAqLwpleHBvcnQgZnVuY3Rpb24gY3JlYXRlVm9pY2VUcmFja2luZyhfaWQ6IHN0cmluZywgX3dhaXRVbnRpbDogKHRhc2s6IFByb21pc2U8dW5rbm93bj4pID0+IHZvaWQsIF9vbkZhaWx1cmU6ICgpID0+IHZvaWQpIHsKICByZXR1cm4gKF9wYXRjaDogT21pdDxDYWxsV3JpdGUsICdpZCc+KSA9PiB7fTsKfQ==

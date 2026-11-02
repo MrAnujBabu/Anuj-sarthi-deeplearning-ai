@@ -1,17 +1,1 @@
-// @vitest-environment node
-import { writeFile } from 'node:fs/promises';
-import { expect, it, vi } from 'vitest';
-vi.mock('./ai/pause.server', () => ({ getAiPause: async () => null, setAiPause: async () => {} }));
-import { answerQuestion, getLiveConfig, parseCallPrefs } from './live-relay.server';
-import { comparisonTable } from './voice-format';
-
-it.skipIf(process.env['VERIFY_VOICE_TABLE'] !== '1')('real live tutor produces a question-specific four-column table', async () => {
-  const answer = await answerQuestion([
-    { role: 'user', content: 'Human skeleton ke Skull aur Ribs ke liye exactly 4 columns ki table banao: Part, Bones, Location aur Function. Sirf ye do rows chahiye; Hinglish mein bolo.' },
-  ], getLiveConfig(), { runID: crypto.randomUUID(), sessionID: undefined, delegationID: crypto.randomUUID() }, new AbortController().signal, () => {}, () => {}, parseCallPrefs(null));
-  const parsed = comparisonTable(answer);
-  expect(parsed?.table.split('\n')[0]).toBe('| Part | Bones | Location | Function |');
-  expect(parsed?.table).toMatch(/\| Skull \| 22(?: bones)? \|/i);
-  expect(parsed?.table).toMatch(/\| Ribs \| 24\b[^|]*\|/i);
-  await writeFile('/tmp/browser/voice-table-answer.json', JSON.stringify({ rows: [{ id: 'table-tutor', role: 'assistant', text: answer }], quiz: [] }));
-}, 120000);
+Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IHdyaXRlRmlsZSB9IGZyb20gJ25vZGU6ZnMvcHJvbWlzZXMnOwppbXBvcnQgeyBleHBlY3QsIGl0LCB2aSB9IGZyb20gJ3ZpdGVzdCc7CnZpLm1vY2soJy4vYWkvcGF1c2Uuc2VydmVyJywgKCkgPT4gKHsgZ2V0QWlQYXVzZTogYXN5bmMgKCkgPT4gbnVsbCwgc2V0QWlQYXVzZTogYXN5bmMgKCkgPT4ge30gfSkpOwppbXBvcnQgeyBhbnN3ZXJRdWVzdGlvbiwgZ2V0TGl2ZUNvbmZpZywgcGFyc2VDYWxsUHJlZnMgfSBmcm9tICcuL2xpdmUtcmVsYXkuc2VydmVyJzsKaW1wb3J0IHsgY29tcGFyaXNvblRhYmxlIH0gZnJvbSAnLi92b2ljZS1mb3JtYXQnOwoKaXQuc2tpcElmKHByb2Nlc3MuZW52WydWRVJJRllfVk9JQ0VfVEFCTEUnXSAhPT0gJzEnKSgncmVhbCBsaXZlIHR1dG9yIHByb2R1Y2VzIGEgcXVlc3Rpb24tc3BlY2lmaWMgZm91ci1jb2x1bW4gdGFibGUnLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgYW5zd2VyID0gYXdhaXQgYW5zd2VyUXVlc3Rpb24oWwogICAgeyByb2xlOiAndXNlcicsIGNvbnRlbnQ6ICdIdW1hbiBza2VsZXRvbiBrZSBTa3VsbCBhdXIgUmlicyBrZSBsaXllIGV4YWN0bHkgNCBjb2x1bW5zIGtpIHRhYmxlIGJhbmFvOiBQYXJ0LCBCb25lcywgTG9jYXRpb24gYXVyIEZ1bmN0aW9uLiBTaXJmIHllIGRvIHJvd3MgY2hhaGl5ZTsgSGluZ2xpc2ggbWVpbiBib2xvLicgfSwKICBdLCBnZXRMaXZlQ29uZmlnKCksIHsgcnVuSUQ6IGNyeXB0by5yYW5kb21VVUlEKCksIHNlc3Npb25JRDogdW5kZWZpbmVkLCBkZWxlZ2F0aW9uSUQ6IGNyeXB0by5yYW5kb21VVUlEKCkgfSwgbmV3IEFib3J0Q29udHJvbGxlcigpLnNpZ25hbCwgKCkgPT4ge30sICgpID0+IHt9LCBwYXJzZUNhbGxQcmVmcyhudWxsKSk7CiAgY29uc3QgcGFyc2VkID0gY29tcGFyaXNvblRhYmxlKGFuc3dlcik7CiAgZXhwZWN0KHBhcnNlZD8udGFibGUuc3BsaXQoJ1xuJylbMF0pLnRvQmUoJ3wgUGFydCB8IEJvbmVzIHwgTG9jYXRpb24gfCBGdW5jdGlvbiB8Jyk7CiAgZXhwZWN0KHBhcnNlZD8udGFibGUpLnRvTWF0Y2goL1x8IFNrdWxsIFx8IDIyKD86IGJvbmVzKT8gXHwvaSk7CiAgZXhwZWN0KHBhcnNlZD8udGFibGUpLnRvTWF0Y2goL1x8IFJpYnMgXHwgMjRcYltefF0qXHwvaSk7CiAgYXdhaXQgd3JpdGVGaWxlKCcvdG1wL2Jyb3dzZXIvdm9pY2UtdGFibGUtYW5zd2VyLmpzb24nLCBKU09OLnN0cmluZ2lmeSh7IHJvd3M6IFt7IGlkOiAndGFibGUtdHV0b3InLCByb2xlOiAnYXNzaXN0YW50JywgdGV4dDogYW5zd2VyIH1dLCBxdWl6OiBbXSB9KSk7Cn0sIDEyMDAwMCk7

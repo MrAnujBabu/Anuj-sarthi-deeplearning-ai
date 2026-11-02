@@ -1,17 +1,1 @@
-// Browser-safe word-level highlight helpers for the Hindi voice-over caption.
-
-/** Splits spoken text into highlightable words (whitespace-separated, Hindi included). */
-export function spokenWords(text: string): string[] {
-  return text.split(/\s+/).filter(Boolean);
-}
-
-/**
- * How many words of `text` have been spoken after `fraction` (0–1) of the audio elapsed.
- * Clamped so a mid-segment seek or an overrun never highlights beyond the text.
- */
-export function spokenWordCount(text: string, fraction: number): number {
-  const words = spokenWords(text);
-  if (!words.length) return 0;
-  const f = Math.min(1, Math.max(0, Number.isFinite(fraction) ? fraction : 0));
-  return Math.min(words.length, Math.floor(f * words.length));
-}
+Ly8gQnJvd3Nlci1zYWZlIHdvcmQtbGV2ZWwgaGlnaGxpZ2h0IGhlbHBlcnMgZm9yIHRoZSBIaW5kaSB2b2ljZS1vdmVyIGNhcHRpb24uCgovKiogU3BsaXRzIHNwb2tlbiB0ZXh0IGludG8gaGlnaGxpZ2h0YWJsZSB3b3JkcyAod2hpdGVzcGFjZS1zZXBhcmF0ZWQsIEhpbmRpIGluY2x1ZGVkKS4gKi8KZXhwb3J0IGZ1bmN0aW9uIHNwb2tlbldvcmRzKHRleHQ6IHN0cmluZyk6IHN0cmluZ1tdIHsKICByZXR1cm4gdGV4dC5zcGxpdCgvXHMrLykuZmlsdGVyKEJvb2xlYW4pOwp9CgovKioKICogSG93IG1hbnkgd29yZHMgb2YgYHRleHRgIGhhdmUgYmVlbiBzcG9rZW4gYWZ0ZXIgYGZyYWN0aW9uYCAoMOKAkzEpIG9mIHRoZSBhdWRpbyBlbGFwc2VkLgogKiBDbGFtcGVkIHNvIGEgbWlkLXNlZ21lbnQgc2VlayBvciBhbiBvdmVycnVuIG5ldmVyIGhpZ2hsaWdodHMgYmV5b25kIHRoZSB0ZXh0LgogKi8KZXhwb3J0IGZ1bmN0aW9uIHNwb2tlbldvcmRDb3VudCh0ZXh0OiBzdHJpbmcsIGZyYWN0aW9uOiBudW1iZXIpOiBudW1iZXIgewogIGNvbnN0IHdvcmRzID0gc3Bva2VuV29yZHModGV4dCk7CiAgaWYgKCF3b3Jkcy5sZW5ndGgpIHJldHVybiAwOwogIGNvbnN0IGYgPSBNYXRoLm1pbigxLCBNYXRoLm1heCgwLCBOdW1iZXIuaXNGaW5pdGUoZnJhY3Rpb24pID8gZnJhY3Rpb24gOiAwKSk7CiAgcmV0dXJuIE1hdGgubWluKHdvcmRzLmxlbmd0aCwgTWF0aC5mbG9vcihmICogd29yZHMubGVuZ3RoKSk7Cn0K

@@ -1,15 +1,1 @@
-import { afterEach, expect, it } from 'vitest';
-import { DEFAULT_MODEL, VOICE_TUTOR_MODEL, resolveModel, upgradedTutorPreference } from './models';
-afterEach(() => localStorage.clear());
-it('chat and voice default to Claude Fable 5.1', () => {
-  expect(DEFAULT_MODEL).toBe('anthropic/claude-fable-5-1');
-  expect(VOICE_TUTOR_MODEL).toBe('anthropic/claude-fable-5-1');
-  expect(resolveModel(undefined)?.id).toBe(DEFAULT_MODEL);
-});
-it('upgrades the old chat selection once with high reasoning', () => {
-  localStorage.setItem('snapsolve.model', 'anthropic/claude-sonnet-5');
-  localStorage.setItem('snapsolve.advanced-tutor-v1', '1');
-  expect(upgradedTutorPreference(localStorage)).toEqual({ model: 'anthropic/claude-fable-5-1', effort: 'high' });
-  localStorage.setItem('snapsolve.model', 'anthropic/claude-opus-5-5');
-  expect(upgradedTutorPreference(localStorage).model).toBe('anthropic/claude-opus-5-5');
-});
+aW1wb3J0IHsgYWZ0ZXJFYWNoLCBleHBlY3QsIGl0IH0gZnJvbSAndml0ZXN0JzsKaW1wb3J0IHsgREVGQVVMVF9NT0RFTCwgVk9JQ0VfVFVUT1JfTU9ERUwsIHJlc29sdmVNb2RlbCwgdXBncmFkZWRUdXRvclByZWZlcmVuY2UgfSBmcm9tICcuL21vZGVscyc7CmFmdGVyRWFjaCgoKSA9PiBsb2NhbFN0b3JhZ2UuY2xlYXIoKSk7Cml0KCdjaGF0IGFuZCB2b2ljZSBkZWZhdWx0IHRvIENsYXVkZSBGYWJsZSA1LjEnLCAoKSA9PiB7CiAgZXhwZWN0KERFRkFVTFRfTU9ERUwpLnRvQmUoJ2FudGhyb3BpYy9jbGF1ZGUtZmFibGUtNS0xJyk7CiAgZXhwZWN0KFZPSUNFX1RVVE9SX01PREVMKS50b0JlKCdhbnRocm9waWMvY2xhdWRlLWZhYmxlLTUtMScpOwogIGV4cGVjdChyZXNvbHZlTW9kZWwodW5kZWZpbmVkKT8uaWQpLnRvQmUoREVGQVVMVF9NT0RFTCk7Cn0pOwppdCgndXBncmFkZXMgdGhlIG9sZCBjaGF0IHNlbGVjdGlvbiBvbmNlIHdpdGggaGlnaCByZWFzb25pbmcnLCAoKSA9PiB7CiAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oJ3NuYXBzb2x2ZS5tb2RlbCcsICdhbnRocm9waWMvY2xhdWRlLXNvbm5ldC01Jyk7CiAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oJ3NuYXBzb2x2ZS5hZHZhbmNlZC10dXRvci12MScsICcxJyk7CiAgZXhwZWN0KHVwZ3JhZGVkVHV0b3JQcmVmZXJlbmNlKGxvY2FsU3RvcmFnZSkpLnRvRXF1YWwoeyBtb2RlbDogJ2FudGhyb3BpYy9jbGF1ZGUtZmFibGUtNS0xJywgZWZmb3J0OiAnaGlnaCcgfSk7CiAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oJ3NuYXBzb2x2ZS5tb2RlbCcsICdhbnRocm9waWMvY2xhdWRlLW9wdXMtNS01Jyk7CiAgZXhwZWN0KHVwZ3JhZGVkVHV0b3JQcmVmZXJlbmNlKGxvY2FsU3RvcmFnZSkubW9kZWwpLnRvQmUoJ2FudGhyb3BpYy9jbGF1ZGUtb3B1cy01LTUnKTsKfSk7

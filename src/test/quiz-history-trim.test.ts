@@ -1,12 +1,1 @@
-import { describe, expect, it } from 'vitest';
-import { trimQuizHistory } from '@/routes/api/chat';
-describe('quiz history trim', () => {
-  it('keeps the opener and last 12 messages', () => {
-    const m = Array.from({ length: 30 }, (_, i) => i);
-    expect(trimQuizHistory(m)).toEqual([0, ...m.slice(-12)]);
-  });
-  it('leaves short quizzes unchanged', () => {
-    const m = [1, 2, 3];
-    expect(trimQuizHistory(m)).toEqual(m);
-  });
-});
+aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyB0cmltUXVpekhpc3RvcnkgfSBmcm9tICdAL3JvdXRlcy9hcGkvY2hhdCc7CmRlc2NyaWJlKCdxdWl6IGhpc3RvcnkgdHJpbScsICgpID0+IHsKICBpdCgna2VlcHMgdGhlIG9wZW5lciBhbmQgbGFzdCAxMiBtZXNzYWdlcycsICgpID0+IHsKICAgIGNvbnN0IG0gPSBBcnJheS5mcm9tKHsgbGVuZ3RoOiAzMCB9LCAoXywgaSkgPT4gaSk7CiAgICBleHBlY3QodHJpbVF1aXpIaXN0b3J5KG0pKS50b0VxdWFsKFswLCAuLi5tLnNsaWNlKC0xMildKTsKICB9KTsKICBpdCgnbGVhdmVzIHNob3J0IHF1aXp6ZXMgdW5jaGFuZ2VkJywgKCkgPT4gewogICAgY29uc3QgbSA9IFsxLCAyLCAzXTsKICAgIGV4cGVjdCh0cmltUXVpekhpc3RvcnkobSkpLnRvRXF1YWwobSk7CiAgfSk7Cn0pOwo=

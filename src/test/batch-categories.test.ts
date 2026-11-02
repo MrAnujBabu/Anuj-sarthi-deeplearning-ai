@@ -1,18 +1,1 @@
-import { describe, expect, it } from "vitest";
-import { testCategory } from "@/lib/vedantu/categories";
-
-describe("testCategory", () => {
-  it("puts HWT homework tests under DPP", () => {
-    expect(testCategory("Test 3 | HWT Test | Chemistry")).toBe("dpp");
-    expect(testCategory("HWT-06 Biology")).toBe("dpp");
-  });
-  it("puts past NEET papers under PYQ", () => {
-    expect(testCategory("Optics (NEET 2013-2026 PYQs) Chapter Test")).toBe("pyq");
-    expect(testCategory("NEET 2019")).toBe("pyq");
-    expect(testCategory("Re-NEET 2024")).toBe("pyq");
-  });
-  it("keeps part/cumulative/AITS tests under Tests", () => {
-    expect(testCategory("EKLAVYA-NEET-PT-3")).toBe("test");
-    expect(testCategory("Chapter Review Test-Evolution")).toBe("test");
-  });
-});
+aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyB0ZXN0Q2F0ZWdvcnkgfSBmcm9tICJAL2xpYi92ZWRhbnR1L2NhdGVnb3JpZXMiOwoKZGVzY3JpYmUoInRlc3RDYXRlZ29yeSIsICgpID0+IHsKICBpdCgicHV0cyBIV1QgaG9tZXdvcmsgdGVzdHMgdW5kZXIgRFBQIiwgKCkgPT4gewogICAgZXhwZWN0KHRlc3RDYXRlZ29yeSgiVGVzdCAzIHwgSFdUIFRlc3QgfCBDaGVtaXN0cnkiKSkudG9CZSgiZHBwIik7CiAgICBleHBlY3QodGVzdENhdGVnb3J5KCJIV1QtMDYgQmlvbG9neSIpKS50b0JlKCJkcHAiKTsKICB9KTsKICBpdCgicHV0cyBwYXN0IE5FRVQgcGFwZXJzIHVuZGVyIFBZUSIsICgpID0+IHsKICAgIGV4cGVjdCh0ZXN0Q2F0ZWdvcnkoIk9wdGljcyAoTkVFVCAyMDEzLTIwMjYgUFlRcykgQ2hhcHRlciBUZXN0IikpLnRvQmUoInB5cSIpOwogICAgZXhwZWN0KHRlc3RDYXRlZ29yeSgiTkVFVCAyMDE5IikpLnRvQmUoInB5cSIpOwogICAgZXhwZWN0KHRlc3RDYXRlZ29yeSgiUmUtTkVFVCAyMDI0IikpLnRvQmUoInB5cSIpOwogIH0pOwogIGl0KCJrZWVwcyBwYXJ0L2N1bXVsYXRpdmUvQUlUUyB0ZXN0cyB1bmRlciBUZXN0cyIsICgpID0+IHsKICAgIGV4cGVjdCh0ZXN0Q2F0ZWdvcnkoIkVLTEFWWUEtTkVFVC1QVC0zIikpLnRvQmUoInRlc3QiKTsKICAgIGV4cGVjdCh0ZXN0Q2F0ZWdvcnkoIkNoYXB0ZXIgUmV2aWV3IFRlc3QtRXZvbHV0aW9uIikpLnRvQmUoInRlc3QiKTsKICB9KTsKfSk7Cg==

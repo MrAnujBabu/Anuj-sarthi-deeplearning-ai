@@ -1,12 +1,1 @@
-/** Typed messages during a voice call: the tutor reads them and answers aloud. */
-export const VOICE_CHAT_KEY = "snapsolve.voice.chat";
-export const VOICE_CHAT_MAX = 1000;
-
-/** A clean typed message, or null when it is empty, too long or not text. */
-export function voiceChatText(value: unknown): string | null {
-  if (typeof value !== "string") return null;
-  // Control characters never reach the tutor; ordinary line breaks stay.
-  const text = value.replace(/\r\n?/g, "\n").replace(/[\u0000-\u0008\u000B-\u001F\u007F]/g, "").replace(/\n{3,}/g, "\n\n").trim();
-  if (!text || text.length > VOICE_CHAT_MAX) return null;
-  return text;
-}
+LyoqIFR5cGVkIG1lc3NhZ2VzIGR1cmluZyBhIHZvaWNlIGNhbGw6IHRoZSB0dXRvciByZWFkcyB0aGVtIGFuZCBhbnN3ZXJzIGFsb3VkLiAqLwpleHBvcnQgY29uc3QgVk9JQ0VfQ0hBVF9LRVkgPSAic25hcHNvbHZlLnZvaWNlLmNoYXQiOwpleHBvcnQgY29uc3QgVk9JQ0VfQ0hBVF9NQVggPSAxMDAwOwoKLyoqIEEgY2xlYW4gdHlwZWQgbWVzc2FnZSwgb3IgbnVsbCB3aGVuIGl0IGlzIGVtcHR5LCB0b28gbG9uZyBvciBub3QgdGV4dC4gKi8KZXhwb3J0IGZ1bmN0aW9uIHZvaWNlQ2hhdFRleHQodmFsdWU6IHVua25vd24pOiBzdHJpbmcgfCBudWxsIHsKICBpZiAodHlwZW9mIHZhbHVlICE9PSAic3RyaW5nIikgcmV0dXJuIG51bGw7CiAgLy8gQ29udHJvbCBjaGFyYWN0ZXJzIG5ldmVyIHJlYWNoIHRoZSB0dXRvcjsgb3JkaW5hcnkgbGluZSBicmVha3Mgc3RheS4KICBjb25zdCB0ZXh0ID0gdmFsdWUucmVwbGFjZSgvXHJcbj8vZywgIlxuIikucmVwbGFjZSgvW1x1MDAwMC1cdTAwMDhcdTAwMEItXHUwMDFGXHUwMDdGXS9nLCAiIikucmVwbGFjZSgvXG57Myx9L2csICJcblxuIikudHJpbSgpOwogIGlmICghdGV4dCB8fCB0ZXh0Lmxlbmd0aCA+IFZPSUNFX0NIQVRfTUFYKSByZXR1cm4gbnVsbDsKICByZXR1cm4gdGV4dDsKfQo=

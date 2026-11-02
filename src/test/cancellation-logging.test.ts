@@ -1,14 +1,1 @@
-// @vitest-environment node
-import { expect, it } from 'vitest';
-import { isCancellationLog } from '@/lib/error-capture';
-it('recognizes HTTP wrappers around a disconnected request', () => {
-  expect(isCancellationLog(new Error('HTTPError', { cause: new DOMException('Stopped', 'AbortError') }))).toBe(true);
-  const wrapped = new Error('This operation was aborted', { cause: new DOMException('Stopped', 'AbortError') });
-  wrapped.name = 'HTTPError';
-  expect(isCancellationLog(wrapped)).toBe(true);
-});
-it('keeps genuine failures and message-only matches visible', () => {
-  expect(isCancellationLog(new Error('AbortError: This operation was aborted'))).toBe(false);
-  expect(isCancellationLog(new Error('HTTPError', { cause: new Error('Network failed') }))).toBe(false);
-  expect(isCancellationLog(new Error('Database failed', { cause: new DOMException('Stopped', 'AbortError') }))).toBe(false);
-});
+Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBpc0NhbmNlbGxhdGlvbkxvZyB9IGZyb20gJ0AvbGliL2Vycm9yLWNhcHR1cmUnOwppdCgncmVjb2duaXplcyBIVFRQIHdyYXBwZXJzIGFyb3VuZCBhIGRpc2Nvbm5lY3RlZCByZXF1ZXN0JywgKCkgPT4gewogIGV4cGVjdChpc0NhbmNlbGxhdGlvbkxvZyhuZXcgRXJyb3IoJ0hUVFBFcnJvcicsIHsgY2F1c2U6IG5ldyBET01FeGNlcHRpb24oJ1N0b3BwZWQnLCAnQWJvcnRFcnJvcicpIH0pKSkudG9CZSh0cnVlKTsKICBjb25zdCB3cmFwcGVkID0gbmV3IEVycm9yKCdUaGlzIG9wZXJhdGlvbiB3YXMgYWJvcnRlZCcsIHsgY2F1c2U6IG5ldyBET01FeGNlcHRpb24oJ1N0b3BwZWQnLCAnQWJvcnRFcnJvcicpIH0pOwogIHdyYXBwZWQubmFtZSA9ICdIVFRQRXJyb3InOwogIGV4cGVjdChpc0NhbmNlbGxhdGlvbkxvZyh3cmFwcGVkKSkudG9CZSh0cnVlKTsKfSk7Cml0KCdrZWVwcyBnZW51aW5lIGZhaWx1cmVzIGFuZCBtZXNzYWdlLW9ubHkgbWF0Y2hlcyB2aXNpYmxlJywgKCkgPT4gewogIGV4cGVjdChpc0NhbmNlbGxhdGlvbkxvZyhuZXcgRXJyb3IoJ0Fib3J0RXJyb3I6IFRoaXMgb3BlcmF0aW9uIHdhcyBhYm9ydGVkJykpKS50b0JlKGZhbHNlKTsKICBleHBlY3QoaXNDYW5jZWxsYXRpb25Mb2cobmV3IEVycm9yKCdIVFRQRXJyb3InLCB7IGNhdXNlOiBuZXcgRXJyb3IoJ05ldHdvcmsgZmFpbGVkJykgfSkpKS50b0JlKGZhbHNlKTsKICBleHBlY3QoaXNDYW5jZWxsYXRpb25Mb2cobmV3IEVycm9yKCdEYXRhYmFzZSBmYWlsZWQnLCB7IGNhdXNlOiBuZXcgRE9NRXhjZXB0aW9uKCdTdG9wcGVkJywgJ0Fib3J0RXJyb3InKSB9KSkpLnRvQmUoZmFsc2UpOwp9KTs=

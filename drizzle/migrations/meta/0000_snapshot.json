@@ -1,18 +1,1 @@
-{
-  "id": "51ac4cb8-4a34-4a8b-b761-6b0352326806",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "7",
-  "dialect": "postgresql",
-  "tables": {},
-  "enums": {},
-  "schemas": {},
-  "views": {},
-  "sequences": {},
-  "roles": {},
-  "policies": {},
-  "_meta": {
-    "columns": {},
-    "schemas": {},
-    "tables": {}
-  }
-}
+ewogICJpZCI6ICI1MWFjNGNiOC00YTM0LTRhOGItYjc2MS02YjAzNTIzMjY4MDYiLAogICJwcmV2SWQiOiAiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwKICAidmVyc2lvbiI6ICI3IiwKICAiZGlhbGVjdCI6ICJwb3N0Z3Jlc3FsIiwKICAidGFibGVzIjoge30sCiAgImVudW1zIjoge30sCiAgInNjaGVtYXMiOiB7fSwKICAidmlld3MiOiB7fSwKICAic2VxdWVuY2VzIjoge30sCiAgInJvbGVzIjoge30sCiAgInBvbGljaWVzIjoge30sCiAgIl9tZXRhIjogewogICAgImNvbHVtbnMiOiB7fSwKICAgICJzY2hlbWFzIjoge30sCiAgICAidGFibGVzIjoge30KICB9Cn0K

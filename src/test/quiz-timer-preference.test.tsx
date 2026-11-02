@@ -1,17 +1,1 @@
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { afterEach, expect, it, vi } from 'vitest';
-vi.mock('@/lib/memory.functions', () => ({ getQuizTimer: async () => ({ seconds: 45 }) }));
-import { clampQuizSeconds, useQuizTimerPreference } from '@/lib/quiz-timer-preference';
-afterEach(() => { cleanup(); localStorage.clear(); });
-function Control() { const timer = useQuizTimerPreference(); return <><output>{timer.seconds}</output><button onClick={() => timer.update(0)}>Off</button><button onClick={() => timer.update(null)}>Admin</button></>; }
-it('uses 45s admin default, persists off and restores admin without editing Cloud', async () => {
-  const view = render(<Control />); await act(async () => { await Promise.resolve(); });
-  expect(screen.getByRole('status').textContent).toBe('45');
-  fireEvent.click(screen.getByRole('button', { name: 'Off' })); expect(localStorage.getItem('snapsolve.quiz-timer')).toBe('0');
-  view.unmount(); render(<Control />); await act(async () => { await Promise.resolve(); });
-  expect(screen.getByRole('status').textContent).toBe('0');
-  fireEvent.click(screen.getByRole('button', { name: 'Admin' })); expect(screen.getByRole('status').textContent).toBe('45');
-});
-it('matches admin 0–600 whole-second limits', () => {
-  expect(clampQuizSeconds(-1)).toBe(0); expect(clampQuizSeconds(601)).toBe(600); expect(clampQuizSeconds(2.8)).toBe(3);
-});
+aW1wb3J0IHsgYWN0LCBjbGVhbnVwLCBmaXJlRXZlbnQsIHJlbmRlciwgc2NyZWVuIH0gZnJvbSAnQHRlc3RpbmctbGlicmFyeS9yZWFjdCc7CmltcG9ydCB7IGFmdGVyRWFjaCwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwp2aS5tb2NrKCdAL2xpYi9tZW1vcnkuZnVuY3Rpb25zJywgKCkgPT4gKHsgZ2V0UXVpelRpbWVyOiBhc3luYyAoKSA9PiAoeyBzZWNvbmRzOiA0NSB9KSB9KSk7CmltcG9ydCB7IGNsYW1wUXVpelNlY29uZHMsIHVzZVF1aXpUaW1lclByZWZlcmVuY2UgfSBmcm9tICdAL2xpYi9xdWl6LXRpbWVyLXByZWZlcmVuY2UnOwphZnRlckVhY2goKCkgPT4geyBjbGVhbnVwKCk7IGxvY2FsU3RvcmFnZS5jbGVhcigpOyB9KTsKZnVuY3Rpb24gQ29udHJvbCgpIHsgY29uc3QgdGltZXIgPSB1c2VRdWl6VGltZXJQcmVmZXJlbmNlKCk7IHJldHVybiA8PjxvdXRwdXQ+e3RpbWVyLnNlY29uZHN9PC9vdXRwdXQ+PGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiB0aW1lci51cGRhdGUoMCl9Pk9mZjwvYnV0dG9uPjxidXR0b24gb25DbGljaz17KCkgPT4gdGltZXIudXBkYXRlKG51bGwpfT5BZG1pbjwvYnV0dG9uPjwvPjsgfQppdCgndXNlcyA0NXMgYWRtaW4gZGVmYXVsdCwgcGVyc2lzdHMgb2ZmIGFuZCByZXN0b3JlcyBhZG1pbiB3aXRob3V0IGVkaXRpbmcgQ2xvdWQnLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgdmlldyA9IHJlbmRlcig8Q29udHJvbCAvPik7IGF3YWl0IGFjdChhc3luYyAoKSA9PiB7IGF3YWl0IFByb21pc2UucmVzb2x2ZSgpOyB9KTsKICBleHBlY3Qoc2NyZWVuLmdldEJ5Um9sZSgnc3RhdHVzJykudGV4dENvbnRlbnQpLnRvQmUoJzQ1Jyk7CiAgZmlyZUV2ZW50LmNsaWNrKHNjcmVlbi5nZXRCeVJvbGUoJ2J1dHRvbicsIHsgbmFtZTogJ09mZicgfSkpOyBleHBlY3QobG9jYWxTdG9yYWdlLmdldEl0ZW0oJ3NuYXBzb2x2ZS5xdWl6LXRpbWVyJykpLnRvQmUoJzAnKTsKICB2aWV3LnVubW91bnQoKTsgcmVuZGVyKDxDb250cm9sIC8+KTsgYXdhaXQgYWN0KGFzeW5jICgpID0+IHsgYXdhaXQgUHJvbWlzZS5yZXNvbHZlKCk7IH0pOwogIGV4cGVjdChzY3JlZW4uZ2V0QnlSb2xlKCdzdGF0dXMnKS50ZXh0Q29udGVudCkudG9CZSgnMCcpOwogIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdidXR0b24nLCB7IG5hbWU6ICdBZG1pbicgfSkpOyBleHBlY3Qoc2NyZWVuLmdldEJ5Um9sZSgnc3RhdHVzJykudGV4dENvbnRlbnQpLnRvQmUoJzQ1Jyk7Cn0pOwppdCgnbWF0Y2hlcyBhZG1pbiAw4oCTNjAwIHdob2xlLXNlY29uZCBsaW1pdHMnLCAoKSA9PiB7CiAgZXhwZWN0KGNsYW1wUXVpelNlY29uZHMoLTEpKS50b0JlKDApOyBleHBlY3QoY2xhbXBRdWl6U2Vjb25kcyg2MDEpKS50b0JlKDYwMCk7IGV4cGVjdChjbGFtcFF1aXpTZWNvbmRzKDIuOCkpLnRvQmUoMyk7Cn0pOw==
