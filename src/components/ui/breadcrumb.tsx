@@ -1,1 +1,101 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBTbG90IH0gZnJvbSAiQHJhZGl4LXVpL3JlYWN0LXNsb3QiOwppbXBvcnQgeyBDaGV2cm9uUmlnaHQsIE1vcmVIb3Jpem9udGFsIH0gZnJvbSAibHVjaWRlLXJlYWN0IjsKCmltcG9ydCB7IGNuIH0gZnJvbSAiQC9saWIvdXRpbHMiOwoKY29uc3QgQnJlYWRjcnVtYiA9IFJlYWN0LmZvcndhcmRSZWY8CiAgSFRNTEVsZW1lbnQsCiAgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPCJuYXYiPiAmIHsKICAgIHNlcGFyYXRvcj86IFJlYWN0LlJlYWN0Tm9kZTsKICB9Cj4oKHsgLi4ucHJvcHMgfSwgcmVmKSA9PiA8bmF2IHJlZj17cmVmfSBhcmlhLWxhYmVsPSJicmVhZGNydW1iIiB7Li4ucHJvcHN9IC8+KTsKQnJlYWRjcnVtYi5kaXNwbGF5TmFtZSA9ICJCcmVhZGNydW1iIjsKCmNvbnN0IEJyZWFkY3J1bWJMaXN0ID0gUmVhY3QuZm9yd2FyZFJlZjxIVE1MT0xpc3RFbGVtZW50LCBSZWFjdC5Db21wb25lbnRQcm9wc1dpdGhvdXRSZWY8Im9sIj4+KAogICh7IGNsYXNzTmFtZSwgLi4ucHJvcHMgfSwgcmVmKSA9PiAoCiAgICA8b2wKICAgICAgcmVmPXtyZWZ9CiAgICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICAgImZsZXggZmxleC13cmFwIGl0ZW1zLWNlbnRlciBnYXAtMS41IGJyZWFrLXdvcmRzIHRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIHNtOmdhcC0yLjUiLAogICAgICAgIGNsYXNzTmFtZSwKICAgICAgKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApLAopOwpCcmVhZGNydW1iTGlzdC5kaXNwbGF5TmFtZSA9ICJCcmVhZGNydW1iTGlzdCI7Cgpjb25zdCBCcmVhZGNydW1iSXRlbSA9IFJlYWN0LmZvcndhcmRSZWY8SFRNTExJRWxlbWVudCwgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPCJsaSI+PigKICAoeyBjbGFzc05hbWUsIC4uLnByb3BzIH0sIHJlZikgPT4gKAogICAgPGxpIHJlZj17cmVmfSBjbGFzc05hbWU9e2NuKCJpbmxpbmUtZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTEuNSIsIGNsYXNzTmFtZSl9IHsuLi5wcm9wc30gLz4KICApLAopOwpCcmVhZGNydW1iSXRlbS5kaXNwbGF5TmFtZSA9ICJCcmVhZGNydW1iSXRlbSI7Cgpjb25zdCBCcmVhZGNydW1iTGluayA9IFJlYWN0LmZvcndhcmRSZWY8CiAgSFRNTEFuY2hvckVsZW1lbnQsCiAgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPCJhIj4gJiB7CiAgICBhc0NoaWxkPzogYm9vbGVhbjsKICB9Cj4oKHsgYXNDaGlsZCwgY2xhc3NOYW1lLCAuLi5wcm9wcyB9LCByZWYpID0+IHsKICBjb25zdCBDb21wID0gYXNDaGlsZCA/IFNsb3QgOiAiYSI7CgogIHJldHVybiAoCiAgICA8Q29tcAogICAgICByZWY9e3JlZn0KICAgICAgY2xhc3NOYW1lPXtjbigidHJhbnNpdGlvbi1jb2xvcnMgaG92ZXI6dGV4dC1mb3JlZ3JvdW5kIiwgY2xhc3NOYW1lKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApOwp9KTsKQnJlYWRjcnVtYkxpbmsuZGlzcGxheU5hbWUgPSAiQnJlYWRjcnVtYkxpbmsiOwoKY29uc3QgQnJlYWRjcnVtYlBhZ2UgPSBSZWFjdC5mb3J3YXJkUmVmPEhUTUxTcGFuRWxlbWVudCwgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPCJzcGFuIj4+KAogICh7IGNsYXNzTmFtZSwgLi4ucHJvcHMgfSwgcmVmKSA9PiAoCiAgICA8c3BhbgogICAgICByZWY9e3JlZn0KICAgICAgcm9sZT0ibGluayIKICAgICAgYXJpYS1kaXNhYmxlZD0idHJ1ZSIKICAgICAgYXJpYS1jdXJyZW50PSJwYWdlIgogICAgICBjbGFzc05hbWU9e2NuKCJmb250LW5vcm1hbCB0ZXh0LWZvcmVncm91bmQiLCBjbGFzc05hbWUpfQogICAgICB7Li4ucHJvcHN9CiAgICAvPgogICksCik7CkJyZWFkY3J1bWJQYWdlLmRpc3BsYXlOYW1lID0gIkJyZWFkY3J1bWJQYWdlIjsKCmNvbnN0IEJyZWFkY3J1bWJTZXBhcmF0b3IgPSAoeyBjaGlsZHJlbiwgY2xhc3NOYW1lLCAuLi5wcm9wcyB9OiBSZWFjdC5Db21wb25lbnRQcm9wczwibGkiPikgPT4gKAogIDxsaQogICAgcm9sZT0icHJlc2VudGF0aW9uIgogICAgYXJpYS1oaWRkZW49InRydWUiCiAgICBjbGFzc05hbWU9e2NuKCJbJj5zdmddOnctMy41IFsmPnN2Z106aC0zLjUiLCBjbGFzc05hbWUpfQogICAgey4uLnByb3BzfQogID4KICAgIHtjaGlsZHJlbiA/PyA8Q2hldnJvblJpZ2h0IC8+fQogIDwvbGk+Cik7CkJyZWFkY3J1bWJTZXBhcmF0b3IuZGlzcGxheU5hbWUgPSAiQnJlYWRjcnVtYlNlcGFyYXRvciI7Cgpjb25zdCBCcmVhZGNydW1iRWxsaXBzaXMgPSAoeyBjbGFzc05hbWUsIC4uLnByb3BzIH06IFJlYWN0LkNvbXBvbmVudFByb3BzPCJzcGFuIj4pID0+ICgKICA8c3BhbgogICAgcm9sZT0icHJlc2VudGF0aW9uIgogICAgYXJpYS1oaWRkZW49InRydWUiCiAgICBjbGFzc05hbWU9e2NuKCJmbGV4IGgtOSB3LTkgaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIiwgY2xhc3NOYW1lKX0KICAgIHsuLi5wcm9wc30KICA+CiAgICA8TW9yZUhvcml6b250YWwgY2xhc3NOYW1lPSJoLTQgdy00IiAvPgogICAgPHNwYW4gY2xhc3NOYW1lPSJzci1vbmx5Ij5Nb3JlPC9zcGFuPgogIDwvc3Bhbj4KKTsKQnJlYWRjcnVtYkVsbGlwc2lzLmRpc3BsYXlOYW1lID0gIkJyZWFkY3J1bWJFbGlwc3NpcyI7CgpleHBvcnQgewogIEJyZWFkY3J1bWIsCiAgQnJlYWRjcnVtYkxpc3QsCiAgQnJlYWRjcnVtYkl0ZW0sCiAgQnJlYWRjcnVtYkxpbmssCiAgQnJlYWRjcnVtYlBhZ2UsCiAgQnJlYWRjcnVtYlNlcGFyYXRvciwKICBCcmVhZGNydW1iRWxsaXBzaXMsCn07Cg==
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { ChevronRight, MoreHorizontal } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+const Breadcrumb = React.forwardRef<
+  HTMLElement,
+  React.ComponentPropsWithoutRef<"nav"> & {
+    separator?: React.ReactNode;
+  }
+>(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
+Breadcrumb.displayName = "Breadcrumb";
+
+const BreadcrumbList = React.forwardRef<HTMLOListElement, React.ComponentPropsWithoutRef<"ol">>(
+  ({ className, ...props }, ref) => (
+    <ol
+      ref={ref}
+      className={cn(
+        "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
+BreadcrumbList.displayName = "BreadcrumbList";
+
+const BreadcrumbItem = React.forwardRef<HTMLLIElement, React.ComponentPropsWithoutRef<"li">>(
+  ({ className, ...props }, ref) => (
+    <li ref={ref} className={cn("inline-flex items-center gap-1.5", className)} {...props} />
+  ),
+);
+BreadcrumbItem.displayName = "BreadcrumbItem";
+
+const BreadcrumbLink = React.forwardRef<
+  HTMLAnchorElement,
+  React.ComponentPropsWithoutRef<"a"> & {
+    asChild?: boolean;
+  }
+>(({ asChild, className, ...props }, ref) => {
+  const Comp = asChild ? Slot : "a";
+
+  return (
+    <Comp
+      ref={ref}
+      className={cn("transition-colors hover:text-foreground", className)}
+      {...props}
+    />
+  );
+});
+BreadcrumbLink.displayName = "BreadcrumbLink";
+
+const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<"span">>(
+  ({ className, ...props }, ref) => (
+    <span
+      ref={ref}
+      role="link"
+      aria-disabled="true"
+      aria-current="page"
+      className={cn("font-normal text-foreground", className)}
+      {...props}
+    />
+  ),
+);
+BreadcrumbPage.displayName = "BreadcrumbPage";
+
+const BreadcrumbSeparator = ({ children, className, ...props }: React.ComponentProps<"li">) => (
+  <li
+    role="presentation"
+    aria-hidden="true"
+    className={cn("[&>svg]:w-3.5 [&>svg]:h-3.5", className)}
+    {...props}
+  >
+    {children ?? <ChevronRight />}
+  </li>
+);
+BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
+
+const BreadcrumbEllipsis = ({ className, ...props }: React.ComponentProps<"span">) => (
+  <span
+    role="presentation"
+    aria-hidden="true"
+    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    {...props}
+  >
+    <MoreHorizontal className="h-4 w-4" />
+    <span className="sr-only">More</span>
+  </span>
+);
+BreadcrumbEllipsis.displayName = "BreadcrumbElipssis";
+
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+};

@@ -1,1 +1,216 @@
-aW1wb3J0IHsgdG9vbCB9IGZyb20gImFpIjsKaW1wb3J0IHsgeiB9IGZyb20gInpvZCI7CmltcG9ydCB7IGlzTmNlcnRVcmwsIE1BWF9UT09MX0NBTExTLCBOQ0VSVF9CT09LUywgYm9va0tleSwgdGV4dGJvb2tVcmwsIHRyaW0gfSBmcm9tICIuL25jZXJ0IjsKaW1wb3J0IHsgZWFybHlGYWxsYmFjayB9IGZyb20gIi4vZmFsbGJhY2siOwoKY29uc3QgR1cgPSAiaHR0cHM6Ly9jb25uZWN0b3ItZ2F0ZXdheS5sb3ZhYmxlLmRldiI7CgovLyBQZXItcHJvdmlkZXIgY2FwIHNvIG9uZSBzbG93IHNlcnZpY2UgbmV2ZXIgc3RhbGxzIHRoZSBhbnN3ZXIgKHRoZSBnYXRld2F5IGl0c2VsZiBhbGxvd3MgfjYwcykuCmNvbnN0IFNFQVJDSF9USU1FT1VUX01TID0gODAwMDsKY29uc3QgRVhUUkFDVF9USU1FT1VUX01TID0gMTUwMDA7CmNvbnN0IFBERl9FWFRSQUNUX1RJTUVPVVRfTVMgPSAyNTAwMDsKY29uc3QgU0NSQVBFX1RJTUVPVVRfTVMgPSAyMDAwMDsKCmFzeW5jIGZ1bmN0aW9uIGd3KGNvbm5lY3Rvcjogc3RyaW5nLCBrZXlOYW1lOiBzdHJpbmcsIHBhdGg6IHN0cmluZywgYm9keTogdW5rbm93biwgdGltZW91dE1zID0gMTUwMDApIHsKICBjb25zdCBsb3ZhYmxlID0gcHJvY2Vzcy5lbnZbIkxPVkFCTEVfQVBJX0tFWSJdOwogIGNvbnN0IGtleSA9IHByb2Nlc3MuZW52W2tleU5hbWVdOwogIGlmICghbG92YWJsZSB8fCAha2V5KSB0aHJvdyBuZXcgRXJyb3IoYCR7Y29ubmVjdG9yfSBub3QgY29uZmlndXJlZGApOwogIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKGAke0dXfS8ke2Nvbm5lY3Rvcn0ke3BhdGh9YCwgewogICAgbWV0aG9kOiAiUE9TVCIsCiAgICBoZWFkZXJzOiB7CiAgICAgIEF1dGhvcml6YXRpb246IGBCZWFyZXIgJHtsb3ZhYmxlfWAsCiAgICAgICJYLUNvbm5lY3Rpb24tQXBpLUtleSI6IGtleSwKICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwKICAgIH0sCiAgICBib2R5OiBKU09OLnN0cmluZ2lmeShib2R5KSwKICAgIHNpZ25hbDogQWJvcnRTaWduYWwudGltZW91dCh0aW1lb3V0TXMpLAogIH0pOwogIGlmICghcmVzLm9rKSB7CiAgICBjb25zdCB0ID0gYXdhaXQgcmVzLnRleHQoKTsKICAgIGNvbnNvbGUuZXJyb3IoYCR7Y29ubmVjdG9yfSBmYWlsZWQgWyR7cmVzLnN0YXR1c31dOiAke3R9YCk7CiAgICB0aHJvdyBuZXcgRXJyb3IoYCR7Y29ubmVjdG9yfSBmYWlsZWQgWyR7cmVzLnN0YXR1c31dYCk7CiAgfQogIHJldHVybiByZXMuanNvbigpIGFzIFByb21pc2U8YW55PjsKfQoKLyoqIFRvb2xzIGZvciBvbmUgcmVxdWVzdDsgYSBzaGFyZWQgY291bnRlciBjYXBzIHBhaWQgY2FsbHMgcGVyIGFuc3dlci4gKi8KZXhwb3J0IGZ1bmN0aW9uIGNyZWF0ZUFnZW50VG9vbHMob3B0cz86IHsgd2ViU2VhcmNoPzogYm9vbGVhbiB9KSB7CiAgbGV0IGNhbGxzID0gMDsKICBjb25zdCBndWFyZCA9ICgpID0+IHsKICAgIGNhbGxzICs9IDE7CiAgICBpZiAoY2FsbHMgPiBNQVhfVE9PTF9DQUxMUykgdGhyb3cgbmV3IEVycm9yKCJUb29sIGJ1ZGdldCB1c2VkIHVwIOKAlCBhbnN3ZXIgd2l0aCB3aGF0IHlvdSBoYXZlLiIpOwogIH07CgogIGNvbnN0IHdlYlNlYXJjaFRvb2wgPSB0b29sKHsKICAgIGRlc2NyaXB0aW9uOgogICAgICAiU2VhcmNoIHRoZSBsaXZlIHdlYiBmb3IgcmVhbCwgY3VycmVudCBpbmZvcm1hdGlvbiAobmV3cywgZmFjdHMsIGRhdGVzLCBzdGF0cywgYW55dGhpbmcgYmV5b25kIE5DRVJUKS4gT25seSBhdmFpbGFibGUgd2hlbiB0aGUgc3R1ZGVudCB0dXJuZWQgU2VhcmNoIG9uLiBSZXR1cm5zIHRpdGxlZCByZXN1bHRzIHdpdGggbGlua3MgYW5kIHNuaXBwZXRzIOKAlCBjaXRlIHRoZSBsaW5rcyB5b3UgdXNlLiIsCiAgICBpbnB1dFNjaGVtYTogei5vYmplY3QoewogICAgICBxdWVyeTogei5zdHJpbmcoKS5kZXNjcmliZSgiU2hvcnQgc2VhcmNoIGtleXdvcmRzLCBlLmcuICdORUVUIDIwMjcgZXhhbSBkYXRlIE5UQSciKSwKICAgIH0pLAogICAgZXhlY3V0ZTogYXN5bmMgKHsgcXVlcnkgfSkgPT4gewogICAgICBndWFyZCgpOwogICAgICBjb25zdCBzZWVuID0gbmV3IFNldDxzdHJpbmc+KCk7CiAgICAgIGNvbnN0IHJlc3VsdHM6IHsgdGl0bGU/OiBzdHJpbmc7IHVybD86IHN0cmluZzsgc25pcHBldDogc3RyaW5nIH1bXSA9IFtdOwogICAgICBjb25zdCBwdXNoID0gKHI6IGFueSkgPT4gewogICAgICAgIGNvbnN0IHVybCA9IHI/LnVybDsKICAgICAgICBpZiAoIXVybCB8fCBzZWVuLmhhcyh1cmwpKSByZXR1cm47CiAgICAgICAgc2Vlbi5hZGQodXJsKTsKICAgICAgICByZXN1bHRzLnB1c2goeyB0aXRsZTogci50aXRsZSwgdXJsLCBzbmlwcGV0OiB0cmltKHIuc25pcHBldCA/PyAoci5leGNlcnB0cyA/PyBbXSkuam9pbigiIOKApiAiKSwgNTAwKSB9KTsKICAgICAgfTsKICAgICAgY29uc3QgW3BweCwgcGFyXSA9IGF3YWl0IFByb21pc2UuYWxsU2V0dGxlZChbCiAgICAgICAgZ3coInBlcnBsZXhpdHkiLCAiUEVSUExFWElUWV9BUElfS0VZIiwgIi9zZWFyY2giLCB7IHF1ZXJ5LCBtYXhfcmVzdWx0czogNSB9LCBTRUFSQ0hfVElNRU9VVF9NUyksCiAgICAgICAgZ3coInBhcmFsbGVsIiwgIlBBUkFMTEVMX0FQSV9LRVkiLCAiL3YxL3NlYXJjaCIsIHsKICAgICAgICAgIG9iamVjdGl2ZTogYEZpbmQgYWNjdXJhdGUsIGN1cnJlbnQgaW5mb3JtYXRpb24gZm9yOiAke3F1ZXJ5fWAsCiAgICAgICAgICBzZWFyY2hfcXVlcmllczogW3F1ZXJ5LnNsaWNlKDAsIDE5MCldLAogICAgICAgICAgbW9kZTogImZhc3QiLAogICAgICAgICAgYWR2YW5jZWRfc2V0dGluZ3M6IHsgbWF4X3Jlc3VsdHM6IDUsIGV4Y2VycHRfc2V0dGluZ3M6IHsgbWF4X2NoYXJzX3Blcl9yZXN1bHQ6IDYwMCB9IH0sCiAgICAgICAgfSwgU0VBUkNIX1RJTUVPVVRfTVMpLAogICAgICBdKTsKICAgICAgaWYgKHBweC5zdGF0dXMgPT09ICJmdWxmaWxsZWQiKSAocHB4LnZhbHVlLnJlc3VsdHMgPz8gW10pLmZvckVhY2gocHVzaCk7CiAgICAgIGlmIChwYXIuc3RhdHVzID09PSAiZnVsZmlsbGVkIikgKHBhci52YWx1ZS5yZXN1bHRzID8/IFtdKS5mb3JFYWNoKHB1c2gpOwogICAgICBpZiAoIXJlc3VsdHMubGVuZ3RoKSByZXR1cm4geyByZXN1bHRzOiBbXSwgZXJyb3I6ICJXZWIgc2VhcmNoIHJldHVybmVkIG5vdGhpbmcg4oCUIGFuc3dlciBmcm9tIHlvdXIgb3duIGtub3dsZWRnZS4iIH07CiAgICAgIHJldHVybiB7IHJlc3VsdHM6IHJlc3VsdHMuc2xpY2UoMCwgOCkgfTsKICAgIH0sCiAgfSk7CgogIHJldHVybiB7CiAgICAuLi4ob3B0cz8ud2ViU2VhcmNoID8geyB3ZWJfc2VhcmNoOiB3ZWJTZWFyY2hUb29sIH0gOiB7fSksCiAgICBuY2VydF9zZWFyY2g6IHRvb2woewogICAgICBkZXNjcmlwdGlvbjoKICAgICAgICAiU2VhcmNoIHRoZSBvZmZpY2lhbCBOQ0VSVCBDbGFzcyAxMS8xMiB0ZXh0Ym9va3MgKG5jZXJ0Lm5pYy5pbikgZm9yIHRoZSBjaGFwdGVyIGFuZCBleGFjdCBsaW5lcyBjb3ZlcmluZyBhIGNvbmNlcHQuIENhbGwgdGhpcyBmaXJzdCBmb3IgZXZlcnkgbmV3IHF1ZXN0aW9uLiIsCiAgICAgIGlucHV0U2NoZW1hOiB6Lm9iamVjdCh7CiAgICAgICAgcXVlcnk6IHouc3RyaW5nKCkuZGVzY3JpYmUoIlNob3J0IGtleXdvcmRzLCBlLmcuICdOZXd0b24gc2Vjb25kIGxhdyBtb21lbnR1bSciKSwKICAgICAgICBjbGFzc051bTogei5udW1iZXIoKS5kZXNjcmliZSgiMTEgb3IgMTIiKSwKICAgICAgICBzdWJqZWN0OiB6LnN0cmluZygpLmRlc2NyaWJlKCJwaHlzaWNzLCBjaGVtaXN0cnkgb3IgYmlvbG9neSIpLAogICAgICB9KSwKICAgICAgZXhlY3V0ZTogYXN5bmMgKHsgcXVlcnksIGNsYXNzTnVtLCBzdWJqZWN0IH0pID0+IHsKICAgICAgICBndWFyZCgpOwogICAgICAgIGNvbnN0IGJvb2sgPSBOQ0VSVF9CT09LU1tib29rS2V5KGNsYXNzTnVtLCBzdWJqZWN0KV07CiAgICAgICAgdHJ5IHsKICAgICAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCBndygicGFyYWxsZWwiLCAiUEFSQUxMRUxfQVBJX0tFWSIsICIvdjEvc2VhcmNoIiwgewogICAgICAgICAgICBvYmplY3RpdmU6IGBGaW5kIHRoZSBOQ0VSVCAke2Jvb2s/LmxhYmVsID8/ICIifSB0ZXh0Ym9vayBzZWN0aW9uIGV4cGxhaW5pbmc6ICR7cXVlcnl9YCwKICAgICAgICAgICAgc2VhcmNoX3F1ZXJpZXM6IFtgTkNFUlQgY2xhc3MgJHtjbGFzc051bX0gJHtzdWJqZWN0fSAke3F1ZXJ5fWAuc2xpY2UoMCwgMTkwKV0sCiAgICAgICAgICAgIG1vZGU6ICJmYXN0IiwKICAgICAgICAgICAgYWR2YW5jZWRfc2V0dGluZ3M6IHsKICAgICAgICAgICAgICBtYXhfcmVzdWx0czogNCwKICAgICAgICAgICAgICBzb3VyY2VfcG9saWN5OiB7IGluY2x1ZGVfZG9tYWluczogWyJuY2VydC5uaWMuaW4iXSB9LAogICAgICAgICAgICAgIGV4Y2VycHRfc2V0dGluZ3M6IHsgbWF4X2NoYXJzX3Blcl9yZXN1bHQ6IDkwMCB9LAogICAgICAgICAgICB9LAogICAgICAgICAgfSwgU0VBUkNIX1RJTUVPVVRfTVMpOwogICAgICAgICAgY29uc3QgcmVzdWx0cyA9IChkYXRhLnJlc3VsdHMgPz8gW10pLm1hcCgocjogYW55KSA9PiAoewogICAgICAgICAgICB0aXRsZTogci50aXRsZSwKICAgICAgICAgICAgdXJsOiByLnVybCwKICAgICAgICAgICAgZXhjZXJwdDogdHJpbSgoci5leGNlcnB0cyA/PyBbXSkuam9pbigiIOKApiAiKSwgOTAwKSwKICAgICAgICAgIH0pKTsKICAgICAgICAgIHJldHVybiB7IGJvb2s6IGJvb2s/LmxhYmVsLCBib29rVXJsOiB0ZXh0Ym9va1VybChjbGFzc051bSwgc3ViamVjdCksIHJlc3VsdHMgfTsKICAgICAgICB9IGNhdGNoIChlKSB7CiAgICAgICAgICByZXR1cm4geyBib29rOiBib29rPy5sYWJlbCwgYm9va1VybDogdGV4dGJvb2tVcmwoY2xhc3NOdW0sIHN1YmplY3QpLCByZXN1bHRzOiBbXSwgZXJyb3I6IFN0cmluZyhlKSB9OwogICAgICAgIH0KICAgICAgfSwKICAgIH0pLAoKICAgIG5jZXJ0X3JlYWQ6IHRvb2woewogICAgICBkZXNjcmlwdGlvbjogIlJlYWQgdGhlIHRleHQgb2Ygb25lIG5jZXJ0Lm5pYy5pbiBwYWdlIG9yIGNoYXB0ZXIgUERGIGZvdW5kIGJ5IG5jZXJ0X3NlYXJjaCwgdG8gcXVvdGUgTkNFUlQgZXhhY3RseS4iLAogICAgICBpbnB1dFNjaGVtYTogei5vYmplY3QoewogICAgICAgIHVybDogei5zdHJpbmcoKSwKICAgICAgICBmb2N1czogei5zdHJpbmcoKS5kZXNjcmliZSgiV2hhdCB0byBsb29rIGZvciBpbiB0aGUgcGFnZSIpLAogICAgICB9KSwKICAgICAgZXhlY3V0ZTogYXN5bmMgKHsgdXJsLCBmb2N1cyB9KSA9PiB7CiAgICAgICAgaWYgKCFpc05jZXJ0VXJsKHVybCkpIHJldHVybiB7IGVycm9yOiAiT25seSBuY2VydC5uaWMuaW4gcGFnZXMgY2FuIGJlIHJlYWQuIiB9OwogICAgICAgIGd1YXJkKCk7CiAgICAgICAgY29uc3QgcGFyYWxsZWxFeHRyYWN0ID0gYXN5bmMgKCk6IFByb21pc2U8eyB1cmw6IHN0cmluZzsgdGl0bGU/OiBzdHJpbmc7IHRleHQ/OiBzdHJpbmc7IGVycm9yPzogc3RyaW5nIH0+ID0+IHsKICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCBndygicGFyYWxsZWwiLCAiUEFSQUxMRUxfQVBJX0tFWSIsICIvdjEvZXh0cmFjdCIsIHsKICAgICAgICAgICAgICB1cmxzOiBbdXJsXSwKICAgICAgICAgICAgICBvYmplY3RpdmU6IGZvY3VzLAogICAgICAgICAgICAgIGFkdmFuY2VkX3NldHRpbmdzOiB7IGV4Y2VycHRfc2V0dGluZ3M6IHsgbWF4X2NoYXJzX3Blcl9yZXN1bHQ6IDMwMDAgfSB9LAogICAgICAgICAgICB9LCBQREZfRVhUUkFDVF9USU1FT1VUX01TKTsKICAgICAgICAgICAgY29uc3QgciA9IGRhdGEucmVzdWx0cz8uWzBdOwogICAgICAgICAgICBpZiAocikgcmV0dXJuIHsgdXJsLCB0aXRsZTogci50aXRsZSwgdGV4dDogdHJpbSgoci5leGNlcnB0cyA/PyBbXSkuam9pbigiXG7igKZcbiIpKSB9OwogICAgICAgICAgfSBjYXRjaCB7CiAgICAgICAgICAgIC8qIGZhbGwgdGhyb3VnaCB0byBGaXJlY3Jhd2wgKi8KICAgICAgICAgIH0KICAgICAgICAgIHJldHVybiB7IHVybCwgdGV4dDogIiIsIGVycm9yOiAiTm8gcmVhZGFibGUgdGV4dCBmb3VuZCBvbiB0aGlzIHBhZ2UuIiB9OwogICAgICAgIH07CiAgICAgICAgY29uc3QgZmlyZWNyYXdsU2NyYXBlID0gYXN5bmMgKCk6IFByb21pc2U8eyB1cmw6IHN0cmluZzsgdGl0bGU/OiBzdHJpbmc7IHRleHQ/OiBzdHJpbmc7IGVycm9yPzogc3RyaW5nIH0+ID0+IHsKICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCBndygiZmlyZWNyYXdsIiwgIkZJUkVDUkFXTF9BUElfS0VZIiwgIi92Mi9zY3JhcGUiLCB7CiAgICAgICAgICAgICAgdXJsLAogICAgICAgICAgICAgIGZvcm1hdHM6IFsibWFya2Rvd24iXSwKICAgICAgICAgICAgICBvbmx5TWFpbkNvbnRlbnQ6IHRydWUsCiAgICAgICAgICAgIH0sIFNDUkFQRV9USU1FT1VUX01TKTsKICAgICAgICAgICAgY29uc3QgbWQgPSBkYXRhLm1hcmtkb3duID8/IGRhdGEuZGF0YT8ubWFya2Rvd24gPz8gIiI7CiAgICAgICAgICAgIHJldHVybiB7IHVybCwgdGV4dDogdHJpbShtZCkgfTsKICAgICAgICAgIH0gY2F0Y2ggKGUpIHsKICAgICAgICAgICAgcmV0dXJuIHsgdXJsLCBlcnJvcjogU3RyaW5nKGUpIH07CiAgICAgICAgICB9CiAgICAgICAgfTsKICAgICAgICAvLyBQYXJhbGxlbCBleHRyYWN0cyBmYXN0ZXI7IGlmIGl0IGlzIHNsb3csIEZpcmVjcmF3bCBzdGFydHMgdG9vIGFuZCB0aGUgZmlyc3QgdXNhYmxlIHRleHQgd2lucy4KICAgICAgICByZXR1cm4gZWFybHlGYWxsYmFjayhwYXJhbGxlbEV4dHJhY3QoKSwgZmlyZWNyYXdsU2NyYXBlLCA0MDAwLCAocikgPT4gISFyLnRleHQpOwogICAgICB9LAogICAgfSksCgogICAgcmVhZF9saW5rOiB0b29sKHsKICAgICAgZGVzY3JpcHRpb246CiAgICAgICAgIlJlYWQgYSB3ZWIgcGFnZSBvciBQREYgbGluayB0aGUgU1RVREVOVCBwYXN0ZWQgKHRoZWlyIG5vdGVzLCBhIGNoYXB0ZXIgUERGLCBhbiBhcnRpY2xlKSBzbyB5b3UgY2FuIHRlYWNoIG9yIHF1aXogZnJvbSBpdC4gT25seSBmb3IgbGlua3MgdGhlIHN0dWRlbnQgZ2F2ZS4iLAogICAgICBpbnB1dFNjaGVtYTogei5vYmplY3QoeyB1cmw6IHouc3RyaW5nKCkgfSksCiAgICAgIGV4ZWN1dGU6IGFzeW5jICh7IHVybCB9KSA9PiB7CiAgICAgICAgaWYgKCEvXmh0dHBzPzpcL1wvL2kudGVzdCh1cmwpKSByZXR1cm4geyBlcnJvcjogIk5vdCBhIHdlYiBsaW5rLiIgfTsKICAgICAgICBndWFyZCgpOwogICAgICAgIGNvbnN0IHBhcmFsbGVsUmVhZCA9IGFzeW5jICgpOiBQcm9taXNlPHsgdXJsOiBzdHJpbmc7IHRpdGxlPzogc3RyaW5nOyB0ZXh0Pzogc3RyaW5nOyB0cnVuY2F0ZWQ/OiBib29sZWFuOyBlcnJvcj86IHN0cmluZyB9PiA9PiB7CiAgICAgICAgICB0cnkgewogICAgICAgICAgICBjb25zdCBkYXRhID0gYXdhaXQgZ3coInBhcmFsbGVsIiwgIlBBUkFMTEVMX0FQSV9LRVkiLCAiL3YxL2V4dHJhY3QiLCB7CiAgICAgICAgICAgICAgdXJsczogW3VybF0sCiAgICAgICAgICAgICAgb2JqZWN0aXZlOiAiUmVhZCB0aGUgc3R1ZGVudCdzIGRvY3VtZW50LCBwcmVzZXJ2aW5nIHF1ZXN0aW9ucywgb3B0aW9ucywgYW5zd2VyIGtleXMgYW5kIHBhZ2UgcmVmZXJlbmNlcy4iLAogICAgICAgICAgICAgIGFkdmFuY2VkX3NldHRpbmdzOiB7IGZ1bGxfY29udGVudDogdHJ1ZSwgZXhjZXJwdF9zZXR0aW5nczogeyBtYXhfY2hhcnNfcGVyX3Jlc3VsdDogMTIwMDAgfSB9LAogICAgICAgICAgICB9LCBFWFRSQUNUX1RJTUVPVVRfTVMpOwogICAgICAgICAgICBjb25zdCByZXN1bHQgPSBkYXRhLnJlc3VsdHM/LlswXTsKICAgICAgICAgICAgY29uc3QgdGV4dCA9IHJlc3VsdD8uZnVsbF9jb250ZW50IHx8IChyZXN1bHQ/LmV4Y2VycHRzID8/IFtdKS5qb2luKCJcbiIpOwogICAgICAgICAgICBpZiAodGV4dD8udHJpbSgpKSByZXR1cm4geyB1cmwsIHRpdGxlOiByZXN1bHQudGl0bGUsIHRleHQ6IHRyaW0odGV4dCwgMTIwMDApLCB0cnVuY2F0ZWQ6IHRleHQubGVuZ3RoID4gMTIwMDAgfTsKICAgICAgICAgIH0gY2F0Y2ggeyAvKiBGYWxsIGJhY2sgdG8gdGhlIGV4aXN0aW5nIHJlYWRlci4gKi8gfQogICAgICAgICAgcmV0dXJuIHsgdXJsLCB0ZXh0OiAiIiwgZXJyb3I6ICJUaGlzIGxpbmsgcmV0dXJuZWQgbm8gcmVhZGFibGUgdGV4dC4gVXBsb2FkIHRoZSBQREYgaW5zdGVhZDsgZG8gbm90IGd1ZXNzIGl0cyBjb250ZW50cy4iIH07CiAgICAgICAgfTsKICAgICAgICBjb25zdCBmaXJlY3Jhd2xSZWFkID0gYXN5bmMgKCk6IFByb21pc2U8eyB1cmw6IHN0cmluZzsgdGl0bGU/OiBzdHJpbmc7IHRleHQ/OiBzdHJpbmc7IHRydW5jYXRlZD86IGJvb2xlYW47IGVycm9yPzogc3RyaW5nIH0+ID0+IHsKICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCBndygiZmlyZWNyYXdsIiwgIkZJUkVDUkFXTF9BUElfS0VZIiwgIi92Mi9zY3JhcGUiLCB7CiAgICAgICAgICAgICAgdXJsLAogICAgICAgICAgICAgIGZvcm1hdHM6IFsibWFya2Rvd24iXSwKICAgICAgICAgICAgICBvbmx5TWFpbkNvbnRlbnQ6IHRydWUsCiAgICAgICAgICAgIH0sIFNDUkFQRV9USU1FT1VUX01TKTsKICAgICAgICAgICAgY29uc3QgbWQgPSBkYXRhLm1hcmtkb3duID8/IGRhdGEuZGF0YT8ubWFya2Rvd24gPz8gIiI7CiAgICAgICAgICAgIGNvbnN0IHRpdGxlID0gZGF0YS5tZXRhZGF0YT8udGl0bGUgPz8gZGF0YS5kYXRhPy5tZXRhZGF0YT8udGl0bGU7CiAgICAgICAgICAgIGlmICghbWQudHJpbSgpKSByZXR1cm4geyB1cmwsIGVycm9yOiAiVGhpcyBsaW5rIHJldHVybmVkIG5vIHJlYWRhYmxlIHRleHQuIFVwbG9hZCB0aGUgUERGIGluc3RlYWQ7IGRvIG5vdCBndWVzcyBpdHMgY29udGVudHMuIiB9OwogICAgICAgICAgICByZXR1cm4geyB1cmwsIHRpdGxlLCB0ZXh0OiB0cmltKG1kLCAxMjAwMCksIHRydW5jYXRlZDogbWQubGVuZ3RoID4gMTIwMDAgfTsKICAgICAgICAgIH0gY2F0Y2ggKGUpIHsKICAgICAgICAgICAgcmV0dXJuIHsgdXJsLCBlcnJvcjogU3RyaW5nKGUpIH07CiAgICAgICAgICB9CiAgICAgICAgfTsKICAgICAgICAvLyBQdWJsaWMgUERGIGV4dHJhY3Rpb24gaXMgZmFzdGVyIHZpYSBQYXJhbGxlbDsgaWYgaXQgaXMgc2xvdywgRmlyZWNyYXdsIHN0YXJ0cyB0b28gYW5kIHRoZSBmaXJzdCB1c2FibGUgdGV4dCB3aW5zLgogICAgICAgIHJldHVybiBlYXJseUZhbGxiYWNrKHBhcmFsbGVsUmVhZCgpLCBmaXJlY3Jhd2xSZWFkLCA0MDAwLCAocikgPT4gISFyLnRleHQpOwogICAgICB9LAogICAgfSksCgogICAgbmVldF9weXFfc2VhcmNoOiB0b29sKHsKICAgICAgZGVzY3JpcHRpb246ICJGaW5kIE5FRVQgcHJldmlvdXMteWVhciBxdWVzdGlvbnMgYW5kIGV4YW0gdHJlbmRzIG9uIGEgdG9waWMuIFVzZSBvbmNlIGF0IG1vc3QsIG9ubHkgZm9yIG5ldyBxdWVzdGlvbnMuIiwKICAgICAgaW5wdXRTY2hlbWE6IHoub2JqZWN0KHsgdG9waWM6IHouc3RyaW5nKCkgfSksCiAgICAgIGV4ZWN1dGU6IGFzeW5jICh7IHRvcGljIH0pID0+IHsKICAgICAgICBndWFyZCgpOwogICAgICAgIHRyeSB7CiAgICAgICAgICBjb25zdCBkYXRhID0gYXdhaXQgZ3coInBlcnBsZXhpdHkiLCAiUEVSUExFWElUWV9BUElfS0VZIiwgIi9zZWFyY2giLCB7CiAgICAgICAgICAgIHF1ZXJ5OiBgTkVFVCBwcmV2aW91cyB5ZWFyIHF1ZXN0aW9ucyAke3RvcGljfWAsCiAgICAgICAgICAgIG1heF9yZXN1bHRzOiA0LAogICAgICAgICAgfSwgU0VBUkNIX1RJTUVPVVRfTVMpOwogICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgcmVzdWx0czogKGRhdGEucmVzdWx0cyA/PyBbXSkubWFwKChyOiBhbnkpID0+ICh7CiAgICAgICAgICAgICAgdGl0bGU6IHIudGl0bGUsCiAgICAgICAgICAgICAgdXJsOiByLnVybCwKICAgICAgICAgICAgICBzbmlwcGV0OiB0cmltKHIuc25pcHBldCA/PyAiIiwgNTAwKSwKICAgICAgICAgICAgfSkpLAogICAgICAgICAgfTsKICAgICAgICB9IGNhdGNoIChlKSB7CiAgICAgICAgICByZXR1cm4geyByZXN1bHRzOiBbXSwgZXJyb3I6IFN0cmluZyhlKSB9OwogICAgICAgIH0KICAgICAgfSwKICAgIH0pLAogIH07Cn0K
+import { tool } from "ai";
+import { z } from "zod";
+import { isNcertUrl, MAX_TOOL_CALLS, NCERT_BOOKS, bookKey, textbookUrl, trim } from "./ncert";
+import { earlyFallback } from "./fallback";
+
+const GW = "https://connector-gateway.lovable.dev";
+
+// Per-provider cap so one slow service never stalls the answer (the gateway itself allows ~60s).
+const SEARCH_TIMEOUT_MS = 8000;
+const EXTRACT_TIMEOUT_MS = 15000;
+const PDF_EXTRACT_TIMEOUT_MS = 25000;
+const SCRAPE_TIMEOUT_MS = 20000;
+
+async function gw(connector: string, keyName: string, path: string, body: unknown, timeoutMs = 15000) {
+  const lovable = process.env["LOVABLE_API_KEY"];
+  const key = process.env[keyName];
+  if (!lovable || !key) throw new Error(`${connector} not configured`);
+  const res = await fetch(`${GW}/${connector}${path}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${lovable}`,
+      "X-Connection-Api-Key": key,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(timeoutMs),
+  });
+  if (!res.ok) {
+    const t = await res.text();
+    console.error(`${connector} failed [${res.status}]: ${t}`);
+    throw new Error(`${connector} failed [${res.status}]`);
+  }
+  return res.json() as Promise<any>;
+}
+
+/** Tools for one request; a shared counter caps paid calls per answer. */
+export function createAgentTools(opts?: { webSearch?: boolean }) {
+  let calls = 0;
+  const guard = () => {
+    calls += 1;
+    if (calls > MAX_TOOL_CALLS) throw new Error("Tool budget used up — answer with what you have.");
+  };
+
+  const webSearchTool = tool({
+    description:
+      "Search the live web for real, current information (news, facts, dates, stats, anything beyond NCERT). Only available when the student turned Search on. Returns titled results with links and snippets — cite the links you use.",
+    inputSchema: z.object({
+      query: z.string().describe("Short search keywords, e.g. 'NEET 2027 exam date NTA'"),
+    }),
+    execute: async ({ query }) => {
+      guard();
+      const seen = new Set<string>();
+      const results: { title?: string; url?: string; snippet: string }[] = [];
+      const push = (r: any) => {
+        const url = r?.url;
+        if (!url || seen.has(url)) return;
+        seen.add(url);
+        results.push({ title: r.title, url, snippet: trim(r.snippet ?? (r.excerpts ?? []).join(" … "), 500) });
+      };
+      const [ppx, par] = await Promise.allSettled([
+        gw("perplexity", "PERPLEXITY_API_KEY", "/search", { query, max_results: 5 }, SEARCH_TIMEOUT_MS),
+        gw("parallel", "PARALLEL_API_KEY", "/v1/search", {
+          objective: `Find accurate, current information for: ${query}`,
+          search_queries: [query.slice(0, 190)],
+          mode: "fast",
+          advanced_settings: { max_results: 5, excerpt_settings: { max_chars_per_result: 600 } },
+        }, SEARCH_TIMEOUT_MS),
+      ]);
+      if (ppx.status === "fulfilled") (ppx.value.results ?? []).forEach(push);
+      if (par.status === "fulfilled") (par.value.results ?? []).forEach(push);
+      if (!results.length) return { results: [], error: "Web search returned nothing — answer from your own knowledge." };
+      return { results: results.slice(0, 8) };
+    },
+  });
+
+  return {
+    ...(opts?.webSearch ? { web_search: webSearchTool } : {}),
+    ncert_search: tool({
+      description:
+        "Search the official NCERT Class 11/12 textbooks (ncert.nic.in) for the chapter and exact lines covering a concept. Call this first for every new question.",
+      inputSchema: z.object({
+        query: z.string().describe("Short keywords, e.g. 'Newton second law momentum'"),
+        classNum: z.number().describe("11 or 12"),
+        subject: z.string().describe("physics, chemistry or biology"),
+      }),
+      execute: async ({ query, classNum, subject }) => {
+        guard();
+        const book = NCERT_BOOKS[bookKey(classNum, subject)];
+        try {
+          const data = await gw("parallel", "PARALLEL_API_KEY", "/v1/search", {
+            objective: `Find the NCERT ${book?.label ?? ""} textbook section explaining: ${query}`,
+            search_queries: [`NCERT class ${classNum} ${subject} ${query}`.slice(0, 190)],
+            mode: "fast",
+            advanced_settings: {
+              max_results: 4,
+              source_policy: { include_domains: ["ncert.nic.in"] },
+              excerpt_settings: { max_chars_per_result: 900 },
+            },
+          }, SEARCH_TIMEOUT_MS);
+          const results = (data.results ?? []).map((r: any) => ({
+            title: r.title,
+            url: r.url,
+            excerpt: trim((r.excerpts ?? []).join(" … "), 900),
+          }));
+          return { book: book?.label, bookUrl: textbookUrl(classNum, subject), results };
+        } catch (e) {
+          return { book: book?.label, bookUrl: textbookUrl(classNum, subject), results: [], error: String(e) };
+        }
+      },
+    }),
+
+    ncert_read: tool({
+      description: "Read the text of one ncert.nic.in page or chapter PDF found by ncert_search, to quote NCERT exactly.",
+      inputSchema: z.object({
+        url: z.string(),
+        focus: z.string().describe("What to look for in the page"),
+      }),
+      execute: async ({ url, focus }) => {
+        if (!isNcertUrl(url)) return { error: "Only ncert.nic.in pages can be read." };
+        guard();
+        const parallelExtract = async (): Promise<{ url: string; title?: string; text?: string; error?: string }> => {
+          try {
+            const data = await gw("parallel", "PARALLEL_API_KEY", "/v1/extract", {
+              urls: [url],
+              objective: focus,
+              advanced_settings: { excerpt_settings: { max_chars_per_result: 3000 } },
+            }, PDF_EXTRACT_TIMEOUT_MS);
+            const r = data.results?.[0];
+            if (r) return { url, title: r.title, text: trim((r.excerpts ?? []).join("\n…\n")) };
+          } catch {
+            /* fall through to Firecrawl */
+          }
+          return { url, text: "", error: "No readable text found on this page." };
+        };
+        const firecrawlScrape = async (): Promise<{ url: string; title?: string; text?: string; error?: string }> => {
+          try {
+            const data = await gw("firecrawl", "FIRECRAWL_API_KEY", "/v2/scrape", {
+              url,
+              formats: ["markdown"],
+              onlyMainContent: true,
+            }, SCRAPE_TIMEOUT_MS);
+            const md = data.markdown ?? data.data?.markdown ?? "";
+            return { url, text: trim(md) };
+          } catch (e) {
+            return { url, error: String(e) };
+          }
+        };
+        // Parallel extracts faster; if it is slow, Firecrawl starts too and the first usable text wins.
+        return earlyFallback(parallelExtract(), firecrawlScrape, 4000, (r) => !!r.text);
+      },
+    }),
+
+    read_link: tool({
+      description:
+        "Read a web page or PDF link the STUDENT pasted (their notes, a chapter PDF, an article) so you can teach or quiz from it. Only for links the student gave.",
+      inputSchema: z.object({ url: z.string() }),
+      execute: async ({ url }) => {
+        if (!/^https?:\/\//i.test(url)) return { error: "Not a web link." };
+        guard();
+        const parallelRead = async (): Promise<{ url: string; title?: string; text?: string; truncated?: boolean; error?: string }> => {
+          try {
+            const data = await gw("parallel", "PARALLEL_API_KEY", "/v1/extract", {
+              urls: [url],
+              objective: "Read the student's document, preserving questions, options, answer keys and page references.",
+              advanced_settings: { full_content: true, excerpt_settings: { max_chars_per_result: 12000 } },
+            }, EXTRACT_TIMEOUT_MS);
+            const result = data.results?.[0];
+            const text = result?.full_content || (result?.excerpts ?? []).join("\n");
+            if (text?.trim()) return { url, title: result.title, text: trim(text, 12000), truncated: text.length > 12000 };
+          } catch { /* Fall back to the existing reader. */ }
+          return { url, text: "", error: "This link returned no readable text. Upload the PDF instead; do not guess its contents." };
+        };
+        const firecrawlRead = async (): Promise<{ url: string; title?: string; text?: string; truncated?: boolean; error?: string }> => {
+          try {
+            const data = await gw("firecrawl", "FIRECRAWL_API_KEY", "/v2/scrape", {
+              url,
+              formats: ["markdown"],
+              onlyMainContent: true,
+            }, SCRAPE_TIMEOUT_MS);
+            const md = data.markdown ?? data.data?.markdown ?? "";
+            const title = data.metadata?.title ?? data.data?.metadata?.title;
+            if (!md.trim()) return { url, error: "This link returned no readable text. Upload the PDF instead; do not guess its contents." };
+            return { url, title, text: trim(md, 12000), truncated: md.length > 12000 };
+          } catch (e) {
+            return { url, error: String(e) };
+          }
+        };
+        // Public PDF extraction is faster via Parallel; if it is slow, Firecrawl starts too and the first usable text wins.
+        return earlyFallback(parallelRead(), firecrawlRead, 4000, (r) => !!r.text);
+      },
+    }),
+
+    neet_pyq_search: tool({
+      description: "Find NEET previous-year questions and exam trends on a topic. Use once at most, only for new questions.",
+      inputSchema: z.object({ topic: z.string() }),
+      execute: async ({ topic }) => {
+        guard();
+        try {
+          const data = await gw("perplexity", "PERPLEXITY_API_KEY", "/search", {
+            query: `NEET previous year questions ${topic}`,
+            max_results: 4,
+          }, SEARCH_TIMEOUT_MS);
+          return {
+            results: (data.results ?? []).map((r: any) => ({
+              title: r.title,
+              url: r.url,
+              snippet: trim(r.snippet ?? "", 500),
+            })),
+          };
+        } catch (e) {
+          return { results: [], error: String(e) };
+        }
+      },
+    }),
+  };
+}

@@ -1,1 +1,9 @@
-aW1wb3J0IHsgYWZ0ZXJFYWNoLCBleHBlY3QsIGl0IH0gZnJvbSAndml0ZXN0JzsKaW1wb3J0IHsgbG9hZENhcmRzLCByZWNvcmRSZXN1bHRzIH0gZnJvbSAnQC9saWIvc3JzJzsKYWZ0ZXJFYWNoKCgpID0+IGxvY2FsU3RvcmFnZS5jbGVhcigpKTsKaXQuZWFjaChbJ2Jyb2tlbi1qc29uJywgJ3t9JywgJ1tudWxsLDEyXSddKSgncmVjb3ZlcnMgY29ycnVwdCByZXZpZXcgaW5kZXggJXMgd2l0aG91dCBjcmFzaGluZycsIHZhbHVlID0+IHsKICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbSgnc25hcHNvbHZlLmNhcmRzLnNlZW4nLCB2YWx1ZSk7CiAgcmVjb3JkUmVzdWx0cygnYW5zd2VyJywgW3sgcTogJ0ZvcmNlPycsIGE6ICc2IE4nLCBjb3JyZWN0OiB0cnVlIH1dKTsKICByZWNvcmRSZXN1bHRzKCdhbnN3ZXInLCBbeyBxOiAnRm9yY2U/JywgYTogJzYgTicsIGNvcnJlY3Q6IHRydWUgfV0pOwogIGV4cGVjdChsb2FkQ2FyZHMoKVswXT8ucmV2aWV3cykudG9CZSgxKTsKfSk7
+import { afterEach, expect, it } from 'vitest';
+import { loadCards, recordResults } from '@/lib/srs';
+afterEach(() => localStorage.clear());
+it.each(['broken-json', '{}', '[null,12]'])('recovers corrupt review index %s without crashing', value => {
+  localStorage.setItem('snapsolve.cards.seen', value);
+  recordResults('answer', [{ q: 'Force?', a: '6 N', correct: true }]);
+  recordResults('answer', [{ q: 'Force?', a: '6 N', correct: true }]);
+  expect(loadCards()[0]?.reviews).toBe(1);
+});

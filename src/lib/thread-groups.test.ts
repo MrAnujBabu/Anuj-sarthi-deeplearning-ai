@@ -1,1 +1,18 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBncm91cFRocmVhZHMsIHRocmVhZEJ1Y2tldCB9IGZyb20gIi4vdGhyZWFkLWdyb3VwcyI7Cgpjb25zdCBub3cgPSBuZXcgRGF0ZSgyMDI2LCA5LCAyMCwgMTUsIDApLmdldFRpbWUoKTsKY29uc3QgYXQgPSAoZDogbnVtYmVyKSA9PiBuZXcgRGF0ZSgyMDI2LCA5LCAyMCAtIGQsIDEwLCAwKS5nZXRUaW1lKCk7CmNvbnN0IHQgPSAoaWQ6IHN0cmluZywgZDogbnVtYmVyLCB0ZXh0ID0gIiIpID0+ICh7IGlkLCB0aXRsZTogaWQsIHVwZGF0ZWRBdDogYXQoZCksIG1lc3NhZ2VzOiBbeyBpZDogaWQgKyAibSIsIHJvbGU6ICJ1c2VyIiBhcyBjb25zdCwgcGFydHM6IFt7IHR5cGU6ICJ0ZXh0IiBhcyBjb25zdCwgdGV4dCB9XSB9XSB9KTsKCmRlc2NyaWJlKCJjaGF0IGhpc3RvcnkgZ3JvdXBzIiwgKCkgPT4gewogIGl0KCJidWNrZXRzIGJ5IFRvZGF5IC8gWWVzdGVyZGF5IC8gNyBkYXlzIiwgKCkgPT4gewogICAgZXhwZWN0KHRocmVhZEJ1Y2tldChhdCgwKSwgbm93KSkudG9CZSgiVG9kYXkiKTsKICAgIGV4cGVjdCh0aHJlYWRCdWNrZXQoYXQoMSksIG5vdykpLnRvQmUoIlllc3RlcmRheSIpOwogICAgZXhwZWN0KHRocmVhZEJ1Y2tldChhdCg1KSwgbm93KSkudG9CZSgiUHJldmlvdXMgNyBkYXlzIik7CiAgfSk7CiAgaXQoInNlYXJjaCBtYXRjaGVzIG1lc3NhZ2UgdGV4dCwgbm90IGp1c3QgdGl0bGUiLCAoKSA9PiB7CiAgICBjb25zdCBnID0gZ3JvdXBUaHJlYWRzKFt0KCJhIiwgMCwgIm1pdG9jaG9uZHJpYSIpLCB0KCJiIiwgMSwgInBob3Rvc3ludGhlc2lzIildLCAicGhvdG8iLCBub3cpOwogICAgZXhwZWN0KGcpLnRvRXF1YWwoW1siWWVzdGVyZGF5IiwgW2V4cGVjdC5vYmplY3RDb250YWluaW5nKHsgaWQ6ICJiIiB9KV1dXSk7CiAgfSk7Cn0pOwo=
+import { describe, expect, it } from "vitest";
+import { groupThreads, threadBucket } from "./thread-groups";
+
+const now = new Date(2026, 9, 20, 15, 0).getTime();
+const at = (d: number) => new Date(2026, 9, 20 - d, 10, 0).getTime();
+const t = (id: string, d: number, text = "") => ({ id, title: id, updatedAt: at(d), messages: [{ id: id + "m", role: "user" as const, parts: [{ type: "text" as const, text }] }] });
+
+describe("chat history groups", () => {
+  it("buckets by Today / Yesterday / 7 days", () => {
+    expect(threadBucket(at(0), now)).toBe("Today");
+    expect(threadBucket(at(1), now)).toBe("Yesterday");
+    expect(threadBucket(at(5), now)).toBe("Previous 7 days");
+  });
+  it("search matches message text, not just title", () => {
+    const g = groupThreads([t("a", 0, "mitochondria"), t("b", 1, "photosynthesis")], "photo", now);
+    expect(g).toEqual([["Yesterday", [expect.objectContaining({ id: "b" })]]]);
+  });
+});

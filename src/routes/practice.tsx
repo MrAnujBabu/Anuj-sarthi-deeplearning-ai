@@ -1,1 +1,218 @@
-aW1wb3J0IHsgY3JlYXRlRmlsZVJvdXRlLCBMaW5rLCB1c2VOYXZpZ2F0ZSB9IGZyb20gJ0B0YW5zdGFjay9yZWFjdC1yb3V0ZXInOwppbXBvcnQgeyB1c2VFZmZlY3QsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyB0b2FzdCB9IGZyb20gJ3Nvbm5lcic7CmltcG9ydCB7IEJvb2tPcGVuVGV4dCwgSW1hZ2VQbHVzLCBMaXN0T3JkZXJlZCwgU2NhblNlYXJjaCB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7CmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJ0AvY29tcG9uZW50cy91aS9idXR0b24nOwppbXBvcnQgeyBTZWxlY3QsIFNlbGVjdENvbnRlbnQsIFNlbGVjdEl0ZW0sIFNlbGVjdFRyaWdnZXIsIFNlbGVjdFZhbHVlIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL3NlbGVjdCc7CmltcG9ydCB7IEFzc2lzdGFudEFuc3dlciB9IGZyb20gJ0AvY29tcG9uZW50cy9hc3Npc3RhbnQtYW5zd2VyJzsKaW1wb3J0IHsgbG9hZFByYWN0aWNlLCByZXZpZXdTYXZlZENhcmQgfSBmcm9tICdAL2xpYi9wcmFjdGljZSc7CmltcG9ydCB7IGFkZENhcmRzLCBjYXJkSWQsIHR5cGUgQ2FyZCB9IGZyb20gJ0AvbGliL3Nycyc7CmltcG9ydCB7IGNvbXBsZXRlUHJhY3RpY2VDYXJkLCBuZXh0UHJhY3RpY2VJZCwgcmVzdG9yZVByYWN0aWNlU2Vzc2lvbiwgdHlwZSBQcmFjdGljZVNlc3Npb24gfSBmcm9tICdAL2xpYi9wcmFjdGljZS1zZXNzaW9uJzsKaW1wb3J0IHsgdXNlQm9sZFF1ZXN0aW9ucywgdXNlU3R1ZHlUZXh0U2l6ZSB9IGZyb20gJ0AvbGliL3F1aXotbGFiZWwtcHJlZmVyZW5jZSc7CmltcG9ydCB7IE5DRVJUX0JJT0xPR1lfQ0hBUFRFUlMsIGNoYXB0ZXJMYWJlbCwgbmNlcnRDaGFwdGVyIH0gZnJvbSAnQC9saWIvbmNlcnQtYmlvbG9neSc7CmltcG9ydCB7IHNuaXBwZXRUb0NhcmQsIHN0cnVjdHVyZVF1aXpRdWV1ZSwgdHlwZSBOY2VydFNuaXBwZXQgfSBmcm9tICdAL2xpYi9uY2VydC1zbmlwcGV0cyc7CmltcG9ydCB7IHBlbmRpbmdGaXJzdE1lc3NhZ2UgfSBmcm9tICdAL2xpYi90aHJlYWRzJzsKCmV4cG9ydCBjb25zdCBSb3V0ZSA9IGNyZWF0ZUZpbGVSb3V0ZSgnL3ByYWN0aWNlJykoeyBoZWFkOiAoKSA9PiAoeyBtZXRhOiBbeyB0aXRsZTogJ1NhdmVkIHByYWN0aWNlIOKAlCBTbmFwU29sdmUnIH0seyBuYW1lOidkZXNjcmlwdGlvbicsIGNvbnRlbnQ6J1JldmlzZSBzYXZlZCBORUVUIHF1ZXN0aW9ucyBhbmQgYW5zd2VycyB3aXRob3V0IEFJIGNyZWRpdHMuJyB9LHsgcHJvcGVydHk6J29nOnRpdGxlJyxjb250ZW50OidTYXZlZCBwcmFjdGljZSDigJQgU25hcFNvbHZlJyB9LHsgcHJvcGVydHk6J29nOmRlc2NyaXB0aW9uJyxjb250ZW50OidDcmVkaXQtZnJlZSBhY3RpdmUgcmVjYWxsIGZyb20geW91ciBzYXZlZCBtYXRlcmlhbC4nIH0seyBwcm9wZXJ0eTonb2c6dHlwZScsY29udGVudDond2Vic2l0ZScgfSx7bmFtZTondHdpdHRlcjpjYXJkJyxjb250ZW50OidzdW1tYXJ5J31dIH0pLCBjb21wb25lbnQ6IFByYWN0aWNlIH0pOwoKdHlwZSBTY2FuU3RhdGUgPSAnaWRsZScgfCAnc2Nhbm5pbmcnIHwgJ2RvbmUnIHwgJ2Vycm9yJzsKCmZ1bmN0aW9uIE5jZXJ0RGVlcFNjYW4oeyBvbkNhcmRzIH06IHsgb25DYXJkczogKGNhcmRzOiBDYXJkW10pID0+IHZvaWQgfSkgewogIGNvbnN0IG5hdmlnYXRlID0gdXNlTmF2aWdhdGUoKTsKICBjb25zdCBbY2hhcHRlck5vLCBzZXRDaGFwdGVyTm9dID0gdXNlU3RhdGUoJzExLTgnKTsKICBjb25zdCBbc3RhdGUsIHNldFN0YXRlXSA9IHVzZVN0YXRlPFNjYW5TdGF0ZT4oJ2lkbGUnKTsKICBjb25zdCBbc25pcHBldHMsIHNldFNuaXBwZXRzXSA9IHVzZVN0YXRlPE5jZXJ0U25pcHBldFtdPihbXSk7CiAgY29uc3QgW2NoYXB0ZXJOYW1lLCBzZXRDaGFwdGVyTmFtZV0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgW3ZlcmlmaWVkLCBzZXRWZXJpZmllZF0gPSB1c2VTdGF0ZSh0cnVlKTsKICBjb25zdCBbZGlhZ3JhbVRvcGljLCBzZXREaWFncmFtVG9waWNdID0gdXNlU3RhdGU8c3RyaW5nIHwgbnVsbD4obnVsbCk7CgogIGFzeW5jIGZ1bmN0aW9uIHNjYW4oKSB7CiAgICBjb25zdCBbY2xzLCBub10gPSBjaGFwdGVyTm8uc3BsaXQoJy0nKS5tYXAoTnVtYmVyKTsKICAgIHNldFN0YXRlKCdzY2FubmluZycpOwogICAgdHJ5IHsKICAgICAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goJy9hcGkvbmNlcnQtc2NhbicsIHsKICAgICAgICBtZXRob2Q6ICdQT1NUJywKICAgICAgICBoZWFkZXJzOiB7ICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicgfSwKICAgICAgICBib2R5OiBKU09OLnN0cmluZ2lmeSh7IGNscywgbm8gfSksCiAgICAgIH0pOwogICAgICBjb25zdCBqID0gYXdhaXQgcmVzLmpzb24oKS5jYXRjaCgoKSA9PiAoe30pKTsKICAgICAgaWYgKCFyZXMub2spIHRocm93IG5ldyBFcnJvcihqLmVycm9yIHx8IGBTY2FuIGZhaWxlZCAoJHtyZXMuc3RhdHVzfSlgKTsKICAgICAgc2V0U25pcHBldHMoai5zbmlwcGV0cyA/PyBbXSk7CiAgICAgIHNldENoYXB0ZXJOYW1lKGouY2hhcHRlciA/PyAnJyk7CiAgICAgIHNldFZlcmlmaWVkKGoudmVyaWZpZWQgIT09IGZhbHNlKTsKICAgICAgY29uc3QgY2FyZHMgPSAoai5zbmlwcGV0cyA/PyBbXSkubWFwKChzOiBOY2VydFNuaXBwZXQpID0+IHNuaXBwZXRUb0NhcmQocywgai5jaGFwdGVyID8/ICcnKSk7CiAgICAgIGlmIChjYXJkcy5sZW5ndGgpIHsKICAgICAgICBvbkNhcmRzKGNhcmRzKTsKICAgICAgICB0b2FzdC5zdWNjZXNzKGAke2NhcmRzLmxlbmd0aH0gTkNFUlQgbGluZXMgc2F2ZWQgdG8geW91ciBkZWNrJHtqLmNhY2hlZCA/ICcgKGZyb20gY2FjaGUpJyA6ICcnfS5gKTsKICAgICAgfQogICAgICBzZXRTdGF0ZSgnZG9uZScpOwogICAgfSBjYXRjaCAoZSkgewogICAgICBzZXRTdGF0ZSgnZXJyb3InKTsKICAgICAgdG9hc3QuZXJyb3IoZSBpbnN0YW5jZW9mIEVycm9yID8gZS5tZXNzYWdlIDogJ1RoZSBjaGFwdGVyIHNjYW4gZmFpbGVkLicpOwogICAgfQogIH0KCiAgYXN5bmMgZnVuY3Rpb24gZGlhZ3JhbShzOiBOY2VydFNuaXBwZXQpIHsKICAgIHNldERpYWdyYW1Ub3BpYyhzLnRvcGljKTsKICAgIHRyeSB7CiAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKCcvYXBpL25jZXJ0LWRpYWdyYW0nLCB7CiAgICAgICAgbWV0aG9kOiAnUE9TVCcsCiAgICAgICAgaGVhZGVyczogeyAnQ29udGVudC1UeXBlJzogJ2FwcGxpY2F0aW9uL2pzb24nIH0sCiAgICAgICAgYm9keTogSlNPTi5zdHJpbmdpZnkoeyB0b3BpYzogcy50b3BpYywgY2hhcHRlcjogY2hhcHRlck5hbWUsIGxhYmVsczogW10gfSksCiAgICAgIH0pOwogICAgICBpZiAoIXJlcy5vayB8fCAhcmVzLmJvZHkpIHsKICAgICAgICBjb25zdCBqID0gYXdhaXQgcmVzLmpzb24oKS5jYXRjaCgoKSA9PiAoe30pKTsKICAgICAgICB0aHJvdyBuZXcgRXJyb3Ioai5lcnJvciB8fCBgRGlhZ3JhbSBmYWlsZWQgKCR7cmVzLnN0YXR1c30pYCk7CiAgICAgIH0KICAgICAgY29uc3QgcmVhZGVyID0gcmVzLmJvZHkuZ2V0UmVhZGVyKCk7CiAgICAgIGNvbnN0IGRlYyA9IG5ldyBUZXh0RGVjb2RlcigpOwogICAgICBsZXQgYnVmID0gJyc7CiAgICAgIGxldCBmaW5hbDogc3RyaW5nIHwgbnVsbCA9IG51bGw7CiAgICAgIGZvciAoOzspIHsKICAgICAgICBjb25zdCB7IGRvbmUsIHZhbHVlIH0gPSBhd2FpdCByZWFkZXIucmVhZCgpOwogICAgICAgIGlmIChkb25lKSBicmVhazsKICAgICAgICBidWYgKz0gZGVjLmRlY29kZSh2YWx1ZSwgeyBzdHJlYW06IHRydWUgfSk7CiAgICAgICAgbGV0IGk6IG51bWJlcjsKICAgICAgICB3aGlsZSAoKGkgPSBidWYuaW5kZXhPZignXG4nKSkgPj0gMCkgewogICAgICAgICAgY29uc3QgbGluZSA9IGJ1Zi5zbGljZSgwLCBpKS50cmltKCk7CiAgICAgICAgICBidWYgPSBidWYuc2xpY2UoaSArIDEpOwogICAgICAgICAgaWYgKCFsaW5lLnN0YXJ0c1dpdGgoJ2RhdGE6JykpIGNvbnRpbnVlOwogICAgICAgICAgY29uc3QgZGF0YSA9IGxpbmUuc2xpY2UoNSkudHJpbSgpOwogICAgICAgICAgaWYgKCFkYXRhIHx8IGRhdGEgPT09ICdbRE9ORV0nKSBjb250aW51ZTsKICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgIGNvbnN0IGV2ID0gSlNPTi5wYXJzZShkYXRhKTsKICAgICAgICAgICAgaWYgKGV2LnR5cGUgPT09ICdlcnJvcicgfHwgZXYuZXJyb3IpIHRocm93IG5ldyBFcnJvcihldi5lcnJvcj8ubWVzc2FnZSB8fCAnVGhlIGRpYWdyYW0gd2FzIHJlamVjdGVkLicpOwogICAgICAgICAgICBpZiAoZXYudHlwZSA9PT0gJ2ltYWdlX2dlbmVyYXRpb24uY29tcGxldGVkJyAmJiBldi5iNjRfanNvbikgZmluYWwgPSBldi5iNjRfanNvbjsKICAgICAgICAgIH0gY2F0Y2ggKGUpIHsKICAgICAgICAgICAgaWYgKGUgaW5zdGFuY2VvZiBTeW50YXhFcnJvcikgY29udGludWU7CiAgICAgICAgICAgIHRocm93IGU7CiAgICAgICAgICB9CiAgICAgICAgfQogICAgICB9CiAgICAgIGlmICghZmluYWwpIHRocm93IG5ldyBFcnJvcignVGhlIGRpYWdyYW0gc3RyZWFtIGVuZGVkIHdpdGhvdXQgYW4gaW1hZ2UuJyk7CiAgICAgIGNvbnN0IHEgPSBgRGlhZ3JhbSDigJQgJHtzLnRvcGljfSBrZSBsYWJlbHMgYmF0YW9cbiFbJHtzLnRvcGljfSBkaWFncmFtXShkYXRhOmltYWdlL3BuZztiYXNlNjQsJHtmaW5hbH0pYDsKICAgICAgY29uc3QgY2FyZDogQ2FyZCA9IHsgaWQ6IGNhcmRJZChxKSwgcSwgYTogcy50ZXh0LCB0b3BpYzogYCR7cy50b3BpY30gwrcgZGlhZ3JhbWAsIGJveDogMSwgZHVlOiAwLCByZXZpZXdzOiAwLCBsYXN0Q29ycmVjdDogZmFsc2UgfTsKICAgICAgb25DYXJkcyhbY2FyZF0pOwogICAgICB0b2FzdC5zdWNjZXNzKCdEaWFncmFtIGZsYXNoY2FyZCBzYXZlZCB0byB5b3VyIGRlY2suJyk7CiAgICB9IGNhdGNoIChlKSB7CiAgICAgIHRvYXN0LmVycm9yKGUgaW5zdGFuY2VvZiBFcnJvciA/IGUubWVzc2FnZSA6ICdEaWFncmFtIGdlbmVyYXRpb24gZmFpbGVkLicpOwogICAgfSBmaW5hbGx5IHsKICAgICAgc2V0RGlhZ3JhbVRvcGljKG51bGwpOwogICAgfQogIH0KCiAgZnVuY3Rpb24gY2hhcHRlclF1aXooKSB7CiAgICBjb25zdCBvcmRlciA9IHN0cnVjdHVyZVF1aXpRdWV1ZShzbmlwcGV0cyk7CiAgICBpZiAoIW9yZGVyLmxlbmd0aCkgcmV0dXJuOwogICAgY29uc3QgW2Nscywgbm9dID0gY2hhcHRlck5vLnNwbGl0KCctJykubWFwKE51bWJlcik7CiAgICBjb25zdCBjaCA9IG5jZXJ0Q2hhcHRlcihjbHMhLCBubyEpOwogICAgY29uc3QgbGlzdCA9IG9yZGVyLm1hcCgodCwgaSkgPT4gYCR7aSArIDF9LiAke3R9YCkuam9pbignXG4nKTsKICAgIGNvbnN0IGlkID0gY3J5cHRvLnJhbmRvbVVVSUQoKTsKICAgIHBlbmRpbmdGaXJzdE1lc3NhZ2Uuc2V0KGlkLCB7CiAgICAgIHRleHQ6IGBRdWl6IG1vZGUgT04g4oCUIGNoYXB0ZXItd2lzZSBzdHJ1Y3R1cmUgcXVpei4gQ2hhcHRlcjogJHtjaGFwdGVyTmFtZSB8fCAoY2ggPyBjaGFwdGVyTGFiZWwoY2gpIDogJycpfS4gSXMgb3JkZXIgbWVpbiBlay1layB0b3BpYyBwYXIgTkVFVCBNQ1EgcG9vY2hobyAoaGFyIHF1ZXN0aW9uIHBhciB0b3BpYyB0YWcga2Fybyk6XG4ke2xpc3R9XG5cblBlaGxlIHRvcGljIHNlIHNodXJ1IGthcm8uYCwKICAgICAgZmlsZXM6IFtdLAogICAgICBtb2RlOiAncXVpeicsCiAgICB9KTsKICAgIGxvY2FsU3RvcmFnZS5zZXRJdGVtKGBzbmFwc29sdmUucXVpei4ke2lkfWAsICcxJyk7CiAgICBuYXZpZ2F0ZSh7IHRvOiAnL2RvdWJ0LyR0aHJlYWRJZCcsIHBhcmFtczogeyB0aHJlYWRJZDogaWQgfSB9KTsKICB9CgogIHJldHVybiAoCiAgICA8c2VjdGlvbiBjbGFzc05hbWU9Im10LTEwIHJvdW5kZWQtMnhsIGJvcmRlciBiZy1jYXJkIHAtNCBzaGFkb3ctc20gbWQ6cC01IiBhcmlhLWxhYmVsPSJOQ0VSVCBEZWVwIFNjYW4iPgogICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIiPgogICAgICAgIDxTY2FuU2VhcmNoIGNsYXNzTmFtZT0ic2l6ZS01IHRleHQtcHJpbWFyeSIgLz4KICAgICAgICA8aDIgY2xhc3NOYW1lPSJmb250LWRpc3BsYXkgdGV4dC1sZyBmb250LXNlbWlib2xkIj5OQ0VSVCBEZWVwIFNjYW48L2gyPgogICAgICA8L2Rpdj4KICAgICAgPHAgY2xhc3NOYW1lPSJtdC0xIHRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj5DaGFwdGVyIG9ubGluZSBzY2FuIGhvdGEgaGFpLCBHZW1pbmkgbGluZXMgdmVyaWZ5IGthcnRhIGhhaSwgcGhpciBjYXJkcyBhYXBraSBkZWNrIG1laW4gYWF0ZSBoYWluLjwvcD4KICAgICAgPGRpdiBjbGFzc05hbWU9Im10LTMgZmxleCBmbGV4LXdyYXAgaXRlbXMtY2VudGVyIGdhcC0yIj4KICAgICAgICA8U2VsZWN0IHZhbHVlPXtjaGFwdGVyTm99IG9uVmFsdWVDaGFuZ2U9e3NldENoYXB0ZXJOb30+CiAgICAgICAgICA8U2VsZWN0VHJpZ2dlciBjbGFzc05hbWU9InctZnVsbCBzbTp3LTcyIiBhcmlhLWxhYmVsPSJOQ0VSVCBjaGFwdGVyIj4KICAgICAgICAgICAgPFNlbGVjdFZhbHVlIHBsYWNlaG9sZGVyPSJDaGFwdGVyIGNodW5peWUiIC8+CiAgICAgICAgICA8L1NlbGVjdFRyaWdnZXI+CiAgICAgICAgICA8U2VsZWN0Q29udGVudCBjbGFzc05hbWU9Im1heC1oLTcyIj4KICAgICAgICAgICAge05DRVJUX0JJT0xPR1lfQ0hBUFRFUlMubWFwKChjKSA9PiAoCiAgICAgICAgICAgICAgPFNlbGVjdEl0ZW0ga2V5PXtgJHtjLmNsc30tJHtjLm5vfWB9IHZhbHVlPXtgJHtjLmNsc30tJHtjLm5vfWB9PgogICAgICAgICAgICAgICAge2MuY2xzID09PSAxMSA/ICdYSScgOiAnWElJJ30gwrcge2Mubm99LiB7Yy5uYW1lfQogICAgICAgICAgICAgIDwvU2VsZWN0SXRlbT4KICAgICAgICAgICAgKSl9CiAgICAgICAgICA8L1NlbGVjdENvbnRlbnQ+CiAgICAgICAgPC9TZWxlY3Q+CiAgICAgICAgPEJ1dHRvbiBvbkNsaWNrPXtzY2FufSBkaXNhYmxlZD17c3RhdGUgPT09ICdzY2FubmluZyd9IGNsYXNzTmFtZT0idG91Y2gtYnRuIj4KICAgICAgICAgIHtzdGF0ZSA9PT0gJ3NjYW5uaW5nJyA/ICdTY2FubmluZ+KApicgOiAnRGVlcCBTY2FuJ30KICAgICAgICA8L0J1dHRvbj4KICAgICAgICB7c25pcHBldHMubGVuZ3RoID4gMCAmJiAoCiAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9Im91dGxpbmUiIG9uQ2xpY2s9e2NoYXB0ZXJRdWl6fSBjbGFzc05hbWU9InRvdWNoLWJ0biI+CiAgICAgICAgICAgIDxMaXN0T3JkZXJlZCBjbGFzc05hbWU9InNpemUtNCIgLz4gQ2hhcHRlci13aXNlIHF1aXoKICAgICAgICAgIDwvQnV0dG9uPgogICAgICAgICl9CiAgICAgIDwvZGl2PgogICAgICB7c3RhdGUgPT09ICdkb25lJyAmJiAoCiAgICAgICAgPGRpdiBjbGFzc05hbWU9Im10LTQgc3BhY2UteS0yIj4KICAgICAgICAgIHshdmVyaWZpZWQgJiYgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+VmVyaWZ5IHBlbmRpbmcg4oCUIGxpbmVzIGFiaGkgY291bmNpbCBjaGVjayBzZSBndXpyaSBuYWhpLCBkZWNrIG1laW4gInZlcmlmeSBwZW5kaW5nIiB0YWcga2Ugc2FhdGggaGFpbi48L3A+fQogICAgICAgICAge3NuaXBwZXRzLm1hcCgocykgPT4gKAogICAgICAgICAgICA8ZGl2IGtleT17cy50b3BpY30gY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gZ2FwLTMgcm91bmRlZC1sZyBib3JkZXIgYmctYmFja2dyb3VuZCBweC0zIHB5LTIiPgogICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJtaW4tdy0wIj4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJ0cnVuY2F0ZSB0ZXh0LXNtIGZvbnQtbWVkaXVtIj57cy50b3BpY308L2Rpdj4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJ0cnVuY2F0ZSB0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+e3MudGV4dC5zbGljZSgwLCA5MCl94oCmPC9kaXY+CiAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PSJnaG9zdCIgc2l6ZT0ic20iIGNsYXNzTmFtZT0ic2hyaW5rLTAiIGRpc2FibGVkPXtkaWFncmFtVG9waWMgIT09IG51bGx9IG9uQ2xpY2s9eygpID0+IGRpYWdyYW0ocyl9PgogICAgICAgICAgICAgICAgPEltYWdlUGx1cyBjbGFzc05hbWU9InNpemUtNCIgLz4ge2RpYWdyYW1Ub3BpYyA9PT0gcy50b3BpYyA/ICdCYW4gcmFoYeKApicgOiAnRGlhZ3JhbSd9CiAgICAgICAgICAgICAgPC9CdXR0b24+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgKSl9CiAgICAgICAgPC9kaXY+CiAgICAgICl9CiAgICA8L3NlY3Rpb24+CiAgKTsKfQoKZnVuY3Rpb24gUHJhY3RpY2UoKSB7CiAgY29uc3QgW2JvbGRRdWVzdGlvbnNdID0gdXNlQm9sZFF1ZXN0aW9ucygpOwogIGNvbnN0IFt0ZXh0U2l6ZV0gPSB1c2VTdHVkeVRleHRTaXplKCk7CiAgY29uc3QgW2NhcmRzLHNldENhcmRzXSA9IHVzZVN0YXRlPENhcmRbXT4oW10pOwogIGNvbnN0IFtzZXNzaW9uLHNldFNlc3Npb25dID0gdXNlU3RhdGU8UHJhY3RpY2VTZXNzaW9uPih7cXVldWU6W10sY29tcGxldGVkOltdfSk7CiAgY29uc3QgW3NhdmVFcnJvcixzZXRTYXZlRXJyb3JdID0gdXNlU3RhdGUoJycpOwogIGNvbnN0IFtyZXZlYWxlZCxzZXRSZXZlYWxlZF0gPSB1c2VTdGF0ZShmYWxzZSk7CiAgY29uc3QgW3JlYWR5LHNldFJlYWR5XSA9IHVzZVN0YXRlKGZhbHNlKTsKICB1c2VFZmZlY3QoKCkgPT4gewogICAgY29uc3QgZGVjayA9IGxvYWRQcmFjdGljZSgpOyBzZXRDYXJkcyhkZWNrKTsKICAgIGxldCBzYXZlZDogdW5rbm93biA9IHt9OwogICAgdHJ5IHsgc2F2ZWQgPSBKU09OLnBhcnNlKGxvY2FsU3RvcmFnZS5nZXRJdGVtKCdzbmFwc29sdmUucHJhY3RpY2UucHJvZ3Jlc3MnKSA/PyAne30nKTsgfSBjYXRjaCB7IC8qIElnbm9yZSBjb3JydXB0IHByb2dyZXNzLiAqLyB9CiAgICBzZXRTZXNzaW9uKHJlc3RvcmVQcmFjdGljZVNlc3Npb24oZGVjay5tYXAoYz0+Yy5pZCksc2F2ZWQpKTsKICAgIHNldFJlYWR5KHRydWUpOwogIH0sW10pOwogIGNvbnN0IGNhcmQgPSBjYXJkcy5maW5kKGM9PmMuaWQ9PT1uZXh0UHJhY3RpY2VJZChzZXNzaW9uKSk7CiAgZnVuY3Rpb24gcGVyc2lzdFNlc3Npb24obmV4dDogUHJhY3RpY2VTZXNzaW9uKSB7CiAgICBzZXRTZXNzaW9uKG5leHQpO3NldFJldmVhbGVkKGZhbHNlKTsKICAgIHRyeSB7IGxvY2FsU3RvcmFnZS5zZXRJdGVtKCdzbmFwc29sdmUucHJhY3RpY2UucHJvZ3Jlc3MnLEpTT04uc3RyaW5naWZ5KG5leHQpKTtzZXRTYXZlRXJyb3IoJycpOyB9CiAgICBjYXRjaCB7IHNldFNhdmVFcnJvcignWW91ciByZXZpZXcgd2FzIHNhdmVkLCBidXQgc2Vzc2lvbiBwb3NpdGlvbiBjb3VsZCBub3QgYmUgc2F2ZWQuIEtlZXAgdGhpcyBwYWdlIG9wZW4uJyk7IH0KICB9CiAgZnVuY3Rpb24gZ3JhZGUoY29ycmVjdDogYm9vbGVhbikgewogICAgaWYgKCFjYXJkKSByZXR1cm47CiAgICB0cnkgeyByZXZpZXdTYXZlZENhcmQoY2FyZCwgY29ycmVjdCwgRGF0ZS5ub3coKSk7IH0KICAgIGNhdGNoIHsgc2V0U2F2ZUVycm9yKCdCcm93c2VyIHN0b3JhZ2UgaXMgZnVsbC4gWW91ciByZXZpZXcgd2FzIG5vdCBzYXZlZC4nKTtyZXR1cm47IH0KICAgIHBlcnNpc3RTZXNzaW9uKGNvbXBsZXRlUHJhY3RpY2VDYXJkKHNlc3Npb24sY2FyZC5pZCkpOwogIH0KICBmdW5jdGlvbiBvbkNhcmRzKG5ld0NhcmRzOiBDYXJkW10pIHsKICAgIHRyeSB7CiAgICAgIGFkZENhcmRzKG5ld0NhcmRzKTsKICAgICAgY29uc3QgZGVjayA9IGxvYWRQcmFjdGljZSgpOwogICAgICBzZXRDYXJkcyhkZWNrKTsKICAgICAgc2V0U2Vzc2lvbigocykgPT4gcmVzdG9yZVByYWN0aWNlU2Vzc2lvbihkZWNrLm1hcCgoYykgPT4gYy5pZCksIHsgcXVldWU6IHMucXVldWUsIGNvbXBsZXRlZDogcy5jb21wbGV0ZWQgfSkpOwogICAgfSBjYXRjaCB7CiAgICAgIHRvYXN0LmVycm9yKCdCcm93c2VyIHN0b3JhZ2UgaXMgZnVsbC4gTmV3IGNhcmRzIGNvdWxkIG5vdCBiZSBzYXZlZCDigJQgY2xlYXIgb2xkIG1lZGlhIGZpcnN0LicpOwogICAgfQogIH0KICByZXR1cm4gPG1haW4gY2xhc3NOYW1lPSJteC1hdXRvIG1pbi1oLXNjcmVlbiBtYXgtdy0zeGwgcHgtNSBweS04Ij4KICAgIDxMaW5rIHRvPSIvIiBjbGFzc05hbWU9InRleHQtcHJpbWFyeSI+4oaQIFNuYXBTb2x2ZTwvTGluaz4KICAgIDxkaXYgY2xhc3NOYW1lPSJtdC04IGZsZXggZmxleC13cmFwIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gZ2FwLTMiPjxoMSBjbGFzc05hbWU9InRleHQtM3hsIGZvbnQtc2VtaWJvbGQiPlNhdmVkIHByYWN0aWNlPC9oMT48c3BhbiBjbGFzc05hbWU9InRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj5ObyBBSSBjcmVkaXRzIHVzZWQ8L3NwYW4+PC9kaXY+CiAgICB7c2F2ZUVycm9yICYmIDxwIHJvbGU9ImFsZXJ0IiBjbGFzc05hbWU9Im10LTQgdGV4dC1kZXN0cnVjdGl2ZSI+e3NhdmVFcnJvcn08L3A+fQogICAgeyFyZWFkeSA/IDxwIGNsYXNzTmFtZT0ibXQtOCI+TG9hZGluZyBzYXZlZCBtYXRlcmlhbOKApjwvcD4gOiAhY2FyZHMubGVuZ3RoID8gPHAgY2xhc3NOYW1lPSJtdC04Ij5ObyBzYXZlZCBxdWVzdGlvbnMgb3IgcmV2aXNpb24gY2FyZHMgeWV0LjwvcD4gOiAhY2FyZCA/IDxkaXYgY2xhc3NOYW1lPSJtdC0xMCI+PGgyIGNsYXNzTmFtZT0idGV4dC0yeGwiPlNlc3Npb24gY29tcGxldGU8L2gyPjxwIGNsYXNzTmFtZT0ibXQtMyI+WW91ciByZXZpc2lvbiBzY2hlZHVsZSBpcyBzYXZlZCBpbiB0aGlzIGJyb3dzZXIuPC9wPjxCdXR0b24gY2xhc3NOYW1lPSJtdC01IiBvbkNsaWNrPXsoKT0+cGVyc2lzdFNlc3Npb24oe3F1ZXVlOmNhcmRzLm1hcChjPT5jLmlkKSxjb21wbGV0ZWQ6W119KX0+UHJhY3RpY2UgYWdhaW48L0J1dHRvbj48L2Rpdj4gOiA8PgogICAgICA8cCBjbGFzc05hbWU9Im10LTYgdGV4dC1zbSB0ZXh0LW11dGVkLWZvcmVncm91bmQiPntzZXNzaW9uLmNvbXBsZXRlZC5sZW5ndGgrMX0gLyB7Y2FyZHMubGVuZ3RofSDCtyB7Y2FyZC50b3BpY308L3A+CiAgICAgIDxzZWN0aW9uIGNsYXNzTmFtZT17YHN0dWR5LXRleHQgc3R1ZHktdGV4dC0ke3RleHRTaXplfSBtdC00IGJvcmRlci15IHB5LTZgfT48QXNzaXN0YW50QW5zd2VyIHRleHQ9e2NhcmQucX0gaXNBbmltYXRpbmc9e2ZhbHNlfSBib2xkUXVlc3Rpb249e2JvbGRRdWVzdGlvbnN9IC8+PC9zZWN0aW9uPgogICAgICB7cmV2ZWFsZWQgPyA8c2VjdGlvbiBjbGFzc05hbWU9e2BzdHVkeS10ZXh0IHN0dWR5LXRleHQtJHt0ZXh0U2l6ZX0gbXQtNmB9PjxoMiBjbGFzc05hbWU9Im1iLTMgZm9udC1zZW1pYm9sZCI+U2F2ZWQgYW5zd2VyPC9oMj48QXNzaXN0YW50QW5zd2VyIHRleHQ9e2NhcmQuYX0gaXNBbmltYXRpbmc9e2ZhbHNlfSAvPjxkaXYgY2xhc3NOYW1lPSJtdC04IGZsZXggZmxleC13cmFwIGdhcC0zIj48QnV0dG9uIHZhcmlhbnQ9Im91dGxpbmUiIG9uQ2xpY2s9eygpPT5ncmFkZShmYWxzZSl9Pk5lZWRzIHJldmlzaW9uPC9CdXR0b24+PEJ1dHRvbiBvbkNsaWNrPXsoKT0+Z3JhZGUodHJ1ZSl9PlJlbWVtYmVyZWQ8L0J1dHRvbj48L2Rpdj48L3NlY3Rpb24+IDogPEJ1dHRvbiBjbGFzc05hbWU9Im10LTYiIG9uQ2xpY2s9eygpPT5zZXRSZXZlYWxlZCh0cnVlKX0+UmV2ZWFsIHNhdmVkIGFuc3dlcjwvQnV0dG9uPn0KICAgIDwvPn0KICAgIDxOY2VydERlZXBTY2FuIG9uQ2FyZHM9e29uQ2FyZHN9IC8+CiAgICA8cCBjbGFzc05hbWU9Im10LTYgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIgdGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPjxCb29rT3BlblRleHQgY2xhc3NOYW1lPSJzaXplLTMuNSIgLz4gRGVlcCBTY2FuIEFJIGNyZWRpdHMgdXNlIGthcnRhIGhhaTsgc2F2ZWQgY2FyZHMga2EgcmV2aXNpb24gaGFtZXNoYSBmcmVlIGhhaS48L3A+CiAgPC9tYWluPjsKfQo=
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { BookOpenText, ImagePlus, ListOrdered, ScanSearch } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { AssistantAnswer } from '@/components/assistant-answer';
+import { loadPractice, reviewSavedCard } from '@/lib/practice';
+import { addCards, cardId, type Card } from '@/lib/srs';
+import { completePracticeCard, nextPracticeId, restorePracticeSession, type PracticeSession } from '@/lib/practice-session';
+import { useBoldQuestions, useStudyTextSize } from '@/lib/quiz-label-preference';
+import { NCERT_BIOLOGY_CHAPTERS, chapterLabel, ncertChapter } from '@/lib/ncert-biology';
+import { snippetToCard, structureQuizQueue, type NcertSnippet } from '@/lib/ncert-snippets';
+import { pendingFirstMessage } from '@/lib/threads';
+
+export const Route = createFileRoute('/practice')({ head: () => ({ meta: [{ title: 'Saved practice — SnapSolve' },{ name:'description', content:'Revise saved NEET questions and answers without AI credits.' },{ property:'og:title',content:'Saved practice — SnapSolve' },{ property:'og:description',content:'Credit-free active recall from your saved material.' },{ property:'og:type',content:'website' },{name:'twitter:card',content:'summary'}] }), component: Practice });
+
+type ScanState = 'idle' | 'scanning' | 'done' | 'error';
+
+function NcertDeepScan({ onCards }: { onCards: (cards: Card[]) => void }) {
+  const navigate = useNavigate();
+  const [chapterNo, setChapterNo] = useState('11-8');
+  const [state, setState] = useState<ScanState>('idle');
+  const [snippets, setSnippets] = useState<NcertSnippet[]>([]);
+  const [chapterName, setChapterName] = useState('');
+  const [verified, setVerified] = useState(true);
+  const [diagramTopic, setDiagramTopic] = useState<string | null>(null);
+
+  async function scan() {
+    const [cls, no] = chapterNo.split('-').map(Number);
+    setState('scanning');
+    try {
+      const res = await fetch('/api/ncert-scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cls, no }),
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(j.error || `Scan failed (${res.status})`);
+      setSnippets(j.snippets ?? []);
+      setChapterName(j.chapter ?? '');
+      setVerified(j.verified !== false);
+      const cards = (j.snippets ?? []).map((s: NcertSnippet) => snippetToCard(s, j.chapter ?? ''));
+      if (cards.length) {
+        onCards(cards);
+        toast.success(`${cards.length} NCERT lines saved to your deck${j.cached ? ' (from cache)' : ''}.`);
+      }
+      setState('done');
+    } catch (e) {
+      setState('error');
+      toast.error(e instanceof Error ? e.message : 'The chapter scan failed.');
+    }
+  }
+
+  async function diagram(s: NcertSnippet) {
+    setDiagramTopic(s.topic);
+    try {
+      const res = await fetch('/api/ncert-diagram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: s.topic, chapter: chapterName, labels: [] }),
+      });
+      if (!res.ok || !res.body) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error(j.error || `Diagram failed (${res.status})`);
+      }
+      const reader = res.body.getReader();
+      const dec = new TextDecoder();
+      let buf = '';
+      let final: string | null = null;
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let i: number;
+        while ((i = buf.indexOf('\n')) >= 0) {
+          const line = buf.slice(0, i).trim();
+          buf = buf.slice(i + 1);
+          if (!line.startsWith('data:')) continue;
+          const data = line.slice(5).trim();
+          if (!data || data === '[DONE]') continue;
+          try {
+            const ev = JSON.parse(data);
+            if (ev.type === 'error' || ev.error) throw new Error(ev.error?.message || 'The diagram was rejected.');
+            if (ev.type === 'image_generation.completed' && ev.b64_json) final = ev.b64_json;
+          } catch (e) {
+            if (e instanceof SyntaxError) continue;
+            throw e;
+          }
+        }
+      }
+      if (!final) throw new Error('The diagram stream ended without an image.');
+      const q = `Diagram — ${s.topic} ke labels batao\n![${s.topic} diagram](data:image/png;base64,${final})`;
+      const card: Card = { id: cardId(q), q, a: s.text, topic: `${s.topic} · diagram`, box: 1, due: 0, reviews: 0, lastCorrect: false };
+      onCards([card]);
+      toast.success('Diagram flashcard saved to your deck.');
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : 'Diagram generation failed.');
+    } finally {
+      setDiagramTopic(null);
+    }
+  }
+
+  function chapterQuiz() {
+    const order = structureQuizQueue(snippets);
+    if (!order.length) return;
+    const [cls, no] = chapterNo.split('-').map(Number);
+    const ch = ncertChapter(cls!, no!);
+    const list = order.map((t, i) => `${i + 1}. ${t}`).join('\n');
+    const id = crypto.randomUUID();
+    pendingFirstMessage.set(id, {
+      text: `Quiz mode ON — chapter-wise structure quiz. Chapter: ${chapterName || (ch ? chapterLabel(ch) : '')}. Is order mein ek-ek topic par NEET MCQ poochho (har question par topic tag karo):\n${list}\n\nPehle topic se shuru karo.`,
+      files: [],
+      mode: 'quiz',
+    });
+    localStorage.setItem(`snapsolve.quiz.${id}`, '1');
+    navigate({ to: '/doubt/$threadId', params: { threadId: id } });
+  }
+
+  return (
+    <section className="mt-10 rounded-2xl border bg-card p-4 shadow-sm md:p-5" aria-label="NCERT Deep Scan">
+      <div className="flex items-center gap-2">
+        <ScanSearch className="size-5 text-primary" />
+        <h2 className="font-display text-lg font-semibold">NCERT Deep Scan</h2>
+      </div>
+      <p className="mt-1 text-sm text-muted-foreground">Chapter online scan hota hai, Gemini lines verify karta hai, phir cards aapki deck mein aate hain.</p>
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <Select value={chapterNo} onValueChange={setChapterNo}>
+          <SelectTrigger className="w-full sm:w-72" aria-label="NCERT chapter">
+            <SelectValue placeholder="Chapter chuniye" />
+          </SelectTrigger>
+          <SelectContent className="max-h-72">
+            {NCERT_BIOLOGY_CHAPTERS.map((c) => (
+              <SelectItem key={`${c.cls}-${c.no}`} value={`${c.cls}-${c.no}`}>
+                {c.cls === 11 ? 'XI' : 'XII'} · {c.no}. {c.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Button onClick={scan} disabled={state === 'scanning'} className="touch-btn">
+          {state === 'scanning' ? 'Scanning…' : 'Deep Scan'}
+        </Button>
+        {snippets.length > 0 && (
+          <Button variant="outline" onClick={chapterQuiz} className="touch-btn">
+            <ListOrdered className="size-4" /> Chapter-wise quiz
+          </Button>
+        )}
+      </div>
+      {state === 'done' && (
+        <div className="mt-4 space-y-2">
+          {!verified && <p className="text-xs text-muted-foreground">Verify pending — lines abhi council check se guzri nahi, deck mein "verify pending" tag ke saath hain.</p>}
+          {snippets.map((s) => (
+            <div key={s.topic} className="flex items-center justify-between gap-3 rounded-lg border bg-background px-3 py-2">
+              <div className="min-w-0">
+                <div className="truncate text-sm font-medium">{s.topic}</div>
+                <div className="truncate text-xs text-muted-foreground">{s.text.slice(0, 90)}…</div>
+              </div>
+              <Button variant="ghost" size="sm" className="shrink-0" disabled={diagramTopic !== null} onClick={() => diagram(s)}>
+                <ImagePlus className="size-4" /> {diagramTopic === s.topic ? 'Ban raha…' : 'Diagram'}
+              </Button>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
+function Practice() {
+  const [boldQuestions] = useBoldQuestions();
+  const [textSize] = useStudyTextSize();
+  const [cards,setCards] = useState<Card[]>([]);
+  const [session,setSession] = useState<PracticeSession>({queue:[],completed:[]});
+  const [saveError,setSaveError] = useState('');
+  const [revealed,setRevealed] = useState(false);
+  const [ready,setReady] = useState(false);
+  useEffect(() => {
+    const deck = loadPractice(); setCards(deck);
+    let saved: unknown = {};
+    try { saved = JSON.parse(localStorage.getItem('snapsolve.practice.progress') ?? '{}'); } catch { /* Ignore corrupt progress. */ }
+    setSession(restorePracticeSession(deck.map(c=>c.id),saved));
+    setReady(true);
+  },[]);
+  const card = cards.find(c=>c.id===nextPracticeId(session));
+  function persistSession(next: PracticeSession) {
+    setSession(next);setRevealed(false);
+    try { localStorage.setItem('snapsolve.practice.progress',JSON.stringify(next));setSaveError(''); }
+    catch { setSaveError('Your review was saved, but session position could not be saved. Keep this page open.'); }
+  }
+  function grade(correct: boolean) {
+    if (!card) return;
+    try { reviewSavedCard(card, correct, Date.now()); }
+    catch { setSaveError('Browser storage is full. Your review was not saved.');return; }
+    persistSession(completePracticeCard(session,card.id));
+  }
+  function onCards(newCards: Card[]) {
+    try {
+      addCards(newCards);
+      const deck = loadPractice();
+      setCards(deck);
+      setSession((s) => restorePracticeSession(deck.map((c) => c.id), { queue: s.queue, completed: s.completed }));
+    } catch {
+      toast.error('Browser storage is full. New cards could not be saved — clear old media first.');
+    }
+  }
+  return <main className="mx-auto min-h-screen max-w-3xl px-5 py-8">
+    <Link to="/" className="text-primary">← SnapSolve</Link>
+    <div className="mt-8 flex flex-wrap items-center justify-between gap-3"><h1 className="text-3xl font-semibold">Saved practice</h1><span className="text-sm text-muted-foreground">No AI credits used</span></div>
+    {saveError && <p role="alert" className="mt-4 text-destructive">{saveError}</p>}
+    {!ready ? <p className="mt-8">Loading saved material…</p> : !cards.length ? <p className="mt-8">No saved questions or revision cards yet.</p> : !card ? <div className="mt-10"><h2 className="text-2xl">Session complete</h2><p className="mt-3">Your revision schedule is saved in this browser.</p><Button className="mt-5" onClick={()=>persistSession({queue:cards.map(c=>c.id),completed:[]})}>Practice again</Button></div> : <>
+      <p className="mt-6 text-sm text-muted-foreground">{session.completed.length+1} / {cards.length} · {card.topic}</p>
+      <section className={`study-text study-text-${textSize} mt-4 border-y py-6`}><AssistantAnswer text={card.q} isAnimating={false} boldQuestion={boldQuestions} /></section>
+      {revealed ? <section className={`study-text study-text-${textSize} mt-6`}><h2 className="mb-3 font-semibold">Saved answer</h2><AssistantAnswer text={card.a} isAnimating={false} /><div className="mt-8 flex flex-wrap gap-3"><Button variant="outline" onClick={()=>grade(false)}>Needs revision</Button><Button onClick={()=>grade(true)}>Remembered</Button></div></section> : <Button className="mt-6" onClick={()=>setRevealed(true)}>Reveal saved answer</Button>}
+    </>}
+    <NcertDeepScan onCards={onCards} />
+    <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground"><BookOpenText className="size-3.5" /> Deep Scan AI credits use karta hai; saved cards ka revision hamesha free hai.</p>
+  </main>;
+}

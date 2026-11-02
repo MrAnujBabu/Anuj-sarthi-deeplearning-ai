@@ -1,1 +1,14 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGl0LCBleHBlY3QgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBjbGFzc0xpbmUgfSBmcm9tICJAL2xpYi92ZWRhbnR1L2NvbnRleHQuc2VydmVyIjsKCmNvbnN0IGJhc2UgPSB7IHNlc3Npb25faWQ6ICI2YWQ1Y2NlYWY3NWRhNTZmODQ0NjU3MWUiLCBzdGFydHNfYXQ6IG51bGwsIHRpdGxlOiAiQXRvbS01Iiwgc3ViamVjdDogIkNoZW1pc3RyeSIsIGNoYXB0ZXI6ICIiLCB0ZWFjaGVyOiAiIiB9OwoKZGVzY3JpYmUoImJhdGNoIHNlc3Npb24gbGlua3MiLCAoKSA9PiB7CiAgaXQoImFkZHMgdGhlIGNsYXNzJ3Mgb3duIFZlZGFudHUgc2Vzc2lvbiBsaW5rIiwgKCkgPT4gewogICAgZXhwZWN0KGNsYXNzTGluZSh7IC4uLmJhc2UsIGhhc19zbWFydF9ub3RlczogdHJ1ZSB9LCB0cnVlLCB0cnVlKSkudG9Db250YWluKCJodHRwczovL3Nlc3Npb24udmVkYW50dS5jb20vc2Vzc2lvbi1zbWFydC1ub3Rlcy82YWQ1Y2NlYWY3NWRhNTZmODQ0NjU3MWUiKTsKICB9KTsKICBpdCgiYWRkcyB0aGUgUERGIGxpbmsgb25seSB3aGVuIGEgUERGIGV4aXN0cyIsICgpID0+IHsKICAgIGV4cGVjdChjbGFzc0xpbmUoeyAuLi5iYXNlLCBoYXNfbm90ZXNfcGRmOiB0cnVlIH0sIHRydWUsIHRydWUpKS50b0NvbnRhaW4oImh0dHBzOi8vcHJvZC1yZWNvcmRpbmdzLnZlZGFudHUuY29tL05PVEVTL1BST0QvNmFkNWNjZWFmNzVkYTU2Zjg0NDY1NzFlLnBkZiIpOwogICAgZXhwZWN0KGNsYXNzTGluZSh7IC4uLmJhc2UsIGhhc19ub3Rlc19wZGY6IGZhbHNlIH0sIHRydWUsIHRydWUpKS5ub3QudG9Db250YWluKCIucGRmIik7CiAgfSk7Cn0pOwo=
+import { describe, it, expect } from "vitest";
+import { classLine } from "@/lib/vedantu/context.server";
+
+const base = { session_id: "6ad5cceaf75da56f8446571e", starts_at: null, title: "Atom-5", subject: "Chemistry", chapter: "", teacher: "" };
+
+describe("batch session links", () => {
+  it("adds the class's own Vedantu session link", () => {
+    expect(classLine({ ...base, has_smart_notes: true }, true, true)).toContain("https://session.vedantu.com/session-smart-notes/6ad5cceaf75da56f8446571e");
+  });
+  it("adds the PDF link only when a PDF exists", () => {
+    expect(classLine({ ...base, has_notes_pdf: true }, true, true)).toContain("https://prod-recordings.vedantu.com/NOTES/PROD/6ad5cceaf75da56f8446571e.pdf");
+    expect(classLine({ ...base, has_notes_pdf: false }, true, true)).not.toContain(".pdf");
+  });
+});

@@ -1,1 +1,22 @@
-ewogICIkc2NoZW1hIjogImh0dHBzOi8vdWkuc2hhZGNuLmNvbS9zY2hlbWEuanNvbiIsCiAgInN0eWxlIjogIm5ldy15b3JrIiwKICAicnNjIjogZmFsc2UsCiAgInRzeCI6IHRydWUsCiAgInRhaWx3aW5kIjogewogICAgImNzcyI6ICJzcmMvc3R5bGVzLmNzcyIsCiAgICAiYmFzZUNvbG9yIjogInNsYXRlIiwKICAgICJjc3NWYXJpYWJsZXMiOiB0cnVlLAogICAgInByZWZpeCI6ICIiCiAgfSwKICAiaWNvbkxpYnJhcnkiOiAibHVjaWRlIiwKICAicnRsIjogZmFsc2UsCiAgImFsaWFzZXMiOiB7CiAgICAiY29tcG9uZW50cyI6ICJAL2NvbXBvbmVudHMiLAogICAgInV0aWxzIjogIkAvbGliL3V0aWxzIiwKICAgICJ1aSI6ICJAL2NvbXBvbmVudHMvdWkiLAogICAgImxpYiI6ICJAL2xpYiIsCiAgICAiaG9va3MiOiAiQC9ob29rcyIKICB9LAogICJyZWdpc3RyaWVzIjoge30KfQo=
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "css": "src/styles.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "rtl": false,
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {}
+}

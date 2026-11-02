@@ -1,1 +1,15 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBNQVhfVE9PTF9DQUxMUywgaXNOY2VydFVybCwgdGV4dGJvb2tVcmwgfSBmcm9tICJAL2xpYi9hZ2VudC9uY2VydCI7CgpkZXNjcmliZSgiTkNFUlQgYWdlbnQgcnVsZXMiLCAoKSA9PiB7CiAgaXQoImNhcHMgcGFpZCBsb29rdXBzIGF0IDQgcGVyIGFuc3dlciIsICgpID0+IHsKICAgIGV4cGVjdChNQVhfVE9PTF9DQUxMUykudG9CZSg0KTsKICB9KTsKICBpdCgib25seSByZWFkcyBuY2VydC5uaWMuaW4iLCAoKSA9PiB7CiAgICBleHBlY3QoaXNOY2VydFVybCgiaHR0cHM6Ly9uY2VydC5uaWMuaW4vdGV4dGJvb2svcGRmL2tlcGgxMDUucGRmIikpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoaXNOY2VydFVybCgiaHR0cHM6Ly9ldmlsLmNvbS9uY2VydC5uaWMuaW4iKSkudG9CZShmYWxzZSk7CiAgfSk7CiAgaXQoIm1hcHMgQ2xhc3MgMTIgQmlvbG9neSB0byBpdHMgdGV4dGJvb2siLCAoKSA9PiB7CiAgICBleHBlY3QodGV4dGJvb2tVcmwoMTIsICJCaW9sb2d5IikpLnRvQmUoImh0dHBzOi8vbmNlcnQubmljLmluL3RleHRib29rLnBocD9sZWJvMT0wLSIpOwogIH0pOwp9KTsK
+import { describe, expect, it } from "vitest";
+import { MAX_TOOL_CALLS, isNcertUrl, textbookUrl } from "@/lib/agent/ncert";
+
+describe("NCERT agent rules", () => {
+  it("caps paid lookups at 4 per answer", () => {
+    expect(MAX_TOOL_CALLS).toBe(4);
+  });
+  it("only reads ncert.nic.in", () => {
+    expect(isNcertUrl("https://ncert.nic.in/textbook/pdf/keph105.pdf")).toBe(true);
+    expect(isNcertUrl("https://evil.com/ncert.nic.in")).toBe(false);
+  });
+  it("maps Class 12 Biology to its textbook", () => {
+    expect(textbookUrl(12, "Biology")).toBe("https://ncert.nic.in/textbook.php?lebo1=0-");
+  });
+});

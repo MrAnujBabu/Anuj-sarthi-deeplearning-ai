@@ -1,1 +1,83 @@
-aW1wb3J0IHsgYWZ0ZXJFYWNoLCBkZXNjcmliZSwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBhY3QsIGNsZWFudXAsIGZpcmVFdmVudCwgcmVuZGVyLCBzY3JlZW4gfSBmcm9tICdAdGVzdGluZy1saWJyYXJ5L3JlYWN0JzsKdmkubW9jaygnQC9saWIvcXVpei10aW1lci1wcmVmZXJlbmNlJywgKCkgPT4gKHsgdXNlUXVpelRpbWVyUHJlZmVyZW5jZTogKCkgPT4gKHsgc2Vjb25kczogMCB9KSB9KSk7CnZpLm1vY2soJ0AvY29tcG9uZW50cy9haS1lbGVtZW50cy9tZXNzYWdlJywgKCkgPT4gKHsgTWVzc2FnZVJlc3BvbnNlOiAoeyBjaGlsZHJlbiB9OiB7IGNoaWxkcmVuOiBSZWFjdC5SZWFjdE5vZGUgfSkgPT4gPHNwYW4+e2NoaWxkcmVufTwvc3Bhbj4gfSkpOwppbXBvcnQgeyBRdWl6QWN0aW9ucyB9IGZyb20gJ0AvY29tcG9uZW50cy9xdWl6LWFjdGlvbnMnOwphZnRlckVhY2goYXN5bmMgKCkgPT4geyBhd2FpdCBhY3QoYXN5bmMgKCkgPT4geyBhd2FpdCBQcm9taXNlLnJlc29sdmUoKTsgfSk7IGNsZWFudXAoKTsgbG9jYWxTdG9yYWdlLmNsZWFyKCk7IH0pOwpkZXNjcmliZSgncXVpeiBhbnN3ZXIgY29tbWFuZHMnLCAoKSA9PiB7CiAgaXQoJ251bWJlciBsYWJlbHMgZnJvbSBTZXR0aW5ncyBzdGlsbCBzdWJtaXQgQiBmb3Iga2V5IDInLCAoKSA9PiB7CiAgICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbSgnc25hcHNvbHZlLm51bWVyaWMtYW5zd2VyLWxhYmVscycsICcxJyk7CiAgICBjb25zdCBzZW5kID0gdmkuZm4oKTsgcmVuZGVyKDxRdWl6QWN0aW9ucyBvcHRpb25zPXtbJ0EnLCdCJywnQycsJ0QnXX0gb25TZW5kPXtzZW5kfSAvPik7CiAgICBleHBlY3Qoc2NyZWVuLmdldEJ5Um9sZSgnY2hlY2tib3gnLCB7IG5hbWU6ICdBbnN3ZXIgQicgfSkudGV4dENvbnRlbnQpLnRvQmUoJzInKTsKICAgIGZpcmVFdmVudC5rZXlEb3duKHdpbmRvdywgeyBrZXk6ICcyJyB9KTsKICAgIGV4cGVjdChzZW5kLm1vY2suY2FsbHMpLnRvRXF1YWwoW1snQiddXSk7CiAgfSk7CiAgaXQoJ3F1aXogYmFyIGhhcyBubyBkdXBsaWNhdGUgbGFiZWwgc3dpdGNoJywgKCkgPT4gewogICAgcmVuZGVyKDxRdWl6QWN0aW9ucyBvcHRpb25zPXtbJ0EnLCdCJywnQycsJ0QnXX0gb25TZW5kPXt2aS5mbigpfSAvPik7CiAgICBleHBlY3Qoc2NyZWVuLnF1ZXJ5QnlSb2xlKCdzd2l0Y2gnLCB7IG5hbWU6ICdOdW1iZXIgYW5zd2VyIGxhYmVscycgfSkpLnRvQmVOdWxsKCk7CiAgfSk7CiAgaXQuZWFjaChbWycxJywnQSddLFsnMicsJ0InXSxbJzMnLCdDJ10sWyc0JywnRCddXSkoJ2tleSAlcyBzZWxlY3RzICVzIG9uY2UnLCAoa2V5LCBhbnN3ZXIpID0+IHsKICAgIGNvbnN0IHNlbmQgPSB2aS5mbigpOyByZW5kZXIoPFF1aXpBY3Rpb25zIG9wdGlvbnM9e1snQScsJ0InLCdDJywnRCddfSBvblNlbmQ9e3NlbmR9IC8+KTsKICAgIGZpcmVFdmVudC5rZXlEb3duKHdpbmRvdywgeyBrZXkgfSk7IGZpcmVFdmVudC5rZXlEb3duKHdpbmRvdywgeyBrZXkgfSk7CiAgICBleHBlY3Qoc2VuZC5tb2NrLmNhbGxzKS50b0VxdWFsKFtbYW5zd2VyXV0pOwogIH0pOwogIGl0KCdpZ25vcmVzIHR5cGluZywgbW9kaWZpZXJzLCBrZXkgcmVwZWF0IGFuZCBncmFkaW5nJywgKCkgPT4gewogICAgY29uc3Qgc2VuZCA9IHZpLmZuKCk7IGNvbnN0IHZpZXcgPSByZW5kZXIoPD48dGV4dGFyZWEgYXJpYS1sYWJlbD0iZHJhZnQiIC8+PFF1aXpBY3Rpb25zIG9wdGlvbnM9e1snQSddfSBvblNlbmQ9e3NlbmR9IC8+PC8+KTsKICAgIGZpcmVFdmVudC5rZXlEb3duKHNjcmVlbi5nZXRCeVJvbGUoJ3RleHRib3gnKSwgeyBrZXk6ICcxJyB9KTsKICAgIGZpcmVFdmVudC5rZXlEb3duKHdpbmRvdywgeyBrZXk6ICcxJywgbWV0YUtleTogdHJ1ZSB9KTsKICAgIGZpcmVFdmVudC5rZXlEb3duKHdpbmRvdywgeyBrZXk6ICcxJywgcmVwZWF0OiB0cnVlIH0pOwogICAgdmlldy5yZXJlbmRlcig8UXVpekFjdGlvbnMgb3B0aW9ucz17WydBJ119IGRpc2FibGVkIG9uU2VuZD17c2VuZH0gLz4pOwogICAgZmlyZUV2ZW50LmtleURvd24od2luZG93LCB7IGtleTogJzEnIH0pOwogICAgZXhwZWN0KHNlbmQpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgfSk7CiAgaXQoJ2NoYW5nZXMgY2hhdCB2aXNpYmlsaXR5IHdpdGhvdXQgc3VibWl0dGluZyBhbiBBSSBjb21tYW5kJywgKCkgPT4gewogICAgY29uc3Qgc2VuZCA9IHZpLmZuKCk7IGNvbnN0IGhpZGUgPSB2aS5mbigpOwogICAgcmVuZGVyKDxRdWl6QWN0aW9ucyBvcHRpb25zPXtbJ0EnXX0gb25TZW5kPXtzZW5kfSBvbkNoYXRIaWRkZW49e2hpZGV9IC8+KTsKICAgIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdzd2l0Y2gnLCB7IG5hbWU6ICdIaWRlIENoYXQgV2lkZ2V0JyB9KSk7CiAgICBleHBlY3QoaGlkZSkudG9IYXZlQmVlbkNhbGxlZFdpdGgodHJ1ZSk7CiAgICBleHBlY3Qoc2VuZCkubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKICB9KTsKICBpdC5lYWNoKFtbJ051bXBhZDEnLCAnRW5kJywgJ0EnXSwgWydOdW1wYWQyJywgJ0Fycm93RG93bicsICdCJ10sIFsnTnVtcGFkMycsICdQYWdlRG93bicsICdDJ10sIFsnTnVtcGFkNCcsICdBcnJvd0xlZnQnLCAnRCddXSkoJ2tleXBhZCAlcyB3aXRoIE51bSBMb2NrIG9mZiBzdWJtaXRzIGl0cyBsZXR0ZXInLCAoY29kZSwga2V5LCBhbnN3ZXIpID0+IHsKICAgIGNvbnN0IHNlbmQgPSB2aS5mbigpOyByZW5kZXIoPFF1aXpBY3Rpb25zIG9wdGlvbnM9e1snQScsJ0InLCdDJywnRCddfSBvblNlbmQ9e3NlbmR9IC8+KTsKICAgIGZpcmVFdmVudC5rZXlEb3duKHdpbmRvdywgeyBrZXksIGNvZGUgfSk7CiAgICBleHBlY3Qoc2VuZC5tb2NrLmNhbGxzKS50b0VxdWFsKFtbYW5zd2VyXV0pOwogIH0pOwogIGl0LmVhY2goW1snTnVtcGFkMScsICcxJywgJ0EnXSwgWydOdW1wYWQyJywgJzInLCAnQiddLCBbJ051bXBhZDMnLCAnMycsICdDJ10sIFsnTnVtcGFkNCcsICc0JywgJ0QnXV0pKCdrZXlwYWQgJXMgd2l0aCBOdW0gTG9jayBvbiBzdWJtaXRzIGl0cyBsZXR0ZXInLCAoY29kZSwga2V5LCBhbnN3ZXIpID0+IHsKICAgIGNvbnN0IHNlbmQgPSB2aS5mbigpOyByZW5kZXIoPFF1aXpBY3Rpb25zIG9wdGlvbnM9e1snQScsJ0InLCdDJywnRCddfSBvblNlbmQ9e3NlbmR9IC8+KTsKICAgIGZpcmVFdmVudC5rZXlEb3duKHdpbmRvdywgeyBrZXksIGNvZGUgfSk7CiAgICBleHBlY3Qoc2VuZC5tb2NrLmNhbGxzKS50b0VxdWFsKFtbYW5zd2VyXV0pOwogIH0pOwogIGl0KCdkb2VzIG5vdCBzdWJtaXQgd2hlbiBzaG9ydGN1dHMgYXJlIG9mZiBvciBzZXR0aW5ncyBhcmUgb3BlbicsICgpID0+IHsKICAgIGxvY2FsU3RvcmFnZS5zZXRJdGVtKCdzbmFwc29sdmUucXVpei1rZXlib2FyZCcsICcwJyk7CiAgICBjb25zdCBzZW5kID0gdmkuZm4oKTsgY29uc3QgdmlldyA9IHJlbmRlcig8UXVpekFjdGlvbnMgb3B0aW9ucz17WydCJ119IG9uU2VuZD17c2VuZH0gLz4pOwogICAgZmlyZUV2ZW50LmtleURvd24od2luZG93LCB7IGtleTogJzInLCBjb2RlOiAnTnVtcGFkMicgfSk7CiAgICBleHBlY3Qoc2VuZCkubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKICAgIHZpZXcudW5tb3VudCgpOyBsb2NhbFN0b3JhZ2UucmVtb3ZlSXRlbSgnc25hcHNvbHZlLnF1aXota2V5Ym9hcmQnKTsKICAgIHJlbmRlcig8PjxkaXYgcm9sZT0iZGlhbG9nIj5TZXR0aW5nczwvZGl2PjxRdWl6QWN0aW9ucyBvcHRpb25zPXtbJ0InXX0gb25TZW5kPXtzZW5kfSAvPjwvPik7CiAgICBmaXJlRXZlbnQua2V5RG93bih3aW5kb3csIHsga2V5OiAnQXJyb3dEb3duJywgY29kZTogJ051bXBhZDInIH0pOwogICAgZXhwZWN0KHNlbmQpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgfSk7CiAgaXQoJ3N1Ym1pdHMgYW4gb3B0aW9uIG9ubHkgb25jZSBhbmQgcmVzZXRzIGZvciBhIG5ldyBxdWVzdGlvbicsICgpID0+IHsKICAgIGNvbnN0IHNlbmQgPSB2aS5mbigpOwogICAgY29uc3QgdmlldyA9IHJlbmRlcig8UXVpekFjdGlvbnMgb3B0aW9ucz17WydBJywgJ0InXX0gb25TZW5kPXtzZW5kfSBxdWVzdGlvbktleT0ib25lIiAvPik7CiAgICBmaXJlRXZlbnQuY2xpY2soc2NyZWVuLmdldEJ5Um9sZSgnY2hlY2tib3gnLCB7IG5hbWU6ICdBbnN3ZXIgQScgfSkpOwogICAgZmlyZUV2ZW50LmNsaWNrKHNjcmVlbi5nZXRCeVJvbGUoJ2NoZWNrYm94JywgeyBuYW1lOiAnQW5zd2VyIEInIH0pKTsKICAgIGV4cGVjdChzZW5kLm1vY2suY2FsbHMpLnRvRXF1YWwoW1snQSddXSk7CiAgICB2aWV3LnJlcmVuZGVyKDxRdWl6QWN0aW9ucyBvcHRpb25zPXtbJ0EnLCAnQiddfSBvblNlbmQ9e3NlbmR9IHF1ZXN0aW9uS2V5PSJ0d28iIC8+KTsKICAgIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdjaGVja2JveCcsIHsgbmFtZTogJ0Fuc3dlciBCJyB9KSk7CiAgICBleHBlY3Qoc2VuZC5tb2NrLmNhbGxzKS50b0VxdWFsKFtbJ0EnXSwgWydCJ11dKTsKICB9KTsKICBpdCgnZG9lcyBub3Qgc2VuZCBhbiBhbnN3ZXIgd2hpbGUgZ3JhZGluZycsICgpID0+IHsKICAgIGNvbnN0IHNlbmQgPSB2aS5mbigpOwogICAgcmVuZGVyKDxRdWl6QWN0aW9ucyBvcHRpb25zPXtbJ0EnXX0gZGlzYWJsZWQgb25TZW5kPXtzZW5kfSAvPik7CiAgICBmaXJlRXZlbnQuY2xpY2soc2NyZWVuLmdldEJ5Um9sZSgnY2hlY2tib3gnLCB7IG5hbWU6ICdBbnN3ZXIgQScgfSkpOwogICAgZXhwZWN0KHNlbmQpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgfSk7CiAgaXQuZWFjaChbWydIaW50JywgJ2hpbnQnXSwgWydTa2lwJywgJ3NraXAnXSwgWydTdG9wIHF1aXonLCAnc3RvcCBxdWl6J11dKSgnc2VuZHMgdGhlICVzIGNvbW1hbmQgb25jZScsIChsYWJlbCwgY29tbWFuZCkgPT4gewogICAgY29uc3Qgc2VuZCA9IHZpLmZuKCk7CiAgICByZW5kZXIoPFF1aXpBY3Rpb25zIG9wdGlvbnM9e1snQSddfSBvblNlbmQ9e3NlbmR9IC8+KTsKICAgIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdidXR0b24nLCB7IG5hbWU6IGxhYmVsIH0pKTsKICAgIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdidXR0b24nLCB7IG5hbWU6IGxhYmVsIH0pKTsKICAgIGV4cGVjdChzZW5kLm1vY2suY2FsbHMpLnRvRXF1YWwoW1tjb21tYW5kXV0pOwogIH0pOwp9KTs=
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+vi.mock('@/lib/quiz-timer-preference', () => ({ useQuizTimerPreference: () => ({ seconds: 0 }) }));
+vi.mock('@/components/ai-elements/message', () => ({ MessageResponse: ({ children }: { children: React.ReactNode }) => <span>{children}</span> }));
+import { QuizActions } from '@/components/quiz-actions';
+afterEach(async () => { await act(async () => { await Promise.resolve(); }); cleanup(); localStorage.clear(); });
+describe('quiz answer commands', () => {
+  it('number labels from Settings still submit B for key 2', () => {
+    localStorage.setItem('snapsolve.numeric-answer-labels', '1');
+    const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
+    expect(screen.getByRole('checkbox', { name: 'Answer B' }).textContent).toBe('2');
+    fireEvent.keyDown(window, { key: '2' });
+    expect(send.mock.calls).toEqual([['B']]);
+  });
+  it('quiz bar has no duplicate label switch', () => {
+    render(<QuizActions options={['A','B','C','D']} onSend={vi.fn()} />);
+    expect(screen.queryByRole('switch', { name: 'Number answer labels' })).toBeNull();
+  });
+  it.each([['1','A'],['2','B'],['3','C'],['4','D']])('key %s selects %s once', (key, answer) => {
+    const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
+    fireEvent.keyDown(window, { key }); fireEvent.keyDown(window, { key });
+    expect(send.mock.calls).toEqual([[answer]]);
+  });
+  it('ignores typing, modifiers, key repeat and grading', () => {
+    const send = vi.fn(); const view = render(<><textarea aria-label="draft" /><QuizActions options={['A']} onSend={send} /></>);
+    fireEvent.keyDown(screen.getByRole('textbox'), { key: '1' });
+    fireEvent.keyDown(window, { key: '1', metaKey: true });
+    fireEvent.keyDown(window, { key: '1', repeat: true });
+    view.rerender(<QuizActions options={['A']} disabled onSend={send} />);
+    fireEvent.keyDown(window, { key: '1' });
+    expect(send).not.toHaveBeenCalled();
+  });
+  it('changes chat visibility without submitting an AI command', () => {
+    const send = vi.fn(); const hide = vi.fn();
+    render(<QuizActions options={['A']} onSend={send} onChatHidden={hide} />);
+    fireEvent.click(screen.getByRole('switch', { name: 'Hide Chat Widget' }));
+    expect(hide).toHaveBeenCalledWith(true);
+    expect(send).not.toHaveBeenCalled();
+  });
+  it.each([['Numpad1', 'End', 'A'], ['Numpad2', 'ArrowDown', 'B'], ['Numpad3', 'PageDown', 'C'], ['Numpad4', 'ArrowLeft', 'D']])('keypad %s with Num Lock off submits its letter', (code, key, answer) => {
+    const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
+    fireEvent.keyDown(window, { key, code });
+    expect(send.mock.calls).toEqual([[answer]]);
+  });
+  it.each([['Numpad1', '1', 'A'], ['Numpad2', '2', 'B'], ['Numpad3', '3', 'C'], ['Numpad4', '4', 'D']])('keypad %s with Num Lock on submits its letter', (code, key, answer) => {
+    const send = vi.fn(); render(<QuizActions options={['A','B','C','D']} onSend={send} />);
+    fireEvent.keyDown(window, { key, code });
+    expect(send.mock.calls).toEqual([[answer]]);
+  });
+  it('does not submit when shortcuts are off or settings are open', () => {
+    localStorage.setItem('snapsolve.quiz-keyboard', '0');
+    const send = vi.fn(); const view = render(<QuizActions options={['B']} onSend={send} />);
+    fireEvent.keyDown(window, { key: '2', code: 'Numpad2' });
+    expect(send).not.toHaveBeenCalled();
+    view.unmount(); localStorage.removeItem('snapsolve.quiz-keyboard');
+    render(<><div role="dialog">Settings</div><QuizActions options={['B']} onSend={send} /></>);
+    fireEvent.keyDown(window, { key: 'ArrowDown', code: 'Numpad2' });
+    expect(send).not.toHaveBeenCalled();
+  });
+  it('submits an option only once and resets for a new question', () => {
+    const send = vi.fn();
+    const view = render(<QuizActions options={['A', 'B']} onSend={send} questionKey="one" />);
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Answer A' }));
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Answer B' }));
+    expect(send.mock.calls).toEqual([['A']]);
+    view.rerender(<QuizActions options={['A', 'B']} onSend={send} questionKey="two" />);
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Answer B' }));
+    expect(send.mock.calls).toEqual([['A'], ['B']]);
+  });
+  it('does not send an answer while grading', () => {
+    const send = vi.fn();
+    render(<QuizActions options={['A']} disabled onSend={send} />);
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Answer A' }));
+    expect(send).not.toHaveBeenCalled();
+  });
+  it.each([['Hint', 'hint'], ['Skip', 'skip'], ['Stop quiz', 'stop quiz']])('sends the %s command once', (label, command) => {
+    const send = vi.fn();
+    render(<QuizActions options={['A']} onSend={send} />);
+    fireEvent.click(screen.getByRole('button', { name: label }));
+    fireEvent.click(screen.getByRole('button', { name: label }));
+    expect(send.mock.calls).toEqual([[command]]);
+  });
+});

@@ -1,1 +1,29 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBleHRyYWN0UXVpek9wdGlvbnMgfSBmcm9tICIuL3F1aXotb3B0aW9ucyI7CmltcG9ydCB7IHBhcnNlUXVpelRhZyB9IGZyb20gIi4vc3JzIjsKCmRlc2NyaWJlKCJQREYtc3R5bGUgbnVtYmVyZWQgcXVpeiBvcHRpb25zIiwgKCkgPT4gewogIGl0KCdoaWRkZW4gZ3JhZGVkIGNhcmRzIG5ldmVyIHN1cHBseSBvbGQgYW5zd2VyIG9wdGlvbnMnLCAoKSA9PiB7CiAgICBjb25zdCB0ZXh0ID0gJ0NvcnJlY3QhXG48IS0tY2FyZCB7InEiOiJPbGQ/IChBKSBvbGRBIChCKSBvbGRCIChDKSBvbGRDIChEKSBvbGREIiwiYSI6IkIiLCJjb3JyZWN0Ijp0cnVlfS0tPic7CiAgICBleHBlY3QoZXh0cmFjdFF1aXpPcHRpb25zKHRleHQsIFsnQScsJ0InLCdDJywnRCddKS5sYWJlbHMpLnRvRXF1YWwoe30pOwogICAgZXhwZWN0KGV4dHJhY3RRdWl6T3B0aW9ucyh0ZXh0ICsgJ1xuTmV4dD9cbihBKSBuZXdBXG4oQikgbmV3QlxuKEMpIG5ld0NcbihEKSBuZXdEJywgWydBJywnQicsJ0MnLCdEJ10pLmxhYmVscykudG9FcXVhbCh7IEE6J25ld0EnLCBCOiduZXdCJywgQzonbmV3QycsIEQ6J25ld0QnIH0pOwogIH0pOwogIGNvbnN0IHEgPSAiKipRNC4qKiAoUERGIFBhZ2UgMiwgUTQwKSAqKkJpY2FycGVsbGFyeSoqIGd5bm9lY2l1bSBhbmQgZmFsc2Ugc2VwdHVtIGluIG92YXJ5IG9jY3VycyBpbjogKDEpIE11c3RhcmQgKDIpIEJhbmFuYSAoMykgUGlzdW0gKDQpIEJyaW5qYWwiOwoKICBpdCgibWFwcyBudW1iZXJlZCBxdWl6IHRhZyBvcHRpb25zIHRvIEHigJNEIiwgKCkgPT4gewogICAgZXhwZWN0KHBhcnNlUXVpelRhZyhgJHtxfVxuPCEtLXF1aXogeyJvcHRpb25zIjpbIjEiLCIyIiwiMyIsIjQiXX0tLT5gKSkudG9FcXVhbChbIkEiLCAiQiIsICJDIiwgIkQiXSk7CiAgfSk7CgogIGl0KCJzaG93cyBvcHRpb24gdGV4dCBvbiB0aGUgY2FyZHMgZm9yIGlubGluZSAoMSnigKYoNCkgb3B0aW9ucyIsICgpID0+IHsKICAgIGNvbnN0IHIgPSBleHRyYWN0UXVpek9wdGlvbnMocSwgWyJBIiwgIkIiLCAiQyIsICJEIl0pOwogICAgZXhwZWN0KHIubGFiZWxzKS50b0VxdWFsKHsgQTogIk11c3RhcmQiLCBCOiAiQmFuYW5hIiwgQzogIlBpc3VtIiwgRDogIkJyaW5qYWwiIH0pOwogICAgZXhwZWN0KHIudGV4dCkudG9Db250YWluKCJvY2N1cnMgaW46Iik7CiAgICBleHBlY3Qoci50ZXh0KS5ub3QudG9Db250YWluKCJCcmluamFsIik7CiAgfSk7CgogIGl0KCJzdGlsbCByZWFkcyBsZXR0ZXIgb3B0aW9ucyBvbiBzZXBhcmF0ZSBsaW5lcyIsICgpID0+IHsKICAgIGNvbnN0IHIgPSBleHRyYWN0UXVpek9wdGlvbnMoIlExLiBTaXRlIG9mIHJlc3BpcmF0aW9uP1xuKEEpIE1pdG9jaG9uZHJpYVxuKEIpIENobG9yb3BsYXN0XG4oQykgUmlib3NvbWVcbihEKSBHb2xnaSIsIFsiQSIsICJCIiwgIkMiLCAiRCJdKTsKICAgIGV4cGVjdChyLmxhYmVsc1snQSddKS50b0JlKCJNaXRvY2hvbmRyaWEiKTsKICAgIGV4cGVjdChyLmxhYmVsc1snRCddKS50b0JlKCJHb2xnaSIpOwogIH0pOwp9KTsK
+import { describe, expect, it } from "vitest";
+import { extractQuizOptions } from "./quiz-options";
+import { parseQuizTag } from "./srs";
+
+describe("PDF-style numbered quiz options", () => {
+  it('hidden graded cards never supply old answer options', () => {
+    const text = 'Correct!\n<!--card {"q":"Old? (A) oldA (B) oldB (C) oldC (D) oldD","a":"B","correct":true}-->';
+    expect(extractQuizOptions(text, ['A','B','C','D']).labels).toEqual({});
+    expect(extractQuizOptions(text + '\nNext?\n(A) newA\n(B) newB\n(C) newC\n(D) newD', ['A','B','C','D']).labels).toEqual({ A:'newA', B:'newB', C:'newC', D:'newD' });
+  });
+  const q = "**Q4.** (PDF Page 2, Q40) **Bicarpellary** gynoecium and false septum in ovary occurs in: (1) Mustard (2) Banana (3) Pisum (4) Brinjal";
+
+  it("maps numbered quiz tag options to A–D", () => {
+    expect(parseQuizTag(`${q}\n<!--quiz {"options":["1","2","3","4"]}-->`)).toEqual(["A", "B", "C", "D"]);
+  });
+
+  it("shows option text on the cards for inline (1)…(4) options", () => {
+    const r = extractQuizOptions(q, ["A", "B", "C", "D"]);
+    expect(r.labels).toEqual({ A: "Mustard", B: "Banana", C: "Pisum", D: "Brinjal" });
+    expect(r.text).toContain("occurs in:");
+    expect(r.text).not.toContain("Brinjal");
+  });
+
+  it("still reads letter options on separate lines", () => {
+    const r = extractQuizOptions("Q1. Site of respiration?\n(A) Mitochondria\n(B) Chloroplast\n(C) Ribosome\n(D) Golgi", ["A", "B", "C", "D"]);
+    expect(r.labels['A']).toBe("Mitochondria");
+    expect(r.labels['D']).toBe("Golgi");
+  });
+});

@@ -1,1 +1,170 @@
-InVzZSBjbGllbnQiCgppbXBvcnQgKiBhcyBSZWFjdCBmcm9tICJyZWFjdCIKaW1wb3J0IHsgY3ZhLCB0eXBlIFZhcmlhbnRQcm9wcyB9IGZyb20gImNsYXNzLXZhcmlhbmNlLWF1dGhvcml0eSIKCmltcG9ydCB7IGNuIH0gZnJvbSAiQC9saWIvdXRpbHMiCmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gIkAvY29tcG9uZW50cy91aS9idXR0b24iCmltcG9ydCB7IElucHV0IH0gZnJvbSAiQC9jb21wb25lbnRzL3VpL2lucHV0IgppbXBvcnQgeyBUZXh0YXJlYSB9IGZyb20gIkAvY29tcG9uZW50cy91aS90ZXh0YXJlYSIKCmZ1bmN0aW9uIElucHV0R3JvdXAoeyBjbGFzc05hbWUsIC4uLnByb3BzIH06IFJlYWN0LkNvbXBvbmVudFByb3BzPCJkaXYiPikgewogIHJldHVybiAoCiAgICA8ZGl2CiAgICAgIGRhdGEtc2xvdD0iaW5wdXQtZ3JvdXAiCiAgICAgIHJvbGU9Imdyb3VwIgogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJncm91cC9pbnB1dC1ncm91cCBib3JkZXItaW5wdXQgZGFyazpiZy1pbnB1dC8zMCBzaGFkb3cteHMgcmVsYXRpdmUgZmxleCB3LWZ1bGwgaXRlbXMtY2VudGVyIHJvdW5kZWQtbWQgYm9yZGVyIG91dGxpbmUtbm9uZSB0cmFuc2l0aW9uLVtjb2xvcixib3gtc2hhZG93XSIsCiAgICAgICAgImgtOSBoYXMtWz50ZXh0YXJlYV06aC1hdXRvIiwKCiAgICAgICAgLy8gVmFyaWFudHMgYmFzZWQgb24gYWxpZ25tZW50LgogICAgICAgICJoYXMtWz5bZGF0YS1hbGlnbj1pbmxpbmUtc3RhcnRdXTpbJj5pbnB1dF06cGwtMiIsCiAgICAgICAgImhhcy1bPltkYXRhLWFsaWduPWlubGluZS1lbmRdXTpbJj5pbnB1dF06cHItMiIsCiAgICAgICAgImhhcy1bPltkYXRhLWFsaWduPWJsb2NrLXN0YXJ0XV06aC1hdXRvIGhhcy1bPltkYXRhLWFsaWduPWJsb2NrLXN0YXJ0XV06ZmxleC1jb2wgaGFzLVs+W2RhdGEtYWxpZ249YmxvY2stc3RhcnRdXTpbJj5pbnB1dF06cGItMyIsCiAgICAgICAgImhhcy1bPltkYXRhLWFsaWduPWJsb2NrLWVuZF1dOmgtYXV0byBoYXMtWz5bZGF0YS1hbGlnbj1ibG9jay1lbmRdXTpmbGV4LWNvbCBoYXMtWz5bZGF0YS1hbGlnbj1ibG9jay1lbmRdXTpbJj5pbnB1dF06cHQtMyIsCgogICAgICAgIC8vIEZvY3VzIHN0YXRlLgogICAgICAgICJoYXMtW1tkYXRhLXNsb3Q9aW5wdXQtZ3JvdXAtY29udHJvbF06Zm9jdXMtdmlzaWJsZV06cmluZy1yaW5nIGhhcy1bW2RhdGEtc2xvdD1pbnB1dC1ncm91cC1jb250cm9sXTpmb2N1cy12aXNpYmxlXTpyaW5nLTEiLAoKICAgICAgICAvLyBFcnJvciBzdGF0ZS4KICAgICAgICAiaGFzLVtbZGF0YS1zbG90XVthcmlhLWludmFsaWQ9dHJ1ZV1dOnJpbmctZGVzdHJ1Y3RpdmUvMjAgaGFzLVtbZGF0YS1zbG90XVthcmlhLWludmFsaWQ9dHJ1ZV1dOmJvcmRlci1kZXN0cnVjdGl2ZSBkYXJrOmhhcy1bW2RhdGEtc2xvdF1bYXJpYS1pbnZhbGlkPXRydWVdXTpyaW5nLWRlc3RydWN0aXZlLzQwIiwKCiAgICAgICAgY2xhc3NOYW1lCiAgICAgICl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKQp9Cgpjb25zdCBpbnB1dEdyb3VwQWRkb25WYXJpYW50cyA9IGN2YSgKICAidGV4dC1tdXRlZC1mb3JlZ3JvdW5kIGZsZXggaC1hdXRvIGN1cnNvci10ZXh0IHNlbGVjdC1ub25lIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBnYXAtMiBweS0xLjUgdGV4dC1zbSBmb250LW1lZGl1bSBncm91cC1kYXRhLVtkaXNhYmxlZD10cnVlXS9pbnB1dC1ncm91cDpvcGFjaXR5LTUwIFsmPmtiZF06cm91bmRlZC1bY2FsYyh2YXIoLS1yYWRpdXMpLTVweCldIFsmPnN2Zzpub3QoW2NsYXNzKj0nc2l6ZS0nXSldOnNpemUtNCIsCiAgewogICAgdmFyaWFudHM6IHsKICAgICAgYWxpZ246IHsKICAgICAgICAiaW5saW5lLXN0YXJ0IjoKICAgICAgICAgICJvcmRlci1maXJzdCBwbC0zIGhhcy1bPmJ1dHRvbl06bWwtWy0wLjQ1cmVtXSBoYXMtWz5rYmRdOm1sLVstMC4zNXJlbV0iLAogICAgICAgICJpbmxpbmUtZW5kIjoKICAgICAgICAgICJvcmRlci1sYXN0IHByLTMgaGFzLVs+YnV0dG9uXTptci1bLTAuNHJlbV0gaGFzLVs+a2JkXTptci1bLTAuMzVyZW1dIiwKICAgICAgICAiYmxvY2stc3RhcnQiOgogICAgICAgICAgIlsuYm9yZGVyLWJdOnBiLTMgb3JkZXItZmlyc3Qgdy1mdWxsIGp1c3RpZnktc3RhcnQgcHgtMyBwdC0zIGdyb3VwLWhhcy1bPmlucHV0XS9pbnB1dC1ncm91cDpwdC0yLjUiLAogICAgICAgICJibG9jay1lbmQiOgogICAgICAgICAgIlsuYm9yZGVyLXRdOnB0LTMgb3JkZXItbGFzdCB3LWZ1bGwganVzdGlmeS1zdGFydCBweC0zIHBiLTMgZ3JvdXAtaGFzLVs+aW5wdXRdL2lucHV0LWdyb3VwOnBiLTIuNSIsCiAgICAgIH0sCiAgICB9LAogICAgZGVmYXVsdFZhcmlhbnRzOiB7CiAgICAgIGFsaWduOiAiaW5saW5lLXN0YXJ0IiwKICAgIH0sCiAgfQopCgpmdW5jdGlvbiBJbnB1dEdyb3VwQWRkb24oewogIGNsYXNzTmFtZSwKICBhbGlnbiA9ICJpbmxpbmUtc3RhcnQiLAogIC4uLnByb3BzCn06IFJlYWN0LkNvbXBvbmVudFByb3BzPCJkaXYiPiAmIFZhcmlhbnRQcm9wczx0eXBlb2YgaW5wdXRHcm91cEFkZG9uVmFyaWFudHM+KSB7CiAgcmV0dXJuICgKICAgIDxkaXYKICAgICAgcm9sZT0iZ3JvdXAiCiAgICAgIGRhdGEtc2xvdD0iaW5wdXQtZ3JvdXAtYWRkb24iCiAgICAgIGRhdGEtYWxpZ249e2FsaWdufQogICAgICBjbGFzc05hbWU9e2NuKGlucHV0R3JvdXBBZGRvblZhcmlhbnRzKHsgYWxpZ24gfSksIGNsYXNzTmFtZSl9CiAgICAgIG9uQ2xpY2s9eyhlKSA9PiB7CiAgICAgICAgaWYgKChlLnRhcmdldCBhcyBIVE1MRWxlbWVudCkuY2xvc2VzdCgiYnV0dG9uIikpIHsKICAgICAgICAgIHJldHVybgogICAgICAgIH0KICAgICAgICBlLmN1cnJlbnRUYXJnZXQucGFyZW50RWxlbWVudD8ucXVlcnlTZWxlY3RvcigiaW5wdXQiKT8uZm9jdXMoKQogICAgICB9fQogICAgICB7Li4ucHJvcHN9CiAgICAvPgogICkKfQoKY29uc3QgaW5wdXRHcm91cEJ1dHRvblZhcmlhbnRzID0gY3ZhKAogICJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiB0ZXh0LXNtIHNoYWRvdy1ub25lIiwKICB7CiAgICB2YXJpYW50czogewogICAgICBzaXplOiB7CiAgICAgICAgeHM6ICJoLTYgZ2FwLTEgcm91bmRlZC1bY2FsYyh2YXIoLS1yYWRpdXMpLTVweCldIHB4LTIgaGFzLVs+c3ZnXTpweC0yIFsmPnN2Zzpub3QoW2NsYXNzKj0nc2l6ZS0nXSldOnNpemUtMy41IiwKICAgICAgICBzbTogImgtOCBnYXAtMS41IHJvdW5kZWQtbWQgcHgtMi41IGhhcy1bPnN2Z106cHgtMi41IiwKICAgICAgICAiaWNvbi14cyI6CiAgICAgICAgICAic2l6ZS02IHJvdW5kZWQtW2NhbGModmFyKC0tcmFkaXVzKS01cHgpXSBwLTAgaGFzLVs+c3ZnXTpwLTAiLAogICAgICAgICJpY29uLXNtIjogInNpemUtOCBwLTAgaGFzLVs+c3ZnXTpwLTAiLAogICAgICB9LAogICAgfSwKICAgIGRlZmF1bHRWYXJpYW50czogewogICAgICBzaXplOiAieHMiLAogICAgfSwKICB9CikKCmZ1bmN0aW9uIElucHV0R3JvdXBCdXR0b24oewogIGNsYXNzTmFtZSwKICB0eXBlID0gImJ1dHRvbiIsCiAgdmFyaWFudCA9ICJnaG9zdCIsCiAgc2l6ZSA9ICJ4cyIsCiAgLi4ucHJvcHMKfTogT21pdDxSZWFjdC5Db21wb25lbnRQcm9wczx0eXBlb2YgQnV0dG9uPiwgInNpemUiPiAmCiAgVmFyaWFudFByb3BzPHR5cGVvZiBpbnB1dEdyb3VwQnV0dG9uVmFyaWFudHM+KSB7CiAgcmV0dXJuICgKICAgIDxCdXR0b24KICAgICAgdHlwZT17dHlwZX0KICAgICAgZGF0YS1zaXplPXtzaXplfQogICAgICB2YXJpYW50PXt2YXJpYW50fQogICAgICBjbGFzc05hbWU9e2NuKGlucHV0R3JvdXBCdXR0b25WYXJpYW50cyh7IHNpemUgfSksIGNsYXNzTmFtZSl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKQp9CgpmdW5jdGlvbiBJbnB1dEdyb3VwVGV4dCh7IGNsYXNzTmFtZSwgLi4ucHJvcHMgfTogUmVhY3QuQ29tcG9uZW50UHJvcHM8InNwYW4iPikgewogIHJldHVybiAoCiAgICA8c3BhbgogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJ0ZXh0LW11dGVkLWZvcmVncm91bmQgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIgdGV4dC1zbSBbJl9zdmc6bm90KFtjbGFzcyo9J3NpemUtJ10pXTpzaXplLTQgWyZfc3ZnXTpwb2ludGVyLWV2ZW50cy1ub25lIiwKICAgICAgICBjbGFzc05hbWUKICAgICAgKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApCn0KCmZ1bmN0aW9uIElucHV0R3JvdXBJbnB1dCh7CiAgY2xhc3NOYW1lLAogIC4uLnByb3BzCn06IFJlYWN0LkNvbXBvbmVudFByb3BzPCJpbnB1dCI+KSB7CiAgcmV0dXJuICgKICAgIDxJbnB1dAogICAgICBkYXRhLXNsb3Q9ImlucHV0LWdyb3VwLWNvbnRyb2wiCiAgICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICAgImZsZXgtMSByb3VuZGVkLW5vbmUgYm9yZGVyLTAgYmctdHJhbnNwYXJlbnQgc2hhZG93LW5vbmUgZm9jdXMtdmlzaWJsZTpyaW5nLTAgZGFyazpiZy10cmFuc3BhcmVudCIsCiAgICAgICAgY2xhc3NOYW1lCiAgICAgICl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKQp9CgpmdW5jdGlvbiBJbnB1dEdyb3VwVGV4dGFyZWEoewogIGNsYXNzTmFtZSwKICAuLi5wcm9wcwp9OiBSZWFjdC5Db21wb25lbnRQcm9wczwidGV4dGFyZWEiPikgewogIHJldHVybiAoCiAgICA8VGV4dGFyZWEKICAgICAgZGF0YS1zbG90PSJpbnB1dC1ncm91cC1jb250cm9sIgogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJmbGV4LTEgcmVzaXplLW5vbmUgcm91bmRlZC1ub25lIGJvcmRlci0wIGJnLXRyYW5zcGFyZW50IHB5LTMgc2hhZG93LW5vbmUgZm9jdXMtdmlzaWJsZTpyaW5nLTAgZGFyazpiZy10cmFuc3BhcmVudCIsCiAgICAgICAgY2xhc3NOYW1lCiAgICAgICl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKQp9CgpleHBvcnQgewogIElucHV0R3JvdXAsCiAgSW5wdXRHcm91cEFkZG9uLAogIElucHV0R3JvdXBCdXR0b24sCiAgSW5wdXRHcm91cFRleHQsCiAgSW5wdXRHcm91cElucHV0LAogIElucHV0R3JvdXBUZXh0YXJlYSwKfQo=
+"use client"
+
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+
+function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="input-group"
+      role="group"
+      className={cn(
+        "group/input-group border-input dark:bg-input/30 shadow-xs relative flex w-full items-center rounded-md border outline-none transition-[color,box-shadow]",
+        "h-9 has-[>textarea]:h-auto",
+
+        // Variants based on alignment.
+        "has-[>[data-align=inline-start]]:[&>input]:pl-2",
+        "has-[>[data-align=inline-end]]:[&>input]:pr-2",
+        "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
+        "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
+
+        // Focus state.
+        "has-[[data-slot=input-group-control]:focus-visible]:ring-ring has-[[data-slot=input-group-control]:focus-visible]:ring-1",
+
+        // Error state.
+        "has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
+
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+const inputGroupAddonVariants = cva(
+  "text-muted-foreground flex h-auto cursor-text select-none items-center justify-center gap-2 py-1.5 text-sm font-medium group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4",
+  {
+    variants: {
+      align: {
+        "inline-start":
+          "order-first pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]",
+        "inline-end":
+          "order-last pr-3 has-[>button]:mr-[-0.4rem] has-[>kbd]:mr-[-0.35rem]",
+        "block-start":
+          "[.border-b]:pb-3 order-first w-full justify-start px-3 pt-3 group-has-[>input]/input-group:pt-2.5",
+        "block-end":
+          "[.border-t]:pt-3 order-last w-full justify-start px-3 pb-3 group-has-[>input]/input-group:pb-2.5",
+      },
+    },
+    defaultVariants: {
+      align: "inline-start",
+    },
+  }
+)
+
+function InputGroupAddon({
+  className,
+  align = "inline-start",
+  ...props
+}: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
+  return (
+    <div
+      role="group"
+      data-slot="input-group-addon"
+      data-align={align}
+      className={cn(inputGroupAddonVariants({ align }), className)}
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest("button")) {
+          return
+        }
+        e.currentTarget.parentElement?.querySelector("input")?.focus()
+      }}
+      {...props}
+    />
+  )
+}
+
+const inputGroupButtonVariants = cva(
+  "flex items-center gap-2 text-sm shadow-none",
+  {
+    variants: {
+      size: {
+        xs: "h-6 gap-1 rounded-[calc(var(--radius)-5px)] px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
+        sm: "h-8 gap-1.5 rounded-md px-2.5 has-[>svg]:px-2.5",
+        "icon-xs":
+          "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
+        "icon-sm": "size-8 p-0 has-[>svg]:p-0",
+      },
+    },
+    defaultVariants: {
+      size: "xs",
+    },
+  }
+)
+
+function InputGroupButton({
+  className,
+  type = "button",
+  variant = "ghost",
+  size = "xs",
+  ...props
+}: Omit<React.ComponentProps<typeof Button>, "size"> &
+  VariantProps<typeof inputGroupButtonVariants>) {
+  return (
+    <Button
+      type={type}
+      data-size={size}
+      variant={variant}
+      className={cn(inputGroupButtonVariants({ size }), className)}
+      {...props}
+    />
+  )
+}
+
+function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      className={cn(
+        "text-muted-foreground flex items-center gap-2 text-sm [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function InputGroupInput({
+  className,
+  ...props
+}: React.ComponentProps<"input">) {
+  return (
+    <Input
+      data-slot="input-group-control"
+      className={cn(
+        "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function InputGroupTextarea({
+  className,
+  ...props
+}: React.ComponentProps<"textarea">) {
+  return (
+    <Textarea
+      data-slot="input-group-control"
+      className={cn(
+        "flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+  InputGroupInput,
+  InputGroupTextarea,
+}

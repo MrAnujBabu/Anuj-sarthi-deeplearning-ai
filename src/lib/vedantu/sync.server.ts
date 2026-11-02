@@ -1,1 +1,96 @@
-LyoqCiAqIFJlYWRzIHRoZSBvd25lcidzIFZlZGFudHUgIk15IENvdXJzZXMiIG9ubGluZSB3aXRob3V0IHBlcnNpc3RpbmcgY29udGVudC4KICogV29yayBpcyBzcGxpdCBpbnRvIHNtYWxsIHN0ZXBzIChzdGFydCDihpIgb25lIGNvdXJzZSBhdCBhIHRpbWUg4oaSIHJlY2VudCBub3RlcyDihpIgZmluaXNoKSBzbyBlYWNoCiAqIHNlcnZlciBjYWxsIHN0YXlzIGluc2lkZSB0aGUgcnVudGltZSdzIG91dGJvdW5kLWNvbm5lY3Rpb24gYW5kIHRpbWUgbGltaXRzOyBhIGRhdGFiYXNlIGxlYXNlCiAqIGtlZXBzIHR3byBzeW5jcyBmcm9tIHJ1bm5pbmcgYXQgb25jZS4KICovCmltcG9ydCB0eXBlIHsgU3VwYWJhc2VDbGllbnQgfSBmcm9tICJAc3VwYWJhc2Uvc3VwYWJhc2UtanMiOwppbXBvcnQgdHlwZSB7IERhdGFiYXNlLCBKc29uIH0gZnJvbSAiQC9pbnRlZ3JhdGlvbnMvc3VwYWJhc2UvdHlwZXMiOwppbXBvcnQgeyBWZWRhbnR1RXJyb3IgfSBmcm9tICIuL2FwaS5zZXJ2ZXIiOwoKdHlwZSBBZG1pbiA9IFN1cGFiYXNlQ2xpZW50PERhdGFiYXNlPjsKCmNvbnN0IExFQVNFX01TID0gMTAgKiA2MCAqIDEwMDA7CgpleHBvcnQgY2xhc3MgU3luY0J1c3lFcnJvciBleHRlbmRzIEVycm9yIHsKICBjb25zdHJ1Y3RvcigpIHsgc3VwZXIoIkEgVmVkYW50dSBzeW5jIGlzIGFscmVhZHkgcnVubmluZy4gV2FpdCBmb3IgaXQgdG8gZmluaXNoLiIpOyB0aGlzLm5hbWUgPSAiU3luY0J1c3lFcnJvciI7IH0KfQoKZXhwb3J0IGZ1bmN0aW9uIGZyaWVuZGx5U3luY0Vycm9yKGU6IHVua25vd24pOiBzdHJpbmcgewogIGlmIChlIGluc3RhbmNlb2YgU3luY0J1c3lFcnJvcikgcmV0dXJuIGUubWVzc2FnZTsKICBpZiAoZSBpbnN0YW5jZW9mIFZlZGFudHVFcnJvcikgcmV0dXJuIGUubWVzc2FnZTsKICByZXR1cm4gZSBpbnN0YW5jZW9mIEVycm9yICYmIGUubWVzc2FnZSA/IGUubWVzc2FnZS5zbGljZSgwLCAzMDApIDogIlZlZGFudHUgc3luYyBmYWlsZWQuIjsKfQoKLyoqIENvbmZpcm1zIHRoZSBjYWxsZXIgc3RpbGwgb3ducyB0aGUgbGVhc2UsIGV4dGVuZHMgaXQsIGFuZCByZXR1cm5zIHRoZSBkYXRhYmFzZSBjbG9jay4gKi8KYXN5bmMgZnVuY3Rpb24gaG9sZExlYXNlKGFkbWluOiBBZG1pbiwgbGVhc2VJZDogc3RyaW5nLCBtZXNzYWdlOiBzdHJpbmcpOiBQcm9taXNlPHN0cmluZz4gewogIGNvbnN0IHsgZGF0YSwgZXJyb3IgfSA9IGF3YWl0IGFkbWluCiAgICAuZnJvbSgidmVkYW50dV9zeW5jX3N0YXRlIikKICAgIC51cGRhdGUoeyBsZWFzZV91bnRpbDogbmV3IERhdGUoRGF0ZS5ub3coKSArIExFQVNFX01TKS50b0lTT1N0cmluZygpLCBtZXNzYWdlIH0pCiAgICAuZXEoImlkIiwgIm1haW4iKQogICAgLmVxKCJsZWFzZV9pZCIsIGxlYXNlSWQpCiAgICAuc2VsZWN0KCJ1cGRhdGVkX2F0IikKICAgIC5tYXliZVNpbmdsZSgpOwogIGlmIChlcnJvcikgdGhyb3cgbmV3IEVycm9yKGVycm9yLm1lc3NhZ2UpOwogIGlmICghZGF0YSkgdGhyb3cgbmV3IEVycm9yKCJUaGlzIHN5bmMgd2FzIHJlcGxhY2VkIGJ5IGEgbmV3ZXIgb25lLiBTdGFydCBpdCBhZ2Fpbi4iKTsKICByZXR1cm4gZGF0YS51cGRhdGVkX2F0Owp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gc3RhcnRTeW5jKGFkbWluOiBBZG1pbik6IFByb21pc2U8eyBsZWFzZUlkOiBzdHJpbmc7IGNvdXJzZXM6IHsgZW5yb2xsbWVudF9pZDogc3RyaW5nOyB0aXRsZTogc3RyaW5nIH1bXSB9PiB7CiAgY29uc3QgbGVhc2VJZCA9IGNyeXB0by5yYW5kb21VVUlEKCk7CiAgY29uc3Qgbm93ID0gbmV3IERhdGUoKS50b0lTT1N0cmluZygpOwogIGNvbnN0IHsgZGF0YTogZ290LCBlcnJvciB9ID0gYXdhaXQgYWRtaW4KICAgIC5mcm9tKCJ2ZWRhbnR1X3N5bmNfc3RhdGUiKQogICAgLnVwZGF0ZSh7IHN0YXR1czogInJ1bm5pbmciLCBsZWFzZV9pZDogbGVhc2VJZCwgbGVhc2VfdW50aWw6IG5ldyBEYXRlKERhdGUubm93KCkgKyBMRUFTRV9NUykudG9JU09TdHJpbmcoKSwgc3RhcnRlZF9hdDogbm93LCBtZXNzYWdlOiAiUmVhZGluZyBNeSBDb3Vyc2VzIiwgY291bnRzOiB7fSB9KQogICAgLmVxKCJpZCIsICJtYWluIikKICAgIC5vcihgbGVhc2VfdW50aWwuaXMubnVsbCxsZWFzZV91bnRpbC5sdC4ke25vd31gKQogICAgLnNlbGVjdCgiaWQiKQogICAgLm1heWJlU2luZ2xlKCk7CiAgaWYgKGVycm9yKSB0aHJvdyBuZXcgRXJyb3IoZXJyb3IubWVzc2FnZSk7CiAgaWYgKCFnb3QpIHRocm93IG5ldyBTeW5jQnVzeUVycm9yKCk7CgogIHRyeSB7CiAgICBjb25zdCB7IGZldGNoT25saW5lQ291cnNlcyB9ID0gYXdhaXQgaW1wb3J0KCcuL29ubGluZS5zZXJ2ZXInKTsKICAgIGNvbnN0IGNvdXJzZXMgPSBhd2FpdCBmZXRjaE9ubGluZUNvdXJzZXMoKTsKICAgIHJldHVybiB7IGxlYXNlSWQsIGNvdXJzZXM6IGNvdXJzZXMubWFwKGMgPT4gKHsgZW5yb2xsbWVudF9pZDogYy5lbnJvbGxtZW50X2lkLCB0aXRsZTogYy50aXRsZSB9KSkgfTsKICB9IGNhdGNoIChlKSB7CiAgICBhd2FpdCBmaW5pc2hTeW5jKGFkbWluLCBsZWFzZUlkLCB7IG9rOiBmYWxzZSwgbWVzc2FnZTogZnJpZW5kbHlTeW5jRXJyb3IoZSkgfSk7CiAgICB0aHJvdyBlOwogIH0KfQoKLyoqIFNjaGVkdWxlZCBmZXRjaCBjaGVja3Mgb25saW5lIGRhdGE7IG9ubHkgbGVhc2Uvc3RhdHVzIG1ldGFkYXRhIGlzIHBlcnNpc3RlZC4gKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHN5bmNDb3Vyc2UoYWRtaW46IEFkbWluLCBsZWFzZUlkOiBzdHJpbmcsIGVucm9sbG1lbnRJZDogc3RyaW5nKTogUHJvbWlzZTx7IGNsYXNzZXM6IG51bWJlcjsgdGVzdHM6IG51bWJlcjsgd2FybmluZ3M6IG51bWJlciB9PiB7CiAgYXdhaXQgaG9sZExlYXNlKGFkbWluLCBsZWFzZUlkLCAnUmVhZGluZyBvbmxpbmUgY291cnNlJyk7CiAgY29uc3QgeyBmZXRjaE9ubGluZUNvdXJzZXMsIGZldGNoT25saW5lQ291cnNlIH0gPSBhd2FpdCBpbXBvcnQoJy4vb25saW5lLnNlcnZlcicpOwogIGNvbnN0IGNvdXJzZSA9IChhd2FpdCBmZXRjaE9ubGluZUNvdXJzZXMoKSkuZmluZChjID0+IGMuZW5yb2xsbWVudF9pZCA9PT0gZW5yb2xsbWVudElkKTsKICBpZiAoIWNvdXJzZSkgdGhyb3cgbmV3IEVycm9yKCdUaGlzIGNvdXJzZSBpcyBubyBsb25nZXIgaW4gTXkgQ291cnNlcy4nKTsKICBjb25zdCByZXN1bHQgPSBhd2FpdCBmZXRjaE9ubGluZUNvdXJzZShjb3Vyc2UpOwogIHJldHVybiB7IGNsYXNzZXM6IHJlc3VsdC5jbGFzc2VzLmxlbmd0aCwgdGVzdHM6IHJlc3VsdC50ZXN0cy5sZW5ndGgsIHdhcm5pbmdzOiByZXN1bHQud2FybmluZ3MgfTsKfQoKLyoqIENvbXBhdGliaWxpdHkgd3JhcHBlcjogb25saW5lIG5vdGVzIGFyZSBubyBsb25nZXIgc3RvcmVkLiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZmV0Y2hBbmRTdG9yZU5vdGVzKF9hZG1pbjogQWRtaW4sIHNlc3Npb25JZDogc3RyaW5nLCBfdGl0bGU6IHN0cmluZykgewogIGNvbnN0IHsgZmV0Y2hPbmxpbmVOb3RlcyB9ID0gYXdhaXQgaW1wb3J0KCcuL29ubGluZS5zZXJ2ZXInKTsKICByZXR1cm4gZmV0Y2hPbmxpbmVOb3RlcyhzZXNzaW9uSWQpOwp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gc3luY1JlY2VudE5vdGVzKGFkbWluOiBBZG1pbiwgbGVhc2VJZDogc3RyaW5nLCBfbGltaXQgPSA4KTogUHJvbWlzZTx7IGZldGNoZWQ6IG51bWJlcjsgcmVtYWluaW5nOiBudW1iZXI7IGZhaWxlZDogbnVtYmVyIH0+IHsKICBhd2FpdCBob2xkTGVhc2UoYWRtaW4sIGxlYXNlSWQsICdPbmxpbmUgcmVmcmVzaCBjb21wbGV0ZTsgbm90ZXMgbG9hZCBvbiBkZW1hbmQnKTsKICByZXR1cm4geyBmZXRjaGVkOiAwLCByZW1haW5pbmc6IDAsIGZhaWxlZDogMCB9Owp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZmluaXNoU3luYyhhZG1pbjogQWRtaW4sIGxlYXNlSWQ6IHN0cmluZywgcmVzdWx0OiB7IG9rOiBib29sZWFuOyBtZXNzYWdlOiBzdHJpbmc7IGNvdW50cz86IFJlY29yZDxzdHJpbmcsIG51bWJlcj4gfSkgewogIGF3YWl0IGFkbWluCiAgICAuZnJvbSgidmVkYW50dV9zeW5jX3N0YXRlIikKICAgIC51cGRhdGUoewogICAgICBzdGF0dXM6IHJlc3VsdC5vayA/ICJvayIgOiAiZXJyb3IiLAogICAgICBmaW5pc2hlZF9hdDogbmV3IERhdGUoKS50b0lTT1N0cmluZygpLAogICAgICBtZXNzYWdlOiByZXN1bHQubWVzc2FnZS5zbGljZSgwLCA1MDApLAogICAgICAuLi4ocmVzdWx0LmNvdW50cyA/IHsgY291bnRzOiByZXN1bHQuY291bnRzIGFzIEpzb24gfSA6IHt9KSwKICAgICAgbGVhc2VfaWQ6IG51bGwsCiAgICAgIGxlYXNlX3VudGlsOiBudWxsLAogICAgfSkKICAgIC5lcSgiaWQiLCAibWFpbiIpCiAgICAuZXEoImxlYXNlX2lkIiwgbGVhc2VJZCk7Cn0K
+/**
+ * Reads the owner's Vedantu "My Courses" online without persisting content.
+ * Work is split into small steps (start → one course at a time → recent notes → finish) so each
+ * server call stays inside the runtime's outbound-connection and time limits; a database lease
+ * keeps two syncs from running at once.
+ */
+import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database, Json } from "@/integrations/supabase/types";
+import { VedantuError } from "./api.server";
+
+type Admin = SupabaseClient<Database>;
+
+const LEASE_MS = 10 * 60 * 1000;
+
+export class SyncBusyError extends Error {
+  constructor() { super("A Vedantu sync is already running. Wait for it to finish."); this.name = "SyncBusyError"; }
+}
+
+export function friendlySyncError(e: unknown): string {
+  if (e instanceof SyncBusyError) return e.message;
+  if (e instanceof VedantuError) return e.message;
+  return e instanceof Error && e.message ? e.message.slice(0, 300) : "Vedantu sync failed.";
+}
+
+/** Confirms the caller still owns the lease, extends it, and returns the database clock. */
+async function holdLease(admin: Admin, leaseId: string, message: string): Promise<string> {
+  const { data, error } = await admin
+    .from("vedantu_sync_state")
+    .update({ lease_until: new Date(Date.now() + LEASE_MS).toISOString(), message })
+    .eq("id", "main")
+    .eq("lease_id", leaseId)
+    .select("updated_at")
+    .maybeSingle();
+  if (error) throw new Error(error.message);
+  if (!data) throw new Error("This sync was replaced by a newer one. Start it again.");
+  return data.updated_at;
+}
+
+export async function startSync(admin: Admin): Promise<{ leaseId: string; courses: { enrollment_id: string; title: string }[] }> {
+  const leaseId = crypto.randomUUID();
+  const now = new Date().toISOString();
+  const { data: got, error } = await admin
+    .from("vedantu_sync_state")
+    .update({ status: "running", lease_id: leaseId, lease_until: new Date(Date.now() + LEASE_MS).toISOString(), started_at: now, message: "Reading My Courses", counts: {} })
+    .eq("id", "main")
+    .or(`lease_until.is.null,lease_until.lt.${now}`)
+    .select("id")
+    .maybeSingle();
+  if (error) throw new Error(error.message);
+  if (!got) throw new SyncBusyError();
+
+  try {
+    const { fetchOnlineCourses } = await import('./online.server');
+    const courses = await fetchOnlineCourses();
+    return { leaseId, courses: courses.map(c => ({ enrollment_id: c.enrollment_id, title: c.title })) };
+  } catch (e) {
+    await finishSync(admin, leaseId, { ok: false, message: friendlySyncError(e) });
+    throw e;
+  }
+}
+
+/** Scheduled fetch checks online data; only lease/status metadata is persisted. */
+export async function syncCourse(admin: Admin, leaseId: string, enrollmentId: string): Promise<{ classes: number; tests: number; warnings: number }> {
+  await holdLease(admin, leaseId, 'Reading online course');
+  const { fetchOnlineCourses, fetchOnlineCourse } = await import('./online.server');
+  const course = (await fetchOnlineCourses()).find(c => c.enrollment_id === enrollmentId);
+  if (!course) throw new Error('This course is no longer in My Courses.');
+  const result = await fetchOnlineCourse(course);
+  return { classes: result.classes.length, tests: result.tests.length, warnings: result.warnings };
+}
+
+/** Compatibility wrapper: online notes are no longer stored. */
+export async function fetchAndStoreNotes(_admin: Admin, sessionId: string, _title: string) {
+  const { fetchOnlineNotes } = await import('./online.server');
+  return fetchOnlineNotes(sessionId);
+}
+
+export async function syncRecentNotes(admin: Admin, leaseId: string, _limit = 8): Promise<{ fetched: number; remaining: number; failed: number }> {
+  await holdLease(admin, leaseId, 'Online refresh complete; notes load on demand');
+  return { fetched: 0, remaining: 0, failed: 0 };
+}
+
+export async function finishSync(admin: Admin, leaseId: string, result: { ok: boolean; message: string; counts?: Record<string, number> }) {
+  await admin
+    .from("vedantu_sync_state")
+    .update({
+      status: result.ok ? "ok" : "error",
+      finished_at: new Date().toISOString(),
+      message: result.message.slice(0, 500),
+      ...(result.counts ? { counts: result.counts as Json } : {}),
+      lease_id: null,
+      lease_until: null,
+    })
+    .eq("id", "main")
+    .eq("lease_id", leaseId);
+}

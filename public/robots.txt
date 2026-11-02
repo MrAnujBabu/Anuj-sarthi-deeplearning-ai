@@ -1,1 +1,14 @@
-VXNlci1hZ2VudDogR29vZ2xlYm90CkFsbG93OiAvCgpVc2VyLWFnZW50OiBCaW5nYm90CkFsbG93OiAvCgpVc2VyLWFnZW50OiBUd2l0dGVyYm90CkFsbG93OiAvCgpVc2VyLWFnZW50OiBmYWNlYm9va2V4dGVybmFsaGl0CkFsbG93OiAvCgpVc2VyLWFnZW50OiAqCkFsbG93OiAvCg==
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /

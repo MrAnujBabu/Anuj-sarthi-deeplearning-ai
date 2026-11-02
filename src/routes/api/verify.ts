@@ -1,1 +1,55 @@
-aW1wb3J0IHsgY3JlYXRlRmlsZVJvdXRlIH0gZnJvbSAnQHRhbnN0YWNrL3JlYWN0LXJvdXRlcic7CmltcG9ydCB7IHogfSBmcm9tICd6b2QnOwppbXBvcnQgdHlwZSB7IENvdW5jaWxFdmVudCB9IGZyb20gJ0AvbGliL3ZlcmlmeSc7Cgpjb25zdCBCb2R5ID0gei5vYmplY3QoewogIHF1ZXN0aW9uOiB6LnN0cmluZygpLnRyaW0oKS5taW4oMSkubWF4KDEyMDAwKSwKICBhbnN3ZXI6IHouc3RyaW5nKCkudHJpbSgpLm1pbigxKS5tYXgoNjAwMDApLAogIGltYWdlczogei5hcnJheSh6LnN0cmluZygpLnN0YXJ0c1dpdGgoJ2RhdGE6aW1hZ2UvJykubWF4KDZfMDAwXzAwMCkpLm1heCgyKS5vcHRpb25hbCgpLAogIG1vZGU6IHouZW51bShbJ3NvbHZlJywgJ3F1aXonXSkub3B0aW9uYWwoKSwKfSk7CgovKiogQW5zd2VyLWNoZWNraW5nIGNvdW5jaWwgKEdlbWluaSArIEdQVCByZXZpZXcsIENsYXVkZSBydWxlcykuIFN0cmVhbXMgTkRKU09OIHByb2dyZXNzIGV2ZW50cy4gKi8KZXhwb3J0IGNvbnN0IFJvdXRlID0gY3JlYXRlRmlsZVJvdXRlKCcvYXBpL3ZlcmlmeScpKHsKICBzZXJ2ZXI6IHsKICAgIGhhbmRsZXJzOiB7CiAgICAgIFBPU1Q6IGFzeW5jICh7IHJlcXVlc3QgfSkgPT4gewogICAgICAgIGNvbnN0IHBhcnNlZCA9IEJvZHkuc2FmZVBhcnNlKGF3YWl0IHJlcXVlc3QuanNvbigpLmNhdGNoKCgpID0+IG51bGwpKTsKICAgICAgICBpZiAoIXBhcnNlZC5zdWNjZXNzKSByZXR1cm4gUmVzcG9uc2UuanNvbih7IGVycm9yOiAnSW52YWxpZCByZXF1ZXN0LicgfSwgeyBzdGF0dXM6IDQwMCB9KTsKICAgICAgICBjb25zdCB7IHF1ZXN0aW9uLCBhbnN3ZXIsIGltYWdlcyA9IFtdLCBtb2RlIH0gPSBwYXJzZWQuZGF0YTsKICAgICAgICAvLyBOZXZlciBjaGVjayBxdWl6IHR1cm5zOiB0aGUgcmV2aWV3ZXJzIHdvdWxkIHJldmVhbCB0aGUgYW5zd2VyIGJlZm9yZSB0aGUgc3R1ZGVudCBwaWNrcy4KICAgICAgICBpZiAobW9kZSA9PT0gJ3F1aXonKSByZXR1cm4gUmVzcG9uc2UuanNvbih7IGVycm9yOiAnVmVyaWZ5IGlzIG9mZiBkdXJpbmcgcXVpenplcy4nIH0sIHsgc3RhdHVzOiA0MDAgfSk7CgogICAgICAgIGNvbnN0IHsgZ2V0QWlQYXVzZSB9ID0gYXdhaXQgaW1wb3J0KCdAL2xpYi9haS9wYXVzZS5zZXJ2ZXInKTsKICAgICAgICBjb25zdCBwYXVzZWQgPSBhd2FpdCBnZXRBaVBhdXNlKCk7CiAgICAgICAgaWYgKHBhdXNlZCkgewogICAgICAgICAgY29uc3Qgc3RhdHVzID0gcGF1c2VkLmtpbmQgPT09ICdjcmVkaXRzJyA/IDQwMiA6IDQwMzsKICAgICAgICAgIHJldHVybiBSZXNwb25zZS5qc29uKHsgZXJyb3I6IHBhdXNlZC5tZXNzYWdlIHx8ICdBSSBpcyBwYXVzZWQgZm9yIHRoaXMgd29ya3NwYWNlLicgfSwgeyBzdGF0dXMgfSk7CiAgICAgICAgfQoKICAgICAgICBjb25zdCB7IHJ1bkNvdW5jaWwgfSA9IGF3YWl0IGltcG9ydCgnQC9saWIvY291bmNpbC5zZXJ2ZXInKTsKICAgICAgICBjb25zdCBlbmMgPSBuZXcgVGV4dEVuY29kZXIoKTsKICAgICAgICBjb25zdCBzdHJlYW0gPSBuZXcgUmVhZGFibGVTdHJlYW08VWludDhBcnJheT4oewogICAgICAgICAgYXN5bmMgc3RhcnQoY29udHJvbGxlcikgewogICAgICAgICAgICBjb25zdCBlbWl0ID0gKGU6IENvdW5jaWxFdmVudCkgPT4gewogICAgICAgICAgICAgIHRyeSB7IGNvbnRyb2xsZXIuZW5xdWV1ZShlbmMuZW5jb2RlKEpTT04uc3RyaW5naWZ5KGUpICsgJ1xuJykpOyB9IGNhdGNoIHsgLyogY2xpZW50IGdvbmUgKi8gfQogICAgICAgICAgICB9OwogICAgICAgICAgICB0cnkgewogICAgICAgICAgICAgIGF3YWl0IHJ1bkNvdW5jaWwoeyBxdWVzdGlvbiwgYW5zd2VyLCBpbWFnZXMgfSwgcmVxdWVzdC5zaWduYWwsIGVtaXQpOwogICAgICAgICAgICB9IGNhdGNoIChlKSB7CiAgICAgICAgICAgICAgaWYgKCFyZXF1ZXN0LnNpZ25hbC5hYm9ydGVkKSB7CiAgICAgICAgICAgICAgICBjb25zb2xlLmVycm9yKCdbdmVyaWZ5XSBjb3VuY2lsIGZhaWxlZCcsIGUgaW5zdGFuY2VvZiBFcnJvciA/IGUubWVzc2FnZSA6IGUpOwogICAgICAgICAgICAgICAgZW1pdCh7IHR5cGU6ICdlcnJvcicsIG1lc3NhZ2U6ICdUaGUgYW5zd2VyIGNoZWNrIGNvdWxkIG5vdCBmaW5pc2guIFBsZWFzZSB0cnkgYWdhaW4uJywgc3RhdHVzOiA1MDAgfSk7CiAgICAgICAgICAgICAgfQogICAgICAgICAgICB9IGZpbmFsbHkgewogICAgICAgICAgICAgIHRyeSB7IGNvbnRyb2xsZXIuY2xvc2UoKTsgfSBjYXRjaCB7IC8qIGFscmVhZHkgY2xvc2VkICovIH0KICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICB9KTsKICAgICAgICByZXR1cm4gbmV3IFJlc3BvbnNlKHN0cmVhbSwgewogICAgICAgICAgaGVhZGVyczogeyAnQ29udGVudC1UeXBlJzogJ2FwcGxpY2F0aW9uL3gtbmRqc29uOyBjaGFyc2V0PXV0Zi04JywgJ0NhY2hlLUNvbnRyb2wnOiAnbm8tY2FjaGUsIG5vLXRyYW5zZm9ybScsICdYLUFjY2VsLUJ1ZmZlcmluZyc6ICdubycgfSwKICAgICAgICB9KTsKICAgICAgfSwKICAgIH0sCiAgfSwKfSk7Cg==
+import { createFileRoute } from '@tanstack/react-router';
+import { z } from 'zod';
+import type { CouncilEvent } from '@/lib/verify';
+
+const Body = z.object({
+  question: z.string().trim().min(1).max(12000),
+  answer: z.string().trim().min(1).max(60000),
+  images: z.array(z.string().startsWith('data:image/').max(6_000_000)).max(2).optional(),
+  mode: z.enum(['solve', 'quiz']).optional(),
+});
+
+/** Answer-checking council (Gemini + GPT review, Claude rules). Streams NDJSON progress events. */
+export const Route = createFileRoute('/api/verify')({
+  server: {
+    handlers: {
+      POST: async ({ request }) => {
+        const parsed = Body.safeParse(await request.json().catch(() => null));
+        if (!parsed.success) return Response.json({ error: 'Invalid request.' }, { status: 400 });
+        const { question, answer, images = [], mode } = parsed.data;
+        // Never check quiz turns: the reviewers would reveal the answer before the student picks.
+        if (mode === 'quiz') return Response.json({ error: 'Verify is off during quizzes.' }, { status: 400 });
+
+        const { getAiPause } = await import('@/lib/ai/pause.server');
+        const paused = await getAiPause();
+        if (paused) {
+          const status = paused.kind === 'credits' ? 402 : 403;
+          return Response.json({ error: paused.message || 'AI is paused for this workspace.' }, { status });
+        }
+
+        const { runCouncil } = await import('@/lib/council.server');
+        const enc = new TextEncoder();
+        const stream = new ReadableStream<Uint8Array>({
+          async start(controller) {
+            const emit = (e: CouncilEvent) => {
+              try { controller.enqueue(enc.encode(JSON.stringify(e) + '\n')); } catch { /* client gone */ }
+            };
+            try {
+              await runCouncil({ question, answer, images }, request.signal, emit);
+            } catch (e) {
+              if (!request.signal.aborted) {
+                console.error('[verify] council failed', e instanceof Error ? e.message : e);
+                emit({ type: 'error', message: 'The answer check could not finish. Please try again.', status: 500 });
+              }
+            } finally {
+              try { controller.close(); } catch { /* already closed */ }
+            }
+          },
+        });
+        return new Response(stream, {
+          headers: { 'Content-Type': 'application/x-ndjson; charset=utf-8', 'Cache-Control': 'no-cache, no-transform', 'X-Accel-Buffering': 'no' },
+        });
+      },
+    },
+  },
+});

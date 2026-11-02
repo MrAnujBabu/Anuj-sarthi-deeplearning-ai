@@ -1,1 +1,25 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQsIHZpIH0gZnJvbSAidml0ZXN0IjsKaW1wb3J0IHsgY3JlYXRlQmF0Y2hUb29scyB9IGZyb20gIkAvbGliL3ZlZGFudHUvYmF0Y2gtdG9vbHMuc2VydmVyIjsKCmNvbnN0IGNscyA9IChpZDogc3RyaW5nLCBwZGY6IGJvb2xlYW4pID0+ICh7IHNlc3Npb25faWQ6IGlkLCB0aXRsZTogIkF0b20tNSIsIHN1YmplY3Q6ICJDaGVtaXN0cnkiLCBjaGFwdGVyOiAiIiwgdGVhY2hlcjogIiIsIHN0YXJ0c19hdDogbnVsbCwgaGFzX3NtYXJ0X25vdGVzOiBmYWxzZSwgaGFzX25vdGVzX3BkZjogcGRmIH0pOwpjb25zdCBvdmVydmlldyA9IGFzeW5jICgpID0+ICh7IHRvZGF5Q2xhc3NlczogW10sIHVwY29taW5nQ2xhc3NlczogW10sIHJlY2VudENsYXNzZXM6IFtjbHMoImFhYWExMTExIiwgdHJ1ZSksIGNscygiYmJiYjIyMjIiLCBmYWxzZSldLCB1cGNvbWluZ1Rlc3RzOiBbXSwgY291cnNlczogW10sIHN5bmM6IHsgY291bnRzOiB7IHdhcm5pbmdzOiAwIH0gfSB9KSBhcyBuZXZlcjsKY29uc3QgcnVuID0gKHQ6IFJldHVyblR5cGU8dHlwZW9mIGNyZWF0ZUJhdGNoVG9vbHM+LCBpZDogc3RyaW5nKSA9PiAodC5iYXRjaF9jbGFzc19wZGZfbm90ZXMgYXMgdW5rbm93biBhcyB7IGV4ZWN1dGU6IChhOiB7IHNlc3Npb25faWQ6IHN0cmluZyB9KSA9PiBQcm9taXNlPFJlY29yZDxzdHJpbmcsIHVua25vd24+PiB9KS5leGVjdXRlKHsgc2Vzc2lvbl9pZDogaWQgfSk7CgpkZXNjcmliZSgiYmF0Y2hfY2xhc3NfcGRmX25vdGVzIiwgKCkgPT4gewogIGl0KCJuZXZlciByZWFkcyBQREZzIGZvciBpZHMgb3V0c2lkZSB0aGUgc3R1ZGVudCdzIG93biBjbGFzcyBsaXN0IiwgYXN5bmMgKCkgPT4gewogICAgY29uc3QgcGRmTm90ZXMgPSB2aS5mbihhc3luYyAoKSA9PiAieCIpOwogICAgY29uc3QgciA9IGF3YWl0IHJ1bihjcmVhdGVCYXRjaFRvb2xzKHsgb3ZlcnZpZXcsIHBkZk5vdGVzIH0pLCAienp6ejk5OTkiKTsKICAgIGV4cGVjdChyWyJlcnJvciJdKS50b0JlVHJ1dGh5KCk7CiAgICBleHBlY3QocGRmTm90ZXMpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgfSk7CiAgaXQoInNraXBzIGNsYXNzZXMgd2hvc2UgUERGIGlzIG5vdCBjcmVhdGVkIiwgYXN5bmMgKCkgPT4gewogICAgY29uc3QgcGRmTm90ZXMgPSB2aS5mbihhc3luYyAoKSA9PiAieCIpOwogICAgYXdhaXQgcnVuKGNyZWF0ZUJhdGNoVG9vbHMoeyBvdmVydmlldywgcGRmTm90ZXMgfSksICJiYmJiMjIyMiIpOwogICAgZXhwZWN0KHBkZk5vdGVzKS5ub3QudG9IYXZlQmVlbkNhbGxlZCgpOwogIH0pOwogIGl0KCJyZXR1cm5zIHRoZSBQREYgdGV4dCB3aXRoIHRoZSBWZWRhbnR1IG5vdGVzIGxpbmsiLCBhc3luYyAoKSA9PiB7CiAgICBjb25zdCByID0gYXdhaXQgcnVuKGNyZWF0ZUJhdGNoVG9vbHMoeyBvdmVydmlldywgcGRmTm90ZXM6IGFzeW5jICgpID0+ICIjIyBQYWdlIDEiIH0pLCAiYWFhYTExMTEiKTsKICAgIGV4cGVjdChyWyJwZGZfbm90ZXMiXSkudG9CZSgiIyMgUGFnZSAxIik7CiAgICBleHBlY3QoclsicGRmX3VybCJdKS50b0JlKCJodHRwczovL3Byb2QtcmVjb3JkaW5ncy52ZWRhbnR1LmNvbS9OT1RFUy9QUk9EL2FhYWExMTExLnBkZiIpOwogIH0pOwp9KTsK
+import { describe, expect, it, vi } from "vitest";
+import { createBatchTools } from "@/lib/vedantu/batch-tools.server";
+
+const cls = (id: string, pdf: boolean) => ({ session_id: id, title: "Atom-5", subject: "Chemistry", chapter: "", teacher: "", starts_at: null, has_smart_notes: false, has_notes_pdf: pdf });
+const overview = async () => ({ todayClasses: [], upcomingClasses: [], recentClasses: [cls("aaaa1111", true), cls("bbbb2222", false)], upcomingTests: [], courses: [], sync: { counts: { warnings: 0 } } }) as never;
+const run = (t: ReturnType<typeof createBatchTools>, id: string) => (t.batch_class_pdf_notes as unknown as { execute: (a: { session_id: string }) => Promise<Record<string, unknown>> }).execute({ session_id: id });
+
+describe("batch_class_pdf_notes", () => {
+  it("never reads PDFs for ids outside the student's own class list", async () => {
+    const pdfNotes = vi.fn(async () => "x");
+    const r = await run(createBatchTools({ overview, pdfNotes }), "zzzz9999");
+    expect(r["error"]).toBeTruthy();
+    expect(pdfNotes).not.toHaveBeenCalled();
+  });
+  it("skips classes whose PDF is not created", async () => {
+    const pdfNotes = vi.fn(async () => "x");
+    await run(createBatchTools({ overview, pdfNotes }), "bbbb2222");
+    expect(pdfNotes).not.toHaveBeenCalled();
+  });
+  it("returns the PDF text with the Vedantu notes link", async () => {
+    const r = await run(createBatchTools({ overview, pdfNotes: async () => "## Page 1" }), "aaaa1111");
+    expect(r["pdf_notes"]).toBe("## Page 1");
+    expect(r["pdf_url"]).toBe("https://prod-recordings.vedantu.com/NOTES/PROD/aaaa1111.pdf");
+  });
+});

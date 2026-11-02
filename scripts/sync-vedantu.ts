@@ -1,1 +1,16 @@
-LyoqIEdpdEh1YiBBY3Rpb25zIGVudHJ5IHBvaW50LiBDcmVkZW50aWFscyBhcmUgaW5qZWN0ZWQgb25seSBpbnRvIHRoaXMgc3RlcC4gKi8KaW1wb3J0IHsgc3VwYWJhc2VBZG1pbiB9IGZyb20gJy4uL3NyYy9pbnRlZ3JhdGlvbnMvc3VwYWJhc2UvY2xpZW50LnNlcnZlcic7CmltcG9ydCB7IHJ1bkRhaWx5U3luYyB9IGZyb20gJy4uL3NyYy9saWIvdmVkYW50dS9kYWlseS1zeW5jLnNlcnZlcic7CmltcG9ydCB7IFN5bmNCdXN5RXJyb3IsIGZyaWVuZGx5U3luY0Vycm9yIH0gZnJvbSAnLi4vc3JjL2xpYi92ZWRhbnR1L3N5bmMuc2VydmVyJzsKCnRyeSB7CiAgY29uc3QgY291bnRzID0gYXdhaXQgcnVuRGFpbHlTeW5jKHN1cGFiYXNlQWRtaW4pOwogIGNvbnNvbGUubG9nKCdWZWRhbnR1IHN5bmMgY29tcGxldGVkOicsIEpTT04uc3RyaW5naWZ5KGNvdW50cykpOwp9IGNhdGNoIChlcnJvcikgewogIGlmIChlcnJvciBpbnN0YW5jZW9mIFN5bmNCdXN5RXJyb3IpIHsKICAgIGNvbnNvbGUubG9nKCdTa2lwcGVkOiBhIG1hbnVhbCBvciBzY2hlZHVsZWQgc3luYyBpcyBhbHJlYWR5IHJ1bm5pbmcuJyk7CiAgfSBlbHNlIHsKICAgIGNvbnNvbGUuZXJyb3IoZnJpZW5kbHlTeW5jRXJyb3IoZXJyb3IpKTsKICAgIHByb2Nlc3MuZXhpdENvZGUgPSAxOwogIH0KfQ==
+/** GitHub Actions entry point. Credentials are injected only into this step. */
+import { supabaseAdmin } from '../src/integrations/supabase/client.server';
+import { runDailySync } from '../src/lib/vedantu/daily-sync.server';
+import { SyncBusyError, friendlySyncError } from '../src/lib/vedantu/sync.server';
+
+try {
+  const counts = await runDailySync(supabaseAdmin);
+  console.log('Vedantu sync completed:', JSON.stringify(counts));
+} catch (error) {
+  if (error instanceof SyncBusyError) {
+    console.log('Skipped: a manual or scheduled sync is already running.');
+  } else {
+    console.error(friendlySyncError(error));
+    process.exitCode = 1;
+  }
+}

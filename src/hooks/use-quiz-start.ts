@@ -1,1 +1,20 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VSZWYgfSBmcm9tICdyZWFjdCc7CgovKiogQSBzd2l0Y2ggZW5hYmxlZCBkdXJpbmcgYW4gYW5zd2VyIHN0YXJ0cyBleGFjdGx5IG9uY2UgYWZ0ZXIgdGhhdCBhbnN3ZXIgZmluaXNoZXMuICovCmV4cG9ydCBmdW5jdGlvbiB1c2VRdWl6U3RhcnQocmVhZHk6IGJvb2xlYW4sIHN0YXJ0OiAoKSA9PiB2b2lkKSB7CiAgY29uc3QgcGVuZGluZyA9IHVzZVJlZihmYWxzZSk7CiAgY29uc3QgbGF0ZXN0ID0gdXNlUmVmKHN0YXJ0KTsKICBsYXRlc3QuY3VycmVudCA9IHN0YXJ0OwogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBpZiAoIXJlYWR5IHx8ICFwZW5kaW5nLmN1cnJlbnQpIHJldHVybjsKICAgIHBlbmRpbmcuY3VycmVudCA9IGZhbHNlOwogICAgbGF0ZXN0LmN1cnJlbnQoKTsKICB9LCBbcmVhZHldKTsKICByZXR1cm4gKG9uOiBib29sZWFuKSA9PiB7CiAgICBwZW5kaW5nLmN1cnJlbnQgPSBvbjsKICAgIGlmIChvbiAmJiByZWFkeSkgewogICAgICBwZW5kaW5nLmN1cnJlbnQgPSBmYWxzZTsKICAgICAgbGF0ZXN0LmN1cnJlbnQoKTsKICAgIH0KICB9Owp9
+import { useEffect, useRef } from 'react';
+
+/** A switch enabled during an answer starts exactly once after that answer finishes. */
+export function useQuizStart(ready: boolean, start: () => void) {
+  const pending = useRef(false);
+  const latest = useRef(start);
+  latest.current = start;
+  useEffect(() => {
+    if (!ready || !pending.current) return;
+    pending.current = false;
+    latest.current();
+  }, [ready]);
+  return (on: boolean) => {
+    pending.current = on;
+    if (on && ready) {
+      pending.current = false;
+      latest.current();
+    }
+  };
+}

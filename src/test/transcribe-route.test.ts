@@ -1,1 +1,37 @@
-Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGJlZm9yZUVhY2gsIGRlc2NyaWJlLCBleHBlY3QsIGl0LCB2aSB9IGZyb20gJ3ZpdGVzdCc7CmNvbnN0IG1vY2tzID0gdmkuaG9pc3RlZCgoKSA9PiAoeyBnZXQ6IHZpLmZuKCksIHNldDogdmkuZm4oKSwgZmV0Y2g6IHZpLmZuKCkgfSkpOwp2aS5tb2NrKCdAdGFuc3RhY2svcmVhY3Qtcm91dGVyJywgKCkgPT4gKHsgY3JlYXRlRmlsZVJvdXRlOiAoKSA9PiAob3B0aW9uczogdW5rbm93bikgPT4gb3B0aW9ucyB9KSk7CnZpLm1vY2soJ0AvbGliL2FpL3BhdXNlLnNlcnZlcicsICgpID0+ICh7IGdldEFpUGF1c2U6IG1vY2tzLmdldCwgc2V0QWlQYXVzZTogbW9ja3Muc2V0IH0pKTsKaW1wb3J0IHsgUm91dGUgfSBmcm9tICdAL3JvdXRlcy9hcGkvdHJhbnNjcmliZSc7CmNvbnN0IGhhbmRsZXIgPSAoUm91dGUgYXMgdW5rbm93biBhcyB7IHNlcnZlcjogeyBoYW5kbGVyczogeyBQT1NUOiAoY29udGV4dDogeyByZXF1ZXN0OiBSZXF1ZXN0IH0pID0+IFByb21pc2U8UmVzcG9uc2U+IH0gfSB9KS5zZXJ2ZXIuaGFuZGxlcnMuUE9TVDsKZnVuY3Rpb24gcmVxdWVzdCh0eXBlID0gJ2F1ZGlvL3dhdicpIHsKICBjb25zdCBmb3JtID0gbmV3IEZvcm1EYXRhKCk7IGZvcm0uYXBwZW5kKCdmaWxlJywgbmV3IEZpbGUoWydhdWRpbyBzYW1wbGUnXSwgJ2F1ZGlvLndhdicsIHsgdHlwZSB9KSk7CiAgcmV0dXJuIG5ldyBSZXF1ZXN0KCdodHRwOi8vbG9jYWxob3N0L2FwaS90cmFuc2NyaWJlJywgeyBtZXRob2Q6ICdQT1NUJywgYm9keTogZm9ybSB9KTsKfQpiZWZvcmVFYWNoKCgpID0+IHsgdmkuc3R1YkVudignTE9WQUJMRV9BUElfS0VZJywgJ3Rlc3Qta2V5Jyk7IHZpLnN0dWJHbG9iYWwoJ2ZldGNoJywgbW9ja3MuZmV0Y2gpOyBtb2Nrcy5nZXQubW9ja1Jlc2V0KCkubW9ja1Jlc29sdmVkVmFsdWUobnVsbCk7IG1vY2tzLnNldC5tb2NrUmVzZXQoKTsgbW9ja3MuZmV0Y2gubW9ja1Jlc2V0KCk7IH0pOwpkZXNjcmliZSgndHJhbnNjcmlwdGlvbiByb3V0ZSBzYWZldHknLCAoKSA9PiB7CiAgaXQoJ2Jsb2NrcyB2b2ljZSBjYWxscyB3aGlsZSB3b3Jrc3BhY2UgY3JlZGl0cyBhcmUgcGF1c2VkJywgYXN5bmMgKCkgPT4gewogICAgbW9ja3MuZ2V0Lm1vY2tSZXNvbHZlZFZhbHVlT25jZSh7IGtpbmQ6ICdjcmVkaXRzJywgbWVzc2FnZTogJ0FkZCBjcmVkaXRzLicgfSk7CiAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBoYW5kbGVyKHsgcmVxdWVzdDogcmVxdWVzdCgpIH0pOwogICAgZXhwZWN0KHJlc3VsdC5zdGF0dXMpLnRvQmUoNDAyKTsKICAgIGV4cGVjdChtb2Nrcy5mZXRjaCkubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKICB9KTsKICBpdCgncGVyc2lzdHMgYSB0ZXJtaW5hbCBjcmVkaXQgZmFpbHVyZSBhbmQgcHJlc2VydmVzIGl0cyBzYWZlIG1lc3NhZ2UnLCBhc3luYyAoKSA9PiB7CiAgICBtb2Nrcy5mZXRjaC5tb2NrUmVzb2x2ZWRWYWx1ZShSZXNwb25zZS5qc29uKHsgbWVzc2FnZTogJ0FkZCBjcmVkaXRzIHRvIHJlc3VtZS4nIH0sIHsgc3RhdHVzOiA0MDIgfSkpOwogICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgaGFuZGxlcih7IHJlcXVlc3Q6IHJlcXVlc3QoKSB9KTsKICAgIGV4cGVjdChyZXN1bHQuc3RhdHVzKS50b0JlKDQwMik7CiAgICBleHBlY3QoKGF3YWl0IHJlc3VsdC5qc29uKCkpLmVycm9yKS50b0JlKCdbQUlfQ1JFRElUU10gQWRkIGNyZWRpdHMgdG8gcmVzdW1lLicpOwogICAgZXhwZWN0KG1vY2tzLnNldCkudG9IYXZlQmVlbkNhbGxlZFdpdGgoZXhwZWN0Lm9iamVjdENvbnRhaW5pbmcoeyBraW5kOiAnY3JlZGl0cycgfSkpOwogIH0pOwogIGl0KCdyZWplY3RzIG5vbi1hdWRpbyBpbnB1dCBiZWZvcmUgYW55IHBhaWQgY2FsbCcsIGFzeW5jICgpID0+IHsKICAgIGV4cGVjdCgoYXdhaXQgaGFuZGxlcih7IHJlcXVlc3Q6IHJlcXVlc3QoJ2FwcGxpY2F0aW9uL3BkZicpIH0pKS5zdGF0dXMpLnRvQmUoNDE1KTsKICAgIGV4cGVjdChtb2Nrcy5mZXRjaCkubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKICB9KTsKICBpdCgncmVsYXlzIHN1Y2Nlc3NmdWwgYnl0ZXMgYW5kIHVzZXMgdGhlIGNvbmZpZ3VyZWQgdHJhbnNjcmlwdGlvbiBtb2RlbCcsIGFzeW5jICgpID0+IHsKICAgIG1vY2tzLmZldGNoLm1vY2tSZXNvbHZlZFZhbHVlKG5ldyBSZXNwb25zZSgnZGF0YTogdGVzdFxuXG4nLCB7IGhlYWRlcnM6IHsgJ2NvbnRlbnQtdHlwZSc6ICd0ZXh0L2V2ZW50LXN0cmVhbScgfSB9KSk7CiAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBoYW5kbGVyKHsgcmVxdWVzdDogcmVxdWVzdCgpIH0pOwogICAgZXhwZWN0KGF3YWl0IHJlc3VsdC50ZXh0KCkpLnRvQmUoJ2RhdGE6IHRlc3RcblxuJyk7CiAgICBleHBlY3QobW9ja3MuZmV0Y2gubW9jay5jYWxsc1swXT8uWzFdLmJvZHkuZ2V0KCdtb2RlbCcpKS50b0JlKCdnb29nbGUvZ2VtaW5pLTMuNS10cmFuc2NyaWJlJyk7CiAgfSk7Cn0pOw==
+// @vitest-environment node
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+const mocks = vi.hoisted(() => ({ get: vi.fn(), set: vi.fn(), fetch: vi.fn() }));
+vi.mock('@tanstack/react-router', () => ({ createFileRoute: () => (options: unknown) => options }));
+vi.mock('@/lib/ai/pause.server', () => ({ getAiPause: mocks.get, setAiPause: mocks.set }));
+import { Route } from '@/routes/api/transcribe';
+const handler = (Route as unknown as { server: { handlers: { POST: (context: { request: Request }) => Promise<Response> } } }).server.handlers.POST;
+function request(type = 'audio/wav') {
+  const form = new FormData(); form.append('file', new File(['audio sample'], 'audio.wav', { type }));
+  return new Request('http://localhost/api/transcribe', { method: 'POST', body: form });
+}
+beforeEach(() => { vi.stubEnv('LOVABLE_API_KEY', 'test-key'); vi.stubGlobal('fetch', mocks.fetch); mocks.get.mockReset().mockResolvedValue(null); mocks.set.mockReset(); mocks.fetch.mockReset(); });
+describe('transcription route safety', () => {
+  it('blocks voice calls while workspace credits are paused', async () => {
+    mocks.get.mockResolvedValueOnce({ kind: 'credits', message: 'Add credits.' });
+    const result = await handler({ request: request() });
+    expect(result.status).toBe(402);
+    expect(mocks.fetch).not.toHaveBeenCalled();
+  });
+  it('persists a terminal credit failure and preserves its safe message', async () => {
+    mocks.fetch.mockResolvedValue(Response.json({ message: 'Add credits to resume.' }, { status: 402 }));
+    const result = await handler({ request: request() });
+    expect(result.status).toBe(402);
+    expect((await result.json()).error).toBe('[AI_CREDITS] Add credits to resume.');
+    expect(mocks.set).toHaveBeenCalledWith(expect.objectContaining({ kind: 'credits' }));
+  });
+  it('rejects non-audio input before any paid call', async () => {
+    expect((await handler({ request: request('application/pdf') })).status).toBe(415);
+    expect(mocks.fetch).not.toHaveBeenCalled();
+  });
+  it('relays successful bytes and uses the configured transcription model', async () => {
+    mocks.fetch.mockResolvedValue(new Response('data: test\n\n', { headers: { 'content-type': 'text/event-stream' } }));
+    const result = await handler({ request: request() });
+    expect(await result.text()).toBe('data: test\n\n');
+    expect(mocks.fetch.mock.calls[0]?.[1].body.get('model')).toBe('google/gemini-3.5-transcribe');
+  });
+});

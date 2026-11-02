@@ -1,1 +1,17 @@
-aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAidml0ZXN0L2NvbmZpZyI7CmltcG9ydCByZWFjdCBmcm9tICJAdml0ZWpzL3BsdWdpbi1yZWFjdCI7CmltcG9ydCBwYXRoIGZyb20gIm5vZGU6cGF0aCI7CgpleHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoewogIHBsdWdpbnM6IFtyZWFjdCgpXSwKICB0ZXN0OiB7CiAgICBlbnZpcm9ubWVudDogImpzZG9tIiwKICAgIGdsb2JhbHM6IHRydWUsCiAgICBzZXR1cEZpbGVzOiBbIi4vc3JjL3Rlc3Qvc2V0dXAudHMiXSwKICAgIGluY2x1ZGU6IFsic3JjLyoqLyoue3Rlc3Qsc3BlY30ue3RzLHRzeH0iXSwKICB9LAogIHNlcnZlcjogeyBmczogeyBzdHJpY3Q6IGZhbHNlIH0gfSwKICByZXNvbHZlOiB7CiAgICBhbGlhczogeyAiQCI6IHBhdGgucmVzb2x2ZShfX2Rpcm5hbWUsICIuL3NyYyIpIH0sCiAgfSwKfSk7Cg==
+import { defineConfig } from "vitest/config";
+import react from "@vitejs/plugin-react";
+import path from "node:path";
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: ["./src/test/setup.ts"],
+    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+  },
+  server: { fs: { strict: false } },
+  resolve: {
+    alias: { "@": path.resolve(__dirname, "./src") },
+  },
+});

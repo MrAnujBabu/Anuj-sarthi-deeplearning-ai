@@ -1,1 +1,34 @@
-LyoqIEJyb3dzZXItc2FmZSBOQ0VSVCBoZWxwZXJzIHNoYXJlZCBieSB0aGUgYWdlbnQgdG9vbHMgYW5kIHRlc3RzLiAqLwpleHBvcnQgY29uc3QgTkNFUlRfQk9PS1M6IFJlY29yZDxzdHJpbmcsIHsgbGFiZWw6IHN0cmluZzsgY29kZXM6IHN0cmluZ1tdIH0+ID0gewogICIxMS1waHlzaWNzIjogeyBsYWJlbDogIk5DRVJUIENsYXNzIDExIFBoeXNpY3MiLCBjb2RlczogWyJrZXBoMSIsICJrZXBoMiJdIH0sCiAgIjEyLXBoeXNpY3MiOiB7IGxhYmVsOiAiTkNFUlQgQ2xhc3MgMTIgUGh5c2ljcyIsIGNvZGVzOiBbImxlcGgxIiwgImxlcGgyIl0gfSwKICAiMTEtY2hlbWlzdHJ5IjogeyBsYWJlbDogIk5DRVJUIENsYXNzIDExIENoZW1pc3RyeSIsIGNvZGVzOiBbImtlY2gxIiwgImtlY2gyIl0gfSwKICAiMTItY2hlbWlzdHJ5IjogeyBsYWJlbDogIk5DRVJUIENsYXNzIDEyIENoZW1pc3RyeSIsIGNvZGVzOiBbImxlY2gxIiwgImxlY2gyIl0gfSwKICAiMTEtYmlvbG9neSI6IHsgbGFiZWw6ICJOQ0VSVCBDbGFzcyAxMSBCaW9sb2d5IiwgY29kZXM6IFsia2VibzEiXSB9LAogICIxMi1iaW9sb2d5IjogeyBsYWJlbDogIk5DRVJUIENsYXNzIDEyIEJpb2xvZ3kiLCBjb2RlczogWyJsZWJvMSJdIH0sCn07CgpleHBvcnQgZnVuY3Rpb24gYm9va0tleShjbHM6IG51bWJlciwgc3ViamVjdDogc3RyaW5nKSB7CiAgcmV0dXJuIGAke2Nsc30tJHtzdWJqZWN0LnRvTG93ZXJDYXNlKCl9YDsKfQoKZXhwb3J0IGZ1bmN0aW9uIHRleHRib29rVXJsKGNsczogbnVtYmVyLCBzdWJqZWN0OiBzdHJpbmcpIHsKICBjb25zdCBib29rID0gTkNFUlRfQk9PS1NbYm9va0tleShjbHMsIHN1YmplY3QpXTsKICByZXR1cm4gYm9vayA/IGBodHRwczovL25jZXJ0Lm5pYy5pbi90ZXh0Ym9vay5waHA/JHtib29rLmNvZGVzWzBdfT0wLWAgOiAiaHR0cHM6Ly9uY2VydC5uaWMuaW4vdGV4dGJvb2sucGhwIjsKfQoKLyoqIE9ubHkgTkNFUlQgaG9zdHMgbWF5IGJlIHJlYWQgYnkgdGhlIG5jZXJ0X3JlYWQgdG9vbC4gKi8KZXhwb3J0IGZ1bmN0aW9uIGlzTmNlcnRVcmwodXJsOiBzdHJpbmcpIHsKICB0cnkgewogICAgY29uc3QgaCA9IG5ldyBVUkwodXJsKS5ob3N0bmFtZTsKICAgIHJldHVybiBoID09PSAibmNlcnQubmljLmluIiB8fCBoLmVuZHNXaXRoKCIubmNlcnQubmljLmluIik7CiAgfSBjYXRjaCB7CiAgICByZXR1cm4gZmFsc2U7CiAgfQp9CgpleHBvcnQgY29uc3QgTUFYX1RPT0xfQ0FMTFMgPSA0OwoKZXhwb3J0IGZ1bmN0aW9uIHRyaW0odGV4dDogc3RyaW5nLCBtYXggPSAzMDAwKSB7CiAgcmV0dXJuIHRleHQubGVuZ3RoID4gbWF4ID8gdGV4dC5zbGljZSgwLCBtYXgpICsgIuKApiIgOiB0ZXh0Owp9Cg==
+/** Browser-safe NCERT helpers shared by the agent tools and tests. */
+export const NCERT_BOOKS: Record<string, { label: string; codes: string[] }> = {
+  "11-physics": { label: "NCERT Class 11 Physics", codes: ["keph1", "keph2"] },
+  "12-physics": { label: "NCERT Class 12 Physics", codes: ["leph1", "leph2"] },
+  "11-chemistry": { label: "NCERT Class 11 Chemistry", codes: ["kech1", "kech2"] },
+  "12-chemistry": { label: "NCERT Class 12 Chemistry", codes: ["lech1", "lech2"] },
+  "11-biology": { label: "NCERT Class 11 Biology", codes: ["kebo1"] },
+  "12-biology": { label: "NCERT Class 12 Biology", codes: ["lebo1"] },
+};
+
+export function bookKey(cls: number, subject: string) {
+  return `${cls}-${subject.toLowerCase()}`;
+}
+
+export function textbookUrl(cls: number, subject: string) {
+  const book = NCERT_BOOKS[bookKey(cls, subject)];
+  return book ? `https://ncert.nic.in/textbook.php?${book.codes[0]}=0-` : "https://ncert.nic.in/textbook.php";
+}
+
+/** Only NCERT hosts may be read by the ncert_read tool. */
+export function isNcertUrl(url: string) {
+  try {
+    const h = new URL(url).hostname;
+    return h === "ncert.nic.in" || h.endsWith(".ncert.nic.in");
+  } catch {
+    return false;
+  }
+}
+
+export const MAX_TOOL_CALLS = 4;
+
+export function trim(text: string, max = 3000) {
+  return text.length > max ? text.slice(0, max) + "…" : text;
+}

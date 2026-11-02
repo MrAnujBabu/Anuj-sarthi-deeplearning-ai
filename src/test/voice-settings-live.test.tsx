@@ -1,1 +1,53 @@
-aW1wb3J0IHsgYWN0LCBmaXJlRXZlbnQsIHJlbmRlciwgc2NyZWVuLCB3YWl0Rm9yLCBjbGVhbnVwIH0gZnJvbSAnQHRlc3RpbmctbGlicmFyeS9yZWFjdCc7CmltcG9ydCB7IGFmdGVyRWFjaCwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwpjb25zdCB7IHVwZGF0ZVNldHRpbmdzLCBzdGFydCwgc3RvcCwgc3VibWl0QW5zd2VyLCBsaXZlT3B0aW9ucyB9ID0gdmkuaG9pc3RlZCgoKSA9PiAoeyB1cGRhdGVTZXR0aW5nczogdmkuZm4oKCkgPT4gdHJ1ZSksIHN0YXJ0OiB2aS5mbigpLCBzdG9wOiB2aS5mbigpLCBzdWJtaXRBbnN3ZXI6IHZpLmZuKCgpID0+IHRydWUpLCBsaXZlT3B0aW9uczogeyBjdXJyZW50OiBudWxsIGFzIG51bGwgfCB7IG9uRXZlbnQ6IChldmVudDogeyB0eXBlOiBzdHJpbmc7IFtrZXk6IHN0cmluZ106IHVua25vd24gfSkgPT4gdm9pZCB9IH0gfSkpOwp2aS5tb2NrKCdAdGFuc3RhY2svcmVhY3Qtcm91dGVyJywgKCkgPT4gKHsgY3JlYXRlRmlsZVJvdXRlOiAoKSA9PiAob3B0aW9uczogdW5rbm93bikgPT4gb3B0aW9ucywgTGluazogKHsgY2hpbGRyZW4gfTogeyBjaGlsZHJlbjogUmVhY3QuUmVhY3ROb2RlIH0pID0+IDxzcGFuPntjaGlsZHJlbn08L3NwYW4+IH0pKTsKdmkubW9jaygnQC9saWIvdGFsay10dXJuJywgKCkgPT4gKHsgdXNlc1RhbGtUdXJuczogKCkgPT4gZmFsc2UgfSkpOwp2aS5tb2NrKCdAL2xpYi9saXZlLWVuZHBvaW50JywgKCkgPT4gKHsgcHJld2FybUxpdmVSZWxheTogKCkgPT4ge30gfSkpOwp2aS5tb2NrKCdAL2xpYi9tZW1vcnkuZnVuY3Rpb25zJywgKCkgPT4gKHsgZ2V0UXVpelRpbWVyOiBhc3luYyAoKSA9PiAoeyBzZWNvbmRzOiAwIH0pIH0pKTsKdmkubW9jaygnQC9ob29rcy91c2UtbGl2ZS12b2ljZScsICgpID0+ICh7CiAgUExBWUJBQ0tfU1BFRURTOiBbMV0sCiAgdXNlTGl2ZVZvaWNlOiAob3B0aW9uczogdHlwZW9mIGxpdmVPcHRpb25zLmN1cnJlbnQpID0+IHsgbGl2ZU9wdGlvbnMuY3VycmVudCA9IG9wdGlvbnM7IHJldHVybiB7IHN0YXR1czogJ2Nvbm5lY3RlZCcsIHJhdGU6IDEsIGNvbm5lY3RNczogbnVsbCwgYXVkaW9SZWY6IHsgY3VycmVudDogbnVsbCB9LCB1cGRhdGVTZXR0aW5ncywgc3RhcnQsIHN0b3AsIHN1Ym1pdEFuc3dlciwgc2V0UmF0ZTogKCkgPT4gdHJ1ZSwgc2V0RWNob0dhdGU6IHZpLmZuKCkgfTsgfSwKfSkpOwppbXBvcnQgeyBSb3V0ZSB9IGZyb20gJ0Avcm91dGVzL3ZvaWNlJzsKYWZ0ZXJFYWNoKCgpID0+IHsgY2xlYW51cCgpOyB2aS5jbGVhckFsbE1vY2tzKCk7IH0pOwppdCgnY29ubmVjdGVkIHZvaWNlIHRlYWNoaW5nIHN3aXRjaGVzIHNlbmQgc2V0dGluZ3Mgd2l0aG91dCBlbmRpbmcgb3IgcmVzdGFydGluZyB0aGUgY2FsbCcsIGFzeW5jICgpID0+IHsKICBIVE1MRWxlbWVudC5wcm90b3R5cGUuc2Nyb2xsVG8gPSB2aS5mbigpOwogIGNvbnN0IENvbXBvbmVudCA9IChSb3V0ZSBhcyB1bmtub3duIGFzIHsgY29tcG9uZW50OiAoKSA9PiBSZWFjdC5SZWFjdE5vZGUgfSkuY29tcG9uZW50OwogIHJlbmRlcig8Q29tcG9uZW50IC8+KTsKICBhd2FpdCB3YWl0Rm9yKCgpID0+IGV4cGVjdChzY3JlZW4uZ2V0QnlSb2xlKCdidXR0b24nLCB7IG5hbWU6ICdWb2ljZSBzZXR0aW5ncyBhbmQgc2VhcmNoJyB9KSkudG9CZUluVGhlRG9jdW1lbnQoKSk7CiAgZmlyZUV2ZW50LmNsaWNrKHNjcmVlbi5nZXRCeVJvbGUoJ2J1dHRvbicsIHsgbmFtZTogJ1ZvaWNlIHNldHRpbmdzIGFuZCBzZWFyY2gnIH0pKTsKICBmb3IgKGNvbnN0IFtuYW1lLCBrZXldIG9mIFsKICAgIFsnVm9pY2UgcXVpeiBtb2RlJywgJ3F1aXonXSwgWydNYXRjaCB0aGUgRm9sbG93aW5nIHF1ZXN0aW9ucycsICdtYXRjaFEnXSwKICAgIFsnQXNzZXJ0aW9uIFJlYXNvbiBxdWVzdGlvbnMnLCAnYXNzZXJ0aW9uUSddLCBbJ0FkdmFuY2VkIGRlZXAgTkNFUlQgcXVlc3Rpb25zJywgJ2RlZXAnXSwgWydWb2ljZSBsaXZlIHNlYXJjaCcsICdzZWFyY2gnXSwKICBdIGFzIGNvbnN0KSB7CiAgICBjb25zdCB0b2dnbGUgPSBzY3JlZW4uZ2V0QnlSb2xlKCdzd2l0Y2gnLCB7IG5hbWUgfSk7CiAgICBleHBlY3QodG9nZ2xlKS50b0JlRW5hYmxlZCgpOwogICAgZmlyZUV2ZW50LmNsaWNrKHRvZ2dsZSk7CiAgICBleHBlY3QodXBkYXRlU2V0dGluZ3MpLnRvSGF2ZUJlZW5MYXN0Q2FsbGVkV2l0aCh7IFtTdHJpbmcoa2V5KV06IHRydWUgfSk7CiAgICBleHBlY3QodG9nZ2xlKS50b0hhdmVBdHRyaWJ1dGUoJ2FyaWEtY2hlY2tlZCcsICd0cnVlJyk7CiAgfQogIGV4cGVjdChzY3JlZW4uZ2V0QnlSb2xlKCdjb21ib2JveCcsIHsgbmFtZTogJ0FJIG1vZGVsJyB9KSkudG9CZUVuYWJsZWQoKTsKICBleHBlY3Qoc2NyZWVuLmdldEJ5Um9sZSgnY29tYm9ib3gnLCB7IG5hbWU6IC9eVm9pY2UkLyB9KSkudG9CZURpc2FibGVkKCk7CiAgZXhwZWN0KHNjcmVlbi5nZXRCeVJvbGUoJ3N3aXRjaCcsIHsgbmFtZTogJ1JlYWQgc2Nhbm5lZCBQREZzJyB9KSkudG9CZURpc2FibGVkKCk7CiAgZXhwZWN0KHN0YXJ0KS5ub3QudG9IYXZlQmVlbkNhbGxlZCgpOwogIGV4cGVjdChzdG9wKS5ub3QudG9IYXZlQmVlbkNhbGxlZCgpOwp9KTsKaXQoJ21hbnVhbCBwbGF5YmFjayByZWFkaW5lc3MgdW5sb2NrcyB0aGUgY3VycmVudCB2b2ljZSBhbnN3ZXIgZXZlbiBhZnRlciBhIHRoaW5raW5nIGV2ZW50JywgYXN5bmMgKCkgPT4gewogIEhUTUxFbGVtZW50LnByb3RvdHlwZS5zY3JvbGxUbyA9IHZpLmZuKCk7CiAgY29uc3QgQ29tcG9uZW50ID0gKFJvdXRlIGFzIHVua25vd24gYXMgeyBjb21wb25lbnQ6ICgpID0+IFJlYWN0LlJlYWN0Tm9kZSB9KS5jb21wb25lbnQ7CiAgcmVuZGVyKDxDb21wb25lbnQgLz4pOwogIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdidXR0b24nLCB7IG5hbWU6ICdWb2ljZSBzZXR0aW5ncyBhbmQgc2VhcmNoJyB9KSk7CiAgZmlyZUV2ZW50LmNsaWNrKHNjcmVlbi5nZXRCeVJvbGUoJ3N3aXRjaCcsIHsgbmFtZTogJ1ZvaWNlIHF1aXogbW9kZScgfSkpOwogIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdidXR0b24nLCB7IG5hbWU6ICdDbG9zZScgfSkpOwogIGFjdCgoKSA9PiBsaXZlT3B0aW9ucy5jdXJyZW50Py5vbkV2ZW50KHsgdHlwZTogJ2FwcC5xdWl6LnF1ZXN0aW9uJywgcXVlc3Rpb25JZDogJ3ExJywgdGV4dDogJ1Bvd2VyaG91c2U/JywgbGFiZWxzOiB7IEE6ICdOdWNsZXVzJywgQjogJ01pdG9jaG9uZHJpYScsIEM6ICdSaWJvc29tZScsIEQ6ICdHb2xnaScgfSB9KSk7CiAgYWN0KCgpID0+IGxpdmVPcHRpb25zLmN1cnJlbnQ/Lm9uRXZlbnQoeyB0eXBlOiAnYXBwLmRlbGVnYXRpb24ucGVuZGluZycgfSkpOwogIGV4cGVjdChzY3JlZW4uZ2V0QnlSb2xlKCdjaGVja2JveCcsIHsgbmFtZTogJ0Fuc3dlciBCOiBNaXRvY2hvbmRyaWEnIH0pKS50b0JlRGlzYWJsZWQoKTsKICBmaXJlRXZlbnQuY2xpY2soc2NyZWVuLmdldEJ5Um9sZSgnYnV0dG9uJywgeyBuYW1lOiAnU2hvdyBxdWVzdGlvbiBhbmQgc3RhcnQgdGltZXInIH0pKTsKICBjb25zdCBhbnN3ZXIgPSBzY3JlZW4uZ2V0QnlSb2xlKCdjaGVja2JveCcsIHsgbmFtZTogJ0Fuc3dlciBCOiBNaXRvY2hvbmRyaWEnIH0pOwogIGV4cGVjdChhbnN3ZXIpLnRvQmVFbmFibGVkKCk7CiAgZmlyZUV2ZW50LmNsaWNrKGFuc3dlcik7CiAgZXhwZWN0KHN1Ym1pdEFuc3dlcikudG9IYXZlQmVlbkNhbGxlZFdpdGgoJ0InLCAncTEnKTsKICBleHBlY3Qoc3RhcnQpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgZXhwZWN0KHN0b3ApLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7Cn0pOw==
+import { act, fireEvent, render, screen, waitFor, cleanup } from '@testing-library/react';
+import { afterEach, expect, it, vi } from 'vitest';
+const { updateSettings, start, stop, submitAnswer, liveOptions } = vi.hoisted(() => ({ updateSettings: vi.fn(() => true), start: vi.fn(), stop: vi.fn(), submitAnswer: vi.fn(() => true), liveOptions: { current: null as null | { onEvent: (event: { type: string; [key: string]: unknown }) => void } } }));
+vi.mock('@tanstack/react-router', () => ({ createFileRoute: () => (options: unknown) => options, Link: ({ children }: { children: React.ReactNode }) => <span>{children}</span> }));
+vi.mock('@/lib/talk-turn', () => ({ usesTalkTurns: () => false }));
+vi.mock('@/lib/live-endpoint', () => ({ prewarmLiveRelay: () => {} }));
+vi.mock('@/lib/memory.functions', () => ({ getQuizTimer: async () => ({ seconds: 0 }) }));
+vi.mock('@/hooks/use-live-voice', () => ({
+  PLAYBACK_SPEEDS: [1],
+  useLiveVoice: (options: typeof liveOptions.current) => { liveOptions.current = options; return { status: 'connected', rate: 1, connectMs: null, audioRef: { current: null }, updateSettings, start, stop, submitAnswer, setRate: () => true, setEchoGate: vi.fn() }; },
+}));
+import { Route } from '@/routes/voice';
+afterEach(() => { cleanup(); vi.clearAllMocks(); });
+it('connected voice teaching switches send settings without ending or restarting the call', async () => {
+  HTMLElement.prototype.scrollTo = vi.fn();
+  const Component = (Route as unknown as { component: () => React.ReactNode }).component;
+  render(<Component />);
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Voice settings and search' })).toBeInTheDocument());
+  fireEvent.click(screen.getByRole('button', { name: 'Voice settings and search' }));
+  for (const [name, key] of [
+    ['Voice quiz mode', 'quiz'], ['Match the Following questions', 'matchQ'],
+    ['Assertion Reason questions', 'assertionQ'], ['Advanced deep NCERT questions', 'deep'], ['Voice live search', 'search'],
+  ] as const) {
+    const toggle = screen.getByRole('switch', { name });
+    expect(toggle).toBeEnabled();
+    fireEvent.click(toggle);
+    expect(updateSettings).toHaveBeenLastCalledWith({ [String(key)]: true });
+    expect(toggle).toHaveAttribute('aria-checked', 'true');
+  }
+  expect(screen.getByRole('combobox', { name: 'AI model' })).toBeEnabled();
+  expect(screen.getByRole('combobox', { name: /^Voice$/ })).toBeDisabled();
+  expect(screen.getByRole('switch', { name: 'Read scanned PDFs' })).toBeDisabled();
+  expect(start).not.toHaveBeenCalled();
+  expect(stop).not.toHaveBeenCalled();
+});
+it('manual playback readiness unlocks the current voice answer even after a thinking event', async () => {
+  HTMLElement.prototype.scrollTo = vi.fn();
+  const Component = (Route as unknown as { component: () => React.ReactNode }).component;
+  render(<Component />);
+  fireEvent.click(screen.getByRole('button', { name: 'Voice settings and search' }));
+  fireEvent.click(screen.getByRole('switch', { name: 'Voice quiz mode' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Close' }));
+  act(() => liveOptions.current?.onEvent({ type: 'app.quiz.question', questionId: 'q1', text: 'Powerhouse?', labels: { A: 'Nucleus', B: 'Mitochondria', C: 'Ribosome', D: 'Golgi' } }));
+  act(() => liveOptions.current?.onEvent({ type: 'app.delegation.pending' }));
+  expect(screen.getByRole('checkbox', { name: 'Answer B: Mitochondria' })).toBeDisabled();
+  fireEvent.click(screen.getByRole('button', { name: 'Show question and start timer' }));
+  const answer = screen.getByRole('checkbox', { name: 'Answer B: Mitochondria' });
+  expect(answer).toBeEnabled();
+  fireEvent.click(answer);
+  expect(submitAnswer).toHaveBeenCalledWith('B', 'q1');
+  expect(start).not.toHaveBeenCalled();
+  expect(stop).not.toHaveBeenCalled();
+});

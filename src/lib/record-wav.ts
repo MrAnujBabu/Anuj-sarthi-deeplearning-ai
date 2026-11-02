@@ -1,1 +1,85 @@
-aW1wb3J0IHsgQ0xFQU5fTUlDIH0gZnJvbSAiQC9saWIvbm9pc2UtZmlsdGVyIjsKLy8gUmVjb3JkcyBtaWNyb3Bob25lIGF1ZGlvIGFzIGEgY29tcGxldGUgbW9ubyBXQVYgZmlsZSAoZGVjb2RhYmxlIGJ5IGV2ZXJ5IHRyYW5zY3JpcHRpb24gbW9kZWwpLgpleHBvcnQgZnVuY3Rpb24gZW5jb2RlV2F2KGNodW5rczogcmVhZG9ubHkgRmxvYXQzMkFycmF5W10sIHNhbXBsZVJhdGU6IG51bWJlcik6IEJsb2IgewogIGNvbnN0IGxlbmd0aCA9IGNodW5rcy5yZWR1Y2UoKHN1bSwgY2h1bmspID0+IHN1bSArIGNodW5rLmxlbmd0aCwgMCk7CiAgY29uc3QgYnl0ZXMgPSBuZXcgQXJyYXlCdWZmZXIoNDQgKyBsZW5ndGggKiAyKTsKICBjb25zdCB2aWV3ID0gbmV3IERhdGFWaWV3KGJ5dGVzKTsKICBjb25zdCB0YWcgPSAob2Zmc2V0OiBudW1iZXIsIHZhbHVlOiBzdHJpbmcpID0+IHsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgdmFsdWUubGVuZ3RoOyBpKyspIHZpZXcuc2V0VWludDgob2Zmc2V0ICsgaSwgdmFsdWUuY2hhckNvZGVBdChpKSk7CiAgfTsKICB0YWcoMCwgIlJJRkYiKTsKICB2aWV3LnNldFVpbnQzMig0LCAzNiArIGxlbmd0aCAqIDIsIHRydWUpOwogIHRhZyg4LCAiV0FWRSIpOwogIHRhZygxMiwgImZtdCAiKTsKICB2aWV3LnNldFVpbnQzMigxNiwgMTYsIHRydWUpOwogIHZpZXcuc2V0VWludDE2KDIwLCAxLCB0cnVlKTsKICB2aWV3LnNldFVpbnQxNigyMiwgMSwgdHJ1ZSk7CiAgdmlldy5zZXRVaW50MzIoMjQsIHNhbXBsZVJhdGUsIHRydWUpOwogIHZpZXcuc2V0VWludDMyKDI4LCBzYW1wbGVSYXRlICogMiwgdHJ1ZSk7CiAgdmlldy5zZXRVaW50MTYoMzIsIDIsIHRydWUpOwogIHZpZXcuc2V0VWludDE2KDM0LCAxNiwgdHJ1ZSk7CiAgdGFnKDM2LCAiZGF0YSIpOwogIHZpZXcuc2V0VWludDMyKDQwLCBsZW5ndGggKiAyLCB0cnVlKTsKICBsZXQgb2Zmc2V0ID0gNDQ7CiAgZm9yIChjb25zdCBjaHVuayBvZiBjaHVua3MpCiAgICBmb3IgKGNvbnN0IHZhbHVlIG9mIGNodW5rKSB7CiAgICAgIGNvbnN0IHNhbXBsZSA9IE1hdGgubWF4KC0xLCBNYXRoLm1pbigxLCB2YWx1ZSkpOwogICAgICB2aWV3LnNldEludDE2KG9mZnNldCwgc2FtcGxlICogKHNhbXBsZSA8IDAgPyAzMjc2OCA6IDMyNzY3KSwgdHJ1ZSk7CiAgICAgIG9mZnNldCArPSAyOwogICAgfQogIHJldHVybiBuZXcgQmxvYihbYnl0ZXNdLCB7IHR5cGU6ICJhdWRpby93YXYiIH0pOwp9CgpleHBvcnQgdHlwZSBSZWNvcmRpbmcgPSB7IHN0b3A6ICgpID0+IFByb21pc2U8RmlsZT47IGNhbmNlbDogKCkgPT4gdm9pZDsgbGV2ZWw6ICgpID0+IG51bWJlciB9OwoKZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHJlY29yZFdhdigpOiBQcm9taXNlPFJlY29yZGluZz4gewogIGNvbnN0IHN0cmVhbSA9IGF3YWl0IG5hdmlnYXRvci5tZWRpYURldmljZXMuZ2V0VXNlck1lZGlhKHsgYXVkaW86IENMRUFOX01JQyB9KTsKICBsZXQgY29udGV4dDogQXVkaW9Db250ZXh0IHwgdW5kZWZpbmVkOwogIHRyeSB7CiAgICAvLyAxNiBrSHoga2VlcHMgZmlsZXMgc21hbGwgKH4zMiBLQi9zKSB3aGlsZSBzdGF5aW5nIGlkZWFsIGZvciBzcGVlY2guCiAgICBjb250ZXh0ID0gbmV3IEF1ZGlvQ29udGV4dCh7IHNhbXBsZVJhdGU6IDE2MDAwIH0pOwogICAgYXdhaXQgY29udGV4dC5yZXN1bWUoKTsKICAgIGNvbnN0IGN0eCA9IGNvbnRleHQ7CiAgICBjb25zdCBzb3VyY2UgPSBjdHguY3JlYXRlTWVkaWFTdHJlYW1Tb3VyY2Uoc3RyZWFtKTsKICAgIGNvbnN0IG5vZGUgPSBjdHguY3JlYXRlU2NyaXB0UHJvY2Vzc29yKDQwOTYsIDEsIDEpOwogICAgY29uc3QgY2h1bmtzOiBGbG9hdDMyQXJyYXlbXSA9IFtdOwogICAgbGV0IGxhc3RMZXZlbCA9IDA7CiAgICBub2RlLm9uYXVkaW9wcm9jZXNzID0gKGV2ZW50KSA9PiB7CiAgICAgIGNvbnN0IGRhdGEgPSBuZXcgRmxvYXQzMkFycmF5KGV2ZW50LmlucHV0QnVmZmVyLmdldENoYW5uZWxEYXRhKDApKTsKICAgICAgY2h1bmtzLnB1c2goZGF0YSk7CiAgICAgIGxldCBzdW0gPSAwOwogICAgICBmb3IgKGNvbnN0IHYgb2YgZGF0YSkgc3VtICs9IHYgKiB2OwogICAgICBsYXN0TGV2ZWwgPSBNYXRoLnNxcnQoc3VtIC8gZGF0YS5sZW5ndGgpOwogICAgfTsKICAgIHNvdXJjZS5jb25uZWN0KG5vZGUpOwogICAgbm9kZS5jb25uZWN0KGN0eC5kZXN0aW5hdGlvbik7CiAgICBsZXQgc3RvcHBlZCA9IGZhbHNlOwogICAgY29uc3QgcmVsZWFzZSA9ICgpID0+IHsKICAgICAgc3RvcHBlZCA9IHRydWU7CiAgICAgIHN0cmVhbS5nZXRUcmFja3MoKS5mb3JFYWNoKCh0cmFjaykgPT4gdHJhY2suc3RvcCgpKTsKICAgICAgbm9kZS5kaXNjb25uZWN0KCk7CiAgICAgIHNvdXJjZS5kaXNjb25uZWN0KCk7CiAgICAgIG5vZGUub25hdWRpb3Byb2Nlc3MgPSBudWxsOwogICAgfTsKICAgIHJldHVybiB7CiAgICAgIGxldmVsOiAoKSA9PiBsYXN0TGV2ZWwsCiAgICAgIGNhbmNlbCgpIHsKICAgICAgICBpZiAoc3RvcHBlZCkgcmV0dXJuOwogICAgICAgIHJlbGVhc2UoKTsKICAgICAgICB2b2lkIGN0eC5jbG9zZSgpOwogICAgICB9LAogICAgICBhc3luYyBzdG9wKCkgewogICAgICAgIGlmIChzdG9wcGVkKSB0aHJvdyBuZXcgRXJyb3IoIlJlY29yZGluZyBhbHJlYWR5IHN0b3BwZWQiKTsKICAgICAgICByZWxlYXNlKCk7CiAgICAgICAgY29uc3QgYmxvYiA9IGVuY29kZVdhdihjaHVua3MsIGN0eC5zYW1wbGVSYXRlKTsKICAgICAgICBhd2FpdCBjdHguY2xvc2UoKTsKICAgICAgICBpZiAoYmxvYi5zaXplIDwgNDA5NikgdGhyb3cgbmV3IEVycm9yKCJLdWNoIHN1bmFpIG5haGkgZGl5YSDigJQgZG9iYXJhIGJvbG8uIik7CiAgICAgICAgcmV0dXJuIG5ldyBGaWxlKFtibG9iXSwgImRpY3RhdGlvbi53YXYiLCB7IHR5cGU6ICJhdWRpby93YXYiIH0pOwogICAgICB9LAogICAgfTsKICB9IGNhdGNoIChlcnJvcikgewogICAgc3RyZWFtLmdldFRyYWNrcygpLmZvckVhY2goKHRyYWNrKSA9PiB0cmFjay5zdG9wKCkpOwogICAgYXdhaXQgY29udGV4dD8uY2xvc2UoKTsKICAgIHRocm93IGVycm9yOwogIH0KfQo=
+import { CLEAN_MIC } from "@/lib/noise-filter";
+// Records microphone audio as a complete mono WAV file (decodable by every transcription model).
+export function encodeWav(chunks: readonly Float32Array[], sampleRate: number): Blob {
+  const length = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+  const bytes = new ArrayBuffer(44 + length * 2);
+  const view = new DataView(bytes);
+  const tag = (offset: number, value: string) => {
+    for (let i = 0; i < value.length; i++) view.setUint8(offset + i, value.charCodeAt(i));
+  };
+  tag(0, "RIFF");
+  view.setUint32(4, 36 + length * 2, true);
+  tag(8, "WAVE");
+  tag(12, "fmt ");
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true);
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  tag(36, "data");
+  view.setUint32(40, length * 2, true);
+  let offset = 44;
+  for (const chunk of chunks)
+    for (const value of chunk) {
+      const sample = Math.max(-1, Math.min(1, value));
+      view.setInt16(offset, sample * (sample < 0 ? 32768 : 32767), true);
+      offset += 2;
+    }
+  return new Blob([bytes], { type: "audio/wav" });
+}
+
+export type Recording = { stop: () => Promise<File>; cancel: () => void; level: () => number };
+
+export async function recordWav(): Promise<Recording> {
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: CLEAN_MIC });
+  let context: AudioContext | undefined;
+  try {
+    // 16 kHz keeps files small (~32 KB/s) while staying ideal for speech.
+    context = new AudioContext({ sampleRate: 16000 });
+    await context.resume();
+    const ctx = context;
+    const source = ctx.createMediaStreamSource(stream);
+    const node = ctx.createScriptProcessor(4096, 1, 1);
+    const chunks: Float32Array[] = [];
+    let lastLevel = 0;
+    node.onaudioprocess = (event) => {
+      const data = new Float32Array(event.inputBuffer.getChannelData(0));
+      chunks.push(data);
+      let sum = 0;
+      for (const v of data) sum += v * v;
+      lastLevel = Math.sqrt(sum / data.length);
+    };
+    source.connect(node);
+    node.connect(ctx.destination);
+    let stopped = false;
+    const release = () => {
+      stopped = true;
+      stream.getTracks().forEach((track) => track.stop());
+      node.disconnect();
+      source.disconnect();
+      node.onaudioprocess = null;
+    };
+    return {
+      level: () => lastLevel,
+      cancel() {
+        if (stopped) return;
+        release();
+        void ctx.close();
+      },
+      async stop() {
+        if (stopped) throw new Error("Recording already stopped");
+        release();
+        const blob = encodeWav(chunks, ctx.sampleRate);
+        await ctx.close();
+        if (blob.size < 4096) throw new Error("Kuch sunai nahi diya — dobara bolo.");
+        return new File([blob], "dictation.wav", { type: "audio/wav" });
+      },
+    };
+  } catch (error) {
+    stream.getTracks().forEach((track) => track.stop());
+    await context?.close();
+    throw error;
+  }
+}

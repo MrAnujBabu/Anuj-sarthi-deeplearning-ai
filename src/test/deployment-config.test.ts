@@ -1,1 +1,15 @@
-aW1wb3J0IHsgcmVhZEZpbGVTeW5jIH0gZnJvbSAibm9kZTpmcyI7CmltcG9ydCB7IGRlc2NyaWJlLCBleHBlY3QsIGl0IH0gZnJvbSAidml0ZXN0IjsKCmRlc2NyaWJlKCJyb290IGRlcGxveW1lbnQgY29uZmlndXJhdGlvbiIsICgpID0+IHsKICBpdCgiYnVpbGRzIHRoZSByb290IGFwcCB3aXRoIGEgc2VwYXJhdGUgVmVyY2VsIHByZXNldCIsICgpID0+IHsKICAgIGNvbnN0IHBrZyA9IEpTT04ucGFyc2UocmVhZEZpbGVTeW5jKCJwYWNrYWdlLmpzb24iLCAidXRmOCIpKTsKICAgIGNvbnN0IGNvbmZpZyA9IEpTT04ucGFyc2UocmVhZEZpbGVTeW5jKCJ2ZXJjZWwuanNvbiIsICJ1dGY4IikpOwogICAgZXhwZWN0KGNvbmZpZy5mcmFtZXdvcmspLnRvQmUoInRhbnN0YWNrLXN0YXJ0Iik7CiAgICBleHBlY3QoY29uZmlnLmJ1aWxkQ29tbWFuZCkudG9CZSgiYnVuIHJ1biBidWlsZDp2ZXJjZWwiKTsKICAgIGV4cGVjdChwa2cuc2NyaXB0c1siYnVpbGQ6dmVyY2VsIl0pLnRvQmUoInZpdGUgYnVpbGQgLS1jb25maWcgdml0ZS52ZXJjZWwuY29uZmlnLnRzIik7CiAgICBleHBlY3QoY29uZmlnLm91dHB1dERpcmVjdG9yeSkudG9CZVVuZGVmaW5lZCgpOwogICAgZXhwZWN0KHJlYWRGaWxlU3luYygidml0ZS52ZXJjZWwuY29uZmlnLnRzIiwgInV0ZjgiKSkudG9Db250YWluKCdwcmVzZXQ6ICJ2ZXJjZWwiJyk7CiAgICBleHBlY3QocmVhZEZpbGVTeW5jKCJ2aXRlLmNvbmZpZy50cyIsICJ1dGY4IikpLm5vdC50b0NvbnRhaW4oJ3ByZXNldDogInZlcmNlbCInKTsKICB9KTsKfSk7
+import { readFileSync } from "node:fs";
+import { describe, expect, it } from "vitest";
+
+describe("root deployment configuration", () => {
+  it("builds the root app with a separate Vercel preset", () => {
+    const pkg = JSON.parse(readFileSync("package.json", "utf8"));
+    const config = JSON.parse(readFileSync("vercel.json", "utf8"));
+    expect(config.framework).toBe("tanstack-start");
+    expect(config.buildCommand).toBe("bun run build:vercel");
+    expect(pkg.scripts["build:vercel"]).toBe("vite build --config vite.vercel.config.ts");
+    expect(config.outputDirectory).toBeUndefined();
+    expect(readFileSync("vite.vercel.config.ts", "utf8")).toContain('preset: "vercel"');
+    expect(readFileSync("vite.config.ts", "utf8")).not.toContain('preset: "vercel"');
+  });
+});

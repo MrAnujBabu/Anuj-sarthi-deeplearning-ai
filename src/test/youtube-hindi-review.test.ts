@@ -1,1 +1,44 @@
-aW1wb3J0IHsgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IGFwcGx5UmV2aWV3LCBpbnRlcnByZXRUaW1lZCB9IGZyb20gJ0AvbGliL2ludGVycHJldGVyLnNlcnZlcic7CgppdCgnZG9lcyBub3QgY291bnQgYSBtYWxmb3JtZWQgRW5nbGlzaCByZXZpZXdlciBub3RlIGFzIGFwcHJvdmFsJywgKCkgPT4gewogIGNvbnN0IGNoZWNrZWQgPSBhcHBseVJldmlldyhbJ+CkueCkruCkvuCksOClhyDgpKrgpL7gpLggMiBleGFtcGxlcyDgpLngpYjgpILgpaQnXSwgJyMjIyAxXG5Mb29rcyBtb3N0bHkgZmluZSBidXQgY2hlY2sgaXQnKTsKICBleHBlY3QoY2hlY2tlZC5yZXZpZXdlZCkudG9CZSgwKTsKICBleHBlY3QoY2hlY2tlZC5saW5lcykudG9FcXVhbChbJ+CkueCkruCkvuCksOClhyDgpKrgpL7gpLggMiBleGFtcGxlcyDgpLngpYjgpILgpaQnXSk7Cn0pOwoKaXQoJ3JlY2hlY2tzIHNhdmVkIHRyYW5zbGF0aW9ucyB3aXRob3V0IHBheWluZyBmb3IgYSBuZXcgdHJhbnNsYXRpb24nLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgZW5naW5lczogc3RyaW5nW10gPSBbXTsKICBjb25zdCBvdXQgPSBhd2FpdCBpbnRlcnByZXRUaW1lZCh7IHNlZ21lbnRzOiBbeyBzdGFydDogMCwgZW5kOiAzMCwgdGV4dDogJ1dlIGhhdmUgdHdvIGV4YW1wbGVzLicgfV0sCiAgICBjb250ZXh0OiB7IHRpdGxlOiAnRXhhbXBsZXMnLCBicmllZjogbnVsbCB9LCBlbmdpbmU6ICdjbGF1ZGUnLCBzaWduYWw6IG5ldyBBYm9ydENvbnRyb2xsZXIoKS5zaWduYWwsCiAgICBzYXZlZDogWyfgpLngpK7gpL7gpLDgpYcg4KSq4KS+4KS4IDIgZXhhbXBsZXMg4KS54KWI4KSC4KWkJ10sIHJldmlldzogdHJ1ZSwgb25TZWdtZW50OiAoKSA9PiB7fSwKICAgIGNhbGw6IGFzeW5jIGVuZ2luZSA9PiB7IGVuZ2luZXMucHVzaChlbmdpbmUpOyByZXR1cm4gJyMjIyAxXG5PSyc7IH0sCiAgfSk7CiAgZXhwZWN0KGVuZ2luZXMpLnRvRXF1YWwoWydncHQnXSk7CiAgZXhwZWN0KG91dC5xdWFsaXR5LnJldmlld2VkKS50b0JlKDEpOwp9KTsKCml0KCdrZWVwcyBhcHByb3ZlZCBzaW1wbGUgSGluZGkgZXhhY3RseSBhbmQgYXBwbGllcyBhIGNvcnJlY3Rpb24gb25seSB0byBpdHMgb3duIHRpbWVkIGJsb2NrJywgKCkgPT4gewogIGNvbnN0IG9yaWdpbmFsID0gWyfgpK7gpYjgpIIg4KSG4KScIOCkr+CkueCkvuCkgSDgpIbgpK/gpL4g4KS54KWC4KSB4KWkJywgJ+CkueCkruCkvuCksOClhyDgpKrgpL7gpLggMyBleGFtcGxlcyDgpLngpYjgpILgpaQnXTsKICBjb25zdCBjaGVja2VkID0gYXBwbHlSZXZpZXcob3JpZ2luYWwsICcjIyMgMVxuT0tcbiMjIyAyXG7gpLngpK7gpL7gpLDgpYcg4KSq4KS+4KS4IDIgZXhhbXBsZXMg4KS54KWI4KSC4KWkJyk7CiAgZXhwZWN0KGNoZWNrZWQubGluZXMpLnRvRXF1YWwoWyfgpK7gpYjgpIIg4KSG4KScIOCkr+CkueCkvuCkgSDgpIbgpK/gpL4g4KS54KWC4KSB4KWkJywgJ+CkueCkruCkvuCksOClhyDgpKrgpL7gpLggMiBleGFtcGxlcyDgpLngpYjgpILgpaQnXSk7CiAgZXhwZWN0KGNoZWNrZWQucmV2aWV3ZWQpLnRvQmUoMik7CiAgZXhwZWN0KGNoZWNrZWQuY29ycmVjdGVkKS50b0JlKDEpOwp9KTsKCml0KCdwdWJsaXNoZXMgc2Vjb25kLXZlbmRvciBjb3JyZWN0aW9ucyBpbiB0aGUgb3JpZ2luYWwgdGltZXN0YW1wIG9yZGVyJywgYXN5bmMgKCkgPT4gewogIGNvbnN0IHB1Ymxpc2hlZDogW251bWJlciwgc3RyaW5nXVtdID0gW107CiAgY29uc3QgZW5naW5lczogc3RyaW5nW10gPSBbXTsKICBjb25zdCByZXN1bHQgPSBhd2FpdCBpbnRlcnByZXRUaW1lZCh7CiAgICBzZWdtZW50czogW3sgc3RhcnQ6IDAsIGVuZDogMTAsIHRleHQ6ICdJIGFycml2ZWQgdG9kYXkuJyB9LCB7IHN0YXJ0OiAxMCwgZW5kOiAyMCwgdGV4dDogJ1dlIGhhdmUgdHdvIGV4YW1wbGVzLicgfV0sCiAgICBjb250ZXh0OiB7IHRpdGxlOiAnRXhhbXBsZXMnLCBicmllZjogbnVsbCB9LCBlbmdpbmU6ICdjbGF1ZGUnLCBzaWduYWw6IG5ldyBBYm9ydENvbnRyb2xsZXIoKS5zaWduYWwsCiAgICBvblNlZ21lbnQ6IChpLCBoaW5kaSkgPT4gcHVibGlzaGVkLnB1c2goW2ksIGhpbmRpXSksCiAgICBjYWxsOiBhc3luYyBlbmdpbmUgPT4gewogICAgICBlbmdpbmVzLnB1c2goZW5naW5lKTsKICAgICAgcmV0dXJuIGVuZ2luZSA9PT0gJ2NsYXVkZScgPyAnIyMjIDFcbuCkruCliOCkgiDgpIbgpJwg4KSG4KSv4KS+IOCkueClguCkgeClpFxuIyMjIDJcbuCkueCkruCkvuCksOClhyDgpKrgpL7gpLggMyBleGFtcGxlcyDgpLngpYjgpILgpaQnIDogJyMjIyAxXG5PS1xuIyMjIDJcbuCkueCkruCkvuCksOClhyDgpKrgpL7gpLggMiBleGFtcGxlcyDgpLngpYjgpILgpaQnOwogICAgfSwKICB9KTsKICBleHBlY3QoZW5naW5lcykudG9FcXVhbChbJ2NsYXVkZScsICdncHQnXSk7CiAgZXhwZWN0KHB1Ymxpc2hlZCkudG9FcXVhbChbWzAsICfgpK7gpYjgpIIg4KSG4KScIOCkhuCkr+CkviDgpLngpYLgpIHgpaQnXSwgWzEsICfgpLngpK7gpL7gpLDgpYcg4KSq4KS+4KS4IDIgZXhhbXBsZXMg4KS54KWI4KSC4KWkJ11dKTsKICBleHBlY3QocmVzdWx0LmxpbmVzKS50b0VxdWFsKHB1Ymxpc2hlZC5tYXAoKFssIHRleHRdKSA9PiB0ZXh0KSk7Cn0pOw==
+import { expect, it } from 'vitest';
+import { applyReview, interpretTimed } from '@/lib/interpreter.server';
+
+it('does not count a malformed English reviewer note as approval', () => {
+  const checked = applyReview(['हमारे पास 2 examples हैं।'], '### 1\nLooks mostly fine but check it');
+  expect(checked.reviewed).toBe(0);
+  expect(checked.lines).toEqual(['हमारे पास 2 examples हैं।']);
+});
+
+it('rechecks saved translations without paying for a new translation', async () => {
+  const engines: string[] = [];
+  const out = await interpretTimed({ segments: [{ start: 0, end: 30, text: 'We have two examples.' }],
+    context: { title: 'Examples', brief: null }, engine: 'claude', signal: new AbortController().signal,
+    saved: ['हमारे पास 2 examples हैं।'], review: true, onSegment: () => {},
+    call: async engine => { engines.push(engine); return '### 1\nOK'; },
+  });
+  expect(engines).toEqual(['gpt']);
+  expect(out.quality.reviewed).toBe(1);
+});
+
+it('keeps approved simple Hindi exactly and applies a correction only to its own timed block', () => {
+  const original = ['मैं आज यहाँ आया हूँ।', 'हमारे पास 3 examples हैं।'];
+  const checked = applyReview(original, '### 1\nOK\n### 2\nहमारे पास 2 examples हैं।');
+  expect(checked.lines).toEqual(['मैं आज यहाँ आया हूँ।', 'हमारे पास 2 examples हैं।']);
+  expect(checked.reviewed).toBe(2);
+  expect(checked.corrected).toBe(1);
+});
+
+it('publishes second-vendor corrections in the original timestamp order', async () => {
+  const published: [number, string][] = [];
+  const engines: string[] = [];
+  const result = await interpretTimed({
+    segments: [{ start: 0, end: 10, text: 'I arrived today.' }, { start: 10, end: 20, text: 'We have two examples.' }],
+    context: { title: 'Examples', brief: null }, engine: 'claude', signal: new AbortController().signal,
+    onSegment: (i, hindi) => published.push([i, hindi]),
+    call: async engine => {
+      engines.push(engine);
+      return engine === 'claude' ? '### 1\nमैं आज आया हूँ।\n### 2\nहमारे पास 3 examples हैं।' : '### 1\nOK\n### 2\nहमारे पास 2 examples हैं।';
+    },
+  });
+  expect(engines).toEqual(['claude', 'gpt']);
+  expect(published).toEqual([[0, 'मैं आज आया हूँ।'], [1, 'हमारे पास 2 examples हैं।']]);
+  expect(result.lines).toEqual(published.map(([, text]) => text));
+});

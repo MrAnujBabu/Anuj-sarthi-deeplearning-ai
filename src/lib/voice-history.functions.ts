@@ -1,1 +1,12 @@
-aW1wb3J0IHsgY3JlYXRlU2VydmVyRm4gfSBmcm9tICdAdGFuc3RhY2svcmVhY3Qtc3RhcnQnOwppbXBvcnQgeyByZXF1aXJlU3VwYWJhc2VBdXRoIH0gZnJvbSAnQC9pbnRlZ3JhdGlvbnMvc3VwYWJhc2UvYXV0aC1taWRkbGV3YXJlJzsKCmV4cG9ydCBjb25zdCBsaXN0Vm9pY2VDYWxscyA9IGNyZWF0ZVNlcnZlckZuKHsgbWV0aG9kOiAnUE9TVCcgfSkKICAubWlkZGxld2FyZShbcmVxdWlyZVN1cGFiYXNlQXV0aF0pCiAgLmhhbmRsZXIoYXN5bmMgKHsgY29udGV4dCB9KSA9PiB7CiAgICBjb25zdCByb2xlID0gYXdhaXQgY29udGV4dC5zdXBhYmFzZS5ycGMoJ2hhc19yb2xlJywgeyBfdXNlcl9pZDogY29udGV4dC51c2VySWQsIF9yb2xlOiAnYWRtaW4nIH0pOwogICAgaWYgKHJvbGUuZXJyb3IgfHwgcm9sZS5kYXRhICE9PSB0cnVlKSB0aHJvdyBuZXcgRXJyb3IoJ0FjY2VzcyBkZW5pZWQnKTsKICAgIGNvbnN0IHsgZGF0YSwgZXJyb3IgfSA9IGF3YWl0IGNvbnRleHQuc3VwYWJhc2UuZnJvbSgndm9pY2VfY2FsbHMnKS5zZWxlY3QoJyonKS5vcmRlcignY3JlYXRlZF9hdCcsIHsgYXNjZW5kaW5nOiBmYWxzZSB9KS5saW1pdCgyMDApOwogICAgaWYgKGVycm9yKSB0aHJvdyBuZXcgRXJyb3IoZXJyb3IubWVzc2FnZSk7CiAgICByZXR1cm4gZGF0YSA/PyBbXTsKICB9KTs=
+import { createServerFn } from '@tanstack/react-start';
+import { requireSupabaseAuth } from '@/integrations/supabase/auth-middleware';
+
+export const listVoiceCalls = createServerFn({ method: 'POST' })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const role = await context.supabase.rpc('has_role', { _user_id: context.userId, _role: 'admin' });
+    if (role.error || role.data !== true) throw new Error('Access denied');
+    const { data, error } = await context.supabase.from('voice_calls').select('*').order('created_at', { ascending: false }).limit(200);
+    if (error) throw new Error(error.message);
+    return data ?? [];
+  });

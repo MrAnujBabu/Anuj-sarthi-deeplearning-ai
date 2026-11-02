@@ -1,1 +1,215 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VNZW1vLCB1c2VSZWYsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyBMb2FkZXIyLCBQbGF5LCBTcXVhcmUsIFBhdXNlLCBBdWRpb0xpbmVzLCBMYW5ndWFnZXMgfSBmcm9tICdsdWNpZGUtcmVhY3QnOwppbXBvcnQgeyBCdXR0b24gfSBmcm9tICdAL2NvbXBvbmVudHMvdWkvYnV0dG9uJzsKaW1wb3J0IHsgU3dpdGNoIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL3N3aXRjaCc7CmltcG9ydCB7IExhYmVsIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL2xhYmVsJzsKaW1wb3J0IHsgc3BlZWNoU3RhdGUsIHR5cGUgWW91VHViZVZvaWNlRW5naW5lIH0gZnJvbSAnQC9saWIveW91dHViZS1zcGVlY2gnOwppbXBvcnQgeyBTUEVFQ0hfU0FNUExFX1JBVEUgfSBmcm9tICdAL2xpYi9zdHJlYW0tc3BlZWNoJzsKaW1wb3J0IHsgZmV0Y2hEdWJBdWRpbyB9IGZyb20gJ0AvbGliL3lvdXR1YmUtYXVkaW8nOwppbXBvcnQgeyBydW5EdWJQbGF5YmFjaywgdHlwZSBEdWJQbGF5ZXIgfSBmcm9tICdAL2xpYi95b3V0dWJlLWR1Yi1zeW5jJzsKaW1wb3J0IHsgaHRtbE1lZGlhRHViUGxheWVyIH0gZnJvbSAnQC9saWIvaHRtbC1tZWRpYS1wbGF5ZXInOwppbXBvcnQgdHlwZSB7IER1YlNlZ21lbnQgfSBmcm9tICdAL2xpYi95b3V0dWJlLWhpbmRpJzsKaW1wb3J0IHR5cGUgeyBTYXJ2YW1Wb2ljZSB9IGZyb20gJ0AvbGliL3NhcnZhbS1zcGVlY2gnOwppbXBvcnQgeyBzcG9rZW5Xb3Jkcywgc3Bva2VuV29yZENvdW50IH0gZnJvbSAnQC9saWIvd29yZC1oaWdobGlnaHQnOwoKLyoqIEthcmFva2Utc3R5bGUgY2FwdGlvbjogc3Bva2VuIHdvcmRzIHR1cm4gcHJpbWFyeSwgdGhlIHdvcmQgYmVpbmcgc3Bva2VuIGlzIG1hcmtlZC4gKi8KZnVuY3Rpb24gU3Bva2VuQ2FwdGlvbih7IHRleHQsIHNwb2tlbiwgY2xhc3NOYW1lIH06IHsgdGV4dDogc3RyaW5nOyBzcG9rZW46IG51bWJlcjsgY2xhc3NOYW1lPzogc3RyaW5nIH0pIHsKICByZXR1cm4gPHNwYW4gY2xhc3NOYW1lPXtjbGFzc05hbWV9PntzcG9rZW5Xb3Jkcyh0ZXh0KS5tYXAoKHdvcmQsIGkpID0+CiAgICA8c3BhbiBrZXk9e2l9IGNsYXNzTmFtZT17aSA8IHNwb2tlbiA/ICd0ZXh0LXByaW1hcnknIDogaSA9PT0gc3Bva2VuID8gJ3JvdW5kZWQgYmctcHJpbWFyeS8xNSBweC0wLjUgZm9udC1tZWRpdW0gdGV4dC1wcmltYXJ5JyA6IHVuZGVmaW5lZH0+e3dvcmR9IDwvc3Bhbj4pfTwvc3Bhbj47Cn0KCnR5cGUgWVRQbGF5ZXIgPSBEdWJQbGF5ZXIgJiB7IGRlc3Ryb3koKTogdm9pZCB9OwpkZWNsYXJlIGdsb2JhbCB7IGludGVyZmFjZSBXaW5kb3cgeyBZVD86IHsgUGxheWVyOiBuZXcgKGVsOiBIVE1MRWxlbWVudCwgbzogb2JqZWN0KSA9PiBZVFBsYXllciB9OyBvbllvdVR1YmVJZnJhbWVBUElSZWFkeT86ICgpID0+IHZvaWQgfSB9CgpsZXQgYXBpUHJvbWlzZTogUHJvbWlzZTx2b2lkPiB8IG51bGwgPSBudWxsOwpmdW5jdGlvbiBsb2FkWW91VHViZUFwaSgpIHsKICBpZiAod2luZG93LllUPy5QbGF5ZXIpIHJldHVybiBQcm9taXNlLnJlc29sdmUoKTsKICBhcGlQcm9taXNlID8/PSBuZXcgUHJvbWlzZTx2b2lkPihyZXNvbHZlID0+IHsKICAgIGNvbnN0IHByZXYgPSB3aW5kb3cub25Zb3VUdWJlSWZyYW1lQVBJUmVhZHk7CiAgICB3aW5kb3cub25Zb3VUdWJlSWZyYW1lQVBJUmVhZHkgPSAoKSA9PiB7IHByZXY/LigpOyByZXNvbHZlKCk7IH07CiAgICBjb25zdCBzID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc2NyaXB0Jyk7IHMuc3JjID0gJ2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL2lmcmFtZV9hcGknOyBkb2N1bWVudC5oZWFkLmFwcGVuZENoaWxkKHMpOwogIH0pOwogIHJldHVybiBhcGlQcm9taXNlOwp9CgpleHBvcnQgZnVuY3Rpb24gZm9ybWF0VGltZShzZWM6IG51bWJlcikgewogIGNvbnN0IHQgPSBNYXRoLmZsb29yKHNlYyk7IGNvbnN0IGggPSBNYXRoLmZsb29yKHQgLyAzNjAwKSwgbSA9IE1hdGguZmxvb3IoKHQgJSAzNjAwKSAvIDYwKSwgeCA9IFN0cmluZyh0ICUgNjApLnBhZFN0YXJ0KDIsICcwJyk7CiAgcmV0dXJuIGggPyBgJHtofToke1N0cmluZyhtKS5wYWRTdGFydCgyLCAnMCcpfToke3h9YCA6IGAke219OiR7eH1gOwp9Cgpjb25zdCB0aWNrID0gKCkgPT4gbmV3IFByb21pc2UocmVzb2x2ZSA9PiBzZXRUaW1lb3V0KHJlc29sdmUsIDI1MCkpOwoKLyoqCiAqIFBsYXlzIHRoZSBIaW5kaSB2b2ljZS1vdmVyIGluIHN5bmMgd2l0aCBhIFlvdVR1YmUgdmlkZW8gb3IgYW55IEhUTUw1IHZpZGVvL2F1ZGlvIGZpbGUuCiAqIFNlZ21lbnRzIG1heSBzdGlsbCBiZSBmaWxsaW5nIGluIChsaXZlIGludGVycHJldGF0aW9uKTsgcGxheWJhY2sgd2FpdHMgYXQgYSBzZWdtZW50IHdob3NlCiAqIEhpbmRpIGlzIG5vdCByZWFkeSB5ZXQsIHNvIGxvbmcgcG9kY2FzdHMgY2FuIHN0YXJ0IGJlZm9yZSB0aGUgd2hvbGUgaW50ZXJwcmV0YXRpb24gZmluaXNoZXMuCiAqLwpleHBvcnQgZnVuY3Rpb24gWW91VHViZUR1Yih7IHZpZGVvSWQsIG1lZGlhU3JjLCBtZWRpYUZhbGxiYWNrU3JjLCBzZWdtZW50cywgb3JpZ2luYWwsIHZvaWNlLCB2b2ljZUVuZ2luZSwgb25SdW5uaW5nQ2hhbmdlIH06IHsKICB2aWRlb0lkPzogc3RyaW5nIHwgbnVsbDsgbWVkaWFTcmM/OiBzdHJpbmcgfCBudWxsOyBtZWRpYUZhbGxiYWNrU3JjPzogc3RyaW5nIHwgbnVsbDsKICBzZWdtZW50czogRHViU2VnbWVudFtdOyBvcmlnaW5hbD86IHN0cmluZ1tdOyB2b2ljZTogU2FydmFtVm9pY2U7IHZvaWNlRW5naW5lPzogWW91VHViZVZvaWNlRW5naW5lOyBvblJ1bm5pbmdDaGFuZ2U/OiAodmFsdWU6IGJvb2xlYW4pID0+IHZvaWQ7Cn0pIHsKICBjb25zdCBob3N0ID0gdXNlUmVmPEhUTUxEaXZFbGVtZW50PihudWxsKSwgdmlkZW8gPSB1c2VSZWY8SFRNTFZpZGVvRWxlbWVudD4obnVsbCksIHBsYXllciA9IHVzZVJlZjxEdWJQbGF5ZXIgfCBudWxsPihudWxsKTsKICBjb25zdCB0aW1lc3RhbXBzID0gdXNlUmVmPEhUTUxPTGlzdEVsZW1lbnQ+KG51bGwpOwogIGNvbnN0IHN0b3BSZWYgPSB1c2VSZWY8KCkgPT4gdm9pZD4oKCkgPT4ge30pLCBnZW5lcmF0aW9uID0gdXNlUmVmKDApOwogIGNvbnN0IGludGVudFBhdXNlZCA9IHVzZVJlZihmYWxzZSksIGhvbGRpbmcgPSB1c2VSZWYoZmFsc2UpOwogIGNvbnN0IGJ1ZmZlcnMgPSB1c2VSZWYobmV3IE1hcDxudW1iZXIsIEF1ZGlvQnVmZmVyPigpKTsKICBjb25zdCBsYXRlc3QgPSB1c2VSZWYoc2VnbWVudHMpOyBsYXRlc3QuY3VycmVudCA9IHNlZ21lbnRzOwogIGNvbnN0IFtyZWFkeSwgc2V0UmVhZHldID0gdXNlU3RhdGUoZmFsc2UpLCBbcnVubmluZywgc2V0UnVubmluZ10gPSB1c2VTdGF0ZShmYWxzZSk7CiAgY29uc3QgW3BhdXNlZCwgc2V0UGF1c2VkXSA9IHVzZVN0YXRlKGZhbHNlKSwgW3N0YXR1cywgc2V0U3RhdHVzXSA9IHVzZVN0YXRlKCcnKTsKICBjb25zdCBbY3VycmVudCwgc2V0Q3VycmVudF0gPSB1c2VTdGF0ZSgtMSksIFtlcnJvciwgc2V0RXJyb3JdID0gdXNlU3RhdGUoJycpOwogIGNvbnN0IFtzcG9rZW5Db3VudCwgc2V0U3Bva2VuQ291bnRdID0gdXNlU3RhdGUoMCk7CiAgY29uc3QgW3Nob3dPcmlnaW5hbCwgc2V0U2hvd09yaWdpbmFsXSA9IHVzZVN0YXRlKGZhbHNlKTsKICBjb25zdCBbc3JjLCBzZXRTcmNdID0gdXNlU3RhdGUobWVkaWFTcmMgPz8gbnVsbCk7CiAgY29uc3QgW3Byb3ZpZGVyLCBzZXRQcm92aWRlcl0gPSB1c2VTdGF0ZSgnU2FydmFtIMK3IEJ1bGJ1bCB2NC1mbGFzaCcpOwogIGNvbnN0IHRpbWVsaW5lID0gYCR7dmlkZW9JZCA/PyBtZWRpYVNyYyA/PyAnJ318JHtzZWdtZW50cy5sZW5ndGh9fCR7c2VnbWVudHNbMF0/LnN0YXJ0ID8/IDB9fCR7c2VnbWVudHMuYXQoLTEpPy5lbmQgPz8gMH1gOwogIGNvbnN0IHJlYWR5Q291bnQgPSB1c2VNZW1vKCgpID0+IHNlZ21lbnRzLmZpbHRlcihzID0+IHMuaGluZGkudHJpbSgpKS5sZW5ndGgsIFtzZWdtZW50c10pOwoKICB1c2VFZmZlY3QoKCkgPT4geyBvblJ1bm5pbmdDaGFuZ2U/LihydW5uaW5nKTsgfSwgW3J1bm5pbmcsIG9uUnVubmluZ0NoYW5nZV0pOwogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBjb25zdCBsaXN0ID0gdGltZXN0YW1wcy5jdXJyZW50OwogICAgaWYgKCFsaXN0IHx8IGN1cnJlbnQgPCAwKSByZXR1cm47CiAgICBjb25zdCByb3cgPSBsaXN0LmNoaWxkcmVuLml0ZW0oY3VycmVudCk7CiAgICBpZiAoIShyb3cgaW5zdGFuY2VvZiBIVE1MRWxlbWVudCkpIHJldHVybjsKICAgIGNvbnN0IHBhcmVudCA9IGxpc3QuZ2V0Qm91bmRpbmdDbGllbnRSZWN0KCksIGJvdW5kcyA9IHJvdy5nZXRCb3VuZGluZ0NsaWVudFJlY3QoKTsKICAgIGlmIChib3VuZHMudG9wIDwgcGFyZW50LnRvcCB8fCBib3VuZHMuYm90dG9tID4gcGFyZW50LmJvdHRvbSkgewogICAgICBsaXN0LnNjcm9sbFRvKHsgdG9wOiBsaXN0LnNjcm9sbFRvcCArIGJvdW5kcy50b3AgLSBwYXJlbnQudG9wIC0gKGxpc3QuY2xpZW50SGVpZ2h0IC0gYm91bmRzLmhlaWdodCkgLyAyLAogICAgICAgIGJlaGF2aW9yOiB3aW5kb3cubWF0Y2hNZWRpYSgnKHByZWZlcnMtcmVkdWNlZC1tb3Rpb246IHJlZHVjZSknKS5tYXRjaGVzID8gJ2F1dG8nIDogJ3Ntb290aCcgfSk7CiAgICB9CiAgfSwgW2N1cnJlbnRdKTsKICAvLyBBIG5ldyB0aW1lbGluZSBvciB2b2ljZSByZXN0YXJ0czsgSGluZGkgbGluZXMgZmlsbGluZyBpbiBkdXJpbmcgbGl2ZSBpbnRlcnByZXRhdGlvbiBkbyBub3QuCiAgdXNlRWZmZWN0KCgpID0+IHsgc3RvcFJlZi5jdXJyZW50KCk7IGJ1ZmZlcnMuY3VycmVudC5jbGVhcigpOyB9LCBbdm9pY2UsIHZvaWNlRW5naW5lLCB0aW1lbGluZV0pOwogIHVzZUVmZmVjdCgoKSA9PiB7IHNldFNyYyhtZWRpYVNyYyA/PyBudWxsKTsgfSwgW21lZGlhU3JjXSk7CgogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBpZiAoIXZpZGVvSWQpIHJldHVybjsKICAgIGxldCBkZWFkID0gZmFsc2U7CiAgICBsZXQgeXQ6IFlUUGxheWVyIHwgbnVsbCA9IG51bGw7CiAgICB2b2lkIGxvYWRZb3VUdWJlQXBpKCkudGhlbigoKSA9PiB7CiAgICAgIGlmIChkZWFkIHx8ICFob3N0LmN1cnJlbnQgfHwgIXdpbmRvdy5ZVCkgcmV0dXJuOwogICAgICBjb25zdCBlbCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpOyBob3N0LmN1cnJlbnQuYXBwZW5kQ2hpbGQoZWwpOwogICAgICB5dCA9IG5ldyB3aW5kb3cuWVQuUGxheWVyKGVsLCB7IHZpZGVvSWQsIHdpZHRoOiAnMTAwJScsIGhlaWdodDogJzEwMCUnLCBwbGF5ZXJWYXJzOiB7IHJlbDogMCwgcGxheXNpbmxpbmU6IDEsIGNjX2xvYWRfcG9saWN5OiAwIH0sIGV2ZW50czogewogICAgICAgIG9uUmVhZHk6ICgpID0+IHsgaWYgKCFkZWFkKSB7IHBsYXllci5jdXJyZW50ID0geXQ7IHNldFJlYWR5KHRydWUpOyB9IH0sCiAgICAgICAgb25FcnJvcjogKCkgPT4geyBpZiAoIWRlYWQpIHsgc3RvcFJlZi5jdXJyZW50KCk7IHNldEVycm9yKCfgpK/gpLkgdmlkZW8g4KSv4KS54KS+4KSBIOCkqOCkueClgOCkgiDgpJrgpLIg4KS44KSV4KSk4KWA4KWkIOCkiuCkquCksCBIaW5kaSB0ZXh0IOCkquCkouCkvOClh+CkgiDgpK/gpL4gYXVkaW8gZG93bmxvYWQg4KSV4KSw4KWH4KSC4KWkJyk7IH0gfSwKICAgICAgfSB9KTsKICAgIH0pOwogICAgcmV0dXJuICgpID0+IHsgZGVhZCA9IHRydWU7IHN0b3BSZWYuY3VycmVudCgpOyB5dD8uZGVzdHJveSgpOyBwbGF5ZXIuY3VycmVudCA9IG51bGw7IHNldFJlYWR5KGZhbHNlKTsgfTsKICB9LCBbdmlkZW9JZF0pOwoKICB1c2VFZmZlY3QoKCkgPT4gewogICAgaWYgKHZpZGVvSWQgfHwgIXNyYyB8fCAhdmlkZW8uY3VycmVudCkgcmV0dXJuOwogICAgY29uc3QgZWwgPSB2aWRlby5jdXJyZW50OwogICAgY29uc3Qgb25SZWFkeSA9ICgpID0+IHsgcGxheWVyLmN1cnJlbnQgPSBodG1sTWVkaWFEdWJQbGF5ZXIoZWwpOyBzZXRSZWFkeSh0cnVlKTsgc2V0RXJyb3IoJycpOyB9OwogICAgY29uc3Qgb25FcnJvciA9ICgpID0+IHsKICAgICAgaWYgKG1lZGlhRmFsbGJhY2tTcmMgJiYgc3JjICE9PSBtZWRpYUZhbGxiYWNrU3JjKSB7IHNldFJlYWR5KGZhbHNlKTsgc2V0U3JjKG1lZGlhRmFsbGJhY2tTcmMpOyByZXR1cm47IH0KICAgICAgc3RvcFJlZi5jdXJyZW50KCk7IHNldFJlYWR5KGZhbHNlKTsKICAgICAgc2V0RXJyb3IoJ+Ckr+CkuSB2aWRlbyDgpK/gpLngpL7gpIEg4KSo4KS54KWA4KSCIOCkmuCksiDgpKrgpL7gpIjgpaQgSGluZGkgdGV4dCDgpKrgpKLgpLzgpYfgpIIg4KSv4KS+IOCkqOClgOCkmuClhyDgpLjgpYcgSGluZGkgYXVkaW8gZG93bmxvYWQg4KSV4KSw4KWH4KSC4KWkJyk7CiAgICB9OwogICAgZWwuYWRkRXZlbnRMaXN0ZW5lcignbG9hZGVkbWV0YWRhdGEnLCBvblJlYWR5KTsgZWwuYWRkRXZlbnRMaXN0ZW5lcignZXJyb3InLCBvbkVycm9yKTsKICAgIGlmIChlbC5yZWFkeVN0YXRlID49IDEpIG9uUmVhZHkoKTsKICAgIHJldHVybiAoKSA9PiB7IGVsLnJlbW92ZUV2ZW50TGlzdGVuZXIoJ2xvYWRlZG1ldGFkYXRhJywgb25SZWFkeSk7IGVsLnJlbW92ZUV2ZW50TGlzdGVuZXIoJ2Vycm9yJywgb25FcnJvcik7IHN0b3BSZWYuY3VycmVudCgpOyBwbGF5ZXIuY3VycmVudCA9IG51bGw7IHNldFJlYWR5KGZhbHNlKTsgfTsKICB9LCBbdmlkZW9JZCwgc3JjLCBtZWRpYUZhbGxiYWNrU3JjXSk7CgogIGFzeW5jIGZ1bmN0aW9uIHN0YXJ0KGZyb20gPSAwKSB7CiAgICBjb25zdCBwID0gcGxheWVyLmN1cnJlbnQ7IGlmICghcCB8fCAhc2VnbWVudHNbZnJvbV0pIHJldHVybjsKICAgIHN0b3BSZWYuY3VycmVudCgpOwogICAgY29uc3QgaWQgPSArK2dlbmVyYXRpb24uY3VycmVudCwgY3RsID0gbmV3IEFib3J0Q29udHJvbGxlcigpOwogICAgY29uc3Qgb3JpZ2luYWxSYXRlID0gcC5nZXRQbGF5YmFja1JhdGUoKTsKICAgIGNvbnN0IGN0eCA9IG5ldyBBdWRpb0NvbnRleHQoeyBzYW1wbGVSYXRlOiBTUEVFQ0hfU0FNUExFX1JBVEUgfSk7CiAgICBpbnRlbnRQYXVzZWQuY3VycmVudCA9IGZhbHNlOyBzZXRQYXVzZWQoZmFsc2UpOyBzZXRSdW5uaW5nKHRydWUpOyBzZXRFcnJvcignJyk7CiAgICBsZXQgZGlzcG9zZWQgPSBmYWxzZTsKICAgIGNvbnN0IGZpbmlzaCA9ICgpID0+IHsKICAgICAgaWYgKGRpc3Bvc2VkKSByZXR1cm47IGRpc3Bvc2VkID0gdHJ1ZTsKICAgICAgY3RsLmFib3J0KCk7IHZvaWQgY3R4LmNsb3NlKCkuY2F0Y2goKCkgPT4ge30pOwogICAgICBpZiAoZ2VuZXJhdGlvbi5jdXJyZW50ICE9PSBpZCkgcmV0dXJuOwogICAgICBnZW5lcmF0aW9uLmN1cnJlbnQrKzsgcC5zZXRQbGF5YmFja1JhdGUob3JpZ2luYWxSYXRlKTsgcC5wYXVzZVZpZGVvKCk7IHAudW5NdXRlKCk7IGhvbGRpbmcuY3VycmVudCA9IGZhbHNlOyBzZXRSdW5uaW5nKGZhbHNlKTsgc2V0Q3VycmVudCgtMSk7IHNldFNwb2tlbkNvdW50KDApOyBzZXRQYXVzZWQoZmFsc2UpOwogICAgICBzdG9wUmVmLmN1cnJlbnQgPSAoKSA9PiB7fTsKICAgIH07CiAgICBzdG9wUmVmLmN1cnJlbnQgPSAoKSA9PiB7IGZpbmlzaCgpOyBzZXRTdGF0dXMoJycpOyB9OwogICAgY29uc3QgcGVuZGluZyA9IG5ldyBNYXA8bnVtYmVyLCBQcm9taXNlPEF1ZGlvQnVmZmVyPj4oKTsKICAgIGNvbnN0IHdhaXRGb3JUZXh0ID0gYXN5bmMgKGk6IG51bWJlcikgPT4gewogICAgICB3aGlsZSAoIWxhdGVzdC5jdXJyZW50W2ldPy5oaW5kaS50cmltKCkpIHsgY3RsLnNpZ25hbC50aHJvd0lmQWJvcnRlZCgpOyBhd2FpdCB0aWNrKCk7IH0KICAgICAgcmV0dXJuIGxhdGVzdC5jdXJyZW50W2ldPy5oaW5kaSA/PyAnJzsKICAgIH07CiAgICBjb25zdCBnZXRBdWRpbyA9IChpOiBudW1iZXIpOiBQcm9taXNlPEF1ZGlvQnVmZmVyPiA9PiB7CiAgICAgIGNvbnN0IGNhY2hlZCA9IGJ1ZmZlcnMuY3VycmVudC5nZXQoaSk7IGlmIChjYWNoZWQpIHJldHVybiBQcm9taXNlLnJlc29sdmUoY2FjaGVkKTsKICAgICAgY29uc3QgZXhpc3RpbmcgPSBwZW5kaW5nLmdldChpKTsgaWYgKGV4aXN0aW5nKSByZXR1cm4gZXhpc3Rpbmc7CiAgICAgIGlmICghc2VnbWVudHNbaV0pIHJldHVybiBQcm9taXNlLnJlamVjdChuZXcgRXJyb3IoJ01pc3Npbmcgc2VnbWVudC4nKSk7CiAgICAgIGNvbnN0IHByb21pc2UgPSB3YWl0Rm9yVGV4dChpKS50aGVuKHRleHQgPT4gZmV0Y2hEdWJBdWRpbyh0ZXh0LCB2b2ljZSwgY3R4LCBjdGwuc2lnbmFsLCB2b2ljZUVuZ2luZSkpLnRoZW4oYnVmZmVyID0+IHsKICAgICAgICBpZiAoZ2VuZXJhdGlvbi5jdXJyZW50ID09PSBpZCkgewogICAgICAgICAgYnVmZmVycy5jdXJyZW50LnNldChpLCBidWZmZXIpOwogICAgICAgICAgLy8gQm91bmRlZCBkZXZpY2UgbWVtb3J5OiBrZWVwIHJlY2VudC9sb29rLWFoZWFkIGF1ZGlvIGZvciByZXBsYXksIG5ldmVyIGFuIGVudGlyZSBsb25nIGxlY3R1cmUuCiAgICAgICAgICB3aGlsZSAoYnVmZmVycy5jdXJyZW50LnNpemUgPiA4KSB7IGNvbnN0IG9sZGVzdCA9IGJ1ZmZlcnMuY3VycmVudC5rZXlzKCkubmV4dCgpLnZhbHVlOyBpZiAob2xkZXN0ID09PSB1bmRlZmluZWQpIGJyZWFrOyBidWZmZXJzLmN1cnJlbnQuZGVsZXRlKG9sZGVzdCk7IH0KICAgICAgICAgIHNldFByb3ZpZGVyKHNwZWVjaFN0YXRlLmZvcmNlQmFja3VwIHx8IHNwZWVjaFN0YXRlLnVzZUJhY2t1cCA/ICdMb3ZhYmxlIEFJIMK3IEdlbWluaSAyLjUgUHJvIFRUUycgOiAnU2FydmFtIMK3IEJ1bGJ1bCB2NC1mbGFzaCcpOwogICAgICAgIH0KICAgICAgICByZXR1cm4gYnVmZmVyOwogICAgICB9KTsKICAgICAgcGVuZGluZy5zZXQoaSwgcHJvbWlzZSk7CiAgICAgIHZvaWQgcHJvbWlzZS50aGVuKAogICAgICAgICgpID0+IHsgaWYgKHBlbmRpbmcuZ2V0KGkpID09PSBwcm9taXNlKSBwZW5kaW5nLmRlbGV0ZShpKTsgfSwKICAgICAgICAoKSA9PiB7IGlmIChwZW5kaW5nLmdldChpKSA9PT0gcHJvbWlzZSkgcGVuZGluZy5kZWxldGUoaSk7IH0sCiAgICAgICk7CiAgICAgIHJldHVybiBwcm9taXNlOwogICAgfTsKICAgIHRyeSB7CiAgICAgIGF3YWl0IHJ1bkR1YlBsYXliYWNrKHsgcGxheWVyOiBwLCBjb250ZXh0OiBjdHgsIHNlZ21lbnRzLCBmcm9tLCBzaWduYWw6IGN0bC5zaWduYWwsIGdldEF1ZGlvLAogICAgICAgIHJlYWR5QXVkaW86IGkgPT4gYnVmZmVycy5jdXJyZW50LmdldChpKSwKICAgICAgICBhY3RpdmU6ICgpID0+IGdlbmVyYXRpb24uY3VycmVudCA9PT0gaWQsCiAgICAgICAgcGF1c2VkOiAoKSA9PiBpbnRlbnRQYXVzZWQuY3VycmVudCwgaG9sZGluZzogdmFsdWUgPT4geyBpZiAoZ2VuZXJhdGlvbi5jdXJyZW50ID09PSBpZCkgaG9sZGluZy5jdXJyZW50ID0gdmFsdWU7IH0sCiAgICAgICAgdXBkYXRlOiAoaSwgdGV4dCkgPT4geyBpZiAoZ2VuZXJhdGlvbi5jdXJyZW50ID09PSBpZCkgeyBzZXRDdXJyZW50KGkpOyBzZXRTcG9rZW5Db3VudCgwKTsgc2V0U3RhdHVzKGkgPj0gMCAmJiAhbGF0ZXN0LmN1cnJlbnRbaV0/LmhpbmRpLnRyaW0oKSA/ICfgpK/gpLkg4KS54KS/4KS44KWN4KS44KS+IOCkheCkreClgCDgpLjgpK7gpJ3gpL7gpK/gpL4g4KSc4KS+IOCksOCkueCkviDgpLngpYjigKYnIDogdGV4dCk7IH0gfSwKICAgICAgICBwcm9ncmVzczogKGksIGZyYWN0aW9uKSA9PiB7CiAgICAgICAgICBpZiAoZ2VuZXJhdGlvbi5jdXJyZW50ICE9PSBpZCkgcmV0dXJuOwogICAgICAgICAgY29uc3Qgd29yZHMgPSBsYXRlc3QuY3VycmVudFtpXT8uaGluZGkgPz8gJyc7CiAgICAgICAgICBzZXRTcG9rZW5Db3VudChzcG9rZW5Xb3JkQ291bnQod29yZHMsIGZyYWN0aW9uKSk7CiAgICAgICAgfSwKICAgICAgfSk7CiAgICB9IGNhdGNoIChlKSB7CiAgICAgIGlmICghY3RsLnNpZ25hbC5hYm9ydGVkICYmIGdlbmVyYXRpb24uY3VycmVudCA9PT0gaWQpIHNldEVycm9yKGUgaW5zdGFuY2VvZiBFcnJvciA/IGUubWVzc2FnZSA6ICdWb2ljZS1vdmVyIGZhaWxlZC4nKTsKICAgIH0gZmluYWxseSB7IGZpbmlzaCgpOyB9CiAgfQogIGZ1bmN0aW9uIHRvZ2dsZVBhdXNlKCkgewogICAgaW50ZW50UGF1c2VkLmN1cnJlbnQgPSAhaW50ZW50UGF1c2VkLmN1cnJlbnQ7IHNldFBhdXNlZChpbnRlbnRQYXVzZWQuY3VycmVudCk7CiAgICBpZiAoaW50ZW50UGF1c2VkLmN1cnJlbnQpIHBsYXllci5jdXJyZW50Py5wYXVzZVZpZGVvKCk7CiAgICBlbHNlIGlmICghaG9sZGluZy5jdXJyZW50KSBwbGF5ZXIuY3VycmVudD8ucGxheVZpZGVvKCk7CiAgfQogIGNvbnN0IGhhc09yaWdpbmFsID0gISFvcmlnaW5hbD8ubGVuZ3RoICYmIG9yaWdpbmFsLmxlbmd0aCA9PT0gc2VnbWVudHMubGVuZ3RoOwogIHJldHVybiAoCiAgICA8ZGl2IGRhdGEtc29mdC10b3VjaD0ib2ZmIiBjbGFzc05hbWU9Im92ZXJmbG93LWhpZGRlbiByb3VuZGVkLTJ4bCBib3JkZXIgYmctY2FyZCBzaGFkb3ctWzBfMjRweF82MHB4Xy00MHB4X2NvbG9yLW1peChpbl9va2xhYix2YXIoLS1mb3JlZ3JvdW5kKV80NSUsdHJhbnNwYXJlbnQpXSI+CiAgICAgIHt2aWRlb0lkCiAgICAgICAgPyA8ZGl2IGNsYXNzTmFtZT0iYXNwZWN0LXZpZGVvIHctZnVsbCBiZy1tdXRlZCBbJl9pZnJhbWVdOnNpemUtZnVsbCIgcmVmPXtob3N0fSAvPgogICAgICAgIDogc3JjID8gPHZpZGVvIHJlZj17dmlkZW99IHNyYz17c3JjfSBjb250cm9scyBwbGF5c0lubGluZSBwcmVsb2FkPSJtZXRhZGF0YSIgY2xhc3NOYW1lPSJhc3BlY3QtdmlkZW8gdy1mdWxsIGJnLWZvcmVncm91bmQvOTAiIC8+CiAgICAgICAgOiBudWxsfQogICAgICA8ZGl2IGNsYXNzTmFtZT0ic3BhY2UteS0zIHAtNCBzbTpwLTUiPgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGZsZXgtd3JhcCBpdGVtcy1jZW50ZXIgZ2FwLTIiPgogICAgICAgICAge3J1bm5pbmcgPyA8PgogICAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9InNlY29uZGFyeSIgY2xhc3NOYW1lPSJ0b3VjaC1idG4iIG9uQ2xpY2s9e3RvZ2dsZVBhdXNlfSBhcmlhLWxhYmVsPXtwYXVzZWQgPyAnUmVzdW1lIEhpbmRpIHZvaWNlLW92ZXInIDogJ1BhdXNlIEhpbmRpIHZvaWNlLW92ZXInfT57cGF1c2VkID8gPFBsYXkgY2xhc3NOYW1lPSJzaXplLTQiIC8+IDogPFBhdXNlIGNsYXNzTmFtZT0ic2l6ZS00IiAvPn17cGF1c2VkID8gJ+CknOCkvuCksOClgCDgpLDgpJbgpYfgpIInIDogJ1BhdXNlJ308L0J1dHRvbj4KICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PSJvdXRsaW5lIiBzaXplPSJpY29uIiBjbGFzc05hbWU9InRvdWNoLWJ0biIgYXJpYS1sYWJlbD0iU3RvcCBIaW5kaSB2b2ljZS1vdmVyIiB0aXRsZT0iU3RvcCIgb25DbGljaz17KCkgPT4gc3RvcFJlZi5jdXJyZW50KCl9PjxTcXVhcmUgY2xhc3NOYW1lPSJzaXplLTQiIC8+PC9CdXR0b24+CiAgICAgICAgICA8Lz4gOiA8QnV0dG9uIGNsYXNzTmFtZT0idG91Y2gtYnRuIiBvbkNsaWNrPXsoKSA9PiBzdGFydCgwKX0gZGlzYWJsZWQ9eyFyZWFkeSB8fCAhc2VnbWVudHMubGVuZ3RofT57cmVhZHkgPyA8UGxheSBjbGFzc05hbWU9InNpemUtNCIgLz4gOiA8TG9hZGVyMiBjbGFzc05hbWU9InNpemUtNCBhbmltYXRlLXNwaW4iIC8+fUhpbmRpIHZvaWNlLW92ZXIg4KSa4KSy4KS+4KSTPC9CdXR0b24+fQogICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJtaW4tdy0wIGZsZXgtMSB0cnVuY2F0ZSB0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCIgZGF0YS10ZXN0aWQ9ImR1Yi1zdGF0dXMiIHJvbGU9InN0YXR1cyI+e3BhdXNlZCA/ICdQYXVzZWQnIDogc3RhdHVzfTwvc3Bhbj4KICAgICAgICA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBmbGV4LXdyYXAgaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBnYXAteC00IGdhcC15LTIgdGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPgogICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMS41Ij48QXVkaW9MaW5lcyBjbGFzc05hbWU9InNpemUtNCB0ZXh0LXByaW1hcnkiIC8+e3Byb3ZpZGVyfTwvc3Bhbj4KICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGFidWxhci1udW1zIj57cmVhZHlDb3VudCA8IHNlZ21lbnRzLmxlbmd0aCA/IGAke3JlYWR5Q291bnR9LyR7c2VnbWVudHMubGVuZ3RofSDgpLngpL/gpLjgpY3gpLjgpYcg4KSk4KWI4KSv4KS+4KSwYCA6IGAke3NlZ21lbnRzLmxlbmd0aH0g4KS54KS/4KS44KWN4KS44KWHYH0gwrcge2Zvcm1hdFRpbWUoc2VnbWVudHMuYXQoLTEpPy5lbmQgPz8gMCl9PC9zcGFuPgogICAgICAgICAge2hhc09yaWdpbmFsICYmIDxzcGFuIGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIiPjxTd2l0Y2ggaWQ9InNob3ctb3JpZ2luYWwiIGNoZWNrZWQ9e3Nob3dPcmlnaW5hbH0gb25DaGVja2VkQ2hhbmdlPXtzZXRTaG93T3JpZ2luYWx9IC8+PExhYmVsIGh0bWxGb3I9InNob3ctb3JpZ2luYWwiIGNsYXNzTmFtZT0idGV4dC14cyBmb250LW5vcm1hbCI+T3JpZ2luYWwg4KSt4KWAIOCkpuCkv+CkluCkvuCkkzwvTGFiZWw+PC9zcGFuPn0KICAgICAgICA8L2Rpdj4KICAgICAgICB7ZXJyb3IgJiYgPHAgcm9sZT0iYWxlcnQiIGNsYXNzTmFtZT0icm91bmRlZC1sZyBib3JkZXIgYm9yZGVyLWRlc3RydWN0aXZlLzQwIGJnLWRlc3RydWN0aXZlLzUgcHgtMyBweS0yIHRleHQtc20gdGV4dC1kZXN0cnVjdGl2ZSI+e2Vycm9yfTwvcD59CiAgICAgIDwvZGl2PgogICAgICA8b2wgcmVmPXt0aW1lc3RhbXBzfSBjbGFzc05hbWU9Im1heC1oLVsyNnJlbV0gZGl2aWRlLXkgb3ZlcmZsb3cteS1hdXRvIGJvcmRlci10IiBhcmlhLWxhYmVsPSJUaW1lc3RhbXBlZCBIaW5kaSB2b2ljZS1vdmVyIj4KICAgICAgICB7c2VnbWVudHMubWFwKChzZWcsIGkpID0+IDxsaSBrZXk9e2l9PgogICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PSJnaG9zdCIgZGlzYWJsZWQ9eyFyZWFkeX0gb25DbGljaz17KCkgPT4gc3RhcnQoaSl9IGRhdGEtY3VycmVudD17aSA9PT0gY3VycmVudH0KICAgICAgICAgICAgY2xhc3NOYW1lPSJoLWF1dG8gdy1mdWxsIGl0ZW1zLXN0YXJ0IGp1c3RpZnktc3RhcnQgZ2FwLTMgcm91bmRlZC1ub25lIGJvcmRlci1sLTIgYm9yZGVyLXRyYW5zcGFyZW50IHB4LTQgcHktMyB0ZXh0LWxlZnQgd2hpdGVzcGFjZS1ub3JtYWwgZGF0YS1bY3VycmVudD10cnVlXTpib3JkZXItcHJpbWFyeSBkYXRhLVtjdXJyZW50PXRydWVdOmJnLWFjY2VudCI+CiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0ibXQtMC41IHNocmluay0wIHJvdW5kZWQtbWQgYmctcHJpbWFyeS8xMCBweC0xLjUgcHktMC41IGZvbnQtbW9ubyB0ZXh0LVsxMXB4XSB0ZXh0LXByaW1hcnkgdGFidWxhci1udW1zIj57Zm9ybWF0VGltZShzZWcuc3RhcnQpfTwvc3Bhbj4KICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJtaW4tdy0wIHNwYWNlLXktMSI+CiAgICAgICAgICAgICAge3NlZy5oaW5kaS50cmltKCkKICAgICAgICAgICAgICAgID8gaSA9PT0gY3VycmVudAogICAgICAgICAgICAgICAgICA/IDxTcG9rZW5DYXB0aW9uIHRleHQ9e3NlZy5oaW5kaX0gc3Bva2VuPXtzcG9rZW5Db3VudH0gY2xhc3NOYW1lPSJibG9jayB0ZXh0LXNtIGxlYWRpbmctcmVsYXhlZCB0ZXh0LWZvcmVncm91bmQiIC8+CiAgICAgICAgICAgICAgICAgIDogPHNwYW4gY2xhc3NOYW1lPSJibG9jayB0ZXh0LXNtIGxlYWRpbmctcmVsYXhlZCB0ZXh0LWZvcmVncm91bmQiPntzZWcuaGluZGl9PC9zcGFuPgogICAgICAgICAgICAgICAgOiA8c3BhbiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIHRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj48TGFuZ3VhZ2VzIGNsYXNzTmFtZT0ic2l6ZS0zLjUgYW5pbWF0ZS1wdWxzZSB0ZXh0LXByaW1hcnkiIC8+4KS44KSu4KSd4KS+IOCksOCkueCkviDgpLngpYLgpIHigKY8L3NwYW4+fQogICAgICAgICAgICAgIHtzaG93T3JpZ2luYWwgJiYgaGFzT3JpZ2luYWwgJiYgPHNwYW4gY2xhc3NOYW1lPSJibG9jayB0ZXh0LXhzIGxlYWRpbmctcmVsYXhlZCB0ZXh0LW11dGVkLWZvcmVncm91bmQiPntvcmlnaW5hbD8uW2ldfTwvc3Bhbj59CiAgICAgICAgICAgIDwvc3Bhbj4KICAgICAgICAgIDwvQnV0dG9uPgogICAgICAgIDwvbGk+KX0KICAgICAgPC9vbD4KICAgICAge2N1cnJlbnQgPj0gMCAmJiBzZWdtZW50c1tjdXJyZW50XT8uaGluZGkgJiYgPHAgY2xhc3NOYW1lPSJib3JkZXItdCBib3JkZXItbC00IGJvcmRlci1sLXByaW1hcnkgYmctbXV0ZWQvNjAgcHgtNCBweS0zIHRleHQtc20gbGVhZGluZy1yZWxheGVkIiBkYXRhLXRlc3RpZD0iZHViLWNhcHRpb24iPjxTcG9rZW5DYXB0aW9uIHRleHQ9e3NlZ21lbnRzW2N1cnJlbnRdPy5oaW5kaSA/PyAnJ30gc3Bva2VuPXtzcG9rZW5Db3VudH0gLz48L3A+fQogICAgPC9kaXY+CiAgKTsKfQo=
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Loader2, Play, Square, Pause, AudioLines, Languages } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { speechState, type YouTubeVoiceEngine } from '@/lib/youtube-speech';
+import { SPEECH_SAMPLE_RATE } from '@/lib/stream-speech';
+import { fetchDubAudio } from '@/lib/youtube-audio';
+import { runDubPlayback, type DubPlayer } from '@/lib/youtube-dub-sync';
+import { htmlMediaDubPlayer } from '@/lib/html-media-player';
+import type { DubSegment } from '@/lib/youtube-hindi';
+import type { SarvamVoice } from '@/lib/sarvam-speech';
+import { spokenWords, spokenWordCount } from '@/lib/word-highlight';
+
+/** Karaoke-style caption: spoken words turn primary, the word being spoken is marked. */
+function SpokenCaption({ text, spoken, className }: { text: string; spoken: number; className?: string }) {
+  return <span className={className}>{spokenWords(text).map((word, i) =>
+    <span key={i} className={i < spoken ? 'text-primary' : i === spoken ? 'rounded bg-primary/15 px-0.5 font-medium text-primary' : undefined}>{word} </span>)}</span>;
+}
+
+type YTPlayer = DubPlayer & { destroy(): void };
+declare global { interface Window { YT?: { Player: new (el: HTMLElement, o: object) => YTPlayer }; onYouTubeIframeAPIReady?: () => void } }
+
+let apiPromise: Promise<void> | null = null;
+function loadYouTubeApi() {
+  if (window.YT?.Player) return Promise.resolve();
+  apiPromise ??= new Promise<void>(resolve => {
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => { prev?.(); resolve(); };
+    const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s);
+  });
+  return apiPromise;
+}
+
+export function formatTime(sec: number) {
+  const t = Math.floor(sec); const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), x = String(t % 60).padStart(2, '0');
+  return h ? `${h}:${String(m).padStart(2, '0')}:${x}` : `${m}:${x}`;
+}
+
+const tick = () => new Promise(resolve => setTimeout(resolve, 250));
+
+/**
+ * Plays the Hindi voice-over in sync with a YouTube video or any HTML5 video/audio file.
+ * Segments may still be filling in (live interpretation); playback waits at a segment whose
+ * Hindi is not ready yet, so long podcasts can start before the whole interpretation finishes.
+ */
+export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, original, voice, voiceEngine, onRunningChange }: {
+  videoId?: string | null; mediaSrc?: string | null; mediaFallbackSrc?: string | null;
+  segments: DubSegment[]; original?: string[]; voice: SarvamVoice; voiceEngine?: YouTubeVoiceEngine; onRunningChange?: (value: boolean) => void;
+}) {
+  const host = useRef<HTMLDivElement>(null), video = useRef<HTMLVideoElement>(null), player = useRef<DubPlayer | null>(null);
+  const timestamps = useRef<HTMLOListElement>(null);
+  const stopRef = useRef<() => void>(() => {}), generation = useRef(0);
+  const intentPaused = useRef(false), holding = useRef(false);
+  const buffers = useRef(new Map<number, AudioBuffer>());
+  const latest = useRef(segments); latest.current = segments;
+  const [ready, setReady] = useState(false), [running, setRunning] = useState(false);
+  const [paused, setPaused] = useState(false), [status, setStatus] = useState('');
+  const [current, setCurrent] = useState(-1), [error, setError] = useState('');
+  const [spokenCount, setSpokenCount] = useState(0);
+  const [showOriginal, setShowOriginal] = useState(false);
+  const [src, setSrc] = useState(mediaSrc ?? null);
+  const [provider, setProvider] = useState('Sarvam · Bulbul v4-flash');
+  const timeline = `${videoId ?? mediaSrc ?? ''}|${segments.length}|${segments[0]?.start ?? 0}|${segments.at(-1)?.end ?? 0}`;
+  const readyCount = useMemo(() => segments.filter(s => s.hindi.trim()).length, [segments]);
+
+  useEffect(() => { onRunningChange?.(running); }, [running, onRunningChange]);
+  useEffect(() => {
+    const list = timestamps.current;
+    if (!list || current < 0) return;
+    const row = list.children.item(current);
+    if (!(row instanceof HTMLElement)) return;
+    const parent = list.getBoundingClientRect(), bounds = row.getBoundingClientRect();
+    if (bounds.top < parent.top || bounds.bottom > parent.bottom) {
+      list.scrollTo({ top: list.scrollTop + bounds.top - parent.top - (list.clientHeight - bounds.height) / 2,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  }, [current]);
+  // A new timeline or voice restarts; Hindi lines filling in during live interpretation do not.
+  useEffect(() => { stopRef.current(); buffers.current.clear(); }, [voice, voiceEngine, timeline]);
+  useEffect(() => { setSrc(mediaSrc ?? null); }, [mediaSrc]);
+
+  useEffect(() => {
+    if (!videoId) return;
+    let dead = false;
+    let yt: YTPlayer | null = null;
+    void loadYouTubeApi().then(() => {
+      if (dead || !host.current || !window.YT) return;
+      const el = document.createElement('div'); host.current.appendChild(el);
+      yt = new window.YT.Player(el, { videoId, width: '100%', height: '100%', playerVars: { rel: 0, playsinline: 1, cc_load_policy: 0 }, events: {
+        onReady: () => { if (!dead) { player.current = yt; setReady(true); } },
+        onError: () => { if (!dead) { stopRef.current(); setError('यह video यहाँ नहीं चल सकती। ऊपर Hindi text पढ़ें या audio download करें।'); } },
+      } });
+    });
+    return () => { dead = true; stopRef.current(); yt?.destroy(); player.current = null; setReady(false); };
+  }, [videoId]);
+
+  useEffect(() => {
+    if (videoId || !src || !video.current) return;
+    const el = video.current;
+    const onReady = () => { player.current = htmlMediaDubPlayer(el); setReady(true); setError(''); };
+    const onError = () => {
+      if (mediaFallbackSrc && src !== mediaFallbackSrc) { setReady(false); setSrc(mediaFallbackSrc); return; }
+      stopRef.current(); setReady(false);
+      setError('यह video यहाँ नहीं चल पाई। Hindi text पढ़ें या नीचे से Hindi audio download करें।');
+    };
+    el.addEventListener('loadedmetadata', onReady); el.addEventListener('error', onError);
+    if (el.readyState >= 1) onReady();
+    return () => { el.removeEventListener('loadedmetadata', onReady); el.removeEventListener('error', onError); stopRef.current(); player.current = null; setReady(false); };
+  }, [videoId, src, mediaFallbackSrc]);
+
+  async function start(from = 0) {
+    const p = player.current; if (!p || !segments[from]) return;
+    stopRef.current();
+    const id = ++generation.current, ctl = new AbortController();
+    const originalRate = p.getPlaybackRate();
+    const ctx = new AudioContext({ sampleRate: SPEECH_SAMPLE_RATE });
+    intentPaused.current = false; setPaused(false); setRunning(true); setError('');
+    let disposed = false;
+    const finish = () => {
+      if (disposed) return; disposed = true;
+      ctl.abort(); void ctx.close().catch(() => {});
+      if (generation.current !== id) return;
+      generation.current++; p.setPlaybackRate(originalRate); p.pauseVideo(); p.unMute(); holding.current = false; setRunning(false); setCurrent(-1); setSpokenCount(0); setPaused(false);
+      stopRef.current = () => {};
+    };
+    stopRef.current = () => { finish(); setStatus(''); };
+    const pending = new Map<number, Promise<AudioBuffer>>();
+    const waitForText = async (i: number) => {
+      while (!latest.current[i]?.hindi.trim()) { ctl.signal.throwIfAborted(); await tick(); }
+      return latest.current[i]?.hindi ?? '';
+    };
+    const getAudio = (i: number): Promise<AudioBuffer> => {
+      const cached = buffers.current.get(i); if (cached) return Promise.resolve(cached);
+      const existing = pending.get(i); if (existing) return existing;
+      if (!segments[i]) return Promise.reject(new Error('Missing segment.'));
+      const promise = waitForText(i).then(text => fetchDubAudio(text, voice, ctx, ctl.signal, voiceEngine)).then(buffer => {
+        if (generation.current === id) {
+          buffers.current.set(i, buffer);
+          // Bounded device memory: keep recent/look-ahead audio for replay, never an entire long lecture.
+          while (buffers.current.size > 8) { const oldest = buffers.current.keys().next().value; if (oldest === undefined) break; buffers.current.delete(oldest); }
+          setProvider(speechState.forceBackup || speechState.useBackup ? 'Lovable AI · Gemini 2.5 Pro TTS' : 'Sarvam · Bulbul v4-flash');
+        }
+        return buffer;
+      });
+      pending.set(i, promise);
+      void promise.then(
+        () => { if (pending.get(i) === promise) pending.delete(i); },
+        () => { if (pending.get(i) === promise) pending.delete(i); },
+      );
+      return promise;
+    };
+    try {
+      await runDubPlayback({ player: p, context: ctx, segments, from, signal: ctl.signal, getAudio,
+        readyAudio: i => buffers.current.get(i),
+        active: () => generation.current === id,
+        paused: () => intentPaused.current, holding: value => { if (generation.current === id) holding.current = value; },
+        update: (i, text) => { if (generation.current === id) { setCurrent(i); setSpokenCount(0); setStatus(i >= 0 && !latest.current[i]?.hindi.trim() ? 'यह हिस्सा अभी समझाया जा रहा है…' : text); } },
+        progress: (i, fraction) => {
+          if (generation.current !== id) return;
+          const words = latest.current[i]?.hindi ?? '';
+          setSpokenCount(spokenWordCount(words, fraction));
+        },
+      });
+    } catch (e) {
+      if (!ctl.signal.aborted && generation.current === id) setError(e instanceof Error ? e.message : 'Voice-over failed.');
+    } finally { finish(); }
+  }
+  function togglePause() {
+    intentPaused.current = !intentPaused.current; setPaused(intentPaused.current);
+    if (intentPaused.current) player.current?.pauseVideo();
+    else if (!holding.current) player.current?.playVideo();
+  }
+  const hasOriginal = !!original?.length && original.length === segments.length;
+  return (
+    <div data-soft-touch="off" className="overflow-hidden rounded-2xl border bg-card shadow-[0_24px_60px_-40px_color-mix(in_oklab,var(--foreground)_45%,transparent)]">
+      {videoId
+        ? <div className="aspect-video w-full bg-muted [&_iframe]:size-full" ref={host} />
+        : src ? <video ref={video} src={src} controls playsInline preload="metadata" className="aspect-video w-full bg-foreground/90" />
+        : null}
+      <div className="space-y-3 p-4 sm:p-5">
+        <div className="flex flex-wrap items-center gap-2">
+          {running ? <>
+            <Button variant="secondary" className="touch-btn" onClick={togglePause} aria-label={paused ? 'Resume Hindi voice-over' : 'Pause Hindi voice-over'}>{paused ? <Play className="size-4" /> : <Pause className="size-4" />}{paused ? 'जारी रखें' : 'Pause'}</Button>
+            <Button variant="outline" size="icon" className="touch-btn" aria-label="Stop Hindi voice-over" title="Stop" onClick={() => stopRef.current()}><Square className="size-4" /></Button>
+          </> : <Button className="touch-btn" onClick={() => start(0)} disabled={!ready || !segments.length}>{ready ? <Play className="size-4" /> : <Loader2 className="size-4 animate-spin" />}Hindi voice-over चलाओ</Button>}
+          <span className="min-w-0 flex-1 truncate text-xs text-muted-foreground" data-testid="dub-status" role="status">{paused ? 'Paused' : status}</span>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1.5"><AudioLines className="size-4 text-primary" />{provider}</span>
+          <span className="tabular-nums">{readyCount < segments.length ? `${readyCount}/${segments.length} हिस्से तैयार` : `${segments.length} हिस्से`} · {formatTime(segments.at(-1)?.end ?? 0)}</span>
+          {hasOriginal && <span className="flex items-center gap-2"><Switch id="show-original" checked={showOriginal} onCheckedChange={setShowOriginal} /><Label htmlFor="show-original" className="text-xs font-normal">Original भी दिखाओ</Label></span>}
+        </div>
+        {error && <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/5 px-3 py-2 text-sm text-destructive">{error}</p>}
+      </div>
+      <ol ref={timestamps} className="max-h-[26rem] divide-y overflow-y-auto border-t" aria-label="Timestamped Hindi voice-over">
+        {segments.map((seg, i) => <li key={i}>
+          <Button variant="ghost" disabled={!ready} onClick={() => start(i)} data-current={i === current}
+            className="h-auto w-full items-start justify-start gap-3 rounded-none border-l-2 border-transparent px-4 py-3 text-left whitespace-normal data-[current=true]:border-primary data-[current=true]:bg-accent">
+            <span className="mt-0.5 shrink-0 rounded-md bg-primary/10 px-1.5 py-0.5 font-mono text-[11px] text-primary tabular-nums">{formatTime(seg.start)}</span>
+            <span className="min-w-0 space-y-1">
+              {seg.hindi.trim()
+                ? i === current
+                  ? <SpokenCaption text={seg.hindi} spoken={spokenCount} className="block text-sm leading-relaxed text-foreground" />
+                  : <span className="block text-sm leading-relaxed text-foreground">{seg.hindi}</span>
+                : <span className="flex items-center gap-2 text-sm text-muted-foreground"><Languages className="size-3.5 animate-pulse text-primary" />समझा रहा हूँ…</span>}
+              {showOriginal && hasOriginal && <span className="block text-xs leading-relaxed text-muted-foreground">{original?.[i]}</span>}
+            </span>
+          </Button>
+        </li>)}
+      </ol>
+      {current >= 0 && segments[current]?.hindi && <p className="border-t border-l-4 border-l-primary bg-muted/60 px-4 py-3 text-sm leading-relaxed" data-testid="dub-caption"><SpokenCaption text={segments[current]?.hindi ?? ''} spoken={spokenCount} /></p>}
+    </div>
+  );
+}

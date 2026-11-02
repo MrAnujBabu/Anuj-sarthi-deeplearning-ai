@@ -1,1 +1,31 @@
-aW1wb3J0IHsgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IFZvaWNlUXVpelBsYXliYWNrIH0gZnJvbSAnLi92b2ljZS1xdWl6LXBsYXliYWNrJzsKaXQoJ3JlcXVpcmVzIGhlYXJkIGF1ZGlvLCBmaW5hbCBvcHRpb24gY2FwdGlvbnMgYW5kIHN1c3RhaW5lZCBzaWxlbmNlJywgKCkgPT4gewogIGNvbnN0IHAgPSBuZXcgVm9pY2VRdWl6UGxheWJhY2soKTsgcC5iZWdpbigncTEnLCAnR29sZ2knKTsKICBleHBlY3QocC5zYW1wbGUoMCwgNTAwMCwgdHJ1ZSkpLnRvQmVOdWxsKCk7CiAgcC5zYW1wbGUoMC4xLCA2MDAwLCB0cnVlKTsgcC50cmFuc2NyaXB0KCdBIE51Y2xldXMnKTsKICBleHBlY3QocC5zYW1wbGUoMCwgMTAwMDAsIHRydWUpKS50b0JlTnVsbCgpOwogIHAudHJhbnNjcmlwdCgnRCBHb2xnaScpOyBleHBlY3QocC5zYW1wbGUoMCwgMTEwMDAsIGZhbHNlKSkudG9CZU51bGwoKTsKICBleHBlY3QocC5zYW1wbGUoMCwgMTMwMDAsIHRydWUpKS50b0JlTnVsbCgpOwogIGV4cGVjdChwLnNhbXBsZSgwLCAxNDUwMCwgdHJ1ZSkpLnRvQmUoJ3ExJyk7CiAgZXhwZWN0KHAuc2FtcGxlKDAsIDE2MDAwLCB0cnVlKSkudG9CZU51bGwoKTsKfSk7Cml0KCdkb2VzIG5vdCBpbmhlcml0IHByZXZpb3VzIHF1ZXN0aW9uIHBsYXliYWNrJywgKCkgPT4gewogIGNvbnN0IHAgPSBuZXcgVm9pY2VRdWl6UGxheWJhY2soKTsgcC5iZWdpbigncTEnLCAnR29sZ2knKTsKICBwLnRyYW5zY3JpcHQoJ0QgR29sZ2knKTsgcC5zYW1wbGUoMC4xLCAwLCB0cnVlKTsgcC5iZWdpbigncTInLCAnUGl0aCcpOwogIGV4cGVjdChwLnNhbXBsZSgwLCA1MDAwLCB0cnVlKSkudG9CZU51bGwoKTsKICBwLnNhbXBsZSgwLjEsIDYwMDAsIHRydWUpOyBwLnRyYW5zY3JpcHQoJ0QgUGl0aCcpOyBwLnNhbXBsZSgwLCA3MDAwLCB0cnVlKTsKICBleHBlY3QocC5zYW1wbGUoMCwgODUwMCwgdHJ1ZSkpLnRvQmUoJ3EyJyk7Cn0pOwppdCgnc2VwYXJhdGUgc3BlZWNoIHVubG9ja3Mgb25seSBhZnRlciB0aGUgZmluYWwgb3B0aW9uIGhhcyBhY3R1YWxseSBwbGF5ZWQnLCAoKSA9PiB7CiAgY29uc3QgcCA9IG5ldyBWb2ljZVF1aXpQbGF5YmFjaygpOyBwLmJlZ2luKCdxMScsICdHb2xnaSBhcHBhcmF0dXMnKTsKICBwLnRyYW5zY3JpcHQoJ0QgR29sZ2kgYXBwYXJhdHVzJyk7CiAgZXhwZWN0KHAuY29tcGxldGVkKCdBIE51Y2xldXMuIEIgTWl0b2Nob25kcmlhLiBDIFJpYm9zb21lLicpKS50b0JlTnVsbCgpOwogIGV4cGVjdChwLmNvbXBsZXRlZCgnRCBHb2xnaScpKS50b0JlTnVsbCgpOwogIGV4cGVjdChwLmNvbXBsZXRlZCgnIGFwcGFyYXR1cycpKS50b0JlKCdxMScpOwogIGV4cGVjdChwLmNvbXBsZXRlZCgnRCBHb2xnaSBhcHBhcmF0dXMnKSkudG9CZU51bGwoKTsKICBwLmJlZ2luKCdxMicsICdQaXRoJyk7CiAgZXhwZWN0KHAuY29tcGxldGVkKCdEIFBpdGgnLCAncTEnKSkudG9CZU51bGwoKTsKICBleHBlY3QocC5jb21wbGV0ZWQoJ0dvbGdpIGFwcGFyYXR1cycpKS50b0JlTnVsbCgpOwogIGV4cGVjdChwLmNvbXBsZXRlZCgnRCBQaXRoJykpLnRvQmUoJ3EyJyk7Cn0pOw==
+import { expect, it } from 'vitest';
+import { VoiceQuizPlayback } from './voice-quiz-playback';
+it('requires heard audio, final option captions and sustained silence', () => {
+  const p = new VoiceQuizPlayback(); p.begin('q1', 'Golgi');
+  expect(p.sample(0, 5000, true)).toBeNull();
+  p.sample(0.1, 6000, true); p.transcript('A Nucleus');
+  expect(p.sample(0, 10000, true)).toBeNull();
+  p.transcript('D Golgi'); expect(p.sample(0, 11000, false)).toBeNull();
+  expect(p.sample(0, 13000, true)).toBeNull();
+  expect(p.sample(0, 14500, true)).toBe('q1');
+  expect(p.sample(0, 16000, true)).toBeNull();
+});
+it('does not inherit previous question playback', () => {
+  const p = new VoiceQuizPlayback(); p.begin('q1', 'Golgi');
+  p.transcript('D Golgi'); p.sample(0.1, 0, true); p.begin('q2', 'Pith');
+  expect(p.sample(0, 5000, true)).toBeNull();
+  p.sample(0.1, 6000, true); p.transcript('D Pith'); p.sample(0, 7000, true);
+  expect(p.sample(0, 8500, true)).toBe('q2');
+});
+it('separate speech unlocks only after the final option has actually played', () => {
+  const p = new VoiceQuizPlayback(); p.begin('q1', 'Golgi apparatus');
+  p.transcript('D Golgi apparatus');
+  expect(p.completed('A Nucleus. B Mitochondria. C Ribosome.')).toBeNull();
+  expect(p.completed('D Golgi')).toBeNull();
+  expect(p.completed(' apparatus')).toBe('q1');
+  expect(p.completed('D Golgi apparatus')).toBeNull();
+  p.begin('q2', 'Pith');
+  expect(p.completed('D Pith', 'q1')).toBeNull();
+  expect(p.completed('Golgi apparatus')).toBeNull();
+  expect(p.completed('D Pith')).toBe('q2');
+});

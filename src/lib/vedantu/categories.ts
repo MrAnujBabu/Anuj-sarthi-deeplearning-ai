@@ -1,1 +1,13 @@
-LyoqIEJyb3dzZXItc2FmZSBncm91cGluZyBvZiBWZWRhbnR1IGl0ZW1zIGludG8gdGhlIC9iYXRjaCBjYXRlZ29yeSB0YWJzLiAqLwpleHBvcnQgdHlwZSBUZXN0Q2F0ZWdvcnkgPSAiZHBwIiB8ICJweXEiIHwgInRlc3QiOwoKLyoqIEhXVCAoSG9tZSBXb3JrIFRlc3QpIGlzIFZlZGFudHUncyBEUFA7IFBZUSBwYXBlcnMgYXJlIHllYXIvY2hhcHRlci13aXNlIHBhc3QgTkVFVCBwYXBlcnMuICovCmV4cG9ydCBmdW5jdGlvbiB0ZXN0Q2F0ZWdvcnkodGl0bGU6IHN0cmluZywgc2VyaWVzID0gIiIpOiBUZXN0Q2F0ZWdvcnkgewogIGNvbnN0IHQgPSBgJHt0aXRsZX0gJHtzZXJpZXN9YDsKICBpZiAoL1xiKGRwcHxod3R8aG9tZVxzKndvcmt8ZGFpbHlccypwcmFjdGljZSkvaS50ZXN0KHQpKSByZXR1cm4gImRwcCI7CiAgaWYgKC9cYihweXFzP3xwcmV2aW91c1xzKnllYXIpXGIvaS50ZXN0KHQpIHx8IC9eXHMqKHJlLT9ccyopP25lZXRccyoodWdccyopP1xkezR9XGIvaS50ZXN0KHRpdGxlKSkgcmV0dXJuICJweXEiOwogIHJldHVybiAidGVzdCI7Cn0KCmV4cG9ydCBjb25zdCBzbWFydE5vdGVzVXJsID0gKHNlc3Npb25JZDogc3RyaW5nKSA9PiBgaHR0cHM6Ly9zZXNzaW9uLnZlZGFudHUuY29tL3Nlc3Npb24tc21hcnQtbm90ZXMvJHtlbmNvZGVVUklDb21wb25lbnQoc2Vzc2lvbklkKX1gOwpleHBvcnQgY29uc3Qgbm90ZXNQZGZMaW5rID0gKHNlc3Npb25JZDogc3RyaW5nKSA9PiBgaHR0cHM6Ly9wcm9kLXJlY29yZGluZ3MudmVkYW50dS5jb20vTk9URVMvUFJPRC8ke2VuY29kZVVSSUNvbXBvbmVudChzZXNzaW9uSWQpfS5wZGZgOwo=
+/** Browser-safe grouping of Vedantu items into the /batch category tabs. */
+export type TestCategory = "dpp" | "pyq" | "test";
+
+/** HWT (Home Work Test) is Vedantu's DPP; PYQ papers are year/chapter-wise past NEET papers. */
+export function testCategory(title: string, series = ""): TestCategory {
+  const t = `${title} ${series}`;
+  if (/\b(dpp|hwt|home\s*work|daily\s*practice)/i.test(t)) return "dpp";
+  if (/\b(pyqs?|previous\s*year)\b/i.test(t) || /^\s*(re-?\s*)?neet\s*(ug\s*)?\d{4}\b/i.test(title)) return "pyq";
+  return "test";
+}
+
+export const smartNotesUrl = (sessionId: string) => `https://session.vedantu.com/session-smart-notes/${encodeURIComponent(sessionId)}`;
+export const notesPdfLink = (sessionId: string) => `https://prod-recordings.vedantu.com/NOTES/PROD/${encodeURIComponent(sessionId)}.pdf`;

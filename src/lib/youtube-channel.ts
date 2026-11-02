@@ -1,1 +1,45 @@
-Ly8gQnJvd3Nlci1zYWZlIFlvdVR1YmUgY2hhbm5lbCBoZWxwZXJzOiBzYXZlZCBxdWljay1waWNrIGNoYW5uZWxzIGFuZCBsaW5rIHBhcnNpbmcuCgpleHBvcnQgdHlwZSBDaGFubmVsVmlkZW8gPSB7IGlkOiBzdHJpbmc7IHRpdGxlOiBzdHJpbmc7IGR1cmF0aW9uOiBzdHJpbmc7IHB1Ymxpc2hlZDogc3RyaW5nOyB2aWV3czogc3RyaW5nOyB0aHVtYm5haWw6IHN0cmluZyB9OwpleHBvcnQgdHlwZSBDaGFubmVsUGFnZSA9IHsgY2hhbm5lbDogeyBpZDogc3RyaW5nOyB0aXRsZTogc3RyaW5nOyBhdmF0YXI6IHN0cmluZyB9OyB2aWRlb3M6IENoYW5uZWxWaWRlb1tdOyBjb250aW51YXRpb246IHN0cmluZyB8IG51bGwgfTsKCi8qKiBUaGUgdXNlcidzIG1haW4gY2hhbm5lbHMgKGxvbmctZm9ybSBwb2RjYXN0cyBhbmQgdGFsa3MpLCBzaG93biBhcyBxdWljayBwaWNrcy4gKi8KZXhwb3J0IGNvbnN0IFNBVkVEX0NIQU5ORUxTID0gWwogIHsgaWQ6ICdVQzJEMkNNV1hNT1ZXeDdnaVcxbjNMSWcnLCB0aXRsZTogJ0FuZHJldyBIdWJlcm1hbicgfSwKICB7IGlkOiAnVUNTSFpLeWF3Yjc3aXhEZHNHb2c0aVdBJywgdGl0bGU6ICdMZXggRnJpZG1hbicgfSwKICB7IGlkOiAnVUN6UVVQMXFvV0RvRWJtc1F4dmRqeGdRJywgdGl0bGU6ICdKb2UgUm9nYW4gKEpSRSknIH0sCiAgeyBpZDogJ1VDb09hZTVuWUE3VnFhWHplcmFqRDBsZycsIHRpdGxlOiAnQWxpIEFiZGFhbCcgfSwKICB7IGlkOiAnVUMwUUhXaGpiZTVmR0pFUHozc1ZiNm53JywgdGl0bGU6ICdEb2N0b3IgTWlrZScgfSwKICB7IGlkOiAnVUNMX2Y1M1pFSnhwOFR0bE9rSHdNVjlRJywgdGl0bGU6ICdKb3JkYW4gQiBQZXRlcnNvbicgfSwKICB7IGlkOiAnVUM2SHlqNXNWYmlZaHBjX0ZBMTRueml3JywgdGl0bGU6ICdNaWtoYWlsYSBQZXRlcnNvbicgfSwKICB7IGlkOiAnVUN5R2kzZUN1eGtvMzdXQjZ1VXI3TGpBJywgdGl0bGU6ICdDYWxsIEhlciBEYWRkeScgfSwKICB7IGlkOiAnVUNtdllDUllQRGx6U0hWTkNJX1ZpSkRRJywgdGl0bGU6ICdUaWFnbyBGb3J0ZScgfSwKICB7IGlkOiAnVUNRSXljRGFMc0JwTUtqT0NlYUtVWVZnJywgdGl0bGU6ICdDTkJDIEF3YWF6JyB9LApdIGFzIGNvbnN0OwoKZXhwb3J0IHR5cGUgQ2hhbm5lbFJlZiA9IHsga2luZDogJ2lkJzsgaWQ6IHN0cmluZyB9IHwgeyBraW5kOiAndXJsJzsgdXJsOiBzdHJpbmcgfSB8IHsga2luZDogJ3BsYXlsaXN0JzsgaWQ6IHN0cmluZyB9OwoKLyoqIEFjY2VwdHMgYSBjaGFubmVsIGlkLCAvY2hhbm5lbC8gbGluaywgQGhhbmRsZSwgL2MvIG9yIC91c2VyLyBsaW5rLiBWaWRlbyBsaW5rcyBhcmUgbm90IGNoYW5uZWxzLiAqLwpleHBvcnQgZnVuY3Rpb24gcGFyc2VDaGFubmVsSW5wdXQoaW5wdXQ6IHN0cmluZyk6IENoYW5uZWxSZWYgfCBudWxsIHsKICBjb25zdCBzID0gaW5wdXQudHJpbSgpOwogIGlmICghcykgcmV0dXJuIG51bGw7CiAgLy8gUGxheWxpc3QgbGlua3MgKGFsc28gd2F0Y2g/dj3igKYmbGlzdD3igKYpIGFuZCBiYXJlIHBsYXlsaXN0IGlkcy4KICBjb25zdCBsaXN0ID0gcy5tYXRjaCgvWz8mXWxpc3Q9KCg/OlBMfFVVfE9MfEZMfFJEKVtcdy1dezEwLH0pLyk/LlsxXSA/PyBzLm1hdGNoKC9eKCg/OlBMfE9MKVtcdy1dezE2LH0pJC8pPy5bMV07CiAgaWYgKGxpc3QgJiYgIWxpc3Quc3RhcnRzV2l0aCgnUkQnKSkgcmV0dXJuIHsga2luZDogJ3BsYXlsaXN0JywgaWQ6IGxpc3QgfTsKICBjb25zdCBpZCA9IHMubWF0Y2goLyg/Ol58XC9jaGFubmVsXC8pKFVDW1x3LV17MjJ9KSg/OiR8Wy8/I10pLyk/LlsxXTsKICBpZiAoaWQpIHJldHVybiB7IGtpbmQ6ICdpZCcsIGlkIH07CiAgaWYgKC9eQFtcdy4tXXszLH0kLy50ZXN0KHMpKSByZXR1cm4geyBraW5kOiAndXJsJywgdXJsOiBgaHR0cHM6Ly93d3cueW91dHViZS5jb20vJHtzfWAgfTsKICBsZXQgdXJsOiBVUkw7CiAgdHJ5IHsgdXJsID0gbmV3IFVSTCgvXmh0dHBzPzpcL1wvL2kudGVzdChzKSA/IHMgOiBgaHR0cHM6Ly8ke3N9YCk7IH0gY2F0Y2ggeyByZXR1cm4gbnVsbDsgfQogIGNvbnN0IGhvc3QgPSB1cmwuaG9zdG5hbWUucmVwbGFjZSgvXih3d3dcLnxtXC4pLywgJycpOwogIGlmIChob3N0ICE9PSAneW91dHViZS5jb20nKSByZXR1cm4gbnVsbDsKICBjb25zdCBtID0gdXJsLnBhdGhuYW1lLm1hdGNoKC9eXC8oQFtcdy4tXXszLH18Y1wvW1x3Li1dK3x1c2VyXC9bXHcuLV0rKS8pOwogIHJldHVybiBtID8geyBraW5kOiAndXJsJywgdXJsOiBgaHR0cHM6Ly93d3cueW91dHViZS5jb20vJHttWzFdfWAgfSA6IG51bGw7Cn0KCi8qKiAiMjo0MzozOCIg4oaSIHNlY29uZHM7IHVzZWQgdG8gd2FybiBiZWZvcmUgdmVyeSBsb25nIHBvZGNhc3RzLiAqLwpleHBvcnQgZnVuY3Rpb24gZHVyYXRpb25TZWNvbmRzKHRleHQ6IHN0cmluZykgewogIGNvbnN0IHBhcnRzID0gdGV4dC5zcGxpdCgnOicpLm1hcChOdW1iZXIpOwogIGlmICghcGFydHMubGVuZ3RoIHx8IHBhcnRzLnNvbWUobiA9PiAhTnVtYmVyLmlzRmluaXRlKG4pKSkgcmV0dXJuIDA7CiAgcmV0dXJuIHBhcnRzLnJlZHVjZSgodG90YWwsIG4pID0+IHRvdGFsICogNjAgKyBuLCAwKTsKfQo=
+// Browser-safe YouTube channel helpers: saved quick-pick channels and link parsing.
+
+export type ChannelVideo = { id: string; title: string; duration: string; published: string; views: string; thumbnail: string };
+export type ChannelPage = { channel: { id: string; title: string; avatar: string }; videos: ChannelVideo[]; continuation: string | null };
+
+/** The user's main channels (long-form podcasts and talks), shown as quick picks. */
+export const SAVED_CHANNELS = [
+  { id: 'UC2D2CMWXMOVWx7giW1n3LIg', title: 'Andrew Huberman' },
+  { id: 'UCSHZKyawb77ixDdsGog4iWA', title: 'Lex Fridman' },
+  { id: 'UCzQUP1qoWDoEbmsQxvdjxgQ', title: 'Joe Rogan (JRE)' },
+  { id: 'UCoOae5nYA7VqaXzerajD0lg', title: 'Ali Abdaal' },
+  { id: 'UC0QHWhjbe5fGJEPz3sVb6nw', title: 'Doctor Mike' },
+  { id: 'UCL_f53ZEJxp8TtlOkHwMV9Q', title: 'Jordan B Peterson' },
+  { id: 'UC6Hyj5sVbiYhpc_FA14nziw', title: 'Mikhaila Peterson' },
+  { id: 'UCyGi3eCuxko37WB6uUr7LjA', title: 'Call Her Daddy' },
+  { id: 'UCmvYCRYPDlzSHVNCI_ViJDQ', title: 'Tiago Forte' },
+  { id: 'UCQIycDaLsBpMKjOCeaKUYVg', title: 'CNBC Awaaz' },
+] as const;
+
+export type ChannelRef = { kind: 'id'; id: string } | { kind: 'url'; url: string } | { kind: 'playlist'; id: string };
+
+/** Accepts a channel id, /channel/ link, @handle, /c/ or /user/ link. Video links are not channels. */
+export function parseChannelInput(input: string): ChannelRef | null {
+  const s = input.trim();
+  if (!s) return null;
+  // Playlist links (also watch?v=…&list=…) and bare playlist ids.
+  const list = s.match(/[?&]list=((?:PL|UU|OL|FL|RD)[\w-]{10,})/)?.[1] ?? s.match(/^((?:PL|OL)[\w-]{16,})$/)?.[1];
+  if (list && !list.startsWith('RD')) return { kind: 'playlist', id: list };
+  const id = s.match(/(?:^|\/channel\/)(UC[\w-]{22})(?:$|[/?#])/)?.[1];
+  if (id) return { kind: 'id', id };
+  if (/^@[\w.-]{3,}$/.test(s)) return { kind: 'url', url: `https://www.youtube.com/${s}` };
+  let url: URL;
+  try { url = new URL(/^https?:\/\//i.test(s) ? s : `https://${s}`); } catch { return null; }
+  const host = url.hostname.replace(/^(www\.|m\.)/, '');
+  if (host !== 'youtube.com') return null;
+  const m = url.pathname.match(/^\/(@[\w.-]{3,}|c\/[\w.-]+|user\/[\w.-]+)/);
+  return m ? { kind: 'url', url: `https://www.youtube.com/${m[1]}` } : null;
+}
+
+/** "2:43:38" → seconds; used to warn before very long podcasts. */
+export function durationSeconds(text: string) {
+  const parts = text.split(':').map(Number);
+  if (!parts.length || parts.some(n => !Number.isFinite(n))) return 0;
+  return parts.reduce((total, n) => total * 60 + n, 0);
+}

@@ -1,1 +1,75 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBjb21wYXJpc29uVGFibGUsIGZvcm1hdFZvaWNlUmVwbHkgfSBmcm9tICJAL2xpYi92b2ljZS1mb3JtYXQiOwoKZGVzY3JpYmUoInNwb2tlbiBjb21wYXJpc29uIHRhYmxlcyIsICgpID0+IHsKICBpdCgidHVybnMgYSBzcG9rZW4gVHVsbmEgaW50byBhIG1hcmtkb3duIHRhYmxlIiwgKCkgPT4gewogICAgY29uc3QgciA9IGNvbXBhcmlzb25UYWJsZSgiRGVraG8uIFR1bG5hOiBNaXRvc2lzIGF1ciBNZWlvc2lzLiBDZWxscyDigJQgTWl0b3NpczogMiwgTWVpb3NpczogNC4gRGl2aXNpb24g4oCUIE1pdG9zaXM6IGVrIGJhYXIsIE1laW9zaXM6IGRvIGJhYXIuIFR1bG5hIGtoYXRhbS4gU2FtamhlPyIpOwogICAgZXhwZWN0KHI/LnRhYmxlKS50b0JlKCJ8IEZlYXR1cmUgfCBNaXRvc2lzIHwgTWVpb3NpcyB8XG58LS0tfC0tLXwtLS18XG58IENlbGxzIHwgMiB8IDQgfFxufCBEaXZpc2lvbiB8IGVrIGJhYXIgfCBkbyBiYWFyIHwiKTsKICAgIGV4cGVjdChyPy5iZWZvcmUpLnRvQmUoIkRla2hvLiIpOwogICAgZXhwZWN0KHI/LmFmdGVyKS50b0JlKCJTYW1qaGU/Iik7CiAgfSk7CiAgaXQoImtlZXBzIHByb3NlIHdoZW4gb25seSBvbmUgcm93IGlzIHNwb2tlbiIsICgpID0+IHsKICAgIGV4cGVjdChjb21wYXJpc29uVGFibGUoIlR1bG5hOiBBIGF1ciBCLiBTaXplIOKAlCBBOiBiaWcsIEI6IHNtYWxsLiIpKS50b0JlTnVsbCgpOwogIH0pOwogIGl0KCJzaG93cyB0aGUgdGFibGUgaW4gdGhlIHZvaWNlIHRyYW5zY3JpcHQiLCAoKSA9PiB7CiAgICBleHBlY3QoZm9ybWF0Vm9pY2VSZXBseSgiVHVsbmE6IEROQSBhdXIgUk5BLiBTdWdhciDigJQgRE5BOiBkZW94eXJpYm9zZSwgUk5BOiByaWJvc2UuIFN0cmFuZCDigJQgRE5BOiBkb3VibGUsIFJOQTogc2luZ2xlLiBUdWxuYSBraGF0YW0uIikpLnRvQ29udGFpbigifCBTdWdhciB8IGRlb3h5cmlib3NlIHwgcmlib3NlIHwiKTsKICB9KTsKfSk7CgpkZXNjcmliZSgicGxhaW4gc3Bva2VuIHRhYmxlcyIsICgpID0+IHsKICBpdCgiYnVpbGRzIGEgUGFydC9Cb25lcyB0YWJsZSBmcm9tICdUYWJsZTogUGFydCBhdXIgQm9uZXMnIiwgKCkgPT4gewogICAgY29uc3QgciA9IGNvbXBhcmlzb25UYWJsZSgiVGFibGU6IFBhcnQgYXVyIEJvbmVzLiBTa3VsbCDigJQgMjIuIFVwcGVyIGxpbWIg4oCUIDYwLiBMb3dlciBsaW1iIOKAlCA2MC4gVGFibGUga2hhdGFtLiIpOwogICAgZXhwZWN0KHI/LnRhYmxlKS50b0JlKCJ8IFBhcnQgfCBCb25lcyB8XG58LS0tfC0tLXxcbnwgU2t1bGwgfCAyMiB8XG58IFVwcGVyIGxpbWIgfCA2MCB8XG58IExvd2VyIGxpbWIgfCA2MCB8Iik7CiAgfSk7Cn0pOwoKaW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAiQHRlc3RpbmctbGlicmFyeS9yZWFjdCI7CmltcG9ydCB7IEFzc2lzdGFudEFuc3dlciB9IGZyb20gIkAvY29tcG9uZW50cy9hc3Npc3RhbnQtYW5zd2VyIjsKZGVzY3JpYmUoInZvaWNlIHRyYW5zY3JpcHQgc2NyZWVuIiwgKCkgPT4gewogIGl0KCJkcmF3cyBhIHJlYWwgdGFibGUgZm9yIGEgc3Bva2VuIFBhcnQvQm9uZXMgcmVwbHkiLCBhc3luYyAoKSA9PiB7CiAgICBjb25zdCB7IGNvbnRhaW5lciwgZmluZEJ5VGV4dCB9ID0gcmVuZGVyKDxBc3Npc3RhbnRBbnN3ZXIgdGV4dD17Zm9ybWF0Vm9pY2VSZXBseSgiVGhlZWsgaGFpLiBUYWJsZTogUGFydCBhdXIgQm9uZXMuIFNrdWxsIOKAlCAyMi4gVXBwZXIgbGltYiDigJQgNjAuIExvd2VyIGxpbWIg4oCUIDYwLiBUYWJsZSBraGF0YW0uIEt1bCAyMDYgYm9uZXMuIil9IGlzQW5pbWF0aW5nPXtmYWxzZX0gY29tcGFjdCAvPik7CiAgICBhd2FpdCBmaW5kQnlUZXh0KCJTa3VsbCIpOwogICAgZXhwZWN0KGNvbnRhaW5lci5xdWVyeVNlbGVjdG9yQWxsKCJ0YWJsZSB0Ym9keSB0ciIpLmxlbmd0aCkudG9CZSgzKTsKICB9KTsKfSk7CgpkZXNjcmliZSgibGl2ZS1jYWxsIHRyYW5zY3JpcHQgdmFyaWF0aW9ucyIsICgpID0+IHsKICBpdCgiYWNjZXB0cyByb3dzIGpvaW5lZCBieSBjb21tYXMgYW5kIGNvbG9ucyIsICgpID0+IHsKICAgIGNvbnN0IHIgPSBjb21wYXJpc29uVGFibGUoIlRhYmxlOiBQYXJ0IGF1ciBCb25lcy4gU2t1bGw6IDIyLCBSaWJzOiAyNCwgU3Rlcm51bTogMS4gVGFibGUga2hhdGFtLiIpOwogICAgZXhwZWN0KHI/LnRhYmxlKS50b0JlKCJ8IFBhcnQgfCBCb25lcyB8XG58LS0tfC0tLXxcbnwgU2t1bGwgfCAyMiB8XG58IFJpYnMgfCAyNCB8XG58IFN0ZXJudW0gfCAxIHwiKTsKICB9KTsKfSk7CgpkZXNjcmliZSgiZHluYW1pYyB2b2ljZSB0YWJsZXMiLCAoKSA9PiB7CiAgY29uc3QgaGVhZGVyID0gIlRhYmxlOiBUaXNzdWUsIExvY2F0aW9uLCBGdW5jdGlvbiBhdXIgRXhhbXBsZS4gIjsKICBjb25zdCBmaXJzdCA9ICJSb3c6IEVwaXRoZWxpYWw7IFNraW47IFByb3RlY3Rpb247IEVwaWRlcm1pcy4gIjsKICBjb25zdCBzZWNvbmQgPSAiUm93OiBDb25uZWN0aXZlOyBCZXR3ZWVuIG9yZ2FuczsgU3VwcG9ydDsgQm9uZS4gIjsKICBpdCgidXNlcyBmb3VyIHF1ZXN0aW9uLXNwZWNpZmljIGNvbHVtbnMgd2l0aCBleGFjdCBjZWxsIHZhbHVlcyIsICgpID0+IHsKICAgIGV4cGVjdChjb21wYXJpc29uVGFibGUoaGVhZGVyICsgZmlyc3QgKyBzZWNvbmQgKyAiVGFibGUga2hhdGFtLiIpPy50YWJsZSkudG9CZSgKICAgICAgInwgVGlzc3VlIHwgTG9jYXRpb24gfCBGdW5jdGlvbiB8IEV4YW1wbGUgfFxufC0tLXwtLS18LS0tfC0tLXxcbnwgRXBpdGhlbGlhbCB8IFNraW4gfCBQcm90ZWN0aW9uIHwgRXBpZGVybWlzIHxcbnwgQ29ubmVjdGl2ZSB8IEJldHdlZW4gb3JnYW5zIHwgU3VwcG9ydCB8IEJvbmUgfCIsCiAgICApOwogIH0pOwogIGl0KCJrZWVwcyB0d28gY29tcGxldGVkIHJvd3Mgd2hpbGUgYSB0aGlyZCByb3cgaXMgc3RpbGwgYXJyaXZpbmciLCAoKSA9PiB7CiAgICBjb25zdCByZXN1bHQgPSBjb21wYXJpc29uVGFibGUoaGVhZGVyICsgZmlyc3QgKyBzZWNvbmQgKyAiUm93OiBNdXNjbGU7IExpbWJzOyBNb3ZlIik7CiAgICBleHBlY3QocmVzdWx0Py50YWJsZS5zcGxpdCgiXG4iKSkudG9IYXZlTGVuZ3RoKDQpOwogICAgZXhwZWN0KHJlc3VsdD8uYWZ0ZXIpLnRvQmUoIlJvdzogTXVzY2xlOyBMaW1iczsgTW92ZSIpOwogICAgZXhwZWN0KGNvbXBhcmlzb25UYWJsZShoZWFkZXIgKyBmaXJzdCArIHNlY29uZCArICJSb3c6IE11c2NsZTsgTGltYnM7IE1vdmVtZW50OyBCaWNlcHMuIFRhYmxlIGtoYXRhbS4iKT8udGFibGUpLnRvQ29udGFpbigifCBNdXNjbGUgfCBMaW1icyB8IE1vdmVtZW50IHwgQmljZXBzIHwiKTsKICB9KTsKICBpdCgicHJlc2VydmVzIGRlY2ltYWxzIGFuZCBjb21tYXMgaW5zaWRlIGNlbGxzIHdpdGhvdXQgaW52ZW50aW5nIG1pc3NpbmcgY2VsbHMiLCAoKSA9PiB7CiAgICBjb25zdCByZXN1bHQgPSBjb21wYXJpc29uVGFibGUoIlRhYmxlOiBTdWJzdGFuY2UsIE1hc3MgYXVyIE5vdGUuIFJvdzogQTsgMi41IGc7IFJlZCwgc29saWQuIFJvdzogQjsgMy43NSBnOyBOb3QgZ2l2ZW4uIFJvdzogQzsgNCBnLiBUYWJsZSBraGF0YW0uIik7CiAgICBleHBlY3QocmVzdWx0Py50YWJsZSkudG9Db250YWluKCJ8IEEgfCAyLjUgZyB8IFJlZCwgc29saWQgfCIpOwogICAgZXhwZWN0KHJlc3VsdD8udGFibGUpLnRvQ29udGFpbigifCBCIHwgMy43NSBnIHwgTm90IGdpdmVuIHwiKTsKICAgIGV4cGVjdChyZXN1bHQ/LnRhYmxlKS5ub3QudG9Db250YWluKCJ8IEMgfCIpOwogICAgZXhwZWN0KHJlc3VsdD8uYWZ0ZXIpLnRvQ29udGFpbigiUm93OiBDOyA0IGcuIik7CiAgfSk7CiAgaXQoInN1cHBvcnRzIEhpbmRpIGxhYmVscyBhbmQgZm91ci13YXkgbGVnYWN5IGNvbXBhcmlzb25zIiwgKCkgPT4gewogICAgZXhwZWN0KGNvbXBhcmlzb25UYWJsZSgi4KSf4KWH4KSs4KSyOiDgpK3gpL7gpJcg4KSU4KSwIOCkueCkoeCljeCkoeCkv+Ckr+CkvuCkgS4g4KSq4KSC4KSV4KWN4KSk4KS/OiDgpJbgpYvgpKrgpKHgpLzgpYA7IDIyLiDgpKrgpILgpJXgpY3gpKTgpL86IOCkquCkuOCksuCkv+Ckr+CkvuCkgTsgMjQuIOCkn+Clh+CkrOCksiDgpJbgpKTgpY3gpK4uIik/LnRhYmxlKS50b0NvbnRhaW4oInwg4KSW4KWL4KSq4KSh4KS84KWAIHwgMjIgfCIpOwogICAgZXhwZWN0KGNvbXBhcmlzb25UYWJsZSgiVHVsbmE6IEEsIEIsIEMgYXVyIEQuIFNpemUg4oCUIEE6IDEsIEI6IDIsIEM6IDMsIEQ6IDQuIENvdW50IOKAlCBBOiA1LCBCOiA2LCBDOiA3LCBEOiA4LiBUdWxuYSBraGF0YW0uIik/LnRhYmxlKS50b0NvbnRhaW4oInwgRmVhdHVyZSB8IEEgfCBCIHwgQyB8IEQgfCIpOwogIH0pOwogIGl0KCJyZXRhaW5zIG11bHRpcGxlIHRhYmxlcyBhbmQgdGhlIGV4cGxhbmF0aW9uIGJldHdlZW4gdGhlbSIsICgpID0+IHsKICAgIGNvbnN0IGZvcm1hdHRlZCA9IGZvcm1hdFZvaWNlUmVwbHkoaGVhZGVyICsgZmlyc3QgKyBzZWNvbmQgKyAiVGFibGUga2hhdGFtLiBBYiBib25lcyBkZWtoby4gVGFibGU6IFBhcnQgYXVyIEJvbmVzLiBSb3c6IFNrdWxsOyAyMi4gUm93OiBSaWJzOyAyNC4gVGFibGUga2hhdGFtLiIpOwogICAgZXhwZWN0KGZvcm1hdHRlZCkudG9Db250YWluKCJ8IFRpc3N1ZSB8IExvY2F0aW9uIHwgRnVuY3Rpb24gfCBFeGFtcGxlIHwiKTsKICAgIGV4cGVjdChmb3JtYXR0ZWQpLnRvQ29udGFpbigiQWIgYm9uZXMgZGVraG8uIik7CiAgICBleHBlY3QoZm9ybWF0dGVkKS50b0NvbnRhaW4oInwgUGFydCB8IEJvbmVzIHwiKTsKICB9KTsKfSk7Cg==
+import { describe, expect, it } from "vitest";
+import { comparisonTable, formatVoiceReply } from "@/lib/voice-format";
+
+describe("spoken comparison tables", () => {
+  it("turns a spoken Tulna into a markdown table", () => {
+    const r = comparisonTable("Dekho. Tulna: Mitosis aur Meiosis. Cells — Mitosis: 2, Meiosis: 4. Division — Mitosis: ek baar, Meiosis: do baar. Tulna khatam. Samjhe?");
+    expect(r?.table).toBe("| Feature | Mitosis | Meiosis |\n|---|---|---|\n| Cells | 2 | 4 |\n| Division | ek baar | do baar |");
+    expect(r?.before).toBe("Dekho.");
+    expect(r?.after).toBe("Samjhe?");
+  });
+  it("keeps prose when only one row is spoken", () => {
+    expect(comparisonTable("Tulna: A aur B. Size — A: big, B: small.")).toBeNull();
+  });
+  it("shows the table in the voice transcript", () => {
+    expect(formatVoiceReply("Tulna: DNA aur RNA. Sugar — DNA: deoxyribose, RNA: ribose. Strand — DNA: double, RNA: single. Tulna khatam.")).toContain("| Sugar | deoxyribose | ribose |");
+  });
+});
+
+describe("plain spoken tables", () => {
+  it("builds a Part/Bones table from 'Table: Part aur Bones'", () => {
+    const r = comparisonTable("Table: Part aur Bones. Skull — 22. Upper limb — 60. Lower limb — 60. Table khatam.");
+    expect(r?.table).toBe("| Part | Bones |\n|---|---|\n| Skull | 22 |\n| Upper limb | 60 |\n| Lower limb | 60 |");
+  });
+});
+
+import { render } from "@testing-library/react";
+import { AssistantAnswer } from "@/components/assistant-answer";
+describe("voice transcript screen", () => {
+  it("draws a real table for a spoken Part/Bones reply", async () => {
+    const { container, findByText } = render(<AssistantAnswer text={formatVoiceReply("Theek hai. Table: Part aur Bones. Skull — 22. Upper limb — 60. Lower limb — 60. Table khatam. Kul 206 bones.")} isAnimating={false} compact />);
+    await findByText("Skull");
+    expect(container.querySelectorAll("table tbody tr").length).toBe(3);
+  });
+});
+
+describe("live-call transcript variations", () => {
+  it("accepts rows joined by commas and colons", () => {
+    const r = comparisonTable("Table: Part aur Bones. Skull: 22, Ribs: 24, Sternum: 1. Table khatam.");
+    expect(r?.table).toBe("| Part | Bones |\n|---|---|\n| Skull | 22 |\n| Ribs | 24 |\n| Sternum | 1 |");
+  });
+});
+
+describe("dynamic voice tables", () => {
+  const header = "Table: Tissue, Location, Function aur Example. ";
+  const first = "Row: Epithelial; Skin; Protection; Epidermis. ";
+  const second = "Row: Connective; Between organs; Support; Bone. ";
+  it("uses four question-specific columns with exact cell values", () => {
+    expect(comparisonTable(header + first + second + "Table khatam.")?.table).toBe(
+      "| Tissue | Location | Function | Example |\n|---|---|---|---|\n| Epithelial | Skin | Protection | Epidermis |\n| Connective | Between organs | Support | Bone |",
+    );
+  });
+  it("keeps two completed rows while a third row is still arriving", () => {
+    const result = comparisonTable(header + first + second + "Row: Muscle; Limbs; Move");
+    expect(result?.table.split("\n")).toHaveLength(4);
+    expect(result?.after).toBe("Row: Muscle; Limbs; Move");
+    expect(comparisonTable(header + first + second + "Row: Muscle; Limbs; Movement; Biceps. Table khatam.")?.table).toContain("| Muscle | Limbs | Movement | Biceps |");
+  });
+  it("preserves decimals and commas inside cells without inventing missing cells", () => {
+    const result = comparisonTable("Table: Substance, Mass aur Note. Row: A; 2.5 g; Red, solid. Row: B; 3.75 g; Not given. Row: C; 4 g. Table khatam.");
+    expect(result?.table).toContain("| A | 2.5 g | Red, solid |");
+    expect(result?.table).toContain("| B | 3.75 g | Not given |");
+    expect(result?.table).not.toContain("| C |");
+    expect(result?.after).toContain("Row: C; 4 g.");
+  });
+  it("supports Hindi labels and four-way legacy comparisons", () => {
+    expect(comparisonTable("टेबल: भाग और हड्डियाँ. पंक्ति: खोपड़ी; 22. पंक्ति: पसलियाँ; 24. टेबल खत्म.")?.table).toContain("| खोपड़ी | 22 |");
+    expect(comparisonTable("Tulna: A, B, C aur D. Size — A: 1, B: 2, C: 3, D: 4. Count — A: 5, B: 6, C: 7, D: 8. Tulna khatam.")?.table).toContain("| Feature | A | B | C | D |");
+  });
+  it("retains multiple tables and the explanation between them", () => {
+    const formatted = formatVoiceReply(header + first + second + "Table khatam. Ab bones dekho. Table: Part aur Bones. Row: Skull; 22. Row: Ribs; 24. Table khatam.");
+    expect(formatted).toContain("| Tissue | Location | Function | Example |");
+    expect(formatted).toContain("Ab bones dekho.");
+    expect(formatted).toContain("| Part | Bones |");
+  });
+});

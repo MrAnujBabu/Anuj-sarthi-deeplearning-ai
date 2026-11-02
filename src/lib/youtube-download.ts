@@ -1,1 +1,23 @@
-aW1wb3J0IHsgZW5jb2RlV2F2IH0gZnJvbSAnLi9yZWNvcmQtd2F2JzsKaW1wb3J0IHsgU1BFRUNIX1NBTVBMRV9SQVRFIH0gZnJvbSAnLi9zdHJlYW0tc3BlZWNoJzsKaW1wb3J0IHsgZG93bmxvYWRCbG9iIH0gZnJvbSAnLi90cmFuc2NyaXB0LWV4cG9ydCc7CgovKiogSm9pbiBQQ00gcGF5bG9hZHMgaW4gdHJhbnNjcmlwdCBvcmRlciwgd2l0aCBvbmUgdmFsaWQgV0FWIGhlYWRlci4gKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIG5hcnJhdGlvbldhdihwYXJ0czogcmVhZG9ubHkgQmxvYltdKTogUHJvbWlzZTxCbG9iPiB7CiAgY29uc3Qgc2l6ZSA9IHBhcnRzLnJlZHVjZSgoc3VtLCBwYXJ0KSA9PiBzdW0gKyBwYXJ0LnNpemUsIDApOwogIGlmICghc2l6ZSB8fCBzaXplICUgMiB8fCBzaXplID4gMHhmZmZmZmZmZiAtIDM2KSB0aHJvdyBuZXcgRXJyb3IoJ0ludmFsaWQgbmFycmF0aW9uIGF1ZGlvLicpOwogIGNvbnN0IGhlYWRlciA9IGF3YWl0IGVuY29kZVdhdihbXSwgU1BFRUNIX1NBTVBMRV9SQVRFKS5hcnJheUJ1ZmZlcigpOwogIGNvbnN0IHZpZXcgPSBuZXcgRGF0YVZpZXcoaGVhZGVyKTsKICB2aWV3LnNldFVpbnQzMig0LCAzNiArIHNpemUsIHRydWUpOwogIHZpZXcuc2V0VWludDMyKDQwLCBzaXplLCB0cnVlKTsKICByZXR1cm4gbmV3IEJsb2IoW2hlYWRlciwgLi4ucGFydHNdLCB7IHR5cGU6ICdhdWRpby93YXYnIH0pOwp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZGVsaXZlck5hcnJhdGlvbihibG9iOiBCbG9iLCBuYW1lOiBzdHJpbmcpIHsKICBjb25zdCBmaWxlID0gbmV3IEZpbGUoW2Jsb2JdLCBuYW1lLCB7IHR5cGU6ICdhdWRpby93YXYnIH0pOwogIGlmIChtYXRjaE1lZGlhKCcocG9pbnRlcjogY29hcnNlKScpLm1hdGNoZXMgJiYgbmF2aWdhdG9yLmNhblNoYXJlPy4oeyBmaWxlczogW2ZpbGVdIH0pKSB7CiAgICB0cnkgeyBhd2FpdCBuYXZpZ2F0b3Iuc2hhcmUoeyBmaWxlczogW2ZpbGVdLCB0aXRsZTogbmFtZSB9KTsgcmV0dXJuOyB9CiAgICBjYXRjaCAoZXJyb3IpIHsgaWYgKGVycm9yIGluc3RhbmNlb2YgRE9NRXhjZXB0aW9uICYmIGVycm9yLm5hbWUgPT09ICdBYm9ydEVycm9yJykgcmV0dXJuOyB9CiAgfQogIGRvd25sb2FkQmxvYihuYW1lLCBibG9iKTsKfQ==
+import { encodeWav } from './record-wav';
+import { SPEECH_SAMPLE_RATE } from './stream-speech';
+import { downloadBlob } from './transcript-export';
+
+/** Join PCM payloads in transcript order, with one valid WAV header. */
+export async function narrationWav(parts: readonly Blob[]): Promise<Blob> {
+  const size = parts.reduce((sum, part) => sum + part.size, 0);
+  if (!size || size % 2 || size > 0xffffffff - 36) throw new Error('Invalid narration audio.');
+  const header = await encodeWav([], SPEECH_SAMPLE_RATE).arrayBuffer();
+  const view = new DataView(header);
+  view.setUint32(4, 36 + size, true);
+  view.setUint32(40, size, true);
+  return new Blob([header, ...parts], { type: 'audio/wav' });
+}
+
+export async function deliverNarration(blob: Blob, name: string) {
+  const file = new File([blob], name, { type: 'audio/wav' });
+  if (matchMedia('(pointer: coarse)').matches && navigator.canShare?.({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: name }); return; }
+    catch (error) { if (error instanceof DOMException && error.name === 'AbortError') return; }
+  }
+  downloadBlob(name, blob);
+}

@@ -1,1 +1,66 @@
-aW1wb3J0IHsgQm9va09wZW5UZXh0LCBTaGllbGRDaGVjaywgRWFyLCBMYW5ndWFnZXMsIENhcHRpb25zLCBHbG9iZSwgVXBsb2FkLCBGaWxlVGV4dCwgU3BhcmtsZXMgfSBmcm9tICdsdWNpZGUtcmVhY3QnOwppbXBvcnQgeyBCYWRnZSB9IGZyb20gJ0AvY29tcG9uZW50cy91aS9iYWRnZSc7CmltcG9ydCB0eXBlIHsgSW50ZXJwcmV0UmVzdWx0LCBTb3VyY2VPcmlnaW4gfSBmcm9tICdAL2xpYi9pbnRlcnByZXQtcHJvdG9jb2wnOwppbXBvcnQgeyBmb3JtYXRUaW1lIH0gZnJvbSAnQC9jb21wb25lbnRzL3lvdXR1YmUtZHViJzsKCmNvbnN0IE9SSUdJTl9MQUJFTDogUmVjb3JkPFNvdXJjZU9yaWdpbiwgc3RyaW5nPiA9IHsKICBjYXB0aW9uczogJ0NyZWF0b3Ig4KSV4KWHIGNhcHRpb25zJywgJ2F1dG8tY2FwdGlvbnMnOiAnWW91VHViZSBhdXRvLWNhcHRpb25zJywgbGlzdGVuZWQ6ICdHZW1pbmkg4KSo4KWHIOCkuOClgeCkqOCkleCksCDgpLLgpL/gpJbgpL4nLCBzdWJ0aXRsZXM6ICdTdWJ0aXRsZSBmaWxlJywgcGFzdGVkOiAnUGFzdGUg4KSV4KS/4KSv4KS+IHRyYW5zY3JpcHQnLAp9Owpjb25zdCBMQU5HVUFHRTogUmVjb3JkPHN0cmluZywgc3RyaW5nPiA9IHsgZW46ICdFbmdsaXNoJywgaGk6ICdIaW5kaScsIHVyOiAnVXJkdScsIGVzOiAnU3BhbmlzaCcsIGZyOiAnRnJlbmNoJywgZGU6ICdHZXJtYW4nLCBqYTogJ0phcGFuZXNlJywga286ICdLb3JlYW4nLCB6aDogJ0NoaW5lc2UnLCBhcjogJ0FyYWJpYycsIHJ1OiAnUnVzc2lhbicsIHB0OiAnUG9ydHVndWVzZScsIGJuOiAnQmVuZ2FsaScsIHRhOiAnVGFtaWwnLCB0ZTogJ1RlbHVndScsIG1yOiAnTWFyYXRoaScgfTsKZXhwb3J0IGNvbnN0IGxhbmd1YWdlTmFtZSA9IChjb2RlPzogc3RyaW5nKSA9PiAoY29kZSA/IExBTkdVQUdFW2NvZGUuc2xpY2UoMCwgMildID8/IGNvZGUudG9VcHBlckNhc2UoKSA6ICcnKTsKCmV4cG9ydCBmdW5jdGlvbiBTb3VyY2VCYWRnZXMoeyByZXN1bHQgfTogeyByZXN1bHQ6IEludGVycHJldFJlc3VsdCB9KSB7CiAgY29uc3QgcyA9IHJlc3VsdC5zb3VyY2UsIGtpbmQgPSBzPy5raW5kID8/IChyZXN1bHQudmlkZW9JZCA/ICd5b3V0dWJlJyA6ICd0ZXh0Jyk7CiAgY29uc3QgSWNvbiA9IGtpbmQgPT09ICd1cGxvYWQnID8gVXBsb2FkIDoga2luZCA9PT0gJ3dlYicgPyBHbG9iZSA6IGtpbmQgPT09ICd0ZXh0JyA/IEZpbGVUZXh0IDogQ2FwdGlvbnM7CiAgY29uc3QgZHVyYXRpb24gPSByZXN1bHQuZHViPy5hdCgtMSk/LmVuZDsKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9ImZsZXggZmxleC13cmFwIGdhcC0yIj4KICAgICAge3M/Lm9yaWdpbiAmJiA8QmFkZ2UgdmFyaWFudD0ic2Vjb25kYXJ5IiBjbGFzc05hbWU9ImdhcC0xLjUgZm9udC1ub3JtYWwiPjxJY29uIGNsYXNzTmFtZT0ic2l6ZS0zLjUiIC8+e09SSUdJTl9MQUJFTFtzLm9yaWdpbl19PC9CYWRnZT59CiAgICAgIHtzPy5sYW5ndWFnZSAmJiA8QmFkZ2UgdmFyaWFudD0ic2Vjb25kYXJ5IiBjbGFzc05hbWU9ImZvbnQtbm9ybWFsIj57bGFuZ3VhZ2VOYW1lKHMubGFuZ3VhZ2UpfSDihpIg4KS44KSw4KSyIEhpbmRpPC9CYWRnZT59CiAgICAgIHtkdXJhdGlvbiA/IDxCYWRnZSB2YXJpYW50PSJzZWNvbmRhcnkiIGNsYXNzTmFtZT0iZm9udC1ub3JtYWwgdGFidWxhci1udW1zIj57Zm9ybWF0VGltZShkdXJhdGlvbil9PC9CYWRnZT4gOiBudWxsfQogICAgICB7cmVzdWx0LnRydW5jYXRlZCAmJiA8QmFkZ2UgdmFyaWFudD0ib3V0bGluZSIgY2xhc3NOYW1lPSJib3JkZXItaGlnaGxpZ2h0LzUwIGZvbnQtbm9ybWFsIHRleHQtaGlnaGxpZ2h0Ij7gpLLgpILgpKzgpYAgdmlkZW8g4oCUIOCktuClgeCksOClgeCkhuCkpOClgCDgpLngpL/gpLjgpY3gpLjgpL48L0JhZGdlPn0KICAgIDwvZGl2PgogICk7Cn0KCi8qKiBXaG8gZGlkIHdoYXQgb24gdGhpcyB2aWRlbywgYW5kIHdoYXQgdGhlIHNlY29uZC1vcGluaW9uIHJldmlldyBjaGFuZ2VkLiAqLwpleHBvcnQgZnVuY3Rpb24gVGVhbUNhcmQoeyByZXN1bHQgfTogeyByZXN1bHQ6IEludGVycHJldFJlc3VsdCB9KSB7CiAgY29uc3QgcCA9IHJlc3VsdC5wYW5lbDsKICBpZiAoIXApIHJldHVybiBudWxsOwogIGNvbnN0IHJvd3MgPSBbCiAgICBwLmxpc3RlbmVyICYmIHsgaWNvbjogRWFyLCByb2xlOiAn4KS44KWB4KSo4KS+Jywgd2hvOiBwLmxpc3RlbmVyIH0sCiAgICBwLnRlcm1pbm9sb2dpc3QgJiYgeyBpY29uOiBCb29rT3BlblRleHQsIHJvbGU6ICfgpLbgpKzgpY3gpKYt4KS44KWC4KSa4KWAJywgd2hvOiBwLnRlcm1pbm9sb2dpc3QgfSwKICAgIHAuaW50ZXJwcmV0ZXJzLmxlbmd0aCAmJiB7IGljb246IExhbmd1YWdlcywgcm9sZTogJ+CkuOCkruCkneCkvuCkr+CkvicsIHdobzogcC5pbnRlcnByZXRlcnMuam9pbignICsgJykgfSwKICAgIHAucmV2aWV3ZXJzPy5sZW5ndGggJiYgeyBpY29uOiBTaGllbGRDaGVjaywgcm9sZTogJ+CknOCkvuCkgeCkmuCkvicsIHdobzogcC5yZXZpZXdlcnMuam9pbignICsgJykgfSwKICBdLmZpbHRlcihCb29sZWFuKSBhcyB7IGljb246IHR5cGVvZiBFYXI7IHJvbGU6IHN0cmluZzsgd2hvOiBzdHJpbmcgfVtdOwogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0icm91bmRlZC0yeGwgYm9yZGVyIGJnLWNhcmQgcC00Ij4KICAgICAgPHAgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBmb250LWRpc3BsYXkgdGV4dC1zbSBmb250LXNlbWlib2xkIj48U3BhcmtsZXMgY2xhc3NOYW1lPSJzaXplLTQgdGV4dC1wcmltYXJ5IiAvPkV4cGVydCB0ZWFtPC9wPgogICAgICA8dWwgY2xhc3NOYW1lPSJtdC0zIHNwYWNlLXktMiI+CiAgICAgICAge3Jvd3MubWFwKHIgPT4gPGxpIGtleT17ci5yb2xlfSBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0yLjUgdGV4dC1zbSI+PHIuaWNvbiBjbGFzc05hbWU9InNpemUtNCBzaHJpbmstMCB0ZXh0LXByaW1hcnkiIC8+PHNwYW4gY2xhc3NOYW1lPSJ3LTE2IHNocmluay0wIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+e3Iucm9sZX08L3NwYW4+PHNwYW4gY2xhc3NOYW1lPSJtaW4tdy0wIHRydW5jYXRlIj57ci53aG99PC9zcGFuPjwvbGk+KX0KICAgICAgPC91bD4KICAgICAge3AucmV2aWV3UmVxdWVzdGVkID8gPHAgcm9sZT17cC5yZXZpZXdlZCAhPT0gcC5yZXZpZXdUb3RhbCA/ICdhbGVydCcgOiAnc3RhdHVzJ30gY2xhc3NOYW1lPSJtdC0zIHJvdW5kZWQtbGcgYmctYWNjZW50LzYwIHB4LTMgcHktMiB0ZXh0LXhzIHRleHQtYWNjZW50LWZvcmVncm91bmQiPntwLnJldmlld2VkID8/IDB9L3twLnJldmlld1RvdGFsID8/IDB9IOCkueCkv+CkuOCljeCkuOClhyDgpJzgpL7gpIHgpJrgpYcg4KSX4KSPIMK3IHtwLmNvcnJlY3RlZCA/PyAwfSDgpK7gpYfgpIIg4KS44KWB4KSn4KS+4KSwIOCkleCkv+Ckr+CkviDgpJfgpK/gpL57cC5yZXZpZXdlZCAhPT0gcC5yZXZpZXdUb3RhbCA/ICcgwrcg4KSc4KS+4KSB4KSaIOCkheCkp+ClguCksOClgCDgpLngpYgnIDogJyd9PC9wPiA6IG51bGx9CiAgICA8L2Rpdj4KICApOwp9CgpleHBvcnQgZnVuY3Rpb24gQnJpZWZDYXJkKHsgcmVzdWx0IH06IHsgcmVzdWx0OiBJbnRlcnByZXRSZXN1bHQgfSkgewogIGNvbnN0IGIgPSByZXN1bHQuYnJpZWY7CiAgaWYgKCFiIHx8ICghYi5zdW1tYXJ5ICYmICFiLmdsb3NzYXJ5Lmxlbmd0aCkpIHJldHVybiBudWxsOwogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0icm91bmRlZC0yeGwgYm9yZGVyIGJnLWNhcmQgcC00Ij4KICAgICAgPHAgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBmb250LWRpc3BsYXkgdGV4dC1zbSBmb250LXNlbWlib2xkIj48Qm9va09wZW5UZXh0IGNsYXNzTmFtZT0ic2l6ZS00IHRleHQtcHJpbWFyeSIgLz5WaWRlbyDgpJXgpL/gpLgg4KSs4KS+4KSw4KWHIOCkruClh+CkgiDgpLngpYg8L3A+CiAgICAgIHtiLmRvbWFpbiAmJiA8cCBjbGFzc05hbWU9Im10LTEgdGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPntiLmRvbWFpbn08L3A+fQogICAgICB7Yi5zdW1tYXJ5ICYmIDxwIGNsYXNzTmFtZT0ibXQtMiB0ZXh0LXNtIGxlYWRpbmctcmVsYXhlZCI+e2Iuc3VtbWFyeX08L3A+fQogICAgICB7Yi5nbG9zc2FyeS5sZW5ndGggPiAwICYmICgKICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ibXQtMyI+CiAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgZm9udC1tZWRpdW0gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj7gpJzgpLzgpLDgpYLgpLDgpYAg4KS24KSs4KWN4KSmPC9wPgogICAgICAgICAgPHVsIGNsYXNzTmFtZT0ibXQtMiBmbGV4IGZsZXgtd3JhcCBnYXAtMS41Ij4KICAgICAgICAgICAge2IuZ2xvc3Nhcnkuc2xpY2UoMCwgMjQpLm1hcChnID0+IDxsaSBrZXk9e2cudGVybX0gY2xhc3NOYW1lPSJyb3VuZGVkLWxnIGJvcmRlciBiZy1iYWNrZ3JvdW5kIHB4LTIgcHktMSB0ZXh0LXhzIj48c3BhbiBjbGFzc05hbWU9ImZvbnQtbWVkaXVtIj57Zy50ZXJtfTwvc3Bhbj48c3BhbiBjbGFzc05hbWU9InRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+IMK3IHtnLmhpbmRpfTwvc3Bhbj48L2xpPil9CiAgICAgICAgICA8L3VsPgogICAgICAgIDwvZGl2PgogICAgICApfQogICAgICB7Yi5jb3JyZWN0aW9ucy5sZW5ndGggPiAwICYmIDxwIGNsYXNzTmFtZT0ibXQtMyB0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+Q2FwdGlvbnMg4KSu4KWH4KSCIHtiLmNvcnJlY3Rpb25zLmxlbmd0aH0g4KSX4KSy4KSkIOCkuOClgeCkqOClhyDgpLbgpKzgpY3gpKYg4KSg4KWA4KSVIOCkleCkv+CkjyDgpJfgpI8gKOCknOCliOCkuOClhyDigJx7Yi5jb3JyZWN0aW9uc1swXT8uaGVhcmR94oCdIOKGkiDigJx7Yi5jb3JyZWN0aW9uc1swXT8uY29ycmVjdH3igJ0pLjwvcD59CiAgICA8L2Rpdj4KICApOwp9Cg==
+import { BookOpenText, ShieldCheck, Ear, Languages, Captions, Globe, Upload, FileText, Sparkles } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import type { InterpretResult, SourceOrigin } from '@/lib/interpret-protocol';
+import { formatTime } from '@/components/youtube-dub';
+
+const ORIGIN_LABEL: Record<SourceOrigin, string> = {
+  captions: 'Creator के captions', 'auto-captions': 'YouTube auto-captions', listened: 'Gemini ने सुनकर लिखा', subtitles: 'Subtitle file', pasted: 'Paste किया transcript',
+};
+const LANGUAGE: Record<string, string> = { en: 'English', hi: 'Hindi', ur: 'Urdu', es: 'Spanish', fr: 'French', de: 'German', ja: 'Japanese', ko: 'Korean', zh: 'Chinese', ar: 'Arabic', ru: 'Russian', pt: 'Portuguese', bn: 'Bengali', ta: 'Tamil', te: 'Telugu', mr: 'Marathi' };
+export const languageName = (code?: string) => (code ? LANGUAGE[code.slice(0, 2)] ?? code.toUpperCase() : '');
+
+export function SourceBadges({ result }: { result: InterpretResult }) {
+  const s = result.source, kind = s?.kind ?? (result.videoId ? 'youtube' : 'text');
+  const Icon = kind === 'upload' ? Upload : kind === 'web' ? Globe : kind === 'text' ? FileText : Captions;
+  const duration = result.dub?.at(-1)?.end;
+  return (
+    <div className="flex flex-wrap gap-2">
+      {s?.origin && <Badge variant="secondary" className="gap-1.5 font-normal"><Icon className="size-3.5" />{ORIGIN_LABEL[s.origin]}</Badge>}
+      {s?.language && <Badge variant="secondary" className="font-normal">{languageName(s.language)} → सरल Hindi</Badge>}
+      {duration ? <Badge variant="secondary" className="font-normal tabular-nums">{formatTime(duration)}</Badge> : null}
+      {result.truncated && <Badge variant="outline" className="border-highlight/50 font-normal text-highlight">लंबी video — शुरुआती हिस्सा</Badge>}
+    </div>
+  );
+}
+
+/** Who did what on this video, and what the second-opinion review changed. */
+export function TeamCard({ result }: { result: InterpretResult }) {
+  const p = result.panel;
+  if (!p) return null;
+  const rows = [
+    p.listener && { icon: Ear, role: 'सुना', who: p.listener },
+    p.terminologist && { icon: BookOpenText, role: 'शब्द-सूची', who: p.terminologist },
+    p.interpreters.length && { icon: Languages, role: 'समझाया', who: p.interpreters.join(' + ') },
+    p.reviewers?.length && { icon: ShieldCheck, role: 'जाँचा', who: p.reviewers.join(' + ') },
+  ].filter(Boolean) as { icon: typeof Ear; role: string; who: string }[];
+  return (
+    <div className="rounded-2xl border bg-card p-4">
+      <p className="flex items-center gap-2 font-display text-sm font-semibold"><Sparkles className="size-4 text-primary" />Expert team</p>
+      <ul className="mt-3 space-y-2">
+        {rows.map(r => <li key={r.role} className="flex items-center gap-2.5 text-sm"><r.icon className="size-4 shrink-0 text-primary" /><span className="w-16 shrink-0 text-muted-foreground">{r.role}</span><span className="min-w-0 truncate">{r.who}</span></li>)}
+      </ul>
+      {p.reviewRequested ? <p role={p.reviewed !== p.reviewTotal ? 'alert' : 'status'} className="mt-3 rounded-lg bg-accent/60 px-3 py-2 text-xs text-accent-foreground">{p.reviewed ?? 0}/{p.reviewTotal ?? 0} हिस्से जाँचे गए · {p.corrected ?? 0} में सुधार किया गया{p.reviewed !== p.reviewTotal ? ' · जाँच अधूरी है' : ''}</p> : null}
+    </div>
+  );
+}
+
+export function BriefCard({ result }: { result: InterpretResult }) {
+  const b = result.brief;
+  if (!b || (!b.summary && !b.glossary.length)) return null;
+  return (
+    <div className="rounded-2xl border bg-card p-4">
+      <p className="flex items-center gap-2 font-display text-sm font-semibold"><BookOpenText className="size-4 text-primary" />Video किस बारे में है</p>
+      {b.domain && <p className="mt-1 text-xs text-muted-foreground">{b.domain}</p>}
+      {b.summary && <p className="mt-2 text-sm leading-relaxed">{b.summary}</p>}
+      {b.glossary.length > 0 && (
+        <div className="mt-3">
+          <p className="text-xs font-medium text-muted-foreground">ज़रूरी शब्द</p>
+          <ul className="mt-2 flex flex-wrap gap-1.5">
+            {b.glossary.slice(0, 24).map(g => <li key={g.term} className="rounded-lg border bg-background px-2 py-1 text-xs"><span className="font-medium">{g.term}</span><span className="text-muted-foreground"> · {g.hindi}</span></li>)}
+          </ul>
+        </div>
+      )}
+      {b.corrections.length > 0 && <p className="mt-3 text-xs text-muted-foreground">Captions में {b.corrections.length} गलत सुने शब्द ठीक किए गए (जैसे “{b.corrections[0]?.heard}” → “{b.corrections[0]?.correct}”).</p>}
+    </div>
+  );
+}

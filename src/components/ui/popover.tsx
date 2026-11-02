@@ -1,1 +1,31 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgKiBhcyBQb3BvdmVyUHJpbWl0aXZlIGZyb20gIkByYWRpeC11aS9yZWFjdC1wb3BvdmVyIjsKCmltcG9ydCB7IGNuIH0gZnJvbSAiQC9saWIvdXRpbHMiOwoKY29uc3QgUG9wb3ZlciA9IFBvcG92ZXJQcmltaXRpdmUuUm9vdDsKCmNvbnN0IFBvcG92ZXJUcmlnZ2VyID0gUG9wb3ZlclByaW1pdGl2ZS5UcmlnZ2VyOwoKY29uc3QgUG9wb3ZlckFuY2hvciA9IFBvcG92ZXJQcmltaXRpdmUuQW5jaG9yOwoKY29uc3QgUG9wb3ZlckNvbnRlbnQgPSBSZWFjdC5mb3J3YXJkUmVmPAogIFJlYWN0LkVsZW1lbnRSZWY8dHlwZW9mIFBvcG92ZXJQcmltaXRpdmUuQ29udGVudD4sCiAgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPHR5cGVvZiBQb3BvdmVyUHJpbWl0aXZlLkNvbnRlbnQ+Cj4oKHsgY2xhc3NOYW1lLCBhbGlnbiA9ICJjZW50ZXIiLCBzaWRlT2Zmc2V0ID0gNCwgLi4ucHJvcHMgfSwgcmVmKSA9PiAoCiAgPFBvcG92ZXJQcmltaXRpdmUuUG9ydGFsPgogICAgPFBvcG92ZXJQcmltaXRpdmUuQ29udGVudAogICAgICByZWY9e3JlZn0KICAgICAgYWxpZ249e2FsaWdufQogICAgICBzaWRlT2Zmc2V0PXtzaWRlT2Zmc2V0fQogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJ6LTUwIHctNzIgcm91bmRlZC1tZCBib3JkZXIgYmctcG9wb3ZlciBwLTQgdGV4dC1wb3BvdmVyLWZvcmVncm91bmQgc2hhZG93LW1kIG91dGxpbmUtbm9uZSBkYXRhLVtzdGF0ZT1vcGVuXTphbmltYXRlLWluIGRhdGEtW3N0YXRlPWNsb3NlZF06YW5pbWF0ZS1vdXQgZGF0YS1bc3RhdGU9Y2xvc2VkXTpmYWRlLW91dC0wIGRhdGEtW3N0YXRlPW9wZW5dOmZhZGUtaW4tMCBkYXRhLVtzdGF0ZT1jbG9zZWRdOnpvb20tb3V0LTk1IGRhdGEtW3N0YXRlPW9wZW5dOnpvb20taW4tOTUgZGF0YS1bc2lkZT1ib3R0b21dOnNsaWRlLWluLWZyb20tdG9wLTIgZGF0YS1bc2lkZT1sZWZ0XTpzbGlkZS1pbi1mcm9tLXJpZ2h0LTIgZGF0YS1bc2lkZT1yaWdodF06c2xpZGUtaW4tZnJvbS1sZWZ0LTIgZGF0YS1bc2lkZT10b3BdOnNsaWRlLWluLWZyb20tYm90dG9tLTIgb3JpZ2luLSgtLXJhZGl4LXBvcG92ZXItY29udGVudC10cmFuc2Zvcm0tb3JpZ2luKSIsCiAgICAgICAgY2xhc3NOYW1lLAogICAgICApfQogICAgICB7Li4ucHJvcHN9CiAgICAvPgogIDwvUG9wb3ZlclByaW1pdGl2ZS5Qb3J0YWw+CikpOwpQb3BvdmVyQ29udGVudC5kaXNwbGF5TmFtZSA9IFBvcG92ZXJQcmltaXRpdmUuQ29udGVudC5kaXNwbGF5TmFtZTsKCmV4cG9ydCB7IFBvcG92ZXIsIFBvcG92ZXJUcmlnZ2VyLCBQb3BvdmVyQ29udGVudCwgUG9wb3ZlckFuY2hvciB9Owo=
+import * as React from "react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+
+import { cn } from "@/lib/utils";
+
+const Popover = PopoverPrimitive.Root;
+
+const PopoverTrigger = PopoverPrimitive.Trigger;
+
+const PopoverAnchor = PopoverPrimitive.Anchor;
+
+const PopoverContent = React.forwardRef<
+  React.ElementRef<typeof PopoverPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
+>(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
+  <PopoverPrimitive.Portal>
+    <PopoverPrimitive.Content
+      ref={ref}
+      align={align}
+      sideOffset={sideOffset}
+      className={cn(
+        "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-(--radix-popover-content-transform-origin)",
+        className,
+      )}
+      {...props}
+    />
+  </PopoverPrimitive.Portal>
+));
+PopoverContent.displayName = PopoverPrimitive.Content.displayName;
+
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor };

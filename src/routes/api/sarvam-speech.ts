@@ -1,1 +1,61 @@
-aW1wb3J0IHsgY3JlYXRlRmlsZVJvdXRlIH0gZnJvbSAnQHRhbnN0YWNrL3JlYWN0LXJvdXRlcic7CmltcG9ydCB7IHNhcnZhbVNwZWVjaFJlcXVlc3QsIHNhcnZhbVN0cmVhbUV2ZW50cywgaXNTYXJ2YW1Wb2ljZSwgaXNTcGVha2FibGVTYXJ2YW1UZXh0LCBzYXJ2YW1Ta2lwcGVkRXZlbnRzLCBTQVJWQU1fU1BFRUNIX01PREVMLCBTQVJWQU1fU1RSRUFNX1VSTCB9IGZyb20gJ0AvbGliL3NhcnZhbS1zcGVlY2gnOwppbXBvcnQgeyBnZXRDdXJyZW50QWlQYXVzZSwgc2V0QWlQYXVzZSB9IGZyb20gJ0AvbGliL2FpL3BhdXNlLnNlcnZlcic7CmltcG9ydCB7IGNsYXNzaWZ5QWlGYWlsdXJlLCBlbmNvZGVBaUZhaWx1cmUgfSBmcm9tICdAL2xpYi9haS9lcnJvcnMnOwppbXBvcnQgeyBpc0FpQ2FuY2VsbGF0aW9uIH0gZnJvbSAnQC9saWIvYWkvY2FuY2VsbGF0aW9uJzsKCmNvbnN0IFNBUlZBTV9HQVRFV0FZX1VSTCA9ICdodHRwczovL2Nvbm5lY3Rvci1nYXRld2F5LmxvdmFibGUuZGV2L3VkY19zYXJ2YW1fYWkvdGV4dC10by1zcGVlY2gvc3RyZWFtJzsKCmV4cG9ydCBjb25zdCBSb3V0ZSA9IGNyZWF0ZUZpbGVSb3V0ZSgnL2FwaS9zYXJ2YW0tc3BlZWNoJykoewogIHNlcnZlcjogeyBoYW5kbGVyczogeyBQT1NUOiBhc3luYyAoeyByZXF1ZXN0IH0pID0+IHsKICAgIHRyeSB7CiAgICAgIGlmIChyZXF1ZXN0LnNpZ25hbC5hYm9ydGVkKSByZXR1cm4gbmV3IFJlc3BvbnNlKG51bGwsIHsgc3RhdHVzOiA0OTkgfSk7CiAgICAgIGNvbnN0IGtleSA9IHByb2Nlc3MuZW52WydTQVJWQU1fQVBJX0tFWSddOwogICAgICBjb25zdCBjb25uZWN0aW9uS2V5ID0gcHJvY2Vzcy5lbnZbJ1VEQ19TQVJWQU1fQUlfQVBJX0tFWSddOwogICAgICBjb25zdCBhcHBLZXkgPSBwcm9jZXNzLmVudlsnTE9WQUJMRV9BUElfS0VZJ107CiAgICAgIGlmIChjb25uZWN0aW9uS2V5ID8gIWFwcEtleSA6ICFrZXkpIHJldHVybiBSZXNwb25zZS5qc29uKHsgZXJyb3I6ICdbQUlfQ09ORklHVVJBVElPTl0gU2FydmFtIHZvaWNlIGlzIG5vdCBjb25maWd1cmVkLiBDb25uZWN0IFNhcnZhbSBBSSB0byByZXN0b3JlIHNwZWVjaC4nIH0sIHsgc3RhdHVzOiA1MDMgfSk7CiAgICAgIGxldCBib2R5OiB7IHRleHQ/OiB1bmtub3duOyB2b2ljZT86IHVua25vd24gfSB8IG51bGw7CiAgICAgIHRyeSB7IGJvZHkgPSBhd2FpdCByZXF1ZXN0Lmpzb24oKTsgfSBjYXRjaCAoZXJyb3IpIHsKICAgICAgICBpZiAoaXNBaUNhbmNlbGxhdGlvbihlcnJvciwgcmVxdWVzdC5zaWduYWwpKSByZXR1cm4gbmV3IFJlc3BvbnNlKG51bGwsIHsgc3RhdHVzOiA0OTkgfSk7CiAgICAgICAgcmV0dXJuIFJlc3BvbnNlLmpzb24oeyBlcnJvcjogJ0JhZCByZXF1ZXN0LicgfSwgeyBzdGF0dXM6IDQwMCB9KTsKICAgICAgfQogICAgICBpZiAoIWJvZHkgfHwgIWlzU2FydmFtVm9pY2UoYm9keS52b2ljZSkpIHJldHVybiBSZXNwb25zZS5qc29uKHsgZXJyb3I6ICdVbnN1cHBvcnRlZCBTYXJ2YW0gdm9pY2UuJyB9LCB7IHN0YXR1czogNDAwIH0pOwogICAgICBjb25zdCB0ZXh0ID0gdHlwZW9mIGJvZHkudGV4dCA9PT0gJ3N0cmluZycgPyBib2R5LnRleHQucmVwbGFjZSgvWyMqX2A+fF0vZywgJyAnKS5yZXBsYWNlKC9ccysvZywgJyAnKS50cmltKCkuc2xpY2UoMCwgMTUwMCkgOiAnJzsKICAgICAgLy8gRW1vamkvZG90cy9kYXNoZXMgb25seTogU2FydmFtIHdvdWxkIHJlZnVzZSBpdCwgYW5kIGEgcmVmdXNhbCBtdXN0IG5vdCBjb3N0IHRoZSBjYWxsIGl0cyB2b2ljZS4KICAgICAgaWYgKCFpc1NwZWFrYWJsZVNhcnZhbVRleHQodGV4dCkpIHJldHVybiBuZXcgUmVzcG9uc2Uoc2FydmFtU2tpcHBlZEV2ZW50cygpLCB7IGhlYWRlcnM6IHsgJ0NvbnRlbnQtVHlwZSc6ICd0ZXh0L2V2ZW50LXN0cmVhbScsICdDYWNoZS1Db250cm9sJzogJ25vLWNhY2hlLCBuby10cmFuc2Zvcm0nIH0gfSk7CiAgICAgIGNvbnN0IHBhdXNlSWQgPSBgc2FydmFtLyR7U0FSVkFNX1NQRUVDSF9NT0RFTH1gOwogICAgICBjb25zdCBwYXVzZWQgPSBhd2FpdCBnZXRDdXJyZW50QWlQYXVzZShwYXVzZUlkKTsKICAgICAgaWYgKHJlcXVlc3Quc2lnbmFsLmFib3J0ZWQpIHJldHVybiBuZXcgUmVzcG9uc2UobnVsbCwgeyBzdGF0dXM6IDQ5OSB9KTsKICAgICAgaWYgKHBhdXNlZCkgcmV0dXJuIFJlc3BvbnNlLmpzb24oeyBlcnJvcjogcGF1c2VkLm1lc3NhZ2UgfSwgeyBzdGF0dXM6IHBhdXNlZC5raW5kID09PSAnY3JlZGl0cycgPyA0MDIgOiA0MDMgfSk7CiAgICAgIC8vIExpbmtlZCBjb25uZWN0aW9ucyB1c2UgdGhlIGdhdGV3YXk7IHByZXNlcnZlIGRpcmVjdC1rZXkgc3VwcG9ydCBmb3IgZXhpc3RpbmcgaG9zdHMuCiAgICAgIGNvbnN0IGhlYWRlcnM6IFJlY29yZDxzdHJpbmcsIHN0cmluZz4gPSB7ICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicgfTsKICAgICAgaWYgKGNvbm5lY3Rpb25LZXkgJiYgYXBwS2V5KSB7CiAgICAgICAgaGVhZGVyc1snQXV0aG9yaXphdGlvbiddID0gYEJlYXJlciAke2FwcEtleX1gOwogICAgICAgIGhlYWRlcnNbJ1gtQ29ubmVjdGlvbi1BcGktS2V5J10gPSBjb25uZWN0aW9uS2V5OwogICAgICB9IGVsc2UgaWYgKGtleSkgewogICAgICAgIGhlYWRlcnNbJ2FwaS1zdWJzY3JpcHRpb24ta2V5J10gPSBrZXk7CiAgICAgIH0KICAgICAgY29uc3QgdXBzdHJlYW0gPSBhd2FpdCBmZXRjaChjb25uZWN0aW9uS2V5ID8gU0FSVkFNX0dBVEVXQVlfVVJMIDogU0FSVkFNX1NUUkVBTV9VUkwsIHsKICAgICAgICBtZXRob2Q6ICdQT1NUJywgaGVhZGVycywKICAgICAgICBib2R5OiBKU09OLnN0cmluZ2lmeShzYXJ2YW1TcGVlY2hSZXF1ZXN0KHRleHQsIGJvZHkudm9pY2UpKSwgc2lnbmFsOiByZXF1ZXN0LnNpZ25hbCwKICAgICAgfSk7CiAgICAgIGlmICghdXBzdHJlYW0ub2spIHsKICAgICAgICBjb25zdCBkZXRhaWwgPSBhd2FpdCB1cHN0cmVhbS50ZXh0KCk7CiAgICAgICAgY29uc29sZS5lcnJvcihgU2FydmFtIHNwZWVjaCBmYWlsZWQgWyR7dXBzdHJlYW0uc3RhdHVzfV06ICR7ZGV0YWlsfWApOwogICAgICAgIGxldCBwYXJzZWQ6IHVua25vd24gPSBkZXRhaWw7CiAgICAgICAgdHJ5IHsgcGFyc2VkID0gSlNPTi5wYXJzZShkZXRhaWwpOyB9IGNhdGNoIHsgLyogS2VlcCBwcm92aWRlciBleHBsYW5hdGlvbi4gKi8gfQogICAgICAgIGNvbnN0IGZhaWx1cmUgPSBjbGFzc2lmeUFpRmFpbHVyZSh1cHN0cmVhbS5zdGF0dXMsIHBhcnNlZCk7CiAgICAgICAgLy8gQSB3cm9uZyBvciBvbGQgU2FydmFtIGtleSBpcyBmaXhlZCBieSBzYXZpbmcgdGhlIHJpZ2h0IGtleTsgcGVyc2lzdGluZyBpdCB3b3VsZCBrZWVwIHRoZSB2b2ljZSBibG9ja2VkIGFmdGVyd2FyZHMuCiAgICAgICAgY29uc3Qga2V5UHJvYmxlbSA9IGZhaWx1cmUua2luZCA9PT0gJ2NvbmZpZ3VyYXRpb24nIHx8IC9pbnZhbGlkW14uXXswLDQwfShhcGl8c3Vic2NyaXB0aW9uKVteLl17MCwxMH1rZXl8YXBpW18gLV0/a2V5W14uXXswLDIwfShpbnZhbGlkfG1pc3Npbmd8ZXhwaXJlZCkvaS50ZXN0KGRldGFpbCk7CiAgICAgICAgaWYgKCh1cHN0cmVhbS5zdGF0dXMgPT09IDQwMiB8fCB1cHN0cmVhbS5zdGF0dXMgPT09IDQwMykgJiYgIWtleVByb2JsZW0pIGF3YWl0IHNldEFpUGF1c2UoZmFpbHVyZSwgcGF1c2VJZCk7CiAgICAgICAgcmV0dXJuIFJlc3BvbnNlLmpzb24oeyBlcnJvcjogZW5jb2RlQWlGYWlsdXJlKGZhaWx1cmUpIH0sIHsgc3RhdHVzOiB1cHN0cmVhbS5zdGF0dXMgfSk7CiAgICAgIH0KICAgICAgaWYgKCF1cHN0cmVhbS5ib2R5KSByZXR1cm4gUmVzcG9uc2UuanNvbih7IGVycm9yOiAnU2FydmFtIHJldHVybmVkIG5vIGF1ZGlvLicgfSwgeyBzdGF0dXM6IDUwMiB9KTsKICAgICAgLy8gRm9yd2FyZCBhdWRpbyBhcyBpdCBhcnJpdmVzIHNvIHNwZWVjaCBzdGFydHMgd2hpbGUgU2FydmFtIGlzIHN0aWxsIGdlbmVyYXRpbmcuCiAgICAgIHJldHVybiBuZXcgUmVzcG9uc2Uoc2FydmFtU3RyZWFtRXZlbnRzKHVwc3RyZWFtLmJvZHkpLCB7IGhlYWRlcnM6IHsgJ0NvbnRlbnQtVHlwZSc6ICd0ZXh0L2V2ZW50LXN0cmVhbScsICdDYWNoZS1Db250cm9sJzogJ25vLWNhY2hlLCBuby10cmFuc2Zvcm0nIH0gfSk7CiAgICB9IGNhdGNoIChlcnJvcikgewogICAgICBpZiAoaXNBaUNhbmNlbGxhdGlvbihlcnJvciwgcmVxdWVzdC5zaWduYWwpKSByZXR1cm4gbmV3IFJlc3BvbnNlKG51bGwsIHsgc3RhdHVzOiA0OTkgfSk7CiAgICAgIHJldHVybiBSZXNwb25zZS5qc29uKHsgZXJyb3I6ICdTYXJ2YW0gc3BlZWNoIGNvdWxkIG5vdCBmaW5pc2guJyB9LCB7IHN0YXR1czogNTAzIH0pOwogICAgfQogIH0gfSB9LAp9KTs=
+import { createFileRoute } from '@tanstack/react-router';
+import { sarvamSpeechRequest, sarvamStreamEvents, isSarvamVoice, isSpeakableSarvamText, sarvamSkippedEvents, SARVAM_SPEECH_MODEL, SARVAM_STREAM_URL } from '@/lib/sarvam-speech';
+import { getCurrentAiPause, setAiPause } from '@/lib/ai/pause.server';
+import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
+import { isAiCancellation } from '@/lib/ai/cancellation';
+
+const SARVAM_GATEWAY_URL = 'https://connector-gateway.lovable.dev/udc_sarvam_ai/text-to-speech/stream';
+
+export const Route = createFileRoute('/api/sarvam-speech')({
+  server: { handlers: { POST: async ({ request }) => {
+    try {
+      if (request.signal.aborted) return new Response(null, { status: 499 });
+      const key = process.env['SARVAM_API_KEY'];
+      const connectionKey = process.env['UDC_SARVAM_AI_API_KEY'];
+      const appKey = process.env['LOVABLE_API_KEY'];
+      if (connectionKey ? !appKey : !key) return Response.json({ error: '[AI_CONFIGURATION] Sarvam voice is not configured. Connect Sarvam AI to restore speech.' }, { status: 503 });
+      let body: { text?: unknown; voice?: unknown } | null;
+      try { body = await request.json(); } catch (error) {
+        if (isAiCancellation(error, request.signal)) return new Response(null, { status: 499 });
+        return Response.json({ error: 'Bad request.' }, { status: 400 });
+      }
+      if (!body || !isSarvamVoice(body.voice)) return Response.json({ error: 'Unsupported Sarvam voice.' }, { status: 400 });
+      const text = typeof body.text === 'string' ? body.text.replace(/[#*_`>|]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 1500) : '';
+      // Emoji/dots/dashes only: Sarvam would refuse it, and a refusal must not cost the call its voice.
+      if (!isSpeakableSarvamText(text)) return new Response(sarvamSkippedEvents(), { headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache, no-transform' } });
+      const pauseId = `sarvam/${SARVAM_SPEECH_MODEL}`;
+      const paused = await getCurrentAiPause(pauseId);
+      if (request.signal.aborted) return new Response(null, { status: 499 });
+      if (paused) return Response.json({ error: paused.message }, { status: paused.kind === 'credits' ? 402 : 403 });
+      // Linked connections use the gateway; preserve direct-key support for existing hosts.
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (connectionKey && appKey) {
+        headers['Authorization'] = `Bearer ${appKey}`;
+        headers['X-Connection-Api-Key'] = connectionKey;
+      } else if (key) {
+        headers['api-subscription-key'] = key;
+      }
+      const upstream = await fetch(connectionKey ? SARVAM_GATEWAY_URL : SARVAM_STREAM_URL, {
+        method: 'POST', headers,
+        body: JSON.stringify(sarvamSpeechRequest(text, body.voice)), signal: request.signal,
+      });
+      if (!upstream.ok) {
+        const detail = await upstream.text();
+        console.error(`Sarvam speech failed [${upstream.status}]: ${detail}`);
+        let parsed: unknown = detail;
+        try { parsed = JSON.parse(detail); } catch { /* Keep provider explanation. */ }
+        const failure = classifyAiFailure(upstream.status, parsed);
+        // A wrong or old Sarvam key is fixed by saving the right key; persisting it would keep the voice blocked afterwards.
+        const keyProblem = failure.kind === 'configuration' || /invalid[^.]{0,40}(api|subscription)[^.]{0,10}key|api[_ -]?key[^.]{0,20}(invalid|missing|expired)/i.test(detail);
+        if ((upstream.status === 402 || upstream.status === 403) && !keyProblem) await setAiPause(failure, pauseId);
+        return Response.json({ error: encodeAiFailure(failure) }, { status: upstream.status });
+      }
+      if (!upstream.body) return Response.json({ error: 'Sarvam returned no audio.' }, { status: 502 });
+      // Forward audio as it arrives so speech starts while Sarvam is still generating.
+      return new Response(sarvamStreamEvents(upstream.body), { headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache, no-transform' } });
+    } catch (error) {
+      if (isAiCancellation(error, request.signal)) return new Response(null, { status: 499 });
+      return Response.json({ error: 'Sarvam speech could not finish.' }, { status: 503 });
+    }
+  } } },
+});

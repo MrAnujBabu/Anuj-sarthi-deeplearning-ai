@@ -1,1 +1,35 @@
-aW1wb3J0IHR5cGUgeyBEaWFncmFtUGx1Z2luLCBNZXJtYWlkQ29uZmlnIH0gZnJvbSAiQHN0cmVhbWRvd24vbWVybWFpZCI7CgovLyBNZXJtYWlkJ3MgZ3JhcGggZGVwZW5kZW5jaWVzIG11c3Qgbm90IGV4ZWN1dGUgd2hpbGUgYSBjaGF0IHJvdXRlIGluaXRpYWxpemVzLgovLyBMb2FkIHRoZW0gb25seSB3aGVuIGEgTWVybWFpZCBjb2RlIGJsb2NrIGlzIGFjdHVhbGx5IHJlbmRlcmVkLiBTdHJlYW1kb3duCi8vIGhhbmRsZXMgYSByZWplY3RlZCByZW5kZXIgbG9jYWxseSwgbGVhdmluZyB0aGUgcmVzdCBvZiB0aGUgYW5zd2VyIHJlYWRhYmxlLgpleHBvcnQgZnVuY3Rpb24gY3JlYXRlTGF6eU1lcm1haWRQbHVnaW4oCiAgbG9hZCA9ICgpID0+IGltcG9ydCgiQHN0cmVhbWRvd24vbWVybWFpZCIpLAopOiBEaWFncmFtUGx1Z2luIHsKICBsZXQgY29uZmlnOiBNZXJtYWlkQ29uZmlnID0ge307CiAgbGV0IHBlbmRpbmc6IFJldHVyblR5cGU8dHlwZW9mIGxvYWQ+IHwgdW5kZWZpbmVkOwogIGNvbnN0IGluc3RhbmNlID0gewogICAgaW5pdGlhbGl6ZShuZXh0OiBNZXJtYWlkQ29uZmlnKSB7CiAgICAgIGNvbmZpZyA9IHsgLi4uY29uZmlnLCAuLi5uZXh0IH07CiAgICB9LAogICAgYXN5bmMgcmVuZGVyKGlkOiBzdHJpbmcsIHNvdXJjZTogc3RyaW5nKSB7CiAgICAgIHBlbmRpbmcgPz89IGxvYWQoKS5jYXRjaCgoZXJyb3I6IHVua25vd24pID0+IHsKICAgICAgICBwZW5kaW5nID0gdW5kZWZpbmVkOwogICAgICAgIHRocm93IGVycm9yOwogICAgICB9KTsKICAgICAgY29uc3QgeyBtZXJtYWlkIH0gPSBhd2FpdCBwZW5kaW5nOwogICAgICByZXR1cm4gbWVybWFpZC5nZXRNZXJtYWlkKGNvbmZpZykucmVuZGVyKGlkLCBzb3VyY2UpOwogICAgfSwKICB9OwogIHJldHVybiB7CiAgICBuYW1lOiAibWVybWFpZCIsCiAgICB0eXBlOiAiZGlhZ3JhbSIsCiAgICBsYW5ndWFnZTogIm1lcm1haWQiLAogICAgZ2V0TWVybWFpZChuZXh0KSB7CiAgICAgIGlmIChuZXh0KSBpbnN0YW5jZS5pbml0aWFsaXplKG5leHQpOwogICAgICByZXR1cm4gaW5zdGFuY2U7CiAgICB9LAogIH07Cn0KCmV4cG9ydCBjb25zdCBsYXp5TWVybWFpZCA9IGNyZWF0ZUxhenlNZXJtYWlkUGx1Z2luKCk7
+import type { DiagramPlugin, MermaidConfig } from "@streamdown/mermaid";
+
+// Mermaid's graph dependencies must not execute while a chat route initializes.
+// Load them only when a Mermaid code block is actually rendered. Streamdown
+// handles a rejected render locally, leaving the rest of the answer readable.
+export function createLazyMermaidPlugin(
+  load = () => import("@streamdown/mermaid"),
+): DiagramPlugin {
+  let config: MermaidConfig = {};
+  let pending: ReturnType<typeof load> | undefined;
+  const instance = {
+    initialize(next: MermaidConfig) {
+      config = { ...config, ...next };
+    },
+    async render(id: string, source: string) {
+      pending ??= load().catch((error: unknown) => {
+        pending = undefined;
+        throw error;
+      });
+      const { mermaid } = await pending;
+      return mermaid.getMermaid(config).render(id, source);
+    },
+  };
+  return {
+    name: "mermaid",
+    type: "diagram",
+    language: "mermaid",
+    getMermaid(next) {
+      if (next) instance.initialize(next);
+      return instance;
+    },
+  };
+}
+
+export const lazyMermaid = createLazyMermaidPlugin();

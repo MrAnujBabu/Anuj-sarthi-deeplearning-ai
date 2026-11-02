@@ -1,1 +1,93 @@
-LyoqCiAqIE5DRVJUIEJpb2xvZ3kgY2hhcHRlciBsaXN0IChyYXRpb25hbGlzZWQgdGV4dGJvb2tzLCAyMDIzLTI0IG9ud2FyZCkg4oCUIHNoYXJlZCBieSB0aGUKICogZGVlcC1OQ0VSVCB2b2ljZSBxdWl6IGFuZCB0aGUgdHJhbnNjcmlwdCBmb3JtYXR0ZXIgc28gY2hhcHRlciBuYW1lcyBhbHdheXMgc2hvdyBleGFjdGx5LgogKi8KZXhwb3J0IGNvbnN0IE5DRVJUX0JJT0xPR1lfRURJVElPTiA9ICJOQ0VSVCByYXRpb25hbGlzZWQgZWRpdGlvbiAoMjAyMy0yNCBvbndhcmQpIjsKCmV4cG9ydCB0eXBlIE5jZXJ0Q2hhcHRlciA9IHsgY2xzOiAxMSB8IDEyOyBubzogbnVtYmVyOyBuYW1lOiBzdHJpbmc7IHVuaXQ6IHN0cmluZyB9OwoKY29uc3QgQ0xBU1NfMTE6IEFycmF5PFtzdHJpbmcsIHN0cmluZ10+ID0gWwogIFsiVGhlIExpdmluZyBXb3JsZCIsICJEaXZlcnNpdHkgaW4gdGhlIExpdmluZyBXb3JsZCJdLAogIFsiQmlvbG9naWNhbCBDbGFzc2lmaWNhdGlvbiIsICJEaXZlcnNpdHkgaW4gdGhlIExpdmluZyBXb3JsZCJdLAogIFsiUGxhbnQgS2luZ2RvbSIsICJEaXZlcnNpdHkgaW4gdGhlIExpdmluZyBXb3JsZCJdLAogIFsiQW5pbWFsIEtpbmdkb20iLCAiRGl2ZXJzaXR5IGluIHRoZSBMaXZpbmcgV29ybGQiXSwKICBbIk1vcnBob2xvZ3kgb2YgRmxvd2VyaW5nIFBsYW50cyIsICJTdHJ1Y3R1cmFsIE9yZ2FuaXNhdGlvbiBpbiBQbGFudHMgYW5kIEFuaW1hbHMiXSwKICBbIkFuYXRvbXkgb2YgRmxvd2VyaW5nIFBsYW50cyIsICJTdHJ1Y3R1cmFsIE9yZ2FuaXNhdGlvbiBpbiBQbGFudHMgYW5kIEFuaW1hbHMiXSwKICBbIlN0cnVjdHVyYWwgT3JnYW5pc2F0aW9uIGluIEFuaW1hbHMiLCAiU3RydWN0dXJhbCBPcmdhbmlzYXRpb24gaW4gUGxhbnRzIGFuZCBBbmltYWxzIl0sCiAgWyJDZWxsOiBUaGUgVW5pdCBvZiBMaWZlIiwgIkNlbGw6IFN0cnVjdHVyZSBhbmQgRnVuY3Rpb24iXSwKICBbIkJpb21vbGVjdWxlcyIsICJDZWxsOiBTdHJ1Y3R1cmUgYW5kIEZ1bmN0aW9uIl0sCiAgWyJDZWxsIEN5Y2xlIGFuZCBDZWxsIERpdmlzaW9uIiwgIkNlbGw6IFN0cnVjdHVyZSBhbmQgRnVuY3Rpb24iXSwKICBbIlBob3Rvc3ludGhlc2lzIGluIEhpZ2hlciBQbGFudHMiLCAiUGxhbnQgUGh5c2lvbG9neSJdLAogIFsiUmVzcGlyYXRpb24gaW4gUGxhbnRzIiwgIlBsYW50IFBoeXNpb2xvZ3kiXSwKICBbIlBsYW50IEdyb3d0aCBhbmQgRGV2ZWxvcG1lbnQiLCAiUGxhbnQgUGh5c2lvbG9neSJdLAogIFsiQnJlYXRoaW5nIGFuZCBFeGNoYW5nZSBvZiBHYXNlcyIsICJIdW1hbiBQaHlzaW9sb2d5Il0sCiAgWyJCb2R5IEZsdWlkcyBhbmQgQ2lyY3VsYXRpb24iLCAiSHVtYW4gUGh5c2lvbG9neSJdLAogIFsiRXhjcmV0b3J5IFByb2R1Y3RzIGFuZCB0aGVpciBFbGltaW5hdGlvbiIsICJIdW1hbiBQaHlzaW9sb2d5Il0sCiAgWyJMb2NvbW90aW9uIGFuZCBNb3ZlbWVudCIsICJIdW1hbiBQaHlzaW9sb2d5Il0sCiAgWyJOZXVyYWwgQ29udHJvbCBhbmQgQ29vcmRpbmF0aW9uIiwgIkh1bWFuIFBoeXNpb2xvZ3kiXSwKICBbIkNoZW1pY2FsIENvb3JkaW5hdGlvbiBhbmQgSW50ZWdyYXRpb24iLCAiSHVtYW4gUGh5c2lvbG9neSJdLApdOwoKY29uc3QgQ0xBU1NfMTI6IEFycmF5PFtzdHJpbmcsIHN0cmluZ10+ID0gWwogIFsiU2V4dWFsIFJlcHJvZHVjdGlvbiBpbiBGbG93ZXJpbmcgUGxhbnRzIiwgIlJlcHJvZHVjdGlvbiJdLAogIFsiSHVtYW4gUmVwcm9kdWN0aW9uIiwgIlJlcHJvZHVjdGlvbiJdLAogIFsiUmVwcm9kdWN0aXZlIEhlYWx0aCIsICJSZXByb2R1Y3Rpb24iXSwKICBbIlByaW5jaXBsZXMgb2YgSW5oZXJpdGFuY2UgYW5kIFZhcmlhdGlvbiIsICJHZW5ldGljcyBhbmQgRXZvbHV0aW9uIl0sCiAgWyJNb2xlY3VsYXIgQmFzaXMgb2YgSW5oZXJpdGFuY2UiLCAiR2VuZXRpY3MgYW5kIEV2b2x1dGlvbiJdLAogIFsiRXZvbHV0aW9uIiwgIkdlbmV0aWNzIGFuZCBFdm9sdXRpb24iXSwKICBbIkh1bWFuIEhlYWx0aCBhbmQgRGlzZWFzZSIsICJCaW9sb2d5IGluIEh1bWFuIFdlbGZhcmUiXSwKICBbIk1pY3JvYmVzIGluIEh1bWFuIFdlbGZhcmUiLCAiQmlvbG9neSBpbiBIdW1hbiBXZWxmYXJlIl0sCiAgWyJCaW90ZWNobm9sb2d5OiBQcmluY2lwbGVzIGFuZCBQcm9jZXNzZXMiLCAiQmlvdGVjaG5vbG9neSJdLAogIFsiQmlvdGVjaG5vbG9neSBhbmQgaXRzIEFwcGxpY2F0aW9ucyIsICJCaW90ZWNobm9sb2d5Il0sCiAgWyJPcmdhbmlzbXMgYW5kIFBvcHVsYXRpb25zIiwgIkVjb2xvZ3kiXSwKICBbIkVjb3N5c3RlbSIsICJFY29sb2d5Il0sCiAgWyJCaW9kaXZlcnNpdHkgYW5kIENvbnNlcnZhdGlvbiIsICJFY29sb2d5Il0sCl07CgpleHBvcnQgY29uc3QgTkNFUlRfQklPTE9HWV9DSEFQVEVSUzogTmNlcnRDaGFwdGVyW10gPSBbCiAgLi4uQ0xBU1NfMTEubWFwKChbbmFtZSwgdW5pdF0sIGkpID0+ICh7IGNsczogMTEgYXMgY29uc3QsIG5vOiBpICsgMSwgbmFtZSwgdW5pdCB9KSksCiAgLi4uQ0xBU1NfMTIubWFwKChbbmFtZSwgdW5pdF0sIGkpID0+ICh7IGNsczogMTIgYXMgY29uc3QsIG5vOiBpICsgMSwgbmFtZSwgdW5pdCB9KSksCl07CgpleHBvcnQgZnVuY3Rpb24gbmNlcnRDaGFwdGVyKGNsczogbnVtYmVyLCBubzogbnVtYmVyKTogTmNlcnRDaGFwdGVyIHwgdW5kZWZpbmVkIHsKICByZXR1cm4gTkNFUlRfQklPTE9HWV9DSEFQVEVSUy5maW5kKChjKSA9PiBjLmNscyA9PT0gY2xzICYmIGMubm8gPT09IG5vKTsKfQoKLyoqICJOQ0VSVCBDbGFzcyAxMSBCaW9sb2d5IMK3IENoYXB0ZXIgNSDigJQgTW9ycGhvbG9neSBvZiBGbG93ZXJpbmcgUGxhbnRzIiAqLwpleHBvcnQgZnVuY3Rpb24gY2hhcHRlckxhYmVsKGM6IE5jZXJ0Q2hhcHRlcik6IHN0cmluZyB7CiAgcmV0dXJuIGBOQ0VSVCBDbGFzcyAke2MuY2xzfSBCaW9sb2d5IMK3IENoYXB0ZXIgJHtjLm5vfSDigJQgJHtjLm5hbWV9YDsKfQoKY29uc3QgU1BPS0VOOiBSZWNvcmQ8c3RyaW5nLCBudW1iZXI+ID0gewogIG9uZTogMSwgZWs6IDEsIHR3bzogMiwgZG86IDIsIHRocmVlOiAzLCB0ZWVuOiAzLCBmb3VyOiA0LCBjaGFyOiA0LCBjaGFhcjogNCwgZml2ZTogNSwgcGFhbmNoOiA1LCBwYW5jaDogNSwKICBzaXg6IDYsIGNoaGU6IDYsIGNoZTogNiwgc2V2ZW46IDcsIHNhYXQ6IDcsIGVpZ2h0OiA4LCBhYXRoOiA4LCBuaW5lOiA5LCBuYXU6IDksIHRlbjogMTAsIGRhczogMTAsCiAgZWxldmVuOiAxMSwgZ3lhcmFoOiAxMSwgdHdlbHZlOiAxMiwgYmFyYWg6IDEyLCB0aGlydGVlbjogMTMsIHRlcmFoOiAxMywgZm91cnRlZW46IDE0LCBjaGF1ZGFoOiAxNCwKICBmaWZ0ZWVuOiAxNSwgcGFuZHJhaDogMTUsIHNpeHRlZW46IDE2LCBzb2xhaDogMTYsIHNldmVudGVlbjogMTcsIHNhdHJhaDogMTcsIGVpZ2h0ZWVuOiAxOCwgYXRoYXJhaDogMTgsCiAgbmluZXRlZW46IDE5LCB1bm5pczogMTksCn07Cgpjb25zdCBzcG9rZW5OdW1iZXIgPSAoczogc3RyaW5nKSA9PiAoL15cZCskLy50ZXN0KHMpID8gTnVtYmVyKHMpIDogU1BPS0VOW3MudG9Mb3dlckNhc2UoKV0pOwoKY29uc3QgbmFtZVJlID0gKG5hbWU6IHN0cmluZykgPT4gbmFtZS5zcGxpdCgvW15BLVphLXowLTldKy8pLmZpbHRlcihCb29sZWFuKS5qb2luKCJbXkEtWmEtejAtOV0rIik7Cgpjb25zdCBNRU5USU9OID0gLyg/OlxiKD86WWVofFllfFRoaXN8SXMpXHMrKD86cXVlc3Rpb258c2F3YWx8c2F3YWFsfHByYXNobnxwcmFzaG5hKVxzKyk/XGIoPzpOQ0VSVFxzKyk/Q2xhc3NccysoMTF8MTJ8ZWxldmVufHR3ZWx2ZXxneWFyYWh8YmFyYWgpKD86XHMrKD86QmlvbG9neXxCaW8pKT9ccypbwrcsOlwt4oCT4oCUXT9ccyooPzpDaGFwdGVyfENoXC4/fGFkaHlheSlccyooXGR7MSwyfXxbYS16XSspXGJccypbwrcsOlwt4oCT4oCUXT9ccyovaTsKCi8qKgogKiBGaW5kIGEgc3Bva2VuL3dyaXR0ZW4gIk5DRVJUIENsYXNzIDExIEJpb2xvZ3ksIENoYXB0ZXIgNSwgTW9ycGhvbG9neeKApiIgbWVudGlvbiwgcmVtb3ZlIGl0CiAqIGZyb20gdGhlIHRleHQgYW5kIHJldHVybiB0aGUgb2ZmaWNpYWwgY2hhcHRlci4gQSBzcG9rZW4gY2hhcHRlciBuYW1lIHdpbnMgb3ZlciBhIG1pc3Nwb2tlbiBudW1iZXIuCiAqLwpleHBvcnQgZnVuY3Rpb24gdGFrZUNoYXB0ZXIodGV4dDogc3RyaW5nKTogeyB0ZXh0OiBzdHJpbmc7IGNoYXB0ZXI6IE5jZXJ0Q2hhcHRlciB8IG51bGwgfSB7CiAgY29uc3QgbSA9IHRleHQubWF0Y2goTUVOVElPTik7CiAgaWYgKCFtIHx8IG0uaW5kZXggPT09IHVuZGVmaW5lZCkgcmV0dXJuIHsgdGV4dCwgY2hhcHRlcjogbnVsbCB9OwogIGNvbnN0IGNscyA9IHNwb2tlbk51bWJlcihtWzFdID8/ICIiKSA9PT0gMTIgPyAxMiA6IDExOwogIGxldCByZXN0ID0gdGV4dC5zbGljZShtLmluZGV4ICsgbVswXS5sZW5ndGgpOwogIGxldCBjaGFwdGVyID0gbmNlcnRDaGFwdGVyKGNscywgc3Bva2VuTnVtYmVyKG1bMl0gPz8gIiIpID8/IDApID8/IG51bGw7CiAgZm9yIChjb25zdCBjIG9mIE5DRVJUX0JJT0xPR1lfQ0hBUFRFUlMuZmlsdGVyKCh4KSA9PiB4LmNscyA9PT0gY2xzKS5zb3J0KChhLCBiKSA9PiBiLm5hbWUubGVuZ3RoIC0gYS5uYW1lLmxlbmd0aCkpIHsKICAgIGNvbnN0IG5hbWVkID0gcmVzdC5tYXRjaChuZXcgUmVnRXhwKGBeWyLigJxdPyR7bmFtZVJlKGMubmFtZSl9WyLigJ1dP2AsICJpIikpOwogICAgaWYgKG5hbWVkKSB7IGNoYXB0ZXIgPSBjOyByZXN0ID0gcmVzdC5zbGljZShuYW1lZFswXS5sZW5ndGgpOyBicmVhazsgfQogIH0KICBpZiAoIWNoYXB0ZXIpIHJldHVybiB7IHRleHQsIGNoYXB0ZXI6IG51bGwgfTsKICByZXN0ID0gcmVzdC5yZXBsYWNlKC9eXHMqKD86Y2hhcHRlclxzKyk/KD86c2V8bWVpbnxtZXxmcm9tKT9ccyooPzpoYWl8dGhhfGhhaW4pP1xzKlsuLDo7IeKAlOKAky1dP1xzKi9pLCAiIik7CiAgY29uc3QgYmVmb3JlID0gdGV4dC5zbGljZSgwLCBtLmluZGV4KS5yZXBsYWNlKC9ccypbKFxbXT8kLywgIiIpOwogIHJldHVybiB7IHRleHQ6IFtiZWZvcmUsIHJlc3RdLmZpbHRlcigocykgPT4gcy50cmltKCkpLmpvaW4oYmVmb3JlICYmIHJlc3QgPyAiICIgOiAiIikudHJpbSgpLCBjaGFwdGVyIH07Cn0K
+/**
+ * NCERT Biology chapter list (rationalised textbooks, 2023-24 onward) — shared by the
+ * deep-NCERT voice quiz and the transcript formatter so chapter names always show exactly.
+ */
+export const NCERT_BIOLOGY_EDITION = "NCERT rationalised edition (2023-24 onward)";
+
+export type NcertChapter = { cls: 11 | 12; no: number; name: string; unit: string };
+
+const CLASS_11: Array<[string, string]> = [
+  ["The Living World", "Diversity in the Living World"],
+  ["Biological Classification", "Diversity in the Living World"],
+  ["Plant Kingdom", "Diversity in the Living World"],
+  ["Animal Kingdom", "Diversity in the Living World"],
+  ["Morphology of Flowering Plants", "Structural Organisation in Plants and Animals"],
+  ["Anatomy of Flowering Plants", "Structural Organisation in Plants and Animals"],
+  ["Structural Organisation in Animals", "Structural Organisation in Plants and Animals"],
+  ["Cell: The Unit of Life", "Cell: Structure and Function"],
+  ["Biomolecules", "Cell: Structure and Function"],
+  ["Cell Cycle and Cell Division", "Cell: Structure and Function"],
+  ["Photosynthesis in Higher Plants", "Plant Physiology"],
+  ["Respiration in Plants", "Plant Physiology"],
+  ["Plant Growth and Development", "Plant Physiology"],
+  ["Breathing and Exchange of Gases", "Human Physiology"],
+  ["Body Fluids and Circulation", "Human Physiology"],
+  ["Excretory Products and their Elimination", "Human Physiology"],
+  ["Locomotion and Movement", "Human Physiology"],
+  ["Neural Control and Coordination", "Human Physiology"],
+  ["Chemical Coordination and Integration", "Human Physiology"],
+];
+
+const CLASS_12: Array<[string, string]> = [
+  ["Sexual Reproduction in Flowering Plants", "Reproduction"],
+  ["Human Reproduction", "Reproduction"],
+  ["Reproductive Health", "Reproduction"],
+  ["Principles of Inheritance and Variation", "Genetics and Evolution"],
+  ["Molecular Basis of Inheritance", "Genetics and Evolution"],
+  ["Evolution", "Genetics and Evolution"],
+  ["Human Health and Disease", "Biology in Human Welfare"],
+  ["Microbes in Human Welfare", "Biology in Human Welfare"],
+  ["Biotechnology: Principles and Processes", "Biotechnology"],
+  ["Biotechnology and its Applications", "Biotechnology"],
+  ["Organisms and Populations", "Ecology"],
+  ["Ecosystem", "Ecology"],
+  ["Biodiversity and Conservation", "Ecology"],
+];
+
+export const NCERT_BIOLOGY_CHAPTERS: NcertChapter[] = [
+  ...CLASS_11.map(([name, unit], i) => ({ cls: 11 as const, no: i + 1, name, unit })),
+  ...CLASS_12.map(([name, unit], i) => ({ cls: 12 as const, no: i + 1, name, unit })),
+];
+
+export function ncertChapter(cls: number, no: number): NcertChapter | undefined {
+  return NCERT_BIOLOGY_CHAPTERS.find((c) => c.cls === cls && c.no === no);
+}
+
+/** "NCERT Class 11 Biology · Chapter 5 — Morphology of Flowering Plants" */
+export function chapterLabel(c: NcertChapter): string {
+  return `NCERT Class ${c.cls} Biology · Chapter ${c.no} — ${c.name}`;
+}
+
+const SPOKEN: Record<string, number> = {
+  one: 1, ek: 1, two: 2, do: 2, three: 3, teen: 3, four: 4, char: 4, chaar: 4, five: 5, paanch: 5, panch: 5,
+  six: 6, chhe: 6, che: 6, seven: 7, saat: 7, eight: 8, aath: 8, nine: 9, nau: 9, ten: 10, das: 10,
+  eleven: 11, gyarah: 11, twelve: 12, barah: 12, thirteen: 13, terah: 13, fourteen: 14, chaudah: 14,
+  fifteen: 15, pandrah: 15, sixteen: 16, solah: 16, seventeen: 17, satrah: 17, eighteen: 18, atharah: 18,
+  nineteen: 19, unnis: 19,
+};
+
+const spokenNumber = (s: string) => (/^\d+$/.test(s) ? Number(s) : SPOKEN[s.toLowerCase()]);
+
+const nameRe = (name: string) => name.split(/[^A-Za-z0-9]+/).filter(Boolean).join("[^A-Za-z0-9]+");
+
+const MENTION = /(?:\b(?:Yeh|Ye|This|Is)\s+(?:question|sawal|sawaal|prashn|prashna)\s+)?\b(?:NCERT\s+)?Class\s+(11|12|eleven|twelve|gyarah|barah)(?:\s+(?:Biology|Bio))?\s*[·,:\-–—]?\s*(?:Chapter|Ch\.?|adhyay)\s*(\d{1,2}|[a-z]+)\b\s*[·,:\-–—]?\s*/i;
+
+/**
+ * Find a spoken/written "NCERT Class 11 Biology, Chapter 5, Morphology…" mention, remove it
+ * from the text and return the official chapter. A spoken chapter name wins over a misspoken number.
+ */
+export function takeChapter(text: string): { text: string; chapter: NcertChapter | null } {
+  const m = text.match(MENTION);
+  if (!m || m.index === undefined) return { text, chapter: null };
+  const cls = spokenNumber(m[1] ?? "") === 12 ? 12 : 11;
+  let rest = text.slice(m.index + m[0].length);
+  let chapter = ncertChapter(cls, spokenNumber(m[2] ?? "") ?? 0) ?? null;
+  for (const c of NCERT_BIOLOGY_CHAPTERS.filter((x) => x.cls === cls).sort((a, b) => b.name.length - a.name.length)) {
+    const named = rest.match(new RegExp(`^["“]?${nameRe(c.name)}["”]?`, "i"));
+    if (named) { chapter = c; rest = rest.slice(named[0].length); break; }
+  }
+  if (!chapter) return { text, chapter: null };
+  rest = rest.replace(/^\s*(?:chapter\s+)?(?:se|mein|me|from)?\s*(?:hai|tha|hain)?\s*[.,:;!—–-]?\s*/i, "");
+  const before = text.slice(0, m.index).replace(/\s*[(\[]?$/, "");
+  return { text: [before, rest].filter((s) => s.trim()).join(before && rest ? " " : "").trim(), chapter };
+}

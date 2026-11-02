@@ -1,1 +1,16 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyB2b2ljZVNldHRpbmdzTG9ja2VkIH0gZnJvbSAnQC9saWIvdm9pY2Utc2Vzc2lvbic7CgpkZXNjcmliZSgndm9pY2Ugc3RheXMgaW4gdGhlIHNhbWUgc2Vzc2lvbiB1bnRpbCBFbmQnLCAoKSA9PiB7CiAgaXQoJ2xvY2tzIGNyZWF0aW9uIHNldHRpbmdzIGR1cmluZyBhIGNvbm5lY3RlZCBjYWxsIGluc3RlYWQgb2Ygc3RvcHBpbmcgaXQgdG8gYXBwbHkgY2hhbmdlcycsICgpID0+IHsKICAgIGV4cGVjdCh2b2ljZVNldHRpbmdzTG9ja2VkKCdjb25uZWN0ZWQnKSkudG9CZSh0cnVlKTsKICB9KTsKICBpdCgncHJldmVudHMgc2V0dGluZ3MgY2hhbmdlcyBkdXJpbmcgc3RhcnR1cCBhbmQgZmluYWwgdXNhZ2UgY2xlYW51cCcsICgpID0+IHsKICAgIGV4cGVjdCh2b2ljZVNldHRpbmdzTG9ja2VkKCdjb25uZWN0aW5nJykpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3Qodm9pY2VTZXR0aW5nc0xvY2tlZCgnc3RvcHBpbmcnKSkudG9CZSh0cnVlKTsKICB9KTsKICBpdCgnYWxsb3dzIHNldHRpbmdzIGFnYWluIGJlZm9yZSBhbiBleHBsaWNpdCBuZXcgY2FsbCcsICgpID0+IHsKICAgIGV4cGVjdCh2b2ljZVNldHRpbmdzTG9ja2VkKCdpZGxlJykpLnRvQmUoZmFsc2UpOwogICAgZXhwZWN0KHZvaWNlU2V0dGluZ3NMb2NrZWQoJ2Nsb3NlZCcpKS50b0JlKGZhbHNlKTsKICB9KTsKfSk7
+import { describe, expect, it } from 'vitest';
+import { voiceSettingsLocked } from '@/lib/voice-session';
+
+describe('voice stays in the same session until End', () => {
+  it('locks creation settings during a connected call instead of stopping it to apply changes', () => {
+    expect(voiceSettingsLocked('connected')).toBe(true);
+  });
+  it('prevents settings changes during startup and final usage cleanup', () => {
+    expect(voiceSettingsLocked('connecting')).toBe(true);
+    expect(voiceSettingsLocked('stopping')).toBe(true);
+  });
+  it('allows settings again before an explicit new call', () => {
+    expect(voiceSettingsLocked('idle')).toBe(false);
+    expect(voiceSettingsLocked('closed')).toBe(false);
+  });
+});

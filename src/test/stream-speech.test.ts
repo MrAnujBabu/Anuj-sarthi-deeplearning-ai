@@ -1,1 +1,72 @@
-aW1wb3J0IHsgYWZ0ZXJFYWNoLCBkZXNjcmliZSwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBzdHJlYW1TcGVlY2gsIGRlY29kZVBDTSwgYnVmZmVyUmVzcG9uc2UsIHNwZWFrU2VudGVuY2UsIHJldHJ5YWJsZVNwZWVjaEVycm9yLCBzcGVlY2hBY2Nlc3NGYWlsdXJlIH0gZnJvbSAnQC9saWIvc3RyZWFtLXNwZWVjaCc7CmFmdGVyRWFjaCgoKSA9PiB2aS51bnN0dWJBbGxHbG9iYWxzKCkpOwoKaXQoJ3ByZXNlcnZlcyBQQ00gc2FtcGxlcyBzcGxpdCBhY3Jvc3MgU1NFIGJ5dGUgYm91bmRhcmllcycsICgpID0+IHsKICBjb25zdCBmaXJzdCA9IGRlY29kZVBDTShuZXcgVWludDhBcnJheSgpLCBuZXcgVWludDhBcnJheShbMCwgNjQsIDBdKSk7CiAgZXhwZWN0KEFycmF5LmZyb20oZmlyc3Quc2FtcGxlcykpLnRvRXF1YWwoWzAuNV0pOwogIGV4cGVjdChBcnJheS5mcm9tKGRlY29kZVBDTShmaXJzdC5wZW5kaW5nLCBuZXcgVWludDhBcnJheShbMTkyXSkpLnNhbXBsZXMpKS50b0VxdWFsKFstMC41XSk7Cn0pOwppdCgnU3RvcCBjYW5jZWxzIGEgcHJlZmV0Y2hlZCBib2R5IHdoaWxlIHdhaXRpbmcgZm9yIHRoZSBuZXh0IGF1ZGlvIGV2ZW50JywgYXN5bmMgKCkgPT4gewogIGNvbnN0IGNhbmNlbCA9IHZpLmZuKCk7IGNvbnN0IGNsb3NlID0gdmkuZm4oYXN5bmMgKCkgPT4ge30pOwogIHZpLnN0dWJHbG9iYWwoJ0F1ZGlvQ29udGV4dCcsIGNsYXNzIHsgc3RhdGUgPSAncnVubmluZyc7IGNsb3NlID0gY2xvc2U7IH0pOwogIGNvbnN0IGJvZHkgPSBuZXcgUmVhZGFibGVTdHJlYW0oeyBjYW5jZWwgfSk7CiAgY29uc3QgY29udHJvbGxlciA9IG5ldyBBYm9ydENvbnRyb2xsZXIoKTsKICBjb25zdCBwbGF5YmFjayA9IHN0cmVhbVNwZWVjaCgnL2FwaS9zcGVlY2gnLCAnSGVsbG8nLCBjb250cm9sbGVyLnNpZ25hbCwgJ0tvcmUnLCBQcm9taXNlLnJlc29sdmUobmV3IFJlc3BvbnNlKGJvZHkpKSk7CiAgYXdhaXQgbmV3IFByb21pc2UocmVzb2x2ZSA9PiBzZXRUaW1lb3V0KHJlc29sdmUsIDApKTsKICBjb250cm9sbGVyLmFib3J0KCk7CiAgYXdhaXQgZXhwZWN0KHBsYXliYWNrKS5yZWplY3RzLnRvVGhyb3coKTsKICBleHBlY3QoY2FuY2VsKS50b0hhdmVCZWVuQ2FsbGVkT25jZSgpOwogIGV4cGVjdChjbG9zZSkudG9IYXZlQmVlbkNhbGxlZE9uY2UoKTsKfSk7Cml0KCdsb29rLWFoZWFkIGJvZGllcyBhcmUgcmVhZCBlYWdlcmx5IHNvIHRoZXkgbmV2ZXIgc2l0IGlkbGUnLCBhc3luYyAoKSA9PiB7CiAgbGV0IHB1bGxzID0gMDsKICBjb25zdCBib2R5ID0gbmV3IFJlYWRhYmxlU3RyZWFtPFVpbnQ4QXJyYXk+KHsgcHVsbChjKSB7IHB1bGxzKys7IGlmIChwdWxscyA+IDMpIGMuY2xvc2UoKTsgZWxzZSBjLmVucXVldWUobmV3IFVpbnQ4QXJyYXkoW3B1bGxzXSkpOyB9IH0sIHsgaGlnaFdhdGVyTWFyazogMCB9KTsKICBidWZmZXJSZXNwb25zZShuZXcgUmVzcG9uc2UoYm9keSkpOwogIGF3YWl0IG5ldyBQcm9taXNlKHJlc29sdmUgPT4gc2V0VGltZW91dChyZXNvbHZlLCAxMCkpOwogIGV4cGVjdChwdWxscykudG9CZSg0KTsKfSk7CgppdCgnYSBidXN5IG9yIGJyb2tlbiBzZW50ZW5jZSBpcyByZXRyaWVkIHdpdGggYmFja29mZiwgYXQgbW9zdCB0aHJlZSB0aW1lcywgYmVmb3JlIGFueSBhdWRpbycsIGFzeW5jICgpID0+IHsKICB2aS51c2VGYWtlVGltZXJzKCk7CiAgdmkuc3R1Ykdsb2JhbCgnQXVkaW9Db250ZXh0JywgY2xhc3MgeyBzdGF0ZSA9ICdydW5uaW5nJzsgY3VycmVudFRpbWUgPSAwOyBkZXN0aW5hdGlvbiA9IHt9OyBjbG9zZSA9IGFzeW5jICgpID0+IHt9OyB9KTsKICBjb25zdCBidXN5ID0gKCkgPT4gbmV3IFJlc3BvbnNlKCd7ImVycm9yIjoiYnVzeSJ9JywgeyBzdGF0dXM6IDQyOSB9KTsKICBjb25zdCBmZXRjaE1vY2sgPSB2aS5mbihhc3luYyAoKSA9PiBidXN5KCkpOwogIHZpLnN0dWJHbG9iYWwoJ2ZldGNoJywgZmV0Y2hNb2NrKTsKICBjb25zdCBkb25lID0gc3BlYWtTZW50ZW5jZSgnL2FwaS9zcGVlY2gnLCAnSGVsbG8nLCBuZXcgQWJvcnRDb250cm9sbGVyKCkuc2lnbmFsLCAnS29yZScsIFByb21pc2UucmVzb2x2ZShidXN5KCkpKS5jYXRjaChlID0+IGUpOwogIGF3YWl0IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWVBc3luYyg2OTkpOwogIGV4cGVjdChmZXRjaE1vY2spLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygwKTsKICBhd2FpdCB2aS5hZHZhbmNlVGltZXJzQnlUaW1lQXN5bmMoMTBfMDAwKTsKICBleHBlY3QoYXdhaXQgZG9uZSkudG9CZUluc3RhbmNlT2YoRXJyb3IpOwogIGV4cGVjdChmZXRjaE1vY2spLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygzKTsKICB2aS51c2VSZWFsVGltZXJzKCk7Cn0pOwoKaXQoJ2NyZWRpdCBhbmQgYWNjZXNzIHJlZnVzYWxzIGFyZSBuZXZlciByZXRyaWVkOyBidXN5IGFuZCBuZXR3b3JrIGZhaWx1cmVzIGFyZScsICgpID0+IHsKICBleHBlY3QocmV0cnlhYmxlU3BlZWNoRXJyb3IobmV3IEVycm9yKCdUVFMgZmFpbGVkOiA0MDIge30nKSkpLnRvQmUoZmFsc2UpOwogIGV4cGVjdChyZXRyeWFibGVTcGVlY2hFcnJvcihuZXcgRXJyb3IoJ1RUUyBmYWlsZWQ6IDQwMyB7fScpKSkudG9CZShmYWxzZSk7CiAgZXhwZWN0KHJldHJ5YWJsZVNwZWVjaEVycm9yKG5ldyBFcnJvcignVFRTIGZhaWxlZDogNDI5IHt9JykpKS50b0JlKHRydWUpOwogIGV4cGVjdChyZXRyeWFibGVTcGVlY2hFcnJvcihuZXcgRXJyb3IoJ1RUUyBmYWlsZWQ6IDUwMyB7fScpKSkudG9CZSh0cnVlKTsKICBleHBlY3QocmV0cnlhYmxlU3BlZWNoRXJyb3IobmV3IFR5cGVFcnJvcignbmV0d29yayBlcnJvcicpKSkudG9CZSh0cnVlKTsKfSk7CgppbXBvcnQgeyBuZXh0U3RhcnRUaW1lIGFzIG5zdCwgU1BFRUNIX0ZPTExPV19MRUFEX1MgYXMgRk9MTE9XLCBTUEVFQ0hfSklUVEVSX0xFQURfUyBhcyBMRUFELCBTUEVFQ0hfU0FNUExFX1JBVEUgYXMgUkFURSB9IGZyb20gJ0AvbGliL3N0cmVhbS1zcGVlY2gnOwpkZXNjcmliZSgnc3BlZWNoIHNjaGVkdWxpbmcnLCAoKSA9PiB7CiAgaXQoJ3VzZXMgYSAyNCBrSHogc3BlYWtlciBzbyBwaWVjZXMgam9pbiB3aXRob3V0IHJlc2FtcGxpbmcgY2xpY2tzJywgKCkgPT4geyBleHBlY3QoUkFURSkudG9CZSgyNDAwMCk7IH0pOwogIGl0KCdzdGFydHMgdGhlIG5leHQgc2VudGVuY2UgYWxtb3N0IGltbWVkaWF0ZWx5IGFmdGVyIHRoZSBwcmV2aW91cyBvbmUnLCAoKSA9PiB7IGV4cGVjdChuc3QoMCwgMTAsIDkuOSkpLnRvQmVDbG9zZVRvKDEwICsgRk9MTE9XKTsgfSk7CiAgaXQoJ2tlZXBzIHRoZSBmdWxsIGN1c2hpb24gd2hlbiBwbGF5YmFjayByYW4gZHJ5IGxvbmcgYWdvJywgKCkgPT4geyBleHBlY3QobnN0KDAsIDEwLCA1KSkudG9CZUNsb3NlVG8oMTAgKyBMRUFEKTsgfSk7CiAgaXQoJ2tlZXBzIHBpZWNlcyBiYWNrLXRvLWJhY2sgd2hpbGUgYXVkaW8gaXMgc3RpbGwgcXVldWVkJywgKCkgPT4geyBleHBlY3QobnN0KDEyLCAxMCwgMTIpKS50b0JlKDEyKTsgfSk7Cn0pOwppdCgnYSBjaHVuayB3aXRoIG5vdGhpbmcgdG8gcmVhZCBlbmRzIHF1aWV0bHkgYW5kIHRoZSBjYWxsIGtlZXBzIGl0cyB2b2ljZScsIGFzeW5jICgpID0+IHsKICB2aS5zdHViR2xvYmFsKCdBdWRpb0NvbnRleHQnLCBjbGFzcyB7IHN0YXRlID0gJ3J1bm5pbmcnOyBjdXJyZW50VGltZSA9IDA7IGRlc3RpbmF0aW9uID0ge307IGNsb3NlID0gYXN5bmMgKCkgPT4ge307IH0pOwogIGNvbnN0IGZldGNoTW9jayA9IHZpLmZuKGFzeW5jICgpID0+IG5ldyBSZXNwb25zZSgnZGF0YTogeyJ0eXBlIjoic3BlZWNoLmF1ZGlvLnNraXBwZWQifVxuXG4nLCB7IHN0YXR1czogMjAwIH0pKTsKICB2aS5zdHViR2xvYmFsKCdmZXRjaCcsIGZldGNoTW9jayk7CiAgYXdhaXQgZXhwZWN0KHNwZWFrU2VudGVuY2UoJy9hcGkvc2FydmFtLXNwZWVjaCcsICfinYwnLCBuZXcgQWJvcnRDb250cm9sbGVyKCkuc2lnbmFsLCAnc2h1YmhfaGlfY3VzdG9tZXInKSkucmVzb2x2ZXMudG9CZVVuZGVmaW5lZCgpOwogIGV4cGVjdChmZXRjaE1vY2spLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygxKTsKfSk7Cml0KCdvbmx5IGNyZWRpdHMgYW5kIGFjY2VzcyByZWZ1c2FscyBlbmQgYSB2b2ljZSBmb3IgdGhlIHdob2xlIGNhbGwnLCAoKSA9PiB7CiAgZXhwZWN0KHNwZWVjaEFjY2Vzc0ZhaWx1cmUobmV3IEVycm9yKCdUVFMgZmFpbGVkOiA0MDIgeyJlcnJvciI6ImNyZWRpdHMifScpKSkudG9CZSh0cnVlKTsKICBleHBlY3Qoc3BlZWNoQWNjZXNzRmFpbHVyZShuZXcgRXJyb3IoJ1RUUyBmYWlsZWQ6IDQwMyBkZW5pZWQnKSkpLnRvQmUodHJ1ZSk7CiAgZXhwZWN0KHNwZWVjaEFjY2Vzc0ZhaWx1cmUobmV3IEVycm9yKCdUVFMgZmFpbGVkOiA0MDAgbm90aGluZyB0byByZWFkJykpKS50b0JlKGZhbHNlKTsKICBleHBlY3Qoc3BlZWNoQWNjZXNzRmFpbHVyZShuZXcgRXJyb3IoJ0luY29tcGxldGUgc3BlZWNoIHN0cmVhbScpKSkudG9CZShmYWxzZSk7Cn0pOwo=
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { streamSpeech, decodePCM, bufferResponse, speakSentence, retryableSpeechError, speechAccessFailure } from '@/lib/stream-speech';
+afterEach(() => vi.unstubAllGlobals());
+
+it('preserves PCM samples split across SSE byte boundaries', () => {
+  const first = decodePCM(new Uint8Array(), new Uint8Array([0, 64, 0]));
+  expect(Array.from(first.samples)).toEqual([0.5]);
+  expect(Array.from(decodePCM(first.pending, new Uint8Array([192])).samples)).toEqual([-0.5]);
+});
+it('Stop cancels a prefetched body while waiting for the next audio event', async () => {
+  const cancel = vi.fn(); const close = vi.fn(async () => {});
+  vi.stubGlobal('AudioContext', class { state = 'running'; close = close; });
+  const body = new ReadableStream({ cancel });
+  const controller = new AbortController();
+  const playback = streamSpeech('/api/speech', 'Hello', controller.signal, 'Kore', Promise.resolve(new Response(body)));
+  await new Promise(resolve => setTimeout(resolve, 0));
+  controller.abort();
+  await expect(playback).rejects.toThrow();
+  expect(cancel).toHaveBeenCalledOnce();
+  expect(close).toHaveBeenCalledOnce();
+});
+it('look-ahead bodies are read eagerly so they never sit idle', async () => {
+  let pulls = 0;
+  const body = new ReadableStream<Uint8Array>({ pull(c) { pulls++; if (pulls > 3) c.close(); else c.enqueue(new Uint8Array([pulls])); } }, { highWaterMark: 0 });
+  bufferResponse(new Response(body));
+  await new Promise(resolve => setTimeout(resolve, 10));
+  expect(pulls).toBe(4);
+});
+
+it('a busy or broken sentence is retried with backoff, at most three times, before any audio', async () => {
+  vi.useFakeTimers();
+  vi.stubGlobal('AudioContext', class { state = 'running'; currentTime = 0; destination = {}; close = async () => {}; });
+  const busy = () => new Response('{"error":"busy"}', { status: 429 });
+  const fetchMock = vi.fn(async () => busy());
+  vi.stubGlobal('fetch', fetchMock);
+  const done = speakSentence('/api/speech', 'Hello', new AbortController().signal, 'Kore', Promise.resolve(busy())).catch(e => e);
+  await vi.advanceTimersByTimeAsync(699);
+  expect(fetchMock).toHaveBeenCalledTimes(0);
+  await vi.advanceTimersByTimeAsync(10_000);
+  expect(await done).toBeInstanceOf(Error);
+  expect(fetchMock).toHaveBeenCalledTimes(3);
+  vi.useRealTimers();
+});
+
+it('credit and access refusals are never retried; busy and network failures are', () => {
+  expect(retryableSpeechError(new Error('TTS failed: 402 {}'))).toBe(false);
+  expect(retryableSpeechError(new Error('TTS failed: 403 {}'))).toBe(false);
+  expect(retryableSpeechError(new Error('TTS failed: 429 {}'))).toBe(true);
+  expect(retryableSpeechError(new Error('TTS failed: 503 {}'))).toBe(true);
+  expect(retryableSpeechError(new TypeError('network error'))).toBe(true);
+});
+
+import { nextStartTime as nst, SPEECH_FOLLOW_LEAD_S as FOLLOW, SPEECH_JITTER_LEAD_S as LEAD, SPEECH_SAMPLE_RATE as RATE } from '@/lib/stream-speech';
+describe('speech scheduling', () => {
+  it('uses a 24 kHz speaker so pieces join without resampling clicks', () => { expect(RATE).toBe(24000); });
+  it('starts the next sentence almost immediately after the previous one', () => { expect(nst(0, 10, 9.9)).toBeCloseTo(10 + FOLLOW); });
+  it('keeps the full cushion when playback ran dry long ago', () => { expect(nst(0, 10, 5)).toBeCloseTo(10 + LEAD); });
+  it('keeps pieces back-to-back while audio is still queued', () => { expect(nst(12, 10, 12)).toBe(12); });
+});
+it('a chunk with nothing to read ends quietly and the call keeps its voice', async () => {
+  vi.stubGlobal('AudioContext', class { state = 'running'; currentTime = 0; destination = {}; close = async () => {}; });
+  const fetchMock = vi.fn(async () => new Response('data: {"type":"speech.audio.skipped"}\n\n', { status: 200 }));
+  vi.stubGlobal('fetch', fetchMock);
+  await expect(speakSentence('/api/sarvam-speech', '❌', new AbortController().signal, 'shubh_hi_customer')).resolves.toBeUndefined();
+  expect(fetchMock).toHaveBeenCalledTimes(1);
+});
+it('only credits and access refusals end a voice for the whole call', () => {
+  expect(speechAccessFailure(new Error('TTS failed: 402 {"error":"credits"}'))).toBe(true);
+  expect(speechAccessFailure(new Error('TTS failed: 403 denied'))).toBe(true);
+  expect(speechAccessFailure(new Error('TTS failed: 400 nothing to read'))).toBe(false);
+  expect(speechAccessFailure(new Error('Incomplete speech stream'))).toBe(false);
+});

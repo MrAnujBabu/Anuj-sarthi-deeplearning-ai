@@ -1,1 +1,44 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VSZWYsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyBNZXNzYWdlQWN0aW9ucyB9IGZyb20gJ0AvY29tcG9uZW50cy9tZXNzYWdlLWFjdGlvbnMnOwppbXBvcnQgeyBWZXJpZnlCdXR0b24sIFZlcmlmeVBhbmVsIH0gZnJvbSAnQC9jb21wb25lbnRzL3ZlcmlmeS1jYXJkJzsKaW1wb3J0IHsgdXNlQ291bmNpbCB9IGZyb20gJ0AvbGliL3ZlcmlmeS1jbGllbnQnOwoKLyoqIEFjdGlvbnMgdW5kZXIgb25lIHR1dG9yIGFuc3dlciBwbHVzIGl0cyBHZW1pbmkgKyBHUFQgKyBDbGF1ZGUgYW5zd2VyIGNoZWNrLiAqLwpleHBvcnQgZnVuY3Rpb24gQW5zd2VyRm9vdGVyKHsgbWVzc2FnZUlkLCB0ZXh0LCBxdWVzdGlvbiwgaW1hZ2VzLCBjYW5WZXJpZnksIGF1dG9TdGFydCwgb25Bc2tUdXRvciB9OiB7CiAgbWVzc2FnZUlkOiBzdHJpbmc7CiAgdGV4dDogc3RyaW5nOwogIHF1ZXN0aW9uOiBzdHJpbmc7CiAgaW1hZ2VzOiBzdHJpbmdbXTsKICAvKiogRmFsc2UgaW4gcXVpeiBtb2RlIG9yIHdoZW4gdGhlcmUgaXMgbm8gcXVlc3Rpb24gdG8gY2hlY2sgYWdhaW5zdC4gKi8KICBjYW5WZXJpZnk6IGJvb2xlYW47CiAgLyoqIFN0YXJ0IGF1dG9tYXRpY2FsbHkgKGF1dG8tdmVyaWZ5IE9OIGFuZCB0aGlzIGFuc3dlciBqdXN0IGZpbmlzaGVkKS4gKi8KICBhdXRvU3RhcnQ6IGJvb2xlYW47CiAgLyoqIFNlbmQgdGhlIGNvdW5jaWwncyBjb3JyZWN0aW9ucyB0byB0aGUgdHV0b3IgYXMgYSBmb2xsb3ctdXAuICovCiAgb25Bc2tUdXRvcj86ICh0ZXh0OiBzdHJpbmcpID0+IHZvaWQ7Cn0pIHsKICBjb25zdCB7IHN0YXRlLCBzdGFydCwgc3RvcCB9ID0gdXNlQ291bmNpbCh7IG1lc3NhZ2VJZCwgcXVlc3Rpb24sIGFuc3dlcjogdGV4dCwgaW1hZ2VzIH0sIHsgYXV0b1N0YXJ0LCBlbmFibGVkOiBjYW5WZXJpZnkgfSk7CiAgLy8gUmVzdWx0cyBsb2FkZWQgZnJvbSB0aGlzIGRldmljZSdzIGNhY2hlIHN0YXkgZm9sZGVkOyBhIGNoZWNrIHJ1biBub3cgb3BlbnMgd2hlbiBpdCBmaW5pc2hlcy4KICBjb25zdCBbb3Blbiwgc2V0T3Blbl0gPSB1c2VTdGF0ZShmYWxzZSk7CiAgY29uc3QgcHJldiA9IHVzZVJlZihzdGF0ZS5zdGF0dXMpOwogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBpZiAocHJldi5jdXJyZW50ID09PSAncnVubmluZycgJiYgc3RhdGUuc3RhdHVzID09PSAnZG9uZScpIHNldE9wZW4odHJ1ZSk7CiAgICBwcmV2LmN1cnJlbnQgPSBzdGF0ZS5zdGF0dXM7CiAgfSwgW3N0YXRlLnN0YXR1c10pOwogIGNvbnN0IHNob3dQYW5lbCA9IGNhblZlcmlmeSAmJiBzdGF0ZS5zdGF0dXMgIT09ICdpZGxlJyAmJiAoc3RhdGUuc3RhdHVzICE9PSAnZG9uZScgfHwgb3Blbik7CiAgcmV0dXJuICgKICAgIDw+CiAgICAgIDxNZXNzYWdlQWN0aW9ucyBtZXNzYWdlSWQ9e21lc3NhZ2VJZH0gdGV4dD17dGV4dH0+CiAgICAgICAge2NhblZlcmlmeSAmJiAoCiAgICAgICAgICA8VmVyaWZ5QnV0dG9uCiAgICAgICAgICAgIHN0YXRlPXtzdGF0ZX0KICAgICAgICAgICAgb3Blbj17b3Blbn0KICAgICAgICAgICAgb25TdGFydD17KCkgPT4geyBzZXRPcGVuKHRydWUpOyB2b2lkIHN0YXJ0KCk7IH19CiAgICAgICAgICAgIG9uU3RvcD17c3RvcH0KICAgICAgICAgICAgb25Ub2dnbGU9eygpID0+IHNldE9wZW4oKG8pID0+ICFvKX0KICAgICAgICAgIC8+CiAgICAgICAgKX0KICAgICAgPC9NZXNzYWdlQWN0aW9ucz4KICAgICAge3Nob3dQYW5lbCAmJiA8VmVyaWZ5UGFuZWwgc3RhdGU9e3N0YXRlfSBvblN0YXJ0PXsoKSA9PiB7IHNldE9wZW4odHJ1ZSk7IHZvaWQgc3RhcnQoKTsgfX0gb25TdG9wPXtzdG9wfSB7Li4uKG9uQXNrVHV0b3IgPyB7IG9uQXNrVHV0b3IgfSA6IHt9KX0gLz59CiAgICA8Lz4KICApOwp9Cg==
+import { useEffect, useRef, useState } from 'react';
+import { MessageActions } from '@/components/message-actions';
+import { VerifyButton, VerifyPanel } from '@/components/verify-card';
+import { useCouncil } from '@/lib/verify-client';
+
+/** Actions under one tutor answer plus its Gemini + GPT + Claude answer check. */
+export function AnswerFooter({ messageId, text, question, images, canVerify, autoStart, onAskTutor }: {
+  messageId: string;
+  text: string;
+  question: string;
+  images: string[];
+  /** False in quiz mode or when there is no question to check against. */
+  canVerify: boolean;
+  /** Start automatically (auto-verify ON and this answer just finished). */
+  autoStart: boolean;
+  /** Send the council's corrections to the tutor as a follow-up. */
+  onAskTutor?: (text: string) => void;
+}) {
+  const { state, start, stop } = useCouncil({ messageId, question, answer: text, images }, { autoStart, enabled: canVerify });
+  // Results loaded from this device's cache stay folded; a check run now opens when it finishes.
+  const [open, setOpen] = useState(false);
+  const prev = useRef(state.status);
+  useEffect(() => {
+    if (prev.current === 'running' && state.status === 'done') setOpen(true);
+    prev.current = state.status;
+  }, [state.status]);
+  const showPanel = canVerify && state.status !== 'idle' && (state.status !== 'done' || open);
+  return (
+    <>
+      <MessageActions messageId={messageId} text={text}>
+        {canVerify && (
+          <VerifyButton
+            state={state}
+            open={open}
+            onStart={() => { setOpen(true); void start(); }}
+            onStop={stop}
+            onToggle={() => setOpen((o) => !o)}
+          />
+        )}
+      </MessageActions>
+      {showPanel && <VerifyPanel state={state} onStart={() => { setOpen(true); void start(); }} onStop={stop} {...(onAskTutor ? { onAskTutor } : {})} />}
+    </>
+  );
+}

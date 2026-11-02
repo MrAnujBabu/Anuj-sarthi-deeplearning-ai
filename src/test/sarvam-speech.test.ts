@@ -1,1 +1,73 @@
-aW1wb3J0IHsgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IHNhcnZhbVNwZWVjaFJlcXVlc3QsIHNhcnZhbUF1ZGlvRXZlbnRzLCBTQVJWQU1fVk9JQ0VTLCBpc1NhcnZhbVZvaWNlLCByZXNvbHZlU2FydmFtVm9pY2UsIHNhcnZhbUZhbGxiYWNrLCBpc1NwZWFrYWJsZVNhcnZhbVRleHQsIHNhcnZhbVNraXBwZWRFdmVudHMgfSBmcm9tICdAL2xpYi9zYXJ2YW0tc3BlZWNoJzsKaW1wb3J0IHsgU1BFRUNIX1ZPSUNFUyB9IGZyb20gJ0AvbGliL3NwZWVjaC12b2ljZSc7CgppdCgncHJlc2VydmVzIGV2ZXJ5IGV4aXN0aW5nIEdlbWluaSBzcGVlY2ggdm9pY2UnLCAoKSA9PiB7CiAgZXhwZWN0KFsuLi5TUEVFQ0hfVk9JQ0VTXSkudG9FcXVhbChbJ0tvcmUnLCAnQW9lZGUnLCAnTGVkYSddKTsKfSk7Cml0KCdyZXF1ZXN0cyB0aGUgYWRkaXRpb25hbCBTYXJ2YW0gdm9pY2UgYXMgbW9uby1jb21wYXRpYmxlIDI0IGtIeiBQQ00nLCAoKSA9PiB7CiAgZXhwZWN0KHNhcnZhbVNwZWVjaFJlcXVlc3QoJ+CkqOCkruCkuOCljeCkpOClhycpKS50b0VxdWFsKHsgdGV4dDogJ+CkqOCkruCkuOCljeCkpOClhycsIGxhbmd1YWdlX2NvZGU6ICdoaS1JTicsCiAgICBtb2RlbDogJ2J1bGJ1bDp2NC1mbGFzaCcsIHNwZWFrZXI6ICdzaHViaF9oaV9jdXN0b21lcicsIHNwZWVjaF9zYW1wbGVfcmF0ZTogMjQwMDAsIG91dHB1dF9hdWRpb19jb2RlYzogJ2xpbmVhcjE2JywgcGFjZTogMS4zNSB9KTsKfSk7Cml0KCdhZGFwdHMgYWxsIGF1ZGlvIHNlZ21lbnRzIHRvIHRoZSBleGlzdGluZyBzcGVlY2ggZXZlbnQgY29udHJhY3QnLCAoKSA9PiB7CiAgY29uc3QgZXZlbnRzID0gc2FydmFtQXVkaW9FdmVudHMoWydBQUFBJywgJ0FRQUInXSk7CiAgZXhwZWN0KGV2ZW50cy5zcGxpdCgnXG5cbicpLmZpbHRlcihCb29sZWFuKS5tYXAoZXZlbnQgPT4gSlNPTi5wYXJzZShldmVudC5zbGljZSg2KSkpKS50b0VxdWFsKFsKICAgIHsgdHlwZTogJ3NwZWVjaC5hdWRpby5kZWx0YScsIGF1ZGlvOiAnQUFBQScgfSwgeyB0eXBlOiAnc3BlZWNoLmF1ZGlvLmRlbHRhJywgYXVkaW86ICdBUUFCJyB9LCB7IHR5cGU6ICdzcGVlY2guYXVkaW8uZG9uZScgfSwKICBdKTsKfSk7Cml0KCdrZWVwcyBvbmx5IGN1cmF0ZWQgSGluZGkgY29udmVyc2F0aW9uYWwgYW5kIHRlYWNoZXIgdjQgcGVyc29uYXMgd2l0aG91dCBkdXBsaWNhdGVzJywgKCkgPT4gewogIGV4cGVjdChbLi4uU0FSVkFNX1ZPSUNFU10pLnRvRXF1YWwoWwogICAgJ3NodWJoX2hpX2N1c3RvbWVyJywgJ3JhdGFuX2hpX2N1c3RvbWVyX2V4cHJlc3NpdmUnLCAnYWF5YW5faGlfY29udmVyc2F0aW9uYWwnLAogICAgJ2thYmlyX2hpX2NvbnZlcnNhdGlvbmFsJywgJ3N1bWl0X2hpX2NvbnZlcnNhdGlvbmFsJywgJ2thdnlhX2hpX2NvbnZlcnNhdGlvbmFsJywKICAgICdpc2hpdGFfaGlfZWR0ZWNoJywgJ3NpbXJhbl9oaV9jb252ZXJzYXRpb24nLCAnYXBhcm5hX2hpX2N1c3RvbWVyJywKICBdKTsKICBleHBlY3QobmV3IFNldChTQVJWQU1fVk9JQ0VTKS5zaXplKS50b0JlKDkpOwp9KTsKaXQuZWFjaChbCiAgWydzaHViaCcsICdzaHViaF9oaV9jdXN0b21lciddLCBbJ3JhdGFuJywgJ3JhdGFuX2hpX2N1c3RvbWVyX2V4cHJlc3NpdmUnXSwKICBbJ2FheWFuJywgJ2FheWFuX2hpX2NvbnZlcnNhdGlvbmFsJ10sIFsna2FiaXInLCAna2FiaXJfaGlfY29udmVyc2F0aW9uYWwnXSwKICBbJ3N1bWl0JywgJ3N1bWl0X2hpX2NvbnZlcnNhdGlvbmFsJ10sIFsna2F2eWEnLCAna2F2eWFfaGlfY29udmVyc2F0aW9uYWwnXSwKICBbJ2lzaGl0YScsICdpc2hpdGFfaGlfZWR0ZWNoJ10sIFsnc2ltcmFuJywgJ3NpbXJhbl9oaV9jb252ZXJzYXRpb24nXSwKXSkoJ21pZ3JhdGVzIHNhdmVkICVzIHRvIGl0cyBjb3JyZXNwb25kaW5nIHBlcnNvbmEnLCAobGVnYWN5LCBwZXJzb25hKSA9PiB7CiAgZXhwZWN0KHJlc29sdmVTYXJ2YW1Wb2ljZShsZWdhY3kpKS50b0JlKHBlcnNvbmEpOwogIGV4cGVjdChpc1NhcnZhbVZvaWNlKGxlZ2FjeSkpLnRvQmUoZmFsc2UpOwp9KTsKaXQoJ3ByZXNlcnZlcyBjdXJyZW50IHByZWZlcmVuY2VzIGFuZCBzYWZlbHkgZGVmYXVsdHMgcmVtb3ZlZCBvciBpbnZhbGlkIHZvaWNlcycsICgpID0+IHsKICBleHBlY3QocmVzb2x2ZVNhcnZhbVZvaWNlKCdhcGFybmFfaGlfY3VzdG9tZXInKSkudG9CZSgnYXBhcm5hX2hpX2N1c3RvbWVyJyk7CiAgZm9yIChjb25zdCB2YWx1ZSBvZiBbJ3NocnV0aScsICd1bmtub3duJywgJ2NvbnN0cnVjdG9yJywgbnVsbF0pIGV4cGVjdChyZXNvbHZlU2FydmFtVm9pY2UodmFsdWUpKS50b0JlKCdzaHViaF9oaV9jdXN0b21lcicpOwp9KTsKaXQuZWFjaChTQVJWQU1fVk9JQ0VTKSgnZm9yd2FyZHMgdGhlIGNob3NlbiAlcyBzcGVha2VyIHRvIFNhcnZhbScsIHZvaWNlID0+IHsKICBleHBlY3QoaXNTYXJ2YW1Wb2ljZSh2b2ljZSkpLnRvQmUodHJ1ZSk7CiAgZXhwZWN0KHNhcnZhbVNwZWVjaFJlcXVlc3QoJ+CkqOCkruCkuOCljeCkpOClhycsIHZvaWNlKS5zcGVha2VyKS50b0JlKHZvaWNlKTsKfSk7Cml0LmVhY2goWydTaHViaCcsICdLb3JlJywgJ3Vua25vd24nLCAnJywgbnVsbF0pKCdyZWplY3RzIHVuc3VwcG9ydGVkIHNwZWFrZXIgJXMnLCB2b2ljZSA9PiB7CiAgZXhwZWN0KGlzU2FydmFtVm9pY2Uodm9pY2UpKS50b0JlKGZhbHNlKTsKfSk7Cml0KCdTYXJ2YW0gY3JlZGl0IGtoYXRhbSBob25lIHBhciBHZW1pbmkgdm9pY2UgcGFyIGZhbGxiYWNrIGRldGEgaGFpLCBHZW1pbmkgZmFpbHVyZSBwYXIgbmFoaScsICgpID0+IHsKICBleHBlY3Qoc2FydmFtRmFsbGJhY2soJ3NodWJoX2hpX2N1c3RvbWVyJywgJ0tvcmUnKSkudG9CZSgnS29yZScpOwogIGV4cGVjdChzYXJ2YW1GYWxsYmFjaygnaXNoaXRhX2hpX2VkdGVjaCcsICdBb2VkZScpKS50b0JlKCdBb2VkZScpOwogIGV4cGVjdChzYXJ2YW1GYWxsYmFjaygnS29yZScsICdBb2VkZScpKS50b0JlTnVsbCgpOwogIGV4cGVjdChzYXJ2YW1GYWxsYmFjaygnc2h1YmhfaGlfY3VzdG9tZXInLCBudWxsKSkudG9CZU51bGwoKTsKfSk7Cml0KCdzdHJlYW1zIFNhcnZhbSBQQ00gYXMgd2hvbGUtc2FtcGxlIGF1ZGlvIGV2ZW50cyBiZWZvcmUgdGhlIHJlcGx5IGZpbmlzaGVzJywgYXN5bmMgKCkgPT4gewogIGNvbnN0IHsgc2FydmFtU3RyZWFtRXZlbnRzIH0gPSBhd2FpdCBpbXBvcnQoJ0AvbGliL3NhcnZhbS1zcGVlY2gnKTsKICBjb25zdCBwY20gPSBuZXcgUmVhZGFibGVTdHJlYW08VWludDhBcnJheT4oeyBzdGFydChjKSB7IGMuZW5xdWV1ZShuZXcgVWludDhBcnJheShbMSwgMiwgM10pKTsgYy5lbnF1ZXVlKG5ldyBVaW50OEFycmF5KFs0LCA1XSkpOyBjLmVucXVldWUobmV3IFVpbnQ4QXJyYXkoWzZdKSk7IGMuY2xvc2UoKTsgfSB9KTsKICBjb25zdCB0ZXh0ID0gYXdhaXQgbmV3IFJlc3BvbnNlKHNhcnZhbVN0cmVhbUV2ZW50cyhwY20sIDQpKS50ZXh0KCk7CiAgY29uc3QgZXZlbnRzID0gdGV4dC5zcGxpdCgnXG5cbicpLmZpbHRlcihCb29sZWFuKS5tYXAoZSA9PiBKU09OLnBhcnNlKGUuc2xpY2UoNikpKTsKICBleHBlY3QoZXZlbnRzLm1hcChlID0+IGUudHlwZSkpLnRvRXF1YWwoWydzcGVlY2guYXVkaW8uZGVsdGEnLCAnc3BlZWNoLmF1ZGlvLmRlbHRhJywgJ3NwZWVjaC5hdWRpby5kb25lJ10pOwogIGV4cGVjdChhdG9iKGV2ZW50c1swXS5hdWRpbykubGVuZ3RoKS50b0JlKDQpOwogIGV4cGVjdChhdG9iKGV2ZW50c1sxXS5hdWRpbykubGVuZ3RoKS50b0JlKDIpOwp9KTsKaXQoJ3JlcG9ydHMgYW4gZXJyb3IgaW5zdGVhZCBvZiBzaWxlbmNlIHdoZW4gU2FydmFtIHN0cmVhbXMgbm8gYXVkaW8nLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgeyBzYXJ2YW1TdHJlYW1FdmVudHMgfSA9IGF3YWl0IGltcG9ydCgnQC9saWIvc2FydmFtLXNwZWVjaCcpOwogIGNvbnN0IHRleHQgPSBhd2FpdCBuZXcgUmVzcG9uc2Uoc2FydmFtU3RyZWFtRXZlbnRzKG5ldyBSZWFkYWJsZVN0cmVhbSh7IHN0YXJ0KGMpIHsgYy5jbG9zZSgpOyB9IH0pKSkudGV4dCgpOwogIGV4cGVjdChKU09OLnBhcnNlKHRleHQuc2xpY2UoNiwgdGV4dC5pbmRleE9mKCdcblxuJykpKS50eXBlKS50b0JlKCdlcnJvcicpOwp9KTsKaXQoJ3RlbGxzIHRoZSBxdWV1ZSB0byBtb3ZlIG9uIHdoZW4gYSBjaHVuayBoYXMgbm90aGluZyB0byByZWFkJywgKCkgPT4gewogIGV4cGVjdChzYXJ2YW1Ta2lwcGVkRXZlbnRzKCkuc3BsaXQoJ1xuXG4nKS5maWx0ZXIoQm9vbGVhbikubWFwKGUgPT4gSlNPTi5wYXJzZShlLnNsaWNlKDYpKSkpLnRvRXF1YWwoW3sgdHlwZTogJ3NwZWVjaC5hdWRpby5za2lwcGVkJyB9XSk7Cn0pOwppdC5lYWNoKFsn4p2MJywgJ+KchScsICfigJQnLCAnLi4uJywgJycsICcjIyMnLCAn4oCiJ10pKCdrZWVwcyBTYXJ2YW0gZm9yIHRoZSB1bnJlYWRhYmxlIGZyYWdtZW50ICVqJywgdGV4dCA9PiB7CiAgZXhwZWN0KGlzU3BlYWthYmxlU2FydmFtVGV4dCh0ZXh0KSkudG9CZShmYWxzZSk7Cn0pOwppdC5lYWNoKFsnTWl0b2Nob25kcmlhIGlzIHRoZSBwb3dlcmhvdXNlIG9mIHRoZSBjZWxsLicsICfgpK7gpL7gpIfgpJ/gpYvgpJXgpYngpKjgpY3gpKHgpY3gpLDgpL/gpK/gpL4g4KS44KWH4KSyIOCkleCkviBwb3dlcmhvdXNlIOCkueCliCcsICc0JywgJ0FUUCcsICdCJ10pKAogICdhc2tzIFNhcnZhbSB0byByZWFkICVqJywgdGV4dCA9PiB7IGV4cGVjdChpc1NwZWFrYWJsZVNhcnZhbVRleHQodGV4dCkpLnRvQmUodHJ1ZSk7IH0pOwo=
+import { expect, it } from 'vitest';
+import { sarvamSpeechRequest, sarvamAudioEvents, SARVAM_VOICES, isSarvamVoice, resolveSarvamVoice, sarvamFallback, isSpeakableSarvamText, sarvamSkippedEvents } from '@/lib/sarvam-speech';
+import { SPEECH_VOICES } from '@/lib/speech-voice';
+
+it('preserves every existing Gemini speech voice', () => {
+  expect([...SPEECH_VOICES]).toEqual(['Kore', 'Aoede', 'Leda']);
+});
+it('requests the additional Sarvam voice as mono-compatible 24 kHz PCM', () => {
+  expect(sarvamSpeechRequest('नमस्ते')).toEqual({ text: 'नमस्ते', language_code: 'hi-IN',
+    model: 'bulbul:v4-flash', speaker: 'shubh_hi_customer', speech_sample_rate: 24000, output_audio_codec: 'linear16', pace: 1.35 });
+});
+it('adapts all audio segments to the existing speech event contract', () => {
+  const events = sarvamAudioEvents(['AAAA', 'AQAB']);
+  expect(events.split('\n\n').filter(Boolean).map(event => JSON.parse(event.slice(6)))).toEqual([
+    { type: 'speech.audio.delta', audio: 'AAAA' }, { type: 'speech.audio.delta', audio: 'AQAB' }, { type: 'speech.audio.done' },
+  ]);
+});
+it('keeps only curated Hindi conversational and teacher v4 personas without duplicates', () => {
+  expect([...SARVAM_VOICES]).toEqual([
+    'shubh_hi_customer', 'ratan_hi_customer_expressive', 'aayan_hi_conversational',
+    'kabir_hi_conversational', 'sumit_hi_conversational', 'kavya_hi_conversational',
+    'ishita_hi_edtech', 'simran_hi_conversation', 'aparna_hi_customer',
+  ]);
+  expect(new Set(SARVAM_VOICES).size).toBe(9);
+});
+it.each([
+  ['shubh', 'shubh_hi_customer'], ['ratan', 'ratan_hi_customer_expressive'],
+  ['aayan', 'aayan_hi_conversational'], ['kabir', 'kabir_hi_conversational'],
+  ['sumit', 'sumit_hi_conversational'], ['kavya', 'kavya_hi_conversational'],
+  ['ishita', 'ishita_hi_edtech'], ['simran', 'simran_hi_conversation'],
+])('migrates saved %s to its corresponding persona', (legacy, persona) => {
+  expect(resolveSarvamVoice(legacy)).toBe(persona);
+  expect(isSarvamVoice(legacy)).toBe(false);
+});
+it('preserves current preferences and safely defaults removed or invalid voices', () => {
+  expect(resolveSarvamVoice('aparna_hi_customer')).toBe('aparna_hi_customer');
+  for (const value of ['shruti', 'unknown', 'constructor', null]) expect(resolveSarvamVoice(value)).toBe('shubh_hi_customer');
+});
+it.each(SARVAM_VOICES)('forwards the chosen %s speaker to Sarvam', voice => {
+  expect(isSarvamVoice(voice)).toBe(true);
+  expect(sarvamSpeechRequest('नमस्ते', voice).speaker).toBe(voice);
+});
+it.each(['Shubh', 'Kore', 'unknown', '', null])('rejects unsupported speaker %s', voice => {
+  expect(isSarvamVoice(voice)).toBe(false);
+});
+it('Sarvam credit khatam hone par Gemini voice par fallback deta hai, Gemini failure par nahi', () => {
+  expect(sarvamFallback('shubh_hi_customer', 'Kore')).toBe('Kore');
+  expect(sarvamFallback('ishita_hi_edtech', 'Aoede')).toBe('Aoede');
+  expect(sarvamFallback('Kore', 'Aoede')).toBeNull();
+  expect(sarvamFallback('shubh_hi_customer', null)).toBeNull();
+});
+it('streams Sarvam PCM as whole-sample audio events before the reply finishes', async () => {
+  const { sarvamStreamEvents } = await import('@/lib/sarvam-speech');
+  const pcm = new ReadableStream<Uint8Array>({ start(c) { c.enqueue(new Uint8Array([1, 2, 3])); c.enqueue(new Uint8Array([4, 5])); c.enqueue(new Uint8Array([6])); c.close(); } });
+  const text = await new Response(sarvamStreamEvents(pcm, 4)).text();
+  const events = text.split('\n\n').filter(Boolean).map(e => JSON.parse(e.slice(6)));
+  expect(events.map(e => e.type)).toEqual(['speech.audio.delta', 'speech.audio.delta', 'speech.audio.done']);
+  expect(atob(events[0].audio).length).toBe(4);
+  expect(atob(events[1].audio).length).toBe(2);
+});
+it('reports an error instead of silence when Sarvam streams no audio', async () => {
+  const { sarvamStreamEvents } = await import('@/lib/sarvam-speech');
+  const text = await new Response(sarvamStreamEvents(new ReadableStream({ start(c) { c.close(); } }))).text();
+  expect(JSON.parse(text.slice(6, text.indexOf('\n\n'))).type).toBe('error');
+});
+it('tells the queue to move on when a chunk has nothing to read', () => {
+  expect(sarvamSkippedEvents().split('\n\n').filter(Boolean).map(e => JSON.parse(e.slice(6)))).toEqual([{ type: 'speech.audio.skipped' }]);
+});
+it.each(['❌', '✅', '—', '...', '', '###', '•'])('keeps Sarvam for the unreadable fragment %j', text => {
+  expect(isSpeakableSarvamText(text)).toBe(false);
+});
+it.each(['Mitochondria is the powerhouse of the cell.', 'माइटोकॉन्ड्रिया सेल का powerhouse है', '4', 'ATP', 'B'])(
+  'asks Sarvam to read %j', text => { expect(isSpeakableSarvamText(text)).toBe(true); });

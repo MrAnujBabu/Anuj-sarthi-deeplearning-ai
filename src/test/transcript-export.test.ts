@@ -1,1 +1,76 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBlc2NhcGVIdG1sLCBpbmxpbmVNZCwgbWRUb0h0bWwsIHRyYW5zY3JpcHREb2N1bWVudEh0bWwsIHRyYW5zY3JpcHRGaWxlTmFtZSwgdHJhbnNjcmlwdFN0YW1wIH0gZnJvbSAiQC9saWIvdHJhbnNjcmlwdC1leHBvcnQiOwoKZGVzY3JpYmUoIm1kVG9IdG1sIiwgKCkgPT4gewogIGl0KCJrZWVwcyBhIG1hcmtkb3duIHRhYmxlIGFzIGEgcmVhbCB0YWJsZSIsICgpID0+IHsKICAgIGNvbnN0IGh0bWwgPSBtZFRvSHRtbCgifCBDb2x1bW4gSSB8IENvbHVtbiBJSSB8XG58LS0tfC0tLXxcbnwgYS4gTWl0b2Nob25kcmlhIHwgaS4gUG93ZXJob3VzZSB8XG58IGIuIFJpYm9zb21lIHwgaWkuIFByb3RlaW4gfCIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPHRhYmxlPiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPHRoPkNvbHVtbiBJPC90aD4iKTsKICAgIGV4cGVjdChodG1sKS50b0NvbnRhaW4oIjx0ZD5hLiBNaXRvY2hvbmRyaWE8L3RkPiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPHRkPmlpLiBQcm90ZWluPC90ZD4iKTsKICAgIGV4cGVjdChodG1sKS5ub3QudG9Db250YWluKCJ8LS0tfCIpOwogIH0pOwoKICBpdCgia2VlcHMgbnVtYmVyZWQgYW5kIGJ1bGxldCBsaXN0cyBhcyBsaXN0cyIsICgpID0+IHsKICAgIGNvbnN0IGh0bWwgPSBtZFRvSHRtbCgiMS4gUGVobGEgcG9pbnRcbjIuIERvb3NyYSBwb2ludFxuXG4tIGVrXG4tIGRvIik7CiAgICBleHBlY3QoaHRtbCkudG9Db250YWluKCI8b2w+PGxpPlBlaGxhIHBvaW50PC9saT48bGk+RG9vc3JhIHBvaW50PC9saT48L29sPiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPHVsPjxsaT5lazwvbGk+PGxpPmRvPC9saT48L3VsPiIpOwogIH0pOwoKICBpdCgia2VlcHMgaGVhZGluZ3MsIGNhbGxvdXRzIGFuZCBib2xkIiwgKCkgPT4gewogICAgY29uc3QgaHRtbCA9IG1kVG9IdG1sKCIjIyMjIPCfk50gUmVzdWx0XG5cbj4gKirinIUgU2FoaSBqYXdhYjogKEIpKipcblxuKipNZToqKiBreWEgaGFpIik7CiAgICBleHBlY3QoaHRtbCkudG9Db250YWluKCI8aDQ+8J+TnSBSZXN1bHQ8L2g0PiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPGJsb2NrcXVvdGU+PHN0cm9uZz7inIUgU2FoaSBqYXdhYjogKEIpPC9zdHJvbmc+PC9ibG9ja3F1b3RlPiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPHN0cm9uZz5NZTo8L3N0cm9uZz4ga3lhIGhhaSIpOwogIH0pOwoKICBpdCgiZXNjYXBlcyBIVE1MIHNvIGluamVjdGVkIG1hcmt1cCBjYW5ub3QgYnJlYWsgdGhlIGRvY3VtZW50IiwgKCkgPT4gewogICAgY29uc3QgaHRtbCA9IG1kVG9IdG1sKCJDZWxsIDxzY3JpcHQ+YWxlcnQoMSk8L3NjcmlwdD4gJiB0aXNzdWUiKTsKICAgIGV4cGVjdChodG1sKS5ub3QudG9Db250YWluKCI8c2NyaXB0PiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiJmx0O3NjcmlwdCZndDsiKTsKICAgIGV4cGVjdChodG1sKS50b0NvbnRhaW4oIiZhbXA7Iik7CiAgfSk7CgogIGl0KCJkcm9wcyB0aGUgeWFtbCBmcm9udG1hdHRlciIsICgpID0+IHsKICAgIGNvbnN0IGh0bWwgPSBtZFRvSHRtbCgiLS0tXG50eXBlOiB2b2ljZS1jYWxsXG5kYXRlOiAyMDI2LTEwLTIxXG4tLS1cblxuIyBWb2ljZSBjYWxsXG5cbkhlbGxvIik7CiAgICBleHBlY3QoaHRtbCkubm90LnRvQ29udGFpbigidm9pY2UtY2FsbCIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPGgxPlZvaWNlIGNhbGw8L2gxPiIpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCJpbmxpbmVNZCAvIGVzY2FwZUh0bWwiLCAoKSA9PiB7CiAgaXQoInJlbmRlcnMgYm9sZCwgaXRhbGljIGFuZCBjb2RlIiwgKCkgPT4gewogICAgZXhwZWN0KGlubGluZU1kKCIqKmJvbGQqKiAqZW0qIGBjb2RlYCIpKS50b0JlKCI8c3Ryb25nPmJvbGQ8L3N0cm9uZz4gPGVtPmVtPC9lbT4gPGNvZGU+Y29kZTwvY29kZT4iKTsKICB9KTsKICBpdCgiZXNjYXBlcyBxdW90ZXMgYW5kIGFuZ2xlIGJyYWNrZXRzIiwgKCkgPT4gewogICAgZXhwZWN0KGVzY2FwZUh0bWwoYDxhIGhyZWY9IngiPmApKS50b0JlKCImbHQ7YSBocmVmPSZxdW90O3gmcXVvdDsmZ3Q7Iik7CiAgfSk7Cn0pOwoKZGVzY3JpYmUoImZpbGUgbmFtZXMiLCAoKSA9PiB7CiAgY29uc3QgZCA9IG5ldyBEYXRlKCIyMDI2LTEwLTIxVDAxOjU1OjAwLjAwMFoiKTsKICBpdCgiYnVpbGRzIGEgdGltZXN0YW1wZWQgbmFtZSBwZXIgZm9ybWF0IiwgKCkgPT4gewogICAgZXhwZWN0KHRyYW5zY3JpcHRTdGFtcChkKSkudG9CZSgiMjAyNi0xMC0yMS0wMS01NSIpOwogICAgZXhwZWN0KHRyYW5zY3JpcHRGaWxlTmFtZSgiZG9jIiwgZCkpLnRvQmUoInNuYXBzb2x2ZS12b2ljZS0yMDI2LTEwLTIxLTAxLTU1LmRvYyIpOwogICAgZXhwZWN0KHRyYW5zY3JpcHRGaWxlTmFtZSgicGRmIiwgZCkpLnRvQmUoInNuYXBzb2x2ZS12b2ljZS0yMDI2LTEwLTIxLTAxLTU1LnBkZiIpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCJ0cmFuc2NyaXB0RG9jdW1lbnRIdG1sIiwgKCkgPT4gewogIGl0KCJpcyBhIGZ1bGwgdXRmLTggaHRtbCBkb2N1bWVudCB3aXRoIHRoZSByZW5kZXJlZCBib2R5IiwgKCkgPT4gewogICAgY29uc3QgaHRtbCA9IHRyYW5zY3JpcHREb2N1bWVudEh0bWwoIlNuYXBTb2x2ZSB2b2ljZSBjYWxsIiwgIiMgVm9pY2UgY2FsbFxuXG4tIHBvaW50Iik7CiAgICBleHBlY3QoaHRtbCkudG9Db250YWluKCc8bWV0YSBjaGFyc2V0PSJ1dGYtOCI+Jyk7CiAgICBleHBlY3QoaHRtbCkudG9Db250YWluKCI8dGl0bGU+U25hcFNvbHZlIHZvaWNlIGNhbGw8L3RpdGxlPiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPGgxPlZvaWNlIGNhbGw8L2gxPiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPHVsPjxsaT5wb2ludDwvbGk+PC91bD4iKTsKICB9KTsKfSk7CgpkZXNjcmliZSgndG9nZ2xlIGJsb2NrcyBpbiBleHBvcnRzJywgKCkgPT4gewogIGl0KCdwYXNzZXMgZGV0YWlscy9zdW1tYXJ5IHRocm91Z2ggYW5kIGJvbGRzIHRoZSBzdW1tYXJ5IHRleHQnLCAoKSA9PiB7CiAgICBjb25zdCBodG1sID0gbWRUb0h0bWwoIjxkZXRhaWxzPlxuPHN1bW1hcnk+8J+TgiAqKk1pdG9jaG9uZHJpYSBkZXRhaWwqKjwvc3VtbWFyeT5cblxuRG8gbWVtYnJhbmUgaG90ZSBoYWluLlxuPC9kZXRhaWxzPiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPGRldGFpbHMgb3Blbj4iKTsKICAgIGV4cGVjdChodG1sKS50b0NvbnRhaW4oIjxzdW1tYXJ5PvCfk4IgPHN0cm9uZz5NaXRvY2hvbmRyaWEgZGV0YWlsPC9zdHJvbmc+PC9zdW1tYXJ5PiIpOwogICAgZXhwZWN0KGh0bWwpLnRvQ29udGFpbigiPC9kZXRhaWxzPiIpOwogIH0pOwp9KTsK
+import { describe, expect, it } from "vitest";
+import { escapeHtml, inlineMd, mdToHtml, transcriptDocumentHtml, transcriptFileName, transcriptStamp } from "@/lib/transcript-export";
+
+describe("mdToHtml", () => {
+  it("keeps a markdown table as a real table", () => {
+    const html = mdToHtml("| Column I | Column II |\n|---|---|\n| a. Mitochondria | i. Powerhouse |\n| b. Ribosome | ii. Protein |");
+    expect(html).toContain("<table>");
+    expect(html).toContain("<th>Column I</th>");
+    expect(html).toContain("<td>a. Mitochondria</td>");
+    expect(html).toContain("<td>ii. Protein</td>");
+    expect(html).not.toContain("|---|");
+  });
+
+  it("keeps numbered and bullet lists as lists", () => {
+    const html = mdToHtml("1. Pehla point\n2. Doosra point\n\n- ek\n- do");
+    expect(html).toContain("<ol><li>Pehla point</li><li>Doosra point</li></ol>");
+    expect(html).toContain("<ul><li>ek</li><li>do</li></ul>");
+  });
+
+  it("keeps headings, callouts and bold", () => {
+    const html = mdToHtml("#### 📝 Result\n\n> **✅ Sahi jawab: (B)**\n\n**Me:** kya hai");
+    expect(html).toContain("<h4>📝 Result</h4>");
+    expect(html).toContain("<blockquote><strong>✅ Sahi jawab: (B)</strong></blockquote>");
+    expect(html).toContain("<strong>Me:</strong> kya hai");
+  });
+
+  it("escapes HTML so injected markup cannot break the document", () => {
+    const html = mdToHtml("Cell <script>alert(1)</script> & tissue");
+    expect(html).not.toContain("<script>");
+    expect(html).toContain("&lt;script&gt;");
+    expect(html).toContain("&amp;");
+  });
+
+  it("drops the yaml frontmatter", () => {
+    const html = mdToHtml("---\ntype: voice-call\ndate: 2026-10-21\n---\n\n# Voice call\n\nHello");
+    expect(html).not.toContain("voice-call");
+    expect(html).toContain("<h1>Voice call</h1>");
+  });
+});
+
+describe("inlineMd / escapeHtml", () => {
+  it("renders bold, italic and code", () => {
+    expect(inlineMd("**bold** *em* `code`")).toBe("<strong>bold</strong> <em>em</em> <code>code</code>");
+  });
+  it("escapes quotes and angle brackets", () => {
+    expect(escapeHtml(`<a href="x">`)).toBe("&lt;a href=&quot;x&quot;&gt;");
+  });
+});
+
+describe("file names", () => {
+  const d = new Date("2026-10-21T01:55:00.000Z");
+  it("builds a timestamped name per format", () => {
+    expect(transcriptStamp(d)).toBe("2026-10-21-01-55");
+    expect(transcriptFileName("doc", d)).toBe("snapsolve-voice-2026-10-21-01-55.doc");
+    expect(transcriptFileName("pdf", d)).toBe("snapsolve-voice-2026-10-21-01-55.pdf");
+  });
+});
+
+describe("transcriptDocumentHtml", () => {
+  it("is a full utf-8 html document with the rendered body", () => {
+    const html = transcriptDocumentHtml("SnapSolve voice call", "# Voice call\n\n- point");
+    expect(html).toContain('<meta charset="utf-8">');
+    expect(html).toContain("<title>SnapSolve voice call</title>");
+    expect(html).toContain("<h1>Voice call</h1>");
+    expect(html).toContain("<ul><li>point</li></ul>");
+  });
+});
+
+describe('toggle blocks in exports', () => {
+  it('passes details/summary through and bolds the summary text', () => {
+    const html = mdToHtml("<details>\n<summary>📂 **Mitochondria detail**</summary>\n\nDo membrane hote hain.\n</details>");
+    expect(html).toContain("<details open>");
+    expect(html).toContain("<summary>📂 <strong>Mitochondria detail</strong></summary>");
+    expect(html).toContain("</details>");
+  });
+});

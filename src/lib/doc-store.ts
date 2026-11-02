@@ -1,1 +1,105 @@
-aW1wb3J0IHR5cGUgeyBVSU1lc3NhZ2UgfSBmcm9tICJhaSI7CgovKiogTGFyZ2UgUERGcyBsaXZlIGluIEluZGV4ZWREQjsgc2F2ZWQgbWVzc2FnZXMga2VlcCBvbmx5IGFuICJpZGI6PGlkPiIgcG9pbnRlci4gKi8KY29uc3QgREIgPSAic25hcHNvbHZlLWRvY3MiOwpjb25zdCBTVE9SRSA9ICJkb2NzIjsKY29uc3QgaWRzID0gbmV3IE1hcDxzdHJpbmcsIHN0cmluZz4oKTsgLy8gZGF0YVVybCAtPiBpZApjb25zdCBwZW5kaW5nV3JpdGVzID0gbmV3IFNldDxQcm9taXNlPHZvaWQ+PigpOwpjb25zdCB3cml0ZXNCeUlkID0gbmV3IE1hcDxzdHJpbmcsIFByb21pc2U8dm9pZD4+KCk7CgpmdW5jdGlvbiBvcGVuKCk6IFByb21pc2U8SURCRGF0YWJhc2U+IHsKICByZXR1cm4gbmV3IFByb21pc2UoKHJlcywgcmVqKSA9PiB7CiAgICBjb25zdCByID0gaW5kZXhlZERCLm9wZW4oREIsIDEpOwogICAgci5vbnVwZ3JhZGVuZWVkZWQgPSAoKSA9PiByLnJlc3VsdC5jcmVhdGVPYmplY3RTdG9yZShTVE9SRSk7CiAgICByLm9uc3VjY2VzcyA9ICgpID0+IHJlcyhyLnJlc3VsdCk7CiAgICByLm9uZXJyb3IgPSAoKSA9PiByZWooci5lcnJvcik7CiAgfSk7Cn0KCmFzeW5jIGZ1bmN0aW9uIHB1dChpZDogc3RyaW5nLCBkYXRhOiBzdHJpbmcpIHsKICBjb25zdCBkYiA9IGF3YWl0IG9wZW4oKTsKICB0cnkgeyBhd2FpdCBuZXcgUHJvbWlzZTx2b2lkPigocmVzLCByZWopID0+IHsKICAgIGNvbnN0IHR4ID0gZGIudHJhbnNhY3Rpb24oU1RPUkUsICJyZWFkd3JpdGUiKTsKICAgIHR4Lm9iamVjdFN0b3JlKFNUT1JFKS5wdXQoZGF0YSwgaWQpOwogICAgdHgub25jb21wbGV0ZSA9ICgpID0+IHJlcygpOwogICAgdHgub25lcnJvciA9ICgpID0+IHJlaih0eC5lcnJvcik7CiAgICB0eC5vbmFib3J0ID0gKCkgPT4gcmVqKHR4LmVycm9yKTsKICB9KTsgfSBmaW5hbGx5IHsgZGIuY2xvc2UoKTsgfQp9Cgphc3luYyBmdW5jdGlvbiBnZXQoaWQ6IHN0cmluZyk6IFByb21pc2U8c3RyaW5nIHwgdW5kZWZpbmVkPiB7CiAgY29uc3QgZGIgPSBhd2FpdCBvcGVuKCk7CiAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXMpID0+IHsKICAgIGNvbnN0IHIgPSBkYi50cmFuc2FjdGlvbihTVE9SRSkub2JqZWN0U3RvcmUoU1RPUkUpLmdldChpZCk7CiAgICByLm9uc3VjY2VzcyA9ICgpID0+IHsgZGIuY2xvc2UoKTsgcmVzKHIucmVzdWx0IGFzIHN0cmluZyB8IHVuZGVmaW5lZCk7IH07CiAgICByLm9uZXJyb3IgPSAoKSA9PiB7IGRiLmNsb3NlKCk7IHJlcyh1bmRlZmluZWQpOyB9OwogIH0pOwp9Cgpjb25zdCBpc0RvYyA9IChwOiB7IHR5cGU6IHN0cmluZzsgbWVkaWFUeXBlPzogc3RyaW5nOyB1cmw/OiBzdHJpbmcgfSkgPT4KICBwLnR5cGUgPT09ICJmaWxlIiAmJiBwLm1lZGlhVHlwZSA9PT0gImFwcGxpY2F0aW9uL3BkZiI7CgovKiogUmVwbGFjZSBQREYgZGF0YSB3aXRoIHBvaW50ZXJzIChzYXZpbmcgdGhlIGRhdGEgdG8gSW5kZXhlZERCKS4gKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHN0cmlwRG9jcyhtZXNzYWdlczogVUlNZXNzYWdlW10pOiBQcm9taXNlPFVJTWVzc2FnZVtdPiB7CiAgcmV0dXJuIFByb21pc2UuYWxsKG1lc3NhZ2VzLm1hcChhc3luYyAobSkgPT4gKHsKICAgIC4uLm0sCiAgICBwYXJ0czogYXdhaXQgUHJvbWlzZS5hbGwobS5wYXJ0cy5tYXAoYXN5bmMgKHApID0+IHsKICAgICAgaWYgKCFpc0RvYyhwKSB8fCAhKCJ1cmwiIGluIHApIHx8ICFwLnVybC5zdGFydHNXaXRoKCJkYXRhOiIpKSByZXR1cm4gcDsKICAgICAgbGV0IGlkID0gaWRzLmdldChwLnVybCk7CiAgICAgIGlmICghaWQpIHsKICAgICAgICBjb25zdCBuZXdJZCA9IGNyeXB0by5yYW5kb21VVUlEKCk7CiAgICAgICAgaWQgPSBuZXdJZDsKICAgICAgICBpZHMuc2V0KHAudXJsLCBuZXdJZCk7CiAgICAgICAgY29uc3QgZGF0YSA9IHAudXJsOwogICAgICAgIGNvbnN0IHdyaXRlID0gcHV0KG5ld0lkLCBkYXRhKTsKICAgICAgICBwZW5kaW5nV3JpdGVzLmFkZCh3cml0ZSk7CiAgICAgICAgd3JpdGVzQnlJZC5zZXQobmV3SWQsIHdyaXRlKTsKICAgICAgICB2b2lkIHdyaXRlLnRoZW4oKCkgPT4gewogICAgICAgICAgcGVuZGluZ1dyaXRlcy5kZWxldGUod3JpdGUpOwogICAgICAgICAgd3JpdGVzQnlJZC5kZWxldGUobmV3SWQpOwogICAgICAgIH0sICgpID0+IHsKICAgICAgICAgIHBlbmRpbmdXcml0ZXMuZGVsZXRlKHdyaXRlKTsKICAgICAgICAgIHdyaXRlc0J5SWQuZGVsZXRlKG5ld0lkKTsKICAgICAgICAgIGlkcy5kZWxldGUoZGF0YSk7CiAgICAgICAgfSk7CiAgICAgIH0KICAgICAgYXdhaXQgd3JpdGVzQnlJZC5nZXQoaWQpOwogICAgICByZXR1cm4geyAuLi5wLCB1cmw6IGBpZGI6JHtpZH1gIH07CiAgICB9KSksCiAgfSkpKTsKfQoKLyoqIEFsc28gcmVtb3ZlcyBvcnBoYW5lZCBQREZzIGZyb20gZGVsZXRlZCBjb252ZXJzYXRpb25zLiBObyBjbG91ZCBmaWxlcyBhcmUgdG91Y2hlZC4gKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGNsZWFyRG9jdW1lbnRTdG9yZSgpOiBQcm9taXNlPHZvaWQ+IHsKICBhd2FpdCBQcm9taXNlLmFsbChbLi4ucGVuZGluZ1dyaXRlc10pOwogIGNvbnN0IGRiID0gYXdhaXQgb3BlbigpOwogIHRyeSB7CiAgICBhd2FpdCBuZXcgUHJvbWlzZTx2b2lkPigocmVzb2x2ZSwgcmVqZWN0KSA9PiB7CiAgICAgIGNvbnN0IHR4ID0gZGIudHJhbnNhY3Rpb24oU1RPUkUsICdyZWFkd3JpdGUnKTsKICAgICAgdHgub2JqZWN0U3RvcmUoU1RPUkUpLmNsZWFyKCk7CiAgICAgIHR4Lm9uY29tcGxldGUgPSAoKSA9PiByZXNvbHZlKCk7CiAgICAgIHR4Lm9uZXJyb3IgPSAoKSA9PiByZWplY3QodHguZXJyb3IpOwogICAgICB0eC5vbmFib3J0ID0gKCkgPT4gcmVqZWN0KHR4LmVycm9yKTsKICAgIH0pOwogICAgaWRzLmNsZWFyKCk7CiAgfSBmaW5hbGx5IHsgZGIuY2xvc2UoKTsgfQp9CgovKiogUHV0IFBERiBkYXRhIGJhY2sgaW50byBtZXNzYWdlcyBsb2FkZWQgZnJvbSBzdG9yYWdlLiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gcmVzdG9yZURvY3MobWVzc2FnZXM6IFVJTWVzc2FnZVtdKTogUHJvbWlzZTxVSU1lc3NhZ2VbXT4gewogIHJldHVybiBQcm9taXNlLmFsbCgKICAgIG1lc3NhZ2VzLm1hcChhc3luYyAobSkgPT4gKHsKICAgICAgLi4ubSwKICAgICAgcGFydHM6IGF3YWl0IFByb21pc2UuYWxsKAogICAgICAgIG0ucGFydHMubWFwKGFzeW5jIChwKSA9PiB7CiAgICAgICAgICBpZiAoIWlzRG9jKHApIHx8ICEoInVybCIgaW4gcCkgfHwgIXAudXJsLnN0YXJ0c1dpdGgoImlkYjoiKSkgcmV0dXJuIHA7CiAgICAgICAgICBjb25zdCBpZCA9IHAudXJsLnNsaWNlKDQpOwogICAgICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IGdldChpZCkuY2F0Y2goKCkgPT4gdW5kZWZpbmVkKTsKICAgICAgICAgIGlmICghZGF0YSkgcmV0dXJuIHsgdHlwZTogInRleHQiIGFzIGNvbnN0LCB0ZXh0OiBgW1BERiAiJHsoImZpbGVuYW1lIiBpbiBwICYmIHAuZmlsZW5hbWUpIHx8ICJkb2N1bWVudCJ9IiBpcyBubyBsb25nZXIgYXZhaWxhYmxlXWAgfTsKICAgICAgICAgIGlkcy5zZXQoZGF0YSwgaWQpOwogICAgICAgICAgcmV0dXJuIHsgLi4ucCwgdXJsOiBkYXRhIH07CiAgICAgICAgfSksCiAgICAgICksCiAgICB9KSksCiAgKTsKfQo=
+import type { UIMessage } from "ai";
+
+/** Large PDFs live in IndexedDB; saved messages keep only an "idb:<id>" pointer. */
+const DB = "snapsolve-docs";
+const STORE = "docs";
+const ids = new Map<string, string>(); // dataUrl -> id
+const pendingWrites = new Set<Promise<void>>();
+const writesById = new Map<string, Promise<void>>();
+
+function open(): Promise<IDBDatabase> {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(DB, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore(STORE);
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+
+async function put(id: string, data: string) {
+  const db = await open();
+  try { await new Promise<void>((res, rej) => {
+    const tx = db.transaction(STORE, "readwrite");
+    tx.objectStore(STORE).put(data, id);
+    tx.oncomplete = () => res();
+    tx.onerror = () => rej(tx.error);
+    tx.onabort = () => rej(tx.error);
+  }); } finally { db.close(); }
+}
+
+async function get(id: string): Promise<string | undefined> {
+  const db = await open();
+  return new Promise((res) => {
+    const r = db.transaction(STORE).objectStore(STORE).get(id);
+    r.onsuccess = () => { db.close(); res(r.result as string | undefined); };
+    r.onerror = () => { db.close(); res(undefined); };
+  });
+}
+
+const isDoc = (p: { type: string; mediaType?: string; url?: string }) =>
+  p.type === "file" && p.mediaType === "application/pdf";
+
+/** Replace PDF data with pointers (saving the data to IndexedDB). */
+export async function stripDocs(messages: UIMessage[]): Promise<UIMessage[]> {
+  return Promise.all(messages.map(async (m) => ({
+    ...m,
+    parts: await Promise.all(m.parts.map(async (p) => {
+      if (!isDoc(p) || !("url" in p) || !p.url.startsWith("data:")) return p;
+      let id = ids.get(p.url);
+      if (!id) {
+        const newId = crypto.randomUUID();
+        id = newId;
+        ids.set(p.url, newId);
+        const data = p.url;
+        const write = put(newId, data);
+        pendingWrites.add(write);
+        writesById.set(newId, write);
+        void write.then(() => {
+          pendingWrites.delete(write);
+          writesById.delete(newId);
+        }, () => {
+          pendingWrites.delete(write);
+          writesById.delete(newId);
+          ids.delete(data);
+        });
+      }
+      await writesById.get(id);
+      return { ...p, url: `idb:${id}` };
+    })),
+  })));
+}
+
+/** Also removes orphaned PDFs from deleted conversations. No cloud files are touched. */
+export async function clearDocumentStore(): Promise<void> {
+  await Promise.all([...pendingWrites]);
+  const db = await open();
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction(STORE, 'readwrite');
+      tx.objectStore(STORE).clear();
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+      tx.onabort = () => reject(tx.error);
+    });
+    ids.clear();
+  } finally { db.close(); }
+}
+
+/** Put PDF data back into messages loaded from storage. */
+export async function restoreDocs(messages: UIMessage[]): Promise<UIMessage[]> {
+  return Promise.all(
+    messages.map(async (m) => ({
+      ...m,
+      parts: await Promise.all(
+        m.parts.map(async (p) => {
+          if (!isDoc(p) || !("url" in p) || !p.url.startsWith("idb:")) return p;
+          const id = p.url.slice(4);
+          const data = await get(id).catch(() => undefined);
+          if (!data) return { type: "text" as const, text: `[PDF "${("filename" in p && p.filename) || "document"}" is no longer available]` };
+          ids.set(data, id);
+          return { ...p, url: data };
+        }),
+      ),
+    })),
+  );
+}

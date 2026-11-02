@@ -1,1 +1,71 @@
-aW1wb3J0IHsgY3JlYXRlU2VydmVyRm4gfSBmcm9tICdAdGFuc3RhY2svcmVhY3Qtc3RhcnQnOwppbXBvcnQgeyByZXF1aXJlU3VwYWJhc2VBdXRoIH0gZnJvbSAnQC9pbnRlZ3JhdGlvbnMvc3VwYWJhc2UvYXV0aC1taWRkbGV3YXJlJzsKaW1wb3J0IHsgeiB9IGZyb20gJ3pvZCc7CmltcG9ydCB7IGFkbWluQmFja3VwU2NoZW1hLCByZWNvdmVyeUl0ZW1TY2hlbWEsIGNhbkNsZWFyUmVjb3ZlcnlJdGVtLCByZXN0b3JlUGF5bG9hZCwgdHlwZSBSZWNvdmVyeUl0ZW0gfSBmcm9tICcuL2FkbWluLWJhY2t1cCc7CmltcG9ydCB7IGlzRHVwbGljYXRlTWVtb3J5IH0gZnJvbSAnLi9tZW1vcnktZHVwbGljYXRlcyc7CgpleHBvcnQgY29uc3QgZXhwb3J0QWRtaW5NZW1vcnkgPSBjcmVhdGVTZXJ2ZXJGbih7IG1ldGhvZDogJ1BPU1QnIH0pCiAgLm1pZGRsZXdhcmUoW3JlcXVpcmVTdXBhYmFzZUF1dGhdKS5oYW5kbGVyKGFzeW5jICh7IGNvbnRleHQgfSkgPT4gewogICAgY29uc3QgeyBkYXRhOiBhZG1pbiwgZXJyb3I6IHJvbGVFcnJvciB9ID0gYXdhaXQgY29udGV4dC5zdXBhYmFzZS5ycGMoJ2hhc19yb2xlJywgeyBfdXNlcl9pZDogY29udGV4dC51c2VySWQsIF9yb2xlOiAnYWRtaW4nIH0pOwogICAgaWYgKHJvbGVFcnJvciB8fCAhYWRtaW4pIHRocm93IG5ldyBFcnJvcignQWNjZXNzIGRlbmllZCcpOwogICAgY29uc3QgaXRlbXM6IFJlY292ZXJ5SXRlbVtdID0gW107CiAgICBmb3IgKGxldCBvZmZzZXQgPSAwOyA7IG9mZnNldCArPSA1MDApIHsKICAgICAgY29uc3QgeyBkYXRhLCBlcnJvciB9ID0gYXdhaXQgY29udGV4dC5zdXBhYmFzZS5mcm9tKCdtZW1vcnlfaXRlbXMnKS5zZWxlY3QoJyonKS5vcmRlcignaWQnKS5yYW5nZShvZmZzZXQsIG9mZnNldCArIDQ5OSk7CiAgICAgIGlmIChlcnJvcikgdGhyb3cgbmV3IEVycm9yKGVycm9yLm1lc3NhZ2UpOwogICAgICBpdGVtcy5wdXNoKC4uLihkYXRhID8/IFtdKS5tYXAoaSA9PiByZWNvdmVyeUl0ZW1TY2hlbWEucGFyc2UoaSkpKTsKICAgICAgaWYgKGl0ZW1zLmxlbmd0aCA+IDEwMDAwKSB0aHJvdyBuZXcgRXJyb3IoJ0xpYnJhcnkgdG9vIGxhcmdlIGZvciBkZXZpY2UgY29udGVudCBiYWNrdXA7IHVzZSBDbG91ZCBleHBvcnQuJyk7CiAgICAgIGlmICghZGF0YSB8fCBkYXRhLmxlbmd0aCA8IDUwMCkgYnJlYWs7CiAgICB9CiAgICBjb25zdCB7IGRhdGE6IHNldHRpbmdzLCBlcnJvciB9ID0gYXdhaXQgY29udGV4dC5zdXBhYmFzZS5mcm9tKCdhZ2VudF9zZXR0aW5ncycpLnNlbGVjdCgnYnJhaW4scXVpel90aW1lcl9zZWNvbmRzLGRlZmF1bHRfbW9kZScpLmVxKCdpZCcsICdtYWluJykubWF5YmVTaW5nbGUoKTsKICAgIGlmIChlcnJvcikgdGhyb3cgbmV3IEVycm9yKGVycm9yLm1lc3NhZ2UpOwogICAgY29uc3QgYmFja3VwID0gYWRtaW5CYWNrdXBTY2hlbWEucGFyc2UoeyBmb3JtYXQ6ICdzbmFwc29sdmUtYWRtaW4tbWVtb3J5JywgdmVyc2lvbjogMSwgZXhwb3J0ZWRBdDogbmV3IERhdGUoKS50b0lTT1N0cmluZygpLCBpdGVtcywgc2V0dGluZ3M6IHNldHRpbmdzID8/IHsgYnJhaW46ICcnLCBxdWl6X3RpbWVyX3NlY29uZHM6IDAsIGRlZmF1bHRfbW9kZTogJ3NvbHZlJyB9IH0pOwogICAgaWYgKG5ldyBUZXh0RW5jb2RlcigpLmVuY29kZShKU09OLnN0cmluZ2lmeShiYWNrdXApKS5ieXRlTGVuZ3RoID4gMjAgKiAxMDI0ICogMTAyNCkgdGhyb3cgbmV3IEVycm9yKCdCYWNrdXAgZXhjZWVkcyAyMCBNQjsgdXNlIENsb3VkIGV4cG9ydC4nKTsKICAgIHJldHVybiBiYWNrdXA7CiAgfSk7CgpleHBvcnQgY29uc3QgcmVzdG9yZUFkbWluTWVtb3J5ID0gY3JlYXRlU2VydmVyRm4oeyBtZXRob2Q6ICdQT1NUJyB9KQogIC5taWRkbGV3YXJlKFtyZXF1aXJlU3VwYWJhc2VBdXRoXSkKICAuaW5wdXRWYWxpZGF0b3IoKGQ6IHVua25vd24pID0+IHoub2JqZWN0KHsgaXRlbXM6IHouYXJyYXkocmVjb3ZlcnlJdGVtU2NoZW1hKS5taW4oMSkubWF4KDI1KSB9KS5wYXJzZShkKSkKICAuaGFuZGxlcihhc3luYyAoeyBjb250ZXh0LCBkYXRhIH0pID0+IHsKICAgIGNvbnN0IHsgZGF0YTogYWRtaW4sIGVycm9yOiByb2xlRXJyb3IgfSA9IGF3YWl0IGNvbnRleHQuc3VwYWJhc2UucnBjKCdoYXNfcm9sZScsIHsgX3VzZXJfaWQ6IGNvbnRleHQudXNlcklkLCBfcm9sZTogJ2FkbWluJyB9KTsKICAgIGlmIChyb2xlRXJyb3IgfHwgIWFkbWluKSB0aHJvdyBuZXcgRXJyb3IoJ0FjY2VzcyBkZW5pZWQnKTsKICAgIGxldCBpbnNlcnRlZCA9IDAsIHNraXBwZWQgPSAwOwogICAgZm9yIChjb25zdCBpdGVtIG9mIGRhdGEuaXRlbXMpIHsKICAgICAgY29uc3QgeyBkYXRhOiBleGlzdGluZywgZXJyb3I6IHJlYWRFcnJvciB9ID0gYXdhaXQgY29udGV4dC5zdXBhYmFzZS5mcm9tKCdtZW1vcnlfaXRlbXMnKS5zZWxlY3QoJ2lkLHRpdGxlLGNvbnRlbnQsc291cmNlX3VybCcpLm9yKGBpZC5lcS4ke2l0ZW0uaWR9YCk7CiAgICAgIGlmIChyZWFkRXJyb3IpIHRocm93IG5ldyBFcnJvcihyZWFkRXJyb3IubWVzc2FnZSk7CiAgICAgIGlmIChleGlzdGluZz8ubGVuZ3RoKSB7IHNraXBwZWQrKzsgY29udGludWU7IH0KICAgICAgLy8gUmVhZCBjYW5kaWRhdGVzIGluIHBhZ2VzOyBkbyBub3Qgb3ZlcndyaXRlIGN1cnJlbnQgbWVtb3J5IG9yIHNldHRpbmdzLgogICAgICBsZXQgZHVwbGljYXRlID0gZmFsc2U7CiAgICAgIGZvciAobGV0IG9mZnNldCA9IDA7IDsgb2Zmc2V0ICs9IDUwMCkgewogICAgICAgIGNvbnN0IHsgZGF0YTogY2FuZGlkYXRlcywgZXJyb3IgfSA9IGF3YWl0IGNvbnRleHQuc3VwYWJhc2UuZnJvbSgnbWVtb3J5X2l0ZW1zJykuc2VsZWN0KCd0aXRsZSxjb250ZW50LHNvdXJjZV91cmwnKS5vcmRlcignaWQnKS5yYW5nZShvZmZzZXQsIG9mZnNldCArIDQ5OSk7CiAgICAgICAgaWYgKGVycm9yKSB0aHJvdyBuZXcgRXJyb3IoZXJyb3IubWVzc2FnZSk7CiAgICAgICAgaWYgKGNhbmRpZGF0ZXM/LnNvbWUoaSA9PiBpc0R1cGxpY2F0ZU1lbW9yeSh7IC4uLml0ZW0sIHNvdXJjZV91cmw6IGl0ZW0uc291cmNlX3VybCA/PyBudWxsIH0sIGkpKSkgeyBkdXBsaWNhdGUgPSB0cnVlOyBicmVhazsgfQogICAgICAgIGlmICghY2FuZGlkYXRlcyB8fCBjYW5kaWRhdGVzLmxlbmd0aCA8IDUwMCkgYnJlYWs7CiAgICAgIH0KICAgICAgaWYgKGR1cGxpY2F0ZSkgeyBza2lwcGVkKys7IGNvbnRpbnVlOyB9CiAgICAgIGNvbnN0IHsgZXJyb3IgfSA9IGF3YWl0IGNvbnRleHQuc3VwYWJhc2UuZnJvbSgnbWVtb3J5X2l0ZW1zJykuaW5zZXJ0KHJlc3RvcmVQYXlsb2FkKGl0ZW0pKTsKICAgICAgaWYgKGVycm9yKSB0aHJvdyBuZXcgRXJyb3IoYFJlc3RvcmUgc3RvcHBlZDsgZWFybGllciBiYXRjaGVzIG1heSBiZSBzYXZlZC4gUmV0cnkgc2FmZWx5LiAke2Vycm9yLm1lc3NhZ2V9YCk7CiAgICAgIGluc2VydGVkKys7CiAgICB9CiAgICByZXR1cm4geyBpbnNlcnRlZCwgc2tpcHBlZCB9OwogIH0pOwoKZXhwb3J0IGNvbnN0IGNsZWFyQmFja2VkVXBNZW1vcnkgPSBjcmVhdGVTZXJ2ZXJGbih7IG1ldGhvZDogJ1BPU1QnIH0pCiAgLm1pZGRsZXdhcmUoW3JlcXVpcmVTdXBhYmFzZUF1dGhdKQogIC5pbnB1dFZhbGlkYXRvcigoZDogdW5rbm93bikgPT4gei5vYmplY3QoeyBjb25maXJtYXRpb246IHoubGl0ZXJhbCgnQ0xFQVIgTUVNT1JZJyksIGl0ZW1zOiB6LmFycmF5KHJlY292ZXJ5SXRlbVNjaGVtYSkubWluKDEpLm1heCgyNSkgfSkucGFyc2UoZCkpCiAgLmhhbmRsZXIoYXN5bmMgKHsgY29udGV4dCwgZGF0YSB9KSA9PiB7CiAgICBjb25zdCB7IGRhdGE6IGFkbWluLCBlcnJvcjogcm9sZUVycm9yIH0gPSBhd2FpdCBjb250ZXh0LnN1cGFiYXNlLnJwYygnaGFzX3JvbGUnLCB7IF91c2VyX2lkOiBjb250ZXh0LnVzZXJJZCwgX3JvbGU6ICdhZG1pbicgfSk7CiAgICBpZiAocm9sZUVycm9yIHx8ICFhZG1pbikgdGhyb3cgbmV3IEVycm9yKCdBY2Nlc3MgZGVuaWVkJyk7CiAgICBsZXQgcmVtb3ZlZCA9IDAsIHByZXNlcnZlZCA9IDA7CiAgICBmb3IgKGNvbnN0IGl0ZW0gb2YgZGF0YS5pdGVtcykgewogICAgICBjb25zdCB7IGRhdGE6IGN1cnJlbnQsIGVycm9yIH0gPSBhd2FpdCBjb250ZXh0LnN1cGFiYXNlLmZyb20oJ21lbW9yeV9pdGVtcycpLnNlbGVjdCgnKicpLmVxKCdpZCcsIGl0ZW0uaWQpLm1heWJlU2luZ2xlKCk7CiAgICAgIGlmIChlcnJvcikgdGhyb3cgbmV3IEVycm9yKGVycm9yLm1lc3NhZ2UpOwogICAgICAvLyBSZXRhaW5lZCBvcmlnaW5hbHMgbmVlZCBhIHNlcGFyYXRlIG9yaWdpbmFsLWZpbGUgYmFja3VwOyBuZXZlciBkZWxldGUgdGhlaXIgcmVmZXJlbmNlcyBoZXJlLgogICAgICBpZiAoIWN1cnJlbnQgfHwgIWNhbkNsZWFyUmVjb3ZlcnlJdGVtKGl0ZW0sIHJlY292ZXJ5SXRlbVNjaGVtYS5wYXJzZShjdXJyZW50KSkpIHsgcHJlc2VydmVkKys7IGNvbnRpbnVlOyB9CiAgICAgIGNvbnN0IHsgZGF0YTogZGVsZXRlZCwgZXJyb3I6IGRlbGV0ZUVycm9yIH0gPSBhd2FpdCBjb250ZXh0LnN1cGFiYXNlLmZyb20oJ21lbW9yeV9pdGVtcycpLmRlbGV0ZSgpLmVxKCdpZCcsIGl0ZW0uaWQpLmVxKCd1cGRhdGVkX2F0JywgaXRlbS51cGRhdGVkX2F0KS5zZWxlY3QoJ2lkJyk7CiAgICAgIGlmIChkZWxldGVFcnJvcikgdGhyb3cgbmV3IEVycm9yKGBDbGVhbnVwIHN0b3BwZWQ7IHNvbWUgZWFybGllciByb3dzIG1heSBiZSByZW1vdmVkLiAke2RlbGV0ZUVycm9yLm1lc3NhZ2V9YCk7CiAgICAgIHJlbW92ZWQgKz0gZGVsZXRlZD8ubGVuZ3RoID8/IDA7CiAgICAgIGlmICghZGVsZXRlZD8ubGVuZ3RoKSBwcmVzZXJ2ZWQrKzsKICAgIH0KICAgIHJldHVybiB7IHJlbW92ZWQsIHByZXNlcnZlZCB9OwogIH0pOw==
+import { createServerFn } from '@tanstack/react-start';
+import { requireSupabaseAuth } from '@/integrations/supabase/auth-middleware';
+import { z } from 'zod';
+import { adminBackupSchema, recoveryItemSchema, canClearRecoveryItem, restorePayload, type RecoveryItem } from './admin-backup';
+import { isDuplicateMemory } from './memory-duplicates';
+
+export const exportAdminMemory = createServerFn({ method: 'POST' })
+  .middleware([requireSupabaseAuth]).handler(async ({ context }) => {
+    const { data: admin, error: roleError } = await context.supabase.rpc('has_role', { _user_id: context.userId, _role: 'admin' });
+    if (roleError || !admin) throw new Error('Access denied');
+    const items: RecoveryItem[] = [];
+    for (let offset = 0; ; offset += 500) {
+      const { data, error } = await context.supabase.from('memory_items').select('*').order('id').range(offset, offset + 499);
+      if (error) throw new Error(error.message);
+      items.push(...(data ?? []).map(i => recoveryItemSchema.parse(i)));
+      if (items.length > 10000) throw new Error('Library too large for device content backup; use Cloud export.');
+      if (!data || data.length < 500) break;
+    }
+    const { data: settings, error } = await context.supabase.from('agent_settings').select('brain,quiz_timer_seconds,default_mode').eq('id', 'main').maybeSingle();
+    if (error) throw new Error(error.message);
+    const backup = adminBackupSchema.parse({ format: 'snapsolve-admin-memory', version: 1, exportedAt: new Date().toISOString(), items, settings: settings ?? { brain: '', quiz_timer_seconds: 0, default_mode: 'solve' } });
+    if (new TextEncoder().encode(JSON.stringify(backup)).byteLength > 20 * 1024 * 1024) throw new Error('Backup exceeds 20 MB; use Cloud export.');
+    return backup;
+  });
+
+export const restoreAdminMemory = createServerFn({ method: 'POST' })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: unknown) => z.object({ items: z.array(recoveryItemSchema).min(1).max(25) }).parse(d))
+  .handler(async ({ context, data }) => {
+    const { data: admin, error: roleError } = await context.supabase.rpc('has_role', { _user_id: context.userId, _role: 'admin' });
+    if (roleError || !admin) throw new Error('Access denied');
+    let inserted = 0, skipped = 0;
+    for (const item of data.items) {
+      const { data: existing, error: readError } = await context.supabase.from('memory_items').select('id,title,content,source_url').or(`id.eq.${item.id}`);
+      if (readError) throw new Error(readError.message);
+      if (existing?.length) { skipped++; continue; }
+      // Read candidates in pages; do not overwrite current memory or settings.
+      let duplicate = false;
+      for (let offset = 0; ; offset += 500) {
+        const { data: candidates, error } = await context.supabase.from('memory_items').select('title,content,source_url').order('id').range(offset, offset + 499);
+        if (error) throw new Error(error.message);
+        if (candidates?.some(i => isDuplicateMemory({ ...item, source_url: item.source_url ?? null }, i))) { duplicate = true; break; }
+        if (!candidates || candidates.length < 500) break;
+      }
+      if (duplicate) { skipped++; continue; }
+      const { error } = await context.supabase.from('memory_items').insert(restorePayload(item));
+      if (error) throw new Error(`Restore stopped; earlier batches may be saved. Retry safely. ${error.message}`);
+      inserted++;
+    }
+    return { inserted, skipped };
+  });
+
+export const clearBackedUpMemory = createServerFn({ method: 'POST' })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: unknown) => z.object({ confirmation: z.literal('CLEAR MEMORY'), items: z.array(recoveryItemSchema).min(1).max(25) }).parse(d))
+  .handler(async ({ context, data }) => {
+    const { data: admin, error: roleError } = await context.supabase.rpc('has_role', { _user_id: context.userId, _role: 'admin' });
+    if (roleError || !admin) throw new Error('Access denied');
+    let removed = 0, preserved = 0;
+    for (const item of data.items) {
+      const { data: current, error } = await context.supabase.from('memory_items').select('*').eq('id', item.id).maybeSingle();
+      if (error) throw new Error(error.message);
+      // Retained originals need a separate original-file backup; never delete their references here.
+      if (!current || !canClearRecoveryItem(item, recoveryItemSchema.parse(current))) { preserved++; continue; }
+      const { data: deleted, error: deleteError } = await context.supabase.from('memory_items').delete().eq('id', item.id).eq('updated_at', item.updated_at).select('id');
+      if (deleteError) throw new Error(`Cleanup stopped; some earlier rows may be removed. ${deleteError.message}`);
+      removed += deleted?.length ?? 0;
+      if (!deleted?.length) preserved++;
+    }
+    return { removed, preserved };
+  });

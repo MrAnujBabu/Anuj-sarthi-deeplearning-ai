@@ -1,1 +1,18 @@
-Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGRlc2NyaWJlLCBleHBlY3QsIGl0IH0gZnJvbSAidml0ZXN0IjsKaW1wb3J0IHsgcGFyc2VDYWxsUHJlZnMsIHF1aXpTdHlsZSB9IGZyb20gIi4vbGl2ZS1yZWxheS5zZXJ2ZXIiOwoKZGVzY3JpYmUoInZvaWNlIHF1aXogcXVlc3Rpb24gc3R5bGVzIiwgKCkgPT4gewogIGl0KCJkZWZhdWx0cyBhbGwgc3R5bGUgdG9nZ2xlcyBvZmYiLCAoKSA9PiB7CiAgICBjb25zdCBwID0gcGFyc2VDYWxsUHJlZnMoeyBxdWl6OiB0cnVlIH0pOwogICAgZXhwZWN0KFtwLm1hdGNoUSwgcC5hc3NlcnRpb25RLCBwLmRlZXBdKS50b0VxdWFsKFtmYWxzZSwgZmFsc2UsIGZhbHNlXSk7CiAgICBleHBlY3QocXVpelN0eWxlKHApKS50b0JlKCIiKTsKICB9KTsKICBpdCgiTWF0Y2ggKyBBc3NlcnRpb24gYWx0ZXJuYXRlIG9ubHkgdGhvc2UgdHlwZXMiLCAoKSA9PiB7CiAgICBjb25zdCBzID0gcXVpelN0eWxlKHBhcnNlQ2FsbFByZWZzKHsgbWF0Y2hROiB0cnVlLCBhc3NlcnRpb25ROiB0cnVlIH0pKTsKICAgIGV4cGVjdChzKS50b0NvbnRhaW4oIk9OTFkgdGhlc2UgTkVFVCBxdWVzdGlvbiB0eXBlcywgYWx0ZXJuYXRpbmc6IE1hdGNoIHRoZSBGb2xsb3dpbmcgYW5kIEFzc2VydGlvbuKAk1JlYXNvbiIpOwogIH0pOwogIGl0KCJkZWVwIG1vZGUgdXNlcyBOQ0VSVCBCaW9sb2d5IiwgKCkgPT4gewogICAgZXhwZWN0KHF1aXpTdHlsZShwYXJzZUNhbGxQcmVmcyh7IGRlZXA6IHRydWUgfSkpKS50b0NvbnRhaW4oIk5DRVJUIENsYXNzIDExLzEyIEJpb2xvZ3kiKTsKICB9KTsKfSk7Cg==
+// @vitest-environment node
+import { describe, expect, it } from "vitest";
+import { parseCallPrefs, quizStyle } from "./live-relay.server";
+
+describe("voice quiz question styles", () => {
+  it("defaults all style toggles off", () => {
+    const p = parseCallPrefs({ quiz: true });
+    expect([p.matchQ, p.assertionQ, p.deep]).toEqual([false, false, false]);
+    expect(quizStyle(p)).toBe("");
+  });
+  it("Match + Assertion alternate only those types", () => {
+    const s = quizStyle(parseCallPrefs({ matchQ: true, assertionQ: true }));
+    expect(s).toContain("ONLY these NEET question types, alternating: Match the Following and Assertion–Reason");
+  });
+  it("deep mode uses NCERT Biology", () => {
+    expect(quizStyle(parseCallPrefs({ deep: true }))).toContain("NCERT Class 11/12 Biology");
+  });
+});

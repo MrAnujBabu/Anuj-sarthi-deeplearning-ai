@@ -1,1 +1,54 @@
-Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGJlZm9yZUVhY2gsIGRlc2NyaWJlLCBleHBlY3QsIGl0LCB2aSB9IGZyb20gJ3ZpdGVzdCc7Cgpjb25zdCBtYXliZVNpbmdsZSA9IHZpLmZuKCk7CnZpLm1vY2soJ0AvaW50ZWdyYXRpb25zL3N1cGFiYXNlL2NsaWVudC5zZXJ2ZXInLCAoKSA9PiAoewogIHN1cGFiYXNlQWRtaW46IHsgZnJvbTogKCkgPT4gKHsgc2VsZWN0OiAoKSA9PiAoeyBlcTogKCkgPT4gKHsgbWF5YmVTaW5nbGUgfSkgfSkgfSkgfSwKfSkpOwoKaW1wb3J0IHsgZ2V0QWlQYXVzZSwgc2V0QWlQYXVzZSB9IGZyb20gJ0AvbGliL2FpL3BhdXNlLnNlcnZlcic7CgpiZWZvcmVFYWNoKCgpID0+IHsKICBtYXliZVNpbmdsZS5tb2NrUmVzZXQoKS5tb2NrUmVzb2x2ZWRWYWx1ZSh7IGRhdGE6IG51bGwsIGVycm9yOiBudWxsIH0pOwogIHZpLnVzZUZha2VUaW1lcnMoKTsKfSk7CgpkZXNjcmliZSgnQUkgcGF1c2UgY2FjaGUgKGZyZWUtdGllciBkYXRhYmFzZSBzdGF5cyBxdWlldCknLCAoKSA9PiB7CiAgaXQoJ3JlYWRzIHRoZSBkYXRhYmFzZSBhdCBtb3N0IG9uY2UgcGVyIG1pbnV0ZScsIGFzeW5jICgpID0+IHsKICAgIGF3YWl0IGdldEFpUGF1c2UoKTsKICAgIGF3YWl0IGdldEFpUGF1c2UoKTsKICAgIGV4cGVjdChtYXliZVNpbmdsZSkudG9IYXZlQmVlbkNhbGxlZFRpbWVzKDEpOwogICAgdmkuYWR2YW5jZVRpbWVyc0J5VGltZSg2MV8wMDApOwogICAgYXdhaXQgZ2V0QWlQYXVzZSgpOwogICAgZXhwZWN0KG1heWJlU2luZ2xlKS50b0hhdmVCZWVuQ2FsbGVkVGltZXMoMik7CiAgfSk7CgogIGl0KCdhIGZyZXNobHkgc2F2ZWQgcGF1c2UgaXMgdmlzaWJsZSBpbW1lZGlhdGVseSAoY2FjaGUgaW52YWxpZGF0ZWQpJywgYXN5bmMgKCkgPT4gewogICAgYXdhaXQgc2V0QWlQYXVzZSh7IGtpbmQ6ICdjcmVkaXRzJywgbWVzc2FnZTogJ25vIGNyZWRpdHMnIH0gYXMgbmV2ZXIpOwogICAgY29uc3QgcGF1c2VkID0gYXdhaXQgZ2V0QWlQYXVzZSgpOwogICAgZXhwZWN0KHBhdXNlZCkudG9CZU51bGwoKTsKICAgIGV4cGVjdChtYXliZVNpbmdsZSkudG9IYXZlQmVlbkNhbGxlZFRpbWVzKDEpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCd3b3Jrc3BhY2UgYW5kIG1vZGVsIHBhdXNlcyBhcmUgY2FjaGVkIHNlcGFyYXRlbHknLCAoKSA9PiB7CiAgaXQoJ2FsdGVybmF0aW5nIHdvcmtzcGFjZS9tb2RlbCByZWFkcyBoaXQgdGhlIGRhdGFiYXNlIG9uY2UgZWFjaCBwZXIgbWludXRlJywgYXN5bmMgKCkgPT4gewogICAgdmkuYWR2YW5jZVRpbWVyc0J5VGltZSgxMjBfMDAwKTsKICAgIG1heWJlU2luZ2xlLm1vY2tDbGVhcigpOwogICAgZm9yIChsZXQgaSA9IDA7IGkgPCAzOyBpKyspIHsgYXdhaXQgZ2V0QWlQYXVzZSgpOyBhd2FpdCBnZXRBaVBhdXNlKCdhbnRocm9waWMvY2xhdWRlLWZhYmxlLTUtMScpOyB9CiAgICBleHBlY3QobWF5YmVTaW5nbGUpLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygyKTsKICB9KTsKfSk7CgpkZXNjcmliZSgnc3RhbGUga2V5IHJvd3MgbmV2ZXIgYmxvY2sgbmV3IHJlcXVlc3RzJywgKCkgPT4gewogIGl0KCJpZ25vcmVzIGEgc2F2ZWQgJ2tleSBub3QgcmVnaXN0ZXJlZCcgcGF1c2UgbGVmdCBieSBhbiBvbGRlciBidWlsZCIsIGFzeW5jICgpID0+IHsKICAgIHZpLmFkdmFuY2VUaW1lcnNCeVRpbWUoMTIwXzAwMCk7CiAgICBtYXliZVNpbmdsZS5tb2NrUmVzb2x2ZWRWYWx1ZSh7IGRhdGE6IHsgaWQ6ICdhbnRocm9waWMvY2xhdWRlLWZhYmxlLTUtMScsIGtpbmQ6ICdkZW5pZWQnLCBtZXNzYWdlOiAnTE9WQUJMRV9BUElfS0VZIGlzIG5vdCByZWdpc3RlcmVkIGZvciB0aGlzIHByb2plY3QnIH0sIGVycm9yOiBudWxsIH0pOwogICAgZXhwZWN0KGF3YWl0IGdldEFpUGF1c2UoJ2FudGhyb3BpYy9jbGF1ZGUtZmFibGUtNS0xJykpLnRvQmVOdWxsKCk7CiAgfSk7CiAgaXQoJ2tlZXBzIGEgZ2VudWluZSBwcm92aWRlciBkZW5pYWwgaW4gcGxhY2UnLCBhc3luYyAoKSA9PiB7CiAgICB2aS5hZHZhbmNlVGltZXJzQnlUaW1lKDEyMF8wMDApOwogICAgbWF5YmVTaW5nbGUubW9ja1Jlc29sdmVkVmFsdWUoeyBkYXRhOiB7IGlkOiAnYW50aHJvcGljL2NsYXVkZS1vcHVzLTUnLCBraW5kOiAnZGVuaWVkJywgbWVzc2FnZTogJ0FjY2VzcyBkZW5pZWQgYnkgcHJvdmlkZXInIH0sIGVycm9yOiBudWxsIH0pOwogICAgZXhwZWN0KGF3YWl0IGdldEFpUGF1c2UoJ2FudGhyb3BpYy9jbGF1ZGUtb3B1cy01JykpLnRvTWF0Y2hPYmplY3QoeyBraW5kOiAnZGVuaWVkJyB9KTsKICB9KTsKfSk7Cg==
+// @vitest-environment node
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+const maybeSingle = vi.fn();
+vi.mock('@/integrations/supabase/client.server', () => ({
+  supabaseAdmin: { from: () => ({ select: () => ({ eq: () => ({ maybeSingle }) }) }) },
+}));
+
+import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
+
+beforeEach(() => {
+  maybeSingle.mockReset().mockResolvedValue({ data: null, error: null });
+  vi.useFakeTimers();
+});
+
+describe('AI pause cache (free-tier database stays quiet)', () => {
+  it('reads the database at most once per minute', async () => {
+    await getAiPause();
+    await getAiPause();
+    expect(maybeSingle).toHaveBeenCalledTimes(1);
+    vi.advanceTimersByTime(61_000);
+    await getAiPause();
+    expect(maybeSingle).toHaveBeenCalledTimes(2);
+  });
+
+  it('a freshly saved pause is visible immediately (cache invalidated)', async () => {
+    await setAiPause({ kind: 'credits', message: 'no credits' } as never);
+    const paused = await getAiPause();
+    expect(paused).toBeNull();
+    expect(maybeSingle).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('workspace and model pauses are cached separately', () => {
+  it('alternating workspace/model reads hit the database once each per minute', async () => {
+    vi.advanceTimersByTime(120_000);
+    maybeSingle.mockClear();
+    for (let i = 0; i < 3; i++) { await getAiPause(); await getAiPause('anthropic/claude-fable-5-1'); }
+    expect(maybeSingle).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('stale key rows never block new requests', () => {
+  it("ignores a saved 'key not registered' pause left by an older build", async () => {
+    vi.advanceTimersByTime(120_000);
+    maybeSingle.mockResolvedValue({ data: { id: 'anthropic/claude-fable-5-1', kind: 'denied', message: 'LOVABLE_API_KEY is not registered for this project' }, error: null });
+    expect(await getAiPause('anthropic/claude-fable-5-1')).toBeNull();
+  });
+  it('keeps a genuine provider denial in place', async () => {
+    vi.advanceTimersByTime(120_000);
+    maybeSingle.mockResolvedValue({ data: { id: 'anthropic/claude-opus-5', kind: 'denied', message: 'Access denied by provider' }, error: null });
+    expect(await getAiPause('anthropic/claude-opus-5')).toMatchObject({ kind: 'denied' });
+  });
+});

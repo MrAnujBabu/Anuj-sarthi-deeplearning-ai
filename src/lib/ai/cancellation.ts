@@ -1,1 +1,4 @@
-LyoqIENhbmNlbGxhdGlvbiBpcyBhIG5vcm1hbCB0ZXJtaW5hbCBvdXRjb21lLCBub3QgYSBwcm92aWRlciBmYWlsdXJlIG9yIHJldHJ5LiAqLwpleHBvcnQgZnVuY3Rpb24gaXNBaUNhbmNlbGxhdGlvbihlcnJvcjogdW5rbm93biwgc2lnbmFsPzogQWJvcnRTaWduYWwpOiBib29sZWFuIHsKICByZXR1cm4gc2lnbmFsPy5hYm9ydGVkID09PSB0cnVlIHx8IChlcnJvciAhPT0gbnVsbCAmJiB0eXBlb2YgZXJyb3IgPT09ICdvYmplY3QnICYmICduYW1lJyBpbiBlcnJvciAmJiBlcnJvci5uYW1lID09PSAnQWJvcnRFcnJvcicpOwp9
+/** Cancellation is a normal terminal outcome, not a provider failure or retry. */
+export function isAiCancellation(error: unknown, signal?: AbortSignal): boolean {
+  return signal?.aborted === true || (error !== null && typeof error === 'object' && 'name' in error && error.name === 'AbortError');
+}

@@ -1,1 +1,168 @@
-InVzZSBjbGllbnQiOwoKaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAiQC9jb21wb25lbnRzL3VpL2J1dHRvbiI7CmltcG9ydCB7IGNuIH0gZnJvbSAiQC9saWIvdXRpbHMiOwppbXBvcnQgdHlwZSB7IFVJTWVzc2FnZSB9IGZyb20gImFpIjsKaW1wb3J0IHsgQXJyb3dEb3duSWNvbiwgRG93bmxvYWRJY29uIH0gZnJvbSAibHVjaWRlLXJlYWN0IjsKaW1wb3J0IHR5cGUgeyBDb21wb25lbnRQcm9wcyB9IGZyb20gInJlYWN0IjsKaW1wb3J0IHsgdXNlQ2FsbGJhY2sgfSBmcm9tICJyZWFjdCI7CmltcG9ydCB7IFN0aWNrVG9Cb3R0b20sIHVzZVN0aWNrVG9Cb3R0b21Db250ZXh0IH0gZnJvbSAidXNlLXN0aWNrLXRvLWJvdHRvbSI7CgpleHBvcnQgdHlwZSBDb252ZXJzYXRpb25Qcm9wcyA9IENvbXBvbmVudFByb3BzPHR5cGVvZiBTdGlja1RvQm90dG9tPjsKCmV4cG9ydCBjb25zdCBDb252ZXJzYXRpb24gPSAoeyBjbGFzc05hbWUsIC4uLnByb3BzIH06IENvbnZlcnNhdGlvblByb3BzKSA9PiAoCiAgPFN0aWNrVG9Cb3R0b20KICAgIGNsYXNzTmFtZT17Y24oInJlbGF0aXZlIGZsZXgtMSBvdmVyZmxvdy15LWhpZGRlbiIsIGNsYXNzTmFtZSl9CiAgICBpbml0aWFsPSJzbW9vdGgiCiAgICByZXNpemU9InNtb290aCIKICAgIHJvbGU9ImxvZyIKICAgIHsuLi5wcm9wc30KICAvPgopOwoKZXhwb3J0IHR5cGUgQ29udmVyc2F0aW9uQ29udGVudFByb3BzID0gQ29tcG9uZW50UHJvcHM8CiAgdHlwZW9mIFN0aWNrVG9Cb3R0b20uQ29udGVudAo+OwoKZXhwb3J0IGNvbnN0IENvbnZlcnNhdGlvbkNvbnRlbnQgPSAoewogIGNsYXNzTmFtZSwKICAuLi5wcm9wcwp9OiBDb252ZXJzYXRpb25Db250ZW50UHJvcHMpID0+ICgKICA8U3RpY2tUb0JvdHRvbS5Db250ZW50CiAgICBjbGFzc05hbWU9e2NuKCJmbGV4IGZsZXgtY29sIGdhcC04IHAtNCIsIGNsYXNzTmFtZSl9CiAgICB7Li4ucHJvcHN9CiAgLz4KKTsKCmV4cG9ydCB0eXBlIENvbnZlcnNhdGlvbkVtcHR5U3RhdGVQcm9wcyA9IENvbXBvbmVudFByb3BzPCJkaXYiPiAmIHsKICB0aXRsZT86IHN0cmluZzsKICBkZXNjcmlwdGlvbj86IHN0cmluZzsKICBpY29uPzogUmVhY3QuUmVhY3ROb2RlOwp9OwoKZXhwb3J0IGNvbnN0IENvbnZlcnNhdGlvbkVtcHR5U3RhdGUgPSAoewogIGNsYXNzTmFtZSwKICB0aXRsZSA9ICJObyBtZXNzYWdlcyB5ZXQiLAogIGRlc2NyaXB0aW9uID0gIlN0YXJ0IGEgY29udmVyc2F0aW9uIHRvIHNlZSBtZXNzYWdlcyBoZXJlIiwKICBpY29uLAogIGNoaWxkcmVuLAogIC4uLnByb3BzCn06IENvbnZlcnNhdGlvbkVtcHR5U3RhdGVQcm9wcykgPT4gKAogIDxkaXYKICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICJmbGV4IHNpemUtZnVsbCBmbGV4LWNvbCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgZ2FwLTMgcC04IHRleHQtY2VudGVyIiwKICAgICAgY2xhc3NOYW1lCiAgICApfQogICAgey4uLnByb3BzfQogID4KICAgIHtjaGlsZHJlbiA/PyAoCiAgICAgIDw+CiAgICAgICAge2ljb24gJiYgPGRpdiBjbGFzc05hbWU9InRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+e2ljb259PC9kaXY+fQogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJzcGFjZS15LTEiPgogICAgICAgICAgPGgzIGNsYXNzTmFtZT0iZm9udC1tZWRpdW0gdGV4dC1zbSI+e3RpdGxlfTwvaDM+CiAgICAgICAgICB7ZGVzY3JpcHRpb24gJiYgKAogICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtbXV0ZWQtZm9yZWdyb3VuZCB0ZXh0LXNtIj57ZGVzY3JpcHRpb259PC9wPgogICAgICAgICAgKX0KICAgICAgICA8L2Rpdj4KICAgICAgPC8+CiAgICApfQogIDwvZGl2PgopOwoKZXhwb3J0IHR5cGUgQ29udmVyc2F0aW9uU2Nyb2xsQnV0dG9uUHJvcHMgPSBDb21wb25lbnRQcm9wczx0eXBlb2YgQnV0dG9uPjsKCmV4cG9ydCBjb25zdCBDb252ZXJzYXRpb25TY3JvbGxCdXR0b24gPSAoewogIGNsYXNzTmFtZSwKICAuLi5wcm9wcwp9OiBDb252ZXJzYXRpb25TY3JvbGxCdXR0b25Qcm9wcykgPT4gewogIGNvbnN0IHsgaXNBdEJvdHRvbSwgc2Nyb2xsVG9Cb3R0b20gfSA9IHVzZVN0aWNrVG9Cb3R0b21Db250ZXh0KCk7CgogIGNvbnN0IGhhbmRsZVNjcm9sbFRvQm90dG9tID0gdXNlQ2FsbGJhY2soKCkgPT4gewogICAgc2Nyb2xsVG9Cb3R0b20oKTsKICB9LCBbc2Nyb2xsVG9Cb3R0b21dKTsKCiAgcmV0dXJuICgKICAgICFpc0F0Qm90dG9tICYmICgKICAgICAgPEJ1dHRvbgogICAgICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICAgICAiYWJzb2x1dGUgYm90dG9tLTQgbGVmdC1bNTAlXSB0cmFuc2xhdGUteC1bLTUwJV0gcm91bmRlZC1mdWxsIGRhcms6YmctYmFja2dyb3VuZCBkYXJrOmhvdmVyOmJnLW11dGVkIiwKICAgICAgICAgIGNsYXNzTmFtZQogICAgICAgICl9CiAgICAgICAgb25DbGljaz17aGFuZGxlU2Nyb2xsVG9Cb3R0b219CiAgICAgICAgc2l6ZT0iaWNvbiIKICAgICAgICB0eXBlPSJidXR0b24iCiAgICAgICAgdmFyaWFudD0ib3V0bGluZSIKICAgICAgICB7Li4ucHJvcHN9CiAgICAgID4KICAgICAgICA8QXJyb3dEb3duSWNvbiBjbGFzc05hbWU9InNpemUtNCIgLz4KICAgICAgPC9CdXR0b24+CiAgICApCiAgKTsKfTsKCmNvbnN0IGdldE1lc3NhZ2VUZXh0ID0gKG1lc3NhZ2U6IFVJTWVzc2FnZSk6IHN0cmluZyA9PgogIG1lc3NhZ2UucGFydHMKICAgIC5maWx0ZXIoKHBhcnQpID0+IHBhcnQudHlwZSA9PT0gInRleHQiKQogICAgLm1hcCgocGFydCkgPT4gcGFydC50ZXh0KQogICAgLmpvaW4oIiIpOwoKZXhwb3J0IHR5cGUgQ29udmVyc2F0aW9uRG93bmxvYWRQcm9wcyA9IE9taXQ8CiAgQ29tcG9uZW50UHJvcHM8dHlwZW9mIEJ1dHRvbj4sCiAgIm9uQ2xpY2siCj4gJiB7CiAgbWVzc2FnZXM6IFVJTWVzc2FnZVtdOwogIGZpbGVuYW1lPzogc3RyaW5nOwogIGZvcm1hdE1lc3NhZ2U/OiAobWVzc2FnZTogVUlNZXNzYWdlLCBpbmRleDogbnVtYmVyKSA9PiBzdHJpbmc7Cn07Cgpjb25zdCBkZWZhdWx0Rm9ybWF0TWVzc2FnZSA9IChtZXNzYWdlOiBVSU1lc3NhZ2UpOiBzdHJpbmcgPT4gewogIGNvbnN0IHJvbGVMYWJlbCA9CiAgICBtZXNzYWdlLnJvbGUuY2hhckF0KDApLnRvVXBwZXJDYXNlKCkgKyBtZXNzYWdlLnJvbGUuc2xpY2UoMSk7CiAgcmV0dXJuIGAqKiR7cm9sZUxhYmVsfToqKiAke2dldE1lc3NhZ2VUZXh0KG1lc3NhZ2UpfWA7Cn07CgpleHBvcnQgY29uc3QgbWVzc2FnZXNUb01hcmtkb3duID0gKAogIG1lc3NhZ2VzOiBVSU1lc3NhZ2VbXSwKICBmb3JtYXRNZXNzYWdlOiAoCiAgICBtZXNzYWdlOiBVSU1lc3NhZ2UsCiAgICBpbmRleDogbnVtYmVyCiAgKSA9PiBzdHJpbmcgPSBkZWZhdWx0Rm9ybWF0TWVzc2FnZQopOiBzdHJpbmcgPT4gbWVzc2FnZXMubWFwKChtc2csIGkpID0+IGZvcm1hdE1lc3NhZ2UobXNnLCBpKSkuam9pbigiXG5cbiIpOwoKZXhwb3J0IGNvbnN0IENvbnZlcnNhdGlvbkRvd25sb2FkID0gKHsKICBtZXNzYWdlcywKICBmaWxlbmFtZSA9ICJjb252ZXJzYXRpb24ubWQiLAogIGZvcm1hdE1lc3NhZ2UgPSBkZWZhdWx0Rm9ybWF0TWVzc2FnZSwKICBjbGFzc05hbWUsCiAgY2hpbGRyZW4sCiAgLi4ucHJvcHMKfTogQ29udmVyc2F0aW9uRG93bmxvYWRQcm9wcykgPT4gewogIGNvbnN0IGhhbmRsZURvd25sb2FkID0gdXNlQ2FsbGJhY2soKCkgPT4gewogICAgY29uc3QgbWFya2Rvd24gPSBtZXNzYWdlc1RvTWFya2Rvd24obWVzc2FnZXMsIGZvcm1hdE1lc3NhZ2UpOwogICAgY29uc3QgYmxvYiA9IG5ldyBCbG9iKFttYXJrZG93bl0sIHsgdHlwZTogInRleHQvbWFya2Rvd24iIH0pOwogICAgY29uc3QgdXJsID0gVVJMLmNyZWF0ZU9iamVjdFVSTChibG9iKTsKICAgIGNvbnN0IGxpbmsgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJhIik7CiAgICBsaW5rLmhyZWYgPSB1cmw7CiAgICBsaW5rLmRvd25sb2FkID0gZmlsZW5hbWU7CiAgICBkb2N1bWVudC5ib2R5LmFwcGVuZChsaW5rKTsKICAgIGxpbmsuY2xpY2soKTsKICAgIGxpbmsucmVtb3ZlKCk7CiAgICBVUkwucmV2b2tlT2JqZWN0VVJMKHVybCk7CiAgfSwgW21lc3NhZ2VzLCBmaWxlbmFtZSwgZm9ybWF0TWVzc2FnZV0pOwoKICByZXR1cm4gKAogICAgPEJ1dHRvbgogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJhYnNvbHV0ZSB0b3AtNCByaWdodC00IHJvdW5kZWQtZnVsbCBkYXJrOmJnLWJhY2tncm91bmQgZGFyazpob3ZlcjpiZy1tdXRlZCIsCiAgICAgICAgY2xhc3NOYW1lCiAgICAgICl9CiAgICAgIG9uQ2xpY2s9e2hhbmRsZURvd25sb2FkfQogICAgICBzaXplPSJpY29uIgogICAgICB0eXBlPSJidXR0b24iCiAgICAgIHZhcmlhbnQ9Im91dGxpbmUiCiAgICAgIHsuLi5wcm9wc30KICAgID4KICAgICAge2NoaWxkcmVuID8/IDxEb3dubG9hZEljb24gY2xhc3NOYW1lPSJzaXplLTQiIC8+fQogICAgPC9CdXR0b24+CiAgKTsKfTsK
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import type { UIMessage } from "ai";
+import { ArrowDownIcon, DownloadIcon } from "lucide-react";
+import type { ComponentProps } from "react";
+import { useCallback } from "react";
+import { StickToBottom, useStickToBottomContext } from "use-stick-to-bottom";
+
+export type ConversationProps = ComponentProps<typeof StickToBottom>;
+
+export const Conversation = ({ className, ...props }: ConversationProps) => (
+  <StickToBottom
+    className={cn("relative flex-1 overflow-y-hidden", className)}
+    initial="smooth"
+    resize="smooth"
+    role="log"
+    {...props}
+  />
+);
+
+export type ConversationContentProps = ComponentProps<
+  typeof StickToBottom.Content
+>;
+
+export const ConversationContent = ({
+  className,
+  ...props
+}: ConversationContentProps) => (
+  <StickToBottom.Content
+    className={cn("flex flex-col gap-8 p-4", className)}
+    {...props}
+  />
+);
+
+export type ConversationEmptyStateProps = ComponentProps<"div"> & {
+  title?: string;
+  description?: string;
+  icon?: React.ReactNode;
+};
+
+export const ConversationEmptyState = ({
+  className,
+  title = "No messages yet",
+  description = "Start a conversation to see messages here",
+  icon,
+  children,
+  ...props
+}: ConversationEmptyStateProps) => (
+  <div
+    className={cn(
+      "flex size-full flex-col items-center justify-center gap-3 p-8 text-center",
+      className
+    )}
+    {...props}
+  >
+    {children ?? (
+      <>
+        {icon && <div className="text-muted-foreground">{icon}</div>}
+        <div className="space-y-1">
+          <h3 className="font-medium text-sm">{title}</h3>
+          {description && (
+            <p className="text-muted-foreground text-sm">{description}</p>
+          )}
+        </div>
+      </>
+    )}
+  </div>
+);
+
+export type ConversationScrollButtonProps = ComponentProps<typeof Button>;
+
+export const ConversationScrollButton = ({
+  className,
+  ...props
+}: ConversationScrollButtonProps) => {
+  const { isAtBottom, scrollToBottom } = useStickToBottomContext();
+
+  const handleScrollToBottom = useCallback(() => {
+    scrollToBottom();
+  }, [scrollToBottom]);
+
+  return (
+    !isAtBottom && (
+      <Button
+        className={cn(
+          "absolute bottom-4 left-[50%] translate-x-[-50%] rounded-full dark:bg-background dark:hover:bg-muted",
+          className
+        )}
+        onClick={handleScrollToBottom}
+        size="icon"
+        type="button"
+        variant="outline"
+        {...props}
+      >
+        <ArrowDownIcon className="size-4" />
+      </Button>
+    )
+  );
+};
+
+const getMessageText = (message: UIMessage): string =>
+  message.parts
+    .filter((part) => part.type === "text")
+    .map((part) => part.text)
+    .join("");
+
+export type ConversationDownloadProps = Omit<
+  ComponentProps<typeof Button>,
+  "onClick"
+> & {
+  messages: UIMessage[];
+  filename?: string;
+  formatMessage?: (message: UIMessage, index: number) => string;
+};
+
+const defaultFormatMessage = (message: UIMessage): string => {
+  const roleLabel =
+    message.role.charAt(0).toUpperCase() + message.role.slice(1);
+  return `**${roleLabel}:** ${getMessageText(message)}`;
+};
+
+export const messagesToMarkdown = (
+  messages: UIMessage[],
+  formatMessage: (
+    message: UIMessage,
+    index: number
+  ) => string = defaultFormatMessage
+): string => messages.map((msg, i) => formatMessage(msg, i)).join("\n\n");
+
+export const ConversationDownload = ({
+  messages,
+  filename = "conversation.md",
+  formatMessage = defaultFormatMessage,
+  className,
+  children,
+  ...props
+}: ConversationDownloadProps) => {
+  const handleDownload = useCallback(() => {
+    const markdown = messagesToMarkdown(messages, formatMessage);
+    const blob = new Blob([markdown], { type: "text/markdown" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }, [messages, filename, formatMessage]);
+
+  return (
+    <Button
+      className={cn(
+        "absolute top-4 right-4 rounded-full dark:bg-background dark:hover:bg-muted",
+        className
+      )}
+      onClick={handleDownload}
+      size="icon"
+      type="button"
+      variant="outline"
+      {...props}
+    >
+      {children ?? <DownloadIcon className="size-4" />}
+    </Button>
+  );
+};

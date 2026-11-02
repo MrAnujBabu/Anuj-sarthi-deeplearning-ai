@@ -1,1 +1,66 @@
-Ly8gQnJvd3NlciBzcGVlY2ggZmV0Y2ggZm9yIHRoZSBZb3VUdWJl4oaSSGluZGkgcGFnZTogU2FydmFtIGZpcnN0LCBMb3ZhYmxlIEFJIHZvaWNlIGFzIGJhY2t1cC4KaW1wb3J0IHR5cGUgeyBTYXJ2YW1Wb2ljZSB9IGZyb20gJy4vc2FydmFtLXNwZWVjaCc7CmltcG9ydCB7IFlPVVRVQkVfVk9JQ0VfUFJPRklMRVMgfSBmcm9tICcuL3lvdXR1YmUtdm9pY2UtcHJvZmlsZSc7CgpleHBvcnQgY29uc3QgWU9VVFVCRV9TUEVFQ0hfTU9ERUwgPSAnZ29vZ2xlL2dlbWluaS0yLjUtcHJvLXR0cyc7CgovKiogSG93IGxvbmcgdGhlIGJhY2t1cCB2b2ljZSBpcyB1c2VkIGJlZm9yZSBTYXJ2YW0gaXMgdHJpZWQgYWdhaW4gKGNyZWRpdHMgbWF5IGJlIHRvcHBlZCB1cCkuICovCmV4cG9ydCBjb25zdCBTQVJWQU1fUkVUUllfTVMgPSAyICogNjAgKiAxMDAwOwoKLyoqIFZvaWNlLWVuZ2luZSB0b2dnbGU6ICdzYXJ2YW0nID0gU2FydmFtIGZpcnN0IHdpdGggYXV0b21hdGljIExvdmFibGUgYmFja3VwOyAnbG92YWJsZScgPSBhbHdheXMgdGhlIExvdmFibGUgdm9pY2UuICovCmV4cG9ydCB0eXBlIFlvdVR1YmVWb2ljZUVuZ2luZSA9ICdzYXJ2YW0nIHwgJ2xvdmFibGUnOwpleHBvcnQgY29uc3QgWU9VVFVCRV9WT0lDRV9FTkdJTkVfS0VZID0gJ3NuYXBzb2x2ZS55b3V0dWJlLXZvaWNlLWVuZ2luZSc7CgovKiogT25jZSBTYXJ2YW0gZmFpbHMsIHRoZSBiYWNrdXAgdm9pY2UgaXMgdXNlZCB1bnRpbCBgYmFja3VwVW50aWxgLCB0aGVuIFNhcnZhbSBpcyByZXRyaWVkLiBgZm9yY2VCYWNrdXBgIGlzIHRoZSB1c2VyJ3MgZW5naW5lIHRvZ2dsZS4gKi8KZXhwb3J0IGNvbnN0IHNwZWVjaFN0YXRlID0geyB1c2VCYWNrdXA6IGZhbHNlLCBiYWNrdXBVbnRpbDogMCwgZm9yY2VCYWNrdXA6IGZhbHNlIH07CgovKiogUmVhZHMgdGhlIHNhdmVkIGVuZ2luZSBjaG9pY2U7IGRlZmF1bHRzIHRvIFNhcnZhbS1maXJzdC4gQnJvd3Nlci1vbmx5IChjYWxsIGZyb20gYW4gZWZmZWN0KS4gKi8KZXhwb3J0IGZ1bmN0aW9uIHJlYWRZb3VUdWJlVm9pY2VFbmdpbmUoKTogWW91VHViZVZvaWNlRW5naW5lIHsKICB0cnkgeyByZXR1cm4gbG9jYWxTdG9yYWdlLmdldEl0ZW0oWU9VVFVCRV9WT0lDRV9FTkdJTkVfS0VZKSA9PT0gJ2xvdmFibGUnID8gJ2xvdmFibGUnIDogJ3NhcnZhbSc7IH0KICBjYXRjaCB7IHJldHVybiAnc2FydmFtJzsgfQp9CgovKiogQXBwbGllcyBhbmQgc2F2ZXMgdGhlIGVuZ2luZSBjaG9pY2U7IHJldHVybmluZyB0byBTYXJ2YW0gY2xlYXJzIGFueSBhY3RpdmUgYmFja3VwIGhvbGQuICovCmV4cG9ydCBmdW5jdGlvbiBzZXRZb3VUdWJlVm9pY2VFbmdpbmUoZW5naW5lOiBZb3VUdWJlVm9pY2VFbmdpbmUpIHsKICBzcGVlY2hTdGF0ZS5mb3JjZUJhY2t1cCA9IGVuZ2luZSA9PT0gJ2xvdmFibGUnOwogIGlmICghc3BlZWNoU3RhdGUuZm9yY2VCYWNrdXApIHsgc3BlZWNoU3RhdGUudXNlQmFja3VwID0gZmFsc2U7IHNwZWVjaFN0YXRlLmJhY2t1cFVudGlsID0gMDsgfQogIHRyeSB7IGxvY2FsU3RvcmFnZS5zZXRJdGVtKFlPVVRVQkVfVk9JQ0VfRU5HSU5FX0tFWSwgZW5naW5lKTsgfSBjYXRjaCB7IC8qIGtlZXAgKi8gfQp9CgovKiogRWFjaCBTYXJ2YW0gdm9pY2UgZ2V0cyBpdHMgb3duIGNsb3Nlc3QtbWF0Y2hpbmcgYmFja3VwIHZvaWNlIChwaXRjaCwgZ2VuZGVyLCBlbmVyZ3kpLiAqLwpleHBvcnQgY29uc3QgQkFDS1VQX1ZPSUNFOiBSZWNvcmQ8U2FydmFtVm9pY2UsIHN0cmluZz4gPSB7CiAgc2h1YmhfaGlfY3VzdG9tZXI6ICdDaGFyb24nLAogIHJhdGFuX2hpX2N1c3RvbWVyX2V4cHJlc3NpdmU6ICdGZW5yaXInLAogIGFheWFuX2hpX2NvbnZlcnNhdGlvbmFsOiAnUHVjaycsCiAga2FiaXJfaGlfY29udmVyc2F0aW9uYWw6ICdPcnVzJywKICBzdW1pdF9oaV9jb252ZXJzYXRpb25hbDogJ0lhcGV0dXMnLAogIGthdnlhX2hpX2NvbnZlcnNhdGlvbmFsOiAnQW9lZGUnLAogIGlzaGl0YV9oaV9lZHRlY2g6ICdLb3JlJywKICBzaW1yYW5faGlfY29udmVyc2F0aW9uOiAnTGVkYScsCiAgYXBhcm5hX2hpX2N1c3RvbWVyOiAnU3VsYWZhdCcsCn07CgovKiogU2FydmFtIGZhaWx1cmVzIHRoYXQgYSBiYWNrdXAgdm9pY2UgY2FuIGNvdmVyOiBjcmVkaXRzLCBhY2Nlc3MsIGJ1c3ksIG91dGFnZSwgbmV0d29yay4gKi8KZXhwb3J0IGZ1bmN0aW9uIHNob3VsZFVzZUJhY2t1cChzdGF0dXM6IG51bWJlciB8ICduZXR3b3JrJykgewogIHJldHVybiBzdGF0dXMgPT09ICduZXR3b3JrJyB8fCBzdGF0dXMgPT09IDQwMiB8fCBzdGF0dXMgPT09IDQwMyB8fCBzdGF0dXMgPT09IDQyOSB8fCBzdGF0dXMgPT09IDQwMSB8fCBzdGF0dXMgPj0gNTAwOwp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZmV0Y2hIaW5kaVNwZWVjaCh0ZXh0OiBzdHJpbmcsIHZvaWNlOiBTYXJ2YW1Wb2ljZSwgc2lnbmFsOiBBYm9ydFNpZ25hbCwgbm93ID0gRGF0ZS5ub3coKSwgZW5naW5lPzogWW91VHViZVZvaWNlRW5naW5lKTogUHJvbWlzZTxSZXNwb25zZT4gewogIGNvbnN0IGZvcmNlQmFja3VwID0gZW5naW5lID8gZW5naW5lID09PSAnbG92YWJsZScgOiBzcGVlY2hTdGF0ZS5mb3JjZUJhY2t1cDsKICBpZiAoIWZvcmNlQmFja3VwICYmIHNwZWVjaFN0YXRlLnVzZUJhY2t1cCAmJiBub3cgPj0gc3BlZWNoU3RhdGUuYmFja3VwVW50aWwpIHNwZWVjaFN0YXRlLnVzZUJhY2t1cCA9IGZhbHNlOwogIGlmICghZm9yY2VCYWNrdXAgJiYgIXNwZWVjaFN0YXRlLnVzZUJhY2t1cCkgewogICAgbGV0IHN0YXR1czogbnVtYmVyIHwgJ25ldHdvcmsnID0gJ25ldHdvcmsnOwogICAgdHJ5IHsKICAgICAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goJy9hcGkvc2FydmFtLXNwZWVjaCcsIHsgbWV0aG9kOiAnUE9TVCcsIGhlYWRlcnM6IHsgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJyB9LCBib2R5OiBKU09OLnN0cmluZ2lmeSh7IHRleHQsIHZvaWNlIH0pLCBzaWduYWwgfSk7CiAgICAgIGlmIChyZXMub2sgJiYgcmVzLmJvZHkpIHJldHVybiByZXM7CiAgICAgIHN0YXR1cyA9IHJlcy5zdGF0dXM7CiAgICB9IGNhdGNoIChlcnJvcikgeyBpZiAoc2lnbmFsLmFib3J0ZWQpIHRocm93IGVycm9yOyB9CiAgICBpZiAoIXNob3VsZFVzZUJhY2t1cChzdGF0dXMpKSB0aHJvdyBuZXcgRXJyb3IoYFNwZWVjaCBmYWlsZWQgKCR7c3RhdHVzfSlgKTsKICAgIHNwZWVjaFN0YXRlLnVzZUJhY2t1cCA9IHRydWU7CiAgICBzcGVlY2hTdGF0ZS5iYWNrdXBVbnRpbCA9IG5vdyArIFNBUlZBTV9SRVRSWV9NUzsKICB9CiAgY29uc3QgcHJvZmlsZSA9IFlPVVRVQkVfVk9JQ0VfUFJPRklMRVNbdm9pY2VdOwogIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKCcvYXBpL3NwZWVjaCcsIHsgbWV0aG9kOiAnUE9TVCcsIGhlYWRlcnM6IHsgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJyB9LCBib2R5OiBKU09OLnN0cmluZ2lmeSh7IHRleHQsIHZvaWNlOiBwcm9maWxlLmdlbmRlciwgdm9pY2VOYW1lOiBwcm9maWxlLnZvaWNlTmFtZSwgeW91dHViZVBlcnNvbmE6IHZvaWNlIH0pLCBzaWduYWwgfSk7CiAgaWYgKCFyZXMub2sgfHwgIXJlcy5ib2R5KSB7IGNvbnN0IGogPSBhd2FpdCByZXMuanNvbigpLmNhdGNoKCgpID0+ICh7fSkpOyB0aHJvdyBuZXcgRXJyb3IoU3RyaW5nKGouZXJyb3IgfHwgYFNwZWVjaCBmYWlsZWQgKCR7cmVzLnN0YXR1c30pYCkpOyB9CiAgcmV0dXJuIHJlczsKfQo=
+// Browser speech fetch for the YouTube→Hindi page: Sarvam first, Lovable AI voice as backup.
+import type { SarvamVoice } from './sarvam-speech';
+import { YOUTUBE_VOICE_PROFILES } from './youtube-voice-profile';
+
+export const YOUTUBE_SPEECH_MODEL = 'google/gemini-2.5-pro-tts';
+
+/** How long the backup voice is used before Sarvam is tried again (credits may be topped up). */
+export const SARVAM_RETRY_MS = 2 * 60 * 1000;
+
+/** Voice-engine toggle: 'sarvam' = Sarvam first with automatic Lovable backup; 'lovable' = always the Lovable voice. */
+export type YouTubeVoiceEngine = 'sarvam' | 'lovable';
+export const YOUTUBE_VOICE_ENGINE_KEY = 'snapsolve.youtube-voice-engine';
+
+/** Once Sarvam fails, the backup voice is used until `backupUntil`, then Sarvam is retried. `forceBackup` is the user's engine toggle. */
+export const speechState = { useBackup: false, backupUntil: 0, forceBackup: false };
+
+/** Reads the saved engine choice; defaults to Sarvam-first. Browser-only (call from an effect). */
+export function readYouTubeVoiceEngine(): YouTubeVoiceEngine {
+  try { return localStorage.getItem(YOUTUBE_VOICE_ENGINE_KEY) === 'lovable' ? 'lovable' : 'sarvam'; }
+  catch { return 'sarvam'; }
+}
+
+/** Applies and saves the engine choice; returning to Sarvam clears any active backup hold. */
+export function setYouTubeVoiceEngine(engine: YouTubeVoiceEngine) {
+  speechState.forceBackup = engine === 'lovable';
+  if (!speechState.forceBackup) { speechState.useBackup = false; speechState.backupUntil = 0; }
+  try { localStorage.setItem(YOUTUBE_VOICE_ENGINE_KEY, engine); } catch { /* keep */ }
+}
+
+/** Each Sarvam voice gets its own closest-matching backup voice (pitch, gender, energy). */
+export const BACKUP_VOICE: Record<SarvamVoice, string> = {
+  shubh_hi_customer: 'Charon',
+  ratan_hi_customer_expressive: 'Fenrir',
+  aayan_hi_conversational: 'Puck',
+  kabir_hi_conversational: 'Orus',
+  sumit_hi_conversational: 'Iapetus',
+  kavya_hi_conversational: 'Aoede',
+  ishita_hi_edtech: 'Kore',
+  simran_hi_conversation: 'Leda',
+  aparna_hi_customer: 'Sulafat',
+};
+
+/** Sarvam failures that a backup voice can cover: credits, access, busy, outage, network. */
+export function shouldUseBackup(status: number | 'network') {
+  return status === 'network' || status === 402 || status === 403 || status === 429 || status === 401 || status >= 500;
+}
+
+export async function fetchHindiSpeech(text: string, voice: SarvamVoice, signal: AbortSignal, now = Date.now(), engine?: YouTubeVoiceEngine): Promise<Response> {
+  const forceBackup = engine ? engine === 'lovable' : speechState.forceBackup;
+  if (!forceBackup && speechState.useBackup && now >= speechState.backupUntil) speechState.useBackup = false;
+  if (!forceBackup && !speechState.useBackup) {
+    let status: number | 'network' = 'network';
+    try {
+      const res = await fetch('/api/sarvam-speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, voice }), signal });
+      if (res.ok && res.body) return res;
+      status = res.status;
+    } catch (error) { if (signal.aborted) throw error; }
+    if (!shouldUseBackup(status)) throw new Error(`Speech failed (${status})`);
+    speechState.useBackup = true;
+    speechState.backupUntil = now + SARVAM_RETRY_MS;
+  }
+  const profile = YOUTUBE_VOICE_PROFILES[voice];
+  const res = await fetch('/api/speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, voice: profile.gender, voiceName: profile.voiceName, youtubePersona: voice }), signal });
+  if (!res.ok || !res.body) { const j = await res.json().catch(() => ({})); throw new Error(String(j.error || `Speech failed (${res.status})`)); }
+  return res;
+}

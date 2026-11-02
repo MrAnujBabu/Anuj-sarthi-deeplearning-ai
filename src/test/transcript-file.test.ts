@@ -1,1 +1,32 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBjbGFzc2lmeVRyYW5zY3JpcHRGaWxlLCBtYXJrZG93blRvVHJhbnNjcmlwdCwgY2xlYW5QZGZUZXh0LCBsaW1pdFRyYW5zY3JpcHQsIFRSQU5TQ1JJUFRfVEVYVF9MSU1JVCB9IGZyb20gJ0AvbGliL3RyYW5zY3JpcHQtZmlsZSc7CgpkZXNjcmliZSgndHJhbnNjcmlwdCBhdHRhY2htZW50cycsICgpID0+IHsKICBpdCgnc2VuZHMgdmlkZW8gYW5kIGF1ZGlvIGZpbGVzIHRvIHRoZSBsaXN0ZW5pbmcgcGF0aCcsICgpID0+IHsKICAgIGV4cGVjdChjbGFzc2lmeVRyYW5zY3JpcHRGaWxlKHsgbmFtZTogJ2xlY3R1cmUubXA0JywgdHlwZTogJycgfSkpLnRvQmUoJ21lZGlhJyk7CiAgICBleHBlY3QoY2xhc3NpZnlUcmFuc2NyaXB0RmlsZSh7IG5hbWU6ICdjbGFzcycsIHR5cGU6ICdhdWRpby9tcGVnJyB9KSkudG9CZSgnbWVkaWEnKTsKICB9KTsKCiAgaXQoJ2FjY2VwdHMgbWQsIHBkZiwgc3VidGl0bGVzIGFuZCBkb2N4IGFzIHRyYW5zY3JpcHQgdGV4dCcsICgpID0+IHsKICAgIGV4cGVjdChjbGFzc2lmeVRyYW5zY3JpcHRGaWxlKHsgbmFtZTogJ25vdGVzLm1kJywgdHlwZTogJycgfSkpLnRvQmUoJ21hcmtkb3duJyk7CiAgICBleHBlY3QoY2xhc3NpZnlUcmFuc2NyaXB0RmlsZSh7IG5hbWU6ICdub3Rlcy5wZGYnLCB0eXBlOiAnYXBwbGljYXRpb24vcGRmJyB9KSkudG9CZSgncGRmJyk7CiAgICBleHBlY3QoY2xhc3NpZnlUcmFuc2NyaXB0RmlsZSh7IG5hbWU6ICdzdWJzLnNydCcsIHR5cGU6ICcnIH0pKS50b0JlKCdzdWJ0aXRsZXMnKTsKICAgIGV4cGVjdChjbGFzc2lmeVRyYW5zY3JpcHRGaWxlKHsgbmFtZTogJ25vdGVzLmRvY3gnLCB0eXBlOiAnJyB9KSkudG9CZSgnb2ZmaWNlJyk7CiAgICBleHBlY3QoY2xhc3NpZnlUcmFuc2NyaXB0RmlsZSh7IG5hbWU6ICdwaG90by5wbmcnLCB0eXBlOiAnaW1hZ2UvcG5nJyB9KSkudG9CZSgndW5zdXBwb3J0ZWQnKTsKICB9KTsKCiAgaXQoJ2tlZXBzIHRoZSB3b3JkcyBvZiBtYXJrZG93biBub3RlcyBidXQgZHJvcHMgZm9ybWF0dGluZycsICgpID0+IHsKICAgIGNvbnN0IG1kID0gJy0tLVxudGl0bGU6IHhcbi0tLVxuIyBDZWxsXG4tICoqTWl0b2Nob25kcmlhKiogaXMgdGhlIFtwb3dlcmhvdXNlXShodHRwOi8vYS5iKVxuPiBbIW5vdGVdIFJlbWVtYmVyJzsKICAgIGV4cGVjdChtYXJrZG93blRvVHJhbnNjcmlwdChtZCkpLnRvQmUoJ0NlbGxcbk1pdG9jaG9uZHJpYSBpcyB0aGUgcG93ZXJob3VzZVxuUmVtZW1iZXInKTsKICB9KTsKCiAgaXQoJ3JlbW92ZXMgUERGIHBhZ2UgbWFya2VycyBzbyB0aGV5IGFyZSBub3QgaW50ZXJwcmV0ZWQnLCAoKSA9PiB7CiAgICBleHBlY3QoY2xlYW5QZGZUZXh0KCdbUGFnZSAxXVxuSGVsbG9cblxuW1BhZ2UgMl1cbldvcmxkJykpLnRvQmUoJ0hlbGxvXG5cbldvcmxkJyk7CiAgfSk7CgogIGl0KCdjYXBzIHZlcnkgbG9uZyBmaWxlcyBhdCB0aGUgc2VydmVyIHRyYW5zY3JpcHQgbGltaXQnLCAoKSA9PiB7CiAgICBjb25zdCByID0gbGltaXRUcmFuc2NyaXB0KCdhJy5yZXBlYXQoVFJBTlNDUklQVF9URVhUX0xJTUlUICsgNSkpOwogICAgZXhwZWN0KHIudHJ1bmNhdGVkKS50b0JlKHRydWUpOwogICAgZXhwZWN0KHIudGV4dC5sZW5ndGgpLnRvQmUoNDAwXzAwMCk7CiAgfSk7Cn0pOwo=
+import { describe, expect, it } from 'vitest';
+import { classifyTranscriptFile, markdownToTranscript, cleanPdfText, limitTranscript, TRANSCRIPT_TEXT_LIMIT } from '@/lib/transcript-file';
+
+describe('transcript attachments', () => {
+  it('sends video and audio files to the listening path', () => {
+    expect(classifyTranscriptFile({ name: 'lecture.mp4', type: '' })).toBe('media');
+    expect(classifyTranscriptFile({ name: 'class', type: 'audio/mpeg' })).toBe('media');
+  });
+
+  it('accepts md, pdf, subtitles and docx as transcript text', () => {
+    expect(classifyTranscriptFile({ name: 'notes.md', type: '' })).toBe('markdown');
+    expect(classifyTranscriptFile({ name: 'notes.pdf', type: 'application/pdf' })).toBe('pdf');
+    expect(classifyTranscriptFile({ name: 'subs.srt', type: '' })).toBe('subtitles');
+    expect(classifyTranscriptFile({ name: 'notes.docx', type: '' })).toBe('office');
+    expect(classifyTranscriptFile({ name: 'photo.png', type: 'image/png' })).toBe('unsupported');
+  });
+
+  it('keeps the words of markdown notes but drops formatting', () => {
+    const md = '---\ntitle: x\n---\n# Cell\n- **Mitochondria** is the [powerhouse](http://a.b)\n> [!note] Remember';
+    expect(markdownToTranscript(md)).toBe('Cell\nMitochondria is the powerhouse\nRemember');
+  });
+
+  it('removes PDF page markers so they are not interpreted', () => {
+    expect(cleanPdfText('[Page 1]\nHello\n\n[Page 2]\nWorld')).toBe('Hello\n\nWorld');
+  });
+
+  it('caps very long files at the server transcript limit', () => {
+    const r = limitTranscript('a'.repeat(TRANSCRIPT_TEXT_LIMIT + 5));
+    expect(r.truncated).toBe(true);
+    expect(r.text.length).toBe(400_000);
+  });
+});

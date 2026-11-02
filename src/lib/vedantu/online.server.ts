@@ -1,1 +1,150 @@
-aW1wb3J0IHsgVkVEQU5UVSwgVmVkYW50dUVycm9yLCBwb29sLCB2Z2V0LCB2cG9zdCwgdmVkYW50dVNlc3Npb24gfSBmcm9tICcuL2FwaS5zZXJ2ZXInOwppbXBvcnQgeyBwYXJzZUVucm9sbG1lbnRzLCBwYXJzZUJhdGNoZXMsIHBhcnNlU2NoZWR1bGVkU2Vzc2lvbnMsIHBhcnNlVGVzdExpc3RpbmdzLCBwYXJzZVRlc3RDb3VudHMsIG1lcmdlQ2xhc3NSb3dzLCBzbWFydE5vdGVzVG9NYXJrZG93biwgc21hcnROb3Rlc1RvTGVjdHVyZSwgcGFyc2VMZWN0dXJlVG9waWNzLCBub3Rlc1BkZlVybCwgdHlwZSBMZWN0dXJlTm90ZSwgdHlwZSBMZWN0dXJlVG9waWMsIHR5cGUgQ291cnNlUm93LCB0eXBlIEJhdGNoUmVmLCB0eXBlIENsYXNzUm93LCB0eXBlIFRlc3RSb3csIHR5cGUgQ291cnNlU3RhdHMgfSBmcm9tICcuL3BhcnNlJzsKCmNvbnN0IENMQVNTX1BBR0UgPSA1MDsKCmZ1bmN0aW9uIGRlcml2ZVRlc3RTdGF0dXModDogVGVzdFJvdywgbm93ID0gRGF0ZS5ub3coKSk6IFRlc3RSb3dbJ3N0YXR1cyddIHsKICBpZiAodC5hdHRlbXB0ZWRfYXQgfHwgdC5tYXJrcyAhPT0gbnVsbCkgcmV0dXJuICdhdHRlbXB0ZWQnOwogIGlmICh0LmNsb3Nlc19hdCAmJiBEYXRlLnBhcnNlKHQuY2xvc2VzX2F0KSA8IG5vdykgcmV0dXJuICdtaXNzZWQnOwogIGlmICh0Lm9wZW5zX2F0IHx8IHQuY2xvc2VzX2F0KSByZXR1cm4gJ3VwY29taW5nJzsKICByZXR1cm4gJ3ByYWN0aWNlJzsKfQpjb25zdCBDTEFTU19QQVNUX1BBR0VTID0gMTI7IC8vIHVwIHRvIDYwMCBwYXN0IGNsYXNzZXMgcGVyIGJhdGNoCmNvbnN0IENMQVNTX1VQQ09NSU5HX1BBR0VTID0gNDsKCmV4cG9ydCB0eXBlIE9ubGluZUNvdXJzZSA9IENvdXJzZVJvdyAmIHsgYmF0Y2hlczogQmF0Y2hSZWZbXTsgc3RhdHM6IENvdXJzZVN0YXRzOyBzeW5jZWRfYXQ6IHN0cmluZyB9OwoKLyoqIFByaXZhdGUgb25saW5lIHJlYWRzIG9ubHkuIE5vIGRhdGFiYXNlIGRlcGVuZGVuY3kgb3IgZHVyYWJsZSBjb250ZW50IGNhY2hlLiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZmV0Y2hPbmxpbmVDb3Vyc2VzKCk6IFByb21pc2U8T25saW5lQ291cnNlW10+IHsKICBjb25zdCBjb3Vyc2VzID0gcGFyc2VFbnJvbGxtZW50cyhhd2FpdCB2Z2V0KFZFREFOVFUuZW5yb2xsbWVudHMsIHsgdXNlcklkOiAne3VzZXJJZH0nLCBuZWVkRW5kZWRCdW5kbGVFbnJvbGxtZW50czogJ2ZhbHNlJywgY2FsbGluZ1VzZXJJZDogJ3t1c2VySWR9JyB9KSk7CiAgaWYgKCFjb3Vyc2VzLmxlbmd0aCkgdGhyb3cgbmV3IFZlZGFudHVFcnJvcignVmVkYW50dSByZXR1cm5lZCBubyBlbnJvbGxlZCBjb3Vyc2VzIGZvciB0aGlzIGFjY291bnQuJywgJ2h0dHAnKTsKICBjb25zdCByZXN1bHRzID0gYXdhaXQgcG9vbChjb3Vyc2VzLCAzLCBhc3luYyAoY291cnNlKSA9PiAoeyAuLi5jb3Vyc2UsCiAgICBiYXRjaGVzOiBwYXJzZUJhdGNoZXMoYXdhaXQgdmdldChWRURBTlRVLmJhdGNoZXMsIHsgdXNlcklkOiAne3VzZXJJZH0nLCBidW5kbGVFbnJvbGxtZW50SWQ6IGNvdXJzZS5lbnJvbGxtZW50X2lkLCBjbGFzc3Jvb21JZDogY291cnNlLmNsYXNzcm9vbV9pZCwgY2FsbGluZ1VzZXJJZDogJ3t1c2VySWR9JyB9KSksCiAgICBzdGF0czoge30sIHN5bmNlZF9hdDogbmV3IERhdGUoKS50b0lTT1N0cmluZygpLAogIH0pKTsKICByZXR1cm4gcmVzdWx0cy5tYXAoKHJlc3VsdCkgPT4gewogICAgaWYgKHJlc3VsdC5zdGF0dXMgPT09ICdyZWplY3RlZCcpIHRocm93IHJlc3VsdC5yZWFzb247CiAgICByZXR1cm4gcmVzdWx0LnZhbHVlOwogIH0pOwp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZmV0Y2hPbmxpbmVDb3Vyc2UoY291cnNlOiBPbmxpbmVDb3Vyc2UpIHsKICBjb25zdCBzZXNzaW9uID0gYXdhaXQgdmVkYW50dVNlc3Npb24oKTsKICBjb25zdCBjb250ZXh0cyA9IFtjb3Vyc2UuY2xhc3Nyb29tX2lkLCAuLi5jb3Vyc2UuYmF0Y2hlcy5tYXAoYiA9PiBiLmJhdGNoSWQpXS5maWx0ZXIoQm9vbGVhbik7CiAgY29uc3QgY2xhc3NlczogQ2xhc3NSb3dbXSA9IFtdOwogIGNvbnN0IHRlc3RzOiBUZXN0Um93W10gPSBbXTsKICBjb25zdCBhbGxUZXN0czogVGVzdFJvd1tdID0gW107CiAgbGV0IHdhcm5pbmdzID0gMDsKICBjb25zdCBqb2JzOiAoKCkgPT4gUHJvbWlzZTx2b2lkPilbXSA9IFthc3luYyAoKSA9PiB7CiAgICBjb25zdCBjb3VudHMgPSBwYXJzZVRlc3RDb3VudHMoYXdhaXQgdnBvc3QoVkVEQU5UVS50ZXN0Q291bnRzLCB7IGNvbnRleHRJZHM6IGNvbnRleHRzIH0pKTsKICAgIGlmIChjb3VudHMpIGNvdXJzZS5zdGF0cy50ZXN0cyA9IGNvdW50czsKICB9LCBhc3luYyAoKSA9PiB7CiAgICAvLyBPbmx5IHVwY29taW5nIHRlc3RzLCBub3QgYXR0ZW1wdGVkL21pc3NlZC9wcmFjdGljZSBoaXN0b3J5LgogICAgZm9yIChsZXQgcGFnZSA9IDA7IHBhZ2UgPCA4OyBwYWdlKyspIHsKICAgICAgY29uc3QganNvbiA9IGF3YWl0IHZwb3N0KFZFREFOVFUudGVzdExpc3RpbmdzLCB7IGNvbnRlbnRGaWx0ZXJUeXBlOiAnTElWRUFORFVQQ09NSU5HJywgY29udGV4dElkczogY29udGV4dHMsIHNpemU6IDUwLCBzdGFydDogcGFnZSAqIDUwLCBleGNsdWRlVW5zY2hlZHVsZWRUZXN0czogdHJ1ZSB9KTsKICAgICAgaWYgKCFBcnJheS5pc0FycmF5KGpzb24pKSB0aHJvdyBuZXcgRXJyb3IoJ1ZlZGFudHUgdGVzdCBsaXN0IHdhcyB1bmF2YWlsYWJsZS4nKTsKICAgICAgdGVzdHMucHVzaCguLi5wYXJzZVRlc3RMaXN0aW5ncyhqc29uLCAndXBjb21pbmcnLCBjb3Vyc2UuZW5yb2xsbWVudF9pZCkpOwogICAgICBpZiAoanNvbi5sZW5ndGggPCA1MCkgcmV0dXJuOwogICAgfQogICAgd2FybmluZ3MgKz0gMTsKICB9LCBhc3luYyAoKSA9PiB7CiAgICAvLyBGdWxsIHRlc3QgbGlzdCAoYXR0ZW1wdGVkLCBtaXNzZWQsIHByYWN0aWNlLCBQWVEsIEhXVC9EUFApIGZvciB0aGUgY2F0ZWdvcmllcyB2aWV3LgogICAgZm9yIChsZXQgcGFnZSA9IDA7IHBhZ2UgPCA2OyBwYWdlKyspIHsKICAgICAgY29uc3QganNvbiA9IGF3YWl0IHZwb3N0KFZFREFOVFUudGVzdExpc3RpbmdzLCB7IGNvbnRlbnRGaWx0ZXJUeXBlOiAnQUxMJywgY29udGV4dElkczogY29udGV4dHMsIHNpemU6IDUwLCBzdGFydDogcGFnZSAqIDUwIH0pOwogICAgICBpZiAoIUFycmF5LmlzQXJyYXkoanNvbikpIHRocm93IG5ldyBFcnJvcignVmVkYW50dSB0ZXN0IGxpc3Qgd2FzIHVuYXZhaWxhYmxlLicpOwogICAgICBhbGxUZXN0cy5wdXNoKC4uLnBhcnNlVGVzdExpc3RpbmdzKGpzb24sICdwcmFjdGljZScsIGNvdXJzZS5lbnJvbGxtZW50X2lkKS5tYXAodCA9PiAoeyAuLi50LCBzdGF0dXM6IGRlcml2ZVRlc3RTdGF0dXModCkgfSkpKTsKICAgICAgaWYgKGpzb24ubGVuZ3RoIDwgNTApIHJldHVybjsKICAgIH0KICAgIHdhcm5pbmdzICs9IDE7CiAgfV07CiAgZm9yIChjb25zdCBiYXRjaCBvZiBjb3Vyc2UuYmF0Y2hlcykgewogICAgLy8gUGFnZSB0aHJvdWdoIGVhY2ggbGlzdCB1bnRpbCBWZWRhbnR1IHJldHVybnMgYSBzaG9ydCBwYWdlLCBzbyBjbGFzc2VzIGFyZSBub3QgY3V0IGF0IDE1LzQwLgogICAgZm9yIChjb25zdCBzdGF0ZSBvZiBbJ0xJVkVfVVBDT01JTkcnLCAnUEFTVCddIGFzIGNvbnN0KSBqb2JzLnB1c2goYXN5bmMgKCkgPT4gewogICAgICBjb25zdCBtYXhQYWdlcyA9IHN0YXRlID09PSAnUEFTVCcgPyBDTEFTU19QQVNUX1BBR0VTIDogQ0xBU1NfVVBDT01JTkdfUEFHRVM7CiAgICAgIGZvciAobGV0IHBhZ2UgPSAwOyBwYWdlIDwgbWF4UGFnZXM7IHBhZ2UrKykgewogICAgICAgIGNvbnN0IGpzb24gPSBhd2FpdCB2cG9zdChWRURBTlRVLnNjaGVkdWxlZCwgeyBzdGFydFRpbWU6IG51bGwsIGVuZFRpbWU6IG51bGwsIHF1ZXJ5OiAnJywgY29udGV4dElkczogW2JhdGNoLmJhdGNoSWRdLCBzZXNzaW9uU3RhdGU6IG51bGwsIHNlc3Npb25TdGF0dXM6IHN0YXRlLCBsaW1pdDogQ0xBU1NfUEFHRSwgc3RhcnQ6IHBhZ2UgKiBDTEFTU19QQUdFIH0pOwogICAgICAgIGNvbnN0IGxpc3QgPSBBcnJheS5pc0FycmF5KGpzb24pID8ganNvbiA6IChqc29uIGFzIHsgbGlzdD86IHVua25vd25bXSB9IHwgbnVsbCk/Lmxpc3Q7CiAgICAgICAgaWYgKCFBcnJheS5pc0FycmF5KGxpc3QpKSB0aHJvdyBuZXcgRXJyb3IoJ1ZlZGFudHUgY2xhc3MgbGlzdCB3YXMgdW5hdmFpbGFibGUuJyk7CiAgICAgICAgY29uc3QgcGFyc2VkID0gcGFyc2VTY2hlZHVsZWRTZXNzaW9ucyhqc29uLCB7IGVucm9sbG1lbnRJZDogY291cnNlLmVucm9sbG1lbnRfaWQsIGJhdGNoSWQ6IGJhdGNoLmJhdGNoSWQsIHN1YmplY3Q6IGJhdGNoLnN1YmplY3QsIHN0dWRlbnRJZDogc2Vzc2lvbi51c2VySWQsIHRlYWNoZXJzOiBuZXcgTWFwKCkgfSk7CiAgICAgICAgY2xhc3Nlcy5wdXNoKC4uLnBhcnNlZC5yb3dzKTsKICAgICAgICBpZiAobGlzdC5sZW5ndGggPCBDTEFTU19QQUdFKSByZXR1cm47CiAgICAgIH0KICAgICAgd2FybmluZ3MgKz0gMTsKICAgIH0pOwogIH0KICBjb25zdCByZXN1bHRzID0gYXdhaXQgcG9vbChqb2JzLCAzLCBqb2IgPT4gam9iKCkpOwogIHdhcm5pbmdzICs9IHJlc3VsdHMuZmlsdGVyKHIgPT4gci5zdGF0dXMgPT09ICdyZWplY3RlZCcpLmxlbmd0aDsKICByZXR1cm4geyBjbGFzc2VzOiBtZXJnZUNsYXNzUm93cyhjbGFzc2VzLCBbXSksIHRlc3RzOiBbLi4ubmV3IE1hcCh0ZXN0cy5tYXAodCA9PiBbdC5jb250ZW50X2lkLCB0XSkpLnZhbHVlcygpXSwgYWxsVGVzdHM6IFsuLi5uZXcgTWFwKGFsbFRlc3RzLm1hcCh0ID0+IFt0LmNvbnRlbnRfaWQsIHRdKSkudmFsdWVzKCldLCB3YXJuaW5ncyB9Owp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZmV0Y2hPbmxpbmVPdmVydmlldyhub3cgPSBuZXcgRGF0ZSgpKSB7CiAgY29uc3QgY291cnNlcyA9IGF3YWl0IGZldGNoT25saW5lQ291cnNlcygpOwogIC8vIFR3byBjb3Vyc2VzIGF0IG9uY2UsIGVhY2ggdXNpbmcgYXQgbW9zdCB0aHJlZSBvdXRib3VuZCBjb25uZWN0aW9ucy4KICBjb25zdCByZXN1bHRzID0gYXdhaXQgcG9vbChjb3Vyc2VzLCAyLCBmZXRjaE9ubGluZUNvdXJzZSk7CiAgY29uc3QgY2xhc3NlczogKENsYXNzUm93ICYgeyBjb3Vyc2VfdGl0bGU6IHN0cmluZyB9KVtdID0gW107CiAgY29uc3QgdGVzdHM6IFRlc3RSb3dbXSA9IFtdOwogIGNvbnN0IGFsbFRlc3RzOiBUZXN0Um93W10gPSBbXTsKICBsZXQgd2FybmluZ3MgPSAwOwogIHJlc3VsdHMuZm9yRWFjaCgocmVzdWx0LCBpKSA9PiB7CiAgICBpZiAocmVzdWx0LnN0YXR1cyA9PT0gJ3JlamVjdGVkJykgeyB3YXJuaW5ncyArPSAxOyByZXR1cm47IH0KICAgIHdhcm5pbmdzICs9IHJlc3VsdC52YWx1ZS53YXJuaW5nczsKICAgIGNsYXNzZXMucHVzaCguLi5yZXN1bHQudmFsdWUuY2xhc3Nlcy5tYXAoYyA9PiAoeyAuLi5jLCBjb3Vyc2VfdGl0bGU6IGNvdXJzZXNbaV0/LnRpdGxlID8/ICcnIH0pKSk7CiAgICB0ZXN0cy5wdXNoKC4uLnJlc3VsdC52YWx1ZS50ZXN0cyk7CiAgICBhbGxUZXN0cy5wdXNoKC4uLnJlc3VsdC52YWx1ZS5hbGxUZXN0cyk7CiAgfSk7CiAgY29uc3QgZGF5ID0gbmV3IEludGwuRGF0ZVRpbWVGb3JtYXQoJ2VuLUNBJywgeyB0aW1lWm9uZTogJ0FzaWEvS29sa2F0YScgfSkuZm9ybWF0KG5vdyk7CiAgY29uc3Qgc3RhcnQgPSBuZXcgRGF0ZShgJHtkYXl9VDAwOjAwOjAwKzA1OjMwYCkuZ2V0VGltZSgpOwogIGNvbnN0IHNvcnRlZCA9IGNsYXNzZXMuc29ydCgoYSxiKSA9PiAoYS5zdGFydHNfYXQgPz8gJycpLmxvY2FsZUNvbXBhcmUoYi5zdGFydHNfYXQgPz8gJycpKTsKICBjb25zdCB0ZXN0U3RhdHMgPSB7IHVwY29taW5nOiAwLCBhdHRlbXB0ZWQ6IDAsIG1pc3NlZDogMCwgcHJhY3RpY2U6IDAgfTsKICBmb3IgKGNvbnN0IGMgb2YgY291cnNlcykgZm9yIChjb25zdCBrZXkgb2YgT2JqZWN0LmtleXModGVzdFN0YXRzKSBhcyAoa2V5b2YgdHlwZW9mIHRlc3RTdGF0cylbXSkgdGVzdFN0YXRzW2tleV0gKz0gYy5zdGF0cy50ZXN0cz8uW2tleV0gPz8gMDsKICByZXR1cm4geyBjb3Vyc2VzLCBzeW5jOiB7IHN0YXR1czogd2FybmluZ3MgPyAnZXJyb3InIDogJ29rJywgbWVzc2FnZTogd2FybmluZ3MgPyAnVmVkYW50dSBrYSBrdWNoIGRhdGEgdW5hdmFpbGFibGUgeWEgbGltaXRlZCBoYWk7IHBvb3JpIGhpc3RvcnkgbmFoaSBkaWtoYXlpIGdheWkuJyA6ICcnLCBzdGFydGVkX2F0OiBub3cudG9JU09TdHJpbmcoKSwgZmluaXNoZWRfYXQ6IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSwgY291bnRzOiB7IGNvdXJzZXM6IGNvdXJzZXMubGVuZ3RoLCBjbGFzc2VzOiBjbGFzc2VzLmxlbmd0aCwgdGVzdHM6IHRlc3RzLmxlbmd0aCwgd2FybmluZ3MgfSB9LAogICAgdG9kYXlDbGFzc2VzOiBzb3J0ZWQuZmlsdGVyKGMgPT4gYy5zdGFydHNfYXQgJiYgRGF0ZS5wYXJzZShjLnN0YXJ0c19hdCkgPj0gc3RhcnQgJiYgRGF0ZS5wYXJzZShjLnN0YXJ0c19hdCkgPCBzdGFydCArIDg2NDAwMDAwKSwKICAgIHVwY29taW5nQ2xhc3Nlczogc29ydGVkLmZpbHRlcihjID0+IGMuc3RhcnRzX2F0ICYmIERhdGUucGFyc2UoYy5zdGFydHNfYXQpID49IG5vdy5nZXRUaW1lKCkpLnNsaWNlKDAsNjApLAogICAgcmVjZW50Q2xhc3Nlczogc29ydGVkLmZpbHRlcihjID0+IGMuc3RhcnRzX2F0ICYmIERhdGUucGFyc2UoYy5zdGFydHNfYXQpIDwgbm93LmdldFRpbWUoKSAmJiAoYy5oYXNfc21hcnRfbm90ZXMgfHwgYy5oYXNfbm90ZXNfcGRmKSkucmV2ZXJzZSgpLnNsaWNlKDAsNjApLAogICAgdXBjb21pbmdUZXN0czogdGVzdHMuZmlsdGVyKHQgPT4gIXQuY2xvc2VzX2F0IHx8IERhdGUucGFyc2UodC5jbG9zZXNfYXQpID49IG5vdy5nZXRUaW1lKCkpLnNvcnQoKGEsYikgPT4gKGEub3BlbnNfYXQgPz8gJycpLmxvY2FsZUNvbXBhcmUoYi5vcGVuc19hdCA/PyAnJykpLnNsaWNlKDAsNDApLCB0ZXN0U3RhdHMsCiAgICBhbGxUZXN0czogYWxsVGVzdHMuc29ydCgoYSxiKSA9PiAoYi5vcGVuc19hdCA/PyBiLmF0dGVtcHRlZF9hdCA/PyAnJykubG9jYWxlQ29tcGFyZShhLm9wZW5zX2F0ID8/IGEuYXR0ZW1wdGVkX2F0ID8/ICcnKSkuc2xpY2UoMCw2MDApIH07Cn0KCmV4cG9ydCB0eXBlIE9ubGluZUxlY3R1cmUgPSB7IHNlc3Npb25JZDogc3RyaW5nOyBub3RlczogTGVjdHVyZU5vdGVbXTsgdG9waWNzOiBMZWN0dXJlVG9waWNbXTsgc3VtbWFyeTogc3RyaW5nOyBtYXJrZG93bjogc3RyaW5nOyBzZWN0aW9uczogbnVtYmVyOyBwZGZVcmw6IHN0cmluZzsgc21hcnROb3Rlc1VybDogc3RyaW5nIH07CmNvbnN0IGxlY3R1cmVDYWNoZSA9IG5ldyBNYXA8c3RyaW5nLCB7IHZhbHVlOiBQcm9taXNlPE9ubGluZUxlY3R1cmU+OyBhdDogbnVtYmVyIH0+KCk7CmNvbnN0IExFQ1RVUkVfVFRMID0gMzAgKiA2MF8wMDA7CgovKiogT25lIGxlY3R1cmUgKHNtYXJ0IG5vdGVzICsgc2xpZGUgaW1hZ2VzICsgdG9waWMgb3V0bGluZSksIGZldGNoZWQgbGl2ZSBhbmQga2VwdCBvbmx5IGluIHdvcmtlciBtZW1vcnkgZm9yIDMwIG1pbnV0ZXMuICovCmV4cG9ydCBmdW5jdGlvbiBmZXRjaE9ubGluZUxlY3R1cmUoc2Vzc2lvbklkOiBzdHJpbmcpOiBQcm9taXNlPE9ubGluZUxlY3R1cmU+IHsKICBjb25zdCBoaXQgPSBsZWN0dXJlQ2FjaGUuZ2V0KHNlc3Npb25JZCk7CiAgaWYgKGhpdCAmJiBEYXRlLm5vdygpIC0gaGl0LmF0IDwgTEVDVFVSRV9UVEwpIHJldHVybiBoaXQudmFsdWU7CiAgY29uc3QgdmFsdWUgPSAoYXN5bmMgKCkgPT4gewogICAgY29uc3QgW3JhdywgdHJdID0gYXdhaXQgUHJvbWlzZS5hbGwoWwogICAgICB2Z2V0KFZFREFOVFUuc21hcnROb3RlcywgeyBzZXNzaW9uSWQsIGNhbGxpbmdVc2VySWQ6ICd7dXNlcklkfScgfSksCiAgICAgIHZnZXQoVkVEQU5UVS50cmFuc2NyaXB0LCB7IHNlc3Npb25JZCwgY2FsbGluZ1VzZXJJZDogJ3t1c2VySWR9JyB9KS5jYXRjaCgoKSA9PiBudWxsKSwKICAgIF0pOwogICAgY29uc3QgeyB0b3BpY3MsIHN1bW1hcnkgfSA9IHBhcnNlTGVjdHVyZVRvcGljcyh0cik7CiAgICBjb25zdCBtZCA9IHNtYXJ0Tm90ZXNUb01hcmtkb3duKHJhdyk7CiAgICBjb25zdCBvdXRsaW5lID0gdG9waWNzLmxlbmd0aCA/IGAjIyBMZWN0dXJlIG91dGxpbmVcbiR7dG9waWNzLm1hcCgodCkgPT4gYC0gJHt0LmF0fSDigJQgJHt0LnRpdGxlfWApLmpvaW4oJ1xuJyl9XG5cbmAgOiAnJzsKICAgIHJldHVybiB7IHNlc3Npb25JZCwgbm90ZXM6IHNtYXJ0Tm90ZXNUb0xlY3R1cmUocmF3KSwgdG9waWNzLCBzdW1tYXJ5LCBtYXJrZG93bjogb3V0bGluZSArIG1kLm1hcmtkb3duLCBzZWN0aW9uczogbWQuc2VjdGlvbnMsIHBkZlVybDogbm90ZXNQZGZVcmwoc2Vzc2lvbklkKSwgc21hcnROb3Rlc1VybDogYGh0dHBzOi8vc2Vzc2lvbi52ZWRhbnR1LmNvbS9zZXNzaW9uLXNtYXJ0LW5vdGVzLyR7ZW5jb2RlVVJJQ29tcG9uZW50KHNlc3Npb25JZCl9YCB9OwogIH0pKCk7CiAgbGVjdHVyZUNhY2hlLnNldChzZXNzaW9uSWQsIHsgdmFsdWUsIGF0OiBEYXRlLm5vdygpIH0pOwogIHZhbHVlLmNhdGNoKCgpID0+IHsgaWYgKGxlY3R1cmVDYWNoZS5nZXQoc2Vzc2lvbklkKT8udmFsdWUgPT09IHZhbHVlKSBsZWN0dXJlQ2FjaGUuZGVsZXRlKHNlc3Npb25JZCk7IH0pOwogIGlmIChsZWN0dXJlQ2FjaGUuc2l6ZSA+IDMwKSBsZWN0dXJlQ2FjaGUuZGVsZXRlKGxlY3R1cmVDYWNoZS5rZXlzKCkubmV4dCgpLnZhbHVlIGFzIHN0cmluZyk7CiAgcmV0dXJuIHZhbHVlOwp9CgpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZmV0Y2hPbmxpbmVOb3RlcyhzZXNzaW9uSWQ6IHN0cmluZykgewogIGNvbnN0IGwgPSBhd2FpdCBmZXRjaE9ubGluZUxlY3R1cmUoc2Vzc2lvbklkKTsKICByZXR1cm4geyBtYXJrZG93bjogbC5tYXJrZG93biwgc2VjdGlvbnM6IGwuc2VjdGlvbnMsIHNlc3Npb25JZCwgcGRmVXJsOiBsLnBkZlVybCwgdG9waWNzOiBsLnRvcGljcyB9Owp9CmNvbnN0IFBERl9QUk9NUFQgPSBgVGhlc2UgYXJlIGEgVmVkYW50dSBORUVUIGNsYXNzJ3Mgd2hpdGVib2FyZCBzbGlkZXMgKGhhbmR3cml0dGVuKS4gVHJhbnNjcmliZSBldmVyeSBwYWdlIGFzIG1hcmtkb3duIHdpdGggYSAiIyMgUGFnZSBOIiBoZWFkaW5nOiBoZWFkaW5ncywgcG9pbnRzLCBhcnJvd3MgYXMg4oaSLCBmb3JtdWxhcy9lcXVhdGlvbnMgaW4gTGFUZVggKCQkLi4uJCQpLCBhbmQgZGlhZ3JhbXMgZGVzY3JpYmVkIGJ5IHRoZWlyIGxhYmVscy4gV3JpdGUgW3VuY2xlYXJdIGZvciB1bnJlYWRhYmxlIGJpdHMuIE91dHB1dCBvbmx5IHRoZSB0cmFuc2NyaXB0aW9uLmA7CmNvbnN0IHBkZkNhY2hlID0gbmV3IE1hcDxzdHJpbmcsIHsgdGV4dDogc3RyaW5nOyBhdDogbnVtYmVyIH0+KCk7CgovKiogUmVhZHMgdGhlIGNsYXNzIHdoaXRlYm9hcmQgUERGIHdpdGggdGhlIHZpc2lvbiBtb2RlbC4gS2VwdCBvbmx5IGluIHdvcmtlciBtZW1vcnkgZm9yIGFuIGhvdXIsIG5ldmVyIHN0b3JlZC4gKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGZldGNoT25saW5lUGRmTm90ZXMoc2Vzc2lvbklkOiBzdHJpbmcpOiBQcm9taXNlPHN0cmluZz4gewogIGNvbnN0IGhpdCA9IHBkZkNhY2hlLmdldChzZXNzaW9uSWQpOwogIGlmIChoaXQgJiYgRGF0ZS5ub3coKSAtIGhpdC5hdCA8IDNfNjAwXzAwMCkgcmV0dXJuIGhpdC50ZXh0OwogIGNvbnN0IHsgZ2V0QWlQYXVzZSB9ID0gYXdhaXQgaW1wb3J0KCdAL2xpYi9haS9wYXVzZS5zZXJ2ZXInKTsKICBpZiAoYXdhaXQgZ2V0QWlQYXVzZSgpKSB0aHJvdyBuZXcgRXJyb3IoJ0FJIGlzIHBhdXNlZC4nKTsKICBjb25zdCB7IGdhdGV3YXlDaGF0VGV4dCB9ID0gYXdhaXQgaW1wb3J0KCdAL2xpYi9nYXRld2F5LWNoYXQuc2VydmVyJyk7CiAgY29uc3QgeyBWSVNJT05fTU9ERUwgfSA9IGF3YWl0IGltcG9ydCgnQC9saWIvdmVyaWZ5Jyk7CiAgY29uc3QgdGV4dCA9IChhd2FpdCBnYXRld2F5Q2hhdFRleHQoeyBtb2RlbDogVklTSU9OX01PREVMLCBtZXNzYWdlczogW3sgcm9sZTogJ3VzZXInLCBjb250ZW50OiBbeyB0eXBlOiAndGV4dCcsIHRleHQ6IFBERl9QUk9NUFQgfSwgeyB0eXBlOiAnaW1hZ2VfdXJsJywgaW1hZ2VfdXJsOiB7IHVybDogbm90ZXNQZGZVcmwoc2Vzc2lvbklkKSB9IH1dIH1dIH0pKS50cmltKCk7CiAgaWYgKHRleHQpIHsgcGRmQ2FjaGUuc2V0KHNlc3Npb25JZCwgeyB0ZXh0LCBhdDogRGF0ZS5ub3coKSB9KTsgaWYgKHBkZkNhY2hlLnNpemUgPiAyMCkgcGRmQ2FjaGUuZGVsZXRlKHBkZkNhY2hlLmtleXMoKS5uZXh0KCkudmFsdWUgYXMgc3RyaW5nKTsgfQogIHJldHVybiB0ZXh0Owp9Cg==
+import { VEDANTU, VedantuError, pool, vget, vpost, vedantuSession } from './api.server';
+import { parseEnrollments, parseBatches, parseScheduledSessions, parseTestListings, parseTestCounts, mergeClassRows, smartNotesToMarkdown, smartNotesToLecture, parseLectureTopics, notesPdfUrl, type LectureNote, type LectureTopic, type CourseRow, type BatchRef, type ClassRow, type TestRow, type CourseStats } from './parse';
+
+const CLASS_PAGE = 50;
+
+function deriveTestStatus(t: TestRow, now = Date.now()): TestRow['status'] {
+  if (t.attempted_at || t.marks !== null) return 'attempted';
+  if (t.closes_at && Date.parse(t.closes_at) < now) return 'missed';
+  if (t.opens_at || t.closes_at) return 'upcoming';
+  return 'practice';
+}
+const CLASS_PAST_PAGES = 12; // up to 600 past classes per batch
+const CLASS_UPCOMING_PAGES = 4;
+
+export type OnlineCourse = CourseRow & { batches: BatchRef[]; stats: CourseStats; synced_at: string };
+
+/** Private online reads only. No database dependency or durable content cache. */
+export async function fetchOnlineCourses(): Promise<OnlineCourse[]> {
+  const courses = parseEnrollments(await vget(VEDANTU.enrollments, { userId: '{userId}', needEndedBundleEnrollments: 'false', callingUserId: '{userId}' }));
+  if (!courses.length) throw new VedantuError('Vedantu returned no enrolled courses for this account.', 'http');
+  const results = await pool(courses, 3, async (course) => ({ ...course,
+    batches: parseBatches(await vget(VEDANTU.batches, { userId: '{userId}', bundleEnrollmentId: course.enrollment_id, classroomId: course.classroom_id, callingUserId: '{userId}' })),
+    stats: {}, synced_at: new Date().toISOString(),
+  }));
+  return results.map((result) => {
+    if (result.status === 'rejected') throw result.reason;
+    return result.value;
+  });
+}
+
+export async function fetchOnlineCourse(course: OnlineCourse) {
+  const session = await vedantuSession();
+  const contexts = [course.classroom_id, ...course.batches.map(b => b.batchId)].filter(Boolean);
+  const classes: ClassRow[] = [];
+  const tests: TestRow[] = [];
+  const allTests: TestRow[] = [];
+  let warnings = 0;
+  const jobs: (() => Promise<void>)[] = [async () => {
+    const counts = parseTestCounts(await vpost(VEDANTU.testCounts, { contextIds: contexts }));
+    if (counts) course.stats.tests = counts;
+  }, async () => {
+    // Only upcoming tests, not attempted/missed/practice history.
+    for (let page = 0; page < 8; page++) {
+      const json = await vpost(VEDANTU.testListings, { contentFilterType: 'LIVEANDUPCOMING', contextIds: contexts, size: 50, start: page * 50, excludeUnscheduledTests: true });
+      if (!Array.isArray(json)) throw new Error('Vedantu test list was unavailable.');
+      tests.push(...parseTestListings(json, 'upcoming', course.enrollment_id));
+      if (json.length < 50) return;
+    }
+    warnings += 1;
+  }, async () => {
+    // Full test list (attempted, missed, practice, PYQ, HWT/DPP) for the categories view.
+    for (let page = 0; page < 6; page++) {
+      const json = await vpost(VEDANTU.testListings, { contentFilterType: 'ALL', contextIds: contexts, size: 50, start: page * 50 });
+      if (!Array.isArray(json)) throw new Error('Vedantu test list was unavailable.');
+      allTests.push(...parseTestListings(json, 'practice', course.enrollment_id).map(t => ({ ...t, status: deriveTestStatus(t) })));
+      if (json.length < 50) return;
+    }
+    warnings += 1;
+  }];
+  for (const batch of course.batches) {
+    // Page through each list until Vedantu returns a short page, so classes are not cut at 15/40.
+    for (const state of ['LIVE_UPCOMING', 'PAST'] as const) jobs.push(async () => {
+      const maxPages = state === 'PAST' ? CLASS_PAST_PAGES : CLASS_UPCOMING_PAGES;
+      for (let page = 0; page < maxPages; page++) {
+        const json = await vpost(VEDANTU.scheduled, { startTime: null, endTime: null, query: '', contextIds: [batch.batchId], sessionState: null, sessionStatus: state, limit: CLASS_PAGE, start: page * CLASS_PAGE });
+        const list = Array.isArray(json) ? json : (json as { list?: unknown[] } | null)?.list;
+        if (!Array.isArray(list)) throw new Error('Vedantu class list was unavailable.');
+        const parsed = parseScheduledSessions(json, { enrollmentId: course.enrollment_id, batchId: batch.batchId, subject: batch.subject, studentId: session.userId, teachers: new Map() });
+        classes.push(...parsed.rows);
+        if (list.length < CLASS_PAGE) return;
+      }
+      warnings += 1;
+    });
+  }
+  const results = await pool(jobs, 3, job => job());
+  warnings += results.filter(r => r.status === 'rejected').length;
+  return { classes: mergeClassRows(classes, []), tests: [...new Map(tests.map(t => [t.content_id, t])).values()], allTests: [...new Map(allTests.map(t => [t.content_id, t])).values()], warnings };
+}
+
+export async function fetchOnlineOverview(now = new Date()) {
+  const courses = await fetchOnlineCourses();
+  // Two courses at once, each using at most three outbound connections.
+  const results = await pool(courses, 2, fetchOnlineCourse);
+  const classes: (ClassRow & { course_title: string })[] = [];
+  const tests: TestRow[] = [];
+  const allTests: TestRow[] = [];
+  let warnings = 0;
+  results.forEach((result, i) => {
+    if (result.status === 'rejected') { warnings += 1; return; }
+    warnings += result.value.warnings;
+    classes.push(...result.value.classes.map(c => ({ ...c, course_title: courses[i]?.title ?? '' })));
+    tests.push(...result.value.tests);
+    allTests.push(...result.value.allTests);
+  });
+  const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata' }).format(now);
+  const start = new Date(`${day}T00:00:00+05:30`).getTime();
+  const sorted = classes.sort((a,b) => (a.starts_at ?? '').localeCompare(b.starts_at ?? ''));
+  const testStats = { upcoming: 0, attempted: 0, missed: 0, practice: 0 };
+  for (const c of courses) for (const key of Object.keys(testStats) as (keyof typeof testStats)[]) testStats[key] += c.stats.tests?.[key] ?? 0;
+  return { courses, sync: { status: warnings ? 'error' : 'ok', message: warnings ? 'Vedantu ka kuch data unavailable ya limited hai; poori history nahi dikhayi gayi.' : '', started_at: now.toISOString(), finished_at: new Date().toISOString(), counts: { courses: courses.length, classes: classes.length, tests: tests.length, warnings } },
+    todayClasses: sorted.filter(c => c.starts_at && Date.parse(c.starts_at) >= start && Date.parse(c.starts_at) < start + 86400000),
+    upcomingClasses: sorted.filter(c => c.starts_at && Date.parse(c.starts_at) >= now.getTime()).slice(0,60),
+    recentClasses: sorted.filter(c => c.starts_at && Date.parse(c.starts_at) < now.getTime() && (c.has_smart_notes || c.has_notes_pdf)).reverse().slice(0,60),
+    upcomingTests: tests.filter(t => !t.closes_at || Date.parse(t.closes_at) >= now.getTime()).sort((a,b) => (a.opens_at ?? '').localeCompare(b.opens_at ?? '')).slice(0,40), testStats,
+    allTests: allTests.sort((a,b) => (b.opens_at ?? b.attempted_at ?? '').localeCompare(a.opens_at ?? a.attempted_at ?? '')).slice(0,600) };
+}
+
+export type OnlineLecture = { sessionId: string; notes: LectureNote[]; topics: LectureTopic[]; summary: string; markdown: string; sections: number; pdfUrl: string; smartNotesUrl: string };
+const lectureCache = new Map<string, { value: Promise<OnlineLecture>; at: number }>();
+const LECTURE_TTL = 30 * 60_000;
+
+/** One lecture (smart notes + slide images + topic outline), fetched live and kept only in worker memory for 30 minutes. */
+export function fetchOnlineLecture(sessionId: string): Promise<OnlineLecture> {
+  const hit = lectureCache.get(sessionId);
+  if (hit && Date.now() - hit.at < LECTURE_TTL) return hit.value;
+  const value = (async () => {
+    const [raw, tr] = await Promise.all([
+      vget(VEDANTU.smartNotes, { sessionId, callingUserId: '{userId}' }),
+      vget(VEDANTU.transcript, { sessionId, callingUserId: '{userId}' }).catch(() => null),
+    ]);
+    const { topics, summary } = parseLectureTopics(tr);
+    const md = smartNotesToMarkdown(raw);
+    const outline = topics.length ? `## Lecture outline\n${topics.map((t) => `- ${t.at} — ${t.title}`).join('\n')}\n\n` : '';
+    return { sessionId, notes: smartNotesToLecture(raw), topics, summary, markdown: outline + md.markdown, sections: md.sections, pdfUrl: notesPdfUrl(sessionId), smartNotesUrl: `https://session.vedantu.com/session-smart-notes/${encodeURIComponent(sessionId)}` };
+  })();
+  lectureCache.set(sessionId, { value, at: Date.now() });
+  value.catch(() => { if (lectureCache.get(sessionId)?.value === value) lectureCache.delete(sessionId); });
+  if (lectureCache.size > 30) lectureCache.delete(lectureCache.keys().next().value as string);
+  return value;
+}
+
+export async function fetchOnlineNotes(sessionId: string) {
+  const l = await fetchOnlineLecture(sessionId);
+  return { markdown: l.markdown, sections: l.sections, sessionId, pdfUrl: l.pdfUrl, topics: l.topics };
+}
+const PDF_PROMPT = `These are a Vedantu NEET class's whiteboard slides (handwritten). Transcribe every page as markdown with a "## Page N" heading: headings, points, arrows as →, formulas/equations in LaTeX ($$...$$), and diagrams described by their labels. Write [unclear] for unreadable bits. Output only the transcription.`;
+const pdfCache = new Map<string, { text: string; at: number }>();
+
+/** Reads the class whiteboard PDF with the vision model. Kept only in worker memory for an hour, never stored. */
+export async function fetchOnlinePdfNotes(sessionId: string): Promise<string> {
+  const hit = pdfCache.get(sessionId);
+  if (hit && Date.now() - hit.at < 3_600_000) return hit.text;
+  const { getAiPause } = await import('@/lib/ai/pause.server');
+  if (await getAiPause()) throw new Error('AI is paused.');
+  const { gatewayChatText } = await import('@/lib/gateway-chat.server');
+  const { VISION_MODEL } = await import('@/lib/verify');
+  const text = (await gatewayChatText({ model: VISION_MODEL, messages: [{ role: 'user', content: [{ type: 'text', text: PDF_PROMPT }, { type: 'image_url', image_url: { url: notesPdfUrl(sessionId) } }] }] })).trim();
+  if (text) { pdfCache.set(sessionId, { text, at: Date.now() }); if (pdfCache.size > 20) pdfCache.delete(pdfCache.keys().next().value as string); }
+  return text;
+}

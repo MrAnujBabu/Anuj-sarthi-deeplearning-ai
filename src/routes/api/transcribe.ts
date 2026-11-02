@@ -1,1 +1,73 @@
-aW1wb3J0IHsgY3JlYXRlRmlsZVJvdXRlIH0gZnJvbSAiQHRhbnN0YWNrL3JlYWN0LXJvdXRlciI7CmltcG9ydCB7IGNsYXNzaWZ5QWlGYWlsdXJlLCBlbmNvZGVBaUZhaWx1cmUgfSBmcm9tICdAL2xpYi9haS9lcnJvcnMnOwppbXBvcnQgeyBnZXRBaVBhdXNlLCBzZXRBaVBhdXNlIH0gZnJvbSAnQC9saWIvYWkvcGF1c2Uuc2VydmVyJzsKCmNvbnN0IE1BWF9CWVRFUyA9IDIwICogMTAyNCAqIDEwMjQ7CmNvbnN0IE1PREVMID0gImdvb2dsZS9nZW1pbmktMy41LXRyYW5zY3JpYmUiOwpjb25zdCBqc29uID0gKGJvZHk6IHVua25vd24sIHN0YXR1cyA9IDIwMCkgPT4gUmVzcG9uc2UuanNvbihib2R5LCB7IHN0YXR1cyB9KTsKCmV4cG9ydCBjb25zdCBSb3V0ZSA9IGNyZWF0ZUZpbGVSb3V0ZSgiL2FwaS90cmFuc2NyaWJlIikoewogIHNlcnZlcjogeyBoYW5kbGVyczogeyBQT1NUOiBhc3luYyAoeyByZXF1ZXN0IH0pID0+IHsKICAgIHRyeSB7CiAgICAgIGNvbnN0IGFwaUtleSA9IHByb2Nlc3MuZW52WyJMT1ZBQkxFX0FQSV9LRVkiXTsKICAgICAgaWYgKCFhcGlLZXkpIHJldHVybiBqc29uKHsgZXJyb3I6ICdWb2ljZSB0eXBpbmcgaXMgbm90IGNvbmZpZ3VyZWQuJyB9LCA1MDMpOwogICAgICBjb25zdCBkZWNsYXJlZCA9IE51bWJlcihyZXF1ZXN0LmhlYWRlcnMuZ2V0KCdjb250ZW50LWxlbmd0aCcpIHx8IDApOwogICAgICBpZiAoZGVjbGFyZWQgPiBNQVhfQllURVMgKyA2NTUzNikgcmV0dXJuIGpzb24oeyBlcnJvcjogJ1JlY29yZGluZyB0b28gbGFyZ2UuJyB9LCA0MTMpOwogICAgICAvLyBCb3VuZCBhY3R1YWwgbXVsdGlwYXJ0IGJ5dGVzLCBpbmNsdWRpbmcgY2h1bmtlZCB1cGxvYWRzLCBiZWZvcmUgcGFyc2luZy4KICAgICAgaWYgKCFyZXF1ZXN0LmJvZHkpIHJldHVybiBqc29uKHsgZXJyb3I6ICdObyBhdWRpbyByZWNlaXZlZC4nIH0sIDQwMCk7CiAgICAgIGNvbnN0IHJlYWRlciA9IHJlcXVlc3QuYm9keS5nZXRSZWFkZXIoKTsKICAgICAgY29uc3QgY2h1bmtzOiBVaW50OEFycmF5W10gPSBbXTsKICAgICAgbGV0IHNpemUgPSAwOwogICAgICBmb3IgKDs7KSB7CiAgICAgICAgY29uc3QgeyB2YWx1ZSwgZG9uZSB9ID0gYXdhaXQgcmVhZGVyLnJlYWQoKTsKICAgICAgICBpZiAoZG9uZSkgYnJlYWs7CiAgICAgICAgc2l6ZSArPSB2YWx1ZS5ieXRlTGVuZ3RoOwogICAgICAgIGlmIChzaXplID4gTUFYX0JZVEVTICsgNjU1MzYpIHsKICAgICAgICAgIGF3YWl0IHJlYWRlci5jYW5jZWwoKTsKICAgICAgICAgIHJldHVybiBqc29uKHsgZXJyb3I6ICdSZWNvcmRpbmcgdG9vIGxhcmdlLicgfSwgNDEzKTsKICAgICAgICB9CiAgICAgICAgY2h1bmtzLnB1c2godmFsdWUpOwogICAgICB9CiAgICAgIGNvbnN0IGJ5dGVzID0gbmV3IFVpbnQ4QXJyYXkoc2l6ZSk7CiAgICAgIGxldCBvZmZzZXQgPSAwOwogICAgICBmb3IgKGNvbnN0IGNodW5rIG9mIGNodW5rcykgeyBieXRlcy5zZXQoY2h1bmssIG9mZnNldCk7IG9mZnNldCArPSBjaHVuay5ieXRlTGVuZ3RoOyB9CiAgICAgIGxldCBmb3JtOiBGb3JtRGF0YTsKICAgICAgdHJ5IHsKICAgICAgICBmb3JtID0gYXdhaXQgbmV3IFJlcXVlc3QocmVxdWVzdC51cmwsIHsgbWV0aG9kOiAnUE9TVCcsIGhlYWRlcnM6IHsgJ2NvbnRlbnQtdHlwZSc6IHJlcXVlc3QuaGVhZGVycy5nZXQoJ2NvbnRlbnQtdHlwZScpIHx8ICcnIH0sIGJvZHk6IGJ5dGVzIH0pLmZvcm1EYXRhKCk7CiAgICAgIH0gY2F0Y2ggeyByZXR1cm4ganNvbih7IGVycm9yOiAnQmFkIHVwbG9hZC4nIH0sIDQwMCk7IH0KICAgICAgY29uc3QgZmlsZSA9IGZvcm0uZ2V0KCdmaWxlJyk7CiAgICAgIGlmICghKGZpbGUgaW5zdGFuY2VvZiBGaWxlKSkgcmV0dXJuIGpzb24oeyBlcnJvcjogJ05vIGF1ZGlvIHJlY2VpdmVkLicgfSwgNDAwKTsKICAgICAgaWYgKCFmaWxlLnNpemUgfHwgZmlsZS5zaXplID4gTUFYX0JZVEVTKSByZXR1cm4ganNvbih7IGVycm9yOiAnUmVjb3JkaW5nIHRvbyBsb25nIOKAlCBrZWVwIGl0IHVuZGVyIDEwIG1pbnV0ZXMuJyB9LCA0MTMpOwogICAgICBpZiAoIWZpbGUudHlwZS5zdGFydHNXaXRoKCdhdWRpby8nKSkgcmV0dXJuIGpzb24oeyBlcnJvcjogJ09ubHkgYXVkaW8gaXMgYWNjZXB0ZWQuJyB9LCA0MTUpOwogICAgICBjb25zdCBbcGF1c2VkLCBtb2RlbFBhdXNlXSA9IGF3YWl0IFByb21pc2UuYWxsKFtnZXRBaVBhdXNlKCksIGdldEFpUGF1c2UoTU9ERUwpXSk7CiAgICAgIGlmIChwYXVzZWQpIHJldHVybiBqc29uKHsgZXJyb3I6IGVuY29kZUFpRmFpbHVyZSh7IGtpbmQ6IHBhdXNlZC5raW5kID09PSAnY3JlZGl0cycgPyAnY3JlZGl0cycgOiAnZGVuaWVkJywgbWVzc2FnZTogcGF1c2VkLm1lc3NhZ2UsIHN0YXR1czogcGF1c2VkLmtpbmQgPT09ICdjcmVkaXRzJyA/IDQwMiA6IDQwMyB9KSB9LCBwYXVzZWQua2luZCA9PT0gJ2NyZWRpdHMnID8gNDAyIDogNDAzKTsKICAgICAgaWYgKG1vZGVsUGF1c2UpIHJldHVybiBqc29uKHsgZXJyb3I6IGVuY29kZUFpRmFpbHVyZSh7IGtpbmQ6ICdkZW5pZWQnLCBtZXNzYWdlOiBtb2RlbFBhdXNlLm1lc3NhZ2UsIHN0YXR1czogNDAzIH0pIH0sIDQwMyk7CiAgICAgIGNvbnN0IGJvZHkgPSBuZXcgRm9ybURhdGEoKTsKICAgICAgYm9keS5hcHBlbmQoJ21vZGVsJywgTU9ERUwpOwogICAgICBib2R5LmFwcGVuZCgnZmlsZScsIGZpbGUsIGZpbGUubmFtZSB8fCAnZGljdGF0aW9uLndhdicpOwogICAgICBib2R5LmFwcGVuZCgncmVzcG9uc2VfZm9ybWF0JywgJ2pzb24nKTsKICAgICAgYm9keS5hcHBlbmQoJ3N0cmVhbScsICd0cnVlJyk7CiAgICAgIGJvZHkuYXBwZW5kKCdsYW5ndWFnZXMnLCAnaGknKTsKICAgICAgYm9keS5hcHBlbmQoJ2xhbmd1YWdlcycsICdlbicpOwogICAgICBib2R5LmFwcGVuZCgncHJvbXB0JywgJ05FRVQgc3R1ZGVudCBkaWN0YXRpbmcgYSBQaHlzaWNzLCBDaGVtaXN0cnkgb3IgQmlvbG9neSBkb3VidCBpbiBIaW5kaSwgRW5nbGlzaCBvciBIaW5nbGlzaC4nKTsKICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCgnaHR0cHM6Ly9haS5nYXRld2F5LmxvdmFibGUuZGV2L3YxL2F1ZGlvL3RyYW5zY3JpcHRpb25zJywgewogICAgICAgIG1ldGhvZDogJ1BPU1QnLCBoZWFkZXJzOiB7IEF1dGhvcml6YXRpb246IGBCZWFyZXIgJHthcGlLZXl9YCB9LCBib2R5LCBzaWduYWw6IHJlcXVlc3Quc2lnbmFsLAogICAgICB9KTsKICAgICAgaWYgKCFyZXNwb25zZS5vaykgewogICAgICAgIGNvbnN0IGRldGFpbHMgPSBhd2FpdCByZXNwb25zZS5qc29uKCkuY2F0Y2goKCkgPT4gKHt9KSk7CiAgICAgICAgY29uc3QgZmFpbHVyZSA9IGNsYXNzaWZ5QWlGYWlsdXJlKHJlc3BvbnNlLnN0YXR1cywgZGV0YWlscyk7CiAgICAgICAgaWYgKGZhaWx1cmUua2luZCA9PT0gJ2NyZWRpdHMnKSBhd2FpdCBzZXRBaVBhdXNlKGZhaWx1cmUpOwogICAgICAgIGlmIChmYWlsdXJlLmtpbmQgPT09ICdkZW5pZWQnICYmICEvcHJvdmlkZXJfbm90X2F2YWlsYWJsZV9pbl9yZWdpb258bW9kZWxfcmVxdWlyZXNfcmV0ZW50aW9uX2NvbnNlbnR8bW9kZWxfdmVuZG9yX25vdF9lbmFibGVkLy50ZXN0KEpTT04uc3RyaW5naWZ5KGRldGFpbHMpKSkgYXdhaXQgc2V0QWlQYXVzZShmYWlsdXJlLCBNT0RFTCk7CiAgICAgICAgcmV0dXJuIGpzb24oeyBlcnJvcjogZW5jb2RlQWlGYWlsdXJlKGZhaWx1cmUpIH0sIHJlc3BvbnNlLnN0YXR1cyk7CiAgICAgIH0KICAgICAgLy8gUmVsYXkgYnl0ZXMgYXMgdGhleSBhcnJpdmUgaW5zdGVhZCBvZiB3YWl0aW5nIGZvciB0aGUgZmluYWwgdHJhbnNjcmlwdC4KICAgICAgcmV0dXJuIG5ldyBSZXNwb25zZShyZXNwb25zZS5ib2R5LCB7IHN0YXR1czogcmVzcG9uc2Uuc3RhdHVzLCBoZWFkZXJzOiB7CiAgICAgICAgJ0NvbnRlbnQtVHlwZSc6IHJlc3BvbnNlLmhlYWRlcnMuZ2V0KCdjb250ZW50LXR5cGUnKSB8fCAndGV4dC9ldmVudC1zdHJlYW0nLAogICAgICAgICdDYWNoZS1Db250cm9sJzogJ25vLWNhY2hlLCBuby10cmFuc2Zvcm0nLAogICAgICB9IH0pOwogICAgfSBjYXRjaCAoZXJyb3IpIHsKICAgICAgaWYgKHJlcXVlc3Quc2lnbmFsLmFib3J0ZWQgfHwgKGVycm9yIGluc3RhbmNlb2YgRXJyb3IgJiYgZXJyb3IubmFtZSA9PT0gJ0Fib3J0RXJyb3InKSkgcmV0dXJuIG5ldyBSZXNwb25zZShudWxsLCB7IHN0YXR1czogNDk5IH0pOwogICAgICByZXR1cm4ganNvbih7IGVycm9yOiAnVm9pY2UgdHlwaW5nIGNvdWxkIG5vdCBzdGFydC4gWW91ciBzYXZlZCBwcmFjdGljZSBpcyBzdGlsbCBhdmFpbGFibGUuJyB9LCA1MDMpOwogICAgfQogIH0gfSB9LAp9KTsK
+import { createFileRoute } from "@tanstack/react-router";
+import { classifyAiFailure, encodeAiFailure } from '@/lib/ai/errors';
+import { getAiPause, setAiPause } from '@/lib/ai/pause.server';
+
+const MAX_BYTES = 20 * 1024 * 1024;
+const MODEL = "google/gemini-3.5-transcribe";
+const json = (body: unknown, status = 200) => Response.json(body, { status });
+
+export const Route = createFileRoute("/api/transcribe")({
+  server: { handlers: { POST: async ({ request }) => {
+    try {
+      const apiKey = process.env["LOVABLE_API_KEY"];
+      if (!apiKey) return json({ error: 'Voice typing is not configured.' }, 503);
+      const declared = Number(request.headers.get('content-length') || 0);
+      if (declared > MAX_BYTES + 65536) return json({ error: 'Recording too large.' }, 413);
+      // Bound actual multipart bytes, including chunked uploads, before parsing.
+      if (!request.body) return json({ error: 'No audio received.' }, 400);
+      const reader = request.body.getReader();
+      const chunks: Uint8Array[] = [];
+      let size = 0;
+      for (;;) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        size += value.byteLength;
+        if (size > MAX_BYTES + 65536) {
+          await reader.cancel();
+          return json({ error: 'Recording too large.' }, 413);
+        }
+        chunks.push(value);
+      }
+      const bytes = new Uint8Array(size);
+      let offset = 0;
+      for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+      let form: FormData;
+      try {
+        form = await new Request(request.url, { method: 'POST', headers: { 'content-type': request.headers.get('content-type') || '' }, body: bytes }).formData();
+      } catch { return json({ error: 'Bad upload.' }, 400); }
+      const file = form.get('file');
+      if (!(file instanceof File)) return json({ error: 'No audio received.' }, 400);
+      if (!file.size || file.size > MAX_BYTES) return json({ error: 'Recording too long — keep it under 10 minutes.' }, 413);
+      if (!file.type.startsWith('audio/')) return json({ error: 'Only audio is accepted.' }, 415);
+      const [paused, modelPause] = await Promise.all([getAiPause(), getAiPause(MODEL)]);
+      if (paused) return json({ error: encodeAiFailure({ kind: paused.kind === 'credits' ? 'credits' : 'denied', message: paused.message, status: paused.kind === 'credits' ? 402 : 403 }) }, paused.kind === 'credits' ? 402 : 403);
+      if (modelPause) return json({ error: encodeAiFailure({ kind: 'denied', message: modelPause.message, status: 403 }) }, 403);
+      const body = new FormData();
+      body.append('model', MODEL);
+      body.append('file', file, file.name || 'dictation.wav');
+      body.append('response_format', 'json');
+      body.append('stream', 'true');
+      body.append('languages', 'hi');
+      body.append('languages', 'en');
+      body.append('prompt', 'NEET student dictating a Physics, Chemistry or Biology doubt in Hindi, English or Hinglish.');
+      const response = await fetch('https://ai.gateway.lovable.dev/v1/audio/transcriptions', {
+        method: 'POST', headers: { Authorization: `Bearer ${apiKey}` }, body, signal: request.signal,
+      });
+      if (!response.ok) {
+        const details = await response.json().catch(() => ({}));
+        const failure = classifyAiFailure(response.status, details);
+        if (failure.kind === 'credits') await setAiPause(failure);
+        if (failure.kind === 'denied' && !/provider_not_available_in_region|model_requires_retention_consent|model_vendor_not_enabled/.test(JSON.stringify(details))) await setAiPause(failure, MODEL);
+        return json({ error: encodeAiFailure(failure) }, response.status);
+      }
+      // Relay bytes as they arrive instead of waiting for the final transcript.
+      return new Response(response.body, { status: response.status, headers: {
+        'Content-Type': response.headers.get('content-type') || 'text/event-stream',
+        'Cache-Control': 'no-cache, no-transform',
+      } });
+    } catch (error) {
+      if (request.signal.aborted || (error instanceof Error && error.name === 'AbortError')) return new Response(null, { status: 499 });
+      return json({ error: 'Voice typing could not start. Your saved practice is still available.' }, 503);
+    }
+  } } },
+});

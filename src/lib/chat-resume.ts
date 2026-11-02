@@ -1,1 +1,13 @@
-LyoqIE1lc3NhZ2Ugc2VudCB3aGVuIHRoZSBzdHVkZW50IHJlc3VtZXMgYSBwYXVzZWQvaW50ZXJydXB0ZWQgYW5zd2VyLiBSZW5kZXJlZCBhcyBhIHNtYWxsIGNoaXAsIG5vdCBhIGJ1YmJsZS4gKi8KZXhwb3J0IGNvbnN0IFJFU1VNRV9URVhUID0gIltjb250aW51ZV0gQ29udGludWUgZXhhY3RseSB3aGVyZSB5b3Ugc3RvcHBlZC4gRG8gbm90IHJlcGVhdCBhbnl0aGluZyB5b3UgYWxyZWFkeSB3cm90ZSDigJQgcGljayB1cCBmcm9tIHRoZSBsYXN0IHdvcmQuIjsKCmV4cG9ydCBjb25zdCBpc1Jlc3VtZVRleHQgPSAodGV4dDogc3RyaW5nKSA9PiB0ZXh0LnRyaW0oKS5zdGFydHNXaXRoKCJbY29udGludWVdIik7CgovKiogVHJ1ZSBmb3IgZHJvcHBlZCBjb25uZWN0aW9ucyAob2ZmbGluZSwgZmV0Y2ggZmFpbHVyZSwgc3RyZWFtIGN1dCkg4oCUIHRoZXNlIGFyZSBzYWZlIHRvIGF1dG8tcmVzdW1lLiAqLwpleHBvcnQgZnVuY3Rpb24gaXNDb25uZWN0aW9uRXJyb3IobWVzc2FnZTogc3RyaW5nIHwgdW5kZWZpbmVkKTogYm9vbGVhbiB7CiAgaWYgKCFtZXNzYWdlKSByZXR1cm4gZmFsc2U7CiAgcmV0dXJuIC9mYWlsZWQgdG8gZmV0Y2h8bmV0d29ya3xsb2FkIGZhaWxlZHxjb25uZWN0aW9ufGVycl9pbnRlcm5ldHx0ZXJtaW5hdGVkfHN0cmVhbSAoY2xvc2VkfGVuZGVkKXx0aW1lZD8gP291dHxlY29ubnJlc2V0fHNvY2tldC9pLnRlc3QobWVzc2FnZSkKICAgICYmICEvY3JlZGl0fDQwMnw0MDN8dW5hdXRob3J8bm90IHJlZ2lzdGVyZWQvaS50ZXN0KG1lc3NhZ2UpOwp9CgpleHBvcnQgY29uc3QgcGF1c2VkS2V5ID0gKHRocmVhZElkOiBzdHJpbmcpID0+IGBzbmFwc29sdmUucGF1c2VkLiR7dGhyZWFkSWR9YDsK
+/** Message sent when the student resumes a paused/interrupted answer. Rendered as a small chip, not a bubble. */
+export const RESUME_TEXT = "[continue] Continue exactly where you stopped. Do not repeat anything you already wrote — pick up from the last word.";
+
+export const isResumeText = (text: string) => text.trim().startsWith("[continue]");
+
+/** True for dropped connections (offline, fetch failure, stream cut) — these are safe to auto-resume. */
+export function isConnectionError(message: string | undefined): boolean {
+  if (!message) return false;
+  return /failed to fetch|network|load failed|connection|err_internet|terminated|stream (closed|ended)|timed? ?out|econnreset|socket/i.test(message)
+    && !/credit|402|403|unauthor|not registered/i.test(message);
+}
+
+export const pausedKey = (threadId: string) => `snapsolve.paused.${threadId}`;

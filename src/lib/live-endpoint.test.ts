@@ -1,1 +1,26 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBsaXZlRW5kcG9pbnQsIHJlbGF5V2FybXVwVXJsIH0gZnJvbSAnLi9saXZlLWVuZHBvaW50JzsKaW1wb3J0IHsgdmFsaWRhdGVMaXZlVXBncmFkZSB9IGZyb20gJy4vbGl2ZS1yZWxheS5zZXJ2ZXInOwoKZGVzY3JpYmUoJ1ZlcmNlbCB2b2ljZSBob3N0aW5nJywgKCkgPT4gewogIGl0KCJjb25uZWN0cyB0aGUgVmVyY2VsIHdlYnNpdGUgdG8gdGhpcyBwcm9qZWN0J3MgcHVibGlzaGVkIHJlbGF5IiwgKCkgPT4gewogICAgZXhwZWN0KGxpdmVFbmRwb2ludCgnaHR0cHM6Ly9zbmFwc29sdmVhbnVqLnZlcmNlbC5hcHAvdm9pY2UnKSkudG9CZSgnd3NzOi8vc2FydGhpLWFpLWJyaWRnZS5sb3ZhYmxlLmFwcC9hcGkvcHVibGljL2xpdmUnKTsKICAgIGV4cGVjdChsaXZlRW5kcG9pbnQoJ2h0dHA6Ly9sb2NhbGhvc3Q6ODA4MC92b2ljZScpKS50b0JlKCd3czovL2xvY2FsaG9zdDo4MDgwL2FwaS9saXZlJyk7CiAgfSk7CiAgaXQoJ3dhcm1zIG9ubHkgYSByZWxheSBvbiBhbm90aGVyIHNpdGUgYmVmb3JlIHRoZSBjYWxsJywgKCkgPT4gewogICAgZXhwZWN0KHJlbGF5V2FybXVwVXJsKCdodHRwczovL3NuYXBzb2x2ZWFudWoudmVyY2VsLmFwcC92b2ljZScpKS50b0JlKCdodHRwczovL3NhcnRoaS1haS1icmlkZ2UubG92YWJsZS5hcHAvYXBpL3B1YmxpYy9saXZlJyk7CiAgICBleHBlY3QocmVsYXlXYXJtdXBVcmwoJ2h0dHBzOi8vc2FydGhpLWFpLWJyaWRnZS5sb3ZhYmxlLmFwcC92b2ljZScpKS50b0JlTnVsbCgpOwogICAgZXhwZWN0KHJlbGF5V2FybXVwVXJsKCdodHRwOi8vbG9jYWxob3N0OjgwODAvdm9pY2UnKSkudG9CZU51bGwoKTsKICB9KTsKICBpdCgncHJlc2VydmVzIHNlY3VyZSBvdmVycmlkZXMgYW5kIHJlamVjdHMgaW5zZWN1cmUgcHVibGlzaGVkIGNvbm5lY3Rpb25zJywgKCkgPT4gewogICAgZXhwZWN0KGxpdmVFbmRwb2ludCgnaHR0cHM6Ly9zbmFwc29sdmVhbnVqLnZlcmNlbC5hcHAvdm9pY2UnLCAnd3NzOi8vcmVsYXkuZXhhbXBsZS9hcGkvbGl2ZScpKS50b0JlKCd3c3M6Ly9yZWxheS5leGFtcGxlL2FwaS9saXZlJyk7CiAgICBleHBlY3QoKCkgPT4gbGl2ZUVuZHBvaW50KCdodHRwczovL3NuYXBzb2x2ZWFudWoudmVyY2VsLmFwcC92b2ljZScsICd3czovL3JlbGF5LmV4YW1wbGUvYXBpL2xpdmUnKSkudG9UaHJvdygpOwogIH0pOwogIGl0KCdhbGxvd3Mgb25seSB0aGUgZXhhY3QgVmVyY2VsIG9yaWdpbiBpbiBhZGRpdGlvbiB0byBzYW1lLW9yaWdpbiBjYWxscycsICgpID0+IHsKICAgIGNvbnN0IHJlcXVlc3QgPSAob3JpZ2luPzogc3RyaW5nKSA9PiBuZXcgUmVxdWVzdCgnaHR0cHM6Ly9yZWxheS5leGFtcGxlL2FwaS9wdWJsaWMvbGl2ZScsIHsgaGVhZGVyczogeyB1cGdyYWRlOiAnd2Vic29ja2V0JywgLi4uKG9yaWdpbiA/IHsgb3JpZ2luIH0gOiB7fSkgfSB9KTsKICAgIGV4cGVjdCh2YWxpZGF0ZUxpdmVVcGdyYWRlKHJlcXVlc3QoJ2h0dHBzOi8vc25hcHNvbHZlYW51ai52ZXJjZWwuYXBwJykpKS50b0JlTnVsbCgpOwogICAgZXhwZWN0KHZhbGlkYXRlTGl2ZVVwZ3JhZGUocmVxdWVzdCgnaHR0cHM6Ly9yZWxheS5leGFtcGxlJykpKS50b0JlTnVsbCgpOwogICAgZXhwZWN0KHZhbGlkYXRlTGl2ZVVwZ3JhZGUocmVxdWVzdCgnaHR0cHM6Ly9zbmFwc29sdmVhbnVqLnZlcmNlbC5hcHAuZXZpbC5leGFtcGxlJykpPy5zdGF0dXMpLnRvQmUoNDAzKTsKICAgIGV4cGVjdCh2YWxpZGF0ZUxpdmVVcGdyYWRlKHJlcXVlc3QoKSk/LnN0YXR1cykudG9CZSg0MDMpOwogIH0pOwp9KTsK
+import { describe, expect, it } from 'vitest';
+import { liveEndpoint, relayWarmupUrl } from './live-endpoint';
+import { validateLiveUpgrade } from './live-relay.server';
+
+describe('Vercel voice hosting', () => {
+  it("connects the Vercel website to this project's published relay", () => {
+    expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice')).toBe('wss://sarthi-ai-bridge.lovable.app/api/public/live');
+    expect(liveEndpoint('http://localhost:8080/voice')).toBe('ws://localhost:8080/api/live');
+  });
+  it('warms only a relay on another site before the call', () => {
+    expect(relayWarmupUrl('https://snapsolveanuj.vercel.app/voice')).toBe('https://sarthi-ai-bridge.lovable.app/api/public/live');
+    expect(relayWarmupUrl('https://sarthi-ai-bridge.lovable.app/voice')).toBeNull();
+    expect(relayWarmupUrl('http://localhost:8080/voice')).toBeNull();
+  });
+  it('preserves secure overrides and rejects insecure published connections', () => {
+    expect(liveEndpoint('https://snapsolveanuj.vercel.app/voice', 'wss://relay.example/api/live')).toBe('wss://relay.example/api/live');
+    expect(() => liveEndpoint('https://snapsolveanuj.vercel.app/voice', 'ws://relay.example/api/live')).toThrow();
+  });
+  it('allows only the exact Vercel origin in addition to same-origin calls', () => {
+    const request = (origin?: string) => new Request('https://relay.example/api/public/live', { headers: { upgrade: 'websocket', ...(origin ? { origin } : {}) } });
+    expect(validateLiveUpgrade(request('https://snapsolveanuj.vercel.app'))).toBeNull();
+    expect(validateLiveUpgrade(request('https://relay.example'))).toBeNull();
+    expect(validateLiveUpgrade(request('https://snapsolveanuj.vercel.app.evil.example'))?.status).toBe(403);
+    expect(validateLiveUpgrade(request())?.status).toBe(403);
+  });
+});

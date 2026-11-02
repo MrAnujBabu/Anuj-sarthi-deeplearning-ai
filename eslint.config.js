@@ -1,1 +1,40 @@
-aW1wb3J0IGpzIGZyb20gIkBlc2xpbnQvanMiOwppbXBvcnQgZXNsaW50UGx1Z2luUHJldHRpZXIgZnJvbSAiZXNsaW50LXBsdWdpbi1wcmV0dGllci9yZWNvbW1lbmRlZCI7CmltcG9ydCBnbG9iYWxzIGZyb20gImdsb2JhbHMiOwppbXBvcnQgcmVhY3RIb29rcyBmcm9tICJlc2xpbnQtcGx1Z2luLXJlYWN0LWhvb2tzIjsKaW1wb3J0IHJlYWN0UmVmcmVzaCBmcm9tICJlc2xpbnQtcGx1Z2luLXJlYWN0LXJlZnJlc2giOwppbXBvcnQgdHNlc2xpbnQgZnJvbSAidHlwZXNjcmlwdC1lc2xpbnQiOwoKZXhwb3J0IGRlZmF1bHQgdHNlc2xpbnQuY29uZmlnKAogIHsgaWdub3JlczogWyJkaXN0IiwgIi5vdXRwdXQiLCAiLnZpbnhpIl0gfSwKICB7CiAgICBleHRlbmRzOiBbanMuY29uZmlncy5yZWNvbW1lbmRlZCwgLi4udHNlc2xpbnQuY29uZmlncy5yZWNvbW1lbmRlZF0sCiAgICBmaWxlczogWyIqKi8qLnt0cyx0c3h9Il0sCiAgICBsYW5ndWFnZU9wdGlvbnM6IHsKICAgICAgZWNtYVZlcnNpb246IDIwMjAsCiAgICAgIGdsb2JhbHM6IGdsb2JhbHMuYnJvd3NlciwKICAgIH0sCiAgICBwbHVnaW5zOiB7CiAgICAgICJyZWFjdC1ob29rcyI6IHJlYWN0SG9va3MsCiAgICAgICJyZWFjdC1yZWZyZXNoIjogcmVhY3RSZWZyZXNoLAogICAgfSwKICAgIHJ1bGVzOiB7CiAgICAgIC4uLnJlYWN0SG9va3MuY29uZmlncy5yZWNvbW1lbmRlZC5ydWxlcywKICAgICAgIm5vLXJlc3RyaWN0ZWQtaW1wb3J0cyI6IFsKICAgICAgICAiZXJyb3IiLAogICAgICAgIHsKICAgICAgICAgIHBhdGhzOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICBuYW1lOiAic2VydmVyLW9ubHkiLAogICAgICAgICAgICAgIG1lc3NhZ2U6CiAgICAgICAgICAgICAgICAiVGFuU3RhY2sgU3RhcnQgZG9lcyBub3QgdXNlIHRoZSBOZXh0LmpzIGBzZXJ2ZXItb25seWAgcGFja2FnZS4gUmVuYW1lIHRoZSBtb2R1bGUgdG8gYCouc2VydmVyLnRzYCBvciBtYXJrIGl0IHdpdGggYEB0YW5zdGFjay9yZWFjdC1zdGFydC9zZXJ2ZXItb25seWAuIiwKICAgICAgICAgICAgfSwKICAgICAgICAgIF0sCiAgICAgICAgfSwKICAgICAgXSwKICAgICAgInJlYWN0LXJlZnJlc2gvb25seS1leHBvcnQtY29tcG9uZW50cyI6IFsid2FybiIsIHsgYWxsb3dDb25zdGFudEV4cG9ydDogdHJ1ZSB9XSwKICAgICAgIkB0eXBlc2NyaXB0LWVzbGludC9uby11bnVzZWQtdmFycyI6ICJvZmYiLAogICAgfSwKICB9LAogIGVzbGludFBsdWdpblByZXR0aWVyLAopOwo=
+import js from "@eslint/js";
+import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import tseslint from "typescript-eslint";
+
+export default tseslint.config(
+  { ignores: ["dist", ".output", ".vinxi"] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "server-only",
+              message:
+                "TanStack Start does not use the Next.js `server-only` package. Rename the module to `*.server.ts` or mark it with `@tanstack/react-start/server-only`.",
+            },
+          ],
+        },
+      ],
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
+  eslintPluginPrettier,
+);

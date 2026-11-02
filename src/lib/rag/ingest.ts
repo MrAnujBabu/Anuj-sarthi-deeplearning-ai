@@ -1,1 +1,81 @@
-LyoqIFB1cmUgaGVscGVycyBmb3IgdGhlIGFkbWluIE5DRVJUIGxpYnJhcnkgKyBQWVEgYmFuayBpbXBvcnQgKGJyb3dzZXItc2FmZSwgdW5pdC10ZXN0ZWQpLiAqLwppbXBvcnQgdHlwZSB7IFB5cVJlY29yZCB9IGZyb20gIi4vc3RvcmUiOwoKLyoqIFJGQy00MTgwLWlzaCBDU1Ygcm93czogcXVvdGVkIGZpZWxkcywgZXNjYXBlZCBxdW90ZXMsIGNvbW1hcy9uZXdsaW5lcyBpbnNpZGUgcXVvdGVzLiAqLwpleHBvcnQgZnVuY3Rpb24gcGFyc2VDc3YodGV4dDogc3RyaW5nKTogc3RyaW5nW11bXSB7CiAgY29uc3Qgcm93czogc3RyaW5nW11bXSA9IFtdOwogIGxldCByb3c6IHN0cmluZ1tdID0gW10sIGNlbGwgPSAiIiwgcSA9IGZhbHNlOwogIGNvbnN0IHNyYyA9IHRleHQucmVwbGFjZSgvXlx1RkVGRi8sICIiKTsKICBmb3IgKGxldCBpID0gMDsgaSA8IHNyYy5sZW5ndGg7IGkrKykgewogICAgY29uc3QgYyA9IHNyY1tpXTsKICAgIGlmIChxKSB7CiAgICAgIGlmIChjID09PSAnIicgJiYgc3JjW2kgKyAxXSA9PT0gJyInKSB7IGNlbGwgKz0gJyInOyBpKys7IH0KICAgICAgZWxzZSBpZiAoYyA9PT0gJyInKSBxID0gZmFsc2U7CiAgICAgIGVsc2UgY2VsbCArPSBjOwogICAgfSBlbHNlIGlmIChjID09PSAnIicpIHEgPSB0cnVlOwogICAgZWxzZSBpZiAoYyA9PT0gIiwiKSB7IHJvdy5wdXNoKGNlbGwpOyBjZWxsID0gIiI7IH0KICAgIGVsc2UgaWYgKGMgPT09ICJcbiIgfHwgYyA9PT0gIlxyIikgewogICAgICBpZiAoYyA9PT0gIlxyIiAmJiBzcmNbaSArIDFdID09PSAiXG4iKSBpKys7CiAgICAgIHJvdy5wdXNoKGNlbGwpOyBjZWxsID0gIiI7CiAgICAgIGlmIChyb3cuc29tZSgoeCkgPT4geC50cmltKCkpKSByb3dzLnB1c2gocm93KTsKICAgICAgcm93ID0gW107CiAgICB9IGVsc2UgY2VsbCArPSBjOwogIH0KICByb3cucHVzaChjZWxsKTsKICBpZiAocm93LnNvbWUoKHgpID0+IHgudHJpbSgpKSkgcm93cy5wdXNoKHJvdyk7CiAgcmV0dXJuIHJvd3M7Cn0KCmV4cG9ydCBjb25zdCBQWVFfQ09MVU1OUyA9IFsieWVhciIsICJzdWJqZWN0IiwgImNoYXB0ZXIiLCAicXVlc3Rpb24iLCAiYSIsICJiIiwgImMiLCAiZCIsICJhbnN3ZXIiLCAiZXhwbGFuYXRpb24iLCAic291cmNlIl0gYXMgY29uc3Q7CgovKioKICogUFlRIHNwcmVhZHNoZWV0IOKGkiByZWNvcmRzLiBIZWFkZXIgcm93IHJlcXVpcmVkOiB5ZWFyLCBzdWJqZWN0LCBjaGFwdGVyLCBxdWVzdGlvbiwgYSwgYiwgYywgZCwgYW5zd2VyLCBleHBsYW5hdGlvbiwgc291cmNlCiAqIChvcHRpb24gY29sdW1ucyBtYXkgYWxzbyBiZSBuYW1lZCBvcHRpb25fYSAvIG9wdGlvbkEpLiBSb3dzIHdpdGhvdXQgYSB2YWxpZCB5ZWFyLCBxdWVzdGlvbiwgNCBvcHRpb25zIG9yIGFuIEHigJNEIGFuc3dlciBhcmUgc2tpcHBlZC4KICovCmV4cG9ydCBmdW5jdGlvbiBjc3ZUb1B5cXModGV4dDogc3RyaW5nKTogeyByZWNvcmRzOiBQeXFSZWNvcmRbXTsgc2tpcHBlZDogbnVtYmVyIH0gewogIGNvbnN0IHJvd3MgPSBwYXJzZUNzdih0ZXh0KTsKICBpZiAocm93cy5sZW5ndGggPCAyKSByZXR1cm4geyByZWNvcmRzOiBbXSwgc2tpcHBlZDogMCB9OwogIGNvbnN0IGhlYWQgPSByb3dzWzBdIS5tYXAoKGgpID0+IGgudHJpbSgpLnRvTG93ZXJDYXNlKCkucmVwbGFjZSgvXm9wdGlvbltfIF0/LywgIiIpKTsKICBjb25zdCBjb2wgPSAocjogc3RyaW5nW10sIG5hbWU6IHN0cmluZykgPT4gKHJbaGVhZC5pbmRleE9mKG5hbWUpXSA/PyAiIikudHJpbSgpOwogIGNvbnN0IHJlY29yZHM6IFB5cVJlY29yZFtdID0gW107CiAgbGV0IHNraXBwZWQgPSAwOwogIGZvciAoY29uc3QgciBvZiByb3dzLnNsaWNlKDEpKSB7CiAgICBjb25zdCB5ZWFyID0gTnVtYmVyKGNvbChyLCAieWVhciIpKTsKICAgIGNvbnN0IHF1ZXN0aW9uID0gY29sKHIsICJxdWVzdGlvbiIpOwogICAgY29uc3Qgb3B0aW9ucyA9IFsiYSIsICJiIiwgImMiLCAiZCJdLm1hcCgoaykgPT4gY29sKHIsIGspKTsKICAgIGNvbnN0IGFuc3dlciA9IGNvbChyLCAiYW5zd2VyIikucmVwbGFjZSgvWygpXS9nLCAiIikudG9VcHBlckNhc2UoKTsKICAgIGlmICghTnVtYmVyLmlzSW50ZWdlcih5ZWFyKSB8fCB5ZWFyIDwgMTk5MCB8fCB5ZWFyID4gMjEwMCB8fCAhcXVlc3Rpb24gfHwgb3B0aW9ucy5zb21lKChvKSA9PiAhbykgfHwgIS9eW0EtRF0kLy50ZXN0KGFuc3dlcikpIHsgc2tpcHBlZCsrOyBjb250aW51ZTsgfQogICAgcmVjb3Jkcy5wdXNoKHsKICAgICAgaWQ6IGBweXEtJHt5ZWFyfS0ke2hhc2gocXVlc3Rpb24pfWAsCiAgICAgIHllYXIsIHF1ZXN0aW9uLCBvcHRpb25zLCBhbnN3ZXIsCiAgICAgIHN1YmplY3Q6IGNvbChyLCAic3ViamVjdCIpLnRvTG93ZXJDYXNlKCkgfHwgImdlbmVyYWwiLAogICAgICBjaGFwdGVyOiBjb2wociwgImNoYXB0ZXIiKSwKICAgICAgZXhwbGFuYXRpb246IGNvbChyLCAiZXhwbGFuYXRpb24iKSwKICAgICAgc291cmNlOiBjb2wociwgInNvdXJjZSIpIHx8IGBORUVUICR7eWVhcn1gLAogICAgfSk7CiAgfQogIHJldHVybiB7IHJlY29yZHMsIHNraXBwZWQgfTsKfQoKLyoqIFN0YWJsZSBzaG9ydCBoYXNoIHNvIHJlLWltcG9ydGluZyB0aGUgc2FtZSBzaGVldCBvdmVyd3JpdGVzIGluc3RlYWQgb2YgZHVwbGljYXRpbmcuICovCmV4cG9ydCBmdW5jdGlvbiBoYXNoKHM6IHN0cmluZyk6IHN0cmluZyB7CiAgbGV0IGggPSA1MzgxOwogIGZvciAobGV0IGkgPSAwOyBpIDwgcy5sZW5ndGg7IGkrKykgaCA9ICgoaCA8PCA1KSArIGggKyBzLmNoYXJDb2RlQXQoaSkpIHwgMDsKICByZXR1cm4gKGggPj4+IDApLnRvU3RyaW5nKDM2KTsKfQoKLyoqIFNwbGl0IGFuIGFycmF5IGludG8gZml4ZWQtc2l6ZSBiYXRjaGVzLiAqLwpleHBvcnQgZnVuY3Rpb24gYmF0Y2hlczxUPihpdGVtczogVFtdLCBzaXplOiBudW1iZXIpOiBUW11bXSB7CiAgY29uc3Qgb3V0OiBUW11bXSA9IFtdOwogIGZvciAobGV0IGkgPSAwOyBpIDwgaXRlbXMubGVuZ3RoOyBpICs9IHNpemUpIG91dC5wdXNoKGl0ZW1zLnNsaWNlKGksIGkgKyBzaXplKSk7CiAgcmV0dXJuIG91dDsKfQoKLyoqIFJlYWQgYSB0ZXh0LWJhc2VkIFBERiBpbiB0aGUgYnJvd3NlciBhcyAiW1BhZ2UgTl0iIHRleHQuIFJldHVybnMgIiIgZm9yIHNjYW5uZWQgUERGcy4gKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHBkZkZpbGVUb1RleHQoZmlsZTogRmlsZSk6IFByb21pc2U8c3RyaW5nPiB7CiAgY29uc3QgeyBleHRyYWN0VGV4dCwgZ2V0RG9jdW1lbnRQcm94eSB9ID0gYXdhaXQgaW1wb3J0KCJ1bnBkZiIpOwogIGNvbnN0IHBkZiA9IGF3YWl0IGdldERvY3VtZW50UHJveHkobmV3IFVpbnQ4QXJyYXkoYXdhaXQgZmlsZS5hcnJheUJ1ZmZlcigpKSk7CiAgY29uc3QgeyB0ZXh0OiBwYWdlcyB9ID0gYXdhaXQgZXh0cmFjdFRleHQocGRmLCB7IG1lcmdlUGFnZXM6IGZhbHNlIH0pOwogIGNvbnN0IGJvZHkgPSAocGFnZXMgYXMgc3RyaW5nW10pLm1hcCgodCwgaSkgPT4gYFtQYWdlICR7aSArIDF9XVxuJHt0LnJlcGxhY2UoL1sgXHRdKy9nLCAiICIpLnRyaW0oKX1gKS5qb2luKCJcblxuIik7CiAgcmV0dXJuIGJvZHkucmVwbGFjZSgvXFtQYWdlIFxkK1xdL2csICIiKS50cmltKCkubGVuZ3RoIDwgMjAwID8gIiIgOiBib2R5Owp9Cg==
+/** Pure helpers for the admin NCERT library + PYQ bank import (browser-safe, unit-tested). */
+import type { PyqRecord } from "./store";
+
+/** RFC-4180-ish CSV rows: quoted fields, escaped quotes, commas/newlines inside quotes. */
+export function parseCsv(text: string): string[][] {
+  const rows: string[][] = [];
+  let row: string[] = [], cell = "", q = false;
+  const src = text.replace(/^\uFEFF/, "");
+  for (let i = 0; i < src.length; i++) {
+    const c = src[i];
+    if (q) {
+      if (c === '"' && src[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') q = false;
+      else cell += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && src[i + 1] === "\n") i++;
+      row.push(cell); cell = "";
+      if (row.some((x) => x.trim())) rows.push(row);
+      row = [];
+    } else cell += c;
+  }
+  row.push(cell);
+  if (row.some((x) => x.trim())) rows.push(row);
+  return rows;
+}
+
+export const PYQ_COLUMNS = ["year", "subject", "chapter", "question", "a", "b", "c", "d", "answer", "explanation", "source"] as const;
+
+/**
+ * PYQ spreadsheet → records. Header row required: year, subject, chapter, question, a, b, c, d, answer, explanation, source
+ * (option columns may also be named option_a / optionA). Rows without a valid year, question, 4 options or an A–D answer are skipped.
+ */
+export function csvToPyqs(text: string): { records: PyqRecord[]; skipped: number } {
+  const rows = parseCsv(text);
+  if (rows.length < 2) return { records: [], skipped: 0 };
+  const head = rows[0]!.map((h) => h.trim().toLowerCase().replace(/^option[_ ]?/, ""));
+  const col = (r: string[], name: string) => (r[head.indexOf(name)] ?? "").trim();
+  const records: PyqRecord[] = [];
+  let skipped = 0;
+  for (const r of rows.slice(1)) {
+    const year = Number(col(r, "year"));
+    const question = col(r, "question");
+    const options = ["a", "b", "c", "d"].map((k) => col(r, k));
+    const answer = col(r, "answer").replace(/[()]/g, "").toUpperCase();
+    if (!Number.isInteger(year) || year < 1990 || year > 2100 || !question || options.some((o) => !o) || !/^[A-D]$/.test(answer)) { skipped++; continue; }
+    records.push({
+      id: `pyq-${year}-${hash(question)}`,
+      year, question, options, answer,
+      subject: col(r, "subject").toLowerCase() || "general",
+      chapter: col(r, "chapter"),
+      explanation: col(r, "explanation"),
+      source: col(r, "source") || `NEET ${year}`,
+    });
+  }
+  return { records, skipped };
+}
+
+/** Stable short hash so re-importing the same sheet overwrites instead of duplicating. */
+export function hash(s: string): string {
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0;
+  return (h >>> 0).toString(36);
+}
+
+/** Split an array into fixed-size batches. */
+export function batches<T>(items: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
+  return out;
+}
+
+/** Read a text-based PDF in the browser as "[Page N]" text. Returns "" for scanned PDFs. */
+export async function pdfFileToText(file: File): Promise<string> {
+  const { extractText, getDocumentProxy } = await import("unpdf");
+  const pdf = await getDocumentProxy(new Uint8Array(await file.arrayBuffer()));
+  const { text: pages } = await extractText(pdf, { mergePages: false });
+  const body = (pages as string[]).map((t, i) => `[Page ${i + 1}]\n${t.replace(/[ \t]+/g, " ").trim()}`).join("\n\n");
+  return body.replace(/\[Page \d+\]/g, "").trim().length < 200 ? "" : body;
+}

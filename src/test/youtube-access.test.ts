@@ -1,1 +1,22 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBjYW5UcnlZb3VUdWJlTGlzdGVuaW5nIH0gZnJvbSAnQC9saWIveW91dHViZS1hY2Nlc3MnOwoKZGVzY3JpYmUoJ1lvdVR1YmUgdHJhbnNjcmlwdGlvbiBhY2Nlc3MnLCAoKSA9PiB7CiAgaXQoJ25ldmVyIGxldHMgYSB0aXRsZSBvdmVycmlkZSBwcml2YXRlIG9yIGFnZSByZXN0cmljdGlvbnMnLCAoKSA9PiB7CiAgICBleHBlY3QoY2FuVHJ5WW91VHViZUxpc3RlbmluZyh7IHN0YXR1czogJ0xPR0lOX1JFUVVJUkVEJywgdGl0bGU6ICdLbm93biB0aXRsZScsIHJlYXNvbjogJ1RoaXMgaXMgYSBwcml2YXRlIHZpZGVvJyB9KSkudG9CZShmYWxzZSk7CiAgICBleHBlY3QoY2FuVHJ5WW91VHViZUxpc3RlbmluZyh7IHN0YXR1czogJ0xPR0lOX1JFUVVJUkVEJywgdGl0bGU6ICdLbm93biB0aXRsZScsIHJlYXNvbjogJ1NpZ24gaW4gdG8gY29uZmlybSB5b3VyIGFnZScgfSkpLnRvQmUoZmFsc2UpOwogIH0pOwogIGl0KCd0cmllcyBpbmRlcGVuZGVudCBsaXN0ZW5pbmcgd2hlbiBhIGJvdCBjaGVjayBvbWl0cyB2aWRlbyBkZXRhaWxzJywgKCkgPT4gewogICAgZXhwZWN0KGNhblRyeVlvdVR1YmVMaXN0ZW5pbmcoeyBzdGF0dXM6ICdMT0dJTl9SRVFVSVJFRCcsIHRpdGxlOiAnJywgcmVhc29uOiAnU2lnbiBpbiB0byBjb25maXJtIHlvdeKAmXJlIG5vdCBhIGJvdCcgfSkpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoY2FuVHJ5WW91VHViZUxpc3RlbmluZyh7IHN0YXR1czogJ0xPR0lOX1JFUVVJUkVEJywgdGl0bGU6ICcnLCByZWFzb246ICJTaWduIGluIHRvIGNvbmZpcm0geW91J3JlIG5vdCBhIGJvdCIgfSkpLnRvQmUodHJ1ZSk7CiAgfSk7CiAgaXQoJ2RvZXMgbm90IGF0dGVtcHQgbGlzdGVuaW5nIHRvIGFuIGV4cGxpY2l0bHkgcHJpdmF0ZSB2aWRlbycsICgpID0+IHsKICAgIGV4cGVjdChjYW5UcnlZb3VUdWJlTGlzdGVuaW5nKHsgc3RhdHVzOiAnTE9HSU5fUkVRVUlSRUQnLCB0aXRsZTogJycsIHJlYXNvbjogJ1RoaXMgaXMgYSBwcml2YXRlIHZpZGVvLiBQbGVhc2Ugc2lnbiBpbi4nIH0pKS50b0JlKGZhbHNlKTsKICB9KTsKICBpdCgnZG9lcyBub3QgYXR0ZW1wdCBsaXN0ZW5pbmcgdG8gYW4gYWdlLXJlc3RyaWN0ZWQgdmlkZW8gd2l0aG91dCBkZXRhaWxzJywgKCkgPT4gewogICAgZXhwZWN0KGNhblRyeVlvdVR1YmVMaXN0ZW5pbmcoeyBzdGF0dXM6ICdMT0dJTl9SRVFVSVJFRCcsIHRpdGxlOiAnJywgcmVhc29uOiAnU2lnbiBpbiB0byBjb25maXJtIHlvdXIgYWdlJyB9KSkudG9CZShmYWxzZSk7CiAgfSk7CiAgaXQoJ2RvZXMgbm90IGF0dGVtcHQgbGlzdGVuaW5nIHRvIGEgcmVtb3ZlZCB2aWRlbycsICgpID0+IHsKICAgIGV4cGVjdChjYW5UcnlZb3VUdWJlTGlzdGVuaW5nKHsgc3RhdHVzOiAnRVJST1InLCB0aXRsZTogJycsIHJlYXNvbjogJ1ZpZGVvIHVuYXZhaWxhYmxlJyB9KSkudG9CZShmYWxzZSk7CiAgfSk7Cn0pOw==
+import { describe, expect, it } from 'vitest';
+import { canTryYouTubeListening } from '@/lib/youtube-access';
+
+describe('YouTube transcription access', () => {
+  it('never lets a title override private or age restrictions', () => {
+    expect(canTryYouTubeListening({ status: 'LOGIN_REQUIRED', title: 'Known title', reason: 'This is a private video' })).toBe(false);
+    expect(canTryYouTubeListening({ status: 'LOGIN_REQUIRED', title: 'Known title', reason: 'Sign in to confirm your age' })).toBe(false);
+  });
+  it('tries independent listening when a bot check omits video details', () => {
+    expect(canTryYouTubeListening({ status: 'LOGIN_REQUIRED', title: '', reason: 'Sign in to confirm you’re not a bot' })).toBe(true);
+    expect(canTryYouTubeListening({ status: 'LOGIN_REQUIRED', title: '', reason: "Sign in to confirm you're not a bot" })).toBe(true);
+  });
+  it('does not attempt listening to an explicitly private video', () => {
+    expect(canTryYouTubeListening({ status: 'LOGIN_REQUIRED', title: '', reason: 'This is a private video. Please sign in.' })).toBe(false);
+  });
+  it('does not attempt listening to an age-restricted video without details', () => {
+    expect(canTryYouTubeListening({ status: 'LOGIN_REQUIRED', title: '', reason: 'Sign in to confirm your age' })).toBe(false);
+  });
+  it('does not attempt listening to a removed video', () => {
+    expect(canTryYouTubeListening({ status: 'ERROR', title: '', reason: 'Video unavailable' })).toBe(false);
+  });
+});

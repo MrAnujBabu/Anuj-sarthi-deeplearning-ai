@@ -1,1 +1,276 @@
-Ly8gU2VydmVyLW9ubHk6IHRoZSBhbnN3ZXItY2hlY2tpbmcgY291bmNpbC4gVGhyZWUgcGxhdGZvcm1zLCBvbmUgTG92YWJsZSBBSSBrZXkuCi8vICAgMS4gRXZpZGVuY2UgIOKAlCBQZXJwbGV4aXR5ICsgUGFyYWxsZWwgbGl2ZSB3ZWIgc2VhcmNoIChjb25uZWN0b3IgZ2F0ZXdheSkKLy8gICAyLiBSZXZpZXcgICAg4oCUIEdlbWluaSA0IEFyZ29uIChHb29nbGUgU2VhcmNoIGdyb3VuZGVkKSDigJYgR1BULTYgQXN0cmEgKG1hdGhzL2xvZ2ljKSwgaW5kZXBlbmRlbnQKLy8gICAzLiBEZWJhdGUgICAg4oCUIG9ubHkgd2hlbiB0aGVpciB2ZXJkaWN0cyBkaWZmZXI6IGVhY2ggc2VlcyB0aGUgb3RoZXIncyByZXBvcnQgYW5kIHJldmlzZXMgb25jZQovLyAgIDQuIFJ1bGluZyAgICDigJQgQ2xhdWRlIEZhYmxlIDUuMSAodGhlIHR1dG9yIHdobyB3cm90ZSB0aGUgYW5zd2VyKSBhY2NlcHRzIG9yIHJlamVjdHMgZWFjaCBvYmplY3Rpb24KLy8gTm90aGluZyBpcyBzdG9yZWQgc2VydmVyLXNpZGU7IHJlc3VsdHMgZ28gYmFjayB0byB0aGUgYnJvd3NlciBvbmx5LgppbXBvcnQgeyBjcmVhdGVBbnRocm9waWMgfSBmcm9tICdAYWktc2RrL2FudGhyb3BpYyc7CmltcG9ydCB7IGNyZWF0ZU9wZW5BSSB9IGZyb20gJ0BhaS1zZGsvb3BlbmFpJzsKaW1wb3J0IHsgT3V0cHV0LCBzdHJlYW1UZXh0IH0gZnJvbSAnYWknOwppbXBvcnQgeyB6IH0gZnJvbSAnem9kJzsKaW1wb3J0IHsgY3JlYXRlTG92YWJsZUFpR2F0ZXdheVJ1bklkRmV0Y2ggfSBmcm9tICdAL2xpYi9haS9ydW4taWQnOwppbXBvcnQgeyBjbGFzc2lmeUFpRmFpbHVyZSwgdHlwZSBBaUZhaWx1cmUgfSBmcm9tICdAL2xpYi9haS9lcnJvcnMnOwppbXBvcnQgeyBHYXRld2F5RXJyb3IsIGdhdGV3YXlDaGF0VGV4dCB9IGZyb20gJ0AvbGliL2dhdGV3YXktY2hhdC5zZXJ2ZXInOwppbXBvcnQgewogIENPVU5DSUxfTU9ERUxTLCBWRVJJRllfU0NIRU1BLCBjb3VuY2lsTmV4dFN0ZXAsIG1lcmdlVmVyZGljdHMsIHNwbGl0UGhvdG9SZWFkaW5nLCB0b0NoZWNrLAogIHR5cGUgQ2hlY2tSZXN1bHQsIHR5cGUgQ291bmNpbEV2ZW50LCB0eXBlIENvdW5jaWxSZXN1bHQsIHR5cGUgU291cmNlLAp9IGZyb20gJ0AvbGliL3ZlcmlmeSc7Cgpjb25zdCBHQVRFV0FZID0gJ2h0dHBzOi8vYWkuZ2F0ZXdheS5sb3ZhYmxlLmRldi92MSc7CgpleHBvcnQgdHlwZSBDb3VuY2lsSW5wdXQgPSB7IHF1ZXN0aW9uOiBzdHJpbmc7IGFuc3dlcjogc3RyaW5nOyBpbWFnZXM6IHN0cmluZ1tdIH07CnR5cGUgQ3R4ID0geyBrZXk6IHN0cmluZzsgc2lnbmFsOiBBYm9ydFNpZ25hbDsgb25GYWlsdXJlOiAoZjogQWlGYWlsdXJlKSA9PiB2b2lkIH07Cgpjb25zdCBCQVNFX1JVTEVTID0gYFlvdSBhcmUgYSBzZW5pb3IgTkVFVCAoSW5kaWEpIGV4YW1pbmVyIG9uIGEgcmV2aWV3IGNvdW5jaWwgY2hlY2tpbmcgYSB0dXRvcidzIGFuc3dlciBmb3IgYSBORUVUIHN0dWRlbnQuCkNoZWNrIGV2ZXJ5IGZhY3QsIGRlZmluaXRpb24sIGZvcm11bGEsIG51bWJlciwgdW5pdCwgc2lnbiwgb3B0aW9uIGxldHRlciBhbmQgdGhlIGZpbmFsIGFuc3dlciBhZ2FpbnN0IE5DRVJUIENsYXNzIDExLzEyIGFuZCBhdXRob3JpdGF0aXZlIHNvdXJjZXMuClJ1bGVzOgotICJuZWVkc19maXgiIE9OTFkgZm9yIGEgcmVhbCwgbWF0ZXJpYWwgZXJyb3IgeW91IGFyZSBjb25maWRlbnQgYWJvdXQgKHdyb25nIGZhY3QsIHdyb25nIGNhbGN1bGF0aW9uLCB3cm9uZyBvcHRpb24sIG1pc2xlYWRpbmcgTkNFUlQgY2xhaW0pLiBRdW90ZSB0aGUgZXhhY3Qgd3JvbmcgbGluZSBmcm9tIHRoZSBhbnN3ZXIgaW4gImxpbmUiIGFuZCBnaXZlIHRoZSBjb3JyZWN0IHN0YXRlbWVudCBpbiAiZml4Ii4KLSAidmVyaWZpZWQiIHdoZW4gdGhlIGFuc3dlciBpcyBjb3JyZWN0IChtaW5vciBzdHlsZSBpc3N1ZXMgZG8gbm90IGNvdW50KS4KLSAidW5zdXJlIiB3aGVuIHlvdSBjYW5ub3QgY29uZmlybSB3aXRoIGNvbmZpZGVuY2UuCi0gTmV2ZXIgaW52ZW50IHNvdXJjZXMuICJub3RlIiA9IG9uZSBzaG9ydCBwbGFpbi1FbmdsaXNoIHNlbnRlbmNlIGV4cGxhaW5pbmcgeW91ciB2ZXJkaWN0LgpSZXBseSB3aXRoIEpTT04gb25seTogeyJ2ZXJkaWN0IjoidmVyaWZpZWQifCJuZWVkc19maXgifCJ1bnN1cmUiLCJpc3N1ZXMiOlt7ImxpbmUiOiIuLi4iLCJmaXgiOiIuLi4ifV0sIm5vdGUiOiIuLi4ifWA7Cgpjb25zdCBST0xFX0ZPQ1VTID0gewogIGdlbWluaTogJ1lvdXIgZm9jdXM6IGZhY3R1YWwgYWNjdXJhY3ksIE5DRVJUIHdvcmRpbmcsIGJpb2xvZ3kvY2hlbWlzdHJ5IGZhY3RzLCBleGNlcHRpb25zLCBkYXRlcyBhbmQgbmFtZXMuIFVzZSBHb29nbGUgU2VhcmNoIHRvIGNvbmZpcm0gYW55dGhpbmcgZG91YnRmdWwgYW5kIHByZWZlciBuY2VydC5uaWMuaW4gYW5kIG9mZmljaWFsIHNvdXJjZXMuIElmIGEgcGhvdG8gaXMgYXR0YWNoZWQsIGFsc28gY2hlY2sgdGhlIGFuc3dlciByZWFkIHRoZSBxdWVzdGlvbiBhbmQgb3B0aW9ucyBjb3JyZWN0bHkuJywKICBvcGVuYWk6ICdZb3VyIGZvY3VzOiBtYXRoZW1hdGljcywgcGh5c2ljcy9jaGVtaXN0cnkgY2FsY3VsYXRpb25zLCB1bml0cywgc2lnbmlmaWNhbnQgZmlndXJlcywgc2lnbnMsIGxvZ2ljYWwgc3RlcHMgYW5kIHdoZXRoZXIgdGhlIGNob3NlbiBvcHRpb24gZm9sbG93cyBmcm9tIHRoZSB3b3JraW5nLiBSZWRvIGV2ZXJ5IGNhbGN1bGF0aW9uIGluZGVwZW5kZW50bHkuJywKfSBhcyBjb25zdDsKCmNvbnN0IGNoZWNrU2NoZW1hID0gei5vYmplY3QoewogIHZlcmRpY3Q6IHouZW51bShbJ3ZlcmlmaWVkJywgJ25lZWRzX2ZpeCcsICd1bnN1cmUnXSksCiAgaXNzdWVzOiB6LmFycmF5KHoub2JqZWN0KHsgbGluZTogei5zdHJpbmcoKSwgZml4OiB6LnN0cmluZygpIH0pKSwKICBub3RlOiB6LnN0cmluZygpLAp9KTsKCmZ1bmN0aW9uIGJyaWVmaW5nKGlucHV0OiBDb3VuY2lsSW5wdXQsIGV2aWRlbmNlOiBzdHJpbmcpIHsKICByZXR1cm4gYFFVRVNUSU9OIEZST00gVEhFIFNUVURFTlQ6XG4ke2lucHV0LnF1ZXN0aW9ufVxuXG5UVVRPUidTIEFOU1dFUiAoYnkgJHtDT1VOQ0lMX01PREVMUy5jaGFpci5uYW1lfSk6XG4ke2lucHV0LmFuc3dlcn1cblxuTElWRSBXRUIgRVZJREVOQ0UgKFBlcnBsZXhpdHkgKyBQYXJhbGxlbCk6XG4ke2V2aWRlbmNlfWA7Cn0KCmZ1bmN0aW9uIGRlc2NyaWJlKGM6IENoZWNrUmVzdWx0KSB7CiAgY29uc3Qgd2hvID0gQ09VTkNJTF9NT0RFTFNbYy5yb2xlXS5uYW1lOwogIGNvbnN0IGlzc3VlcyA9IGMuaXNzdWVzLm1hcCgoaSwgbikgPT4gYCAgJHtuICsgMX0uIFdyb25nOiAiJHtpLmxpbmV9IiDihpIgQ29ycmVjdDogIiR7aS5maXh9ImApLmpvaW4oJ1xuJyk7CiAgcmV0dXJuIGAke3dob30g4oCUIHZlcmRpY3Q6ICR7Yy52ZXJkaWN0fS4gJHtjLm5vdGV9JHtpc3N1ZXMgPyBgXG4ke2lzc3Vlc31gIDogJyd9YDsKfQoKLyoqIGZldGNoIHdyYXBwZXI6IHBlcnNpc3RzIGNyZWRpdC9kZW5pYWwgc2lnbmFscywgbGV0cyB0aGUgU0RLIGJhY2sgb2ZmIG9uIDQyOS81eHgsIHN0b3BzIG9uIG90aGVyIGVycm9ycy4gKi8KZnVuY3Rpb24gZ3VhcmRlZEZldGNoKGN0eDogQ3R4LCBiYXNlOiB0eXBlb2YgZmV0Y2gpOiB0eXBlb2YgZmV0Y2ggewogIHJldHVybiAoYXN5bmMgKGlucHV0OiBSZXF1ZXN0SW5mbyB8IFVSTCwgaW5pdD86IFJlcXVlc3RJbml0KSA9PiB7CiAgICBjb25zdCByZXMgPSBhd2FpdCBiYXNlKGlucHV0LCBpbml0KTsKICAgIGlmIChyZXMub2sgfHwgcmVzLnN0YXR1cyA9PT0gNDI5IHx8IHJlcy5zdGF0dXMgPj0gNTAwKSByZXR1cm4gcmVzOwogICAgbGV0IGRldGFpbHM6IHVua25vd24gPSB7fTsKICAgIHRyeSB7IGRldGFpbHMgPSBhd2FpdCByZXMuY2xvbmUoKS5qc29uKCk7IH0gY2F0Y2ggeyAvKiBub3QgSlNPTiAqLyB9CiAgICBjb25zdCBmYWlsdXJlID0gY2xhc3NpZnlBaUZhaWx1cmUocmVzLnN0YXR1cywgZGV0YWlscyk7CiAgICBjdHgub25GYWlsdXJlKGZhaWx1cmUpOwogICAgdGhyb3cgT2JqZWN0LmFzc2lnbihuZXcgRXJyb3IoZmFpbHVyZS5tZXNzYWdlIHx8IGBBSSByZXF1ZXN0IGZhaWxlZCAoJHtyZXMuc3RhdHVzfSlgKSwgeyBzdGF0dXNDb2RlOiByZXMuc3RhdHVzIH0pOwogIH0pIGFzIHR5cGVvZiBmZXRjaDsKfQoKZnVuY3Rpb24gZmFpbGVkQ2hlY2socm9sZTogQ2hlY2tSZXN1bHRbJ3JvbGUnXSwgcm91bmQ6IENoZWNrUmVzdWx0Wydyb3VuZCddLCBlOiB1bmtub3duLCBjdHg6IEN0eCk6IENoZWNrUmVzdWx0IHsKICBpZiAoZSBpbnN0YW5jZW9mIEdhdGV3YXlFcnJvcikgY3R4Lm9uRmFpbHVyZShjbGFzc2lmeUFpRmFpbHVyZShlLnN0YXR1cywgZS5kZXRhaWxzKSk7CiAgY29uc3Qgc3RhdHVzID0gZSBpbnN0YW5jZW9mIEdhdGV3YXlFcnJvciA/IGUuc3RhdHVzIDogKGUgYXMgeyBzdGF0dXNDb2RlPzogbnVtYmVyIH0pPy5zdGF0dXNDb2RlID8/IDA7CiAgY29uc3Qgbm90ZSA9IHN0YXR1cyA9PT0gNDAyID8gJ0FJIGNyZWRpdHMgYXJlIHVzZWQgdXAuJyA6IGN0eC5zaWduYWwuYWJvcnRlZCA/ICdTdG9wcGVkLicgOiAnVGhpcyByZXZpZXdlciB3YXMgdW5hdmFpbGFibGUuJzsKICBpZiAoIWN0eC5zaWduYWwuYWJvcnRlZCkgY29uc29sZS5lcnJvcihgW2NvdW5jaWxdICR7cm9sZX0gcm91bmQgJHtyb3VuZH0gZmFpbGVkYCwgZSBpbnN0YW5jZW9mIEVycm9yID8gZS5tZXNzYWdlIDogZSk7CiAgcmV0dXJuIHsgcm9sZSwgcm91bmQsIHZlcmRpY3Q6ICd1bnN1cmUnLCBpc3N1ZXM6IFtdLCBub3RlLCBmYWlsZWQ6IHRydWUgfTsKfQoKZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGdhdGhlckV2aWRlbmNlKHF1ZXN0aW9uOiBzdHJpbmcpOiBQcm9taXNlPHsgZXZpZGVuY2U6IHN0cmluZzsgc291cmNlczogU291cmNlW10gfT4gewogIHRyeSB7CiAgICBjb25zdCB7IGNyZWF0ZUFnZW50VG9vbHMgfSA9IGF3YWl0IGltcG9ydCgnQC9saWIvYWdlbnQvdG9vbHMuc2VydmVyJyk7CiAgICBjb25zdCB0b29scyA9IGNyZWF0ZUFnZW50VG9vbHMoeyB3ZWJTZWFyY2g6IHRydWUgfSkgYXMgdW5rbm93biBhcyB7CiAgICAgIHdlYl9zZWFyY2g6IHsgZXhlY3V0ZTogKGk6IHsgcXVlcnk6IHN0cmluZyB9LCBvOiB1bmtub3duKSA9PiBQcm9taXNlPHsgcmVzdWx0cz86IHsgdGl0bGU/OiBzdHJpbmc7IHVybD86IHN0cmluZzsgc25pcHBldDogc3RyaW5nIH1bXSB9PiB9OwogICAgfTsKICAgIC8vIFNlYXJjaCBvbiB0aGUgcmVhbCBxdWVzdGlvbjogR2VtaW5pJ3MgcGhvdG8gdHJhbnNjcmlwdGlvbiBmaXJzdCwgd2l0aG91dCB3cmFwcGVyIHRleHQsIFBERiBib2RpZXMgb3IgYm9pbGVycGxhdGUuCiAgICBjb25zdCB7IHJlYWRpbmcsIHJlc3QgfSA9IHNwbGl0UGhvdG9SZWFkaW5nKHF1ZXN0aW9uKTsKICAgIGNvbnN0IHF1ZXJ5ID0gYCR7cmVhZGluZyA/PyAnJ30gJHtyZXN0fWAKICAgICAgLnJlcGxhY2UoLzxkb2MgbmFtZT0iW14iXSoiPltcc1xTXSo/PFwvZG9jPi9nLCAnICcpCiAgICAgIC5yZXBsYWNlKC88W14+XSs+L2csICcgJykKICAgICAgLnJlcGxhY2UoL1NvbHZlICh0aGlzfHRoZSkgcXVlc3Rpb25bXi5dKlwuPy9naSwgJyAnKQogICAgICAucmVwbGFjZSgvXHMrL2csICcgJykKICAgICAgLnRyaW0oKQogICAgICAuc2xpY2UoMCwgMTYwKTsKICAgIGlmICghcXVlcnkpIHJldHVybiB7IGV2aWRlbmNlOiAnTm8gc2VhcmNoYWJsZSBxdWVzdGlvbiB0ZXh0IOKAlCByZWx5IG9uIHlvdXIgb3duIGtub3dsZWRnZSBhbmQgR29vZ2xlIFNlYXJjaC4nLCBzb3VyY2VzOiBbXSB9OwogICAgY29uc3QgciA9IGF3YWl0IHRvb2xzLndlYl9zZWFyY2guZXhlY3V0ZSh7IHF1ZXJ5OiBgJHtxdWVyeX0gTkNFUlQgTkVFVGAgfSwgeyB0b29sQ2FsbElkOiAnY291bmNpbCcsIG1lc3NhZ2VzOiBbXSB9KTsKICAgIGNvbnN0IHJlc3VsdHMgPSAocj8ucmVzdWx0cyA/PyBbXSkuZmlsdGVyKCh4KSA9PiB4LnVybCk7CiAgICBpZiAoIXJlc3VsdHMubGVuZ3RoKSByZXR1cm4geyBldmlkZW5jZTogJ05vIHdlYiByZXN1bHRzIOKAlCByZWx5IG9uIHlvdXIgb3duIGtub3dsZWRnZSBhbmQgR29vZ2xlIFNlYXJjaC4nLCBzb3VyY2VzOiBbXSB9OwogICAgcmV0dXJuIHsKICAgICAgZXZpZGVuY2U6IHJlc3VsdHMubWFwKCh4LCBpKSA9PiBgWyR7aSArIDF9XSAke3gudGl0bGUgPz8gJyd9IOKAlCAke3gudXJsfVxuJHt4LnNuaXBwZXR9YCkuam9pbignXG5cbicpLAogICAgICBzb3VyY2VzOiByZXN1bHRzLm1hcCgoeCkgPT4gKHsgLi4uKHgudGl0bGUgPyB7IHRpdGxlOiB4LnRpdGxlIH0gOiB7fSksIHVybDogeC51cmwhIH0pKSwKICAgIH07CiAgfSBjYXRjaCAoZSkgewogICAgY29uc29sZS5lcnJvcignW2NvdW5jaWxdIHdlYiBldmlkZW5jZSB1bmF2YWlsYWJsZScsIGUgaW5zdGFuY2VvZiBFcnJvciA/IGUubWVzc2FnZSA6IGUpOwogICAgcmV0dXJuIHsgZXZpZGVuY2U6ICdXZWIgc2VhcmNoIHVuYXZhaWxhYmxlIOKAlCByZWx5IG9uIHlvdXIgb3duIGtub3dsZWRnZSBhbmQgR29vZ2xlIFNlYXJjaC4nLCBzb3VyY2VzOiBbXSB9OwogIH0KfQoKYXN5bmMgZnVuY3Rpb24gZ2VtaW5pUmV2aWV3KGN0eDogQ3R4LCBpbnB1dDogQ291bmNpbElucHV0LCBldmlkZW5jZTogc3RyaW5nLCByb3VuZDogMSB8IDIsIHBlZXI/OiBDaGVja1Jlc3VsdCk6IFByb21pc2U8Q2hlY2tSZXN1bHQ+IHsKICBjb25zdCBkZWJhdGUgPSBwZWVyID8gYFxuXG5ERUJBVEUgUk9VTkQ6IGFub3RoZXIgY291bmNpbCBtZW1iZXIgcmVwb3J0ZWQ6XG4ke2Rlc2NyaWJlKHBlZXIpfVxuUmUtZXhhbWluZSB0aGVpciBwb2ludHMgaG9uZXN0bHkuIEtlZXAgeW91ciBwb3NpdGlvbiB3aGVuIHlvdSBhcmUgY29uZmlkZW50OyBjaGFuZ2UgaXQgb25seSBpZiB0aGVpciBhcmd1bWVudCBpcyBjb3JyZWN0LmAgOiAnJzsKICBjb25zdCBjb250ZW50OiB1bmtub3duW10gPSBbeyB0eXBlOiAndGV4dCcsIHRleHQ6IGJyaWVmaW5nKGlucHV0LCBldmlkZW5jZSkgKyBkZWJhdGUgfV07CiAgZm9yIChjb25zdCB1cmwgb2YgaW5wdXQuaW1hZ2VzLnNsaWNlKDAsIDIpKSBjb250ZW50LnB1c2goeyB0eXBlOiAnaW1hZ2VfdXJsJywgaW1hZ2VfdXJsOiB7IHVybCB9IH0pOwogIGNvbnN0IG1lc3NhZ2VzID0gW3sgcm9sZTogJ3N5c3RlbScsIGNvbnRlbnQ6IGAke0JBU0VfUlVMRVN9XG5cbiR7Uk9MRV9GT0NVUy5nZW1pbml9YCB9LCB7IHJvbGU6ICd1c2VyJywgY29udGVudCB9XTsKICB0cnkgewogICAgLy8gR29vZ2xlIFNlYXJjaCBncm91bmRpbmcgZmlyc3Q7IGlmIHRoZSBnYXRld2F5IHJlamVjdHMgdG9vbHMgKyBzY2hlbWEgdG9nZXRoZXIsIGZhbGwgYmFjayB0byBzdHJpY3QgSlNPTi4KICAgIHRyeSB7CiAgICAgIGNvbnN0IHRleHQgPSBhd2FpdCBnYXRld2F5Q2hhdFRleHQoeyBtb2RlbDogQ09VTkNJTF9NT0RFTFMuZ2VtaW5pLmlkLCBtZXNzYWdlcywgdG9vbHM6IFt7IHR5cGU6ICdnb29nbGVfc2VhcmNoJyB9XSB9LCBjdHguc2lnbmFsKTsKICAgICAgY29uc3QgY2hlY2sgPSB0b0NoZWNrKCdnZW1pbmknLCByb3VuZCwgdGV4dCk7CiAgICAgIGlmICghY2hlY2suZmFpbGVkKSByZXR1cm4gY2hlY2s7CiAgICB9IGNhdGNoIChlKSB7CiAgICAgIGlmICghKGUgaW5zdGFuY2VvZiBHYXRld2F5RXJyb3IpIHx8IGUuc3RhdHVzICE9PSA0MDApIHRocm93IGU7CiAgICB9CiAgICBjb25zdCB0ZXh0ID0gYXdhaXQgZ2F0ZXdheUNoYXRUZXh0KHsKICAgICAgbW9kZWw6IENPVU5DSUxfTU9ERUxTLmdlbWluaS5pZCwKICAgICAgbWVzc2FnZXMsCiAgICAgIHJlc3BvbnNlX2Zvcm1hdDogeyB0eXBlOiAnanNvbl9zY2hlbWEnLCBqc29uX3NjaGVtYTogeyBuYW1lOiAndmVyZGljdCcsIHN0cmljdDogdHJ1ZSwgc2NoZW1hOiBWRVJJRllfU0NIRU1BIH0gfSwKICAgIH0sIGN0eC5zaWduYWwpOwogICAgcmV0dXJuIHRvQ2hlY2soJ2dlbWluaScsIHJvdW5kLCB0ZXh0KTsKICB9IGNhdGNoIChlKSB7CiAgICByZXR1cm4gZmFpbGVkQ2hlY2soJ2dlbWluaScsIHJvdW5kLCBlLCBjdHgpOwogIH0KfQoKYXN5bmMgZnVuY3Rpb24gb3BlbmFpUmV2aWV3KGN0eDogQ3R4LCBpbnB1dDogQ291bmNpbElucHV0LCBldmlkZW5jZTogc3RyaW5nLCByb3VuZDogMSB8IDIsIHBlZXI/OiBDaGVja1Jlc3VsdCk6IFByb21pc2U8Q2hlY2tSZXN1bHQ+IHsKICBjb25zdCBkZWJhdGUgPSBwZWVyID8gYFxuXG5ERUJBVEUgUk9VTkQ6IGFub3RoZXIgY291bmNpbCBtZW1iZXIgcmVwb3J0ZWQ6XG4ke2Rlc2NyaWJlKHBlZXIpfVxuUmUtZXhhbWluZSB0aGVpciBwb2ludHMgaG9uZXN0bHkuIEtlZXAgeW91ciBwb3NpdGlvbiB3aGVuIHlvdSBhcmUgY29uZmlkZW50OyBjaGFuZ2UgaXQgb25seSBpZiB0aGVpciBhcmd1bWVudCBpcyBjb3JyZWN0LmAgOiAnJzsKICB0cnkgewogICAgY29uc3QgcnVuID0gY3JlYXRlTG92YWJsZUFpR2F0ZXdheVJ1bklkRmV0Y2goKTsKICAgIGNvbnN0IG9wZW5haSA9IGNyZWF0ZU9wZW5BSSh7CiAgICAgIGJhc2VVUkw6IEdBVEVXQVksCiAgICAgIGFwaUtleTogY3R4LmtleSwKICAgICAgaGVhZGVyczogeyAnTG92YWJsZS1BUEktS2V5JzogY3R4LmtleSwgJ1gtTG92YWJsZS1BSUctU0RLJzogJ3ZlcmNlbC1haS1zZGsnIH0sCiAgICAgIGZldGNoOiBndWFyZGVkRmV0Y2goY3R4LCBydW4uZmV0Y2gpLAogICAgfSk7CiAgICBjb25zdCBwYXJ0czogKHsgdHlwZTogJ3RleHQnOyB0ZXh0OiBzdHJpbmcgfSB8IHsgdHlwZTogJ2ltYWdlJzsgaW1hZ2U6IHN0cmluZyB9KVtdID0gW3sgdHlwZTogJ3RleHQnLCB0ZXh0OiBicmllZmluZyhpbnB1dCwgZXZpZGVuY2UpICsgZGViYXRlIH1dOwogICAgZm9yIChjb25zdCB1cmwgb2YgaW5wdXQuaW1hZ2VzLnNsaWNlKDAsIDIpKSBwYXJ0cy5wdXNoKHsgdHlwZTogJ2ltYWdlJywgaW1hZ2U6IHVybCB9KTsKICAgIGNvbnN0IHJlc3VsdCA9IHN0cmVhbVRleHQoewogICAgICBtb2RlbDogb3BlbmFpLnJlc3BvbnNlcyhDT1VOQ0lMX01PREVMUy5vcGVuYWkuaWQpLAogICAgICBpbnN0cnVjdGlvbnM6IGAke0JBU0VfUlVMRVN9XG5cbiR7Uk9MRV9GT0NVUy5vcGVuYWl9YCwKICAgICAgbWVzc2FnZXM6IFt7IHJvbGU6ICd1c2VyJywgY29udGVudDogcGFydHMgfV0sCiAgICAgIG91dHB1dDogT3V0cHV0Lm9iamVjdCh7IHNjaGVtYTogY2hlY2tTY2hlbWEgfSksCiAgICAgIG1heFJldHJpZXM6IDEsCiAgICAgIGFib3J0U2lnbmFsOiBjdHguc2lnbmFsLAogICAgICBwcm92aWRlck9wdGlvbnM6IHsKICAgICAgICBvcGVuYWk6IHsKICAgICAgICAgIHN0b3JlOiBmYWxzZSwKICAgICAgICAgIGZvcmNlUmVhc29uaW5nOiB0cnVlLAogICAgICAgICAgcmVhc29uaW5nRWZmb3J0OiAnaGlnaCcsCiAgICAgICAgICByZWFzb25pbmdTdW1tYXJ5OiAnYXV0bycsCiAgICAgICAgICBpbmNsdWRlOiBbJ3JlYXNvbmluZy5lbmNyeXB0ZWRfY29udGVudCddLAogICAgICAgIH0sCiAgICAgIH0sCiAgICB9KTsKICAgIHJldHVybiB0b0NoZWNrKCdvcGVuYWknLCByb3VuZCwgYXdhaXQgcmVzdWx0Lm91dHB1dCk7CiAgfSBjYXRjaCAoZSkgewogICAgcmV0dXJuIGZhaWxlZENoZWNrKCdvcGVuYWknLCByb3VuZCwgZSwgY3R4KTsKICB9Cn0KCmNvbnN0IENIQUlSX1JVTEVTID0gYFlvdSBhcmUgJHtDT1VOQ0lMX01PREVMUy5jaGFpci5uYW1lfSwgdGhlIE5FRVQgdHV0b3Igd2hvIHdyb3RlIHRoZSBhbnN3ZXIgYmVsb3csIG5vdyBjaGFpcmluZyBhIHJldmlldyBjb3VuY2lsIHdpdGggJHtDT1VOQ0lMX01PREVMUy5nZW1pbmkubmFtZX0gKGZhY3RzLCBHb29nbGUtZ3JvdW5kZWQpIGFuZCAke0NPVU5DSUxfTU9ERUxTLm9wZW5haS5uYW1lfSAobWF0aHMgYW5kIGxvZ2ljKS4KVGhleSBkaXNhZ3JlZWQgd2l0aCBlYWNoIG90aGVyIG9yIHJhaXNlZCBvYmplY3Rpb25zLiBXZWlnaCBldmVyeSBvYmplY3Rpb24gb24gaXRzIG1lcml0cyBhZ2FpbnN0IE5DRVJUIGFuZCB0aGUgZXZpZGVuY2Ug4oCUIGFjY2VwdCBpdCBpZiBpdCBpcyBhIHJlYWwgZXJyb3IgaW4geW91ciBhbnN3ZXIsIHJlamVjdCBpdCAoYW5kIHNheSB3aHkgaW4gdGhlIG5vdGUpIGlmIHRoZSByZXZpZXdlciBpcyB3cm9uZy4gRG8gbm90IGRlZmVuZCBhIG1pc3Rha2Ugb3V0IG9mIHByaWRlOyBkbyBub3QgYWNjZXB0IGEgd3JvbmcgY29ycmVjdGlvbiB0byBwbGVhc2UgdGhlIGNvdW5jaWwuCkZpbmFsIHZlcmRpY3Q6Ci0gIm5lZWRzX2ZpeCI6IHlvdXIgYW5zd2VyIGhhcyBhdCBsZWFzdCBvbmUgcmVhbCBlcnJvci4gTGlzdCBPTkxZIGFjY2VwdGVkIGVycm9yczogImxpbmUiID0gdGhlIGV4YWN0IHdyb25nIGxpbmUgZnJvbSB5b3VyIGFuc3dlciwgImZpeCIgPSB0aGUgY29ycmVjdGVkIHN0YXRlbWVudCB0aGUgc3R1ZGVudCBzaG91bGQgbGVhcm4uCi0gInZlcmlmaWVkIjogdGhlIGFuc3dlciBzdGFuZHMgKGFsbCBvYmplY3Rpb25zIHJlamVjdGVkKS4KLSAidW5zdXJlIjogdGhlIGV2aWRlbmNlIGlzIGdlbnVpbmVseSBpbmNvbmNsdXNpdmUuCiJub3RlIiA9IGF0IG1vc3QgdHdvIHNob3J0IHBsYWluLUVuZ2xpc2ggc2VudGVuY2VzIHRlbGxpbmcgdGhlIHN0dWRlbnQgd2hhdCB0aGUgY291bmNpbCBkZWNpZGVkIGFuZCB3aHkuClJlcGx5IHdpdGggSlNPTiBvbmx5OiB7InZlcmRpY3QiOiJ2ZXJpZmllZCJ8Im5lZWRzX2ZpeCJ8InVuc3VyZSIsImlzc3VlcyI6W3sibGluZSI6Ii4uLiIsImZpeCI6Ii4uLiJ9XSwibm90ZSI6Ii4uLiJ9YDsKCmFzeW5jIGZ1bmN0aW9uIGNoYWlyUnVsaW5nKGN0eDogQ3R4LCBpbnB1dDogQ291bmNpbElucHV0LCBldmlkZW5jZTogc3RyaW5nLCByZXBvcnRzOiBDaGVja1Jlc3VsdFtdKTogUHJvbWlzZTxDaGVja1Jlc3VsdD4gewogIHRyeSB7CiAgICBjb25zdCBydW4gPSBjcmVhdGVMb3ZhYmxlQWlHYXRld2F5UnVuSWRGZXRjaCgpOwogICAgY29uc3QgYW50aHJvcGljID0gY3JlYXRlQW50aHJvcGljKHsKICAgICAgYmFzZVVSTDogR0FURVdBWSwKICAgICAgYXBpS2V5OiBjdHgua2V5LAogICAgICBoZWFkZXJzOiB7ICdYLUxvdmFibGUtQUlHLVNESyc6ICd2ZXJjZWwtYWktc2RrJyB9LAogICAgICBmZXRjaDogZ3VhcmRlZEZldGNoKGN0eCwgcnVuLmZldGNoKSwKICAgIH0pOwogICAgY29uc3QgcGFydHM6ICh7IHR5cGU6ICd0ZXh0JzsgdGV4dDogc3RyaW5nIH0gfCB7IHR5cGU6ICdpbWFnZSc7IGltYWdlOiBzdHJpbmcgfSlbXSA9IFt7CiAgICAgIHR5cGU6ICd0ZXh0JywKICAgICAgdGV4dDogYCR7YnJpZWZpbmcoaW5wdXQsIGV2aWRlbmNlKX1cblxuQ09VTkNJTCBSRVBPUlRTIChhZnRlciBkZWJhdGUpOlxuJHtyZXBvcnRzLm1hcChkZXNjcmliZSkuam9pbignXG5cbicpfWAsCiAgICB9XTsKICAgIGZvciAoY29uc3QgdXJsIG9mIGlucHV0LmltYWdlcy5zbGljZSgwLCAyKSkgcGFydHMucHVzaCh7IHR5cGU6ICdpbWFnZScsIGltYWdlOiB1cmwgfSk7CiAgICBsZXQgcmVmdXNlZCA9IGZhbHNlOwogICAgY29uc3QgcmVzdWx0ID0gc3RyZWFtVGV4dCh7CiAgICAgIG1vZGVsOiBhbnRocm9waWMoQ09VTkNJTF9NT0RFTFMuY2hhaXIuaWQpLAogICAgICBzeXN0ZW06IENIQUlSX1JVTEVTLAogICAgICBtZXNzYWdlczogW3sgcm9sZTogJ3VzZXInLCBjb250ZW50OiBwYXJ0cyB9XSwKICAgICAgcHJvdmlkZXJPcHRpb25zOiB7IGFudGhyb3BpYzogeyB0aGlua2luZzogeyB0eXBlOiAnYWRhcHRpdmUnIH0sIGVmZm9ydDogJ2hpZ2gnIH0gfSwKICAgICAgbWF4T3V0cHV0VG9rZW5zOiAxNjAwMCwKICAgICAgbWF4UmV0cmllczogMCwKICAgICAgYWJvcnRTaWduYWw6IGN0eC5zaWduYWwsCiAgICAgIG9uU3RlcEZpbmlzaDogKHsgcmF3RmluaXNoUmVhc29uIH0pID0+IHsgaWYgKHJhd0ZpbmlzaFJlYXNvbiA9PT0gJ3JlZnVzYWwnKSByZWZ1c2VkID0gdHJ1ZTsgfSwKICAgIH0pOwogICAgY29uc3QgdGV4dCA9IGF3YWl0IHJlc3VsdC50ZXh0OwogICAgaWYgKHJlZnVzZWQpIHJldHVybiB7IHJvbGU6ICdjaGFpcicsIHJvdW5kOiAzLCB2ZXJkaWN0OiAndW5zdXJlJywgaXNzdWVzOiBbXSwgbm90ZTogJ1RoZSB0dXRvciBtb2RlbCBkZWNsaW5lZCB0byBydWxlIG9uIHRoaXMgb25lLicsIGZhaWxlZDogdHJ1ZSB9OwogICAgcmV0dXJuIHRvQ2hlY2soJ2NoYWlyJywgMywgdGV4dCk7CiAgfSBjYXRjaCAoZSkgewogICAgcmV0dXJuIGZhaWxlZENoZWNrKCdjaGFpcicsIDMsIGUsIGN0eCk7CiAgfQp9CgovKiogUnVucyB0aGUgY291bmNpbCBhbmQgZW1pdHMgcHJvZ3Jlc3MgZXZlbnRzOyB0aGUgbGFzdCBldmVudCBpcyAiZG9uZSIgb3IgImVycm9yIi4gKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHJ1bkNvdW5jaWwoaW5wdXQ6IENvdW5jaWxJbnB1dCwgc2lnbmFsOiBBYm9ydFNpZ25hbCwgZW1pdDogKGU6IENvdW5jaWxFdmVudCkgPT4gdm9pZCkgewogIGNvbnN0IGtleSA9IHByb2Nlc3MuZW52WydMT1ZBQkxFX0FQSV9LRVknXTsKICBpZiAoIWtleSkgeyBlbWl0KHsgdHlwZTogJ2Vycm9yJywgbWVzc2FnZTogJ0FJIGlzIG5vdCBjb25maWd1cmVkIGZvciB0aGlzIGFwcC4nLCBzdGF0dXM6IDQwMSB9KTsgcmV0dXJuOyB9CiAgbGV0IGNyZWRpdDogQWlGYWlsdXJlIHwgbnVsbCA9IG51bGw7CiAgY29uc3QgY3R4OiBDdHggPSB7CiAgICBrZXksIHNpZ25hbCwKICAgIG9uRmFpbHVyZTogKGYpID0+IHsKICAgICAgaWYgKGYua2luZCAhPT0gJ2NyZWRpdHMnIHx8IGNyZWRpdCkgcmV0dXJuOwogICAgICBjcmVkaXQgPSBmOwogICAgICB2b2lkIGltcG9ydCgnQC9saWIvYWkvcGF1c2Uuc2VydmVyJykudGhlbigoeyBzZXRBaVBhdXNlIH0pID0+IHNldEFpUGF1c2UoZikpOwogICAgfSwKICB9OwoKICBlbWl0KHsgdHlwZTogJ3N0YWdlJywgc3RhZ2U6ICdzZWFyY2gnIH0pOwogIGNvbnN0IGNoZWNrczogQ2hlY2tSZXN1bHRbXSA9IFtdOwogIGNvbnN0IHJlY29yZCA9IChjOiBDaGVja1Jlc3VsdCkgPT4geyBjaGVja3MucHVzaChjKTsgZW1pdCh7IHR5cGU6ICdjaGVjaycsIGNoZWNrOiBjIH0pOyByZXR1cm4gYzsgfTsKICAvLyBHZW1pbmkgaGFzIGl0cyBvd24gR29vZ2xlIFNlYXJjaCBncm91bmRpbmcg4oCUIHN0YXJ0IGl0IG5vdyBpbnN0ZWFkIG9mIHdhaXRpbmcgZm9yIHRoZSB3ZWIgc2VhcmNoLgogIGNvbnN0IGdlbWluaVJldmlldzEgPSBnZW1pbmlSZXZpZXcoY3R4LCBpbnB1dCwgJ05vIGxpdmUgd2ViIGV2aWRlbmNlIHlldCDigJQgcmVseSBvbiB5b3VyIG93biBrbm93bGVkZ2UgYW5kIEdvb2dsZSBTZWFyY2guJywgMSkudGhlbihyZWNvcmQpOwogIGNvbnN0IHsgZXZpZGVuY2UsIHNvdXJjZXMgfSA9IGF3YWl0IGdhdGhlckV2aWRlbmNlKGlucHV0LnF1ZXN0aW9uKTsKICBlbWl0KHsgdHlwZTogJ3NvdXJjZXMnLCBzb3VyY2VzIH0pOwogIGlmIChzaWduYWwuYWJvcnRlZCkgcmV0dXJuOwoKICBlbWl0KHsgdHlwZTogJ3N0YWdlJywgc3RhZ2U6ICdyZXZpZXcnIH0pOwogIGxldCBbZywgb10gPSBhd2FpdCBQcm9taXNlLmFsbChbCiAgICBnZW1pbmlSZXZpZXcxLAogICAgb3BlbmFpUmV2aWV3KGN0eCwgaW5wdXQsIGV2aWRlbmNlLCAxKS50aGVuKHJlY29yZCksCiAgXSk7CiAgaWYgKGNyZWRpdCkgeyBlbWl0KHsgdHlwZTogJ2Vycm9yJywgbWVzc2FnZTogKGNyZWRpdCBhcyBBaUZhaWx1cmUpLm1lc3NhZ2UgfHwgJ0FJIGNyZWRpdHMgYXJlIHVzZWQgdXAuJywgc3RhdHVzOiA0MDIgfSk7IHJldHVybjsgfQogIGlmIChzaWduYWwuYWJvcnRlZCkgcmV0dXJuOwoKICBjb25zdCBmaW5pc2ggPSAocjogT21pdDxDb3VuY2lsUmVzdWx0LCAnY2hlY2tzJyB8ICdzb3VyY2VzJyB8ICdhdCc+KSA9PgogICAgZW1pdCh7IHR5cGU6ICdkb25lJywgcmVzdWx0OiB7IC4uLnIsIGNoZWNrcywgc291cmNlcywgYXQ6IERhdGUubm93KCkgfSB9KTsKCiAgbGV0IHN0ZXAgPSBjb3VuY2lsTmV4dFN0ZXAoMSwgZywgbyk7CiAgaWYgKHN0ZXAgPT09ICdkZWJhdGUnKSB7CiAgICBlbWl0KHsgdHlwZTogJ3N0YWdlJywgc3RhZ2U6ICdkZWJhdGUnIH0pOwogICAgY29uc3QgW2cxLCBvMV0gPSBbZywgb107CiAgICBbZywgb10gPSBhd2FpdCBQcm9taXNlLmFsbChbCiAgICAgIGdlbWluaVJldmlldyhjdHgsIGlucHV0LCBldmlkZW5jZSwgMiwgbzEpLnRoZW4ocmVjb3JkKSwKICAgICAgb3BlbmFpUmV2aWV3KGN0eCwgaW5wdXQsIGV2aWRlbmNlLCAyLCBnMSkudGhlbihyZWNvcmQpLAogICAgXSk7CiAgICBpZiAoY3JlZGl0KSB7IGVtaXQoeyB0eXBlOiAnZXJyb3InLCBtZXNzYWdlOiAoY3JlZGl0IGFzIEFpRmFpbHVyZSkubWVzc2FnZSB8fCAnQUkgY3JlZGl0cyBhcmUgdXNlZCB1cC4nLCBzdGF0dXM6IDQwMiB9KTsgcmV0dXJuOyB9CiAgICBpZiAoc2lnbmFsLmFib3J0ZWQpIHJldHVybjsKICAgIHN0ZXAgPSBjb3VuY2lsTmV4dFN0ZXAoMiwgZywgbyk7CiAgICBpZiAoc3RlcCA9PT0gJ2FncmVlJykgewogICAgICBmaW5pc2goeyB2ZXJkaWN0OiAndmVyaWZpZWQnLCBpc3N1ZXM6IFtdLCBub3RlOiAnQWZ0ZXIgZGViYXRpbmcsIGJvdGggcmV2aWV3ZXJzIGFncmVlZCB0aGUgdHV0b3JcJ3MgYW5zd2VyIGlzIGNvcnJlY3QuJywgZGVjaWRlZEJ5OiAnYWxsLWFncmVlJyB9KTsKICAgICAgcmV0dXJuOwogICAgfQogIH0KICBpZiAoc3RlcCA9PT0gJ2FncmVlJykgewogICAgZmluaXNoKHsgdmVyZGljdDogJ3ZlcmlmaWVkJywgaXNzdWVzOiBbXSwgbm90ZTogYCR7Q09VTkNJTF9NT0RFTFMuZ2VtaW5pLm5hbWV9IGFuZCAke0NPVU5DSUxfTU9ERUxTLm9wZW5haS5uYW1lfSBib3RoIGluZGVwZW5kZW50bHkgY29uZmlybWVkIHRoZSB0dXRvcidzIGFuc3dlci5gLCBkZWNpZGVkQnk6ICdhbGwtYWdyZWUnIH0pOwogICAgcmV0dXJuOwogIH0KICBpZiAoc3RlcCA9PT0gJ3VuYXZhaWxhYmxlJykgewogICAgZmluaXNoKHsgdmVyZGljdDogJ3Vuc3VyZScsIGlzc3VlczogW10sIG5vdGU6ICdUaGUgcmV2aWV3ZXJzIHdlcmUgdW5hdmFpbGFibGUg4oCUIHBsZWFzZSB0cnkgYWdhaW4gaW4gYSBtb21lbnQuJywgZGVjaWRlZEJ5OiAnY2hlY2tlcnMtb25seScgfSk7CiAgICByZXR1cm47CiAgfQoKICBlbWl0KHsgdHlwZTogJ3N0YWdlJywgc3RhZ2U6ICdydWxpbmcnIH0pOwogIGNvbnN0IGxpdmUgPSBbZywgb10uZmlsdGVyKChjKSA9PiAhYy5mYWlsZWQpOwogIGNvbnN0IHJ1bGluZyA9IHJlY29yZChhd2FpdCBjaGFpclJ1bGluZyhjdHgsIGlucHV0LCBldmlkZW5jZSwgbGl2ZSkpOwogIGlmIChjcmVkaXQpIHsgZW1pdCh7IHR5cGU6ICdlcnJvcicsIG1lc3NhZ2U6IChjcmVkaXQgYXMgQWlGYWlsdXJlKS5tZXNzYWdlIHx8ICdBSSBjcmVkaXRzIGFyZSB1c2VkIHVwLicsIHN0YXR1czogNDAyIH0pOyByZXR1cm47IH0KICBpZiAoc2lnbmFsLmFib3J0ZWQpIHJldHVybjsKICBpZiAocnVsaW5nLmZhaWxlZCkgewogICAgY29uc3QgbWVyZ2VkID0gbWVyZ2VWZXJkaWN0cyhsaXZlKTsKICAgIGZpbmlzaCh7IHZlcmRpY3Q6IG1lcmdlZCwgaXNzdWVzOiBsaXZlLmZsYXRNYXAoKGMpID0+IGMuaXNzdWVzKS5zbGljZSgwLCA2KSwgbm90ZTogJ1Jldmlld2VyIGZpbmRpbmdzIHNob3duIOKAlCB0aGUgdHV0b3JcJ3MgcnVsaW5nIHdhcyB1bmF2YWlsYWJsZS4nLCBkZWNpZGVkQnk6ICdjaGVja2Vycy1vbmx5JyB9KTsKICAgIHJldHVybjsKICB9CiAgZmluaXNoKHsgdmVyZGljdDogcnVsaW5nLnZlcmRpY3QsIGlzc3VlczogcnVsaW5nLmlzc3Vlcywgbm90ZTogcnVsaW5nLm5vdGUsIGRlY2lkZWRCeTogJ3J1bGVkJyB9KTsKfQo=
+// Server-only: the answer-checking council. Three platforms, one Lovable AI key.
+//   1. Evidence  — Perplexity + Parallel live web search (connector gateway)
+//   2. Review    — Gemini 4 Argon (Google Search grounded) ‖ GPT-6 Astra (maths/logic), independent
+//   3. Debate    — only when their verdicts differ: each sees the other's report and revises once
+//   4. Ruling    — Claude Fable 5.1 (the tutor who wrote the answer) accepts or rejects each objection
+// Nothing is stored server-side; results go back to the browser only.
+import { createAnthropic } from '@ai-sdk/anthropic';
+import { createOpenAI } from '@ai-sdk/openai';
+import { Output, streamText } from 'ai';
+import { z } from 'zod';
+import { createLovableAiGatewayRunIdFetch } from '@/lib/ai/run-id';
+import { classifyAiFailure, type AiFailure } from '@/lib/ai/errors';
+import { GatewayError, gatewayChatText } from '@/lib/gateway-chat.server';
+import {
+  COUNCIL_MODELS, VERIFY_SCHEMA, councilNextStep, mergeVerdicts, splitPhotoReading, toCheck,
+  type CheckResult, type CouncilEvent, type CouncilResult, type Source,
+} from '@/lib/verify';
+
+const GATEWAY = 'https://ai.gateway.lovable.dev/v1';
+
+export type CouncilInput = { question: string; answer: string; images: string[] };
+type Ctx = { key: string; signal: AbortSignal; onFailure: (f: AiFailure) => void };
+
+const BASE_RULES = `You are a senior NEET (India) examiner on a review council checking a tutor's answer for a NEET student.
+Check every fact, definition, formula, number, unit, sign, option letter and the final answer against NCERT Class 11/12 and authoritative sources.
+Rules:
+- "needs_fix" ONLY for a real, material error you are confident about (wrong fact, wrong calculation, wrong option, misleading NCERT claim). Quote the exact wrong line from the answer in "line" and give the correct statement in "fix".
+- "verified" when the answer is correct (minor style issues do not count).
+- "unsure" when you cannot confirm with confidence.
+- Never invent sources. "note" = one short plain-English sentence explaining your verdict.
+Reply with JSON only: {"verdict":"verified"|"needs_fix"|"unsure","issues":[{"line":"...","fix":"..."}],"note":"..."}`;
+
+const ROLE_FOCUS = {
+  gemini: 'Your focus: factual accuracy, NCERT wording, biology/chemistry facts, exceptions, dates and names. Use Google Search to confirm anything doubtful and prefer ncert.nic.in and official sources. If a photo is attached, also check the answer read the question and options correctly.',
+  openai: 'Your focus: mathematics, physics/chemistry calculations, units, significant figures, signs, logical steps and whether the chosen option follows from the working. Redo every calculation independently.',
+} as const;
+
+const checkSchema = z.object({
+  verdict: z.enum(['verified', 'needs_fix', 'unsure']),
+  issues: z.array(z.object({ line: z.string(), fix: z.string() })),
+  note: z.string(),
+});
+
+function briefing(input: CouncilInput, evidence: string) {
+  return `QUESTION FROM THE STUDENT:\n${input.question}\n\nTUTOR'S ANSWER (by ${COUNCIL_MODELS.chair.name}):\n${input.answer}\n\nLIVE WEB EVIDENCE (Perplexity + Parallel):\n${evidence}`;
+}
+
+function describe(c: CheckResult) {
+  const who = COUNCIL_MODELS[c.role].name;
+  const issues = c.issues.map((i, n) => `  ${n + 1}. Wrong: "${i.line}" → Correct: "${i.fix}"`).join('\n');
+  return `${who} — verdict: ${c.verdict}. ${c.note}${issues ? `\n${issues}` : ''}`;
+}
+
+/** fetch wrapper: persists credit/denial signals, lets the SDK back off on 429/5xx, stops on other errors. */
+function guardedFetch(ctx: Ctx, base: typeof fetch): typeof fetch {
+  return (async (input: RequestInfo | URL, init?: RequestInit) => {
+    const res = await base(input, init);
+    if (res.ok || res.status === 429 || res.status >= 500) return res;
+    let details: unknown = {};
+    try { details = await res.clone().json(); } catch { /* not JSON */ }
+    const failure = classifyAiFailure(res.status, details);
+    ctx.onFailure(failure);
+    throw Object.assign(new Error(failure.message || `AI request failed (${res.status})`), { statusCode: res.status });
+  }) as typeof fetch;
+}
+
+function failedCheck(role: CheckResult['role'], round: CheckResult['round'], e: unknown, ctx: Ctx): CheckResult {
+  if (e instanceof GatewayError) ctx.onFailure(classifyAiFailure(e.status, e.details));
+  const status = e instanceof GatewayError ? e.status : (e as { statusCode?: number })?.statusCode ?? 0;
+  const note = status === 402 ? 'AI credits are used up.' : ctx.signal.aborted ? 'Stopped.' : 'This reviewer was unavailable.';
+  if (!ctx.signal.aborted) console.error(`[council] ${role} round ${round} failed`, e instanceof Error ? e.message : e);
+  return { role, round, verdict: 'unsure', issues: [], note, failed: true };
+}
+
+export async function gatherEvidence(question: string): Promise<{ evidence: string; sources: Source[] }> {
+  try {
+    const { createAgentTools } = await import('@/lib/agent/tools.server');
+    const tools = createAgentTools({ webSearch: true }) as unknown as {
+      web_search: { execute: (i: { query: string }, o: unknown) => Promise<{ results?: { title?: string; url?: string; snippet: string }[] }> };
+    };
+    // Search on the real question: Gemini's photo transcription first, without wrapper text, PDF bodies or boilerplate.
+    const { reading, rest } = splitPhotoReading(question);
+    const query = `${reading ?? ''} ${rest}`
+      .replace(/<doc name="[^"]*">[\s\S]*?<\/doc>/g, ' ')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/Solve (this|the) question[^.]*\.?/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 160);
+    if (!query) return { evidence: 'No searchable question text — rely on your own knowledge and Google Search.', sources: [] };
+    const r = await tools.web_search.execute({ query: `${query} NCERT NEET` }, { toolCallId: 'council', messages: [] });
+    const results = (r?.results ?? []).filter((x) => x.url);
+    if (!results.length) return { evidence: 'No web results — rely on your own knowledge and Google Search.', sources: [] };
+    return {
+      evidence: results.map((x, i) => `[${i + 1}] ${x.title ?? ''} — ${x.url}\n${x.snippet}`).join('\n\n'),
+      sources: results.map((x) => ({ ...(x.title ? { title: x.title } : {}), url: x.url! })),
+    };
+  } catch (e) {
+    console.error('[council] web evidence unavailable', e instanceof Error ? e.message : e);
+    return { evidence: 'Web search unavailable — rely on your own knowledge and Google Search.', sources: [] };
+  }
+}
+
+async function geminiReview(ctx: Ctx, input: CouncilInput, evidence: string, round: 1 | 2, peer?: CheckResult): Promise<CheckResult> {
+  const debate = peer ? `\n\nDEBATE ROUND: another council member reported:\n${describe(peer)}\nRe-examine their points honestly. Keep your position when you are confident; change it only if their argument is correct.` : '';
+  const content: unknown[] = [{ type: 'text', text: briefing(input, evidence) + debate }];
+  for (const url of input.images.slice(0, 2)) content.push({ type: 'image_url', image_url: { url } });
+  const messages = [{ role: 'system', content: `${BASE_RULES}\n\n${ROLE_FOCUS.gemini}` }, { role: 'user', content }];
+  try {
+    // Google Search grounding first; if the gateway rejects tools + schema together, fall back to strict JSON.
+    try {
+      const text = await gatewayChatText({ model: COUNCIL_MODELS.gemini.id, messages, tools: [{ type: 'google_search' }] }, ctx.signal);
+      const check = toCheck('gemini', round, text);
+      if (!check.failed) return check;
+    } catch (e) {
+      if (!(e instanceof GatewayError) || e.status !== 400) throw e;
+    }
+    const text = await gatewayChatText({
+      model: COUNCIL_MODELS.gemini.id,
+      messages,
+      response_format: { type: 'json_schema', json_schema: { name: 'verdict', strict: true, schema: VERIFY_SCHEMA } },
+    }, ctx.signal);
+    return toCheck('gemini', round, text);
+  } catch (e) {
+    return failedCheck('gemini', round, e, ctx);
+  }
+}
+
+async function openaiReview(ctx: Ctx, input: CouncilInput, evidence: string, round: 1 | 2, peer?: CheckResult): Promise<CheckResult> {
+  const debate = peer ? `\n\nDEBATE ROUND: another council member reported:\n${describe(peer)}\nRe-examine their points honestly. Keep your position when you are confident; change it only if their argument is correct.` : '';
+  try {
+    const run = createLovableAiGatewayRunIdFetch();
+    const openai = createOpenAI({
+      baseURL: GATEWAY,
+      apiKey: ctx.key,
+      headers: { 'Lovable-API-Key': ctx.key, 'X-Lovable-AIG-SDK': 'vercel-ai-sdk' },
+      fetch: guardedFetch(ctx, run.fetch),
+    });
+    const parts: ({ type: 'text'; text: string } | { type: 'image'; image: string })[] = [{ type: 'text', text: briefing(input, evidence) + debate }];
+    for (const url of input.images.slice(0, 2)) parts.push({ type: 'image', image: url });
+    const result = streamText({
+      model: openai.responses(COUNCIL_MODELS.openai.id),
+      instructions: `${BASE_RULES}\n\n${ROLE_FOCUS.openai}`,
+      messages: [{ role: 'user', content: parts }],
+      output: Output.object({ schema: checkSchema }),
+      maxRetries: 1,
+      abortSignal: ctx.signal,
+      providerOptions: {
+        openai: {
+          store: false,
+          forceReasoning: true,
+          reasoningEffort: 'high',
+          reasoningSummary: 'auto',
+          include: ['reasoning.encrypted_content'],
+        },
+      },
+    });
+    return toCheck('openai', round, await result.output);
+  } catch (e) {
+    return failedCheck('openai', round, e, ctx);
+  }
+}
+
+const CHAIR_RULES = `You are ${COUNCIL_MODELS.chair.name}, the NEET tutor who wrote the answer below, now chairing a review council with ${COUNCIL_MODELS.gemini.name} (facts, Google-grounded) and ${COUNCIL_MODELS.openai.name} (maths and logic).
+They disagreed with each other or raised objections. Weigh every objection on its merits against NCERT and the evidence — accept it if it is a real error in your answer, reject it (and say why in the note) if the reviewer is wrong. Do not defend a mistake out of pride; do not accept a wrong correction to please the council.
+Final verdict:
+- "needs_fix": your answer has at least one real error. List ONLY accepted errors: "line" = the exact wrong line from your answer, "fix" = the corrected statement the student should learn.
+- "verified": the answer stands (all objections rejected).
+- "unsure": the evidence is genuinely inconclusive.
+"note" = at most two short plain-English sentences telling the student what the council decided and why.
+Reply with JSON only: {"verdict":"verified"|"needs_fix"|"unsure","issues":[{"line":"...","fix":"..."}],"note":"..."}`;
+
+async function chairRuling(ctx: Ctx, input: CouncilInput, evidence: string, reports: CheckResult[]): Promise<CheckResult> {
+  try {
+    const run = createLovableAiGatewayRunIdFetch();
+    const anthropic = createAnthropic({
+      baseURL: GATEWAY,
+      apiKey: ctx.key,
+      headers: { 'X-Lovable-AIG-SDK': 'vercel-ai-sdk' },
+      fetch: guardedFetch(ctx, run.fetch),
+    });
+    const parts: ({ type: 'text'; text: string } | { type: 'image'; image: string })[] = [{
+      type: 'text',
+      text: `${briefing(input, evidence)}\n\nCOUNCIL REPORTS (after debate):\n${reports.map(describe).join('\n\n')}`,
+    }];
+    for (const url of input.images.slice(0, 2)) parts.push({ type: 'image', image: url });
+    let refused = false;
+    const result = streamText({
+      model: anthropic(COUNCIL_MODELS.chair.id),
+      system: CHAIR_RULES,
+      messages: [{ role: 'user', content: parts }],
+      providerOptions: { anthropic: { thinking: { type: 'adaptive' }, effort: 'high' } },
+      maxOutputTokens: 16000,
+      maxRetries: 0,
+      abortSignal: ctx.signal,
+      onStepFinish: ({ rawFinishReason }) => { if (rawFinishReason === 'refusal') refused = true; },
+    });
+    const text = await result.text;
+    if (refused) return { role: 'chair', round: 3, verdict: 'unsure', issues: [], note: 'The tutor model declined to rule on this one.', failed: true };
+    return toCheck('chair', 3, text);
+  } catch (e) {
+    return failedCheck('chair', 3, e, ctx);
+  }
+}
+
+/** Runs the council and emits progress events; the last event is "done" or "error". */
+export async function runCouncil(input: CouncilInput, signal: AbortSignal, emit: (e: CouncilEvent) => void) {
+  const key = process.env['LOVABLE_API_KEY'];
+  if (!key) { emit({ type: 'error', message: 'AI is not configured for this app.', status: 401 }); return; }
+  let credit: AiFailure | null = null;
+  const ctx: Ctx = {
+    key, signal,
+    onFailure: (f) => {
+      if (f.kind !== 'credits' || credit) return;
+      credit = f;
+      void import('@/lib/ai/pause.server').then(({ setAiPause }) => setAiPause(f));
+    },
+  };
+
+  emit({ type: 'stage', stage: 'search' });
+  const checks: CheckResult[] = [];
+  const record = (c: CheckResult) => { checks.push(c); emit({ type: 'check', check: c }); return c; };
+  // Gemini has its own Google Search grounding — start it now instead of waiting for the web search.
+  const geminiReview1 = geminiReview(ctx, input, 'No live web evidence yet — rely on your own knowledge and Google Search.', 1).then(record);
+  const { evidence, sources } = await gatherEvidence(input.question);
+  emit({ type: 'sources', sources });
+  if (signal.aborted) return;
+
+  emit({ type: 'stage', stage: 'review' });
+  let [g, o] = await Promise.all([
+    geminiReview1,
+    openaiReview(ctx, input, evidence, 1).then(record),
+  ]);
+  if (credit) { emit({ type: 'error', message: (credit as AiFailure).message || 'AI credits are used up.', status: 402 }); return; }
+  if (signal.aborted) return;
+
+  const finish = (r: Omit<CouncilResult, 'checks' | 'sources' | 'at'>) =>
+    emit({ type: 'done', result: { ...r, checks, sources, at: Date.now() } });
+
+  let step = councilNextStep(1, g, o);
+  if (step === 'debate') {
+    emit({ type: 'stage', stage: 'debate' });
+    const [g1, o1] = [g, o];
+    [g, o] = await Promise.all([
+      geminiReview(ctx, input, evidence, 2, o1).then(record),
+      openaiReview(ctx, input, evidence, 2, g1).then(record),
+    ]);
+    if (credit) { emit({ type: 'error', message: (credit as AiFailure).message || 'AI credits are used up.', status: 402 }); return; }
+    if (signal.aborted) return;
+    step = councilNextStep(2, g, o);
+    if (step === 'agree') {
+      finish({ verdict: 'verified', issues: [], note: 'After debating, both reviewers agreed the tutor\'s answer is correct.', decidedBy: 'all-agree' });
+      return;
+    }
+  }
+  if (step === 'agree') {
+    finish({ verdict: 'verified', issues: [], note: `${COUNCIL_MODELS.gemini.name} and ${COUNCIL_MODELS.openai.name} both independently confirmed the tutor's answer.`, decidedBy: 'all-agree' });
+    return;
+  }
+  if (step === 'unavailable') {
+    finish({ verdict: 'unsure', issues: [], note: 'The reviewers were unavailable — please try again in a moment.', decidedBy: 'checkers-only' });
+    return;
+  }
+
+  emit({ type: 'stage', stage: 'ruling' });
+  const live = [g, o].filter((c) => !c.failed);
+  const ruling = record(await chairRuling(ctx, input, evidence, live));
+  if (credit) { emit({ type: 'error', message: (credit as AiFailure).message || 'AI credits are used up.', status: 402 }); return; }
+  if (signal.aborted) return;
+  if (ruling.failed) {
+    const merged = mergeVerdicts(live);
+    finish({ verdict: merged, issues: live.flatMap((c) => c.issues).slice(0, 6), note: 'Reviewer findings shown — the tutor\'s ruling was unavailable.', decidedBy: 'checkers-only' });
+    return;
+  }
+  finish({ verdict: ruling.verdict, issues: ruling.issues, note: ruling.note, decidedBy: 'ruled' });
+}

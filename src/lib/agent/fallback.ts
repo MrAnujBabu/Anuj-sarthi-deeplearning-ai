@@ -1,1 +1,29 @@
-Ly8gUHVyZSBoZWxwZXJzIGZvciByYWNpbmcgYSBzbG93IHByb3ZpZGVyIGFnYWluc3QgYSBjaGVhcGVyIGZhbGxiYWNrLgpleHBvcnQgY29uc3Qgc2xlZXAgPSAobXM6IG51bWJlcikgPT4gbmV3IFByb21pc2U8dm9pZD4oKHIpID0+IHNldFRpbWVvdXQociwgbXMpKTsKCi8qKgogKiBSdW4gYHByaW1hcnlgOyB3aGVuIGl0IHNldHRsZXMgcXVpY2tseSwgYmVoYXZlIGxpa2UgdGhlIHNlcXVlbnRpYWwgcGF0aDoKICogLSB1c2FibGUgcmVzdWx0IChgb2tgKSDihpIgcmV0dXJuIGl0OwogKiAtIHVudXNhYmxlIHJlc3VsdCBvciByZWplY3Rpb24g4oaSIHJ1biBgZmFsbGJhY2tgIGluc3RlYWQuCiAqIFdoZW4gYHByaW1hcnlgIGlzIHN0aWxsIHJ1bm5pbmcgYWZ0ZXIgYGRlbGF5TXNgLCBzdGFydCBgZmFsbGJhY2tgIHRvbyBhbmQKICogcmV0dXJuIHRoZSBmaXJzdCB1c2FibGUgcmVzdWx0LiBJZiBuZWl0aGVyIGlzIHVzYWJsZSwgYmVoYXZlIGxpa2UgYXdhaXRpbmcKICogYHByaW1hcnlgIGFsb25lIChpdHMgdmFsdWUsIG9yIGl0cyByZWplY3Rpb24pLiBOZXZlciBkb3VibGUtc3RhcnRzIHRoZSBmYWxsYmFjay4KICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBlYXJseUZhbGxiYWNrPFQ+KHByaW1hcnk6IFByb21pc2U8VD4sIG1ha2VGYWxsYmFjazogKCkgPT4gUHJvbWlzZTxUPiwgZGVsYXlNczogbnVtYmVyLCBvazogKHY6IFQpID0+IGJvb2xlYW4pOiBQcm9taXNlPFQ+IHsKICBjb25zdCByID0gYXdhaXQgUHJvbWlzZS5yYWNlKFsKICAgIHByaW1hcnkudGhlbigodikgPT4gKHsga2luZDogJ3NldHRsZWQnIGFzIGNvbnN0LCB2IH0pLCAoZSkgPT4gKHsga2luZDogJ2ZhaWxlZCcgYXMgY29uc3QsIGUgfSkpLAogICAgc2xlZXAoZGVsYXlNcykudGhlbigoKSA9PiAoeyBraW5kOiAnc2xvdycgYXMgY29uc3QgfSkpLAogIF0pOwogIGlmIChyLmtpbmQgPT09ICdzbG93JykgewogICAgY29uc3QgZmIgPSBtYWtlRmFsbGJhY2soKTsKICAgIGNvbnN0IHdpbm5lciA9IGF3YWl0IFByb21pc2UucmFjZShbCiAgICAgIHByaW1hcnkudGhlbigodikgPT4gKG9rKHYpID8geyB2IH0gOiB1bmRlZmluZWQpLCAoKSA9PiB1bmRlZmluZWQpLAogICAgICBmYi50aGVuKCh2KSA9PiAob2sodikgPyB7IHYgfSA6IHVuZGVmaW5lZCksICgpID0+IHVuZGVmaW5lZCksCiAgICBdKTsKICAgIGlmICh3aW5uZXIpIHJldHVybiB3aW5uZXIudjsKICAgIGNvbnN0IHNldHRsZWQgPSBhd2FpdCBQcm9taXNlLmFsbFNldHRsZWQoW3ByaW1hcnksIGZiXSk7CiAgICByZXR1cm4gc2V0dGxlZFswXS5zdGF0dXMgPT09ICdmdWxmaWxsZWQnID8gc2V0dGxlZFswXS52YWx1ZSA6IFByb21pc2UucmVqZWN0KHNldHRsZWRbMF0ucmVhc29uKTsKICB9CiAgaWYgKHIua2luZCA9PT0gJ3NldHRsZWQnICYmIG9rKHIudikpIHJldHVybiByLnY7CiAgcmV0dXJuIG1ha2VGYWxsYmFjaygpOwp9Cg==
+// Pure helpers for racing a slow provider against a cheaper fallback.
+export const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
+/**
+ * Run `primary`; when it settles quickly, behave like the sequential path:
+ * - usable result (`ok`) → return it;
+ * - unusable result or rejection → run `fallback` instead.
+ * When `primary` is still running after `delayMs`, start `fallback` too and
+ * return the first usable result. If neither is usable, behave like awaiting
+ * `primary` alone (its value, or its rejection). Never double-starts the fallback.
+ */
+export async function earlyFallback<T>(primary: Promise<T>, makeFallback: () => Promise<T>, delayMs: number, ok: (v: T) => boolean): Promise<T> {
+  const r = await Promise.race([
+    primary.then((v) => ({ kind: 'settled' as const, v }), (e) => ({ kind: 'failed' as const, e })),
+    sleep(delayMs).then(() => ({ kind: 'slow' as const })),
+  ]);
+  if (r.kind === 'slow') {
+    const fb = makeFallback();
+    const winner = await Promise.race([
+      primary.then((v) => (ok(v) ? { v } : undefined), () => undefined),
+      fb.then((v) => (ok(v) ? { v } : undefined), () => undefined),
+    ]);
+    if (winner) return winner.v;
+    const settled = await Promise.allSettled([primary, fb]);
+    return settled[0].status === 'fulfilled' ? settled[0].value : Promise.reject(settled[0].reason);
+  }
+  if (r.kind === 'settled' && ok(r.v)) return r.v;
+  return makeFallback();
+}

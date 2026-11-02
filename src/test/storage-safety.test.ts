@@ -1,1 +1,29 @@
-aW1wb3J0IHsgYWZ0ZXJFYWNoLCBkZXNjcmliZSwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBjbGVhclRocmVhZE1lZGlhLCBsb2FkVGhyZWFkcywgdXBzZXJ0VGhyZWFkLCB3aXRob3V0U3R1ZHlNZWRpYSwgdHlwZSBUaHJlYWQgfSBmcm9tICdAL2xpYi90aHJlYWRzJzsKCmFmdGVyRWFjaCgoKSA9PiB7IHZpLnJlc3RvcmVBbGxNb2NrcygpOyBsb2NhbFN0b3JhZ2UuY2xlYXIoKTsgfSk7CmNvbnN0IHRocmVhZDogVGhyZWFkID0geyBpZDogJ29uZScsIHRpdGxlOiAnUGh5c2ljcycsIHVwZGF0ZWRBdDogMSwgbWVzc2FnZXM6IFt7IGlkOiAncScsIHJvbGU6ICd1c2VyJywgcGFydHM6IFt7IHR5cGU6ICd0ZXh0JywgdGV4dDogJzxkb2MgbmFtZT0ibm90ZXMucGRmIj5sYXJnZSBleHRyYWN0ZWQgdGV4dDwvZG9jPlxuV2hhdCBpcyBmb3JjZT8nIH0sIHsgdHlwZTogJ2ZpbGUnLCBtZWRpYVR5cGU6ICdhcHBsaWNhdGlvbi9wZGYnLCBmaWxlbmFtZTogJ3NjYW4ucGRmJywgdXJsOiAnaWRiOnNjYW4nIH0sIHsgdHlwZTogJ2ZpbGUnLCBtZWRpYVR5cGU6ICdpbWFnZS9qcGVnJywgdXJsOiAnZGF0YTppbWFnZS9qcGVnO2Jhc2U2NCxBQUFBJyB9XSB9LCB7IGlkOiAnYScsIHJvbGU6ICdhc3Npc3RhbnQnLCBwYXJ0czogW3sgdHlwZTogJ3RleHQnLCB0ZXh0OiAnRm9yY2UgPSBtYXNzIMOXIGFjY2VsZXJhdGlvbi4nIH1dIH1dIH07CmRlc2NyaWJlKCdzdG9yYWdlIHNhZmV0eScsICgpID0+IHsKICBpdCgncmVtb3ZlcyBtZWRpYSBhbmQgZXh0cmFjdGVkIHRleHQgd2hpbGUgcHJlc2VydmluZyBxdWVzdGlvbiBhbmQgYW5zd2VyJywgKCkgPT4gewogICAgY29uc3QgcmVzdWx0ID0gd2l0aG91dFN0dWR5TWVkaWEodGhyZWFkLm1lc3NhZ2VzKTsKICAgIGV4cGVjdChKU09OLnN0cmluZ2lmeShyZXN1bHQpKS5ub3QudG9Db250YWluKCdsYXJnZSBleHRyYWN0ZWQgdGV4dCcpOwogICAgZXhwZWN0KHJlc3VsdFswXT8ucGFydHMuZXZlcnkocCA9PiBwLnR5cGUgIT09ICdmaWxlJykpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoSlNPTi5zdHJpbmdpZnkocmVzdWx0KSkudG9Db250YWluKCdXaGF0IGlzIGZvcmNlPycpOwogICAgZXhwZWN0KHJlc3VsdFsxXSkudG9FcXVhbCh0aHJlYWQubWVzc2FnZXNbMV0pOwogIH0pOwogIGl0KCdjbGVhbnMgYWxsIGNoYXRzIHdpdGhvdXQgY2hhbmdpbmcgcmV2aXNpb24gY2FyZHMnLCAoKSA9PiB7CiAgICB1cHNlcnRUaHJlYWQodGhyZWFkKTsKICAgIGxvY2FsU3RvcmFnZS5zZXRJdGVtKCdzbmFwc29sdmUuY2FyZHMudjEnLCAnW3siaWQiOiJrZWVwIn1dJyk7CiAgICBjbGVhclRocmVhZE1lZGlhKCk7CiAgICBleHBlY3QobG9hZFRocmVhZHMoKVswXT8ubWVzc2FnZXNbMV0pLnRvRXF1YWwodGhyZWFkLm1lc3NhZ2VzWzFdKTsKICAgIGV4cGVjdChsb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnc25hcHNvbHZlLmNhcmRzLnYxJykpLnRvQmUoJ1t7ImlkIjoia2VlcCJ9XScpOwogICAgZXhwZWN0KGxvYWRUaHJlYWRzKClbMF0/Lm1lc3NhZ2VzWzBdPy5wYXJ0cy5ldmVyeShwID0+IHAudHlwZSA9PT0gJ3RleHQnKSkudG9CZSh0cnVlKTsKICB9KTsKICBpdCgncmVwb3J0cyBmdWxsIHN0b3JhZ2Ugd2l0aG91dCBzaWxlbnRseSBldmljdGluZyBhbnkgb2xkIHRocmVhZCcsICgpID0+IHsKICAgIHVwc2VydFRocmVhZCh0aHJlYWQpOwogICAgY29uc3QgYmVmb3JlID0gbG9jYWxTdG9yYWdlLmdldEl0ZW0oJ3NuYXBzb2x2ZS50aHJlYWRzLnYxJyk7CiAgICB2aS5zcHlPbihTdG9yYWdlLnByb3RvdHlwZSwgJ3NldEl0ZW0nKS5tb2NrSW1wbGVtZW50YXRpb24oKCkgPT4geyB0aHJvdyBuZXcgRE9NRXhjZXB0aW9uKCdGdWxsJywgJ1F1b3RhRXhjZWVkZWRFcnJvcicpOyB9KTsKICAgIGV4cGVjdCh1cHNlcnRUaHJlYWQoeyAuLi50aHJlYWQsIGlkOiAnbmV3JyB9KSkudG9CZShmYWxzZSk7CiAgICBleHBlY3QobG9jYWxTdG9yYWdlLmdldEl0ZW0oJ3NuYXBzb2x2ZS50aHJlYWRzLnYxJykpLnRvQmUoYmVmb3JlKTsKICB9KTsKfSk7
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { clearThreadMedia, loadThreads, upsertThread, withoutStudyMedia, type Thread } from '@/lib/threads';
+
+afterEach(() => { vi.restoreAllMocks(); localStorage.clear(); });
+const thread: Thread = { id: 'one', title: 'Physics', updatedAt: 1, messages: [{ id: 'q', role: 'user', parts: [{ type: 'text', text: '<doc name="notes.pdf">large extracted text</doc>\nWhat is force?' }, { type: 'file', mediaType: 'application/pdf', filename: 'scan.pdf', url: 'idb:scan' }, { type: 'file', mediaType: 'image/jpeg', url: 'data:image/jpeg;base64,AAAA' }] }, { id: 'a', role: 'assistant', parts: [{ type: 'text', text: 'Force = mass × acceleration.' }] }] };
+describe('storage safety', () => {
+  it('removes media and extracted text while preserving question and answer', () => {
+    const result = withoutStudyMedia(thread.messages);
+    expect(JSON.stringify(result)).not.toContain('large extracted text');
+    expect(result[0]?.parts.every(p => p.type !== 'file')).toBe(true);
+    expect(JSON.stringify(result)).toContain('What is force?');
+    expect(result[1]).toEqual(thread.messages[1]);
+  });
+  it('cleans all chats without changing revision cards', () => {
+    upsertThread(thread);
+    localStorage.setItem('snapsolve.cards.v1', '[{"id":"keep"}]');
+    clearThreadMedia();
+    expect(loadThreads()[0]?.messages[1]).toEqual(thread.messages[1]);
+    expect(localStorage.getItem('snapsolve.cards.v1')).toBe('[{"id":"keep"}]');
+    expect(loadThreads()[0]?.messages[0]?.parts.every(p => p.type === 'text')).toBe(true);
+  });
+  it('reports full storage without silently evicting any old thread', () => {
+    upsertThread(thread);
+    const before = localStorage.getItem('snapsolve.threads.v1');
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new DOMException('Full', 'QuotaExceededError'); });
+    expect(upsertThread({ ...thread, id: 'new' })).toBe(false);
+    expect(localStorage.getItem('snapsolve.threads.v1')).toBe(before);
+  });
+});

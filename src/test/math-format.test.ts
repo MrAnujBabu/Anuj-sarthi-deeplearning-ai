@@ -1,1 +1,23 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBub3JtYWxpemVNYXRoIH0gZnJvbSAiQC9saWIvbWF0aC1mb3JtYXQiOwoKZGVzY3JpYmUoIkVxdWF0aW9uIGRlbGltaXRlciBub3JtYWxpemF0aW9uIiwgKCkgPT4gewogIGl0KCJrZWVwcyBlcXVhdGlvbnMgaW5zaWRlIGEgc2VudGVuY2UgaW5saW5lIiwgKCkgPT4gewogICAgZXhwZWN0KG5vcm1hbGl6ZU1hdGgoIlVzaW5nICQkRj1tYSQkLCBmaW5kICQkYT00JCQuIikpCiAgICAgIC50b0JlKCJVc2luZyAkRj1tYSQsIGZpbmQgJGE9NCQuIik7CiAgfSk7CiAgaXQoImFjY2VwdHMgaW5saW5lIHBhcmVudGhlc2VzIGRlbGltaXRlcnMiLCAoKSA9PiB7CiAgICBleHBlY3Qobm9ybWFsaXplTWF0aChTdHJpbmcucmF3YFVzaW5nIFwoRj1tYVwpLCBzb2x2ZS5gKSkudG9CZSgiVXNpbmcgJEY9bWEkLCBzb2x2ZS4iKTsKICB9KTsKICBpdCgicHJlc2VydmVzIHN0YW5kYWxvbmUgYW5kIG11bHRpbGluZSBkaXNwbGF5IGVxdWF0aW9ucyIsICgpID0+IHsKICAgIGNvbnN0IGlucHV0ID0gIlN0ZXBzOlxuJCRGPW1hJCRcblxuJCRcbmE9XFxmcmFje0Z9e219XG4kJFxuRG9uZS4iOwogICAgZXhwZWN0KG5vcm1hbGl6ZU1hdGgoaW5wdXQpKS50b0JlKGlucHV0KTsKICB9KTsKICBpdCgiZG9lcyBub3QgcmV3cml0ZSBjb2RlLCBTVkcgb3IgaW5jb21wbGV0ZSBjb2RlIGZlbmNlcyIsICgpID0+IHsKICAgIGNvbnN0IGlucHV0ID0gImAkJEY9bWEkJGBcbmBgYHN2Z1xuPHRleHQ+JCR4JCQ8L3RleHQ+XG5gYGBcbn5+fnRleHRcblVzaW5nICQkeCQkLlxufn5+XG5gYGB0ZXh0XG5Vc2luZyAkJHkkJC4iOwogICAgZXhwZWN0KG5vcm1hbGl6ZU1hdGgoaW5wdXQpKS50b0JlKGlucHV0KTsKICB9KTsKICBpdCgicHJlc2VydmVzIGN1cnJlbmN5IGFuZCB1bmZpbmlzaGVkIHN0cmVhbWVkIGVxdWF0aW9ucyIsICgpID0+IHsKICAgIGV4cGVjdChub3JtYWxpemVNYXRoKCJDb3N0ICQ1OyBVc2luZyAkJEY9IiApKS50b0JlKCJDb3N0ICQ1OyBVc2luZyAkJEY9Iik7CiAgfSk7Cn0pOw==
+import { describe, expect, it } from "vitest";
+import { normalizeMath } from "@/lib/math-format";
+
+describe("Equation delimiter normalization", () => {
+  it("keeps equations inside a sentence inline", () => {
+    expect(normalizeMath("Using $$F=ma$$, find $$a=4$$."))
+      .toBe("Using $F=ma$, find $a=4$.");
+  });
+  it("accepts inline parentheses delimiters", () => {
+    expect(normalizeMath(String.raw`Using \(F=ma\), solve.`)).toBe("Using $F=ma$, solve.");
+  });
+  it("preserves standalone and multiline display equations", () => {
+    const input = "Steps:\n$$F=ma$$\n\n$$\na=\\frac{F}{m}\n$$\nDone.";
+    expect(normalizeMath(input)).toBe(input);
+  });
+  it("does not rewrite code, SVG or incomplete code fences", () => {
+    const input = "`$$F=ma$$`\n```svg\n<text>$$x$$</text>\n```\n~~~text\nUsing $$x$$.\n~~~\n```text\nUsing $$y$$.";
+    expect(normalizeMath(input)).toBe(input);
+  });
+  it("preserves currency and unfinished streamed equations", () => {
+    expect(normalizeMath("Cost $5; Using $$F=" )).toBe("Cost $5; Using $$F=");
+  });
+});

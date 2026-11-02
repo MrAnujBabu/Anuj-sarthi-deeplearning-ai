@@ -1,1 +1,29 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBCQUNLR1JPVU5EX0dSQUNFX01TLCBiYWNrZ3JvdW5kSG9sZEV4cGlyZWQsIGVuZFdpdGhVc2VyVHVybiB9IGZyb20gIi4vbGl2ZS1yZWxheS5zZXJ2ZXIiOwoKZGVzY3JpYmUoInNjcmVlbi1vZmYgY2FsbCBob2xkIiwgKCkgPT4gewogIGl0KCJob2xkcyB0aGUgY2FsbCB0aHJvdWdoIHRoZSBncmFjZSBhbmQgZW5kcyBpdCBvbmx5IGFmdGVyIiwgKCkgPT4gewogICAgY29uc3QgYXQgPSAxXzAwMF8wMDA7CiAgICBleHBlY3QoYmFja2dyb3VuZEhvbGRFeHBpcmVkKGF0LCBhdCkpLnRvQmUoZmFsc2UpOwogICAgZXhwZWN0KGJhY2tncm91bmRIb2xkRXhwaXJlZChhdCwgYXQgKyBCQUNLR1JPVU5EX0dSQUNFX01TIC0gMSkpLnRvQmUoZmFsc2UpOwogICAgZXhwZWN0KGJhY2tncm91bmRIb2xkRXhwaXJlZChhdCwgYXQgKyBCQUNLR1JPVU5EX0dSQUNFX01TKSkudG9CZSh0cnVlKTsKICB9KTsKICBpdCgibmV2ZXIgZXhwaXJlcyB3aGVuIHRoZSBzY3JlZW4gc3RheWVkIG9uIiwgKCkgPT4gewogICAgZXhwZWN0KGJhY2tncm91bmRIb2xkRXhwaXJlZCgwLCBOdW1iZXIuTUFYX1NBRkVfSU5URUdFUikpLnRvQmUoZmFsc2UpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCJ2b2ljZSBiYWNrZW5kIHR1cm5zIiwgKCkgPT4gewogIGl0KCJhZGRzIGEgdXNlciB0dXJuIHdoZW4gdGhlIHRyYW5zY3JpcHQgZW5kcyB3aXRoIHRoZSB2b2ljZSBhZ2VudCIsICgpID0+IHsKICAgIGNvbnN0IG91dCA9IGVuZFdpdGhVc2VyVHVybihbCiAgICAgIHsgcm9sZTogInVzZXIiLCBjb250ZW50OiAiTWl0b2Nob25kcmlhIGt5YSBoYWk/IiB9LAogICAgICB7IHJvbGU6ICJhc3Npc3RhbnQiLCBjb250ZW50OiAiRWsgc2Vjb25kLCBkZWtodGEgaG9vbi4iIH0sCiAgICBdKTsKICAgIGV4cGVjdChvdXQuYXQoLTEpPy5yb2xlKS50b0JlKCJ1c2VyIik7CiAgICBleHBlY3Qob3V0KS50b0hhdmVMZW5ndGgoMyk7CiAgfSk7CiAgaXQoImxlYXZlcyBhIHRyYW5zY3JpcHQgZW5kaW5nIHdpdGggdGhlIHN0dWRlbnQgdW5jaGFuZ2VkIiwgKCkgPT4gewogICAgY29uc3QgbXNncyA9IFt7IHJvbGU6ICJ1c2VyIiBhcyBjb25zdCwgY29udGVudDogIkhpIiB9XTsKICAgIGV4cGVjdChlbmRXaXRoVXNlclR1cm4obXNncykpLnRvRXF1YWwobXNncyk7CiAgfSk7Cn0pOwo=
+import { describe, expect, it } from "vitest";
+import { BACKGROUND_GRACE_MS, backgroundHoldExpired, endWithUserTurn } from "./live-relay.server";
+
+describe("screen-off call hold", () => {
+  it("holds the call through the grace and ends it only after", () => {
+    const at = 1_000_000;
+    expect(backgroundHoldExpired(at, at)).toBe(false);
+    expect(backgroundHoldExpired(at, at + BACKGROUND_GRACE_MS - 1)).toBe(false);
+    expect(backgroundHoldExpired(at, at + BACKGROUND_GRACE_MS)).toBe(true);
+  });
+  it("never expires when the screen stayed on", () => {
+    expect(backgroundHoldExpired(0, Number.MAX_SAFE_INTEGER)).toBe(false);
+  });
+});
+
+describe("voice backend turns", () => {
+  it("adds a user turn when the transcript ends with the voice agent", () => {
+    const out = endWithUserTurn([
+      { role: "user", content: "Mitochondria kya hai?" },
+      { role: "assistant", content: "Ek second, dekhta hoon." },
+    ]);
+    expect(out.at(-1)?.role).toBe("user");
+    expect(out).toHaveLength(3);
+  });
+  it("leaves a transcript ending with the student unchanged", () => {
+    const msgs = [{ role: "user" as const, content: "Hi" }];
+    expect(endWithUserTurn(msgs)).toEqual(msgs);
+  });
+});

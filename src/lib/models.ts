@@ -1,1 +1,27 @@
-ZXhwb3J0IGNvbnN0IE1PREVMUyA9IFsKICB7IGlkOiAnYW50aHJvcGljL2NsYXVkZS1vcHVzLTUtNScsIG5hbWU6ICdPcHVzIDUuNScsIGRlc2NyaXB0aW9uOiAnUHJlbWl1bSByZWFzb25pbmcnLCBlZmZvcnQ6IHRydWUgfSwKICB7IGlkOiAnYW50aHJvcGljL2NsYXVkZS1mYWJsZS01LTEnLCBuYW1lOiAnRmFibGUgNS4xJywgZGVzY3JpcHRpb246ICdEZWVwIHN0dWR5IHRhc2tzJywgZWZmb3J0OiB0cnVlIH0sCiAgeyBpZDogJ2FudGhyb3BpYy9jbGF1ZGUtc29ubmV0LTUnLCBuYW1lOiAnU29ubmV0IDUnLCBkZXNjcmlwdGlvbjogJ0JhbGFuY2VkIHRlYWNoZXInLCBlZmZvcnQ6IHRydWUgfSwKICB7IGlkOiAnYW50aHJvcGljL2NsYXVkZS1vcHVzLTUnLCBuYW1lOiAnT3B1cyA1JywgZGVzY3JpcHRpb246ICdBZHZhbmNlZCBhbmFseXNpcycsIGVmZm9ydDogdHJ1ZSB9LAogIHsgaWQ6ICdhbnRocm9waWMvY2xhdWRlLWhhaWt1LTQtNScsIG5hbWU6ICdIYWlrdSA0LjUnLCBkZXNjcmlwdGlvbjogJ1F1aWNrIHF1ZXN0aW9ucycsIGVmZm9ydDogZmFsc2UgfSwKXSBhcyBjb25zdDsKZXhwb3J0IGNvbnN0IERFRkFVTFRfTU9ERUwgPSAnYW50aHJvcGljL2NsYXVkZS1mYWJsZS01LTEnOwpleHBvcnQgY29uc3QgVk9JQ0VfVFVUT1JfTU9ERUwgPSAnYW50aHJvcGljL2NsYXVkZS1mYWJsZS01LTEnOwpleHBvcnQgY29uc3QgQ0xBVURFX09VVFBVVF9CVURHRVQgPSA2NDAwMDsgLy8gTWVzc2FnZXMgcmVxdWlyZXMgYSBidWRnZXQsIGluY2x1ZGluZyBhZGFwdGl2ZSB0aGlua2luZy4KLyoqIEFwcGx5IHRoZSBvd25lcidzIGFkdmFuY2VkLXR1dG9yIHVwZ3JhZGUgb25jZTsgbGF0ZXIgZXhwbGljaXQgc2VsZWN0aW9ucyByZW1haW4gaW50YWN0LiAqLwpleHBvcnQgZnVuY3Rpb24gdXBncmFkZWRUdXRvclByZWZlcmVuY2Uoc3RvcmFnZTogUGljazxTdG9yYWdlLCAnZ2V0SXRlbScgfCAnc2V0SXRlbSc+KSB7CiAgaWYgKHN0b3JhZ2UuZ2V0SXRlbSgnc25hcHNvbHZlLnByZW1pdW0tdHV0b3ItdjInKSAhPT0gJzEnKSB7CiAgICBzdG9yYWdlLnNldEl0ZW0oJ3NuYXBzb2x2ZS5tb2RlbCcsIERFRkFVTFRfTU9ERUwpOwogICAgc3RvcmFnZS5zZXRJdGVtKCdzbmFwc29sdmUuZWZmb3J0JywgJ2hpZ2gnKTsKICAgIHN0b3JhZ2Uuc2V0SXRlbSgnc25hcHNvbHZlLnByZW1pdW0tdHV0b3ItdjInLCAnMScpOwogIH0KICByZXR1cm4geyBtb2RlbDogcmVzb2x2ZU1vZGVsKHN0b3JhZ2UuZ2V0SXRlbSgnc25hcHNvbHZlLm1vZGVsJykpPy5pZCA/PyBERUZBVUxUX01PREVMLCBlZmZvcnQ6IHJlc29sdmVFZmZvcnQoc3RvcmFnZS5nZXRJdGVtKCdzbmFwc29sdmUuZWZmb3J0JykpIH07Cn0KZXhwb3J0IHR5cGUgRWZmb3J0ID0gJ2xvdycgfCAnbWVkaXVtJyB8ICdoaWdoJzsKZXhwb3J0IGZ1bmN0aW9uIHJlc29sdmVNb2RlbChpZDogdW5rbm93bikgewogIGlmIChpZCA9PT0gdW5kZWZpbmVkKSByZXR1cm4gTU9ERUxTLmZpbmQobSA9PiBtLmlkID09PSBERUZBVUxUX01PREVMKTsKICByZXR1cm4gTU9ERUxTLmZpbmQobSA9PiBtLmlkID09PSBpZCk7Cn0KZXhwb3J0IGZ1bmN0aW9uIHJlc29sdmVFZmZvcnQodmFsdWU6IHVua25vd24pOiBFZmZvcnQgewogIHJldHVybiB2YWx1ZSA9PT0gJ2xvdycgfHwgdmFsdWUgPT09ICdoaWdoJyA/IHZhbHVlIDogJ21lZGl1bSc7Cn0=
+export const MODELS = [
+  { id: 'anthropic/claude-opus-5-5', name: 'Opus 5.5', description: 'Premium reasoning', effort: true },
+  { id: 'anthropic/claude-fable-5-1', name: 'Fable 5.1', description: 'Deep study tasks', effort: true },
+  { id: 'anthropic/claude-sonnet-5', name: 'Sonnet 5', description: 'Balanced teacher', effort: true },
+  { id: 'anthropic/claude-opus-5', name: 'Opus 5', description: 'Advanced analysis', effort: true },
+  { id: 'anthropic/claude-haiku-4-5', name: 'Haiku 4.5', description: 'Quick questions', effort: false },
+] as const;
+export const DEFAULT_MODEL = 'anthropic/claude-fable-5-1';
+export const VOICE_TUTOR_MODEL = 'anthropic/claude-fable-5-1';
+export const CLAUDE_OUTPUT_BUDGET = 64000; // Messages requires a budget, including adaptive thinking.
+/** Apply the owner's advanced-tutor upgrade once; later explicit selections remain intact. */
+export function upgradedTutorPreference(storage: Pick<Storage, 'getItem' | 'setItem'>) {
+  if (storage.getItem('snapsolve.premium-tutor-v2') !== '1') {
+    storage.setItem('snapsolve.model', DEFAULT_MODEL);
+    storage.setItem('snapsolve.effort', 'high');
+    storage.setItem('snapsolve.premium-tutor-v2', '1');
+  }
+  return { model: resolveModel(storage.getItem('snapsolve.model'))?.id ?? DEFAULT_MODEL, effort: resolveEffort(storage.getItem('snapsolve.effort')) };
+}
+export type Effort = 'low' | 'medium' | 'high';
+export function resolveModel(id: unknown) {
+  if (id === undefined) return MODELS.find(m => m.id === DEFAULT_MODEL);
+  return MODELS.find(m => m.id === id);
+}
+export function resolveEffort(value: unknown): Effort {
+  return value === 'low' || value === 'high' ? value : 'medium';
+}

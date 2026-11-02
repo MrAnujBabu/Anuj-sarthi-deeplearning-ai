@@ -1,1 +1,43 @@
-aW1wb3J0IHsgbG9hZFRocmVhZHMsIHR5cGUgVGhyZWFkIH0gZnJvbSAnLi90aHJlYWRzJzsKaW1wb3J0IHsgcmVzdG9yZURvY3MgfSBmcm9tICcuL2RvYy1zdG9yZSc7CmltcG9ydCB7IGxvYWRDYXJkcywgdHlwZSBDYXJkIH0gZnJvbSAnLi9zcnMnOwpleHBvcnQgdHlwZSBTdHVkeUJhY2t1cCA9IHsgZm9ybWF0OiAnc25hcHNvbHZlLXN0dWR5JzsgdmVyc2lvbjogMTsgY3JlYXRlZEF0OiBzdHJpbmc7IHRocmVhZHM6IFRocmVhZFtdOyBjYXJkczogQ2FyZFtdIH07CmV4cG9ydCBmdW5jdGlvbiBwYXJzZVN0dWR5QmFja3VwKHJhdzogc3RyaW5nKTogU3R1ZHlCYWNrdXAgewogIGNvbnN0IHZhbHVlID0gSlNPTi5wYXJzZShyYXcpIGFzIFN0dWR5QmFja3VwOwogIGlmICh2YWx1ZS5mb3JtYXQgIT09ICdzbmFwc29sdmUtc3R1ZHknIHx8IHZhbHVlLnZlcnNpb24gIT09IDEgfHwgIUFycmF5LmlzQXJyYXkodmFsdWUudGhyZWFkcykgfHwgIUFycmF5LmlzQXJyYXkodmFsdWUuY2FyZHMpKSB0aHJvdyBuZXcgRXJyb3IoJ0Nob29zZSBhIFNuYXBTb2x2ZSBzdHVkeSBiYWNrdXAuJyk7CiAgZm9yIChjb25zdCB0IG9mIHZhbHVlLnRocmVhZHMpIHsKICAgIGlmICh0eXBlb2YgdC5pZCAhPT0gJ3N0cmluZycgfHwgdHlwZW9mIHQudGl0bGUgIT09ICdzdHJpbmcnIHx8ICFOdW1iZXIuaXNGaW5pdGUodC51cGRhdGVkQXQpIHx8ICFBcnJheS5pc0FycmF5KHQubWVzc2FnZXMpKSB0aHJvdyBuZXcgRXJyb3IoJ0ludmFsaWQgc2F2ZWQgY29udmVyc2F0aW9uLicpOwogICAgZm9yIChjb25zdCBtIG9mIHQubWVzc2FnZXMpIHsKICAgICAgaWYgKHR5cGVvZiBtLmlkICE9PSAnc3RyaW5nJyB8fCAhWyd1c2VyJywnYXNzaXN0YW50Jywnc3lzdGVtJ10uaW5jbHVkZXMobS5yb2xlKSB8fCAhQXJyYXkuaXNBcnJheShtLnBhcnRzKSkgdGhyb3cgbmV3IEVycm9yKCdJbnZhbGlkIHNhdmVkIG1lc3NhZ2UuJyk7CiAgICAgIGZvciAoY29uc3QgcCBvZiBtLnBhcnRzKSB7CiAgICAgICAgaWYgKHAudHlwZSA9PT0gJ3RleHQnICYmIHR5cGVvZiBwLnRleHQgIT09ICdzdHJpbmcnKSB0aHJvdyBuZXcgRXJyb3IoJ0ludmFsaWQgc2F2ZWQgdGV4dC4nKTsKICAgICAgICBpZiAocC50eXBlID09PSAnZmlsZScgJiYgKCEvXmRhdGE6KGltYWdlXC8oanBlZ3xwbmd8d2VicCl8YXBwbGljYXRpb25cL3BkZik7YmFzZTY0LC8udGVzdChwLnVybCkpKSB0aHJvdyBuZXcgRXJyb3IoJ0JhY2t1cCBhdHRhY2htZW50cyBtdXN0IGJlIGVtYmVkZGVkIHBob3RvcyBvciBQREZzLicpOwogICAgICB9CiAgICB9CiAgfQogIGZvciAoY29uc3QgYyBvZiB2YWx1ZS5jYXJkcykgaWYgKHR5cGVvZiBjLmlkICE9PSAnc3RyaW5nJyB8fCB0eXBlb2YgYy5xICE9PSAnc3RyaW5nJyB8fCB0eXBlb2YgYy5hICE9PSAnc3RyaW5nJyB8fCB0eXBlb2YgYy50b3BpYyAhPT0gJ3N0cmluZycgfHwgIU51bWJlci5pc0ludGVnZXIoYy5ib3gpIHx8IGMuYm94IDwgMSB8fCBjLmJveCA+IDUgfHwgIU51bWJlci5pc0Zpbml0ZShjLmR1ZSkgfHwgIU51bWJlci5pc0Zpbml0ZShjLnJldmlld3MpIHx8IHR5cGVvZiBjLmxhc3RDb3JyZWN0ICE9PSAnYm9vbGVhbicpIHRocm93IG5ldyBFcnJvcignSW52YWxpZCByZXZpc2lvbiBjYXJkLicpOwogIHJldHVybiB2YWx1ZTsKfQpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZXhwb3J0U3R1ZHkoKSB7CiAgY29uc3QgdGhyZWFkcyA9IGF3YWl0IFByb21pc2UuYWxsKGxvYWRUaHJlYWRzKCkubWFwKGFzeW5jIHQgPT4gKHsuLi50LCBtZXNzYWdlczogYXdhaXQgcmVzdG9yZURvY3ModC5tZXNzYWdlcyl9KSkpOwogIGNvbnN0IGJhY2t1cDogU3R1ZHlCYWNrdXAgPSB7IGZvcm1hdDogJ3NuYXBzb2x2ZS1zdHVkeScsIHZlcnNpb246IDEsIGNyZWF0ZWRBdDogbmV3IERhdGUoKS50b0lTT1N0cmluZygpLCB0aHJlYWRzLCBjYXJkczogbG9hZENhcmRzKCkgfTsKICBjb25zdCB1cmwgPSBVUkwuY3JlYXRlT2JqZWN0VVJMKG5ldyBCbG9iKFtKU09OLnN0cmluZ2lmeShiYWNrdXApXSwge3R5cGU6J2FwcGxpY2F0aW9uL2pzb24nfSkpOwogIGNvbnN0IGEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdhJyk7IGEuaHJlZj11cmw7IGEuZG93bmxvYWQ9J3NuYXBzb2x2ZS1zdHVkeS1iYWNrdXAuanNvbic7IGEuY2xpY2soKTsgVVJMLnJldm9rZU9iamVjdFVSTCh1cmwpOwp9CmV4cG9ydCBmdW5jdGlvbiBpbXBvcnRTdHVkeShiYWNrdXA6IFN0dWR5QmFja3VwKSB7CiAgY29uc3QgdGhyZWFkcyA9IG5ldyBNYXAobG9hZFRocmVhZHMoKS5tYXAodD0+W3QuaWQsdF0pKTsKICBiYWNrdXAudGhyZWFkcy5mb3JFYWNoKHQ9PntpZighdGhyZWFkcy5oYXModC5pZCkpdGhyZWFkcy5zZXQodC5pZCx0KTt9KTsKICBjb25zdCBjYXJkcyA9IG5ldyBNYXAobG9hZENhcmRzKCkubWFwKGM9PltjLmlkLGNdKSk7CiAgYmFja3VwLmNhcmRzLmZvckVhY2goYz0+e2lmKCFjYXJkcy5oYXMoYy5pZCkpY2FyZHMuc2V0KGMuaWQsYyk7fSk7CiAgY29uc3Qgb2xkVGhyZWFkcz1sb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnc25hcHNvbHZlLnRocmVhZHMudjEnKTsKICBjb25zdCBvbGRDYXJkcz1sb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnc25hcHNvbHZlLmNhcmRzLnYxJyk7CiAgdHJ5IHsKICAgIGxvY2FsU3RvcmFnZS5zZXRJdGVtKCdzbmFwc29sdmUudGhyZWFkcy52MScsSlNPTi5zdHJpbmdpZnkoWy4uLnRocmVhZHMudmFsdWVzKCldKSk7CiAgICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbSgnc25hcHNvbHZlLmNhcmRzLnYxJyxKU09OLnN0cmluZ2lmeShbLi4uY2FyZHMudmFsdWVzKCldKSk7CiAgfSBjYXRjaCB7CiAgICBpZihvbGRUaHJlYWRzPT09bnVsbClsb2NhbFN0b3JhZ2UucmVtb3ZlSXRlbSgnc25hcHNvbHZlLnRocmVhZHMudjEnKTtlbHNlIGxvY2FsU3RvcmFnZS5zZXRJdGVtKCdzbmFwc29sdmUudGhyZWFkcy52MScsb2xkVGhyZWFkcyk7CiAgICBpZihvbGRDYXJkcz09PW51bGwpbG9jYWxTdG9yYWdlLnJlbW92ZUl0ZW0oJ3NuYXBzb2x2ZS5jYXJkcy52MScpO2Vsc2UgbG9jYWxTdG9yYWdlLnNldEl0ZW0oJ3NuYXBzb2x2ZS5jYXJkcy52MScsb2xkQ2FyZHMpOwogICAgdGhyb3cgbmV3IEVycm9yKCdOb3QgZW5vdWdoIGJyb3dzZXIgc3RvcmFnZS4gTm90aGluZyB3YXMgaW1wb3J0ZWQ7IGtlZXAgeW91ciBiYWNrdXAgc2FmZS4nKTsKICB9CiAgd2luZG93LmRpc3BhdGNoRXZlbnQobmV3IEV2ZW50KCdzbmFwc29sdmU6dGhyZWFkcycpKTsgd2luZG93LmRpc3BhdGNoRXZlbnQobmV3IEV2ZW50KCdzbmFwc29sdmU6Y2FyZHMnKSk7Cn0=
+import { loadThreads, type Thread } from './threads';
+import { restoreDocs } from './doc-store';
+import { loadCards, type Card } from './srs';
+export type StudyBackup = { format: 'snapsolve-study'; version: 1; createdAt: string; threads: Thread[]; cards: Card[] };
+export function parseStudyBackup(raw: string): StudyBackup {
+  const value = JSON.parse(raw) as StudyBackup;
+  if (value.format !== 'snapsolve-study' || value.version !== 1 || !Array.isArray(value.threads) || !Array.isArray(value.cards)) throw new Error('Choose a SnapSolve study backup.');
+  for (const t of value.threads) {
+    if (typeof t.id !== 'string' || typeof t.title !== 'string' || !Number.isFinite(t.updatedAt) || !Array.isArray(t.messages)) throw new Error('Invalid saved conversation.');
+    for (const m of t.messages) {
+      if (typeof m.id !== 'string' || !['user','assistant','system'].includes(m.role) || !Array.isArray(m.parts)) throw new Error('Invalid saved message.');
+      for (const p of m.parts) {
+        if (p.type === 'text' && typeof p.text !== 'string') throw new Error('Invalid saved text.');
+        if (p.type === 'file' && (!/^data:(image\/(jpeg|png|webp)|application\/pdf);base64,/.test(p.url))) throw new Error('Backup attachments must be embedded photos or PDFs.');
+      }
+    }
+  }
+  for (const c of value.cards) if (typeof c.id !== 'string' || typeof c.q !== 'string' || typeof c.a !== 'string' || typeof c.topic !== 'string' || !Number.isInteger(c.box) || c.box < 1 || c.box > 5 || !Number.isFinite(c.due) || !Number.isFinite(c.reviews) || typeof c.lastCorrect !== 'boolean') throw new Error('Invalid revision card.');
+  return value;
+}
+export async function exportStudy() {
+  const threads = await Promise.all(loadThreads().map(async t => ({...t, messages: await restoreDocs(t.messages)})));
+  const backup: StudyBackup = { format: 'snapsolve-study', version: 1, createdAt: new Date().toISOString(), threads, cards: loadCards() };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(backup)], {type:'application/json'}));
+  const a = document.createElement('a'); a.href=url; a.download='snapsolve-study-backup.json'; a.click(); URL.revokeObjectURL(url);
+}
+export function importStudy(backup: StudyBackup) {
+  const threads = new Map(loadThreads().map(t=>[t.id,t]));
+  backup.threads.forEach(t=>{if(!threads.has(t.id))threads.set(t.id,t);});
+  const cards = new Map(loadCards().map(c=>[c.id,c]));
+  backup.cards.forEach(c=>{if(!cards.has(c.id))cards.set(c.id,c);});
+  const oldThreads=localStorage.getItem('snapsolve.threads.v1');
+  const oldCards=localStorage.getItem('snapsolve.cards.v1');
+  try {
+    localStorage.setItem('snapsolve.threads.v1',JSON.stringify([...threads.values()]));
+    localStorage.setItem('snapsolve.cards.v1',JSON.stringify([...cards.values()]));
+  } catch {
+    if(oldThreads===null)localStorage.removeItem('snapsolve.threads.v1');else localStorage.setItem('snapsolve.threads.v1',oldThreads);
+    if(oldCards===null)localStorage.removeItem('snapsolve.cards.v1');else localStorage.setItem('snapsolve.cards.v1',oldCards);
+    throw new Error('Not enough browser storage. Nothing was imported; keep your backup safe.');
+  }
+  window.dispatchEvent(new Event('snapsolve:threads')); window.dispatchEvent(new Event('snapsolve:cards'));
+}

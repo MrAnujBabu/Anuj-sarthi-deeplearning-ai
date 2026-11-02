@@ -1,1 +1,35 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGl0LCBleHBlY3QsIHZpIH0gZnJvbSAndml0ZXN0JzsKaW1wb3J0IHR5cGUgeyBTdXBhYmFzZUNsaWVudCB9IGZyb20gJ0BzdXBhYmFzZS9zdXBhYmFzZS1qcyc7CmltcG9ydCB0eXBlIHsgRGF0YWJhc2UgfSBmcm9tICdAL2ludGVncmF0aW9ucy9zdXBhYmFzZS90eXBlcyc7CmltcG9ydCB7IERBSUxZX1NZTkNfQ1JPTiwgcnVuRGFpbHlTeW5jLCB0eXBlIFN5bmNTdGVwcyB9IGZyb20gJ0AvbGliL3ZlZGFudHUvZGFpbHktc3luYy5zZXJ2ZXInOwoKY29uc3QgYWRtaW4gPSB7fSBhcyBTdXBhYmFzZUNsaWVudDxEYXRhYmFzZT47CmZ1bmN0aW9uIHN0ZXBzKCk6IFN5bmNTdGVwcyB7CiAgcmV0dXJuIHsKICAgIHN0YXJ0OiB2aS5mbigpLm1vY2tSZXNvbHZlZFZhbHVlKHsgbGVhc2VJZDogJ2xlYXNlJywgY291cnNlczogW3sgZW5yb2xsbWVudF9pZDogJ2NvdXJzZS0xJywgdGl0bGU6ICdORUVUJyB9XSB9KSwKICAgIGNvdXJzZTogdmkuZm4oKS5tb2NrUmVzb2x2ZWRWYWx1ZSh7IGNsYXNzZXM6IDkwLCB0ZXN0czogMTIsIHdhcm5pbmdzOiAwIH0pLAogICAgbm90ZXM6IHZpLmZuKCkubW9ja1Jlc29sdmVkVmFsdWUoeyBmZXRjaGVkOiA4LCByZW1haW5pbmc6IDAsIGZhaWxlZDogMCB9KSwKICAgIGZpbmlzaDogdmkuZm4oKS5tb2NrUmVzb2x2ZWRWYWx1ZSh1bmRlZmluZWQpLAogIH07Cn0KCmRlc2NyaWJlKCdkYWlseSBWZWRhbnR1IHN5bmMnLCAoKSA9PiB7CiAgaXQoJ3NjaGVkdWxlcyBkYWlseSBhdCAwMDowMCBJbmRpYSB0aW1lICgxODozMCBVVEMpJywgKCkgPT4gewogICAgZXhwZWN0KERBSUxZX1NZTkNfQ1JPTikudG9CZSgnMzAgMTggKiAqIConKTsKICAgIGNvbnN0IG1pZG5pZ2h0ID0gbmV3IERhdGUoJzIwMjYtMTAtMjNUMTg6MzA6MDBaJyk7CiAgICBleHBlY3QobmV3IEludGwuRGF0ZVRpbWVGb3JtYXQoJ2VuLUdCJywgeyB0aW1lWm9uZTogJ0FzaWEvS29sa2F0YScsIGhvdXI6ICcyLWRpZ2l0JywgbWludXRlOiAnMi1kaWdpdCcsIGhvdXJDeWNsZTogJ2gyMycgfSkuZm9ybWF0KG1pZG5pZ2h0KSkudG9CZSgnMDA6MDAnKTsKICB9KTsKICBpdCgnZmV0Y2hlcyBjb3Vyc2VzIGFuZCBub3RlcyBhbmQgc2F2ZXMgYWN0dWFsIGNvdW50cycsIGFzeW5jICgpID0+IHsKICAgIGNvbnN0IGRlcHMgPSBzdGVwcygpOwogICAgZXhwZWN0KGF3YWl0IHJ1bkRhaWx5U3luYyhhZG1pbiwgZGVwcykpLnRvRXF1YWwoeyBjb3Vyc2VzOiAxLCBjbGFzc2VzOiA5MCwgdGVzdHM6IDEyLCB3YXJuaW5nczogMCwgbm90ZXM6IDggfSk7CiAgICBleHBlY3QoZGVwcy5jb3Vyc2UpLnRvSGF2ZUJlZW5DYWxsZWRXaXRoKGFkbWluLCAnbGVhc2UnLCAnY291cnNlLTEnKTsKICAgIGV4cGVjdChkZXBzLmZpbmlzaCkudG9IYXZlQmVlbkNhbGxlZFdpdGgoYWRtaW4sICdsZWFzZScsIGV4cGVjdC5vYmplY3RDb250YWluaW5nKHsgb2s6IHRydWUgfSkpOwogIH0pOwogIGl0KCdyZWxlYXNlcyB0aGUgbGVhc2UgYW5kIHJlY29yZHMgZmFpbHVyZSBpbnN0ZWFkIG9mIHJlcG9ydGluZyBzdWNjZXNzJywgYXN5bmMgKCkgPT4gewogICAgY29uc3QgZGVwcyA9IHN0ZXBzKCk7CiAgICB2aS5tb2NrZWQoZGVwcy5jb3Vyc2UpLm1vY2tSZWplY3RlZFZhbHVlKG5ldyBFcnJvcignVmVkYW50dSB1bmF2YWlsYWJsZScpKTsKICAgIGF3YWl0IGV4cGVjdChydW5EYWlseVN5bmMoYWRtaW4sIGRlcHMpKS5yZWplY3RzLnRvVGhyb3coJ1ZlZGFudHUgdW5hdmFpbGFibGUnKTsKICAgIGV4cGVjdChkZXBzLmZpbmlzaCkudG9IYXZlQmVlbkNhbGxlZFdpdGgoYWRtaW4sICdsZWFzZScsIGV4cGVjdC5vYmplY3RDb250YWluaW5nKHsgb2s6IGZhbHNlLCBtZXNzYWdlOiAnVmVkYW50dSB1bmF2YWlsYWJsZScgfSkpOwogICAgZXhwZWN0KGRlcHMubm90ZXMpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgfSk7Cn0pOw==
+import { describe, it, expect, vi } from 'vitest';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import type { Database } from '@/integrations/supabase/types';
+import { DAILY_SYNC_CRON, runDailySync, type SyncSteps } from '@/lib/vedantu/daily-sync.server';
+
+const admin = {} as SupabaseClient<Database>;
+function steps(): SyncSteps {
+  return {
+    start: vi.fn().mockResolvedValue({ leaseId: 'lease', courses: [{ enrollment_id: 'course-1', title: 'NEET' }] }),
+    course: vi.fn().mockResolvedValue({ classes: 90, tests: 12, warnings: 0 }),
+    notes: vi.fn().mockResolvedValue({ fetched: 8, remaining: 0, failed: 0 }),
+    finish: vi.fn().mockResolvedValue(undefined),
+  };
+}
+
+describe('daily Vedantu sync', () => {
+  it('schedules daily at 00:00 India time (18:30 UTC)', () => {
+    expect(DAILY_SYNC_CRON).toBe('30 18 * * *');
+    const midnight = new Date('2026-10-23T18:30:00Z');
+    expect(new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(midnight)).toBe('00:00');
+  });
+  it('fetches courses and notes and saves actual counts', async () => {
+    const deps = steps();
+    expect(await runDailySync(admin, deps)).toEqual({ courses: 1, classes: 90, tests: 12, warnings: 0, notes: 8 });
+    expect(deps.course).toHaveBeenCalledWith(admin, 'lease', 'course-1');
+    expect(deps.finish).toHaveBeenCalledWith(admin, 'lease', expect.objectContaining({ ok: true }));
+  });
+  it('releases the lease and records failure instead of reporting success', async () => {
+    const deps = steps();
+    vi.mocked(deps.course).mockRejectedValue(new Error('Vedantu unavailable'));
+    await expect(runDailySync(admin, deps)).rejects.toThrow('Vedantu unavailable');
+    expect(deps.finish).toHaveBeenCalledWith(admin, 'lease', expect.objectContaining({ ok: false, message: 'Vedantu unavailable' }));
+    expect(deps.notes).not.toHaveBeenCalled();
+  });
+});

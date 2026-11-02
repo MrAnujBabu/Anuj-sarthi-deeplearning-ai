@@ -1,1 +1,451 @@
-LyogZXNsaW50LWRpc2FibGUgKi8KCi8vIEB0cy1ub2NoZWNrCgovLyBub2luc3BlY3Rpb24gSlNVbnVzZWRHbG9iYWxTeW1ib2xzCgovLyBUaGlzIGZpbGUgd2FzIGF1dG9tYXRpY2FsbHkgZ2VuZXJhdGVkIGJ5IFRhblN0YWNrIFJvdXRlci4KLy8gWW91IHNob3VsZCBOT1QgbWFrZSBhbnkgY2hhbmdlcyBpbiB0aGlzIGZpbGUgYXMgaXQgd2lsbCBiZSBvdmVyd3JpdHRlbi4KLy8gQWRkaXRpb25hbGx5LCB5b3Ugc2hvdWxkIGFsc28gZXhjbHVkZSB0aGlzIGZpbGUgZnJvbSB5b3VyIGxpbnRlciBhbmQvb3IgZm9ybWF0dGVyIHRvIHByZXZlbnQgaXQgZnJvbSBiZWluZyBjaGVja2VkIG9yIG1vZGlmaWVkLgoKaW1wb3J0IHsgUm91dGUgYXMgcm9vdFJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvX19yb290JwppbXBvcnQgeyBSb3V0ZSBhcyBJbmRleFJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvaW5kZXgnCmltcG9ydCB7IFJvdXRlIGFzIEFkbWluUm91dGVJbXBvcnQgfSBmcm9tICcuL3JvdXRlcy9hZG1pbicKaW1wb3J0IHsgUm91dGUgYXMgQmF0Y2hSb3V0ZUltcG9ydCB9IGZyb20gJy4vcm91dGVzL2JhdGNoJwppbXBvcnQgeyBSb3V0ZSBhcyBQcmFjdGljZVJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvcHJhY3RpY2UnCmltcG9ydCB7IFJvdXRlIGFzIFZvaWNlUm91dGVJbXBvcnQgfSBmcm9tICcuL3JvdXRlcy92b2ljZScKaW1wb3J0IHsgUm91dGUgYXMgWW91dHViZVJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMveW91dHViZScKaW1wb3J0IHsgUm91dGUgYXMgQXBpQ2hhdFJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL2NoYXQnCmltcG9ydCB7IFJvdXRlIGFzIEFwaU1lZGlhTGlzdGVuUm91dGVJbXBvcnQgfSBmcm9tICcuL3JvdXRlcy9hcGkvbWVkaWEtbGlzdGVuJwppbXBvcnQgeyBSb3V0ZSBhcyBBcGlNZWRpYVByb3h5Um91dGVJbXBvcnQgfSBmcm9tICcuL3JvdXRlcy9hcGkvbWVkaWEtcHJveHknCmltcG9ydCB7IFJvdXRlIGFzIEFwaU5jZXJ0RGlhZ3JhbVJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL25jZXJ0LWRpYWdyYW0nCmltcG9ydCB7IFJvdXRlIGFzIEFwaU5jZXJ0U2NhblJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL25jZXJ0LXNjYW4nCmltcG9ydCB7IFJvdXRlIGFzIEFwaVNhcnZhbVNwZWVjaFJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL3NhcnZhbS1zcGVlY2gnCmltcG9ydCB7IFJvdXRlIGFzIEFwaVNwZWVjaFJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL3NwZWVjaCcKaW1wb3J0IHsgUm91dGUgYXMgQXBpVHJhbnNjcmliZVJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL3RyYW5zY3JpYmUnCmltcG9ydCB7IFJvdXRlIGFzIEFwaVZlcmlmeVJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL3ZlcmlmeScKaW1wb3J0IHsgUm91dGUgYXMgQXBpVmlzaW9uUmVhZFJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL3Zpc2lvbi1yZWFkJwppbXBvcnQgeyBSb3V0ZSBhcyBBcGlZb3V0dWJlQ2hhbm5lbFJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvYXBpL3lvdXR1YmUtY2hhbm5lbCcKaW1wb3J0IHsgUm91dGUgYXMgQXBpWW91dHViZUhpbmRpUm91dGVJbXBvcnQgfSBmcm9tICcuL3JvdXRlcy9hcGkveW91dHViZS1oaW5kaScKaW1wb3J0IHsgUm91dGUgYXMgRG91YnRUaHJlYWRJZFJvdXRlSW1wb3J0IH0gZnJvbSAnLi9yb3V0ZXMvZG91YnQuJHRocmVhZElkJwoKY29uc3QgSW5kZXhSb3V0ZSA9IEluZGV4Um91dGVJbXBvcnQudXBkYXRlKHsKICBpZDogJy8nLAogIHBhdGg6ICcvJywKICBnZXRQYXJlbnRSb3V0ZTogKCkgPT4gcm9vdFJvdXRlSW1wb3J0LAp9IGFzIGFueSkKY29uc3QgQWRtaW5Sb3V0ZSA9IEFkbWluUm91dGVJbXBvcnQudXBkYXRlKHsKICBpZDogJy9hZG1pbicsCiAgcGF0aDogJy9hZG1pbicsCiAgZ2V0UGFyZW50Um91dGU6ICgpID0+IHJvb3RSb3V0ZUltcG9ydCwKfSBhcyBhbnkpCmNvbnN0IEJhdGNoUm91dGUgPSBCYXRjaFJvdXRlSW1wb3J0LnVwZGF0ZSh7CiAgaWQ6ICcvYmF0Y2gnLAogIHBhdGg6ICcvYmF0Y2gnLAogIGdldFBhcmVudFJvdXRlOiAoKSA9PiByb290Um91dGVJbXBvcnQsCn0gYXMgYW55KQpjb25zdCBQcmFjdGljZVJvdXRlID0gUHJhY3RpY2VSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL3ByYWN0aWNlJywKICBwYXRoOiAnL3ByYWN0aWNlJywKICBnZXRQYXJlbnRSb3V0ZTogKCkgPT4gcm9vdFJvdXRlSW1wb3J0LAp9IGFzIGFueSkKY29uc3QgVm9pY2VSb3V0ZSA9IFZvaWNlUm91dGVJbXBvcnQudXBkYXRlKHsKICBpZDogJy92b2ljZScsCiAgcGF0aDogJy92b2ljZScsCiAgZ2V0UGFyZW50Um91dGU6ICgpID0+IHJvb3RSb3V0ZUltcG9ydCwKfSBhcyBhbnkpCmNvbnN0IFlvdXR1YmVSb3V0ZSA9IFlvdXR1YmVSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL3lvdXR1YmUnLAogIHBhdGg6ICcveW91dHViZScsCiAgZ2V0UGFyZW50Um91dGU6ICgpID0+IHJvb3RSb3V0ZUltcG9ydCwKfSBhcyBhbnkpCmNvbnN0IEFwaUNoYXRSb3V0ZSA9IEFwaUNoYXRSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS9jaGF0JywKICBwYXRoOiAnL2FwaS9jaGF0JywKICBnZXRQYXJlbnRSb3V0ZTogKCkgPT4gcm9vdFJvdXRlSW1wb3J0LAp9IGFzIGFueSkKY29uc3QgQXBpTWVkaWFMaXN0ZW5Sb3V0ZSA9IEFwaU1lZGlhTGlzdGVuUm91dGVJbXBvcnQudXBkYXRlKHsKICBpZDogJy9hcGkvbWVkaWEtbGlzdGVuJywKICBwYXRoOiAnL2FwaS9tZWRpYS1saXN0ZW4nLAogIGdldFBhcmVudFJvdXRlOiAoKSA9PiByb290Um91dGVJbXBvcnQsCn0gYXMgYW55KQpjb25zdCBBcGlNZWRpYVByb3h5Um91dGUgPSBBcGlNZWRpYVByb3h5Um91dGVJbXBvcnQudXBkYXRlKHsKICBpZDogJy9hcGkvbWVkaWEtcHJveHknLAogIHBhdGg6ICcvYXBpL21lZGlhLXByb3h5JywKICBnZXRQYXJlbnRSb3V0ZTogKCkgPT4gcm9vdFJvdXRlSW1wb3J0LAp9IGFzIGFueSkKY29uc3QgQXBpTmNlcnREaWFncmFtUm91dGUgPSBBcGlOY2VydERpYWdyYW1Sb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS9uY2VydC1kaWFncmFtJywKICBwYXRoOiAnL2FwaS9uY2VydC1kaWFncmFtJywKICBnZXRQYXJlbnRSb3V0ZTogKCkgPT4gcm9vdFJvdXRlSW1wb3J0LAp9IGFzIGFueSkKY29uc3QgQXBpTmNlcnRTY2FuUm91dGUgPSBBcGlOY2VydFNjYW5Sb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS9uY2VydC1zY2FuJywKICBwYXRoOiAnL2FwaS9uY2VydC1zY2FuJywKICBnZXRQYXJlbnRSb3V0ZTogKCkgPT4gcm9vdFJvdXRlSW1wb3J0LAp9IGFzIGFueSkKY29uc3QgQXBpU2FydmFtU3BlZWNoUm91dGUgPSBBcGlTYXJ2YW1TcGVlY2hSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS9zYXJ2YW0tc3BlZWNoJywKICBwYXRoOiAnL2FwaS9zYXJ2YW0tc3BlZWNoJywKICBnZXRQYXJlbnRSb3V0ZTogKCkgPT4gcm9vdFJvdXRlSW1wb3J0LAp9IGFzIGFueSkKY29uc3QgQXBpU3BlZWNoUm91dGUgPSBBcGlTcGVlY2hSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS9zcGVlY2gnLAogIHBhdGg6ICcvYXBpL3NwZWVjaCcsCiAgZ2V0UGFyZW50Um91dGU6ICgpID0+IHJvb3RSb3V0ZUltcG9ydCwKfSBhcyBhbnkpCmNvbnN0IEFwaVRyYW5zY3JpYmVSb3V0ZSA9IEFwaVRyYW5zY3JpYmVSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS90cmFuc2NyaWJlJywKICBwYXRoOiAnL2FwaS90cmFuc2NyaWJlJywKICBnZXRQYXJlbnRSb3V0ZTogKCkgPT4gcm9vdFJvdXRlSW1wb3J0LAp9IGFzIGFueSkKY29uc3QgQXBpVmVyaWZ5Um91dGUgPSBBcGlWZXJpZnlSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS92ZXJpZnknLAogIHBhdGg6ICcvYXBpL3ZlcmlmeScsCiAgZ2V0UGFyZW50Um91dGU6ICgpID0+IHJvb3RSb3V0ZUltcG9ydCwKfSBhcyBhbnkpCmNvbnN0IEFwaVZpc2lvblJlYWRSb3V0ZSA9IEFwaVZpc2lvblJlYWRSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS92aXNpb24tcmVhZCcsCiAgcGF0aDogJy9hcGkvdmlzaW9uLXJlYWQnLAogIGdldFBhcmVudFJvdXRlOiAoKSA9PiByb290Um91dGVJbXBvcnQsCn0gYXMgYW55KQpjb25zdCBBcGlZb3V0dWJlQ2hhbm5lbFJvdXRlID0gQXBpWW91dHViZUNoYW5uZWxSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2FwaS95b3V0dWJlLWNoYW5uZWwnLAogIHBhdGg6ICcvYXBpL3lvdXR1YmUtY2hhbm5lbCcsCiAgZ2V0UGFyZW50Um91dGU6ICgpID0+IHJvb3RSb3V0ZUltcG9ydCwKfSBhcyBhbnkpCmNvbnN0IEFwaVlvdXR1YmVIaW5kaVJvdXRlID0gQXBpWW91dHViZUhpbmRpUm91dGVJbXBvcnQudXBkYXRlKHsKICBpZDogJy9hcGkveW91dHViZS1oaW5kaScsCiAgcGF0aDogJy9hcGkveW91dHViZS1oaW5kaScsCiAgZ2V0UGFyZW50Um91dGU6ICgpID0+IHJvb3RSb3V0ZUltcG9ydCwKfSBhcyBhbnkpCmNvbnN0IERvdWJ0VGhyZWFkSWRSb3V0ZSA9IERvdWJ0VGhyZWFkSWRSb3V0ZUltcG9ydC51cGRhdGUoewogIGlkOiAnL2RvdWJ0LyR0aHJlYWRJZCcsCiAgcGF0aDogJy9kb3VidC8kdGhyZWFkSWQnLAogIGdldFBhcmVudFJvdXRlOiAoKSA9PiByb290Um91dGVJbXBvcnQsCn0gYXMgYW55KQoKZXhwb3J0IGludGVyZmFjZSBGaWxlUm91dGVzQnlGdWxsUGF0aCB7CiAgJy8nOiB0eXBlb2YgSW5kZXhSb3V0ZQogICcvYWRtaW4nOiB0eXBlb2YgQWRtaW5Sb3V0ZQogICcvYmF0Y2gnOiB0eXBlb2YgQmF0Y2hSb3V0ZQogICcvcHJhY3RpY2UnOiB0eXBlb2YgUHJhY3RpY2VSb3V0ZQogICcvdm9pY2UnOiB0eXBlb2YgVm9pY2VSb3V0ZQogICcveW91dHViZSc6IHR5cGVvZiBZb3V0dWJlUm91dGUKICAnL2FwaS9jaGF0JzogdHlwZW9mIEFwaUNoYXRSb3V0ZQogICcvYXBpL21lZGlhLWxpc3Rlbic6IHR5cGVvZiBBcGlNZWRpYUxpc3RlblJvdXRlCiAgJy9hcGkvbWVkaWEtcHJveHknOiB0eXBlb2YgQXBpTWVkaWFQcm94eVJvdXRlCiAgJy9hcGkvbmNlcnQtZGlhZ3JhbSc6IHR5cGVvZiBBcGlOY2VydERpYWdyYW1Sb3V0ZQogICcvYXBpL25jZXJ0LXNjYW4nOiB0eXBlb2YgQXBpTmNlcnRTY2FuUm91dGUKICAnL2FwaS9zYXJ2YW0tc3BlZWNoJzogdHlwZW9mIEFwaVNhcnZhbVNwZWVjaFJvdXRlCiAgJy9hcGkvc3BlZWNoJzogdHlwZW9mIEFwaVNwZWVjaFJvdXRlCiAgJy9hcGkvdHJhbnNjcmliZSc6IHR5cGVvZiBBcGlUcmFuc2NyaWJlUm91dGUKICAnL2FwaS92ZXJpZnknOiB0eXBlb2YgQXBpVmVyaWZ5Um91dGUKICAnL2FwaS92aXNpb24tcmVhZCc6IHR5cGVvZiBBcGlWaXNpb25SZWFkUm91dGUKICAnL2FwaS95b3V0dWJlLWNoYW5uZWwnOiB0eXBlb2YgQXBpWW91dHViZUNoYW5uZWxSb3V0ZQogICcvYXBpL3lvdXR1YmUtaGluZGknOiB0eXBlb2YgQXBpWW91dHViZUhpbmRpUm91dGUKICAnL2RvdWJ0LyR0aHJlYWRJZCc6IHR5cGVvZiBEb3VidFRocmVhZElkUm91dGUKfQpleHBvcnQgaW50ZXJmYWNlIEZpbGVSb3V0ZXNCeVRvIHsKICAnLyc6IHR5cGVvZiBJbmRleFJvdXRlCiAgJy9hZG1pbic6IHR5cGVvZiBBZG1pblJvdXRlCiAgJy9iYXRjaCc6IHR5cGVvZiBCYXRjaFJvdXRlCiAgJy9wcmFjdGljZSc6IHR5cGVvZiBQcmFjdGljZVJvdXRlCiAgJy92b2ljZSc6IHR5cGVvZiBWb2ljZVJvdXRlCiAgJy95b3V0dWJlJzogdHlwZW9mIFlvdXR1YmVSb3V0ZQogICcvYXBpL2NoYXQnOiB0eXBlb2YgQXBpQ2hhdFJvdXRlCiAgJy9hcGkvbWVkaWEtbGlzdGVuJzogdHlwZW9mIEFwaU1lZGlhTGlzdGVuUm91dGUKICAnL2FwaS9tZWRpYS1wcm94eSc6IHR5cGVvZiBBcGlNZWRpYVByb3h5Um91dGUKICAnL2FwaS9uY2VydC1kaWFncmFtJzogdHlwZW9mIEFwaU5jZXJ0RGlhZ3JhbVJvdXRlCiAgJy9hcGkvbmNlcnQtc2Nhbic6IHR5cGVvZiBBcGlOY2VydFNjYW5Sb3V0ZQogICcvYXBpL3NhcnZhbS1zcGVlY2gnOiB0eXBlb2YgQXBpU2FydmFtU3BlZWNoUm91dGUKICAnL2FwaS9zcGVlY2gnOiB0eXBlb2YgQXBpU3BlZWNoUm91dGUKICAnL2FwaS90cmFuc2NyaWJlJzogdHlwZW9mIEFwaVRyYW5zY3JpYmVSb3V0ZQogICcvYXBpL3ZlcmlmeSc6IHR5cGVvZiBBcGlWZXJpZnlSb3V0ZQogICcvYXBpL3Zpc2lvbi1yZWFkJzogdHlwZW9mIEFwaVZpc2lvblJlYWRSb3V0ZQogICcvYXBpL3lvdXR1YmUtY2hhbm5lbCc6IHR5cGVvZiBBcGlZb3V0dWJlQ2hhbm5lbFJvdXRlCiAgJy9hcGkveW91dHViZS1oaW5kaSc6IHR5cGVvZiBBcGlZb3V0dWJlSGluZGlSb3V0ZQogICcvZG91YnQvJHRocmVhZElkJzogdHlwZW9mIERvdWJ0VGhyZWFkSWRSb3V0ZQp9CmV4cG9ydCBpbnRlcmZhY2UgRmlsZVJvdXRlc0J5SWQgewogIF9fcm9vdF9fOiB0eXBlb2Ygcm9vdFJvdXRlSW1wb3J0CiAgJy8nOiB0eXBlb2YgSW5kZXhSb3V0ZQogICcvYWRtaW4nOiB0eXBlb2YgQWRtaW5Sb3V0ZQogICcvYmF0Y2gnOiB0eXBlb2YgQmF0Y2hSb3V0ZQogICcvcHJhY3RpY2UnOiB0eXBlb2YgUHJhY3RpY2VSb3V0ZQogICcvdm9pY2UnOiB0eXBlb2YgVm9pY2VSb3V0ZQogICcveW91dHViZSc6IHR5cGVvZiBZb3V0dWJlUm91dGUKICAnL2FwaS9jaGF0JzogdHlwZW9mIEFwaUNoYXRSb3V0ZQogICcvYXBpL21lZGlhLWxpc3Rlbic6IHR5cGVvZiBBcGlNZWRpYUxpc3RlblJvdXRlCiAgJy9hcGkvbWVkaWEtcHJveHknOiB0eXBlb2YgQXBpTWVkaWFQcm94eVJvdXRlCiAgJy9hcGkvbmNlcnQtZGlhZ3JhbSc6IHR5cGVvZiBBcGlOY2VydERpYWdyYW1Sb3V0ZQogICcvYXBpL25jZXJ0LXNjYW4nOiB0eXBlb2YgQXBpTmNlcnRTY2FuUm91dGUKICAnL2FwaS9zYXJ2YW0tc3BlZWNoJzogdHlwZW9mIEFwaVNhcnZhbVNwZWVjaFJvdXRlCiAgJy9hcGkvc3BlZWNoJzogdHlwZW9mIEFwaVNwZWVjaFJvdXRlCiAgJy9hcGkvdHJhbnNjcmliZSc6IHR5cGVvZiBBcGlUcmFuc2NyaWJlUm91dGUKICAnL2FwaS92ZXJpZnknOiB0eXBlb2YgQXBpVmVyaWZ5Um91dGUKICAnL2FwaS92aXNpb24tcmVhZCc6IHR5cGVvZiBBcGlWaXNpb25SZWFkUm91dGUKICAnL2FwaS95b3V0dWJlLWNoYW5uZWwnOiB0eXBlb2YgQXBpWW91dHViZUNoYW5uZWxSb3V0ZQogICcvYXBpL3lvdXR1YmUtaGluZGknOiB0eXBlb2YgQXBpWW91dHViZUhpbmRpUm91dGUKICAnL2RvdWJ0LyR0aHJlYWRJZCc6IHR5cGVvZiBEb3VidFRocmVhZElkUm91dGUKfQpleHBvcnQgaW50ZXJmYWNlIEZpbGVSb3V0ZVR5cGVzIHsKICBmaWxlUm91dGVzQnlGdWxsUGF0aDogRmlsZVJvdXRlc0J5RnVsbFBhdGgKICBmdWxsUGF0aHM6CiAgICB8ICcvJwogICAgfCAnL2FkbWluJwogICAgfCAnL2JhdGNoJwogICAgfCAnL3ByYWN0aWNlJwogICAgfCAnL3ZvaWNlJwogICAgfCAnL3lvdXR1YmUnCiAgICB8ICcvYXBpL2NoYXQnCiAgICB8ICcvYXBpL21lZGlhLWxpc3RlbicKICAgIHwgJy9hcGkvbWVkaWEtcHJveHknCiAgICB8ICcvYXBpL25jZXJ0LWRpYWdyYW0nCiAgICB8ICcvYXBpL25jZXJ0LXNjYW4nCiAgICB8ICcvYXBpL3NhcnZhbS1zcGVlY2gnCiAgICB8ICcvYXBpL3NwZWVjaCcKICAgIHwgJy9hcGkvdHJhbnNjcmliZScKICAgIHwgJy9hcGkvdmVyaWZ5JwogICAgfCAnL2FwaS92aXNpb24tcmVhZCcKICAgIHwgJy9hcGkveW91dHViZS1jaGFubmVsJwogICAgfCAnL2FwaS95b3V0dWJlLWhpbmRpJwogICAgfCAnL2RvdWJ0LyR0aHJlYWRJZCcKICBmaWxlUm91dGVzQnlUbzogRmlsZVJvdXRlc0J5VG8KICB0bzoKICAgIHwgJy8nCiAgICB8ICcvYWRtaW4nCiAgICB8ICcvYmF0Y2gnCiAgICB8ICcvcHJhY3RpY2UnCiAgICB8ICcvdm9pY2UnCiAgICB8ICcveW91dHViZScKICAgIHwgJy9hcGkvY2hhdCcKICAgIHwgJy9hcGkvbWVkaWEtbGlzdGVuJwogICAgfCAnL2FwaS9tZWRpYS1wcm94eScKICAgIHwgJy9hcGkvbmNlcnQtZGlhZ3JhbScKICAgIHwgJy9hcGkvbmNlcnQtc2NhbicKICAgIHwgJy9hcGkvc2FydmFtLXNwZWVjaCcKICAgIHwgJy9hcGkvc3BlZWNoJwogICAgfCAnL2FwaS90cmFuc2NyaWJlJwogICAgfCAnL2FwaS92ZXJpZnknCiAgICB8ICcvYXBpL3Zpc2lvbi1yZWFkJwogICAgfCAnL2FwaS95b3V0dWJlLWNoYW5uZWwnCiAgICB8ICcvYXBpL3lvdXR1YmUtaGluZGknCiAgICB8ICcvZG91YnQvJHRocmVhZElkJwogIGlkOgogICAgfCAnX19yb290X18nCiAgICB8ICcvJwogICAgfCAnL2FkbWluJwogICAgfCAnL2JhdGNoJwogICAgfCAnL3ByYWN0aWNlJwogICAgfCAnL3ZvaWNlJwogICAgfCAnL3lvdXR1YmUnCiAgICB8ICcvYXBpL2NoYXQnCiAgICB8ICcvYXBpL21lZGlhLWxpc3RlbicKICAgIHwgJy9hcGkvbWVkaWEtcHJveHknCiAgICB8ICcvYXBpL25jZXJ0LWRpYWdyYW0nCiAgICB8ICcvYXBpL25jZXJ0LXNjYW4nCiAgICB8ICcvYXBpL3NhcnZhbS1zcGVlY2gnCiAgICB8ICcvYXBpL3NwZWVjaCcKICAgIHwgJy9hcGkvdHJhbnNjcmliZScKICAgIHwgJy9hcGkvdmVyaWZ5JwogICAgfCAnL2FwaS92aXNpb24tcmVhZCcKICAgIHwgJy9hcGkveW91dHViZS1jaGFubmVsJwogICAgfCAnL2FwaS95b3V0dWJlLWhpbmRpJwogICAgfCAnL2RvdWJ0LyR0aHJlYWRJZCcKICBmaWxlUm91dGVzQnlJZDogRmlsZVJvdXRlc0J5SWQKfQpleHBvcnQgaW50ZXJmYWNlIFJvb3RSb3V0ZUNoaWxkcmVuIHsKICBJbmRleFJvdXRlOiB0eXBlb2YgSW5kZXhSb3V0ZQogIEFkbWluUm91dGU6IHR5cGVvZiBBZG1pblJvdXRlCiAgQmF0Y2hSb3V0ZTogdHlwZW9mIEJhdGNoUm91dGUKICBQcmFjdGljZVJvdXRlOiB0eXBlb2YgUHJhY3RpY2VSb3V0ZQogIFZvaWNlUm91dGU6IHR5cGVvZiBWb2ljZVJvdXRlCiAgWW91dHViZVJvdXRlOiB0eXBlb2YgWW91dHViZVJvdXRlCiAgQXBpQ2hhdFJvdXRlOiB0eXBlb2YgQXBpQ2hhdFJvdXRlCiAgQXBpTWVkaWFMaXN0ZW5Sb3V0ZTogdHlwZW9mIEFwaU1lZGlhTGlzdGVuUm91dGUKICBBcGlNZWRpYVByb3h5Um91dGU6IHR5cGVvZiBBcGlNZWRpYVByb3h5Um91dGUKICBBcGlOY2VydERpYWdyYW1Sb3V0ZTogdHlwZW9mIEFwaU5jZXJ0RGlhZ3JhbVJvdXRlCiAgQXBpTmNlcnRTY2FuUm91dGU6IHR5cGVvZiBBcGlOY2VydFNjYW5Sb3V0ZQogIEFwaVNhcnZhbVNwZWVjaFJvdXRlOiB0eXBlb2YgQXBpU2FydmFtU3BlZWNoUm91dGUKICBBcGlTcGVlY2hSb3V0ZTogdHlwZW9mIEFwaVNwZWVjaFJvdXRlCiAgQXBpVHJhbnNjcmliZVJvdXRlOiB0eXBlb2YgQXBpVHJhbnNjcmliZVJvdXRlCiAgQXBpVmVyaWZ5Um91dGU6IHR5cGVvZiBBcGlWZXJpZnlSb3V0ZQogIEFwaVZpc2lvblJlYWRSb3V0ZTogdHlwZW9mIEFwaVZpc2lvblJlYWRSb3V0ZQogIEFwaVlvdXR1YmVDaGFubmVsUm91dGU6IHR5cGVvZiBBcGlZb3V0dWJlQ2hhbm5lbFJvdXRlCiAgQXBpWW91dHViZUhpbmRpUm91dGU6IHR5cGVvZiBBcGlZb3V0dWJlSGluZGlSb3V0ZQogIERvdWJ0VGhyZWFkSWRSb3V0ZTogdHlwZW9mIERvdWJ0VGhyZWFkSWRSb3V0ZQp9CgpkZWNsYXJlIG1vZHVsZSAnQHRhbnN0YWNrL3JlYWN0LXJvdXRlcicgewogIGludGVyZmFjZSBGaWxlUm91dGVzQnlQYXRoIHsKICAgICcvJzogewogICAgICBpZDogJy8nCiAgICAgIHBhdGg6ICcvJwogICAgICBmdWxsUGF0aDogJy8nCiAgICAgIHByZUxvYWRlclJvdXRlOiB0eXBlb2YgSW5kZXhSb3V0ZUltcG9ydAogICAgICBwYXJlbnRSb3V0ZTogdHlwZW9mIHJvb3RSb3V0ZUltcG9ydAogICAgfQogICAgJy9hZG1pbic6IHsKICAgICAgaWQ6ICcvYWRtaW4nCiAgICAgIHBhdGg6ICcvYWRtaW4nCiAgICAgIGZ1bGxQYXRoOiAnL2FkbWluJwogICAgICBwcmVMb2FkZXJSb3V0ZTogdHlwZW9mIEFkbWluUm91dGVJbXBvcnQKICAgICAgcGFyZW50Um91dGU6IHR5cGVvZiByb290Um91dGVJbXBvcnQKICAgIH0KICAgICcvYmF0Y2gnOiB7CiAgICAgIGlkOiAnL2JhdGNoJwogICAgICBwYXRoOiAnL2JhdGNoJwogICAgICBmdWxsUGF0aDogJy9iYXRjaCcKICAgICAgcHJlTG9hZGVyUm91dGU6IHR5cGVvZiBCYXRjaFJvdXRlSW1wb3J0CiAgICAgIHBhcmVudFJvdXRlOiB0eXBlb2Ygcm9vdFJvdXRlSW1wb3J0CiAgICB9CiAgICAnL3ByYWN0aWNlJzogewogICAgICBpZDogJy9wcmFjdGljZScKICAgICAgcGF0aDogJy9wcmFjdGljZScKICAgICAgZnVsbFBhdGg6ICcvcHJhY3RpY2UnCiAgICAgIHByZUxvYWRlclJvdXRlOiB0eXBlb2YgUHJhY3RpY2VSb3V0ZUltcG9ydAogICAgICBwYXJlbnRSb3V0ZTogdHlwZW9mIHJvb3RSb3V0ZUltcG9ydAogICAgfQogICAgJy92b2ljZSc6IHsKICAgICAgaWQ6ICcvdm9pY2UnCiAgICAgIHBhdGg6ICcvdm9pY2UnCiAgICAgIGZ1bGxQYXRoOiAnL3ZvaWNlJwogICAgICBwcmVMb2FkZXJSb3V0ZTogdHlwZW9mIFZvaWNlUm91dGVJbXBvcnQKICAgICAgcGFyZW50Um91dGU6IHR5cGVvZiByb290Um91dGVJbXBvcnQKICAgIH0KICAgICcveW91dHViZSc6IHsKICAgICAgaWQ6ICcveW91dHViZScKICAgICAgcGF0aDogJy95b3V0dWJlJwogICAgICBmdWxsUGF0aDogJy95b3V0dWJlJwogICAgICBwcmVMb2FkZXJSb3V0ZTogdHlwZW9mIFlvdXR1YmVSb3V0ZUltcG9ydAogICAgICBwYXJlbnRSb3V0ZTogdHlwZW9mIHJvb3RSb3V0ZUltcG9ydAogICAgfQogICAgJy9hcGkvY2hhdCc6IHsKICAgICAgaWQ6ICcvYXBpL2NoYXQnCiAgICAgIHBhdGg6ICcvYXBpL2NoYXQnCiAgICAgIGZ1bGxQYXRoOiAnL2FwaS9jaGF0JwogICAgICBwcmVMb2FkZXJSb3V0ZTogdHlwZW9mIEFwaUNoYXRSb3V0ZUltcG9ydAogICAgICBwYXJlbnRSb3V0ZTogdHlwZW9mIHJvb3RSb3V0ZUltcG9ydAogICAgfQogICAgJy9hcGkvbWVkaWEtbGlzdGVuJzogewogICAgICBpZDogJy9hcGkvbWVkaWEtbGlzdGVuJwogICAgICBwYXRoOiAnL2FwaS9tZWRpYS1saXN0ZW4nCiAgICAgIGZ1bGxQYXRoOiAnL2FwaS9tZWRpYS1saXN0ZW4nCiAgICAgIHByZUxvYWRlclJvdXRlOiB0eXBlb2YgQXBpTWVkaWFMaXN0ZW5Sb3V0ZUltcG9ydAogICAgICBwYXJlbnRSb3V0ZTogdHlwZW9mIHJvb3RSb3V0ZUltcG9ydAogICAgfQogICAgJy9hcGkvbWVkaWEtcHJveHknOiB7CiAgICAgIGlkOiAnL2FwaS9tZWRpYS1wcm94eScKICAgICAgcGF0aDogJy9hcGkvbWVkaWEtcHJveHknCiAgICAgIGZ1bGxQYXRoOiAnL2FwaS9tZWRpYS1wcm94eScKICAgICAgcHJlTG9hZGVyUm91dGU6IHR5cGVvZiBBcGlNZWRpYVByb3h5Um91dGVJbXBvcnQKICAgICAgcGFyZW50Um91dGU6IHR5cGVvZiByb290Um91dGVJbXBvcnQKICAgIH0KICAgICcvYXBpL25jZXJ0LWRpYWdyYW0nOiB7CiAgICAgIGlkOiAnL2FwaS9uY2VydC1kaWFncmFtJwogICAgICBwYXRoOiAnL2FwaS9uY2VydC1kaWFncmFtJwogICAgICBmdWxsUGF0aDogJy9hcGkvbmNlcnQtZGlhZ3JhbScKICAgICAgcHJlTG9hZGVyUm91dGU6IHR5cGVvZiBBcGlOY2VydERpYWdyYW1Sb3V0ZUltcG9ydAogICAgICBwYXJlbnRSb3V0ZTogdHlwZW9mIHJvb3RSb3V0ZUltcG9ydAogICAgfQogICAgJy9hcGkvbmNlcnQtc2Nhbic6IHsKICAgICAgaWQ6ICcvYXBpL25jZXJ0LXNjYW4nCiAgICAgIHBhdGg6ICcvYXBpL25jZXJ0LXNjYW4nCiAgICAgIGZ1bGxQYXRoOiAnL2FwaS9uY2VydC1zY2FuJwogICAgICBwcmVMb2FkZXJSb3V0ZTogdHlwZW9mIEFwaU5jZXJ0U2NhblJvdXRlSW1wb3J0CiAgICAgIHBhcmVudFJvdXRlOiB0eXBlb2Ygcm9vdFJvdXRlSW1wb3J0CiAgICB9CiAgICAnL2FwaS9zYXJ2YW0tc3BlZWNoJzogewogICAgICBpZDogJy9hcGkvc2FydmFtLXNwZWVjaCcKICAgICAgcGF0aDogJy9hcGkvc2FydmFtLXNwZWVjaCcKICAgICAgZnVsbFBhdGg6ICcvYXBpL3NhcnZhbS1zcGVlY2gnCiAgICAgIHByZUxvYWRlclJvdXRlOiB0eXBlb2YgQXBpU2FydmFtU3BlZWNoUm91dGVJbXBvcnQKICAgICAgcGFyZW50Um91dGU6IHR5cGVvZiByb290Um91dGVJbXBvcnQKICAgIH0KICAgICcvYXBpL3NwZWVjaCc6IHsKICAgICAgaWQ6ICcvYXBpL3NwZWVjaCcKICAgICAgcGF0aDogJy9hcGkvc3BlZWNoJwogICAgICBmdWxsUGF0aDogJy9hcGkvc3BlZWNoJwogICAgICBwcmVMb2FkZXJSb3V0ZTogdHlwZW9mIEFwaVNwZWVjaFJvdXRlSW1wb3J0CiAgICAgIHBhcmVudFJvdXRlOiB0eXBlb2Ygcm9vdFJvdXRlSW1wb3J0CiAgICB9CiAgICAnL2FwaS90cmFuc2NyaWJlJzogewogICAgICBpZDogJy9hcGkvdHJhbnNjcmliZScKICAgICAgcGF0aDogJy9hcGkvdHJhbnNjcmliZScKICAgICAgZnVsbFBhdGg6ICcvYXBpL3RyYW5zY3JpYmUnCiAgICAgIHByZUxvYWRlclJvdXRlOiB0eXBlb2YgQXBpVHJhbnNjcmliZVJvdXRlSW1wb3J0CiAgICAgIHBhcmVudFJvdXRlOiB0eXBlb2Ygcm9vdFJvdXRlSW1wb3J0CiAgICB9CiAgICAnL2FwaS92ZXJpZnknOiB7CiAgICAgIGlkOiAnL2FwaS92ZXJpZnknCiAgICAgIHBhdGg6ICcvYXBpL3ZlcmlmeScKICAgICAgZnVsbFBhdGg6ICcvYXBpL3ZlcmlmeScKICAgICAgcHJlTG9hZGVyUm91dGU6IHR5cGVvZiBBcGlWZXJpZnlSb3V0ZUltcG9ydAogICAgICBwYXJlbnRSb3V0ZTogdHlwZW9mIHJvb3RSb3V0ZUltcG9ydAogICAgfQogICAgJy9hcGkvdmlzaW9uLXJlYWQnOiB7CiAgICAgIGlkOiAnL2FwaS92aXNpb24tcmVhZCcKICAgICAgcGF0aDogJy9hcGkvdmlzaW9uLXJlYWQnCiAgICAgIGZ1bGxQYXRoOiAnL2FwaS92aXNpb24tcmVhZCcKICAgICAgcHJlTG9hZGVyUm91dGU6IHR5cGVvZiBBcGlWaXNpb25SZWFkUm91dGVJbXBvcnQKICAgICAgcGFyZW50Um91dGU6IHR5cGVvZiByb290Um91dGVJbXBvcnQKICAgIH0KICAgICcvYXBpL3lvdXR1YmUtY2hhbm5lbCc6IHsKICAgICAgaWQ6ICcvYXBpL3lvdXR1YmUtY2hhbm5lbCcKICAgICAgcGF0aDogJy9hcGkveW91dHViZS1jaGFubmVsJwogICAgICBmdWxsUGF0aDogJy9hcGkveW91dHViZS1jaGFubmVsJwogICAgICBwcmVMb2FkZXJSb3V0ZTogdHlwZW9mIEFwaVlvdXR1YmVDaGFubmVsUm91dGVJbXBvcnQKICAgICAgcGFyZW50Um91dGU6IHR5cGVvZiByb290Um91dGVJbXBvcnQKICAgIH0KICAgICcvYXBpL3lvdXR1YmUtaGluZGknOiB7CiAgICAgIGlkOiAnL2FwaS95b3V0dWJlLWhpbmRpJwogICAgICBwYXRoOiAnL2FwaS95b3V0dWJlLWhpbmRpJwogICAgICBmdWxsUGF0aDogJy9hcGkveW91dHViZS1oaW5kaScKICAgICAgcHJlTG9hZGVyUm91dGU6IHR5cGVvZiBBcGlZb3V0dWJlSGluZGlSb3V0ZUltcG9ydAogICAgICBwYXJlbnRSb3V0ZTogdHlwZW9mIHJvb3RSb3V0ZUltcG9ydAogICAgfQogICAgJy9kb3VidC8kdGhyZWFkSWQnOiB7CiAgICAgIGlkOiAnL2RvdWJ0LyR0aHJlYWRJZCcKICAgICAgcGF0aDogJy9kb3VidC8kdGhyZWFkSWQnCiAgICAgIGZ1bGxQYXRoOiAnL2RvdWJ0LyR0aHJlYWRJZCcKICAgICAgcHJlTG9hZGVyUm91dGU6IHR5cGVvZiBEb3VidFRocmVhZElkUm91dGVJbXBvcnQKICAgICAgcGFyZW50Um91dGU6IHR5cGVvZiByb290Um91dGVJbXBvcnQKICAgIH0KICB9Cn0KCmNvbnN0IHJvb3RSb3V0ZUNoaWxkcmVuOiBSb290Um91dGVDaGlsZHJlbiA9IHsKICBJbmRleFJvdXRlOiBJbmRleFJvdXRlLAogIEFkbWluUm91dGU6IEFkbWluUm91dGUsCiAgQmF0Y2hSb3V0ZTogQmF0Y2hSb3V0ZSwKICBQcmFjdGljZVJvdXRlOiBQcmFjdGljZVJvdXRlLAogIFZvaWNlUm91dGU6IFZvaWNlUm91dGUsCiAgWW91dHViZVJvdXRlOiBZb3V0dWJlUm91dGUsCiAgQXBpQ2hhdFJvdXRlOiBBcGlDaGF0Um91dGUsCiAgQXBpTWVkaWFMaXN0ZW5Sb3V0ZTogQXBpTWVkaWFMaXN0ZW5Sb3V0ZSwKICBBcGlNZWRpYVByb3h5Um91dGU6IEFwaU1lZGlhUHJveHlSb3V0ZSwKICBBcGlOY2VydERpYWdyYW1Sb3V0ZTogQXBpTmNlcnREaWFncmFtUm91dGUsCiAgQXBpTmNlcnRTY2FuUm91dGU6IEFwaU5jZXJ0U2NhblJvdXRlLAogIEFwaVNhcnZhbVNwZWVjaFJvdXRlOiBBcGlTYXJ2YW1TcGVlY2hSb3V0ZSwKICBBcGlTcGVlY2hSb3V0ZTogQXBpU3BlZWNoUm91dGUsCiAgQXBpVHJhbnNjcmliZVJvdXRlOiBBcGlUcmFuc2NyaWJlUm91dGUsCiAgQXBpVmVyaWZ5Um91dGU6IEFwaVZlcmlmeVJvdXRlLAogIEFwaVZpc2lvblJlYWRSb3V0ZTogQXBpVmlzaW9uUmVhZFJvdXRlLAogIEFwaVlvdXR1YmVDaGFubmVsUm91dGU6IEFwaVlvdXR1YmVDaGFubmVsUm91dGUsCiAgQXBpWW91dHViZUhpbmRpUm91dGU6IEFwaVlvdXR1YmVIaW5kaVJvdXRlLAogIERvdWJ0VGhyZWFkSWRSb3V0ZTogRG91YnRUaHJlYWRJZFJvdXRlLAp9CmV4cG9ydCBjb25zdCByb3V0ZVRyZWUgPSByb290Um91dGVJbXBvcnQKICAuX2FkZEZpbGVDaGlsZHJlbihyb290Um91dGVDaGlsZHJlbikKICAuX2FkZEZpbGVUeXBlczxGaWxlUm91dGVUeXBlcz4oKQoKaW1wb3J0IHR5cGUgeyBnZXRSb3V0ZXIgfSBmcm9tICcuL3JvdXRlci50c3gnCmltcG9ydCB0eXBlIHsgc3RhcnRJbnN0YW5jZSB9IGZyb20gJy4vc3RhcnQudHMnCmRlY2xhcmUgbW9kdWxlICdAdGFuc3RhY2svcmVhY3Qtc3RhcnQnIHsKICBpbnRlcmZhY2UgUmVnaXN0ZXIgewogICAgc3NyOiB0cnVlCiAgICByb3V0ZXI6IEF3YWl0ZWQ8UmV0dXJuVHlwZTx0eXBlb2YgZ2V0Um91dGVyPj4KICAgIGNvbmZpZzogQXdhaXRlZDxSZXR1cm5UeXBlPHR5cGVvZiBzdGFydEluc3RhbmNlLmdldE9wdGlvbnM+PgogIH0KfQo=
+/* eslint-disable */
+
+// @ts-nocheck
+
+// noinspection JSUnusedGlobalSymbols
+
+// This file was automatically generated by TanStack Router.
+// You should NOT make any changes in this file as it will be overwritten.
+// Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
+
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BatchRouteImport } from './routes/batch'
+import { Route as PracticeRouteImport } from './routes/practice'
+import { Route as VoiceRouteImport } from './routes/voice'
+import { Route as YoutubeRouteImport } from './routes/youtube'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiMediaListenRouteImport } from './routes/api/media-listen'
+import { Route as ApiMediaProxyRouteImport } from './routes/api/media-proxy'
+import { Route as ApiNcertDiagramRouteImport } from './routes/api/ncert-diagram'
+import { Route as ApiNcertScanRouteImport } from './routes/api/ncert-scan'
+import { Route as ApiSarvamSpeechRouteImport } from './routes/api/sarvam-speech'
+import { Route as ApiSpeechRouteImport } from './routes/api/speech'
+import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
+import { Route as ApiVerifyRouteImport } from './routes/api/verify'
+import { Route as ApiVisionReadRouteImport } from './routes/api/vision-read'
+import { Route as ApiYoutubeChannelRouteImport } from './routes/api/youtube-channel'
+import { Route as ApiYoutubeHindiRouteImport } from './routes/api/youtube-hindi'
+import { Route as DoubtThreadIdRouteImport } from './routes/doubt.$threadId'
+
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BatchRoute = BatchRouteImport.update({
+  id: '/batch',
+  path: '/batch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PracticeRoute = PracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoiceRoute = VoiceRouteImport.update({
+  id: '/voice',
+  path: '/voice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YoutubeRoute = YoutubeRouteImport.update({
+  id: '/youtube',
+  path: '/youtube',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiMediaListenRoute = ApiMediaListenRouteImport.update({
+  id: '/api/media-listen',
+  path: '/api/media-listen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiMediaProxyRoute = ApiMediaProxyRouteImport.update({
+  id: '/api/media-proxy',
+  path: '/api/media-proxy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiNcertDiagramRoute = ApiNcertDiagramRouteImport.update({
+  id: '/api/ncert-diagram',
+  path: '/api/ncert-diagram',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiNcertScanRoute = ApiNcertScanRouteImport.update({
+  id: '/api/ncert-scan',
+  path: '/api/ncert-scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSarvamSpeechRoute = ApiSarvamSpeechRouteImport.update({
+  id: '/api/sarvam-speech',
+  path: '/api/sarvam-speech',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSpeechRoute = ApiSpeechRouteImport.update({
+  id: '/api/speech',
+  path: '/api/speech',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
+  id: '/api/transcribe',
+  path: '/api/transcribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiVerifyRoute = ApiVerifyRouteImport.update({
+  id: '/api/verify',
+  path: '/api/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiVisionReadRoute = ApiVisionReadRouteImport.update({
+  id: '/api/vision-read',
+  path: '/api/vision-read',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiYoutubeChannelRoute = ApiYoutubeChannelRouteImport.update({
+  id: '/api/youtube-channel',
+  path: '/api/youtube-channel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiYoutubeHindiRoute = ApiYoutubeHindiRouteImport.update({
+  id: '/api/youtube-hindi',
+  path: '/api/youtube-hindi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoubtThreadIdRoute = DoubtThreadIdRouteImport.update({
+  id: '/doubt/$threadId',
+  path: '/doubt/$threadId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/batch': typeof BatchRoute
+  '/practice': typeof PracticeRoute
+  '/voice': typeof VoiceRoute
+  '/youtube': typeof YoutubeRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/media-listen': typeof ApiMediaListenRoute
+  '/api/media-proxy': typeof ApiMediaProxyRoute
+  '/api/ncert-diagram': typeof ApiNcertDiagramRoute
+  '/api/ncert-scan': typeof ApiNcertScanRoute
+  '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
+  '/api/speech': typeof ApiSpeechRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/verify': typeof ApiVerifyRoute
+  '/api/vision-read': typeof ApiVisionReadRoute
+  '/api/youtube-channel': typeof ApiYoutubeChannelRoute
+  '/api/youtube-hindi': typeof ApiYoutubeHindiRoute
+  '/doubt/$threadId': typeof DoubtThreadIdRoute
+}
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/batch': typeof BatchRoute
+  '/practice': typeof PracticeRoute
+  '/voice': typeof VoiceRoute
+  '/youtube': typeof YoutubeRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/media-listen': typeof ApiMediaListenRoute
+  '/api/media-proxy': typeof ApiMediaProxyRoute
+  '/api/ncert-diagram': typeof ApiNcertDiagramRoute
+  '/api/ncert-scan': typeof ApiNcertScanRoute
+  '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
+  '/api/speech': typeof ApiSpeechRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/verify': typeof ApiVerifyRoute
+  '/api/vision-read': typeof ApiVisionReadRoute
+  '/api/youtube-channel': typeof ApiYoutubeChannelRoute
+  '/api/youtube-hindi': typeof ApiYoutubeHindiRoute
+  '/doubt/$threadId': typeof DoubtThreadIdRoute
+}
+export interface FileRoutesById {
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/batch': typeof BatchRoute
+  '/practice': typeof PracticeRoute
+  '/voice': typeof VoiceRoute
+  '/youtube': typeof YoutubeRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/media-listen': typeof ApiMediaListenRoute
+  '/api/media-proxy': typeof ApiMediaProxyRoute
+  '/api/ncert-diagram': typeof ApiNcertDiagramRoute
+  '/api/ncert-scan': typeof ApiNcertScanRoute
+  '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
+  '/api/speech': typeof ApiSpeechRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
+  '/api/verify': typeof ApiVerifyRoute
+  '/api/vision-read': typeof ApiVisionReadRoute
+  '/api/youtube-channel': typeof ApiYoutubeChannelRoute
+  '/api/youtube-hindi': typeof ApiYoutubeHindiRoute
+  '/doubt/$threadId': typeof DoubtThreadIdRoute
+}
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/batch'
+    | '/practice'
+    | '/voice'
+    | '/youtube'
+    | '/api/chat'
+    | '/api/media-listen'
+    | '/api/media-proxy'
+    | '/api/ncert-diagram'
+    | '/api/ncert-scan'
+    | '/api/sarvam-speech'
+    | '/api/speech'
+    | '/api/transcribe'
+    | '/api/verify'
+    | '/api/vision-read'
+    | '/api/youtube-channel'
+    | '/api/youtube-hindi'
+    | '/doubt/$threadId'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/admin'
+    | '/batch'
+    | '/practice'
+    | '/voice'
+    | '/youtube'
+    | '/api/chat'
+    | '/api/media-listen'
+    | '/api/media-proxy'
+    | '/api/ncert-diagram'
+    | '/api/ncert-scan'
+    | '/api/sarvam-speech'
+    | '/api/speech'
+    | '/api/transcribe'
+    | '/api/verify'
+    | '/api/vision-read'
+    | '/api/youtube-channel'
+    | '/api/youtube-hindi'
+    | '/doubt/$threadId'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/batch'
+    | '/practice'
+    | '/voice'
+    | '/youtube'
+    | '/api/chat'
+    | '/api/media-listen'
+    | '/api/media-proxy'
+    | '/api/ncert-diagram'
+    | '/api/ncert-scan'
+    | '/api/sarvam-speech'
+    | '/api/speech'
+    | '/api/transcribe'
+    | '/api/verify'
+    | '/api/vision-read'
+    | '/api/youtube-channel'
+    | '/api/youtube-hindi'
+    | '/doubt/$threadId'
+  fileRoutesById: FileRoutesById
+}
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  BatchRoute: typeof BatchRoute
+  PracticeRoute: typeof PracticeRoute
+  VoiceRoute: typeof VoiceRoute
+  YoutubeRoute: typeof YoutubeRoute
+  ApiChatRoute: typeof ApiChatRoute
+  ApiMediaListenRoute: typeof ApiMediaListenRoute
+  ApiMediaProxyRoute: typeof ApiMediaProxyRoute
+  ApiNcertDiagramRoute: typeof ApiNcertDiagramRoute
+  ApiNcertScanRoute: typeof ApiNcertScanRoute
+  ApiSarvamSpeechRoute: typeof ApiSarvamSpeechRoute
+  ApiSpeechRoute: typeof ApiSpeechRoute
+  ApiTranscribeRoute: typeof ApiTranscribeRoute
+  ApiVerifyRoute: typeof ApiVerifyRoute
+  ApiVisionReadRoute: typeof ApiVisionReadRoute
+  ApiYoutubeChannelRoute: typeof ApiYoutubeChannelRoute
+  ApiYoutubeHindiRoute: typeof ApiYoutubeHindiRoute
+  DoubtThreadIdRoute: typeof DoubtThreadIdRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/batch': {
+      id: '/batch'
+      path: '/batch'
+      fullPath: '/batch'
+      preLoaderRoute: typeof BatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/practice': {
+      id: '/practice'
+      path: '/practice'
+      fullPath: '/practice'
+      preLoaderRoute: typeof PracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voice': {
+      id: '/voice'
+      path: '/voice'
+      fullPath: '/voice'
+      preLoaderRoute: typeof VoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/youtube': {
+      id: '/youtube'
+      path: '/youtube'
+      fullPath: '/youtube'
+      preLoaderRoute: typeof YoutubeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/media-listen': {
+      id: '/api/media-listen'
+      path: '/api/media-listen'
+      fullPath: '/api/media-listen'
+      preLoaderRoute: typeof ApiMediaListenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/media-proxy': {
+      id: '/api/media-proxy'
+      path: '/api/media-proxy'
+      fullPath: '/api/media-proxy'
+      preLoaderRoute: typeof ApiMediaProxyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ncert-diagram': {
+      id: '/api/ncert-diagram'
+      path: '/api/ncert-diagram'
+      fullPath: '/api/ncert-diagram'
+      preLoaderRoute: typeof ApiNcertDiagramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ncert-scan': {
+      id: '/api/ncert-scan'
+      path: '/api/ncert-scan'
+      fullPath: '/api/ncert-scan'
+      preLoaderRoute: typeof ApiNcertScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/sarvam-speech': {
+      id: '/api/sarvam-speech'
+      path: '/api/sarvam-speech'
+      fullPath: '/api/sarvam-speech'
+      preLoaderRoute: typeof ApiSarvamSpeechRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/speech': {
+      id: '/api/speech'
+      path: '/api/speech'
+      fullPath: '/api/speech'
+      preLoaderRoute: typeof ApiSpeechRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/transcribe': {
+      id: '/api/transcribe'
+      path: '/api/transcribe'
+      fullPath: '/api/transcribe'
+      preLoaderRoute: typeof ApiTranscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/verify': {
+      id: '/api/verify'
+      path: '/api/verify'
+      fullPath: '/api/verify'
+      preLoaderRoute: typeof ApiVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/vision-read': {
+      id: '/api/vision-read'
+      path: '/api/vision-read'
+      fullPath: '/api/vision-read'
+      preLoaderRoute: typeof ApiVisionReadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/youtube-channel': {
+      id: '/api/youtube-channel'
+      path: '/api/youtube-channel'
+      fullPath: '/api/youtube-channel'
+      preLoaderRoute: typeof ApiYoutubeChannelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/youtube-hindi': {
+      id: '/api/youtube-hindi'
+      path: '/api/youtube-hindi'
+      fullPath: '/api/youtube-hindi'
+      preLoaderRoute: typeof ApiYoutubeHindiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doubt/$threadId': {
+      id: '/doubt/$threadId'
+      path: '/doubt/$threadId'
+      fullPath: '/doubt/$threadId'
+      preLoaderRoute: typeof DoubtThreadIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  BatchRoute: BatchRoute,
+  PracticeRoute: PracticeRoute,
+  VoiceRoute: VoiceRoute,
+  YoutubeRoute: YoutubeRoute,
+  ApiChatRoute: ApiChatRoute,
+  ApiMediaListenRoute: ApiMediaListenRoute,
+  ApiMediaProxyRoute: ApiMediaProxyRoute,
+  ApiNcertDiagramRoute: ApiNcertDiagramRoute,
+  ApiNcertScanRoute: ApiNcertScanRoute,
+  ApiSarvamSpeechRoute: ApiSarvamSpeechRoute,
+  ApiSpeechRoute: ApiSpeechRoute,
+  ApiTranscribeRoute: ApiTranscribeRoute,
+  ApiVerifyRoute: ApiVerifyRoute,
+  ApiVisionReadRoute: ApiVisionReadRoute,
+  ApiYoutubeChannelRoute: ApiYoutubeChannelRoute,
+  ApiYoutubeHindiRoute: ApiYoutubeHindiRoute,
+  DoubtThreadIdRoute: DoubtThreadIdRoute,
+}
+export const routeTree = rootRouteImport
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -1,1 +1,9 @@
-aW1wb3J0IHsgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IHJlc29sdmVTcGVlY2hWb2ljZSB9IGZyb20gJ0AvbGliL3NwZWVjaC12b2ljZSc7Cml0LmVhY2goWydLb3JlJywgJ0FvZWRlJywgJ0xlZGEnXSBhcyBjb25zdCkoJ3N1cHBvcnRzIHJlcXVlc3RlZCBzcGVlY2ggdm9pY2UgJXMnLCB2b2ljZSA9PiB7CiAgZXhwZWN0KHJlc29sdmVTcGVlY2hWb2ljZSh2b2ljZS50b0xvd2VyQ2FzZSgpKSkudG9CZSh2b2ljZSk7Cn0pOwppdCgnbmV2ZXIgdHJlYXRzIGFuIHVwbG9hZGVkIHNhbXBsZSBvciBsaXZlIHByZXNldCBhcyBhIFRUUyBpZGVudGl0eScsICgpID0+IHsKICBleHBlY3QocmVzb2x2ZVNwZWVjaFZvaWNlKCdtaXRoYWxpJykpLnRvQmVVbmRlZmluZWQoKTsKICBleHBlY3QocmVzb2x2ZVNwZWVjaFZvaWNlKCdtYXJpbicpKS50b0JlVW5kZWZpbmVkKCk7Cn0pOw==
+import { expect, it } from 'vitest';
+import { resolveSpeechVoice } from '@/lib/speech-voice';
+it.each(['Kore', 'Aoede', 'Leda'] as const)('supports requested speech voice %s', voice => {
+  expect(resolveSpeechVoice(voice.toLowerCase())).toBe(voice);
+});
+it('never treats an uploaded sample or live preset as a TTS identity', () => {
+  expect(resolveSpeechVoice('mithali')).toBeUndefined();
+  expect(resolveSpeechVoice('marin')).toBeUndefined();
+});

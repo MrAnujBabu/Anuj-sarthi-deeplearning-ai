@@ -1,1 +1,329 @@
-aW1wb3J0IHsgY2hhcHRlckxhYmVsLCB0YWtlQ2hhcHRlciB9IGZyb20gIkAvbGliL25jZXJ0LWJpb2xvZ3kiOwppbXBvcnQgeyBkeW5hbWljVm9pY2VUYWJsZSwgc3Bva2VuVGFibGVDb2x1bW5zIH0gZnJvbSAiQC9saWIvdm9pY2UtdGFibGUiOwoKLyoqCiAqIFR1cm4gYSBzcG9rZW4gdHV0b3IgcmVwbHkgKG9uZSBsb25nIHJ1bi1vbiBwYXJhZ3JhcGgpIGludG8gc3RydWN0dXJlZCBzdHVkeSBub3RlczoKICogcmVzdWx0IGhlYWRpbmcsIGhpZ2hsaWdodGVkIGNvcnJlY3QgYW5zd2VyLCBleHBsYW5hdGlvbiBidWxsZXRzLCBOQ0VSVCBhbmQgbWVtb3J5LXRpcAogKiBjYWxsb3V0cywgTWF0Y2ggdGFibGVzLCBBc3NlcnRpb27igJNSZWFzb24gYm94ZXMgYW5kIHRoZSBuZXh0IHF1ZXN0aW9uIGFzIGl0cyBvd24gY2FyZAogKiB3aXRoIG9wdGlvbnMgbGlzdGVkIEHigJNELiBEaXNwbGF5IG9ubHkg4oCUIHRoZSBzcG9rZW4gYXVkaW8gaXMgdW5jaGFuZ2VkLgogKi8KZXhwb3J0IGZ1bmN0aW9uIGZvcm1hdFZvaWNlUmVwbHkocmF3OiBzdHJpbmcsIG9wdHM6IHsgb3B0aW9ucz86IGJvb2xlYW47IGZlZWRiYWNrVG9nZ2xlPzogYm9vbGVhbiB9ID0ge30pOiBzdHJpbmcgewogIHNob3dPcHRpb25zID0gb3B0cy5vcHRpb25zICE9PSBmYWxzZTsKICB0b2dnbGVGZWVkYmFjayA9IG9wdHMuZmVlZGJhY2tUb2dnbGUgPT09IHRydWU7CiAgdHJ5IHsgcmV0dXJuIGZvcm1hdChyYXcpOyB9IGZpbmFsbHkgeyBzaG93T3B0aW9ucyA9IHRydWU7IHRvZ2dsZUZlZWRiYWNrID0gZmFsc2U7IH0KfQoKLyoqIFRoZSBxdWl6IGNhcmQgcmVuZGVycyBB4oCTRCBhcyBhbnN3ZXIgYnV0dG9ucywgc28gaXQgaGlkZXMgdGhlIHNwb2tlbiBvcHRpb24gbGlzdC4gKi8KbGV0IHNob3dPcHRpb25zID0gdHJ1ZTsKLyoqIFRoZSBxdWl6IGNhcmQgZm9sZHMgdGhlIHByZXZpb3VzIGFuc3dlcidzIGdyYWRpbmcgaW50byBhIHRvZ2dsZSBzbyB0aGUgbmV3IHF1ZXN0aW9uIGxlYWRzLiAqLwpsZXQgdG9nZ2xlRmVlZGJhY2sgPSBmYWxzZTsKCmNvbnN0IGVzY2FwZVN1bW1hcnkgPSAoczogc3RyaW5nKSA9PiBzLnJlcGxhY2UoL1wqXCp8XCovZywgIiIpLnJlcGxhY2UoLyYvZywgIiZhbXA7IikucmVwbGFjZSgvPC9nLCAiJmx0OyIpLnJlcGxhY2UoLz4vZywgIiZndDsiKS50cmltKCk7CgovKiogVmVyZGljdCBoZWFkaW5nICsgY29ycmVjdC1hbnN3ZXIgbGluZSBiZWNvbWUgdGhlIHRvZ2dsZSBzdW1tYXJ5OyB0aGUgZXhwbGFuYXRpb24gZ29lcyBpbnNpZGUuICovCmZ1bmN0aW9uIGZlZWRiYWNrVG9nZ2xlQmxvY2sobWQ6IHN0cmluZyk6IHN0cmluZyB7CiAgY29uc3Qgc3VtbWFyeTogc3RyaW5nW10gPSBbXTsKICBjb25zdCBib2R5OiBzdHJpbmdbXSA9IFtdOwogIGZvciAoY29uc3QgYmxvY2sgb2YgbWQuc3BsaXQoL1xuezIsfS8pKSB7CiAgICBjb25zdCBoZWFkaW5nID0gYmxvY2subWF0Y2goL14jIyMjIChb8J+OieKdjPCfk51dLiopJC91KTsKICAgIGlmIChoZWFkaW5nICYmIHN1bW1hcnkubGVuZ3RoID09PSAwKSB7IHN1bW1hcnkucHVzaChoZWFkaW5nWzFdID8/ICIiKTsgY29udGludWU7IH0KICAgIGNvbnN0IHZlcmRpY3QgPSBibG9jay5tYXRjaCgvXj4gXCpcKijinIVbXlxuXSopXCpcKiQvdSk7CiAgICBpZiAodmVyZGljdCAmJiBzdW1tYXJ5Lmxlbmd0aCA8PSAxICYmIGJvZHkubGVuZ3RoID09PSAwKSB7IHN1bW1hcnkucHVzaCh2ZXJkaWN0WzFdID8/ICIiKTsgY29udGludWU7IH0KICAgIGJvZHkucHVzaChibG9jayk7CiAgfQogIGNvbnN0IHRpdGxlID0gZXNjYXBlU3VtbWFyeShzdW1tYXJ5LmpvaW4oIiDCtyAiKSkgfHwgIvCfk5ggUGljaGhsZSBzYXdhbCBrYSBqYXdhYiI7CiAgLy8gT25lIHRhcCBvcGVucyB0aGUgd2hvbGUgZXhwbGFuYXRpb246IG5vIGhlYWRpbmcgb3Igc2Vjb25kIHRvZ2dsZSBpbnNpZGUgdGhlIGZvbGQuCiAgY29uc3QgaW5uZXIgPSBib2R5CiAgICAuZmlsdGVyKChiKSA9PiBiICE9PSAiIyMjIyDwn5OYIEV4cGxhbmF0aW9uIikKICAgIC5qb2luKCJcblxuIikKICAgIC5yZXBsYWNlKC88ZGV0YWlscz5cbjxzdW1tYXJ5PlteXG5dKjxcL3N1bW1hcnk+XG5cbihbXHNcU10qPylcbjxcL2RldGFpbHM+L2csICIkMSIpCiAgICAudHJpbSgpOwogIGlmICghaW5uZXIpIHJldHVybiBgPiAqKiR7dGl0bGV9KipgOwogIHJldHVybiBgPGRldGFpbHM+XG48c3VtbWFyeT4ke3RpdGxlfTwvc3VtbWFyeT5cblxuJHtpbm5lcn1cblxuPC9kZXRhaWxzPmA7Cn0KCmZ1bmN0aW9uIGZvcm1hdChyYXc6IHN0cmluZyk6IHN0cmluZyB7CiAgLy8gU3RydWN0dXJlZCBxdWl6IHBheWxvYWRzIGFscmVhZHkgaGF2ZSBtZWFuaW5nZnVsIHRhYmxlIHJvd3M7IGRvIG5vdCBmbGF0dGVuIHRoZW0uCiAgaWYgKC9eXHMqXHwuK1x8XHMqJC9tLnRlc3QocmF3KSAmJiAvXlxzKlx8XHMqOj8tezMsfS9tLnRlc3QocmF3KSkgewogICAgcmV0dXJuIHNob3dPcHRpb25zID8gcmF3LnRyaW0oKSA6IHJhdy5zcGxpdCgvXlxzKig/Ok9wdGlvbnM/XHMqOnwoPzpbLSpdXHMqKT8oPzpcKlwqKT9cKD9BWykuOl1ccykvbWkpWzBdPy50cmltKCkgPz8gcmF3LnRyaW0oKTsKICB9CiAgbGV0IHQgPSByYXcucmVwbGFjZSgvXHMrL2csICIgIikudHJpbSgpOwogIGlmICghdCkgcmV0dXJuIHQ7CiAgY29uc3QgY21wID0gY29tcGFyaXNvblRhYmxlKHQpOwogIGlmIChjbXApIHJldHVybiBbY21wLmJlZm9yZSAmJiBmb3JtYXQoY21wLmJlZm9yZSksIGNtcC50YWJsZSwgY21wLmFmdGVyICYmIGZvcm1hdChjbXAuYWZ0ZXIpXS5maWx0ZXIoQm9vbGVhbikuam9pbigiXG5cbiIpOwogIHQgPSBzdHJpcEZpbGxlcnModCk7CiAgdCA9IHNwb2tlbk9wdGlvbnModCk7CgogIGNvbnN0IG1hcmtlciA9IHQubWF0Y2goLygoPzpDaGFsbyw/XHMqKT8oPzooPzphZ2xhfG5leHQpXHMrKD86cHJhc2hufHByYXNobmF8cXVlc3Rpb258c2F3YWx8c2F3YWFsKSg/Oiw/XHMqKD86bnVtYmVyfG5vXC4/KVxzKlx3Kyk/fCg/OnF1ZXN0aW9ufHByYXNobnxzYXdhbHxzYXdhYWwpXHMrKD86bnVtYmVyfG5vXC4/KVxzKlx3KylbLiw6IV0/KS9pKTsKICBjb25zdCBoYXNPcHRpb25zID0gT1BUSU9OX1NUQVJULnRlc3QodCkgfHwgTUFUQ0hfQ09MVU1OUy50ZXN0KHQpIHx8IC9cYkFzc2VydGlvblxzKig/OlwoQVwpKT9ccyo6XHMqLitcYlJlYXNvblxzKig/OlwoUlwpKT9ccyo6L2kudGVzdCh0KTsKICBsZXQgZmVlZGJhY2sgPSB0OwogIGxldCBuZXh0ID0gIiI7CiAgbGV0IGxhYmVsID0gIiI7CiAgLy8gT25seSBzcGxpdCBvZmYgYSBxdWVzdGlvbiBjYXJkIHdoZW4gb3B0aW9ucyBhY3R1YWxseSBmb2xsb3c7ICJza2lwIGthcmtlIGFnbGEgc2F3YWwiIGFsb25lIGlzIHBsYWluIHRleHQuCiAgY29uc3QgYWZ0ZXIgPSBtYXJrZXI/LmluZGV4ICE9PSB1bmRlZmluZWQgPyB0LnNsaWNlKG1hcmtlci5pbmRleCArIG1hcmtlclswXS5sZW5ndGgpLnRyaW0oKSA6ICIiOwogIGlmIChtYXJrZXIgJiYgbWFya2VyLmluZGV4ICE9PSB1bmRlZmluZWQgJiYgKE9QVElPTl9TVEFSVC50ZXN0KGFmdGVyKSB8fCBNQVRDSF9DT0xVTU5TLnRlc3QoYWZ0ZXIpKSkgewogICAgZmVlZGJhY2sgPSB0LnNsaWNlKDAsIG1hcmtlci5pbmRleCkudHJpbSgpOwogICAgbmV4dCA9IHQuc2xpY2UobWFya2VyLmluZGV4ICsgbWFya2VyWzBdLmxlbmd0aCkudHJpbSgpOwogICAgbGFiZWwgPSBtYXJrZXJbMF07CiAgfSBlbHNlIGlmIChoYXNPcHRpb25zKSB7CiAgICBmZWVkYmFjayA9ICIiOwogICAgbmV4dCA9IHQ7CiAgfQoKICBjb25zdCBwYXJ0czogc3RyaW5nW10gPSBbXTsKICBjb25zdCBxdWVzdGlvbiA9ICEhKG5leHQgfHwgbGFiZWwpOwogIGNvbnN0IGZvbGRlZCA9IHRvZ2dsZUZlZWRiYWNrICYmIHF1ZXN0aW9uOwogIGlmIChmZWVkYmFjaykgcGFydHMucHVzaChmb2xkZWQgPyBmZWVkYmFja1RvZ2dsZUJsb2NrKGZvcm1hdEZlZWRiYWNrKGZlZWRiYWNrKSkgOiBmb3JtYXRGZWVkYmFjayhmZWVkYmFjaykpOwogIGlmIChxdWVzdGlvbikgcGFydHMucHVzaChmb3JtYXRRdWVzdGlvbihuZXh0LCBsYWJlbCwgISFmZWVkYmFjayAmJiAhZm9sZGVkKSk7CiAgcmV0dXJuIHBhcnRzLmpvaW4oIlxuXG4iKS5yZXBsYWNlKC9cbnszLH0vZywgIlxuXG4iKS50cmltKCk7Cn0KCi8qKiAiT3B0aW9uIEEsIFguIE9wdGlvbiBCLCBZ4oCmIiBvciAiQSwgWCwgQiwgWSwgQywgWiwgRCwgVy4iIOKGkiAiT3B0aW9uIEE6IFguIEI6IFkuIEM6IFouIEQ6IFcuIiAqLwpmdW5jdGlvbiBzcG9rZW5PcHRpb25zKHQ6IHN0cmluZyk6IHN0cmluZyB7CiAgY29uc3QgbyA9IFN0cmluZy5yYXdgKD86T3B0aW9uXHMrKT9gOwogIGNvbnN0IHJlID0gbmV3IFJlZ0V4cChTdHJpbmcucmF3YChefFsuPyE6XVxzKykke299QVxzKixccysoLis/KVsuLF0/XHMrJHtvfUJccyosXHMrKC4rPylbLixdP1xzKyR7b31DXHMqLFxzKyguKz8pWy4sXT9ccyske299RFxzKixccysoLis/KSg/PVsuPyFdKD86XHN8JCl8JClgKTsKICByZXR1cm4gdC5yZXBsYWNlKHJlLCAoX20sIHByZTogc3RyaW5nLCBhOiBzdHJpbmcsIGI6IHN0cmluZywgYzogc3RyaW5nLCBkOiBzdHJpbmcpID0+IGAke3ByZX1PcHRpb24gQTogJHthfS4gQjogJHtifS4gQzogJHtjfS4gRDogJHtkfWApOwp9Cgpjb25zdCBPUFRJT05fU1RBUlQgPSAvKD86XnxbLj8hOjt8XVxzKnxcblxzKnwoPzwhQXNzZXJ0aW9uKVxzKD89XChBXClccykpKD86T3B0aW9ucz9ccyspPyg/OlwoQVwpXHMqWzouXT98QVxzKls6KV0pXHMqXFMvOwpjb25zdCBOVU1CRVJTOiBSZWNvcmQ8c3RyaW5nLCBzdHJpbmc+ID0geyBlazogIjEiLCBvbmU6ICIxIiwgZG86ICIyIiwgdHdvOiAiMiIsIHRlZW46ICIzIiwgdGhyZWU6ICIzIiwgY2hhcjogIjQiLCBjaGFhcjogIjQiLCBmb3VyOiAiNCIsIHBhYW5jaDogIjUiLCBwYW5jaDogIjUiLCBmaXZlOiAiNSIsIGNoaGU6ICI2IiwgY2hlOiAiNiIsIHNpeDogIjYiLCBzYWF0OiAiNyIsIHNldmVuOiAiNyIsIGFhdGg6ICI4IiwgZWlnaHQ6ICI4IiwgbmF1OiAiOSIsIG5pbmU6ICI5IiwgZGFzOiAiMTAiLCB0ZW46ICIxMCIgfTsKCmZ1bmN0aW9uIHN0cmlwRmlsbGVycyh0OiBzdHJpbmcpOiBzdHJpbmcgewogIGxldCBwcmV2ID0gIiI7CiAgd2hpbGUgKHByZXYgIT09IHQpIHsKICAgIHByZXYgPSB0OwogICAgdCA9IHQKICAgICAgLnJlcGxhY2UoL14oPzpIbW0rfFVtbSt8TW0rfFVoK3xBY2hoYXxBY2NoYXxPa2F5fE9rfEhhYW4pWywuIV0/XHMrL2ksICIiKQogICAgICAucmVwbGFjZSgvXkVrICg/OnNlY29uZHxtaW51dGV8c2VjKVssLiFdP1xzKig/Om1haW5ccyspPyg/OmNoZWNrfGRla2gpXHMqKD86a2FyKT8oPzp0aXx0YSlccytob29uWy4hXT9ccyovaSwgIiIpCiAgICAgIC5yZXBsYWNlKC9eRWsgKD86c2Vjb25kfG1pbnV0ZXxzZWMpWywuIV1ccyovaSwgIiIpOwogIH0KICByZXR1cm4gdC5jaGFyQXQoMCkudG9VcHBlckNhc2UoKSArIHQuc2xpY2UoMSk7Cn0KCmZ1bmN0aW9uIHNlbnRlbmNlcyh0OiBzdHJpbmcpOiBzdHJpbmdbXSB7CiAgLy8gTmV2ZXIgc3BsaXQgYWZ0ZXIgbGlzdCBsYWJlbHMgc3VjaCBhcyAiYS4iIG9yICJpaS4iIChNYXRjaCBjb2x1bW5zIHJlYWQgYWxvdWQpLgogIHJldHVybiB0LnNwbGl0KC8oPzw9KD88IVxiKD86W2EtZEEtRF18aXsxLDN9fGl2KSlbLj8hXVsi4oCdJ10/KVxzKyg/PVsi4oCcKF0/W0EtWjAtOV0pLykubWFwKChzKSA9PiBzLnRyaW0oKSkuZmlsdGVyKEJvb2xlYW4pOwp9Cgpjb25zdCBlbXBoYXNpemUgPSAoczogc3RyaW5nKSA9PiBzLnJlcGxhY2UoLyhbIuKAnF0pKFteIuKAnV17MSw0MH0pKFsi4oCdXSkvZywgIioqJDEkMiQzKioiKTsKCi8qKiAiWCBtZWluIHRlZW4gdHlwZSBob3RlIGhhaW46IGEsIGIsIGF1ciBjLiIg4oaSIGludHJvIGxpbmUgKyBuZXN0ZWQgbGlzdC4gKi8KZnVuY3Rpb24gZXhwYW5kTGlzdChzOiBzdHJpbmcsIGluZGVudDogc3RyaW5nKTogc3RyaW5nIHwgbnVsbCB7CiAgY29uc3QgbSA9IHMubWF0Y2goL14oLnszLDE0MH0/KTpccysoLis/KVsuXT8kLyk7CiAgaWYgKCFtKSByZXR1cm4gbnVsbDsKICBjb25zdCBpdGVtcyA9IChtWzJdID8/ICIiKS5zcGxpdCgvXHMqLFxzKig/OmF1cnxhbmR8eWF8b3IpP1xzKnxccysoPzphdXJ8YW5kKVxzKy9pKS5tYXAoKHgpID0+IHgudHJpbSgpKS5maWx0ZXIoQm9vbGVhbik7CiAgaWYgKGl0ZW1zLmxlbmd0aCA8IDMgfHwgaXRlbXMuc29tZSgoeCkgPT4geC5zcGxpdCgiICIpLmxlbmd0aCA+IDUpKSByZXR1cm4gbnVsbDsKICByZXR1cm4gYCR7bVsxXX06XG4ke2l0ZW1zLm1hcCgoeCkgPT4gYCR7aW5kZW50fS0gJHtlbXBoYXNpemUoeCl9YCkuam9pbigiXG4iKX1gOwp9CgpmdW5jdGlvbiBjYWxsb3V0KHM6IHN0cmluZyk6IHN0cmluZyB8IG51bGwgewogIGNvbnN0IGJveCA9ICh0aXRsZTogc3RyaW5nLCBib2R5OiBzdHJpbmcpID0+IGA+ICR7dGl0bGV9ICR7ZXhwYW5kTGlzdChib2R5LCAiPiAiKSA/PyBlbXBoYXNpemUoYm9keSl9YDsKICBpZiAoL15OQ0VSVFxifFxiTkNFUlQgKD86a2V8a2l8a2F8bWVpbnxtZXxhY2NvcmRpbmd8c2F5cylcYi9pLnRlc3QocykpIHJldHVybiBib3goIvCfk5ogKipOQ0VSVDoqKiIsIHMucmVwbGFjZSgvXk5DRVJUXHMrKD86a2V8a2kpXHMrKD86bXV0YWJpa3xoaXNhYWIgc2V8YW51c2FhciksP1xzKi9pLCAiIikpOwogIGlmICgvXGIoPzp5YWFkIHJha2hvfHlhYWQgcmFraG5hfHRyaWNrfHRpcHxkaHlhbiByYWtob3xyZW1lbWJlcnxtbmVtb25pYylcYi9pLnRlc3QocykpIHJldHVybiBib3goIvCfkqEgKipZYWFkIHJha2hvOioqIiwgcy5yZXBsYWNlKC9eKD86SXNrb1xzKyk/KD86cGVoY2hhbm5lIGthIHRhcmVla2FccyspPyg/OnlhYWQgcmFraG98eWFhZCByYWtobmF8cmVtZW1iZXIpXHMqWzosXT9ccyovaSwgIiIpKTsKICByZXR1cm4gbnVsbDsKfQoKZnVuY3Rpb24gZm9ybWF0RmVlZGJhY2socmF3OiBzdHJpbmcpOiBzdHJpbmcgewogIGNvbnN0IGNoID0gdGFrZUNoYXB0ZXIocmF3KTsKICBjb25zdCBvdXQgPSBmb3JtYXRGZWVkYmFja0JvZHkoY2gudGV4dCk7CiAgcmV0dXJuIGNoLmNoYXB0ZXIgPyBgJHtvdXR9XG5cbj4g8J+TliAqKk5DRVJUIGNoYXB0ZXI6KiogJHtjaGFwdGVyTGFiZWwoY2guY2hhcHRlcikucmVwbGFjZSgvXk5DRVJUIC8sICIiKX1gLnRyaW0oKSA6IG91dDsKfQoKLyoqIFNwb2tlbiBvcmRpbmFscyAoIlBlaGxhIOKApiwgZG9vc3JhIOKApiIpIGJlY29tZSBhIHJlYWwgbnVtYmVyZWQgbGlzdC4gKi8KY29uc3QgT1JESU5BTFM6IFJlY29yZDxzdHJpbmcsIG51bWJlcj4gPSB7IHBlaGxhOiAxLCBwYWhsYTogMSwgZmlyc3Q6IDEsIGRvb3NyYTogMiwgZHVzcmE6IDIsIHNlY29uZDogMiwgdGVlc3JhOiAzLCB0aXNyYTogMywgdGhpcmQ6IDMsIGNoYXV0aGE6IDQsIGNob3V0aGE6IDQsIGZvdXJ0aDogNCwgcGFhbmNodmFhbjogNSwgcGFhbmNod2FuOiA1LCBwYW5jaHZhYW46IDUsIGZpZnRoOiA1LCBjaGhhdGE6IDYsIHNpeHRoOiA2IH07CgpmdW5jdGlvbiBvcmRpbmFsUG9pbnQoczogc3RyaW5nKTogeyBuOiBudW1iZXI7IHJlc3Q6IHN0cmluZyB9IHwgbnVsbCB7CiAgLy8gQSBjb21tYS9jb2xvbi9kYXNoIG11c3QgZm9sbG93IHRoZSBvcmRpbmFsOyAiUGVobGEgc2F3YWFsIHBlbmRpbmcgaGFpIiBpcyBhbiBhZGplY3RpdmUsIG5vdCBhIGxpc3QuCiAgY29uc3QgbSA9IHMubWF0Y2goL14ocGVobGF8cGFobGF8Zmlyc3R8ZG9vc3JhfGR1c3JhfHNlY29uZHx0ZWVzcmF8dGlzcmF8dGhpcmR8Y2hhdXRoYXxjaG91dGhhfGZvdXJ0aHxwYWFuY2h2YWFufHBhYW5jaHdhbnxwYW5jaHZhYW58ZmlmdGh8Y2hoYXRhfHNpeHRoKSg/OlxzKyg/OnBvaW50fGNoZWV6fGJhYXR8c3RlcHxrYWFyYW58cmVhc29ufG51bWJlcikpP1xzKls6LDtcLeKAk+KAlF1ccysvaSk7CiAgaWYgKCFtKSByZXR1cm4gbnVsbDsKICBjb25zdCBuID0gT1JESU5BTFNbbVsxXT8udG9Mb3dlckNhc2UoKSA/PyAiIl07CiAgaWYgKCFuKSByZXR1cm4gbnVsbDsKICBjb25zdCByZXN0ID0gcy5zbGljZShtWzBdLmxlbmd0aCk7CiAgcmV0dXJuIHsgbiwgcmVzdDogcmVzdC5jaGFyQXQoMCkudG9VcHBlckNhc2UoKSArIHJlc3Quc2xpY2UoMSkgfTsKfQoKY29uc3QgaXNMaXN0SXRlbSA9IChiOiBzdHJpbmcpID0+IGIuc3RhcnRzV2l0aCgiLSAiKSB8fCAvXlxkK1wuIC8udGVzdChiKTsKCi8qKiBTcG9rZW4gIkRldGFpbCBtZWluOiDigKYiIGJlY29tZXMgYSBjb2xsYXBzaWJsZSB0b2dnbGUgc2VjdGlvbiBpbiB0aGUgdHJhbnNjcmlwdC4gKi8KY29uc3QgVE9HR0xFX1NUQVJUID0gL14oPzpkZXRhaWx8ZGV0YWlsc3x2aXN0YXJ8dmlzdGFhcnxleHBhbmQpKD86XHMrKD86bWVpbnxtZXxzZXxrYXJrZSkpP1xzKls6LF1ccyooLispJC9pOwoKZnVuY3Rpb24gdG9nZ2xlQmxvY2soczogc3RyaW5nKTogeyBzdW1tYXJ5OiBzdHJpbmc7IGJvZHk6IHN0cmluZyB9IHwgbnVsbCB7CiAgY29uc3QgbSA9IHMubWF0Y2goVE9HR0xFX1NUQVJUKTsKICBpZiAoIW0pIHJldHVybiBudWxsOwogIGNvbnN0IGJvZHkgPSAobVsxXSA/PyAiIikudHJpbSgpOwogIGlmIChib2R5Lmxlbmd0aCA8IDEyKSByZXR1cm4gbnVsbDsKICBjb25zdCBmaXJzdCA9IGJvZHkuc3BsaXQoL1suPyFdLylbMF0/LnRyaW0oKSA/PyAiIjsKICBjb25zdCBzdW1tYXJ5ID0gZmlyc3QubGVuZ3RoID4gNzAgPyBmaXJzdC5zbGljZSgwLCA2NykgKyAi4oCmIiA6IGZpcnN0IHx8ICJEZXRhaWwiOwogIHJldHVybiB7IHN1bW1hcnksIGJvZHkgfTsKfQoKZnVuY3Rpb24gZm9ybWF0RmVlZGJhY2tCb2R5KHQ6IHN0cmluZyk6IHN0cmluZyB7CiAgY29uc3Qgb3V0OiBzdHJpbmdbXSA9IFtdOwogIGNvbnN0IGxpc3QgPSBzZW50ZW5jZXModCk7CiAgY29uc3QgdklkeCA9IGxpc3QuZmluZEluZGV4KChzKSA9PiAvXGIoPzpTYWhpIGphd2FifENvcnJlY3QgYW5zd2VyfFJpZ2h0IGFuc3dlcnxTYWhpIGFuc3dlcilcYi9pLnRlc3QocykpOwogIGxldCByZXN0ID0gbGlzdDsKICBpZiAodklkeCA+PSAwKSB7CiAgICBjb25zdCByZWFjdGlvbiA9IGxpc3Quc2xpY2UoMCwgdklkeCkuam9pbigiICIpOwogICAgY29uc3QgdmVyZGljdCA9IGxpc3RbdklkeF0gPz8gIiI7CiAgICBjb25zdCB3cm9uZyA9IC9jaG9va3xnYWxhdHx3cm9uZ3xpbmNvcnJlY3R8bmFoaSw/IHNhaGl8bm90IGNvcnJlY3R8Y2xvc2UgdGhhL2kudGVzdChyZWFjdGlvbiArICIgIiArIHZlcmRpY3QpOwogICAgY29uc3QgcmlnaHQgPSAhd3JvbmcgJiYgL3NoYWJhc2h8Ymlsa3VsfHNhaGkgKD86amF3YWIgKT9kaXlhfGNvcnJlY3R8Z3JlYXR8d2VsbCBkb25lfGV4Y2VsbGVudHxwZXJmZWN0fHphYmFyZGFzdHxiYWRoaXlhL2kudGVzdChyZWFjdGlvbik7CiAgICAvLyBBIGxvbmcgbGVhZC1pbiAoZS5nLiB0aGUgZW5kIG9mIHRoZSBxdWVzdGlvbiByZWFkIGFsb3VkKSBzdGF5cyBhcyB0ZXh0IGFib3ZlIGEgc2hvcnQgaGVhZGluZy4KICAgIGNvbnN0IHNob3J0UmVhY3Rpb24gPSByZWFjdGlvbi5sZW5ndGggPD0gODAgPyByZWFjdGlvbiA6ICIiOwogICAgaWYgKHJlYWN0aW9uICYmICFzaG9ydFJlYWN0aW9uKSBvdXQucHVzaChlbXBoYXNpemUocmVhY3Rpb24pKTsKICAgIGNvbnN0IGhlYWRpbmcgPSBzaG9ydFJlYWN0aW9uIHx8ICh3cm9uZyA/ICJHYWxhdCBqYXdhYiIgOiByaWdodCA/ICJTYWhpIGphd2FiISIgOiAiUmVzdWx0Iik7CiAgICBvdXQucHVzaChgIyMjIyAke3dyb25nID8gIuKdjCIgOiByaWdodCA/ICLwn46JIiA6ICLwn5OdIn0gJHtoZWFkaW5nLnJlcGxhY2UoL1suIV0rJC8sICIiKX1gKTsKICAgIGNvbnN0IHZtID0gdmVyZGljdC5tYXRjaCgvKFNhaGkgamF3YWJ8Q29ycmVjdCBhbnN3ZXJ8UmlnaHQgYW5zd2VyfFNhaGkgYW5zd2VyKVxzKyg/Om9wdGlvblxzKyk/XCg/KFtBLURdKVwpP1xzKig/OmhhaXxpcyk/XHMqW+KAlOKAkzotXT9ccyooW14uXSopXC4/XHMqKC4qKSQvaSk7CiAgICBpZiAodm0pIHsKICAgICAgY29uc3Qgd2hhdCA9ICh2bVszXSA/PyAiIikucmVwbGFjZSgvXltccyw7OuKAlOKAky1dKy8sICIiKS50cmltKCk7CiAgICAgIG91dC5wdXNoKGA+ICoq4pyFICR7dm1bMV19OiAoJHt2bVsyXX0pJHt3aGF0ID8gYCDigJQgJHt3aGF0fWAgOiAiIn0qKmApOwogICAgICByZXN0ID0gWy4uLih2bVs0XT8udHJpbSgpID8gW3ZtWzRdLnRyaW0oKV0gOiBbXSksIC4uLmxpc3Quc2xpY2UodklkeCArIDEpXTsKICAgIH0gZWxzZSB7CiAgICAgIG91dC5wdXNoKGA+ICoq4pyFICR7dmVyZGljdH0qKmApOwogICAgICByZXN0ID0gbGlzdC5zbGljZSh2SWR4ICsgMSk7CiAgICB9CiAgfQoKICBjb25zdCBidWxsZXRzID0gdklkeCA+PSAwIHx8IChyZXN0Lmxlbmd0aCA+PSA0ICYmIHJlc3Quam9pbigiICIpLmxlbmd0aCAvIHJlc3QubGVuZ3RoID4gNDUpOwogIGNvbnN0IGJvZHk6IHN0cmluZ1tdID0gW107CiAgbGV0IHBhcmE6IHN0cmluZ1tdID0gW107CiAgY29uc3QgZmx1c2ggPSAoKSA9PiB7IGlmIChwYXJhLmxlbmd0aCkgeyBib2R5LnB1c2gocGFyYS5qb2luKCIgIikpOyBwYXJhID0gW107IH0gfTsKICBmb3IgKGNvbnN0IHMgb2YgcmVzdCkgewogICAgY29uc3QgYyA9IGNhbGxvdXQocyk7CiAgICBpZiAoYykgeyBmbHVzaCgpOyBib2R5LnB1c2goYyk7IGNvbnRpbnVlOyB9CiAgICBjb25zdCB0ZyA9IHRvZ2dsZUJsb2NrKHMpOwogICAgaWYgKHRnKSB7IGZsdXNoKCk7IGJvZHkucHVzaChgPGRldGFpbHM+XG48c3VtbWFyeT7wn5OCICR7ZW1waGFzaXplKHRnLnN1bW1hcnkpfTwvc3VtbWFyeT5cblxuJHtlbXBoYXNpemUodGcuYm9keSl9XG48L2RldGFpbHM+YCk7IGNvbnRpbnVlOyB9CiAgICBjb25zdCBvID0gb3JkaW5hbFBvaW50KHMpOwogICAgaWYgKG8pIHsgZmx1c2goKTsgYm9keS5wdXNoKGAke28ubn0uICR7ZW1waGFzaXplKG8ucmVzdCl9YCk7IGNvbnRpbnVlOyB9CiAgICBjb25zdCBsID0gZXhwYW5kTGlzdChzLCBidWxsZXRzID8gIiAgIiA6ICIiKTsKICAgIGlmIChidWxsZXRzKSBib2R5LnB1c2goYC0gJHtsID8/IGVtcGhhc2l6ZShzKX1gKTsKICAgIGVsc2UgaWYgKGwpIHsgZmx1c2goKTsgYm9keS5wdXNoKGwpOyB9CiAgICBlbHNlIHsgcGFyYS5wdXNoKGVtcGhhc2l6ZShzKSk7IGlmIChwYXJhLmxlbmd0aCA9PT0gMikgZmx1c2goKTsgfQogIH0KICBmbHVzaCgpOwogIGlmIChib2R5Lmxlbmd0aCkgewogICAgaWYgKHZJZHggPj0gMCkgb3V0LnB1c2goIiMjIyMg8J+TmCBFeHBsYW5hdGlvbiIpOwogICAgLy8gS2VlcCBjb25zZWN1dGl2ZSBidWxsZXRzIGFzIG9uZSBsaXN0OyBvdGhlciBibG9ja3MgZ2V0IGJsYW5rIGxpbmVzIGFyb3VuZCB0aGVtLgogICAgb3V0LnB1c2goYm9keS5yZWR1Y2UoKGFjYywgYiwgaSkgPT4gYWNjICsgKGkgPT09IDAgPyAiIiA6IGlzTGlzdEl0ZW0oYikgJiYgaXNMaXN0SXRlbShib2R5W2kgLSAxXSA/PyAiIikgPyAiXG4iIDogIlxuXG4iKSArIGIsICIiKSk7CiAgfQogIHJldHVybiBvdXQuam9pbigiXG5cbiIpOwp9CgpmdW5jdGlvbiBmb3JtYXRRdWVzdGlvbih0OiBzdHJpbmcsIGxhYmVsOiBzdHJpbmcsIHNlcGFyYXRlOiBib29sZWFuKTogc3RyaW5nIHsKICBjb25zdCBvdXQ6IHN0cmluZ1tdID0gW107CiAgaWYgKHNlcGFyYXRlKSBvdXQucHVzaCgiLS0tIik7CiAgY29uc3QgbnVtID0gbGFiZWwubWF0Y2goLyg/Om51bWJlcnxub1wuP3xxdWVzdGlvbnxwcmFzaG58c2F3YWwpXHMqKFxkK3xbYS16XSspXHMqWy4/IV0/JC9pKT8uWzFdPy50b0xvd2VyQ2FzZSgpOwogIGNvbnN0IG4gPSBudW0gJiYgKC9eXGQrJC8udGVzdChudW0pID8gbnVtIDogTlVNQkVSU1tudW1dKTsKICBvdXQucHVzaChgIyMjIyDinZMgJHtuID8gYFF1ZXN0aW9uICR7bn1gIDogbGFiZWwgPyAiQWdsYSBzYXdhbCIgOiAiUXVlc3Rpb24ifWApOwogIGNvbnN0IGNoID0gdGFrZUNoYXB0ZXIodCk7CiAgdCA9IGNoLnRleHQ7CiAgaWYgKGNoLmNoYXB0ZXIpIG91dC5wdXNoKGA+IPCfk5YgKioke2NoYXB0ZXJMYWJlbChjaC5jaGFwdGVyKX0qKmApOwogIGlmICghdCkgcmV0dXJuIG91dC5qb2luKCJcblxuIik7CgogIHQgPSBtYXRjaFRhYmxlKHQpOwogIGNvbnN0IG9wdCA9IHQuc2VhcmNoKE9QVElPTl9TVEFSVCk7CiAgbGV0IHN0ZW0gPSBvcHQgPj0gMCA/IHQuc2xpY2UoMCwgb3B0ICsgKC9eWy4/ITp8XS8udGVzdCh0LnNsaWNlKG9wdCkpID8gMSA6IDApKS50cmltKCkgOiB0OwogIGNvbnN0IG9wdFRleHQgPSBvcHQgPj0gMCA/IHQuc2xpY2Uob3B0KS5yZXBsYWNlKC9eWy4/ITp8XT9ccyovLCAiIikgOiAiIjsKCiAgc3RlbSA9IHN0ZW0uY2hhckF0KDApLnRvVXBwZXJDYXNlKCkgKyBzdGVtLnNsaWNlKDEpOwogIHN0ZW0gPSBzdGVtLnJlcGxhY2UoL15PcHRpb25zP1xzKls6XC1dP1xzKiQvaSwgIiIpLnJlcGxhY2UoL1xzKk9wdGlvbnM/XHMqWzpcLV0/XHMqJC9pLCAiIik7CiAgY29uc3QgYXIgPSBzdGVtLm1hdGNoKC9eKC4qPylcYkFzc2VydGlvblxzKig/OlwoQVwpKT9ccypbOixcLV1ccyooLis/KVxzKlxiUmVhc29uXHMqKD86XChSXCkpP1xzKls6LFwtXVxzKiguKykkL2kpOwogIGlmIChhcikgewogICAgaWYgKGFyWzFdPy50cmltKCkpIG91dC5wdXNoKGAqKiR7YXJbMV0udHJpbSgpfSoqYCk7CiAgICBvdXQucHVzaChgPiAqKkFzc2VydGlvbiAoQSk6KiogJHthclsyXT8udHJpbSgpfVxuPlxuPiAqKlJlYXNvbiAoUik6KiogJHthclszXT8udHJpbSgpfWApOwogIH0gZWxzZSBpZiAoc3RlbSkgewogICAgb3V0LnB1c2goc3RlbS5zcGxpdCgvXG57Mix9LykubWFwKChiKSA9PiBiLnRyaW0oKSkuZmlsdGVyKEJvb2xlYW4pLm1hcCgoYikgPT4gKGIuc3RhcnRzV2l0aCgifCIpID8gYiA6IGAqKiR7Yn0qKmApKS5qb2luKCJcblxuIikpOwogIH0KCiAgaWYgKG9wdFRleHQpIHsKICAgIGNvbnN0IHNlZ3MgPSBvcHRUZXh0LnNwbGl0KC8oPzpefCg/PD1bLj8hLDtdXHMqKXxccyspKD86T3B0aW9ucz9ccyspPyg/OlwoKFtBLURdKVwpXHMqWzouXT98KFtBLURdKVxzKls6KV0pXHMrLykuc2xpY2UoMSk7CiAgICAvLyBzcGxpdCgpIHlpZWxkcyBbbGV0dGVySW5QYXJlbnMsIGJhcmVMZXR0ZXIsIGJvZHksIC4uLl07IGZvbGQgdG8gW2xldHRlciwgYm9keSwgLi4uXS4KICAgIGNvbnN0IGZvbGRlZDogc3RyaW5nW10gPSBbXTsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgc2Vncy5sZW5ndGg7IGkgKz0gMykgZm9sZGVkLnB1c2goc2Vnc1tpXSA/PyBzZWdzW2kgKyAxXSA/PyAiIiwgc2Vnc1tpICsgMl0gPz8gIiIpOwogICAgc2Vncy5zcGxpY2UoMCwgc2Vncy5sZW5ndGgsIC4uLmZvbGRlZCk7CiAgICBjb25zdCBsaW5lczogc3RyaW5nW10gPSBbXTsKICAgIGxldCBwcm9tcHQgPSAiIjsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgc2Vncy5sZW5ndGg7IGkgKz0gMikgewogICAgICBsZXQgYm9keSA9IChzZWdzW2kgKyAxXSA/PyAiIikudHJpbSgpOwogICAgICBpZiAoaSArIDIgPj0gc2Vncy5sZW5ndGgpIHsKICAgICAgICBjb25zdCBjdXQgPSBib2R5Lm1hdGNoKC9eKC4rP1suPyFdKVxzKyguKykkLyk7CiAgICAgICAgaWYgKGN1dCAmJiAhL15bYS1kXS0vaS50ZXN0KGN1dFsyXSA/PyAiIikpIHsgYm9keSA9IGN1dFsxXSA/PyBib2R5OyBwcm9tcHQgPSBjdXRbMl0gPz8gIiI7IH0KICAgICAgfQogICAgICBsaW5lcy5wdXNoKGAtICoqKCR7c2Vnc1tpXX0pKiogJHtib2R5LnJlcGxhY2UoL1suOyxdJC8sICIiKX1gKTsKICAgIH0KICAgIGlmIChzaG93T3B0aW9ucykgb3V0LnB1c2gobGluZXMuam9pbigiXG4iKSk7CiAgICAvLyBBbnl0aGluZyBhZnRlciB0aGUgY2xvc2luZyBwcm9tcHQgKGUuZy4gdGhlIGdyYWRpbmcgb2YgYW4gYW5zd2VyKSBpcyBpdHMgb3duIHJlcGx5LgogICAgY29uc3QgW2FzaywgLi4uYWZ0ZXJdID0gc2VudGVuY2VzKHByb21wdCk7CiAgICBpZiAoYXNrICYmIHNob3dPcHRpb25zKSBvdXQucHVzaChgKvCfjqQgJHthc2t9KmApOwogICAgaWYgKGFmdGVyLmxlbmd0aCkgb3V0LnB1c2goZm9ybWF0KGFmdGVyLmpvaW4oIiAiKSkpOwogIH0KICByZXR1cm4gb3V0LmpvaW4oIlxuXG4iKTsKfQoKLyoqICJDb2x1bW4gSTogYS4gWCwgYi4gWSDigKYgQ29sdW1uIElJOiBpLiBQLCBpaS4gUSDigKYiIOKGkiBtYXJrZG93biB0YWJsZS4gKi8KZnVuY3Rpb24gbWF0Y2hUYWJsZSh0OiBzdHJpbmcpOiBzdHJpbmcgewogIGNvbnN0IG0gPSB0Lm1hdGNoKE1BVENIX0NPTFVNTlMpOwogIGlmICghbSkgcmV0dXJuIHQ7CiAgcmV0dXJuIGJ1aWxkVGFibGUodCwgbSk7Cn0KCi8vICJDb2x1bW4gSTogYS4g4oCmIENvbHVtbiBJSTogaS4g4oCmIiDigJQgdGhlIGxhYmVscyBtdXN0IGZvbGxvdywgc28gIkNvbHVtbiBJIGtvIENvbHVtbiBJSSBzZSBtYXRjaCBrYXJvIiBpcyBub3QgYSB0YWJsZS4KY29uc3QgTUFUQ0hfQ09MVU1OUyA9IC9Db2x1bW5ccyooPzpJfDF8b25lKVxzKls6XC1dP1xzKihcKD9hWy4pXVxzLis/KVxzKkNvbHVtblxzKig/OklJfDJ8dHdvKVxzKls6XC1dP1xzKihcKD9pWy4pXVxzLis/KSg/PSg/Ok9wdGlvbnM/XGJ8XChBXCl8XGJBXHMqWzopXSl8JCkvaTsKCmZ1bmN0aW9uIGJ1aWxkVGFibGUodDogc3RyaW5nLCBtOiBSZWdFeHBNYXRjaEFycmF5KTogc3RyaW5nIHsKICBpZiAoIW0pIHJldHVybiB0OwogIGNvbnN0IGl0ZW1zID0gKHM6IHN0cmluZywgcmU6IFJlZ0V4cCkgPT4gcy5zcGxpdChyZSkubWFwKCh4KSA9PiB4LnJlcGxhY2UoL15bXHMsLjs6XSt8W1xzLC47XSskL2csICIiKSkuZmlsdGVyKEJvb2xlYW4pOwogIGNvbnN0IGxlZnQgPSBpdGVtcyhtWzFdID8/ICIiLCAvXGJcKD9bYS1kXVwpP1suKV1ccysvaSk7CiAgY29uc3QgcmlnaHQgPSBpdGVtcyhtWzJdID8/ICIiLCAvXGJcKD8oPzppdnxpezEsM30pXCk/Wy4pXVxzKy9pKTsKICBpZiAobGVmdC5sZW5ndGggPCAyIHx8IGxlZnQubGVuZ3RoICE9PSByaWdodC5sZW5ndGgpIHJldHVybiB0OwogIGNvbnN0IHJvbWFuID0gWyJpIiwgImlpIiwgImlpaSIsICJpdiJdOwogIGNvbnN0IHJvd3MgPSBsZWZ0Lm1hcCgobCwgaykgPT4gYHwgJHsiYWJjZCJba119LiAke2x9IHwgJHtyb21hbltrXX0uICR7cmlnaHRba119IHxgKS5qb2luKCJcbiIpOwogIHJldHVybiB0LnJlcGxhY2UobVswXSwgYFxuXG58IENvbHVtbiBJIHwgQ29sdW1uIElJIHxcbnwtLS18LS0tfFxuJHtyb3dzfVxuXG5gKTsKfQoKLyoqCiAqIFNwb2tlbiBjb21wYXJpc29uIOKGkiBtYXJrZG93biB0YWJsZS4KICogIlR1bG5hOiBNaXRvc2lzIGF1ciBNZWlvc2lzLiBDZWxscyDigJQgTWl0b3NpczogMiwgTWVpb3NpczogNC4gRGl2aXNpb24g4oCUIE1pdG9zaXM6IGVrIGJhYXIsIE1laW9zaXM6IGRvIGJhYXIuIFR1bG5hIGtoYXRhbS4iCiAqIE5lZWRzIGF0IGxlYXN0IHR3byByb3dzIHdob3NlIGNlbGxzIG5hbWUgZXZlcnkgY29tcGFyZWQgaXRlbTsgb3RoZXJ3aXNlIHRoZSB0ZXh0IHN0YXlzIHByb3NlLgogKi8KZXhwb3J0IGZ1bmN0aW9uIGNvbXBhcmlzb25UYWJsZSh0OiBzdHJpbmcpOiB7IGJlZm9yZTogc3RyaW5nOyB0YWJsZTogc3RyaW5nOyBhZnRlcjogc3RyaW5nIH0gfCBudWxsIHsKICBjb25zdCBkeW5hbWljID0gZHluYW1pY1ZvaWNlVGFibGUodCk7CiAgaWYgKGR5bmFtaWMpIHJldHVybiBkeW5hbWljOwogIGNvbnN0IGhlYWQgPSB0Lm1hdGNoKC9cYig/OlR1bG5hfENvbXBhcmlzb258VGFibGUpXHMqOlxzKihbXi46XSs/KVxzKlwuL2kpOwogIGlmICghaGVhZCB8fCBoZWFkLmluZGV4ID09PSB1bmRlZmluZWQpIHJldHVybiBudWxsOwogIGNvbnN0IGNvbHMgPSBzcG9rZW5UYWJsZUNvbHVtbnMoaGVhZFsxXSA/PyAiIik7CiAgaWYgKGNvbHMubGVuZ3RoIDwgMikgcmV0dXJuIG51bGw7CiAgY29uc3QgcmVzdCA9IHQuc2xpY2UoaGVhZC5pbmRleCArIGhlYWRbMF0ubGVuZ3RoKTsKICBjb25zdCBlbmRNID0gcmVzdC5tYXRjaCgvXGIoPzpUdWxuYXxDb21wYXJpc29ufFRhYmxlKVxzKyg/OmtoYXRhbXxlbmR8b3ZlcilcYlsuIV0/L2kpOwogIGNvbnN0IGJvZHkgPSBlbmRNPy5pbmRleCAhPT0gdW5kZWZpbmVkID8gcmVzdC5zbGljZSgwLCBlbmRNLmluZGV4KSA6IHJlc3Q7CiAgY29uc3QgYWZ0ZXIgPSBlbmRNPy5pbmRleCAhPT0gdW5kZWZpbmVkID8gcmVzdC5zbGljZShlbmRNLmluZGV4ICsgZW5kTVswXS5sZW5ndGgpLnRyaW0oKSA6ICIiOwogIGNvbnN0IGVzYyA9IChzOiBzdHJpbmcpID0+IHMucmVwbGFjZSgvXHwvZywgIi8iKS50cmltKCk7CiAgY29uc3Qgcm93czogc3RyaW5nW11bXSA9IFtdOwogIGxldCB0YWlsID0gIiI7CiAgbGV0IHBsYWluOiBib29sZWFuIHwgbnVsbCA9IG51bGw7IC8vIHBsYWluIHJvd3M6ICJTa3VsbCDigJQgMjIgYm9uZXMuIiBmaWxsIHRoZSBuYW1lZCBjb2x1bW5zIGRpcmVjdGx5CiAgY29uc3QgcSA9ICh4OiBzdHJpbmcpID0+IHgucmVwbGFjZSgvWy4qKz9eJHt9KCl8W1xdXFxdL2csICJcXCQmIik7CiAgZm9yIChjb25zdCBzZW50ZW5jZSBvZiBib2R5LnNwbGl0KC8oPzw9Wy47XSlccysvKSkgewogICAgY29uc3QgcyA9IHNlbnRlbmNlLnRyaW0oKS5yZXBsYWNlKC9bLjtdXHMqJC8sICIiKTsKICAgIGNvbnN0IG0gPSBzLm1hdGNoKC9eKFte4oCU4oCTOl0rPylccytb4oCU4oCTLV1ccysoLispJC8pOwogICAgbGV0IHJvdzogc3RyaW5nW10gfCBudWxsID0gbnVsbDsKICAgIGlmIChtICYmIHBsYWluICE9PSB0cnVlKSB7CiAgICAgIGNvbnN0IGNlbGxzID0gY29scy5tYXAoKGMpID0+IG1bMl0/Lm1hdGNoKG5ldyBSZWdFeHAoYCR7cShjKX1cXHMqOlxccyooLis/KSg/PSxcXHMqKD86JHtjb2xzLm1hcChxKS5qb2luKCJ8Iil9KVxccyo6fCQpYCwgImkiKSk/LlsxXT8ucmVwbGFjZSgvWyw7XVxzKiQvLCAiIikgPz8gbnVsbCk7CiAgICAgIGlmIChjZWxscy5ldmVyeSgoYykgPT4gYykpIHsgcm93ID0gW21bMV0gPz8gIiIsIC4uLihjZWxscyBhcyBzdHJpbmdbXSldOyBwbGFpbiA9IGZhbHNlOyB9CiAgICB9CiAgICBpZiAoIXJvdyAmJiBwbGFpbiAhPT0gZmFsc2UpIHsKICAgICAgLy8gU3Bva2VuIHRyYW5zY3JpcHRzIG1heSBqb2luIHJvd3Mgd2l0aCBjb21tYXMgb3IgdXNlICJTa3VsbDogMjIiIGluc3RlYWQgb2YgYSBkYXNoLgogICAgICBjb25zdCBzZXAgPSBjb2xzLmxlbmd0aCA9PT0gMiA/IC9ccytb4oCU4oCTLV1ccyt8XHMqOlxzKy8gOiAvXHMrW+KAlOKAky1dXHMrLzsKICAgICAgY29uc3QgY3V0ID0gKHg6IHN0cmluZykgPT4geC5zcGxpdChzZXApLm1hcCgoeSkgPT4geS50cmltKCkpOwogICAgICBjb25zdCB3aG9sZSA9IGN1dChzKTsKICAgICAgY29uc3Qgc3VicyA9IHMuc3BsaXQoLyxccysoPz1bXixdKz8oPzpccytb4oCU4oCTLV1ccyt8OlxzKSkvKS5tYXAoY3V0KTsKICAgICAgY29uc3Qgb2sgPSAocjogc3RyaW5nW10pID0+IHIubGVuZ3RoID09PSBjb2xzLmxlbmd0aCAmJiByLmV2ZXJ5KEJvb2xlYW4pOwogICAgICBpZiAob2sod2hvbGUpKSB7IHJvdyA9IHdob2xlOyBwbGFpbiA9IHRydWU7IH0KICAgICAgZWxzZSBpZiAoc3Vicy5sZW5ndGggPiAxICYmIHN1YnMuZXZlcnkob2spICYmICF0YWlsKSB7IHJvd3MucHVzaCguLi5zdWJzLm1hcCgocikgPT4gci5tYXAoZXNjKSkpOyBwbGFpbiA9IHRydWU7IGNvbnRpbnVlOyB9CiAgICB9CiAgICBpZiAocm93ICYmICF0YWlsKSByb3dzLnB1c2gocm93Lm1hcChlc2MpKTsKICAgIGVsc2UgaWYgKHMpIHRhaWwgKz0gKHRhaWwgPyAiICIgOiAiIikgKyBzZW50ZW5jZS50cmltKCk7CiAgfQogIGlmIChyb3dzLmxlbmd0aCA8IDIpIHJldHVybiBudWxsOwogIGNvbnN0IGhlYWRlciA9IHBsYWluID8gY29scyA6IFsiRmVhdHVyZSIsIC4uLmNvbHNdOwogIGNvbnN0IHRhYmxlID0gW2B8ICR7aGVhZGVyLm1hcChlc2MpLmpvaW4oIiB8ICIpfSB8YCwgYHwkeyItLS18Ii5yZXBlYXQoaGVhZGVyLmxlbmd0aCl9YCwgLi4ucm93cy5tYXAoKHIpID0+IGB8ICR7ci5qb2luKCIgfCAiKX0gfGApXS5qb2luKCJcbiIpOwogIHJldHVybiB7IGJlZm9yZTogdC5zbGljZSgwLCBoZWFkLmluZGV4KS50cmltKCksIHRhYmxlLCBhZnRlcjogW3RhaWwsIGFmdGVyXS5maWx0ZXIoQm9vbGVhbikuam9pbigiICIpLnRyaW0oKSB9Owp9Cg==
+import { chapterLabel, takeChapter } from "@/lib/ncert-biology";
+import { dynamicVoiceTable, spokenTableColumns } from "@/lib/voice-table";
+
+/**
+ * Turn a spoken tutor reply (one long run-on paragraph) into structured study notes:
+ * result heading, highlighted correct answer, explanation bullets, NCERT and memory-tip
+ * callouts, Match tables, Assertion–Reason boxes and the next question as its own card
+ * with options listed A–D. Display only — the spoken audio is unchanged.
+ */
+export function formatVoiceReply(raw: string, opts: { options?: boolean; feedbackToggle?: boolean } = {}): string {
+  showOptions = opts.options !== false;
+  toggleFeedback = opts.feedbackToggle === true;
+  try { return format(raw); } finally { showOptions = true; toggleFeedback = false; }
+}
+
+/** The quiz card renders A–D as answer buttons, so it hides the spoken option list. */
+let showOptions = true;
+/** The quiz card folds the previous answer's grading into a toggle so the new question leads. */
+let toggleFeedback = false;
+
+const escapeSummary = (s: string) => s.replace(/\*\*|\*/g, "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
+
+/** Verdict heading + correct-answer line become the toggle summary; the explanation goes inside. */
+function feedbackToggleBlock(md: string): string {
+  const summary: string[] = [];
+  const body: string[] = [];
+  for (const block of md.split(/\n{2,}/)) {
+    const heading = block.match(/^#### ([🎉❌📝].*)$/u);
+    if (heading && summary.length === 0) { summary.push(heading[1] ?? ""); continue; }
+    const verdict = block.match(/^> \*\*(✅[^\n]*)\*\*$/u);
+    if (verdict && summary.length <= 1 && body.length === 0) { summary.push(verdict[1] ?? ""); continue; }
+    body.push(block);
+  }
+  const title = escapeSummary(summary.join(" · ")) || "📘 Pichhle sawal ka jawab";
+  // One tap opens the whole explanation: no heading or second toggle inside the fold.
+  const inner = body
+    .filter((b) => b !== "#### 📘 Explanation")
+    .join("\n\n")
+    .replace(/<details>\n<summary>[^\n]*<\/summary>\n\n([\s\S]*?)\n<\/details>/g, "$1")
+    .trim();
+  if (!inner) return `> **${title}**`;
+  return `<details>\n<summary>${title}</summary>\n\n${inner}\n\n</details>`;
+}
+
+function format(raw: string): string {
+  // Structured quiz payloads already have meaningful table rows; do not flatten them.
+  if (/^\s*\|.+\|\s*$/m.test(raw) && /^\s*\|\s*:?-{3,}/m.test(raw)) {
+    return showOptions ? raw.trim() : raw.split(/^\s*(?:Options?\s*:|(?:[-*]\s*)?(?:\*\*)?\(?A[).:]\s)/mi)[0]?.trim() ?? raw.trim();
+  }
+  let t = raw.replace(/\s+/g, " ").trim();
+  if (!t) return t;
+  const cmp = comparisonTable(t);
+  if (cmp) return [cmp.before && format(cmp.before), cmp.table, cmp.after && format(cmp.after)].filter(Boolean).join("\n\n");
+  t = stripFillers(t);
+  t = spokenOptions(t);
+
+  const marker = t.match(/((?:Chalo,?\s*)?(?:(?:agla|next)\s+(?:prashn|prashna|question|sawal|sawaal)(?:,?\s*(?:number|no\.?)\s*\w+)?|(?:question|prashn|sawal|sawaal)\s+(?:number|no\.?)\s*\w+)[.,:!]?)/i);
+  const hasOptions = OPTION_START.test(t) || MATCH_COLUMNS.test(t) || /\bAssertion\s*(?:\(A\))?\s*:\s*.+\bReason\s*(?:\(R\))?\s*:/i.test(t);
+  let feedback = t;
+  let next = "";
+  let label = "";
+  // Only split off a question card when options actually follow; "skip karke agla sawal" alone is plain text.
+  const after = marker?.index !== undefined ? t.slice(marker.index + marker[0].length).trim() : "";
+  if (marker && marker.index !== undefined && (OPTION_START.test(after) || MATCH_COLUMNS.test(after))) {
+    feedback = t.slice(0, marker.index).trim();
+    next = t.slice(marker.index + marker[0].length).trim();
+    label = marker[0];
+  } else if (hasOptions) {
+    feedback = "";
+    next = t;
+  }
+
+  const parts: string[] = [];
+  const question = !!(next || label);
+  const folded = toggleFeedback && question;
+  if (feedback) parts.push(folded ? feedbackToggleBlock(formatFeedback(feedback)) : formatFeedback(feedback));
+  if (question) parts.push(formatQuestion(next, label, !!feedback && !folded));
+  return parts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+/** "Option A, X. Option B, Y…" or "A, X, B, Y, C, Z, D, W." → "Option A: X. B: Y. C: Z. D: W." */
+function spokenOptions(t: string): string {
+  const o = String.raw`(?:Option\s+)?`;
+  const re = new RegExp(String.raw`(^|[.?!:]\s+)${o}A\s*,\s+(.+?)[.,]?\s+${o}B\s*,\s+(.+?)[.,]?\s+${o}C\s*,\s+(.+?)[.,]?\s+${o}D\s*,\s+(.+?)(?=[.?!](?:\s|$)|$)`);
+  return t.replace(re, (_m, pre: string, a: string, b: string, c: string, d: string) => `${pre}Option A: ${a}. B: ${b}. C: ${c}. D: ${d}`);
+}
+
+const OPTION_START = /(?:^|[.?!:;|]\s*|\n\s*|(?<!Assertion)\s(?=\(A\)\s))(?:Options?\s+)?(?:\(A\)\s*[:.]?|A\s*[:)])\s*\S/;
+const NUMBERS: Record<string, string> = { ek: "1", one: "1", do: "2", two: "2", teen: "3", three: "3", char: "4", chaar: "4", four: "4", paanch: "5", panch: "5", five: "5", chhe: "6", che: "6", six: "6", saat: "7", seven: "7", aath: "8", eight: "8", nau: "9", nine: "9", das: "10", ten: "10" };
+
+function stripFillers(t: string): string {
+  let prev = "";
+  while (prev !== t) {
+    prev = t;
+    t = t
+      .replace(/^(?:Hmm+|Umm+|Mm+|Uh+|Achha|Accha|Okay|Ok|Haan)[,.!]?\s+/i, "")
+      .replace(/^Ek (?:second|minute|sec)[,.!]?\s*(?:main\s+)?(?:check|dekh)\s*(?:kar)?(?:ti|ta)\s+hoon[.!]?\s*/i, "")
+      .replace(/^Ek (?:second|minute|sec)[,.!]\s*/i, "");
+  }
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+function sentences(t: string): string[] {
+  // Never split after list labels such as "a." or "ii." (Match columns read aloud).
+  return t.split(/(?<=(?<!\b(?:[a-dA-D]|i{1,3}|iv))[.?!]["”']?)\s+(?=["“(]?[A-Z0-9])/).map((s) => s.trim()).filter(Boolean);
+}
+
+const emphasize = (s: string) => s.replace(/(["“])([^"”]{1,40})(["”])/g, "**$1$2$3**");
+
+/** "X mein teen type hote hain: a, b, aur c." → intro line + nested list. */
+function expandList(s: string, indent: string): string | null {
+  const m = s.match(/^(.{3,140}?):\s+(.+?)[.]?$/);
+  if (!m) return null;
+  const items = (m[2] ?? "").split(/\s*,\s*(?:aur|and|ya|or)?\s*|\s+(?:aur|and)\s+/i).map((x) => x.trim()).filter(Boolean);
+  if (items.length < 3 || items.some((x) => x.split(" ").length > 5)) return null;
+  return `${m[1]}:\n${items.map((x) => `${indent}- ${emphasize(x)}`).join("\n")}`;
+}
+
+function callout(s: string): string | null {
+  const box = (title: string, body: string) => `> ${title} ${expandList(body, "> ") ?? emphasize(body)}`;
+  if (/^NCERT\b|\bNCERT (?:ke|ki|ka|mein|me|according|says)\b/i.test(s)) return box("📚 **NCERT:**", s.replace(/^NCERT\s+(?:ke|ki)\s+(?:mutabik|hisaab se|anusaar),?\s*/i, ""));
+  if (/\b(?:yaad rakho|yaad rakhna|trick|tip|dhyan rakho|remember|mnemonic)\b/i.test(s)) return box("💡 **Yaad rakho:**", s.replace(/^(?:Isko\s+)?(?:pehchanne ka tareeka\s+)?(?:yaad rakho|yaad rakhna|remember)\s*[:,]?\s*/i, ""));
+  return null;
+}
+
+function formatFeedback(raw: string): string {
+  const ch = takeChapter(raw);
+  const out = formatFeedbackBody(ch.text);
+  return ch.chapter ? `${out}\n\n> 📖 **NCERT chapter:** ${chapterLabel(ch.chapter).replace(/^NCERT /, "")}`.trim() : out;
+}
+
+/** Spoken ordinals ("Pehla …, doosra …") become a real numbered list. */
+const ORDINALS: Record<string, number> = { pehla: 1, pahla: 1, first: 1, doosra: 2, dusra: 2, second: 2, teesra: 3, tisra: 3, third: 3, chautha: 4, choutha: 4, fourth: 4, paanchvaan: 5, paanchwan: 5, panchvaan: 5, fifth: 5, chhata: 6, sixth: 6 };
+
+function ordinalPoint(s: string): { n: number; rest: string } | null {
+  // A comma/colon/dash must follow the ordinal; "Pehla sawaal pending hai" is an adjective, not a list.
+  const m = s.match(/^(pehla|pahla|first|doosra|dusra|second|teesra|tisra|third|chautha|choutha|fourth|paanchvaan|paanchwan|panchvaan|fifth|chhata|sixth)(?:\s+(?:point|cheez|baat|step|kaaran|reason|number))?\s*[:,;\-–—]\s+/i);
+  if (!m) return null;
+  const n = ORDINALS[m[1]?.toLowerCase() ?? ""];
+  if (!n) return null;
+  const rest = s.slice(m[0].length);
+  return { n, rest: rest.charAt(0).toUpperCase() + rest.slice(1) };
+}
+
+const isListItem = (b: string) => b.startsWith("- ") || /^\d+\. /.test(b);
+
+/** Spoken "Detail mein: …" becomes a collapsible toggle section in the transcript. */
+const TOGGLE_START = /^(?:detail|details|vistar|vistaar|expand)(?:\s+(?:mein|me|se|karke))?\s*[:,]\s*(.+)$/i;
+
+function toggleBlock(s: string): { summary: string; body: string } | null {
+  const m = s.match(TOGGLE_START);
+  if (!m) return null;
+  const body = (m[1] ?? "").trim();
+  if (body.length < 12) return null;
+  const first = body.split(/[.?!]/)[0]?.trim() ?? "";
+  const summary = first.length > 70 ? first.slice(0, 67) + "…" : first || "Detail";
+  return { summary, body };
+}
+
+function formatFeedbackBody(t: string): string {
+  const out: string[] = [];
+  const list = sentences(t);
+  const vIdx = list.findIndex((s) => /\b(?:Sahi jawab|Correct answer|Right answer|Sahi answer)\b/i.test(s));
+  let rest = list;
+  if (vIdx >= 0) {
+    const reaction = list.slice(0, vIdx).join(" ");
+    const verdict = list[vIdx] ?? "";
+    const wrong = /chook|galat|wrong|incorrect|nahi,? sahi|not correct|close tha/i.test(reaction + " " + verdict);
+    const right = !wrong && /shabash|bilkul|sahi (?:jawab )?diya|correct|great|well done|excellent|perfect|zabardast|badhiya/i.test(reaction);
+    // A long lead-in (e.g. the end of the question read aloud) stays as text above a short heading.
+    const shortReaction = reaction.length <= 80 ? reaction : "";
+    if (reaction && !shortReaction) out.push(emphasize(reaction));
+    const heading = shortReaction || (wrong ? "Galat jawab" : right ? "Sahi jawab!" : "Result");
+    out.push(`#### ${wrong ? "❌" : right ? "🎉" : "📝"} ${heading.replace(/[.!]+$/, "")}`);
+    const vm = verdict.match(/(Sahi jawab|Correct answer|Right answer|Sahi answer)\s+(?:option\s+)?\(?([A-D])\)?\s*(?:hai|is)?\s*[—–:-]?\s*([^.]*)\.?\s*(.*)$/i);
+    if (vm) {
+      const what = (vm[3] ?? "").replace(/^[\s,;:—–-]+/, "").trim();
+      out.push(`> **✅ ${vm[1]}: (${vm[2]})${what ? ` — ${what}` : ""}**`);
+      rest = [...(vm[4]?.trim() ? [vm[4].trim()] : []), ...list.slice(vIdx + 1)];
+    } else {
+      out.push(`> **✅ ${verdict}**`);
+      rest = list.slice(vIdx + 1);
+    }
+  }
+
+  const bullets = vIdx >= 0 || (rest.length >= 4 && rest.join(" ").length / rest.length > 45);
+  const body: string[] = [];
+  let para: string[] = [];
+  const flush = () => { if (para.length) { body.push(para.join(" ")); para = []; } };
+  for (const s of rest) {
+    const c = callout(s);
+    if (c) { flush(); body.push(c); continue; }
+    const tg = toggleBlock(s);
+    if (tg) { flush(); body.push(`<details>\n<summary>📂 ${emphasize(tg.summary)}</summary>\n\n${emphasize(tg.body)}\n</details>`); continue; }
+    const o = ordinalPoint(s);
+    if (o) { flush(); body.push(`${o.n}. ${emphasize(o.rest)}`); continue; }
+    const l = expandList(s, bullets ? "  " : "");
+    if (bullets) body.push(`- ${l ?? emphasize(s)}`);
+    else if (l) { flush(); body.push(l); }
+    else { para.push(emphasize(s)); if (para.length === 2) flush(); }
+  }
+  flush();
+  if (body.length) {
+    if (vIdx >= 0) out.push("#### 📘 Explanation");
+    // Keep consecutive bullets as one list; other blocks get blank lines around them.
+    out.push(body.reduce((acc, b, i) => acc + (i === 0 ? "" : isListItem(b) && isListItem(body[i - 1] ?? "") ? "\n" : "\n\n") + b, ""));
+  }
+  return out.join("\n\n");
+}
+
+function formatQuestion(t: string, label: string, separate: boolean): string {
+  const out: string[] = [];
+  if (separate) out.push("---");
+  const num = label.match(/(?:number|no\.?|question|prashn|sawal)\s*(\d+|[a-z]+)\s*[.?!]?$/i)?.[1]?.toLowerCase();
+  const n = num && (/^\d+$/.test(num) ? num : NUMBERS[num]);
+  out.push(`#### ❓ ${n ? `Question ${n}` : label ? "Agla sawal" : "Question"}`);
+  const ch = takeChapter(t);
+  t = ch.text;
+  if (ch.chapter) out.push(`> 📖 **${chapterLabel(ch.chapter)}**`);
+  if (!t) return out.join("\n\n");
+
+  t = matchTable(t);
+  const opt = t.search(OPTION_START);
+  let stem = opt >= 0 ? t.slice(0, opt + (/^[.?!:|]/.test(t.slice(opt)) ? 1 : 0)).trim() : t;
+  const optText = opt >= 0 ? t.slice(opt).replace(/^[.?!:|]?\s*/, "") : "";
+
+  stem = stem.charAt(0).toUpperCase() + stem.slice(1);
+  stem = stem.replace(/^Options?\s*[:\-]?\s*$/i, "").replace(/\s*Options?\s*[:\-]?\s*$/i, "");
+  const ar = stem.match(/^(.*?)\bAssertion\s*(?:\(A\))?\s*[:,\-]\s*(.+?)\s*\bReason\s*(?:\(R\))?\s*[:,\-]\s*(.+)$/i);
+  if (ar) {
+    if (ar[1]?.trim()) out.push(`**${ar[1].trim()}**`);
+    out.push(`> **Assertion (A):** ${ar[2]?.trim()}\n>\n> **Reason (R):** ${ar[3]?.trim()}`);
+  } else if (stem) {
+    out.push(stem.split(/\n{2,}/).map((b) => b.trim()).filter(Boolean).map((b) => (b.startsWith("|") ? b : `**${b}**`)).join("\n\n"));
+  }
+
+  if (optText) {
+    const segs = optText.split(/(?:^|(?<=[.?!,;]\s*)|\s+)(?:Options?\s+)?(?:\(([A-D])\)\s*[:.]?|([A-D])\s*[:)])\s+/).slice(1);
+    // split() yields [letterInParens, bareLetter, body, ...]; fold to [letter, body, ...].
+    const folded: string[] = [];
+    for (let i = 0; i < segs.length; i += 3) folded.push(segs[i] ?? segs[i + 1] ?? "", segs[i + 2] ?? "");
+    segs.splice(0, segs.length, ...folded);
+    const lines: string[] = [];
+    let prompt = "";
+    for (let i = 0; i < segs.length; i += 2) {
+      let body = (segs[i + 1] ?? "").trim();
+      if (i + 2 >= segs.length) {
+        const cut = body.match(/^(.+?[.?!])\s+(.+)$/);
+        if (cut && !/^[a-d]-/i.test(cut[2] ?? "")) { body = cut[1] ?? body; prompt = cut[2] ?? ""; }
+      }
+      lines.push(`- **(${segs[i]})** ${body.replace(/[.;,]$/, "")}`);
+    }
+    if (showOptions) out.push(lines.join("\n"));
+    // Anything after the closing prompt (e.g. the grading of an answer) is its own reply.
+    const [ask, ...after] = sentences(prompt);
+    if (ask && showOptions) out.push(`*🎤 ${ask}*`);
+    if (after.length) out.push(format(after.join(" ")));
+  }
+  return out.join("\n\n");
+}
+
+/** "Column I: a. X, b. Y … Column II: i. P, ii. Q …" → markdown table. */
+function matchTable(t: string): string {
+  const m = t.match(MATCH_COLUMNS);
+  if (!m) return t;
+  return buildTable(t, m);
+}
+
+// "Column I: a. … Column II: i. …" — the labels must follow, so "Column I ko Column II se match karo" is not a table.
+const MATCH_COLUMNS = /Column\s*(?:I|1|one)\s*[:\-]?\s*(\(?a[.)]\s.+?)\s*Column\s*(?:II|2|two)\s*[:\-]?\s*(\(?i[.)]\s.+?)(?=(?:Options?\b|\(A\)|\bA\s*[:)])|$)/i;
+
+function buildTable(t: string, m: RegExpMatchArray): string {
+  if (!m) return t;
+  const items = (s: string, re: RegExp) => s.split(re).map((x) => x.replace(/^[\s,.;:]+|[\s,.;]+$/g, "")).filter(Boolean);
+  const left = items(m[1] ?? "", /\b\(?[a-d]\)?[.)]\s+/i);
+  const right = items(m[2] ?? "", /\b\(?(?:iv|i{1,3})\)?[.)]\s+/i);
+  if (left.length < 2 || left.length !== right.length) return t;
+  const roman = ["i", "ii", "iii", "iv"];
+  const rows = left.map((l, k) => `| ${"abcd"[k]}. ${l} | ${roman[k]}. ${right[k]} |`).join("\n");
+  return t.replace(m[0], `\n\n| Column I | Column II |\n|---|---|\n${rows}\n\n`);
+}
+
+/**
+ * Spoken comparison → markdown table.
+ * "Tulna: Mitosis aur Meiosis. Cells — Mitosis: 2, Meiosis: 4. Division — Mitosis: ek baar, Meiosis: do baar. Tulna khatam."
+ * Needs at least two rows whose cells name every compared item; otherwise the text stays prose.
+ */
+export function comparisonTable(t: string): { before: string; table: string; after: string } | null {
+  const dynamic = dynamicVoiceTable(t);
+  if (dynamic) return dynamic;
+  const head = t.match(/\b(?:Tulna|Comparison|Table)\s*:\s*([^.:]+?)\s*\./i);
+  if (!head || head.index === undefined) return null;
+  const cols = spokenTableColumns(head[1] ?? "");
+  if (cols.length < 2) return null;
+  const rest = t.slice(head.index + head[0].length);
+  const endM = rest.match(/\b(?:Tulna|Comparison|Table)\s+(?:khatam|end|over)\b[.!]?/i);
+  const body = endM?.index !== undefined ? rest.slice(0, endM.index) : rest;
+  const after = endM?.index !== undefined ? rest.slice(endM.index + endM[0].length).trim() : "";
+  const esc = (s: string) => s.replace(/\|/g, "/").trim();
+  const rows: string[][] = [];
+  let tail = "";
+  let plain: boolean | null = null; // plain rows: "Skull — 22 bones." fill the named columns directly
+  const q = (x: string) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  for (const sentence of body.split(/(?<=[.;])\s+/)) {
+    const s = sentence.trim().replace(/[.;]\s*$/, "");
+    const m = s.match(/^([^—–:]+?)\s+[—–-]\s+(.+)$/);
+    let row: string[] | null = null;
+    if (m && plain !== true) {
+      const cells = cols.map((c) => m[2]?.match(new RegExp(`${q(c)}\\s*:\\s*(.+?)(?=,\\s*(?:${cols.map(q).join("|")})\\s*:|$)`, "i"))?.[1]?.replace(/[,;]\s*$/, "") ?? null);
+      if (cells.every((c) => c)) { row = [m[1] ?? "", ...(cells as string[])]; plain = false; }
+    }
+    if (!row && plain !== false) {
+      // Spoken transcripts may join rows with commas or use "Skull: 22" instead of a dash.
+      const sep = cols.length === 2 ? /\s+[—–-]\s+|\s*:\s+/ : /\s+[—–-]\s+/;
+      const cut = (x: string) => x.split(sep).map((y) => y.trim());
+      const whole = cut(s);
+      const subs = s.split(/,\s+(?=[^,]+?(?:\s+[—–-]\s+|:\s))/).map(cut);
+      const ok = (r: string[]) => r.length === cols.length && r.every(Boolean);
+      if (ok(whole)) { row = whole; plain = true; }
+      else if (subs.length > 1 && subs.every(ok) && !tail) { rows.push(...subs.map((r) => r.map(esc))); plain = true; continue; }
+    }
+    if (row && !tail) rows.push(row.map(esc));
+    else if (s) tail += (tail ? " " : "") + sentence.trim();
+  }
+  if (rows.length < 2) return null;
+  const header = plain ? cols : ["Feature", ...cols];
+  const table = [`| ${header.map(esc).join(" | ")} |`, `|${"---|".repeat(header.length)}`, ...rows.map((r) => `| ${r.join(" | ")} |`)].join("\n");
+  return { before: t.slice(0, head.index).trim(), table, after: [tail, after].filter(Boolean).join(" ").trim() };
+}

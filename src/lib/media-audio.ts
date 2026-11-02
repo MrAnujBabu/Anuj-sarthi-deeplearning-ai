@@ -1,1 +1,146 @@
-Ly8gQnJvd3Nlci1vbmx5OiBwdWxscyBzcGVlY2ggb3V0IG9mIGEgbG9jYWwgb3Igd2ViIHZpZGVvL2F1ZGlvIGZpbGUgYXMgMTYga0h6IG1vbm8gV0FWIHBpZWNlcy4KLy8gTWVkaWEgaXMgZGVjb2RlZCBvbiB0aGUgZGV2aWNlIChNZWRpYWJ1bm55ICsgV2ViQ29kZWNzKSwgc28gbGFyZ2UgdmlkZW9zIG5ldmVyIHVwbG9hZCB3aG9sZTsKLy8gb25seSBzbWFsbCBzcGVlY2ggcGllY2VzIGdvIHRvIHRoZSBsaXN0ZW5lci4gSW1wb3J0IGxhemlseSDigJQgbmV2ZXIgZnJvbSBTU1IgY29kZSBwYXRocy4KaW1wb3J0IHsgQVVESU9fQ0hVTktfU0VDT05EUywgTUFYX01FRElBX1NFQ09ORFMgfSBmcm9tICcuL3lvdXR1YmUtaGluZGknOwoKZXhwb3J0IGNvbnN0IExJU1RFTl9SQVRFID0gMTYwMDA7CmV4cG9ydCB0eXBlIEF1ZGlvUGllY2UgPSB7IGluZGV4OiBudW1iZXI7IG9mZnNldDogbnVtYmVyOyBkdXJhdGlvbjogbnVtYmVyOyB3YXY6IEJsb2IgfTsKCi8qKiBXcml0ZXMgMTYtYml0IFBDTSBzYW1wbGVzIGludG8gYSBjb21wbGV0ZSBXQVYgZmlsZS4gKi8KZXhwb3J0IGZ1bmN0aW9uIHBjbTE2V2F2KHNhbXBsZXM6IEludDE2QXJyYXksIHNhbXBsZVJhdGUgPSBMSVNURU5fUkFURSk6IEJsb2IgewogIGNvbnN0IGhlYWRlciA9IG5ldyBBcnJheUJ1ZmZlcig0NCk7IGNvbnN0IHYgPSBuZXcgRGF0YVZpZXcoaGVhZGVyKTsKICBjb25zdCB0YWcgPSAobzogbnVtYmVyLCBzOiBzdHJpbmcpID0+IHsgZm9yIChsZXQgaSA9IDA7IGkgPCBzLmxlbmd0aDsgaSsrKSB2LnNldFVpbnQ4KG8gKyBpLCBzLmNoYXJDb2RlQXQoaSkpOyB9OwogIHRhZygwLCAnUklGRicpOyB2LnNldFVpbnQzMig0LCAzNiArIHNhbXBsZXMuYnl0ZUxlbmd0aCwgdHJ1ZSk7IHRhZyg4LCAnV0FWRScpOyB0YWcoMTIsICdmbXQgJyk7CiAgdi5zZXRVaW50MzIoMTYsIDE2LCB0cnVlKTsgdi5zZXRVaW50MTYoMjAsIDEsIHRydWUpOyB2LnNldFVpbnQxNigyMiwgMSwgdHJ1ZSk7IHYuc2V0VWludDMyKDI0LCBzYW1wbGVSYXRlLCB0cnVlKTsKICB2LnNldFVpbnQzMigyOCwgc2FtcGxlUmF0ZSAqIDIsIHRydWUpOyB2LnNldFVpbnQxNigzMiwgMiwgdHJ1ZSk7IHYuc2V0VWludDE2KDM0LCAxNiwgdHJ1ZSk7IHRhZygzNiwgJ2RhdGEnKTsgdi5zZXRVaW50MzIoNDAsIHNhbXBsZXMuYnl0ZUxlbmd0aCwgdHJ1ZSk7CiAgcmV0dXJuIG5ldyBCbG9iKFtoZWFkZXIsIHNhbXBsZXMuYnVmZmVyLnNsaWNlKHNhbXBsZXMuYnl0ZU9mZnNldCwgc2FtcGxlcy5ieXRlT2Zmc2V0ICsgc2FtcGxlcy5ieXRlTGVuZ3RoKSBhcyBBcnJheUJ1ZmZlcl0sIHsgdHlwZTogJ2F1ZGlvL3dhdicgfSk7Cn0KCi8qKiBTdHJlYW1pbmcgYm94LWZpbHRlciByZXNhbXBsZXIgdG8gMTYga0h6OiBhdmVyYWdlcyBpbnB1dCBpbnNpZGUgZWFjaCBvdXRwdXQgc3RlcCAobGlnaHQgYW50aS1hbGlhc2luZyBmb3Igc3BlZWNoKS4gKi8KZXhwb3J0IGNsYXNzIFNwZWVjaFJlc2FtcGxlciB7CiAgcHJpdmF0ZSBhY2MgPSAwOyBwcml2YXRlIG4gPSAwOyBwcml2YXRlIHBvcyA9IDA7IHByaXZhdGUgbGFzdCA9IDA7CiAgY29uc3RydWN0b3IocHJpdmF0ZSByZWFkb25seSBvdXRSYXRlID0gTElTVEVOX1JBVEUpIHt9CiAgcHVzaChpbnB1dDogRmxvYXQzMkFycmF5LCBpblJhdGU6IG51bWJlciwgZW1pdDogKHZhbHVlOiBudW1iZXIpID0+IHZvaWQpIHsKICAgIGNvbnN0IHN0ZXAgPSBpblJhdGUgLyB0aGlzLm91dFJhdGU7CiAgICBmb3IgKGxldCBpID0gMDsgaSA8IGlucHV0Lmxlbmd0aDsgaSsrKSB7CiAgICAgIHRoaXMuYWNjICs9IGlucHV0W2ldID8/IDA7IHRoaXMubisrOyB0aGlzLnBvcyArPSAxOwogICAgICB3aGlsZSAodGhpcy5wb3MgPj0gc3RlcCkgewogICAgICAgIGNvbnN0IHZhbHVlID0gdGhpcy5uID8gdGhpcy5hY2MgLyB0aGlzLm4gOiB0aGlzLmxhc3Q7CiAgICAgICAgZW1pdCh2YWx1ZSk7IHRoaXMubGFzdCA9IHZhbHVlOyB0aGlzLmFjYyA9IDA7IHRoaXMubiA9IDA7IHRoaXMucG9zIC09IHN0ZXA7CiAgICAgIH0KICAgIH0KICB9Cn0KCi8qKiBDb2xsZWN0cyAxNiBrSHogc2FtcGxlcyBpbnRvIGZpeGVkLWxlbmd0aCBXQVYgcGllY2VzIGFsaWduZWQgdG8gdGhlIG1lZGlhIHRpbWVsaW5lLiAqLwpleHBvcnQgY2xhc3MgUGllY2VXcml0ZXIgewogIHByaXZhdGUgYnVmZmVyOiBJbnQxNkFycmF5OyBwcml2YXRlIGZpbGxlZCA9IDA7IHByaXZhdGUgaW5kZXggPSAwOyBwcml2YXRlIHdyaXR0ZW4gPSAwOwogIGNvbnN0cnVjdG9yKHByaXZhdGUgcmVhZG9ubHkgcGllY2VTZWNvbmRzOiBudW1iZXIsIHByaXZhdGUgcmVhZG9ubHkgb25QaWVjZTogKHBpZWNlOiBBdWRpb1BpZWNlKSA9PiB2b2lkLCBwcml2YXRlIHJlYWRvbmx5IHJhdGUgPSBMSVNURU5fUkFURSkgewogICAgdGhpcy5idWZmZXIgPSBuZXcgSW50MTZBcnJheShwaWVjZVNlY29uZHMgKiByYXRlKTsKICB9CiAgZ2V0IHNlY29uZHMoKSB7IHJldHVybiB0aGlzLndyaXR0ZW4gLyB0aGlzLnJhdGU7IH0KICB3cml0ZSh2YWx1ZTogbnVtYmVyKSB7CiAgICBjb25zdCBzID0gTWF0aC5tYXgoLTEsIE1hdGgubWluKDEsIHZhbHVlKSk7CiAgICB0aGlzLmJ1ZmZlclt0aGlzLmZpbGxlZCsrXSA9IHMgPCAwID8gcyAqIDMyNzY4IDogcyAqIDMyNzY3OwogICAgdGhpcy53cml0dGVuKys7CiAgICBpZiAodGhpcy5maWxsZWQgPT09IHRoaXMuYnVmZmVyLmxlbmd0aCkgdGhpcy5mbHVzaCgpOwogIH0KICAvKiogSW5zZXJ0cyBzaWxlbmNlIHNvIGEgZ2FwIGluIHRoZSBtZWRpYSBrZWVwcyBsYXRlciBzcGVlY2ggYXQgdGhlIHJpZ2h0IHRpbWVzdGFtcC4gKi8KICBwYWRUbyhmcmFtZTogbnVtYmVyKSB7IHdoaWxlICh0aGlzLndyaXR0ZW4gPCBmcmFtZSkgdGhpcy53cml0ZSgwKTsgfQogIGZsdXNoKCkgewogICAgaWYgKCF0aGlzLmZpbGxlZCkgcmV0dXJuOwogICAgY29uc3Qgc2FtcGxlcyA9IHRoaXMuYnVmZmVyLnNsaWNlKDAsIHRoaXMuZmlsbGVkKTsKICAgIGNvbnN0IG9mZnNldCA9IHRoaXMuaW5kZXggKiB0aGlzLnBpZWNlU2Vjb25kczsKICAgIHRoaXMub25QaWVjZSh7IGluZGV4OiB0aGlzLmluZGV4LCBvZmZzZXQsIGR1cmF0aW9uOiB0aGlzLmZpbGxlZCAvIHRoaXMucmF0ZSwgd2F2OiBwY20xNldhdihzYW1wbGVzLCB0aGlzLnJhdGUpIH0pOwogICAgdGhpcy5pbmRleCsrOyB0aGlzLmZpbGxlZCA9IDA7CiAgfQp9CgpmdW5jdGlvbiBwcm94aWVkKHVybDogc3RyaW5nKSB7IHJldHVybiBgL2FwaS9tZWRpYS1wcm94eT91cmw9JHtlbmNvZGVVUklDb21wb25lbnQodXJsKX1gOyB9CgovKiogU2FtZS1vcmlnaW4gd2hlbiB0aGUgbWVkaWEgc2l0ZSBhbGxvd3MgY3Jvc3Mtb3JpZ2luIHJlYWRzLCBlbHNlIHRocm91Z2ggdGhlIGFwcCdzIG1lZGlhIHJlYWRlci4gKi8KYXN5bmMgZnVuY3Rpb24gcmVhZGFibGVVcmwodXJsOiBzdHJpbmcpIHsKICB0cnkgewogICAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2godXJsLCB7IGhlYWRlcnM6IHsgUmFuZ2U6ICdieXRlcz0wLTEnIH0sIG1vZGU6ICdjb3JzJyB9KTsKICAgIGF3YWl0IHJlcy5ib2R5Py5jYW5jZWwoKS5jYXRjaCgoKSA9PiB7fSk7CiAgICBpZiAocmVzLm9rIHx8IHJlcy5zdGF0dXMgPT09IDIwNikgcmV0dXJuIHVybDsKICB9IGNhdGNoIHsgLyogYmxvY2tlZCBieSBDT1JTICovIH0KICByZXR1cm4gcHJveGllZCh1cmwpOwp9CgpleHBvcnQgdHlwZSBFeHRyYWN0T3B0aW9ucyA9IHsKICBmaWxlPzogQmxvYjsgdXJsPzogc3RyaW5nOyBzaWduYWw6IEFib3J0U2lnbmFsOwogIHBpZWNlU2Vjb25kcz86IG51bWJlcjsgbWF4U2Vjb25kcz86IG51bWJlcjsKICBvblBpZWNlKHBpZWNlOiBBdWRpb1BpZWNlKTogdm9pZDsKICBvblByb2dyZXNzPyhzZWNvbmRzOiBudW1iZXIsIHRvdGFsOiBudW1iZXIpOiB2b2lkOwp9OwoKZXhwb3J0IGNsYXNzIE1lZGlhQXVkaW9FcnJvciBleHRlbmRzIEVycm9yIHt9CgovKiogRGVjb2RlcyB0aGUgcHJpbWFyeSBhdWRpbyB0cmFjayBhbmQgZW1pdHMgV0FWIHBpZWNlcyBhcyBzb29uIGFzIGVhY2ggaXMgY29tcGxldGUuICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBleHRyYWN0U3BlZWNoUGllY2VzKG86IEV4dHJhY3RPcHRpb25zKTogUHJvbWlzZTx7IGR1cmF0aW9uOiBudW1iZXI7IGhlYXJkOiBudW1iZXI7IHRydW5jYXRlZDogYm9vbGVhbiB9PiB7CiAgY29uc3QgbWIgPSBhd2FpdCBpbXBvcnQoJ21lZGlhYnVubnknKTsKICBjb25zdCBwaWVjZVNlY29uZHMgPSBvLnBpZWNlU2Vjb25kcyA/PyBBVURJT19DSFVOS19TRUNPTkRTLCBtYXhTZWNvbmRzID0gby5tYXhTZWNvbmRzID8/IE1BWF9NRURJQV9TRUNPTkRTOwogIGxldCBzb3VyY2U6IEluc3RhbmNlVHlwZTx0eXBlb2YgbWIuQmxvYlNvdXJjZT4gfCBJbnN0YW5jZVR5cGU8dHlwZW9mIG1iLlVybFNvdXJjZT47CiAgaWYgKG8uZmlsZSkgc291cmNlID0gbmV3IG1iLkJsb2JTb3VyY2Uoby5maWxlKTsKICBlbHNlIGlmIChvLnVybCkgeyBjb25zdCB1cmwgPSBhd2FpdCByZWFkYWJsZVVybChvLnVybCk7IHNvdXJjZSA9IG5ldyBtYi5VcmxTb3VyY2UodXJsLCB7IG1heENhY2hlU2l6ZTogMzIgKiAxMDI0ICogMTAyNCB9KTsgfQogIGVsc2UgdGhyb3cgbmV3IE1lZGlhQXVkaW9FcnJvcign4KSV4KWL4KSIIHZpZGVvIOCkqOCkueClgOCkgiDgpKbgpYAg4KSX4KSI4KWkJyk7CiAgY29uc3QgaW5wdXQgPSBuZXcgbWIuSW5wdXQoeyBmb3JtYXRzOiBtYi5BTExfRk9STUFUUywgc291cmNlIH0pOwogIGNvbnN0IGFib3J0ID0gKCkgPT4geyBpbnB1dC5kaXNwb3NlKCk7IH07CiAgby5zaWduYWwuYWRkRXZlbnRMaXN0ZW5lcignYWJvcnQnLCBhYm9ydCwgeyBvbmNlOiB0cnVlIH0pOwogIHRyeSB7CiAgICBjb25zdCB0cmFjayA9IGF3YWl0IGlucHV0LmdldFByaW1hcnlBdWRpb1RyYWNrKCkuY2F0Y2goKCkgPT4geyB0aHJvdyBuZXcgTWVkaWFBdWRpb0Vycm9yKCfgpK/gpLkgZmlsZSDgpKrgpKLgpLzgpYAg4KSo4KS54KWA4KSCIOCknOCkviDgpLjgpJXgpYDgpaQgTVA0LCBXZWJNLCBNT1YsIE1QMyDgpK/gpL4gTTRBIOCkhuCknOCkvOCkruCkvuCkj+CkgeClpCcpOyB9KTsKICAgIGlmICghdHJhY2spIHRocm93IG5ldyBNZWRpYUF1ZGlvRXJyb3IoJ+Ckh+CkuCB2aWRlbyDgpK7gpYfgpIIg4KSG4KS14KS+4KSc4KS8IChhdWRpbyB0cmFjaykg4KSo4KS54KWA4KSCIOCkruCkv+CksuClgOClpCcpOwogICAgaWYgKCEoYXdhaXQgdHJhY2suY2FuRGVjb2RlKCkpKSB7CiAgICAgIGlmIChvLmZpbGUpIHJldHVybiBhd2FpdCBkZWNvZGVXaXRoV2ViQXVkaW8oby5maWxlLCBwaWVjZVNlY29uZHMsIG1heFNlY29uZHMsIG8pOwogICAgICB0aHJvdyBuZXcgTWVkaWFBdWRpb0Vycm9yKCfgpK/gpLkgYnJvd3NlciDgpIfgpLggdmlkZW8g4KSV4KWAIOCkhuCkteCkvuCknOCkvCDgpKjgpLngpYDgpIIg4KSW4KWL4KSyIOCkuOCkleCkpOCkvuClpCBDaHJvbWUg4KSv4KS+IEVkZ2Ug4KSu4KWH4KSCIOCkluCli+CksuClh+Ckgiwg4KSv4KS+IGZpbGUgZG93bmxvYWQg4KSV4KSw4KSV4KWHIHVwbG9hZCDgpJXgpLDgpYfgpILgpaQnKTsKICAgIH0KICAgIGNvbnN0IHRvdGFsID0gYXdhaXQgaW5wdXQuY29tcHV0ZUR1cmF0aW9uKCkuY2F0Y2goKCkgPT4gMCk7CiAgICBjb25zdCBlbmQgPSBNYXRoLm1pbih0b3RhbCB8fCBtYXhTZWNvbmRzLCBtYXhTZWNvbmRzKTsKICAgIGNvbnN0IHJlc2FtcGxlciA9IG5ldyBTcGVlY2hSZXNhbXBsZXIoKTsKICAgIGNvbnN0IHdyaXRlciA9IG5ldyBQaWVjZVdyaXRlcihwaWVjZVNlY29uZHMsIG8ub25QaWVjZSk7CiAgICBjb25zdCBzaW5rID0gbmV3IG1iLkF1ZGlvU2FtcGxlU2luayh0cmFjayk7CiAgICBsZXQgbGFzdFJlcG9ydCA9IDA7CiAgICBmb3IgYXdhaXQgKGNvbnN0IHNhbXBsZSBvZiBzaW5rLnNhbXBsZXMoMCwgZW5kKSkgewogICAgICBpZiAoby5zaWduYWwuYWJvcnRlZCkgeyBzYW1wbGUuY2xvc2UoKTsgYnJlYWs7IH0KICAgICAgdHJ5IHsKICAgICAgICB3cml0ZXIucGFkVG8oTWF0aC5yb3VuZChzYW1wbGUudGltZXN0YW1wICogTElTVEVOX1JBVEUpIC0gTElTVEVOX1JBVEUgLyA1MCk7CiAgICAgICAgY29uc3QgY2hhbm5lbHMgPSBzYW1wbGUubnVtYmVyT2ZDaGFubmVscywgZnJhbWVzID0gc2FtcGxlLm51bWJlck9mRnJhbWVzOwogICAgICAgIGNvbnN0IG1vbm8gPSBuZXcgRmxvYXQzMkFycmF5KGZyYW1lcyk7CiAgICAgICAgY29uc3QgcGxhbmUgPSBuZXcgRmxvYXQzMkFycmF5KGZyYW1lcyk7CiAgICAgICAgZm9yIChsZXQgYyA9IDA7IGMgPCBjaGFubmVsczsgYysrKSB7CiAgICAgICAgICBzYW1wbGUuY29weVRvKHBsYW5lLCB7IHBsYW5lSW5kZXg6IGMsIGZvcm1hdDogJ2YzMi1wbGFuYXInIH0pOwogICAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBmcmFtZXM7IGkrKykgbW9ub1tpXSA9IChtb25vW2ldID8/IDApICsgKHBsYW5lW2ldID8/IDApIC8gY2hhbm5lbHM7CiAgICAgICAgfQogICAgICAgIHJlc2FtcGxlci5wdXNoKG1vbm8sIHNhbXBsZS5zYW1wbGVSYXRlLCB2ID0+IHdyaXRlci53cml0ZSh2KSk7CiAgICAgIH0gZmluYWxseSB7IHNhbXBsZS5jbG9zZSgpOyB9CiAgICAgIGlmICh3cml0ZXIuc2Vjb25kcyAtIGxhc3RSZXBvcnQgPj0gNSkgeyBsYXN0UmVwb3J0ID0gd3JpdGVyLnNlY29uZHM7IG8ub25Qcm9ncmVzcz8uKHdyaXRlci5zZWNvbmRzLCBlbmQpOyB9CiAgICAgIGlmICh3cml0ZXIuc2Vjb25kcyA+PSBlbmQpIGJyZWFrOwogICAgfQogICAgby5zaWduYWwudGhyb3dJZkFib3J0ZWQoKTsKICAgIHdyaXRlci5mbHVzaCgpOwogICAgby5vblByb2dyZXNzPy4od3JpdGVyLnNlY29uZHMsIGVuZCk7CiAgICByZXR1cm4geyBkdXJhdGlvbjogdG90YWwsIGhlYXJkOiB3cml0ZXIuc2Vjb25kcywgdHJ1bmNhdGVkOiB0b3RhbCA+IG1heFNlY29uZHMgKyAxIH07CiAgfSBmaW5hbGx5IHsKICAgIG8uc2lnbmFsLnJlbW92ZUV2ZW50TGlzdGVuZXIoJ2Fib3J0JywgYWJvcnQpOwogICAgaW5wdXQuZGlzcG9zZSgpOwogIH0KfQoKLyoqIEZhbGxiYWNrIGZvciBicm93c2VycyB3aXRob3V0IFdlYkNvZGVjcyBhdWRpbyBkZWNvZGluZzogd2hvbGUtZmlsZSBXZWIgQXVkaW8gZGVjb2RlIChzaXplLWNhcHBlZCkuICovCmFzeW5jIGZ1bmN0aW9uIGRlY29kZVdpdGhXZWJBdWRpbyhmaWxlOiBCbG9iLCBwaWVjZVNlY29uZHM6IG51bWJlciwgbWF4U2Vjb25kczogbnVtYmVyLCBvOiBFeHRyYWN0T3B0aW9ucykgewogIGlmIChmaWxlLnNpemUgPiAyNTAgKiAxMDI0ICogMTAyNCkgdGhyb3cgbmV3IE1lZGlhQXVkaW9FcnJvcign4KSv4KS5IGJyb3dzZXIg4KSH4KSk4KSo4KWAIOCkrOCkoeCkvOClgCBmaWxlIOCkleClgCDgpIbgpLXgpL7gpJzgpLwg4KSo4KS54KWA4KSCIOCkluCli+CksiDgpLjgpJXgpKTgpL7gpaQgQ2hyb21lIOCkruClh+CkgiDgpJbgpYvgpLLgpYfgpIIg4KSv4KS+IOCkm+Cli+Ckn+ClgCBmaWxlIOCkmuClgeCkqOClh+CkguClpCcpOwogIGNvbnN0IGNvbnRleHQgPSBuZXcgT2ZmbGluZUF1ZGlvQ29udGV4dCgxLCAxLCBMSVNURU5fUkFURSk7CiAgbGV0IGJ1ZmZlcjogQXVkaW9CdWZmZXI7CiAgdHJ5IHsgYnVmZmVyID0gYXdhaXQgY29udGV4dC5kZWNvZGVBdWRpb0RhdGEoYXdhaXQgZmlsZS5hcnJheUJ1ZmZlcigpKTsgfQogIGNhdGNoIHsgdGhyb3cgbmV3IE1lZGlhQXVkaW9FcnJvcign4KSH4KS4IGZpbGUg4KSV4KWAIOCkhuCkteCkvuCknOCkvCDgpJbgpYvgpLLgpYAg4KSo4KS54KWA4KSCIOCknOCkviDgpLjgpJXgpYDgpaQnKTsgfQogIG8uc2lnbmFsLnRocm93SWZBYm9ydGVkKCk7CiAgY29uc3QgZnJhbWVzID0gTWF0aC5taW4oYnVmZmVyLmxlbmd0aCwgTWF0aC5yb3VuZChtYXhTZWNvbmRzICogYnVmZmVyLnNhbXBsZVJhdGUpKTsKICBjb25zdCBtb25vID0gbmV3IEZsb2F0MzJBcnJheShmcmFtZXMpOwogIGZvciAobGV0IGMgPSAwOyBjIDwgYnVmZmVyLm51bWJlck9mQ2hhbm5lbHM7IGMrKykgeyBjb25zdCBkYXRhID0gYnVmZmVyLmdldENoYW5uZWxEYXRhKGMpOyBmb3IgKGxldCBpID0gMDsgaSA8IGZyYW1lczsgaSsrKSBtb25vW2ldID0gKG1vbm9baV0gPz8gMCkgKyAoZGF0YVtpXSA/PyAwKSAvIGJ1ZmZlci5udW1iZXJPZkNoYW5uZWxzOyB9CiAgY29uc3Qgd3JpdGVyID0gbmV3IFBpZWNlV3JpdGVyKHBpZWNlU2Vjb25kcywgby5vblBpZWNlKTsKICBuZXcgU3BlZWNoUmVzYW1wbGVyKCkucHVzaChtb25vLCBidWZmZXIuc2FtcGxlUmF0ZSwgdiA9PiB3cml0ZXIud3JpdGUodikpOwogIHdyaXRlci5mbHVzaCgpOwogIG8ub25Qcm9ncmVzcz8uKHdyaXRlci5zZWNvbmRzLCBmcmFtZXMgLyBidWZmZXIuc2FtcGxlUmF0ZSk7CiAgcmV0dXJuIHsgZHVyYXRpb246IGJ1ZmZlci5kdXJhdGlvbiwgaGVhcmQ6IHdyaXRlci5zZWNvbmRzLCB0cnVuY2F0ZWQ6IGJ1ZmZlci5kdXJhdGlvbiA+IG1heFNlY29uZHMgKyAxIH07Cn0K
+// Browser-only: pulls speech out of a local or web video/audio file as 16 kHz mono WAV pieces.
+// Media is decoded on the device (Mediabunny + WebCodecs), so large videos never upload whole;
+// only small speech pieces go to the listener. Import lazily — never from SSR code paths.
+import { AUDIO_CHUNK_SECONDS, MAX_MEDIA_SECONDS } from './youtube-hindi';
+
+export const LISTEN_RATE = 16000;
+export type AudioPiece = { index: number; offset: number; duration: number; wav: Blob };
+
+/** Writes 16-bit PCM samples into a complete WAV file. */
+export function pcm16Wav(samples: Int16Array, sampleRate = LISTEN_RATE): Blob {
+  const header = new ArrayBuffer(44); const v = new DataView(header);
+  const tag = (o: number, s: string) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+  tag(0, 'RIFF'); v.setUint32(4, 36 + samples.byteLength, true); tag(8, 'WAVE'); tag(12, 'fmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, sampleRate, true);
+  v.setUint32(28, sampleRate * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true); tag(36, 'data'); v.setUint32(40, samples.byteLength, true);
+  return new Blob([header, samples.buffer.slice(samples.byteOffset, samples.byteOffset + samples.byteLength) as ArrayBuffer], { type: 'audio/wav' });
+}
+
+/** Streaming box-filter resampler to 16 kHz: averages input inside each output step (light anti-aliasing for speech). */
+export class SpeechResampler {
+  private acc = 0; private n = 0; private pos = 0; private last = 0;
+  constructor(private readonly outRate = LISTEN_RATE) {}
+  push(input: Float32Array, inRate: number, emit: (value: number) => void) {
+    const step = inRate / this.outRate;
+    for (let i = 0; i < input.length; i++) {
+      this.acc += input[i] ?? 0; this.n++; this.pos += 1;
+      while (this.pos >= step) {
+        const value = this.n ? this.acc / this.n : this.last;
+        emit(value); this.last = value; this.acc = 0; this.n = 0; this.pos -= step;
+      }
+    }
+  }
+}
+
+/** Collects 16 kHz samples into fixed-length WAV pieces aligned to the media timeline. */
+export class PieceWriter {
+  private buffer: Int16Array; private filled = 0; private index = 0; private written = 0;
+  constructor(private readonly pieceSeconds: number, private readonly onPiece: (piece: AudioPiece) => void, private readonly rate = LISTEN_RATE) {
+    this.buffer = new Int16Array(pieceSeconds * rate);
+  }
+  get seconds() { return this.written / this.rate; }
+  write(value: number) {
+    const s = Math.max(-1, Math.min(1, value));
+    this.buffer[this.filled++] = s < 0 ? s * 32768 : s * 32767;
+    this.written++;
+    if (this.filled === this.buffer.length) this.flush();
+  }
+  /** Inserts silence so a gap in the media keeps later speech at the right timestamp. */
+  padTo(frame: number) { while (this.written < frame) this.write(0); }
+  flush() {
+    if (!this.filled) return;
+    const samples = this.buffer.slice(0, this.filled);
+    const offset = this.index * this.pieceSeconds;
+    this.onPiece({ index: this.index, offset, duration: this.filled / this.rate, wav: pcm16Wav(samples, this.rate) });
+    this.index++; this.filled = 0;
+  }
+}
+
+function proxied(url: string) { return `/api/media-proxy?url=${encodeURIComponent(url)}`; }
+
+/** Same-origin when the media site allows cross-origin reads, else through the app's media reader. */
+async function readableUrl(url: string) {
+  try {
+    const res = await fetch(url, { headers: { Range: 'bytes=0-1' }, mode: 'cors' });
+    await res.body?.cancel().catch(() => {});
+    if (res.ok || res.status === 206) return url;
+  } catch { /* blocked by CORS */ }
+  return proxied(url);
+}
+
+export type ExtractOptions = {
+  file?: Blob; url?: string; signal: AbortSignal;
+  pieceSeconds?: number; maxSeconds?: number;
+  onPiece(piece: AudioPiece): void;
+  onProgress?(seconds: number, total: number): void;
+};
+
+export class MediaAudioError extends Error {}
+
+/** Decodes the primary audio track and emits WAV pieces as soon as each is complete. */
+export async function extractSpeechPieces(o: ExtractOptions): Promise<{ duration: number; heard: number; truncated: boolean }> {
+  const mb = await import('mediabunny');
+  const pieceSeconds = o.pieceSeconds ?? AUDIO_CHUNK_SECONDS, maxSeconds = o.maxSeconds ?? MAX_MEDIA_SECONDS;
+  let source: InstanceType<typeof mb.BlobSource> | InstanceType<typeof mb.UrlSource>;
+  if (o.file) source = new mb.BlobSource(o.file);
+  else if (o.url) { const url = await readableUrl(o.url); source = new mb.UrlSource(url, { maxCacheSize: 32 * 1024 * 1024 }); }
+  else throw new MediaAudioError('कोई video नहीं दी गई।');
+  const input = new mb.Input({ formats: mb.ALL_FORMATS, source });
+  const abort = () => { input.dispose(); };
+  o.signal.addEventListener('abort', abort, { once: true });
+  try {
+    const track = await input.getPrimaryAudioTrack().catch(() => { throw new MediaAudioError('यह file पढ़ी नहीं जा सकी। MP4, WebM, MOV, MP3 या M4A आज़माएँ।'); });
+    if (!track) throw new MediaAudioError('इस video में आवाज़ (audio track) नहीं मिली।');
+    if (!(await track.canDecode())) {
+      if (o.file) return await decodeWithWebAudio(o.file, pieceSeconds, maxSeconds, o);
+      throw new MediaAudioError('यह browser इस video की आवाज़ नहीं खोल सकता। Chrome या Edge में खोलें, या file download करके upload करें।');
+    }
+    const total = await input.computeDuration().catch(() => 0);
+    const end = Math.min(total || maxSeconds, maxSeconds);
+    const resampler = new SpeechResampler();
+    const writer = new PieceWriter(pieceSeconds, o.onPiece);
+    const sink = new mb.AudioSampleSink(track);
+    let lastReport = 0;
+    for await (const sample of sink.samples(0, end)) {
+      if (o.signal.aborted) { sample.close(); break; }
+      try {
+        writer.padTo(Math.round(sample.timestamp * LISTEN_RATE) - LISTEN_RATE / 50);
+        const channels = sample.numberOfChannels, frames = sample.numberOfFrames;
+        const mono = new Float32Array(frames);
+        const plane = new Float32Array(frames);
+        for (let c = 0; c < channels; c++) {
+          sample.copyTo(plane, { planeIndex: c, format: 'f32-planar' });
+          for (let i = 0; i < frames; i++) mono[i] = (mono[i] ?? 0) + (plane[i] ?? 0) / channels;
+        }
+        resampler.push(mono, sample.sampleRate, v => writer.write(v));
+      } finally { sample.close(); }
+      if (writer.seconds - lastReport >= 5) { lastReport = writer.seconds; o.onProgress?.(writer.seconds, end); }
+      if (writer.seconds >= end) break;
+    }
+    o.signal.throwIfAborted();
+    writer.flush();
+    o.onProgress?.(writer.seconds, end);
+    return { duration: total, heard: writer.seconds, truncated: total > maxSeconds + 1 };
+  } finally {
+    o.signal.removeEventListener('abort', abort);
+    input.dispose();
+  }
+}
+
+/** Fallback for browsers without WebCodecs audio decoding: whole-file Web Audio decode (size-capped). */
+async function decodeWithWebAudio(file: Blob, pieceSeconds: number, maxSeconds: number, o: ExtractOptions) {
+  if (file.size > 250 * 1024 * 1024) throw new MediaAudioError('यह browser इतनी बड़ी file की आवाज़ नहीं खोल सकता। Chrome में खोलें या छोटी file चुनें।');
+  const context = new OfflineAudioContext(1, 1, LISTEN_RATE);
+  let buffer: AudioBuffer;
+  try { buffer = await context.decodeAudioData(await file.arrayBuffer()); }
+  catch { throw new MediaAudioError('इस file की आवाज़ खोली नहीं जा सकी।'); }
+  o.signal.throwIfAborted();
+  const frames = Math.min(buffer.length, Math.round(maxSeconds * buffer.sampleRate));
+  const mono = new Float32Array(frames);
+  for (let c = 0; c < buffer.numberOfChannels; c++) { const data = buffer.getChannelData(c); for (let i = 0; i < frames; i++) mono[i] = (mono[i] ?? 0) + (data[i] ?? 0) / buffer.numberOfChannels; }
+  const writer = new PieceWriter(pieceSeconds, o.onPiece);
+  new SpeechResampler().push(mono, buffer.sampleRate, v => writer.write(v));
+  writer.flush();
+  o.onProgress?.(writer.seconds, frames / buffer.sampleRate);
+  return { duration: buffer.duration, heard: writer.seconds, truncated: buffer.duration > maxSeconds + 1 };
+}

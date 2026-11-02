@@ -1,1 +1,111 @@
-aW1wb3J0IHsgQXJyb3dVcCwgQ2FtZXJhLCBGaWxlVGV4dCwgWCB9IGZyb20gImx1Y2lkZS1yZWFjdCI7CmltcG9ydCB0eXBlIHsgQ2hhdFN0YXR1cyB9IGZyb20gImFpIjsKaW1wb3J0IHR5cGUgeyBSZWFjdE5vZGUgfSBmcm9tICJyZWFjdCI7CmltcG9ydCB7IHRvYXN0IH0gZnJvbSAic29ubmVyIjsKaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAiQC9jb21wb25lbnRzL3VpL2J1dHRvbiI7CmltcG9ydCB7IERpY3RhdGVCdXR0b24gfSBmcm9tICJAL2NvbXBvbmVudHMvZGljdGF0ZS1idXR0b24iOwppbXBvcnQgeyBUb29sdGlwUHJvdmlkZXIgfSBmcm9tICJAL2NvbXBvbmVudHMvdWkvdG9vbHRpcCI7CmltcG9ydCB7CiAgUHJvbXB0SW5wdXQsCiAgUHJvbXB0SW5wdXRCdXR0b24sCiAgUHJvbXB0SW5wdXRGb290ZXIsCiAgUHJvbXB0SW5wdXRTdWJtaXQsCiAgUHJvbXB0SW5wdXRUZXh0YXJlYSwKICBQcm9tcHRJbnB1dFRvb2xzLAogIHVzZVByb21wdElucHV0QXR0YWNobWVudHMsCiAgdHlwZSBQcm9tcHRJbnB1dE1lc3NhZ2UsCn0gZnJvbSAiQC9jb21wb25lbnRzL2FpLWVsZW1lbnRzL3Byb21wdC1pbnB1dCI7CgpmdW5jdGlvbiBBdHRhY2htZW50UHJldmlld3MoKSB7CiAgY29uc3QgeyBmaWxlcywgcmVtb3ZlIH0gPSB1c2VQcm9tcHRJbnB1dEF0dGFjaG1lbnRzKCk7CiAgaWYgKCFmaWxlcy5sZW5ndGgpIHJldHVybiBudWxsOwogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCB3LWZ1bGwgZmxleC13cmFwIGdhcC0yIHB4LTMgcHQtMyI+CiAgICAgIHtmaWxlcy5tYXAoKGYpID0+ICgKICAgICAgICA8ZGl2IGtleT17Zi5pZH0gY2xhc3NOYW1lPSJyZWxhdGl2ZSI+CiAgICAgICAgICB7IWYubWVkaWFUeXBlLnN0YXJ0c1dpdGgoJ2ltYWdlLycpID8gKAogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBoLTIwIHctMzIgZmxleC1jb2wgaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIGdhcC0xIHJvdW5kZWQtbGcgYm9yZGVyIGJnLW11dGVkIHB4LTIgdGV4dC1jZW50ZXIgdGV4dC14cyI+CiAgICAgICAgICAgICAgPEZpbGVUZXh0IGNsYXNzTmFtZT0ic2l6ZS01IHRleHQtcHJpbWFyeSIgLz4KICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9ImxpbmUtY2xhbXAtMiBicmVhay1hbGwiPntmLmZpbGVuYW1lID8/ICJQREYifTwvc3Bhbj4KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICApIDogKAogICAgICAgICAgICA8aW1nIHNyYz17Zi51cmx9IGFsdD17Zi5maWxlbmFtZSA/PyAiU25hcHBlZCBxdWVzdGlvbiJ9IGNsYXNzTmFtZT0iaC0yMCB3LTIwIHJvdW5kZWQtbGcgYm9yZGVyIG9iamVjdC1jb3ZlciIgLz4KICAgICAgICAgICl9CiAgICAgICAgICA8QnV0dG9uCiAgICAgICAgICAgIHR5cGU9ImJ1dHRvbiIKICAgICAgICAgICAgc2l6ZT0iaWNvbiIKICAgICAgICAgICAgdmFyaWFudD0ic2Vjb25kYXJ5IgogICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiByZW1vdmUoZi5pZCl9CiAgICAgICAgICAgIGFyaWEtbGFiZWw9IlJlbW92ZSBmaWxlIgogICAgICAgICAgICBjbGFzc05hbWU9ImFic29sdXRlIC1yaWdodC0yIC10b3AtMiBzaXplLTYgcm91bmRlZC1mdWxsIHNoYWRvdy1zbSIKICAgICAgICAgID4KICAgICAgICAgICAgPFggY2xhc3NOYW1lPSJzaXplLTMiIC8+CiAgICAgICAgICA8L0J1dHRvbj4KICAgICAgICA8L2Rpdj4KICAgICAgKSl9CiAgICA8L2Rpdj4KICApOwp9CgpmdW5jdGlvbiBTbmFwQnV0dG9uKHsgYmlnIH06IHsgYmlnPzogYm9vbGVhbiB9KSB7CiAgY29uc3QgeyBvcGVuRmlsZURpYWxvZyB9ID0gdXNlUHJvbXB0SW5wdXRBdHRhY2htZW50cygpOwogIHJldHVybiAoCiAgICA8UHJvbXB0SW5wdXRCdXR0b24gb25DbGljaz17b3BlbkZpbGVEaWFsb2d9IHZhcmlhbnQ9Im91dGxpbmUiIGNsYXNzTmFtZT0iaC05IHNocmluay0wIGdhcC0yIHJvdW5kZWQtZnVsbCBweC0zIiB0b29sdGlwPSJVcGxvYWQgcGhvdG8sIFBERiBvciBQb3dlclBvaW50ICgucHB0eCkiPgogICAgICA8Q2FtZXJhIGNsYXNzTmFtZT0ic2l6ZS00IiAvPgogICAgICA8c3Bhbj57YmlnID8gIlNuYXAgLyB1cGxvYWQiIDogIlBob3RvIC8gUERGIn08L3NwYW4+CiAgICA8L1Byb21wdElucHV0QnV0dG9uPgogICk7Cn0KCmV4cG9ydCBmdW5jdGlvbiBTbmFwQ29tcG9zZXIoewogIG9uU3VibWl0LAogIHN0YXR1cywKICBvblN0b3AsCiAgcGxhY2Vob2xkZXIsCiAgYmlnLAogIGNvbnRyb2xzLAogIGFjdGlvbnMsCn06IHsKICBvblN1Ym1pdDogKG06IFByb21wdElucHV0TWVzc2FnZSkgPT4gdm9pZCB8IFByb21pc2U8dm9pZD47CiAgc3RhdHVzPzogQ2hhdFN0YXR1czsKICBvblN0b3A/OiAoKSA9PiB2b2lkOwogIHBsYWNlaG9sZGVyPzogc3RyaW5nOwogIGJpZz86IGJvb2xlYW47CiAgY29udHJvbHM/OiBSZWFjdE5vZGU7CiAgYWN0aW9ucz86IFJlYWN0Tm9kZTsKfSkgewogIGNvbnN0IGJ1c3kgPSBzdGF0dXMgPT09ICJzdWJtaXR0ZWQiIHx8IHN0YXR1cyA9PT0gInN0cmVhbWluZyI7CiAgcmV0dXJuICgKICAgIDxUb29sdGlwUHJvdmlkZXI+CiAgICA8ZGl2IGNsYXNzTmFtZT0ib3ZlcmZsb3ctaGlkZGVuIHJvdW5kZWQtMnhsIGJvcmRlciBib3JkZXItaW5wdXQgYmctY2FyZCBzaGFkb3ctbGcgc2hhZG93LWJhY2tncm91bmQvNDAgdHJhbnNpdGlvbi1bYm9yZGVyLWNvbG9yLGJveC1zaGFkb3ddIGZvY3VzLXdpdGhpbjpib3JkZXItcHJpbWFyeS81MCBmb2N1cy13aXRoaW46cmluZy00IGZvY3VzLXdpdGhpbjpyaW5nLXByaW1hcnkvMTAiIGFyaWEtbGFiZWw9IkNoYXQgY29tcG9zZXIiPgogICAgPFByb21wdElucHV0CiAgICAgIG9uU3VibWl0PXthc3luYyAobSkgPT4gewogICAgICAgIGlmICghbS50ZXh0LnRyaW0oKSAmJiBtLmZpbGVzLmxlbmd0aCA9PT0gMCkgcmV0dXJuOwogICAgICAgIHRyeSB7IGF3YWl0IG9uU3VibWl0KG0pOyB9IGNhdGNoIChlcnJvcikgeyB0b2FzdC5lcnJvcihlcnJvciBpbnN0YW5jZW9mIEVycm9yID8gZXJyb3IubWVzc2FnZSA6ICdDb3VsZCBub3QgcmVhZCBhdHRhY2htZW50LicpOyB0aHJvdyBlcnJvcjsgfQogICAgICB9fQogICAgICBhY2NlcHQ9ImltYWdlLyosYXBwbGljYXRpb24vcGRmLC5wcHR4LGFwcGxpY2F0aW9uL3ZuZC5vcGVueG1sZm9ybWF0cy1vZmZpY2Vkb2N1bWVudC5wcmVzZW50YXRpb25tbC5wcmVzZW50YXRpb24iCiAgICAgIG11bHRpcGxlCiAgICAgIG1heEZpbGVzPXs0fQogICAgICBtYXhGaWxlU2l6ZT17MTUgKiAxMDI0ICogMTAyNH0KICAgICAgb25FcnJvcj17KGUpID0+IHRvYXN0LmVycm9yKGUuY29kZSA9PT0gIm1heF9maWxlX3NpemUiID8gIkZpbGUgdG9vIGJpZyDigJQga2VlcCBpdCB1bmRlciAxNSBNQi4iIDogZS5tZXNzYWdlKX0KICAgICAgZ2xvYmFsRHJvcAogICAgICBjbGFzc05hbWU9ImJnLWNhcmQgWyZfW2RhdGEtc2xvdD1pbnB1dC1ncm91cF1dOnJvdW5kZWQtbm9uZSBbJl9bZGF0YS1zbG90PWlucHV0LWdyb3VwXV06Ym9yZGVyLTAgWyZfW2RhdGEtc2xvdD1pbnB1dC1ncm91cF1dOmJnLWNhcmQgWyZfW2RhdGEtc2xvdD1pbnB1dC1ncm91cF1dOnNoYWRvdy1ub25lIFsmX1tkYXRhLXNsb3Q9aW5wdXQtZ3JvdXBdXTpyaW5nLTAiCiAgICA+CiAgICAgIDxBdHRhY2htZW50UHJldmlld3MgLz4KICAgICAgPFByb21wdElucHV0VGV4dGFyZWEgY2xhc3NOYW1lPSJtaW4taC0yMCB0ZXh0LXNtIG1kOm1pbi1oLTI0IiBvbktleURvd249eyhldmVudCkgPT4geyBpZiAoYnVzeSAmJiBldmVudC5rZXkgPT09ICJFbnRlciIgJiYgIWV2ZW50LnNoaWZ0S2V5KSBldmVudC5wcmV2ZW50RGVmYXVsdCgpOyB9fSBhdXRvRm9jdXMgcGxhY2Vob2xkZXI9e3BsYWNlaG9sZGVyID8/ICJBc2sgYSBmb2xsb3ctdXDigKYifSAvPgogICAgICA8UHJvbXB0SW5wdXRGb290ZXIgY2xhc3NOYW1lPSJncmlkIGdyaWQtY29scy1bbWlubWF4KDAsMWZyKV9hdXRvXSBpdGVtcy1jZW50ZXIgZ2FwLTMgcHQtMiI+CiAgICAgICAgPFByb21wdElucHV0VG9vbHMgY2xhc3NOYW1lPSJmbGV4LXdyYXAgZ2FwLTIgWyY+YnV0dG9uXTpzaHJpbmstMCI+CiAgICAgICAgICA8U25hcEJ1dHRvbiBiaWc9eyEhYmlnfSAvPgogICAgICAgICAge2FjdGlvbnN9CiAgICAgICAgPC9Qcm9tcHRJbnB1dFRvb2xzPgogICAgICAgIDxQcm9tcHRJbnB1dFRvb2xzIGNsYXNzTmFtZT0ibWwtYXV0byBzaHJpbmstMCBnYXAtMiI+CiAgICAgICAgICA8RGljdGF0ZUJ1dHRvbiBkaXNhYmxlZD17YnVzeX0gLz4KICAgICAgICA8UHJvbXB0SW5wdXRTdWJtaXQgY2xhc3NOYW1lPSJzaXplLTkgc2hyaW5rLTAgcm91bmRlZC1mdWxsIiB0aXRsZT17YnVzeSA/ICJTdG9wIHJlc3BvbnNlIiA6ICJTZW5kIG1lc3NhZ2UifSB7Li4uKHN0YXR1cyA/IHsgc3RhdHVzIH0gOiB7fSl9IHsuLi4ob25TdG9wID8geyBvblN0b3AgfSA6IHt9KX0gey4uLighYnVzeSA/IHsgY2hpbGRyZW46IDxBcnJvd1VwIGNsYXNzTmFtZT0ic2l6ZS00IiAvPiB9IDoge30pfSBkaXNhYmxlZD17YnVzeSAmJiAhb25TdG9wfSAvPgogICAgICAgIDwvUHJvbXB0SW5wdXRUb29scz4KICAgICAgPC9Qcm9tcHRJbnB1dEZvb3Rlcj4KICAgIDwvUHJvbXB0SW5wdXQ+CiAgICB7Y29udHJvbHN9CiAgICA8L2Rpdj4KICAgIDwvVG9vbHRpcFByb3ZpZGVyPgogICk7Cn0K
+import { ArrowUp, Camera, FileText, X } from "lucide-react";
+import type { ChatStatus } from "ai";
+import type { ReactNode } from "react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { DictateButton } from "@/components/dictate-button";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import {
+  PromptInput,
+  PromptInputButton,
+  PromptInputFooter,
+  PromptInputSubmit,
+  PromptInputTextarea,
+  PromptInputTools,
+  usePromptInputAttachments,
+  type PromptInputMessage,
+} from "@/components/ai-elements/prompt-input";
+
+function AttachmentPreviews() {
+  const { files, remove } = usePromptInputAttachments();
+  if (!files.length) return null;
+  return (
+    <div className="flex w-full flex-wrap gap-2 px-3 pt-3">
+      {files.map((f) => (
+        <div key={f.id} className="relative">
+          {!f.mediaType.startsWith('image/') ? (
+            <div className="flex h-20 w-32 flex-col items-center justify-center gap-1 rounded-lg border bg-muted px-2 text-center text-xs">
+              <FileText className="size-5 text-primary" />
+              <span className="line-clamp-2 break-all">{f.filename ?? "PDF"}</span>
+            </div>
+          ) : (
+            <img src={f.url} alt={f.filename ?? "Snapped question"} className="h-20 w-20 rounded-lg border object-cover" />
+          )}
+          <Button
+            type="button"
+            size="icon"
+            variant="secondary"
+            onClick={() => remove(f.id)}
+            aria-label="Remove file"
+            className="absolute -right-2 -top-2 size-6 rounded-full shadow-sm"
+          >
+            <X className="size-3" />
+          </Button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SnapButton({ big }: { big?: boolean }) {
+  const { openFileDialog } = usePromptInputAttachments();
+  return (
+    <PromptInputButton onClick={openFileDialog} variant="outline" className="h-9 shrink-0 gap-2 rounded-full px-3" tooltip="Upload photo, PDF or PowerPoint (.pptx)">
+      <Camera className="size-4" />
+      <span>{big ? "Snap / upload" : "Photo / PDF"}</span>
+    </PromptInputButton>
+  );
+}
+
+export function SnapComposer({
+  onSubmit,
+  status,
+  onStop,
+  placeholder,
+  big,
+  controls,
+  actions,
+}: {
+  onSubmit: (m: PromptInputMessage) => void | Promise<void>;
+  status?: ChatStatus;
+  onStop?: () => void;
+  placeholder?: string;
+  big?: boolean;
+  controls?: ReactNode;
+  actions?: ReactNode;
+}) {
+  const busy = status === "submitted" || status === "streaming";
+  return (
+    <TooltipProvider>
+    <div className="overflow-hidden rounded-2xl border border-input bg-card shadow-lg shadow-background/40 transition-[border-color,box-shadow] focus-within:border-primary/50 focus-within:ring-4 focus-within:ring-primary/10" aria-label="Chat composer">
+    <PromptInput
+      onSubmit={async (m) => {
+        if (!m.text.trim() && m.files.length === 0) return;
+        try { await onSubmit(m); } catch (error) { toast.error(error instanceof Error ? error.message : 'Could not read attachment.'); throw error; }
+      }}
+      accept="image/*,application/pdf,.pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      multiple
+      maxFiles={4}
+      maxFileSize={15 * 1024 * 1024}
+      onError={(e) => toast.error(e.code === "max_file_size" ? "File too big — keep it under 15 MB." : e.message)}
+      globalDrop
+      className="bg-card [&_[data-slot=input-group]]:rounded-none [&_[data-slot=input-group]]:border-0 [&_[data-slot=input-group]]:bg-card [&_[data-slot=input-group]]:shadow-none [&_[data-slot=input-group]]:ring-0"
+    >
+      <AttachmentPreviews />
+      <PromptInputTextarea className="min-h-20 text-sm md:min-h-24" onKeyDown={(event) => { if (busy && event.key === "Enter" && !event.shiftKey) event.preventDefault(); }} autoFocus placeholder={placeholder ?? "Ask a follow-up…"} />
+      <PromptInputFooter className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 pt-2">
+        <PromptInputTools className="flex-wrap gap-2 [&>button]:shrink-0">
+          <SnapButton big={!!big} />
+          {actions}
+        </PromptInputTools>
+        <PromptInputTools className="ml-auto shrink-0 gap-2">
+          <DictateButton disabled={busy} />
+        <PromptInputSubmit className="size-9 shrink-0 rounded-full" title={busy ? "Stop response" : "Send message"} {...(status ? { status } : {})} {...(onStop ? { onStop } : {})} {...(!busy ? { children: <ArrowUp className="size-4" /> } : {})} disabled={busy && !onStop} />
+        </PromptInputTools>
+      </PromptInputFooter>
+    </PromptInput>
+    {controls}
+    </div>
+    </TooltipProvider>
+  );
+}

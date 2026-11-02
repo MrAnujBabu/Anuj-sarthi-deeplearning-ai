@@ -1,1 +1,21 @@
-IyBSb3V0ZXMKClRhblN0YWNrIFN0YXJ0IHVzZXMgKipmaWxlLWJhc2VkIHJvdXRpbmcqKi4gRXZlcnkgYC50c3hgIGZpbGUgaW4gdGhpcyBkaXJlY3RvcnkKZGVmaW5lcyBhIHJvdXRlLiBEbyAqKm5vdCoqIGNyZWF0ZSBgc3JjL3BhZ2VzL2AsIGBzcmMvcm91dGVzL19hcHAvaW5kZXgudHN4YCwgb3IKYGFwcC9sYXlvdXQudHN4YCDigJQgdGhvc2UgYXJlIE5leHQuanMgLyBSZW1peCBjb252ZW50aW9ucy4gVGhlIG9ubHkgcm9vdCBsYXlvdXQKaXMgYHNyYy9yb3V0ZXMvX19yb290LnRzeGAuCgojIyBDb252ZW50aW9ucwoKfCBGaWxlIHwgVVJMIHwKfCAtLS0gfCAtLS0gfAp8IGBpbmRleC50c3hgIHwgYC9gIHwKfCBgYWJvdXQudHN4YCB8IGAvYWJvdXRgIHwKfCBgdXNlcnMvaW5kZXgudHN4YCB8IGAvdXNlcnNgIHwKfCBgdXNlcnMvJGlkLnRzeGAgfCBgL3VzZXJzLzppZGAgKGR5bmFtaWMg4oCUIGJhcmUgYCRgLCBubyBjdXJseSBicmFjZXMpIHwKfCBgcG9zdHMvey0kY2F0ZWdvcnl9LnRzeGAgfCBgL3Bvc3RzLzpjYXRlZ29yeT9gIChvcHRpb25hbCBzZWdtZW50KSB8CnwgYGZpbGVzLyQudHN4YCB8IGAvZmlsZXMvKmAgKHNwbGF0IOKAlCByZWFkIHZpYSBgX3NwbGF0YCBwYXJhbSwgbmV2ZXIgYCpgKSB8CnwgYF9sYXlvdXQudHN4YCB8IGxheW91dCByb3V0ZSAocmVuZGVycyBjaGlsZHJlbiB2aWEgYDxPdXRsZXQgLz5gKSB8CnwgYF9fcm9vdC50c3hgIHwgYXBwIHNoZWxsIOKAlCB3cmFwcyBldmVyeSBwYWdlOyBwcmVzZXJ2ZSBgPE91dGxldCAvPmAgfAoKYHJvdXRlVHJlZS5nZW4udHNgIGlzIGF1dG8tZ2VuZXJhdGVkLiBEb24ndCBlZGl0IGl0IGJ5IGhhbmQuCg==
+# Routes
+
+TanStack Start uses **file-based routing**. Every `.tsx` file in this directory
+defines a route. Do **not** create `src/pages/`, `src/routes/_app/index.tsx`, or
+`app/layout.tsx` — those are Next.js / Remix conventions. The only root layout
+is `src/routes/__root.tsx`.
+
+## Conventions
+
+| File | URL |
+| --- | --- |
+| `index.tsx` | `/` |
+| `about.tsx` | `/about` |
+| `users/index.tsx` | `/users` |
+| `users/$id.tsx` | `/users/:id` (dynamic — bare `$`, no curly braces) |
+| `posts/{-$category}.tsx` | `/posts/:category?` (optional segment) |
+| `files/$.tsx` | `/files/*` (splat — read via `_splat` param, never `*`) |
+| `_layout.tsx` | layout route (renders children via `<Outlet />`) |
+| `__root.tsx` | app shell — wraps every page; preserve `<Outlet />` |
+
+`routeTree.gen.ts` is auto-generated. Don't edit it by hand.

@@ -1,1 +1,89 @@
-LyoqCiAqIE5DRVJUIERlZXAgU2NhbiDigJQgY2xpZW50LXNhZmUgcHVyZSBsb2dpYy4KICogVHVybnMgc2NyYXBlZCBjaGFwdGVyIG1hcmtkb3duIGludG8gdG9waWMtd2lzZSBzbmlwcGV0cywgcmV2aXNpb24gY2FyZHMgYW5kIGEKICogY2hhcHRlci1zdHJ1Y3R1cmUgcXVpeiBxdWV1ZS4gTm8gbmV0d29yayBvciBzdG9yYWdlIGhlcmU7IHNlZSBuY2VydC1zY2FuLnNlcnZlci50cy4KICovCmltcG9ydCB7IGNhcmRJZCwgdHlwZSBDYXJkIH0gZnJvbSAiLi9zcnMiOwoKZXhwb3J0IHR5cGUgTmNlcnRTbmlwcGV0ID0gewogIHRvcGljOiBzdHJpbmc7CiAgdGV4dDogc3RyaW5nOwogIHNvdXJjZVVybD86IHN0cmluZyB8IHVuZGVmaW5lZDsKICB2ZXJpZmllZD86IGJvb2xlYW4gfCB1bmRlZmluZWQ7Cn07Cgpjb25zdCBNSU5fU05JUFBFVCA9IDgwOwpjb25zdCBNQVhfU05JUFBFVCA9IDYwMDsKZXhwb3J0IGNvbnN0IE1BWF9TTklQUEVUU19QRVJfQ0hBUFRFUiA9IDEyOwoKY29uc3Qgbm9ybWFsaXplID0gKHM6IHN0cmluZykgPT4gcy50b0xvd2VyQ2FzZSgpLnJlcGxhY2UoL1teYS16MC05XHUwOTAwLVx1MDk3Rl0rL2csICIgIikudHJpbSgpOwoKLyoqIFNwbGl0IHNjcmFwZWQgY2hhcHRlciBtYXJrZG93biBpbnRvIHRvcGljIHNlY3Rpb25zIGtleWVkIGJ5IHRoZWlyIGhlYWRpbmdzLiAqLwpleHBvcnQgZnVuY3Rpb24gZXh0cmFjdFNuaXBwZXRzKG1hcmtkb3duOiBzdHJpbmcpOiBOY2VydFNuaXBwZXRbXSB7CiAgY29uc3Qgb3V0OiBOY2VydFNuaXBwZXRbXSA9IFtdOwogIC8vIFNwbGl0IG9uIG1hcmtkb3duIGhlYWRpbmdzOyBrZWVwIHRoZSBoZWFkaW5nIGFzIHRoZSB0b3BpYy4KICBjb25zdCBwYXJ0cyA9IG1hcmtkb3duLnNwbGl0KC9eKCN7MSwzfSlccysoLispJC9tKTsKICAvLyBwYXJ0czogW3ByZSwgaGFzaGVzLCB0aXRsZSwgYm9keSwgaGFzaGVzLCB0aXRsZSwgYm9keSwgLi4uXQogIGZvciAobGV0IGkgPSAxOyBpICsgMiA8PSBwYXJ0cy5sZW5ndGg7IGkgKz0gMykgewogICAgY29uc3QgdG9waWMgPSAocGFydHNbaSArIDFdID8/ICIiKQogICAgICAucmVwbGFjZSgvXFsoW15cXV0qKVxdXChbXildKlwpL2csICIkMSIpIC8vIFt0ZXh0XSh1cmwpIOKGkiB0ZXh0CiAgICAgIC5yZXBsYWNlKC9bKl9gI1xcXS9nLCAiIikKICAgICAgLnRyaW0oKQogICAgICAuc2xpY2UoMCwgODApOwogICAgY29uc3QgYm9keSA9IChwYXJ0c1tpICsgMl0gPz8gIiIpCiAgICAgIC5yZXBsYWNlKC8hXFtbXlxdXSpcXVwoW14pXSpcKS9nLCAiIikgLy8gaW1hZ2VzCiAgICAgIC5yZXBsYWNlKC9cW1teXF1dKlxdXChbXildKlwpL2csICIiKSAvLyBsaW5rcwogICAgICAucmVwbGFjZSgvXHwvZywgIiAiKSAvLyB0YWJsZXMKICAgICAgLnJlcGxhY2UoL1xzKy9nLCAiICIpCiAgICAgIC50cmltKCk7CiAgICBpZiAoIXRvcGljIHx8IGJvZHkubGVuZ3RoIDwgTUlOX1NOSVBQRVQpIGNvbnRpbnVlOwogICAgb3V0LnB1c2goeyB0b3BpYywgdGV4dDogYm9keS5zbGljZSgwLCBNQVhfU05JUFBFVCkgfSk7CiAgICBpZiAob3V0Lmxlbmd0aCA+PSBNQVhfU05JUFBFVFNfUEVSX0NIQVBURVIpIGJyZWFrOwogIH0KICByZXR1cm4gZGVkdXBlU25pcHBldHMob3V0KTsKfQoKLyoqIERyb3AgbmVhci1kdXBsaWNhdGUgc25pcHBldHMgKHNhbWUgbm9ybWFsaXplZCBzdGFydCksIGtlZXBpbmcgdGhlIGZpcnN0LiAqLwpleHBvcnQgZnVuY3Rpb24gZGVkdXBlU25pcHBldHMoc25pcHBldHM6IE5jZXJ0U25pcHBldFtdKTogTmNlcnRTbmlwcGV0W10gewogIGNvbnN0IHNlZW4gPSBuZXcgU2V0PHN0cmluZz4oKTsKICByZXR1cm4gc25pcHBldHMuZmlsdGVyKChzKSA9PiB7CiAgICBjb25zdCBrZXkgPSBub3JtYWxpemUocy50ZXh0KS5zbGljZSgwLCAxMjApOwogICAgaWYgKCFrZXkgfHwgc2Vlbi5oYXMoa2V5KSkgcmV0dXJuIGZhbHNlOwogICAgc2Vlbi5hZGQoa2V5KTsKICAgIHJldHVybiB0cnVlOwogIH0pOwp9CgovKiogQSBzbmlwcGV0IGJlY29tZXMgYSBmbGlwIGNhcmQ6IGZyb250IGFza3MgZm9yIHRoZSBOQ0VSVCBsaW5lIG9uIHRoZSB0b3BpYywgYmFjayBpcyB0aGUgbGluZS4gKi8KZXhwb3J0IGZ1bmN0aW9uIHNuaXBwZXRUb0NhcmQoczogTmNlcnRTbmlwcGV0LCBjaGFwdGVyOiBzdHJpbmcpOiBDYXJkIHsKICBjb25zdCBxID0gYE5DRVJUIGxpbmUg4oCUICR7cy50b3BpY30/XG4oJHtjaGFwdGVyfSlgOwogIHJldHVybiB7CiAgICBpZDogY2FyZElkKHEpLAogICAgcSwKICAgIGE6IHMudGV4dCwKICAgIHRvcGljOiBzLnZlcmlmaWVkID09PSBmYWxzZSA/IGAke3MudG9waWN9IMK3IHZlcmlmeSBwZW5kaW5nYCA6IHMudG9waWMsCiAgICBib3g6IDEsCiAgICBkdWU6IDAsCiAgICByZXZpZXdzOiAwLAogICAgbGFzdENvcnJlY3Q6IGZhbHNlLAogIH07Cn0KCi8qKiBDaGFwdGVyLXdpc2UgcXVpeiBvcmRlcjogdG9waWNzIGluIHRoZSBvcmRlciB0aGV5IGFwcGVhciBpbiB0aGUgY2hhcHRlci4gKi8KZXhwb3J0IGZ1bmN0aW9uIHN0cnVjdHVyZVF1aXpRdWV1ZShzbmlwcGV0czogTmNlcnRTbmlwcGV0W10pOiBzdHJpbmdbXSB7CiAgY29uc3Qgc2VlbiA9IG5ldyBTZXQ8c3RyaW5nPigpOwogIGNvbnN0IG9yZGVyOiBzdHJpbmdbXSA9IFtdOwogIGZvciAoY29uc3QgcyBvZiBzbmlwcGV0cykgewogICAgY29uc3QgdCA9IHMudG9waWMudHJpbSgpOwogICAgaWYgKHQgJiYgIXNlZW4uaGFzKHQudG9Mb3dlckNhc2UoKSkpIHsKICAgICAgc2Vlbi5hZGQodC50b0xvd2VyQ2FzZSgpKTsKICAgICAgb3JkZXIucHVzaCh0KTsKICAgIH0KICB9CiAgcmV0dXJuIG9yZGVyOwp9CgovKiogUHJvbXB0IHNlbnQgdG8gdGhlIHR1dG9yIGZvciBhIHN0cnVjdHVyZS1iYXNlZCBxdWl6IG92ZXIgb25lIHRvcGljLiAqLwpleHBvcnQgZnVuY3Rpb24gdG9waWNRdWl6UHJvbXB0KGNoYXB0ZXI6IHN0cmluZywgdG9waWM6IHN0cmluZywgc25pcHBldDogc3RyaW5nKSB7CiAgcmV0dXJuIGBRdWl6IG1vZGUgT04g4oCUIGNoYXB0ZXItd2lzZSBxdWl6LiBDaGFwdGVyOiAke2NoYXB0ZXJ9LiBBYiBzaXJmIGlzIHRvcGljIHBhciBlayBORUVUIE1DUSBwb29jaGhvOiAiJHt0b3BpY30iLiBCYXNlIGl0IG9uIHRoaXMgTkNFUlQgZXhjZXJwdDpcblxuJHtzbmlwcGV0fVxuXG5RdWVzdGlvbiBrZSBzYWF0aCBxdWl6IHRhZyBtZWluIG9wdGlvbnMgZG87IGFuc3dlciBrZXkgTkNFUlQgbGluZSBzZSBoaSBob25pIGNoYWhpeWUuYDsKfQo=
+/**
+ * NCERT Deep Scan — client-safe pure logic.
+ * Turns scraped chapter markdown into topic-wise snippets, revision cards and a
+ * chapter-structure quiz queue. No network or storage here; see ncert-scan.server.ts.
+ */
+import { cardId, type Card } from "./srs";
+
+export type NcertSnippet = {
+  topic: string;
+  text: string;
+  sourceUrl?: string | undefined;
+  verified?: boolean | undefined;
+};
+
+const MIN_SNIPPET = 80;
+const MAX_SNIPPET = 600;
+export const MAX_SNIPPETS_PER_CHAPTER = 12;
+
+const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9\u0900-\u097F]+/g, " ").trim();
+
+/** Split scraped chapter markdown into topic sections keyed by their headings. */
+export function extractSnippets(markdown: string): NcertSnippet[] {
+  const out: NcertSnippet[] = [];
+  // Split on markdown headings; keep the heading as the topic.
+  const parts = markdown.split(/^(#{1,3})\s+(.+)$/m);
+  // parts: [pre, hashes, title, body, hashes, title, body, ...]
+  for (let i = 1; i + 2 <= parts.length; i += 3) {
+    const topic = (parts[i + 1] ?? "")
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // [text](url) → text
+      .replace(/[*_`#\\]/g, "")
+      .trim()
+      .slice(0, 80);
+    const body = (parts[i + 2] ?? "")
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, "") // images
+      .replace(/\[[^\]]*\]\([^)]*\)/g, "") // links
+      .replace(/\|/g, " ") // tables
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!topic || body.length < MIN_SNIPPET) continue;
+    out.push({ topic, text: body.slice(0, MAX_SNIPPET) });
+    if (out.length >= MAX_SNIPPETS_PER_CHAPTER) break;
+  }
+  return dedupeSnippets(out);
+}
+
+/** Drop near-duplicate snippets (same normalized start), keeping the first. */
+export function dedupeSnippets(snippets: NcertSnippet[]): NcertSnippet[] {
+  const seen = new Set<string>();
+  return snippets.filter((s) => {
+    const key = normalize(s.text).slice(0, 120);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+/** A snippet becomes a flip card: front asks for the NCERT line on the topic, back is the line. */
+export function snippetToCard(s: NcertSnippet, chapter: string): Card {
+  const q = `NCERT line — ${s.topic}?\n(${chapter})`;
+  return {
+    id: cardId(q),
+    q,
+    a: s.text,
+    topic: s.verified === false ? `${s.topic} · verify pending` : s.topic,
+    box: 1,
+    due: 0,
+    reviews: 0,
+    lastCorrect: false,
+  };
+}
+
+/** Chapter-wise quiz order: topics in the order they appear in the chapter. */
+export function structureQuizQueue(snippets: NcertSnippet[]): string[] {
+  const seen = new Set<string>();
+  const order: string[] = [];
+  for (const s of snippets) {
+    const t = s.topic.trim();
+    if (t && !seen.has(t.toLowerCase())) {
+      seen.add(t.toLowerCase());
+      order.push(t);
+    }
+  }
+  return order;
+}
+
+/** Prompt sent to the tutor for a structure-based quiz over one topic. */
+export function topicQuizPrompt(chapter: string, topic: string, snippet: string) {
+  return `Quiz mode ON — chapter-wise quiz. Chapter: ${chapter}. Ab sirf is topic par ek NEET MCQ poochho: "${topic}". Base it on this NCERT excerpt:\n\n${snippet}\n\nQuestion ke saath quiz tag mein options do; answer key NCERT line se hi honi chahiye.`;
+}

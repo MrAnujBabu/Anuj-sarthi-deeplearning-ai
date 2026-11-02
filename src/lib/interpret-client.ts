@@ -1,1 +1,181 @@
-Ly8gQnJvd3NlciBvcmNoZXN0cmF0b3IgZm9yIHRoZSBleHBlcnQgaW50ZXJwcmV0ZXI6IGxpbmsgLyB0cmFuc2NyaXB0IC8gZGV2aWNlIGZpbGUg4oaSIHN0cmVhbWVkIHNpbXBsZSBIaW5kaS4KLy8gU2VydmVyIHdvcmsgc3RyZWFtcyBhcyBOREpTT047IG1lZGlhIHdpdGhvdXQgY2FwdGlvbnMgaXMgaGVhcmQgcGllY2UgYnkgcGllY2UgKGJyb3dzZXItZXh0cmFjdGVkIGF1ZGlvKS4KaW1wb3J0IHsgcmVhZEludGVycHJldFN0cmVhbSwgSW50ZXJwcmV0U3RyZWFtRXJyb3IsIHR5cGUgSW50ZXJwcmV0QnJpZWYsIHR5cGUgSW50ZXJwcmV0RXZlbnQsIHR5cGUgSW50ZXJwcmV0UmVzdWx0LCB0eXBlIFNvdXJjZU9yaWdpbiwgdHlwZSBTdGFnZSB9IGZyb20gJy4vaW50ZXJwcmV0LXByb3RvY29sJzsKaW1wb3J0IHsgZ3JvdXBDdWVzLCB0eXBlIEN1ZSwgdHlwZSBMaXN0ZW5SZXN1bHQgfSBmcm9tICcuL3RyYW5zY3JpcHQtY3Vlcyc7CmltcG9ydCB0eXBlIHsgSW50ZXJwcmV0ZXJJZCB9IGZyb20gJy4vaW50ZXJwcmV0ZXItbW9kZWxzJzsKaW1wb3J0IHR5cGUgeyBEdWJTZWdtZW50LCBUaW1lZFNlZ21lbnQgfSBmcm9tICcuL3lvdXR1YmUtaGluZGknOwppbXBvcnQgeyBBVVRPX0NPTlRJTlVFX0RFTEFZU19NUywgaXNUcmFuc2llbnRGYWlsdXJlLCB0eXBlIENoZWNrcG9pbnQsIHR5cGUgSGVhcmRNZWRpYSB9IGZyb20gJy4vaW50ZXJwcmV0LWNoZWNrcG9pbnQnOwoKZXhwb3J0IHR5cGUgUnVuSW5wdXQgPQogIHwgeyBraW5kOiAnbGluayc7IHVybDogc3RyaW5nOyBkZWVwTGlzdGVuOiBib29sZWFuIH0KICB8IHsga2luZDogJ3RleHQnOyB0cmFuc2NyaXB0OiBzdHJpbmc7IHVybD86IHN0cmluZyB9CiAgfCB7IGtpbmQ6ICdmaWxlJzsgZmlsZTogRmlsZSB9OwoKZXhwb3J0IHR5cGUgUnVuU3RhdGUgPSB7CiAgc3RhZ2U6IFN0YWdlIHwgJ2lkbGUnOyBtZXNzYWdlOiBzdHJpbmc7IGxpc3RlbmluZzogYm9vbGVhbjsKICB0aXRsZTogc3RyaW5nOyBsYW5ndWFnZTogc3RyaW5nOyBvcmlnaW4/OiBTb3VyY2VPcmlnaW47IGR1cmF0aW9uOiBudW1iZXI7IHRydW5jYXRlZDogYm9vbGVhbjsKICB2aWRlb0lkOiBzdHJpbmcgfCBudWxsOyBtZWRpYVVybD86IHN0cmluZzsgcGFnZVVybD86IHN0cmluZzsKICBsaXN0ZW4/OiB7IHJlYWNoZWQ6IG51bWJlcjsgdG90YWw/OiBudW1iZXIgfTsKICBicmllZj86IEludGVycHJldEJyaWVmIHwgbnVsbDsgYnJpZWZNb2RlbD86IHN0cmluZzsKICB0aW1lbGluZTogVGltZWRTZWdtZW50W107IGhpbmRpOiBzdHJpbmdbXTsgZG9uZTogbnVtYmVyOyB0b3RhbDogbnVtYmVyOwogIHF1YWxpdHk/OiB7IHJldmlld2VkOiBudW1iZXI7IGNvcnJlY3RlZDogbnVtYmVyIH07CiAgc291cmNlS2V5Pzogc3RyaW5nIHwgdW5kZWZpbmVkOwp9OwoKZXhwb3J0IGNvbnN0IElETEVfU1RBVEU6IFJ1blN0YXRlID0geyBzdGFnZTogJ2lkbGUnLCBtZXNzYWdlOiAnJywgbGlzdGVuaW5nOiBmYWxzZSwgdGl0bGU6ICcnLCBsYW5ndWFnZTogJycsIGR1cmF0aW9uOiAwLCB0cnVuY2F0ZWQ6IGZhbHNlLCB2aWRlb0lkOiBudWxsLCB0aW1lbGluZTogW10sIGhpbmRpOiBbXSwgZG9uZTogMCwgdG90YWw6IDAgfTsKCi8qKiBQdXJlIHJlZHVjZXIgc28gc3RyZWFtZWQgZXZlbnRzIGNhbiBiZSB1bml0LXRlc3RlZCBhbmQgcmVwbGF5ZWQuICovCmV4cG9ydCBmdW5jdGlvbiByZWR1Y2VFdmVudChzdGF0ZTogUnVuU3RhdGUsIGV2ZW50OiBJbnRlcnByZXRFdmVudCk6IFJ1blN0YXRlIHsKICBzd2l0Y2ggKGV2ZW50LnR5cGUpIHsKICAgIGNhc2UgJ3N0YWdlJzogcmV0dXJuIHsgLi4uc3RhdGUsIHN0YWdlOiBldmVudC5zdGFnZSwgbWVzc2FnZTogZXZlbnQubWVzc2FnZSwgbGlzdGVuaW5nOiBzdGF0ZS5saXN0ZW5pbmcgfHwgZXZlbnQuc3RhZ2UgPT09ICdsaXN0ZW4nIH07CiAgICBjYXNlICdsaXN0ZW4nOiByZXR1cm4geyAuLi5zdGF0ZSwgbGlzdGVuOiB7IHJlYWNoZWQ6IGV2ZW50LnJlYWNoZWQsIC4uLihldmVudC50b3RhbCA/IHsgdG90YWw6IGV2ZW50LnRvdGFsIH0gOiB7fSkgfSB9OwogICAgY2FzZSAnc291cmNlJzogewogICAgICBjb25zdCB0aW1lbGluZSA9IGV2ZW50LnRpbWVsaW5lID8/IFtdOwogICAgICByZXR1cm4geyAuLi5zdGF0ZSwgdGl0bGU6IGV2ZW50LnRpdGxlIHx8IHN0YXRlLnRpdGxlLCBsYW5ndWFnZTogZXZlbnQubGFuZ3VhZ2UsIG9yaWdpbjogZXZlbnQub3JpZ2luLCBkdXJhdGlvbjogZXZlbnQuZHVyYXRpb24sIHRydW5jYXRlZDogZXZlbnQudHJ1bmNhdGVkLAogICAgICAgIHZpZGVvSWQ6IGV2ZW50LnZpZGVvSWQgPz8gc3RhdGUudmlkZW9JZCwgc291cmNlS2V5OiBldmVudC5zb3VyY2VLZXksIHRpbWVsaW5lLCBoaW5kaTogdGltZWxpbmUubWFwKCgpID0+ICcnKSwgdG90YWw6IGV2ZW50LnNlZ21lbnRzLCBkb25lOiAwIH07CiAgICB9CiAgICBjYXNlICdicmllZic6IHJldHVybiB7IC4uLnN0YXRlLCBicmllZjogZXZlbnQuYnJpZWYsIC4uLihldmVudC5tb2RlbCA/IHsgYnJpZWZNb2RlbDogZXZlbnQubW9kZWwgfSA6IHt9KSB9OwogICAgY2FzZSAnc2VnbWVudCc6IHsKICAgICAgaWYgKGV2ZW50LmluZGV4IDwgMCB8fCBldmVudC5pbmRleCA+PSBzdGF0ZS5oaW5kaS5sZW5ndGgpIHJldHVybiBzdGF0ZTsKICAgICAgY29uc3QgaGluZGkgPSBzdGF0ZS5oaW5kaS5zbGljZSgpOyBoaW5kaVtldmVudC5pbmRleF0gPSBldmVudC5oaW5kaTsKICAgICAgcmV0dXJuIHsgLi4uc3RhdGUsIGhpbmRpIH07CiAgICB9CiAgICBjYXNlICdwcm9ncmVzcyc6IHJldHVybiB7IC4uLnN0YXRlLCBkb25lOiBldmVudC5kb25lLCB0b3RhbDogZXZlbnQudG90YWwgfTsKICAgIGNhc2UgJ3F1YWxpdHknOiByZXR1cm4geyAuLi5zdGF0ZSwgcXVhbGl0eTogeyByZXZpZXdlZDogZXZlbnQucmV2aWV3ZWQsIGNvcnJlY3RlZDogZXZlbnQuY29ycmVjdGVkIH0gfTsKICAgIGNhc2UgJ21lZGlhJzogcmV0dXJuIHsgLi4uc3RhdGUsIG1lZGlhVXJsOiBldmVudC5tZWRpYVVybCwgcGFnZVVybDogZXZlbnQucGFnZVVybCwgdGl0bGU6IGV2ZW50LnRpdGxlIHx8IHN0YXRlLnRpdGxlIH07CiAgICBkZWZhdWx0OiByZXR1cm4gc3RhdGU7CiAgfQp9CgovKiogVGltZWQgSGluZGkgc28gZmFyLCBmb3IgbGl2ZSBwbGF5YmFjayB3aGlsZSB0aGUgaW50ZXJwcmV0YXRpb24gY29udGludWVzLiAqLwpleHBvcnQgZnVuY3Rpb24gbGl2ZUR1YihzdGF0ZTogUnVuU3RhdGUpOiBEdWJTZWdtZW50W10gewogIHJldHVybiBzdGF0ZS50aW1lbGluZS5tYXAoKHMsIGkpID0+ICh7IHN0YXJ0OiBzLnN0YXJ0LCBlbmQ6IHMuZW5kLCBoaW5kaTogc3RhdGUuaGluZGlbaV0gPz8gJycgfSkpOwp9Cgpjb25zdCBMSVNURU5fUEFSQUxMRUwgPSAzOwpjb25zdCB3YWl0ID0gKG1zOiBudW1iZXIsIHNpZ25hbDogQWJvcnRTaWduYWwpID0+IG5ldyBQcm9taXNlPHZvaWQ+KChyZXNvbHZlLCByZWplY3QpID0+IHsKICBjb25zdCB0ID0gc2V0VGltZW91dChyZXNvbHZlLCBtcyk7CiAgc2lnbmFsLmFkZEV2ZW50TGlzdGVuZXIoJ2Fib3J0JywgKCkgPT4geyBjbGVhclRpbWVvdXQodCk7IHJlamVjdChzaWduYWwucmVhc29uID8/IG5ldyBET01FeGNlcHRpb24oJ0Fib3J0ZWQnLCAnQWJvcnRFcnJvcicpKTsgfSwgeyBvbmNlOiB0cnVlIH0pOwp9KTsKCmFzeW5jIGZ1bmN0aW9uIGxpc3RlblBpZWNlKHdhdjogQmxvYiwgb2Zmc2V0OiBudW1iZXIsIHNpZ25hbDogQWJvcnRTaWduYWwpOiBQcm9taXNlPExpc3RlblJlc3VsdD4gewogIGZvciAobGV0IGF0dGVtcHQgPSAwOyA7IGF0dGVtcHQrKykgewogICAgY29uc3QgZm9ybSA9IG5ldyBGb3JtRGF0YSgpOwogICAgZm9ybS5hcHBlbmQoJ2ZpbGUnLCBuZXcgRmlsZShbd2F2XSwgYHBpZWNlLSR7TWF0aC5yb3VuZChvZmZzZXQpfS53YXZgLCB7IHR5cGU6ICdhdWRpby93YXYnIH0pKTsKICAgIGZvcm0uYXBwZW5kKCdvZmZzZXQnLCBTdHJpbmcob2Zmc2V0KSk7CiAgICBsZXQgcmVzOiBSZXNwb25zZTsKICAgIHRyeSB7IHJlcyA9IGF3YWl0IGZldGNoKCcvYXBpL21lZGlhLWxpc3RlbicsIHsgbWV0aG9kOiAnUE9TVCcsIGJvZHk6IGZvcm0sIHNpZ25hbCB9KTsgfQogICAgY2F0Y2ggKGVycm9yKSB7IGlmIChzaWduYWwuYWJvcnRlZCB8fCBhdHRlbXB0ID49IDIpIHRocm93IGVycm9yOyBhd2FpdCB3YWl0KDE1MDAgKiAoYXR0ZW1wdCArIDEpLCBzaWduYWwpOyBjb250aW51ZTsgfQogICAgaWYgKHJlcy5vaykgcmV0dXJuIGF3YWl0IHJlcy5qc29uKCkgYXMgTGlzdGVuUmVzdWx0OwogICAgY29uc3QgYm9keSA9IGF3YWl0IHJlcy5qc29uKCkuY2F0Y2goKCkgPT4gKHt9KSkgYXMgeyBlcnJvcj86IHN0cmluZyB9OwogICAgaWYgKChyZXMuc3RhdHVzID09PSA0MjkgfHwgcmVzLnN0YXR1cyA+PSA1MDApICYmIGF0dGVtcHQgPCAyKSB7IGF3YWl0IHdhaXQoMjAwMCAqIChhdHRlbXB0ICsgMSksIHNpZ25hbCk7IGNvbnRpbnVlOyB9CiAgICB0aHJvdyBuZXcgSW50ZXJwcmV0U3RyZWFtRXJyb3IoYm9keS5lcnJvciB8fCBg4KS44KWB4KSo4KSo4KS+IOCksOClgeCklSDgpJfgpK/gpL4gKCR7cmVzLnN0YXR1c30pLmAsIHJlcy5zdGF0dXMpOwogIH0KfQoKLyoqIEV4dHJhY3RzIHNwZWVjaCBvbiB0aGUgZGV2aWNlIGFuZCBsZXRzIHRoZSBsaXN0ZW5lciBoZWFyIHBpZWNlcyBpbiBwYXJhbGxlbDsgcmV0dXJucyAzMC1zZWNvbmQgdGltZWQgc2VnbWVudHMuICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBsaXN0ZW5Ub01lZGlhKG86IHsgZmlsZT86IEZpbGU7IHVybD86IHN0cmluZzsgc2lnbmFsOiBBYm9ydFNpZ25hbDsgb25Qcm9ncmVzcyhyZWFjaGVkOiBudW1iZXIsIHRvdGFsOiBudW1iZXIpOiB2b2lkIH0pIHsKICBjb25zdCB7IGV4dHJhY3RTcGVlY2hQaWVjZXMgfSA9IGF3YWl0IGltcG9ydCgnLi9tZWRpYS1hdWRpbycpOwogIGNvbnN0IGN1ZXM6IEN1ZVtdID0gW107IGxldCBsYW5ndWFnZSA9ICcnOwogIGNvbnN0IHF1ZXVlOiBQcm9taXNlPHZvaWQ+W10gPSBbXTsgbGV0IGFjdGl2ZSA9IDA7IGNvbnN0IHdhaXRpbmc6ICgoKSA9PiB2b2lkKVtdID0gW107CiAgbGV0IGhlYXJkU2Vjb25kcyA9IDAsIHRvdGFsID0gMCwgZmFpbHVyZTogdW5rbm93biA9IG51bGw7CiAgY29uc3QgY3RsID0gbmV3IEFib3J0Q29udHJvbGxlcigpOwogIGNvbnN0IHN0b3AgPSAoKSA9PiBjdGwuYWJvcnQoby5zaWduYWwucmVhc29uKTsKICBvLnNpZ25hbC5hZGRFdmVudExpc3RlbmVyKCdhYm9ydCcsIHN0b3AsIHsgb25jZTogdHJ1ZSB9KTsKICBjb25zdCBzbG90ID0gYXN5bmMgKCkgPT4geyB3aGlsZSAoYWN0aXZlID49IExJU1RFTl9QQVJBTExFTCkgYXdhaXQgbmV3IFByb21pc2U8dm9pZD4ociA9PiB3YWl0aW5nLnB1c2gocikpOyBhY3RpdmUrKzsgfTsKICBjb25zdCByZWxlYXNlID0gKCkgPT4geyBhY3RpdmUtLTsgd2FpdGluZy5zaGlmdCgpPy4oKTsgfTsKICB0cnkgewogICAgY29uc3QgaW5mbyA9IGF3YWl0IGV4dHJhY3RTcGVlY2hQaWVjZXMoewogICAgICAuLi4oby5maWxlID8geyBmaWxlOiBvLmZpbGUgfSA6IHt9KSwgLi4uKG8udXJsID8geyB1cmw6IG8udXJsIH0gOiB7fSksIHNpZ25hbDogY3RsLnNpZ25hbCwKICAgICAgb25Qcm9ncmVzczogKF9zZWNvbmRzLCB0KSA9PiB7IHRvdGFsID0gdDsgfSwKICAgICAgb25QaWVjZTogcGllY2UgPT4gewogICAgICAgIHF1ZXVlLnB1c2goKGFzeW5jICgpID0+IHsKICAgICAgICAgIGF3YWl0IHNsb3QoKTsKICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgIGlmIChmYWlsdXJlKSByZXR1cm47CiAgICAgICAgICAgIGNvbnN0IGhlYXJkID0gYXdhaXQgbGlzdGVuUGllY2UocGllY2Uud2F2LCBwaWVjZS5vZmZzZXQsIGN0bC5zaWduYWwpOwogICAgICAgICAgICBjdWVzLnB1c2goLi4uaGVhcmQuY3Vlcyk7IGxhbmd1YWdlIHx8PSBoZWFyZC5sYW5ndWFnZTsKICAgICAgICAgICAgaGVhcmRTZWNvbmRzICs9IHBpZWNlLmR1cmF0aW9uOyBvLm9uUHJvZ3Jlc3MoaGVhcmRTZWNvbmRzLCB0b3RhbCB8fCBoZWFyZFNlY29uZHMpOwogICAgICAgICAgfSBjYXRjaCAoZXJyb3IpIHsgZmFpbHVyZSA/Pz0gZXJyb3I7IGN0bC5hYm9ydCgpOyB9CiAgICAgICAgICBmaW5hbGx5IHsgcmVsZWFzZSgpOyB9CiAgICAgICAgfSkoKSk7CiAgICAgIH0sCiAgICB9KTsKICAgIGF3YWl0IFByb21pc2UuYWxsKHF1ZXVlKTsKICAgIGlmIChmYWlsdXJlKSB0aHJvdyBmYWlsdXJlOwogICAgby5zaWduYWwudGhyb3dJZkFib3J0ZWQoKTsKICAgIGNvbnN0IHNlZ21lbnRzID0gZ3JvdXBDdWVzKGN1ZXMuc29ydCgoYSwgYikgPT4gYS5zdGFydCAtIGIuc3RhcnQpLCAzMCk7CiAgICBpZiAoIXNlZ21lbnRzLmxlbmd0aCkgdGhyb3cgbmV3IEludGVycHJldFN0cmVhbUVycm9yKCfgpIfgpLggdmlkZW8g4KSu4KWH4KSCIOCkrOCli+CksuCkqOClhyDgpJXgpYAg4KSG4KS14KS+4KSc4KS8IOCkqOCkueClgOCkgiDgpK7gpL/gpLLgpYDgpaQnLCA0MjIpOwogICAgcmV0dXJuIHsgc2VnbWVudHMsIGxhbmd1YWdlLCB0cnVuY2F0ZWQ6IGluZm8udHJ1bmNhdGVkLCBkdXJhdGlvbjogaW5mby5kdXJhdGlvbiB9OwogIH0gY2F0Y2ggKGVycm9yKSB7CiAgICBpZiAoZmFpbHVyZSkgdGhyb3cgZmFpbHVyZTsKICAgIHRocm93IGVycm9yOwogIH0gZmluYWxseSB7IG8uc2lnbmFsLnJlbW92ZUV2ZW50TGlzdGVuZXIoJ2Fib3J0Jywgc3RvcCk7IH0KfQoKdHlwZSBSdW5PcHRpb25zID0gewogIGlucHV0OiBSdW5JbnB1dDsgZW5naW5lOiBJbnRlcnByZXRlcklkOyBxdWFsaXR5OiBib29sZWFuOyBzaWduYWw6IEFib3J0U2lnbmFsOyBvblN0YXRlKHN0YXRlOiBSdW5TdGF0ZSk6IHZvaWQ7CiAgLyoqIFNhdmVkIHByb2dyZXNzIGZyb20gYW4gZWFybGllciBydW4gb2YgdGhlIHNhbWUgc291cmNlOyBmaW5pc2hlZCBwYXJ0cyBhcmUgc2tpcHBlZC4gKi8KICBjaGVja3BvaW50PzogQ2hlY2twb2ludCB8IG51bGw7CiAgLyoqIENhbGxlZCB3aGVuZXZlciB0aGVyZSBpcyBuZXcgcHJvZ3Jlc3Mgd29ydGggc2F2aW5nIG9uIHRoZSBkZXZpY2UuICovCiAgb25DaGVja3BvaW50PyhjcDogT21pdDxDaGVja3BvaW50LCAna2V5JyB8ICdzYXZlZEF0Jz4pOiB2b2lkOwp9OwoKLyoqIFJ1bnMgdGhlIGZ1bGwgcGlwZWxpbmUgYW5kIHJldHVybnMgdGhlIGZpbmFsIHJlc3VsdDsgc3RhdGUgdXBkYXRlcyBzdHJlYW0gdGhyb3VnaCBvblN0YXRlLiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gcnVuSW50ZXJwcmV0YXRpb24obzogUnVuT3B0aW9ucyk6IFByb21pc2U8SW50ZXJwcmV0UmVzdWx0PiB7CiAgbGV0IHN0YXRlOiBSdW5TdGF0ZSA9IHsgLi4uSURMRV9TVEFURSB9OwogIGxldCBoZWFyZDogSGVhcmRNZWRpYSB8IHVuZGVmaW5lZCA9IG8uY2hlY2twb2ludD8uaGVhcmQ7CiAgLy8gTGluZXMgdG8gcmVzdW1lIGZyb206IHRoZSBkZXZpY2UgY2hlY2twb2ludCBmaXJzdCwgdGhlbiB3aGF0ZXZlciB0aGlzIHJ1biBmaW5pc2hlZCBiZWZvcmUgYSBkcm9wLgogIGxldCByZXN1bWVMaW5lczogc3RyaW5nW10gfCBudWxsID0gby5jaGVja3BvaW50Py5saW5lcy5zb21lKGwgPT4gbC50cmltKCkpID8gby5jaGVja3BvaW50LmxpbmVzIDogbnVsbDsKICBsZXQgcmVzdW1lU291cmNlS2V5ID0gby5jaGVja3BvaW50Py5zb3VyY2VLZXk7CiAgbGV0IHJlc3VtZUJyaWVmOiB7IGJyaWVmOiBJbnRlcnByZXRCcmllZiB8IG51bGw7IG1vZGVsPzogc3RyaW5nIH0gfCBudWxsID0gby5jaGVja3BvaW50Py5icmllZiA/IHsgYnJpZWY6IG8uY2hlY2twb2ludC5icmllZiwgLi4uKG8uY2hlY2twb2ludC5icmllZk1vZGVsID8geyBtb2RlbDogby5jaGVja3BvaW50LmJyaWVmTW9kZWwgfSA6IHt9KSB9IDogbnVsbDsKICBjb25zdCBzbmFwc2hvdCA9ICgpID0+IHsKICAgIG8ub25DaGVja3BvaW50Py4oeyB0aXRsZTogc3RhdGUudGl0bGUsIGxpbmVzOiBzdGF0ZS5oaW5kaSwgc3RhcnRzOiBzdGF0ZS50aW1lbGluZS5tYXAodCA9PiB0LnN0YXJ0KSwgYnJpZWY6IHN0YXRlLmJyaWVmID8/IG51bGwsCiAgICAgIC4uLihzdGF0ZS5zb3VyY2VLZXkgPyB7IHNvdXJjZUtleTogc3RhdGUuc291cmNlS2V5IH0gOiB7fSksCiAgICAgIC4uLihzdGF0ZS5icmllZk1vZGVsID8geyBicmllZk1vZGVsOiBzdGF0ZS5icmllZk1vZGVsIH0gOiB7fSksIC4uLihoZWFyZCA/IHsgaGVhcmQgfSA6IHt9KSB9KTsKICB9OwogIGNvbnN0IGFwcGx5ID0gKGV2ZW50OiBJbnRlcnByZXRFdmVudCkgPT4gewogICAgc3RhdGUgPSByZWR1Y2VFdmVudChzdGF0ZSwgZXZlbnQpOyBvLm9uU3RhdGUoc3RhdGUpOwogICAgaWYgKGV2ZW50LnR5cGUgPT09ICdzZWdtZW50JyB8fCBldmVudC50eXBlID09PSAnYnJpZWYnKSBzbmFwc2hvdCgpOwogIH07CiAgY29uc3QgcG9zdE9uY2UgPSBhc3luYyAoYm9keTogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pID0+IHsKICAgIGNvbnN0IHJlc3VtZSA9IHJlc3VtZUxpbmVzICYmIHJlc3VtZVNvdXJjZUtleSA/IHsgbGluZXM6IHJlc3VtZUxpbmVzLCBzb3VyY2VLZXk6IHJlc3VtZVNvdXJjZUtleSwgLi4uKHJlc3VtZUJyaWVmPy5icmllZiA/IHsgYnJpZWY6IHJlc3VtZUJyaWVmLmJyaWVmLCBicmllZk1vZGVsOiByZXN1bWVCcmllZi5tb2RlbCA/PyAnJyB9IDoge30pIH0gOiB1bmRlZmluZWQ7CiAgICBjb25zdCByZXMgPSBhd2FpdCBmZXRjaCgnL2FwaS95b3V0dWJlLWhpbmRpJywgeyBtZXRob2Q6ICdQT1NUJywgaGVhZGVyczogeyAnQ29udGVudC1UeXBlJzogJ2FwcGxpY2F0aW9uL2pzb24nIH0sIGJvZHk6IEpTT04uc3RyaW5naWZ5KHsgZW5naW5lOiBvLmVuZ2luZSwgcXVhbGl0eTogby5xdWFsaXR5LCAuLi5ib2R5LCAuLi4ocmVzdW1lID8geyByZXN1bWUgfSA6IHt9KSB9KSwgc2lnbmFsOiBvLnNpZ25hbCB9KTsKICAgIHJldHVybiByZWFkSW50ZXJwcmV0U3RyZWFtKHJlcywgYXBwbHksIG8uc2lnbmFsKTsKICB9OwogIC8qKiBOZXR3b3JrIGRyb3BzIGFuZCBidXN5IGVycm9ycyBjb250aW51ZSBhdXRvbWF0aWNhbGx5IChib3VuZGVkKSBmcm9tIHRoZSBsYXN0IGZpbmlzaGVkIHBhcnQuICovCiAgY29uc3QgcG9zdCA9IGFzeW5jIChib2R5OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPikgPT4gewogICAgZm9yIChsZXQgYXR0ZW1wdCA9IDA7IDsgYXR0ZW1wdCsrKSB7CiAgICAgIHRyeSB7IHJldHVybiBhd2FpdCBwb3N0T25jZShib2R5KTsgfQogICAgICBjYXRjaCAoZXJyb3IpIHsKICAgICAgICBpZiAoby5zaWduYWwuYWJvcnRlZCB8fCAhaXNUcmFuc2llbnRGYWlsdXJlKGVycm9yKSB8fCBhdHRlbXB0ID49IEFVVE9fQ09OVElOVUVfREVMQVlTX01TLmxlbmd0aCkgdGhyb3cgZXJyb3I7CiAgICAgICAgaWYgKHN0YXRlLmhpbmRpLnNvbWUobCA9PiBsLnRyaW0oKSkpIHJlc3VtZUxpbmVzID0gc3RhdGUuaGluZGkuc2xpY2UoKTsKICAgICAgICByZXN1bWVTb3VyY2VLZXkgPSBzdGF0ZS5zb3VyY2VLZXk7CiAgICAgICAgaWYgKHN0YXRlLmJyaWVmKSByZXN1bWVCcmllZiA9IHsgYnJpZWY6IHN0YXRlLmJyaWVmLCAuLi4oc3RhdGUuYnJpZWZNb2RlbCA/IHsgbW9kZWw6IHN0YXRlLmJyaWVmTW9kZWwgfSA6IHt9KSB9OwogICAgICAgIGNvbnN0IGRlbGF5ID0gQVVUT19DT05USU5VRV9ERUxBWVNfTVNbYXR0ZW1wdF0gPz8gMzBfMDAwOwogICAgICAgIGFwcGx5KHsgdHlwZTogJ3N0YWdlJywgc3RhZ2U6IHN0YXRlLnN0YWdlID09PSAnaWRsZScgPyAnc291cmNlJyA6IHN0YXRlLnN0YWdlLCBtZXNzYWdlOiBgQ29ubmVjdGlvbi9BSSDgpLDgpYHgpJUg4KSX4KSv4KS+IOKAlCAke01hdGgucm91bmQoZGVsYXkgLyAxMDAwKX0g4KS44KWH4KSV4KSC4KShIOCkruClh+CkgiDgpJzgpLngpL7gpIEg4KSw4KWB4KSV4KS+IOCkteCkueClgOCkgiDgpLjgpYcg4KSr4KS/4KSwIOCktuClgeCksOClgiDgpJXgpLAg4KSw4KS54KS+IOCkueClguCkgSAoJHthdHRlbXB0ICsgMX0vJHtBVVRPX0NPTlRJTlVFX0RFTEFZU19NUy5sZW5ndGh9KeKApmAgfSk7CiAgICAgICAgYXdhaXQgd2FpdChkZWxheSwgby5zaWduYWwpOwogICAgICB9CiAgICB9CiAgfTsKICBjb25zdCBsaXN0ZW5UaGVuSW50ZXJwcmV0ID0gYXN5bmMgKG1lZGlhOiB7IGZpbGU/OiBGaWxlOyB1cmw/OiBzdHJpbmcgfSwgc291cmNlOiBSZWNvcmQ8c3RyaW5nLCBzdHJpbmc+LCB0aXRsZTogc3RyaW5nKSA9PiB7CiAgICBpZiAoIWhlYXJkKSB7CiAgICAgIGFwcGx5KHsgdHlwZTogJ3N0YWdlJywgc3RhZ2U6ICdsaXN0ZW4nLCBtZXNzYWdlOiAnR2VtaW5pIDQgQXJnb24gdmlkZW8g4KSV4KWAIOCkhuCkteCkvuCknOCkvCDgpKfgpY3gpK/gpL7gpKgg4KS44KWHIOCkuOClgeCkqCDgpLDgpLngpL4g4KS54KWI4oCmJyB9KTsKICAgICAgaGVhcmQgPSBhd2FpdCBsaXN0ZW5Ub01lZGlhKHsgLi4ubWVkaWEsIHNpZ25hbDogby5zaWduYWwsIG9uUHJvZ3Jlc3M6IChyZWFjaGVkLCB0b3RhbCkgPT4gYXBwbHkoeyB0eXBlOiAnbGlzdGVuJywgcmVhY2hlZCwgdG90YWwgfSkgfSk7CiAgICAgIHNuYXBzaG90KCk7CiAgICB9CiAgICBjb25zdCBmaW5hbCA9IGF3YWl0IHBvc3QoeyBzZWdtZW50czogaGVhcmQuc2VnbWVudHMsIHNvdXJjZSwgdGl0bGUsIGxhbmd1YWdlOiBoZWFyZC5sYW5ndWFnZSB9KTsKICAgIGlmIChmaW5hbC50eXBlICE9PSAnZG9uZScpIHRocm93IG5ldyBJbnRlcnByZXRTdHJlYW1FcnJvcignVmlkZW8g4KS44KSu4KSdIOCkqOCkueClgOCkgiDgpIbgpIjgpaQnLCA1MDIpOwogICAgcmV0dXJuIHsgLi4uZmluYWwucmVzdWx0LCB0cnVuY2F0ZWQ6IGZpbmFsLnJlc3VsdC50cnVuY2F0ZWQgfHwgaGVhcmQudHJ1bmNhdGVkIH07CiAgfTsKICBpZiAoby5pbnB1dC5raW5kID09PSAnZmlsZScpIHsKICAgIGNvbnN0IGZpbGUgPSBvLmlucHV0LmZpbGU7CiAgICBhcHBseSh7IHR5cGU6ICdzdGFnZScsIHN0YWdlOiAnc291cmNlJywgbWVzc2FnZTogYCR7ZmlsZS5uYW1lfSDgpIfgpLjgpYAgZGV2aWNlIOCkquCksCDgpJbgpYvgpLIg4KSw4KS54KS+IOCkueClguCkgeKApmAgfSk7CiAgICByZXR1cm4gbGlzdGVuVGhlbkludGVycHJldCh7IGZpbGUgfSwgeyBraW5kOiAndXBsb2FkJywgZmlsZU5hbWU6IGZpbGUubmFtZSB9LCBmaWxlLm5hbWUucmVwbGFjZSgvXC5bXi5dKyQvLCAnJykpOwogIH0KICBjb25zdCBmaXJzdCA9IG8uaW5wdXQua2luZCA9PT0gJ2xpbmsnCiAgICA/IGF3YWl0IHBvc3QoeyB1cmw6IG8uaW5wdXQudXJsLCBkZWVwTGlzdGVuOiBvLmlucHV0LmRlZXBMaXN0ZW4gfSkKICAgIDogYXdhaXQgcG9zdCh7IHRyYW5zY3JpcHQ6IG8uaW5wdXQudHJhbnNjcmlwdCwgdXJsOiBvLmlucHV0LnVybCA/PyAnJyB9KTsKICBpZiAoZmlyc3QudHlwZSA9PT0gJ2RvbmUnKSByZXR1cm4gZmlyc3QucmVzdWx0OwogIHJldHVybiBsaXN0ZW5UaGVuSW50ZXJwcmV0KHsgdXJsOiBmaXJzdC5tZWRpYVVybCB9LCB7IGtpbmQ6ICd3ZWInLCBtZWRpYVVybDogZmlyc3QubWVkaWFVcmwsIHBhZ2VVcmw6IGZpcnN0LnBhZ2VVcmwgfSwgZmlyc3QudGl0bGUpOwp9Cg==
+// Browser orchestrator for the expert interpreter: link / transcript / device file → streamed simple Hindi.
+// Server work streams as NDJSON; media without captions is heard piece by piece (browser-extracted audio).
+import { readInterpretStream, InterpretStreamError, type InterpretBrief, type InterpretEvent, type InterpretResult, type SourceOrigin, type Stage } from './interpret-protocol';
+import { groupCues, type Cue, type ListenResult } from './transcript-cues';
+import type { InterpreterId } from './interpreter-models';
+import type { DubSegment, TimedSegment } from './youtube-hindi';
+import { AUTO_CONTINUE_DELAYS_MS, isTransientFailure, type Checkpoint, type HeardMedia } from './interpret-checkpoint';
+
+export type RunInput =
+  | { kind: 'link'; url: string; deepListen: boolean }
+  | { kind: 'text'; transcript: string; url?: string }
+  | { kind: 'file'; file: File };
+
+export type RunState = {
+  stage: Stage | 'idle'; message: string; listening: boolean;
+  title: string; language: string; origin?: SourceOrigin; duration: number; truncated: boolean;
+  videoId: string | null; mediaUrl?: string; pageUrl?: string;
+  listen?: { reached: number; total?: number };
+  brief?: InterpretBrief | null; briefModel?: string;
+  timeline: TimedSegment[]; hindi: string[]; done: number; total: number;
+  quality?: { reviewed: number; corrected: number };
+  sourceKey?: string | undefined;
+};
+
+export const IDLE_STATE: RunState = { stage: 'idle', message: '', listening: false, title: '', language: '', duration: 0, truncated: false, videoId: null, timeline: [], hindi: [], done: 0, total: 0 };
+
+/** Pure reducer so streamed events can be unit-tested and replayed. */
+export function reduceEvent(state: RunState, event: InterpretEvent): RunState {
+  switch (event.type) {
+    case 'stage': return { ...state, stage: event.stage, message: event.message, listening: state.listening || event.stage === 'listen' };
+    case 'listen': return { ...state, listen: { reached: event.reached, ...(event.total ? { total: event.total } : {}) } };
+    case 'source': {
+      const timeline = event.timeline ?? [];
+      return { ...state, title: event.title || state.title, language: event.language, origin: event.origin, duration: event.duration, truncated: event.truncated,
+        videoId: event.videoId ?? state.videoId, sourceKey: event.sourceKey, timeline, hindi: timeline.map(() => ''), total: event.segments, done: 0 };
+    }
+    case 'brief': return { ...state, brief: event.brief, ...(event.model ? { briefModel: event.model } : {}) };
+    case 'segment': {
+      if (event.index < 0 || event.index >= state.hindi.length) return state;
+      const hindi = state.hindi.slice(); hindi[event.index] = event.hindi;
+      return { ...state, hindi };
+    }
+    case 'progress': return { ...state, done: event.done, total: event.total };
+    case 'quality': return { ...state, quality: { reviewed: event.reviewed, corrected: event.corrected } };
+    case 'media': return { ...state, mediaUrl: event.mediaUrl, pageUrl: event.pageUrl, title: event.title || state.title };
+    default: return state;
+  }
+}
+
+/** Timed Hindi so far, for live playback while the interpretation continues. */
+export function liveDub(state: RunState): DubSegment[] {
+  return state.timeline.map((s, i) => ({ start: s.start, end: s.end, hindi: state.hindi[i] ?? '' }));
+}
+
+const LISTEN_PARALLEL = 3;
+const wait = (ms: number, signal: AbortSignal) => new Promise<void>((resolve, reject) => {
+  const t = setTimeout(resolve, ms);
+  signal.addEventListener('abort', () => { clearTimeout(t); reject(signal.reason ?? new DOMException('Aborted', 'AbortError')); }, { once: true });
+});
+
+async function listenPiece(wav: Blob, offset: number, signal: AbortSignal): Promise<ListenResult> {
+  for (let attempt = 0; ; attempt++) {
+    const form = new FormData();
+    form.append('file', new File([wav], `piece-${Math.round(offset)}.wav`, { type: 'audio/wav' }));
+    form.append('offset', String(offset));
+    let res: Response;
+    try { res = await fetch('/api/media-listen', { method: 'POST', body: form, signal }); }
+    catch (error) { if (signal.aborted || attempt >= 2) throw error; await wait(1500 * (attempt + 1), signal); continue; }
+    if (res.ok) return await res.json() as ListenResult;
+    const body = await res.json().catch(() => ({})) as { error?: string };
+    if ((res.status === 429 || res.status >= 500) && attempt < 2) { await wait(2000 * (attempt + 1), signal); continue; }
+    throw new InterpretStreamError(body.error || `सुनना रुक गया (${res.status}).`, res.status);
+  }
+}
+
+/** Extracts speech on the device and lets the listener hear pieces in parallel; returns 30-second timed segments. */
+export async function listenToMedia(o: { file?: File; url?: string; signal: AbortSignal; onProgress(reached: number, total: number): void }) {
+  const { extractSpeechPieces } = await import('./media-audio');
+  const cues: Cue[] = []; let language = '';
+  const queue: Promise<void>[] = []; let active = 0; const waiting: (() => void)[] = [];
+  let heardSeconds = 0, total = 0, failure: unknown = null;
+  const ctl = new AbortController();
+  const stop = () => ctl.abort(o.signal.reason);
+  o.signal.addEventListener('abort', stop, { once: true });
+  const slot = async () => { while (active >= LISTEN_PARALLEL) await new Promise<void>(r => waiting.push(r)); active++; };
+  const release = () => { active--; waiting.shift()?.(); };
+  try {
+    const info = await extractSpeechPieces({
+      ...(o.file ? { file: o.file } : {}), ...(o.url ? { url: o.url } : {}), signal: ctl.signal,
+      onProgress: (_seconds, t) => { total = t; },
+      onPiece: piece => {
+        queue.push((async () => {
+          await slot();
+          try {
+            if (failure) return;
+            const heard = await listenPiece(piece.wav, piece.offset, ctl.signal);
+            cues.push(...heard.cues); language ||= heard.language;
+            heardSeconds += piece.duration; o.onProgress(heardSeconds, total || heardSeconds);
+          } catch (error) { failure ??= error; ctl.abort(); }
+          finally { release(); }
+        })());
+      },
+    });
+    await Promise.all(queue);
+    if (failure) throw failure;
+    o.signal.throwIfAborted();
+    const segments = groupCues(cues.sort((a, b) => a.start - b.start), 30);
+    if (!segments.length) throw new InterpretStreamError('इस video में बोलने की आवाज़ नहीं मिली।', 422);
+    return { segments, language, truncated: info.truncated, duration: info.duration };
+  } catch (error) {
+    if (failure) throw failure;
+    throw error;
+  } finally { o.signal.removeEventListener('abort', stop); }
+}
+
+type RunOptions = {
+  input: RunInput; engine: InterpreterId; quality: boolean; signal: AbortSignal; onState(state: RunState): void;
+  /** Saved progress from an earlier run of the same source; finished parts are skipped. */
+  checkpoint?: Checkpoint | null;
+  /** Called whenever there is new progress worth saving on the device. */
+  onCheckpoint?(cp: Omit<Checkpoint, 'key' | 'savedAt'>): void;
+};
+
+/** Runs the full pipeline and returns the final result; state updates stream through onState. */
+export async function runInterpretation(o: RunOptions): Promise<InterpretResult> {
+  let state: RunState = { ...IDLE_STATE };
+  let heard: HeardMedia | undefined = o.checkpoint?.heard;
+  // Lines to resume from: the device checkpoint first, then whatever this run finished before a drop.
+  let resumeLines: string[] | null = o.checkpoint?.lines.some(l => l.trim()) ? o.checkpoint.lines : null;
+  let resumeSourceKey = o.checkpoint?.sourceKey;
+  let resumeBrief: { brief: InterpretBrief | null; model?: string } | null = o.checkpoint?.brief ? { brief: o.checkpoint.brief, ...(o.checkpoint.briefModel ? { model: o.checkpoint.briefModel } : {}) } : null;
+  const snapshot = () => {
+    o.onCheckpoint?.({ title: state.title, lines: state.hindi, starts: state.timeline.map(t => t.start), brief: state.brief ?? null,
+      ...(state.sourceKey ? { sourceKey: state.sourceKey } : {}),
+      ...(state.briefModel ? { briefModel: state.briefModel } : {}), ...(heard ? { heard } : {}) });
+  };
+  const apply = (event: InterpretEvent) => {
+    state = reduceEvent(state, event); o.onState(state);
+    if (event.type === 'segment' || event.type === 'brief') snapshot();
+  };
+  const postOnce = async (body: Record<string, unknown>) => {
+    const resume = resumeLines && resumeSourceKey ? { lines: resumeLines, sourceKey: resumeSourceKey, ...(resumeBrief?.brief ? { brief: resumeBrief.brief, briefModel: resumeBrief.model ?? '' } : {}) } : undefined;
+    const res = await fetch('/api/youtube-hindi', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ engine: o.engine, quality: o.quality, ...body, ...(resume ? { resume } : {}) }), signal: o.signal });
+    return readInterpretStream(res, apply, o.signal);
+  };
+  /** Network drops and busy errors continue automatically (bounded) from the last finished part. */
+  const post = async (body: Record<string, unknown>) => {
+    for (let attempt = 0; ; attempt++) {
+      try { return await postOnce(body); }
+      catch (error) {
+        if (o.signal.aborted || !isTransientFailure(error) || attempt >= AUTO_CONTINUE_DELAYS_MS.length) throw error;
+        if (state.hindi.some(l => l.trim())) resumeLines = state.hindi.slice();
+        resumeSourceKey = state.sourceKey;
+        if (state.brief) resumeBrief = { brief: state.brief, ...(state.briefModel ? { model: state.briefModel } : {}) };
+        const delay = AUTO_CONTINUE_DELAYS_MS[attempt] ?? 30_000;
+        apply({ type: 'stage', stage: state.stage === 'idle' ? 'source' : state.stage, message: `Connection/AI रुक गया — ${Math.round(delay / 1000)} सेकंड में जहाँ रुका वहीं से फिर शुरू कर रहा हूँ (${attempt + 1}/${AUTO_CONTINUE_DELAYS_MS.length})…` });
+        await wait(delay, o.signal);
+      }
+    }
+  };
+  const listenThenInterpret = async (media: { file?: File; url?: string }, source: Record<string, string>, title: string) => {
+    if (!heard) {
+      apply({ type: 'stage', stage: 'listen', message: 'Gemini 4 Argon video की आवाज़ ध्यान से सुन रहा है…' });
+      heard = await listenToMedia({ ...media, signal: o.signal, onProgress: (reached, total) => apply({ type: 'listen', reached, total }) });
+      snapshot();
+    }
+    const final = await post({ segments: heard.segments, source, title, language: heard.language });
+    if (final.type !== 'done') throw new InterpretStreamError('Video समझ नहीं आई।', 502);
+    return { ...final.result, truncated: final.result.truncated || heard.truncated };
+  };
+  if (o.input.kind === 'file') {
+    const file = o.input.file;
+    apply({ type: 'stage', stage: 'source', message: `${file.name} इसी device पर खोल रहा हूँ…` });
+    return listenThenInterpret({ file }, { kind: 'upload', fileName: file.name }, file.name.replace(/\.[^.]+$/, ''));
+  }
+  const first = o.input.kind === 'link'
+    ? await post({ url: o.input.url, deepListen: o.input.deepListen })
+    : await post({ transcript: o.input.transcript, url: o.input.url ?? '' });
+  if (first.type === 'done') return first.result;
+  return listenThenInterpret({ url: first.mediaUrl }, { kind: 'web', mediaUrl: first.mediaUrl, pageUrl: first.pageUrl }, first.title);
+}

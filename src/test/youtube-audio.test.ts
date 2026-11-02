@@ -1,1 +1,27 @@
-aW1wb3J0IHsgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyByZWFkRHViQXVkaW8sIGZldGNoRHViQXVkaW8gfSBmcm9tICdAL2xpYi95b3V0dWJlLWF1ZGlvJzsKaW1wb3J0IHsgc3BlZWNoU3RhdGUgfSBmcm9tICdAL2xpYi95b3V0dWJlLXNwZWVjaCc7CgppdCgnZmFsbHMgYmFjayBvbmNlIHdoZW4gU2FydmFtIHJldHVybnMgSFRUUCAyMDAgYnV0IGl0cyBhdWRpbyBzdHJlYW0gaXMgaW5jb21wbGV0ZScsIGFzeW5jICgpID0+IHsKICBzcGVlY2hTdGF0ZS51c2VCYWNrdXAgPSBmYWxzZTsgc3BlZWNoU3RhdGUuZm9yY2VCYWNrdXAgPSBmYWxzZTsKICBjb25zdCBmZXRjaGVyID0gdmkuZm4oKS5tb2NrUmVzb2x2ZWRWYWx1ZU9uY2UobmV3IFJlc3BvbnNlKCdkYXRhOiB7InR5cGUiOiJzcGVlY2guYXVkaW8uZGVsdGEiLCJhdWRpbyI6IkFBQT0ifVxuXG4nKSkKICAgIC5tb2NrUmVzb2x2ZWRWYWx1ZU9uY2UobmV3IFJlc3BvbnNlKCdkYXRhOiB7InR5cGUiOiJzcGVlY2guYXVkaW8uZGVsdGEiLCJhdWRpbyI6IkFBQT0ifVxuXG5kYXRhOiB7InR5cGUiOiJzcGVlY2guYXVkaW8uZG9uZSJ9XG5cbicpKTsKICB2aS5zdHViR2xvYmFsKCdmZXRjaCcsIGZldGNoZXIpOwogIHRyeSB7CiAgICBhd2FpdCBmZXRjaER1YkF1ZGlvKCfgpKjgpK7gpLjgpY3gpKTgpYfgpaQnLCAnaXNoaXRhX2hpX2VkdGVjaCcsIGNvbnRleHQsIG5ldyBBYm9ydENvbnRyb2xsZXIoKS5zaWduYWwsICdzYXJ2YW0nKTsKICAgIGV4cGVjdChmZXRjaGVyLm1vY2suY2FsbHMubWFwKGNhbGwgPT4gY2FsbFswXSkpLnRvRXF1YWwoWycvYXBpL3NhcnZhbS1zcGVlY2gnLCAnL2FwaS9zcGVlY2gnXSk7CiAgfSBmaW5hbGx5IHsgdmkudW5zdHViQWxsR2xvYmFscygpOyBzcGVlY2hTdGF0ZS51c2VCYWNrdXAgPSBmYWxzZTsgfQp9KTsKCmNvbnN0IGNvbnRleHQgPSB7IGNyZWF0ZUJ1ZmZlcjogdmkuZm4oKCkgPT4gKHsgY29weVRvQ2hhbm5lbDogdmkuZm4oKSB9KSkgfSBhcyB1bmtub3duIGFzIEF1ZGlvQ29udGV4dDsKaXQoJ3JlamVjdHMgdHJ1bmNhdGVkIHNwZWVjaCBpbnN0ZWFkIG9mIHBsYXlpbmcgaW5jb21wbGV0ZSBuYXJyYXRpb24nLCBhc3luYyAoKSA9PiB7CiAgYXdhaXQgZXhwZWN0KHJlYWREdWJBdWRpbyhuZXcgUmVzcG9uc2UoJ2RhdGE6IHsidHlwZSI6InNwZWVjaC5hdWRpby5kZWx0YSIsImF1ZGlvIjoiQUFBPSJ9XG5cbicpLCBjb250ZXh0LCBuZXcgQWJvcnRDb250cm9sbGVyKCkuc2lnbmFsKSkucmVqZWN0cy50b1Rocm93KCdJbmNvbXBsZXRlJyk7Cn0pOwppdCgnY2FuY2VscyBhIHN0YWxsZWQgYXVkaW8gcmVhZGVyIG9uIFN0b3AnLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgY2FuY2VsID0gdmkuZm4oKSwgY3RsID0gbmV3IEFib3J0Q29udHJvbGxlcigpOwogIGNvbnN0IHJlc3BvbnNlID0gbmV3IFJlc3BvbnNlKG5ldyBSZWFkYWJsZVN0cmVhbSh7IGNhbmNlbCB9KSk7CiAgY29uc3QgcmVzdWx0ID0gcmVhZER1YkF1ZGlvKHJlc3BvbnNlLCBjb250ZXh0LCBjdGwuc2lnbmFsKTsKICBjdGwuYWJvcnQoKTsKICBhd2FpdCBleHBlY3QocmVzdWx0KS5yZWplY3RzLnRvTWF0Y2hPYmplY3QoeyBuYW1lOiAnQWJvcnRFcnJvcicgfSk7CiAgZXhwZWN0KGNhbmNlbCkudG9IYXZlQmVlbkNhbGxlZE9uY2UoKTsKfSk7
+import { expect, it, vi } from 'vitest';
+import { readDubAudio, fetchDubAudio } from '@/lib/youtube-audio';
+import { speechState } from '@/lib/youtube-speech';
+
+it('falls back once when Sarvam returns HTTP 200 but its audio stream is incomplete', async () => {
+  speechState.useBackup = false; speechState.forceBackup = false;
+  const fetcher = vi.fn().mockResolvedValueOnce(new Response('data: {"type":"speech.audio.delta","audio":"AAA="}\n\n'))
+    .mockResolvedValueOnce(new Response('data: {"type":"speech.audio.delta","audio":"AAA="}\n\ndata: {"type":"speech.audio.done"}\n\n'));
+  vi.stubGlobal('fetch', fetcher);
+  try {
+    await fetchDubAudio('नमस्ते।', 'ishita_hi_edtech', context, new AbortController().signal, 'sarvam');
+    expect(fetcher.mock.calls.map(call => call[0])).toEqual(['/api/sarvam-speech', '/api/speech']);
+  } finally { vi.unstubAllGlobals(); speechState.useBackup = false; }
+});
+
+const context = { createBuffer: vi.fn(() => ({ copyToChannel: vi.fn() })) } as unknown as AudioContext;
+it('rejects truncated speech instead of playing incomplete narration', async () => {
+  await expect(readDubAudio(new Response('data: {"type":"speech.audio.delta","audio":"AAA="}\n\n'), context, new AbortController().signal)).rejects.toThrow('Incomplete');
+});
+it('cancels a stalled audio reader on Stop', async () => {
+  const cancel = vi.fn(), ctl = new AbortController();
+  const response = new Response(new ReadableStream({ cancel }));
+  const result = readDubAudio(response, context, ctl.signal);
+  ctl.abort();
+  await expect(result).rejects.toMatchObject({ name: 'AbortError' });
+  expect(cancel).toHaveBeenCalledOnce();
+});

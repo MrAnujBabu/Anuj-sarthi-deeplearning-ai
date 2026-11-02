@@ -1,1 +1,26 @@
-aW1wb3J0IHsgYnVpbGRUZWFjaGVyTWVtb3J5LCB0eXBlIE1lbW9yeVJvdyB9IGZyb20gIi4vbWVtb3J5LXJhbmsiOwoKZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGxvYWRUZWFjaGVyTWVtb3J5KHF1ZXJ5OiBzdHJpbmcpOiBQcm9taXNlPHN0cmluZz4gewogIHRyeSB7CiAgICBjb25zdCB7IHN1cGFiYXNlQWRtaW4gfSA9IGF3YWl0IGltcG9ydCgiQC9pbnRlZ3JhdGlvbnMvc3VwYWJhc2UvY2xpZW50LnNlcnZlciIpOwogICAgY29uc3QgeyBkYXRhLCBlcnJvciB9ID0gYXdhaXQgc3VwYWJhc2VBZG1pbgogICAgICAuZnJvbSgibWVtb3J5X2l0ZW1zIikKICAgICAgLnNlbGVjdCgidGl0bGUsY2F0ZWdvcnksc3ViamVjdCxjaGFwdGVyLGNvbnRlbnQsa2luZCx0cmFja2VyX3R5cGUsZnJlcXVlbmN5LHNvdXJjZV91cmwiKQogICAgICAuZXEoImFjdGl2ZSIsIHRydWUpCiAgICAgIC5saW1pdCgzMDApOwogICAgaWYgKGVycm9yKSB0aHJvdyBlcnJvcjsKICAgIGlmICghZGF0YT8ubGVuZ3RoKSByZXR1cm4gIiI7CiAgICByZXR1cm4gYnVpbGRUZWFjaGVyTWVtb3J5KGRhdGEgYXMgTWVtb3J5Um93W10sIHF1ZXJ5KTsKICB9IGNhdGNoIChlKSB7CiAgICBjb25zb2xlLmVycm9yKCJ0ZWFjaGVyIG1lbW9yeSBsb2FkIGZhaWxlZCIsIGUpOwogICAgcmV0dXJuICIiOwogIH0KfQoKZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGxvYWRBZ2VudEJyYWluKCk6IFByb21pc2U8c3RyaW5nPiB7CiAgdHJ5IHsKICAgIGNvbnN0IHsgc3VwYWJhc2VBZG1pbiB9ID0gYXdhaXQgaW1wb3J0KCJAL2ludGVncmF0aW9ucy9zdXBhYmFzZS9jbGllbnQuc2VydmVyIik7CiAgICBjb25zdCB7IGRhdGEgfSA9IGF3YWl0IHN1cGFiYXNlQWRtaW4uZnJvbSgiYWdlbnRfc2V0dGluZ3MiKS5zZWxlY3QoImJyYWluIikuZXEoImlkIiwgIm1haW4iKS5tYXliZVNpbmdsZSgpOwogICAgcmV0dXJuIChkYXRhPy5icmFpbiA/PyAiIikudHJpbSgpOwogIH0gY2F0Y2ggeyByZXR1cm4gIiI7IH0KfQo=
+import { buildTeacherMemory, type MemoryRow } from "./memory-rank";
+
+export async function loadTeacherMemory(query: string): Promise<string> {
+  try {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await supabaseAdmin
+      .from("memory_items")
+      .select("title,category,subject,chapter,content,kind,tracker_type,frequency,source_url")
+      .eq("active", true)
+      .limit(300);
+    if (error) throw error;
+    if (!data?.length) return "";
+    return buildTeacherMemory(data as MemoryRow[], query);
+  } catch (e) {
+    console.error("teacher memory load failed", e);
+    return "";
+  }
+}
+
+export async function loadAgentBrain(): Promise<string> {
+  try {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data } = await supabaseAdmin.from("agent_settings").select("brain").eq("id", "main").maybeSingle();
+    return (data?.brain ?? "").trim();
+  } catch { return ""; }
+}

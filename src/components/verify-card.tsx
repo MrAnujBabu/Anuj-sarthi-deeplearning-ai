@@ -1,1 +1,168 @@
-aW1wb3J0IHsgQWxlcnRUcmlhbmdsZSwgQ2hlY2ssIENoZXZyb25Eb3duLCBFeHRlcm5hbExpbmssIEhlbHBDaXJjbGUsIExvYWRlcjIsIE1lc3NhZ2VTcXVhcmVSZXBseSwgUm90YXRlQ2N3LCBTaGllbGRDaGVjaywgU3F1YXJlLCBYIH0gZnJvbSAnbHVjaWRlLXJlYWN0JzsKaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL2J1dHRvbic7CmltcG9ydCB7IE1lc3NhZ2VSZXNwb25zZSB9IGZyb20gJ0AvY29tcG9uZW50cy9haS1lbGVtZW50cy9tZXNzYWdlJzsKaW1wb3J0IHsgbm9ybWFsaXplTWF0aCB9IGZyb20gJ0AvbGliL21hdGgtZm9ybWF0JzsKaW1wb3J0IHsgQ09VTkNJTF9NT0RFTFMsIGNvcnJlY3Rpb25SZXF1ZXN0LCB0eXBlIENoZWNrUmVzdWx0LCB0eXBlIENvdW5jaWxTdGFnZSwgdHlwZSBWZXJkaWN0IH0gZnJvbSAnQC9saWIvdmVyaWZ5JzsKaW1wb3J0IHR5cGUgeyBDb3VuY2lsU3RhdGUgfSBmcm9tICdAL2xpYi92ZXJpZnktY2xpZW50JzsKCmNvbnN0IFZFUkRJQ1RfVUk6IFJlY29yZDxWZXJkaWN0LCB7IGxhYmVsOiBzdHJpbmc7IEljb246IHR5cGVvZiBDaGVjazsgdG9uZTogc3RyaW5nIH0+ID0gewogIHZlcmlmaWVkOiB7IGxhYmVsOiAnVmVyaWZpZWQnLCBJY29uOiBTaGllbGRDaGVjaywgdG9uZTogJ3RleHQtcHJpbWFyeScgfSwKICBuZWVkc19maXg6IHsgbGFiZWw6ICdOZWVkcyBhIGNvcnJlY3Rpb24nLCBJY29uOiBBbGVydFRyaWFuZ2xlLCB0b25lOiAndGV4dC1kZXN0cnVjdGl2ZScgfSwKICB1bnN1cmU6IHsgbGFiZWw6ICdVbnN1cmUnLCBJY29uOiBIZWxwQ2lyY2xlLCB0b25lOiAndGV4dC1tdXRlZC1mb3JlZ3JvdW5kJyB9LAp9OwoKY29uc3QgUk9VTkRfTEFCRUw6IFJlY29yZDxDaGVja1Jlc3VsdFsncm91bmQnXSwgc3RyaW5nPiA9IHsgMTogJ1JldmlldycsIDI6ICdBZnRlciBkZWJhdGUnLCAzOiAnRmluYWwgcnVsaW5nJyB9OwoKZnVuY3Rpb24gaG9zdCh1cmw6IHN0cmluZykgewogIHRyeSB7IHJldHVybiBuZXcgVVJMKHVybCkuaG9zdG5hbWUucmVwbGFjZSgvXnd3d1wuLywgJycpOyB9IGNhdGNoIHsgcmV0dXJuIHVybDsgfQp9CgovKiogSWNvbiBidXR0b24gZm9yIHRoZSBhbnN3ZXIgYWN0aW9ucyByb3c6IHN0YXJ0LCBzdG9wLCBvciBzaG93L2hpZGUgdGhlIHJlc3VsdC4gKi8KZXhwb3J0IGZ1bmN0aW9uIFZlcmlmeUJ1dHRvbih7IHN0YXRlLCBvcGVuLCBvblN0YXJ0LCBvblN0b3AsIG9uVG9nZ2xlIH06IHsKICBzdGF0ZTogQ291bmNpbFN0YXRlOyBvcGVuOiBib29sZWFuOyBvblN0YXJ0OiAoKSA9PiB2b2lkOyBvblN0b3A6ICgpID0+IHZvaWQ7IG9uVG9nZ2xlOiAoKSA9PiB2b2lkOwp9KSB7CiAgY29uc3QgYnRuID0gJ3NpemUtNyB0ZXh0LW11dGVkLWZvcmVncm91bmQgaG92ZXI6dGV4dC1mb3JlZ3JvdW5kJzsKICBpZiAoc3RhdGUuc3RhdHVzID09PSAncnVubmluZycpCiAgICByZXR1cm4gKAogICAgICA8QnV0dG9uIHZhcmlhbnQ9Imdob3N0IiBzaXplPSJpY29uIiBjbGFzc05hbWU9e2J0bn0gYXJpYS1sYWJlbD0iU3RvcCBhbnN3ZXIgY2hlY2siIHRpdGxlPSJDaGVja2luZyB3aXRoIEdlbWluaSwgR1BUIGFuZCBDbGF1ZGUg4oCUIHRhcCB0byBzdG9wIiBvbkNsaWNrPXtvblN0b3B9PgogICAgICAgIDxMb2FkZXIyIGNsYXNzTmFtZT0ic2l6ZS0zLjUgYW5pbWF0ZS1zcGluIHRleHQtcHJpbWFyeSIgLz4KICAgICAgPC9CdXR0b24+CiAgICApOwogIGlmIChzdGF0ZS5zdGF0dXMgPT09ICdkb25lJyAmJiBzdGF0ZS5yZXN1bHQpIHsKICAgIGNvbnN0IHsgSWNvbiwgdG9uZSwgbGFiZWwgfSA9IFZFUkRJQ1RfVUlbc3RhdGUucmVzdWx0LnZlcmRpY3RdOwogICAgcmV0dXJuICgKICAgICAgPEJ1dHRvbiB2YXJpYW50PSJnaG9zdCIgc2l6ZT0iaWNvbiIgY2xhc3NOYW1lPXtidG59IGFyaWEtbGFiZWw9e2Ake2xhYmVsfSDigJQgJHtvcGVuID8gJ2hpZGUnIDogJ3Nob3cnfSBhbnN3ZXIgY2hlY2tgfSBhcmlhLXByZXNzZWQ9e29wZW59IG9uQ2xpY2s9e29uVG9nZ2xlfT4KICAgICAgICA8SWNvbiBjbGFzc05hbWU9e2BzaXplLTMuNSAke3RvbmV9YH0gLz4KICAgICAgPC9CdXR0b24+CiAgICApOwogIH0KICByZXR1cm4gKAogICAgPEJ1dHRvbiB2YXJpYW50PSJnaG9zdCIgc2l6ZT0iaWNvbiIgY2xhc3NOYW1lPXtidG59IGFyaWEtbGFiZWw9IlZlcmlmeSB0aGlzIGFuc3dlciB3aXRoIEdlbWluaSwgR1BUIGFuZCBDbGF1ZGUiIHRpdGxlPSJWZXJpZnkg4oCUIEdlbWluaSArIEdQVCBjaGVjaywgQ2xhdWRlIHJ1bGVzIiBvbkNsaWNrPXtvblN0YXJ0fT4KICAgICAgPFNoaWVsZENoZWNrIGNsYXNzTmFtZT0ic2l6ZS0zLjUiIC8+CiAgICA8L0J1dHRvbj4KICApOwp9CgpmdW5jdGlvbiBTdGVwUm93KHsgZG9uZSwgYWN0aXZlLCBsYWJlbCwgc3ViIH06IHsgZG9uZTogYm9vbGVhbjsgYWN0aXZlOiBib29sZWFuOyBsYWJlbDogc3RyaW5nOyBzdWI/OiBzdHJpbmcgfSkgewogIHJldHVybiAoCiAgICA8bGkgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLXN0YXJ0IGdhcC0yIj4KICAgICAgPHNwYW4gY2xhc3NOYW1lPSJtdC0wLjUgZmxleCBzaXplLTQgc2hyaW5rLTAgaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIj4KICAgICAgICB7ZG9uZSA/IDxDaGVjayBjbGFzc05hbWU9InNpemUtMy41IHRleHQtcHJpbWFyeSIgLz4gOiBhY3RpdmUgPyA8TG9hZGVyMiBjbGFzc05hbWU9InNpemUtMy41IGFuaW1hdGUtc3BpbiB0ZXh0LXByaW1hcnkiIC8+IDogPHNwYW4gY2xhc3NOYW1lPSJzaXplLTEuNSByb3VuZGVkLWZ1bGwgYmctYm9yZGVyIiAvPn0KICAgICAgPC9zcGFuPgogICAgICA8c3BhbiBjbGFzc05hbWU9e2BtaW4tdy0wICR7ZG9uZSB8fCBhY3RpdmUgPyAndGV4dC1mb3JlZ3JvdW5kJyA6ICd0ZXh0LW11dGVkLWZvcmVncm91bmQnfWB9PgogICAgICAgIHtsYWJlbH0KICAgICAgICB7c3ViICYmIDxzcGFuIGNsYXNzTmFtZT0iYmxvY2sgdGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPntzdWJ9PC9zcGFuPn0KICAgICAgPC9zcGFuPgogICAgPC9saT4KICApOwp9Cgpjb25zdCBTVEFHRV9PUkRFUjogQ291bmNpbFN0YWdlW10gPSBbJ3NlYXJjaCcsICdyZXZpZXcnLCAnZGViYXRlJywgJ3J1bGluZyddOwoKZnVuY3Rpb24gUHJvZ3Jlc3MoeyBzdGF0ZSwgb25TdG9wIH06IHsgc3RhdGU6IENvdW5jaWxTdGF0ZTsgb25TdG9wOiAoKSA9PiB2b2lkIH0pIHsKICBjb25zdCBhdCA9IHN0YXRlLnN0YWdlID8gU1RBR0VfT1JERVIuaW5kZXhPZihzdGF0ZS5zdGFnZSkgOiAwOwogIGNvbnN0IHIxID0gc3RhdGUuY2hlY2tzLmZpbHRlcigoYykgPT4gYy5yb3VuZCA9PT0gMSk7CiAgY29uc3QgaGFzID0gKHJvbGU6IENoZWNrUmVzdWx0Wydyb2xlJ10sIHJvdW5kOiBDaGVja1Jlc3VsdFsncm91bmQnXSkgPT4gc3RhdGUuY2hlY2tzLnNvbWUoKGMpID0+IGMucm9sZSA9PT0gcm9sZSAmJiBjLnJvdW5kID09PSByb3VuZCk7CiAgY29uc3QgcmV2aWV3ZXJzID0gYCR7Q09VTkNJTF9NT0RFTFMuZ2VtaW5pLm5hbWV9ICR7aGFzKCdnZW1pbmknLCAxKSA/ICfinJMnIDogJ+KApid9IMK3ICR7Q09VTkNJTF9NT0RFTFMub3BlbmFpLm5hbWV9ICR7aGFzKCdvcGVuYWknLCAxKSA/ICfinJMnIDogJ+KApid9YDsKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9InNwYWNlLXktMyIgcm9sZT0ic3RhdHVzIiBhcmlhLWxpdmU9InBvbGl0ZSI+CiAgICAgIDxvbCBjbGFzc05hbWU9InNwYWNlLXktMiB0ZXh0LXNtIj4KICAgICAgICA8U3RlcFJvdyBkb25lPXthdCA+IDB9IGFjdGl2ZT17YXQgPT09IDB9IGxhYmVsPSJTZWFyY2hpbmcgbGl2ZSBzb3VyY2VzIiBzdWI9IlBlcnBsZXhpdHkgKyBQYXJhbGxlbCIgLz4KICAgICAgICA8U3RlcFJvdyBkb25lPXthdCA+IDEgfHwgcjEubGVuZ3RoID49IDJ9IGFjdGl2ZT17YXQgPT09IDF9IGxhYmVsPSJJbmRlcGVuZGVudCByZXZpZXciIHN1Yj17cmV2aWV3ZXJzfSAvPgogICAgICAgIHthdCA+PSAyICYmIDxTdGVwUm93IGRvbmU9e2F0ID4gMn0gYWN0aXZlPXthdCA9PT0gMn0gbGFiZWw9IkRlYmF0ZSByb3VuZCIgc3ViPSJFYWNoIHJldmlld2VyIGFuc3dlcnMgdGhlIG90aGVyJ3Mgb2JqZWN0aW9ucyIgLz59CiAgICAgICAge2F0ID49IDMgJiYgPFN0ZXBSb3cgZG9uZT17ZmFsc2V9IGFjdGl2ZSBsYWJlbD17YCR7Q09VTkNJTF9NT0RFTFMuY2hhaXIubmFtZX0gY29uZmlybWluZ2B9IHN1Yj0iV2VpZ2hzIGV2ZXJ5IG9iamVjdGlvbiBiZWZvcmUgdGhlIGZpbmFsIHJ1bGluZyIgLz59CiAgICAgIDwvb2w+CiAgICAgIDxCdXR0b24gdmFyaWFudD0iZ2hvc3QiIHNpemU9InNtIiBjbGFzc05hbWU9ImgtOCBweC0yIHRleHQteHMiIG9uQ2xpY2s9e29uU3RvcH0+PFNxdWFyZSBjbGFzc05hbWU9InNpemUtMyIgLz5TdG9wIGNoZWNrPC9CdXR0b24+CiAgICA8L2Rpdj4KICApOwp9CgpmdW5jdGlvbiBSZXN1bHQoeyBzdGF0ZSwgb25SZWNoZWNrLCBvbkFza1R1dG9yIH06IHsgc3RhdGU6IENvdW5jaWxTdGF0ZTsgb25SZWNoZWNrOiAoKSA9PiB2b2lkOyBvbkFza1R1dG9yPzogKHRleHQ6IHN0cmluZykgPT4gdm9pZCB9KSB7CiAgY29uc3QgciA9IHN0YXRlLnJlc3VsdCE7CiAgY29uc3QgeyBJY29uLCB0b25lLCBsYWJlbCB9ID0gVkVSRElDVF9VSVtyLnZlcmRpY3RdOwogIGNvbnN0IGhlYWRsaW5lID0gci52ZXJkaWN0ID09PSAndmVyaWZpZWQnICYmIHIuZGVjaWRlZEJ5ID09PSAnYWxsLWFncmVlJyA/ICdWZXJpZmllZCBieSBhbGwgMyBBSXMnIDogbGFiZWw7CiAgY29uc3QgYnlSb3VuZCA9IFsxLCAyLCAzXS5tYXAoKG4pID0+IHIuY2hlY2tzLmZpbHRlcigoYykgPT4gYy5yb3VuZCA9PT0gbikpLmZpbHRlcigoZykgPT4gZy5sZW5ndGgpOwogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0ic3BhY2UteS0zIj4KICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtc3RhcnQgZ2FwLTIiPgogICAgICAgIDxJY29uIGNsYXNzTmFtZT17YG10LTAuNSBzaXplLTQgc2hyaW5rLTAgJHt0b25lfWB9IC8+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9Im1pbi13LTAiPgogICAgICAgICAgPHAgY2xhc3NOYW1lPXtgdGV4dC1zbSBmb250LXNlbWlib2xkICR7dG9uZX1gfT57aGVhZGxpbmV9PC9wPgogICAgICAgICAge3Iubm90ZSAmJiA8cCBjbGFzc05hbWU9InRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj57ci5ub3RlfTwvcD59CiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgogICAgICB7ci5pc3N1ZXMubGVuZ3RoID4gMCAmJiAoCiAgICAgICAgPHVsIGNsYXNzTmFtZT0ic3BhY2UteS0yIj4KICAgICAgICAgIHtyLmlzc3Vlcy5tYXAoKGksIG4pID0+ICgKICAgICAgICAgICAgPGxpIGtleT17bn0gY2xhc3NOYW1lPSJyb3VuZGVkLW1kIGJvcmRlciBib3JkZXItZGVzdHJ1Y3RpdmUvMzAgYmctZGVzdHJ1Y3RpdmUvNSBwLTIuNSB0ZXh0LXNtIj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBnYXAtMS41IHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+PFggY2xhc3NOYW1lPSJtdC0xIHNpemUtMy41IHNocmluay0wIHRleHQtZGVzdHJ1Y3RpdmUiIC8+PE1lc3NhZ2VSZXNwb25zZSBjbGFzc05hbWU9Im1pbi13LTAgdGV4dC1zbSBsaW5lLXRocm91Z2ggZGVjb3JhdGlvbi1kZXN0cnVjdGl2ZS82MCI+e25vcm1hbGl6ZU1hdGgoaS5saW5lKX08L01lc3NhZ2VSZXNwb25zZT48L2Rpdj4KICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ibXQtMS41IGZsZXggZ2FwLTEuNSI+PENoZWNrIGNsYXNzTmFtZT0ibXQtMSBzaXplLTMuNSBzaHJpbmstMCB0ZXh0LXByaW1hcnkiIC8+PE1lc3NhZ2VSZXNwb25zZSBjbGFzc05hbWU9Im1pbi13LTAgdGV4dC1zbSI+e25vcm1hbGl6ZU1hdGgoaS5maXgpfTwvTWVzc2FnZVJlc3BvbnNlPjwvZGl2PgogICAgICAgICAgICA8L2xpPgogICAgICAgICAgKSl9CiAgICAgICAgPC91bD4KICAgICAgKX0KICAgICAge3Iuc291cmNlcy5sZW5ndGggPiAwICYmICgKICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBmbGV4LXdyYXAgZ2FwLTEuNSIgYXJpYS1sYWJlbD0iU291cmNlcyI+CiAgICAgICAgICB7ci5zb3VyY2VzLnNsaWNlKDAsIDYpLm1hcCgocykgPT4gKAogICAgICAgICAgICA8YSBrZXk9e3MudXJsfSBocmVmPXtzLnVybH0gdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIgbm9yZWZlcnJlciIgdGl0bGU9e3MudGl0bGUgPz8gcy51cmx9CiAgICAgICAgICAgICAgY2xhc3NOYW1lPSJpbmxpbmUtZmxleCBtYXgtdy1bMTJyZW1dIGl0ZW1zLWNlbnRlciBnYXAtMSByb3VuZGVkLWZ1bGwgYm9yZGVyIGJvcmRlci1ib3JkZXIgYmctYmFja2dyb3VuZCBweC0yIHB5LTAuNSB0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCBob3Zlcjpib3JkZXItcHJpbWFyeS80MCBob3Zlcjp0ZXh0LWZvcmVncm91bmQiPgogICAgICAgICAgICAgIDxFeHRlcm5hbExpbmsgY2xhc3NOYW1lPSJzaXplLTMgc2hyaW5rLTAiIC8+PHNwYW4gY2xhc3NOYW1lPSJ0cnVuY2F0ZSI+e2hvc3Qocy51cmwpfTwvc3Bhbj4KICAgICAgICAgICAgPC9hPgogICAgICAgICAgKSl9CiAgICAgICAgPC9kaXY+CiAgICAgICl9CiAgICAgIDxkZXRhaWxzIGNsYXNzTmFtZT0iZ3JvdXAgdGV4dC1zbSI+CiAgICAgICAgPHN1bW1hcnkgY2xhc3NOYW1lPSJmbGV4IGN1cnNvci1wb2ludGVyIGxpc3Qtbm9uZSBpdGVtcy1jZW50ZXIgZ2FwLTEgdGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQgaG92ZXI6dGV4dC1mb3JlZ3JvdW5kIj4KICAgICAgICAgIDxDaGV2cm9uRG93biBjbGFzc05hbWU9InNpemUtMy41IHRyYW5zaXRpb24tdHJhbnNmb3JtIGdyb3VwLW9wZW46cm90YXRlLTE4MCIgLz5Ib3cgdGhlIGNvdW5jaWwgZGVjaWRlZAogICAgICAgIDwvc3VtbWFyeT4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ibXQtMiBzcGFjZS15LTMgYm9yZGVyLWwtMiBib3JkZXItYm9yZGVyIHBsLTMiPgogICAgICAgICAge2J5Um91bmQubWFwKChncm91cCkgPT4gKAogICAgICAgICAgICA8ZGl2IGtleT17Z3JvdXBbMF0hLnJvdW5kfSBjbGFzc05hbWU9InNwYWNlLXktMS41Ij4KICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgZm9udC1tZWRpdW0gdXBwZXJjYXNlIHRyYWNraW5nLXdpZGUgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj57Uk9VTkRfTEFCRUxbZ3JvdXBbMF0hLnJvdW5kXX08L3A+CiAgICAgICAgICAgICAge2dyb3VwLm1hcCgoYykgPT4gewogICAgICAgICAgICAgICAgY29uc3QgdiA9IFZFUkRJQ1RfVUlbYy52ZXJkaWN0XTsKICAgICAgICAgICAgICAgIHJldHVybiAoCiAgICAgICAgICAgICAgICAgIDxwIGtleT17Yy5yb2xlfSBjbGFzc05hbWU9InRleHQtc20iPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0iZm9udC1tZWRpdW0iPntDT1VOQ0lMX01PREVMU1tjLnJvbGVdLm5hbWV9PC9zcGFuPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YG1sLTEuNSB0ZXh0LXhzICR7di50b25lfWB9PntjLmZhaWxlZCA/ICd1bmF2YWlsYWJsZScgOiB2LmxhYmVsLnRvTG93ZXJDYXNlKCl9PC9zcGFuPgogICAgICAgICAgICAgICAgICAgIHtjLm5vdGUgJiYgPHNwYW4gY2xhc3NOYW1lPSJibG9jayB0ZXh0LW11dGVkLWZvcmVncm91bmQiPntjLm5vdGV9PC9zcGFuPn0KICAgICAgICAgICAgICAgICAgPC9wPgogICAgICAgICAgICAgICAgKTsKICAgICAgICAgICAgICB9KX0KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICApKX0KICAgICAgICA8L2Rpdj4KICAgICAgPC9kZXRhaWxzPgogICAgICB7ci52ZXJkaWN0ID09PSAnbmVlZHNfZml4JyAmJiByLmlzc3Vlcy5sZW5ndGggPiAwICYmIG9uQXNrVHV0b3IgJiYgKAogICAgICAgIDxCdXR0b24gdmFyaWFudD0ib3V0bGluZSIgc2l6ZT0ic20iIGNsYXNzTmFtZT0iaC05IHctZnVsbCBqdXN0aWZ5LWNlbnRlciIgb25DbGljaz17KCkgPT4gb25Bc2tUdXRvcihjb3JyZWN0aW9uUmVxdWVzdChyLmlzc3VlcykpfT4KICAgICAgICAgIDxNZXNzYWdlU3F1YXJlUmVwbHkgY2xhc3NOYW1lPSJzaXplLTQiIC8+QXNrIHRoZSB0dXRvciB0byBleHBsYWluIHRoZSBjb3JyZWN0aW9uCiAgICAgICAgPC9CdXR0b24+CiAgICAgICl9CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gZ2FwLTIiPgogICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPkNsYXVkZSdzIGFuc3dlciBhYm92ZSBpcyB1bmNoYW5nZWQuPC9zcGFuPgogICAgICAgIDxCdXR0b24gdmFyaWFudD0iZ2hvc3QiIHNpemU9InNtIiBjbGFzc05hbWU9ImgtOCBweC0yIHRleHQteHMiIG9uQ2xpY2s9e29uUmVjaGVja30+PFJvdGF0ZUNjdyBjbGFzc05hbWU9InNpemUtMyIgLz5SZS1jaGVjazwvQnV0dG9uPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICk7Cn0KCi8qKiBBbnN3ZXItY2hlY2sgcGFuZWwgc2hvd24gdW5kZXIgYW4gYW5zd2VyIHdoaWxlIGNoZWNraW5nIG9yIHdoZW4gb3BlbmVkLiAqLwpleHBvcnQgZnVuY3Rpb24gVmVyaWZ5UGFuZWwoeyBzdGF0ZSwgb25TdGFydCwgb25TdG9wLCBvbkFza1R1dG9yIH06IHsgc3RhdGU6IENvdW5jaWxTdGF0ZTsgb25TdGFydDogKCkgPT4gdm9pZDsgb25TdG9wOiAoKSA9PiB2b2lkOyBvbkFza1R1dG9yPzogKHRleHQ6IHN0cmluZykgPT4gdm9pZCB9KSB7CiAgaWYgKHN0YXRlLnN0YXR1cyA9PT0gJ2lkbGUnKSByZXR1cm4gbnVsbDsKICByZXR1cm4gKAogICAgPHNlY3Rpb24gYXJpYS1sYWJlbD0iQW5zd2VyIGNoZWNrIiBjbGFzc05hbWU9Im1zZy1pbiBtdC0yIHctZnVsbCBtYXgtdy14bCByb3VuZGVkLWxnIGJvcmRlciBib3JkZXItYm9yZGVyIGJnLWNhcmQvNzAgcC0zIj4KICAgICAge3N0YXRlLnN0YXR1cyA9PT0gJ3J1bm5pbmcnICYmIDxQcm9ncmVzcyBzdGF0ZT17c3RhdGV9IG9uU3RvcD17b25TdG9wfSAvPn0KICAgICAge3N0YXRlLnN0YXR1cyA9PT0gJ2RvbmUnICYmIHN0YXRlLnJlc3VsdCAmJiA8UmVzdWx0IHN0YXRlPXtzdGF0ZX0gb25SZWNoZWNrPXtvblN0YXJ0fSB7Li4uKG9uQXNrVHV0b3IgPyB7IG9uQXNrVHV0b3IgfSA6IHt9KX0gLz59CiAgICAgIHtzdGF0ZS5zdGF0dXMgPT09ICdlcnJvcicgJiYgKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLXN0YXJ0IGdhcC0yIHRleHQtc20iIHJvbGU9ImFsZXJ0Ij4KICAgICAgICAgIDxBbGVydFRyaWFuZ2xlIGNsYXNzTmFtZT0ibXQtMC41IHNpemUtNCBzaHJpbmstMCB0ZXh0LWRlc3RydWN0aXZlIiAvPgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9Im1pbi13LTAgZmxleC0xIj4KICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LWZvcmVncm91bmQiPkFuc3dlciBjaGVjayB1bmF2YWlsYWJsZTwvcD4KICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LW11dGVkLWZvcmVncm91bmQiPntzdGF0ZS5lcnJvcn08L3A+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDxCdXR0b24gdmFyaWFudD0ib3V0bGluZSIgc2l6ZT0ic20iIGNsYXNzTmFtZT0iaC04IHNocmluay0wIiBvbkNsaWNrPXtvblN0YXJ0fT48Um90YXRlQ2N3IGNsYXNzTmFtZT0ic2l6ZS0zIiAvPlJldHJ5PC9CdXR0b24+CiAgICAgICAgPC9kaXY+CiAgICAgICl9CiAgICA8L3NlY3Rpb24+CiAgKTsKfQo=
+import { AlertTriangle, Check, ChevronDown, ExternalLink, HelpCircle, Loader2, MessageSquareReply, RotateCcw, ShieldCheck, Square, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { MessageResponse } from '@/components/ai-elements/message';
+import { normalizeMath } from '@/lib/math-format';
+import { COUNCIL_MODELS, correctionRequest, type CheckResult, type CouncilStage, type Verdict } from '@/lib/verify';
+import type { CouncilState } from '@/lib/verify-client';
+
+const VERDICT_UI: Record<Verdict, { label: string; Icon: typeof Check; tone: string }> = {
+  verified: { label: 'Verified', Icon: ShieldCheck, tone: 'text-primary' },
+  needs_fix: { label: 'Needs a correction', Icon: AlertTriangle, tone: 'text-destructive' },
+  unsure: { label: 'Unsure', Icon: HelpCircle, tone: 'text-muted-foreground' },
+};
+
+const ROUND_LABEL: Record<CheckResult['round'], string> = { 1: 'Review', 2: 'After debate', 3: 'Final ruling' };
+
+function host(url: string) {
+  try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return url; }
+}
+
+/** Icon button for the answer actions row: start, stop, or show/hide the result. */
+export function VerifyButton({ state, open, onStart, onStop, onToggle }: {
+  state: CouncilState; open: boolean; onStart: () => void; onStop: () => void; onToggle: () => void;
+}) {
+  const btn = 'size-7 text-muted-foreground hover:text-foreground';
+  if (state.status === 'running')
+    return (
+      <Button variant="ghost" size="icon" className={btn} aria-label="Stop answer check" title="Checking with Gemini, GPT and Claude — tap to stop" onClick={onStop}>
+        <Loader2 className="size-3.5 animate-spin text-primary" />
+      </Button>
+    );
+  if (state.status === 'done' && state.result) {
+    const { Icon, tone, label } = VERDICT_UI[state.result.verdict];
+    return (
+      <Button variant="ghost" size="icon" className={btn} aria-label={`${label} — ${open ? 'hide' : 'show'} answer check`} aria-pressed={open} onClick={onToggle}>
+        <Icon className={`size-3.5 ${tone}`} />
+      </Button>
+    );
+  }
+  return (
+    <Button variant="ghost" size="icon" className={btn} aria-label="Verify this answer with Gemini, GPT and Claude" title="Verify — Gemini + GPT check, Claude rules" onClick={onStart}>
+      <ShieldCheck className="size-3.5" />
+    </Button>
+  );
+}
+
+function StepRow({ done, active, label, sub }: { done: boolean; active: boolean; label: string; sub?: string }) {
+  return (
+    <li className="flex items-start gap-2">
+      <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center">
+        {done ? <Check className="size-3.5 text-primary" /> : active ? <Loader2 className="size-3.5 animate-spin text-primary" /> : <span className="size-1.5 rounded-full bg-border" />}
+      </span>
+      <span className={`min-w-0 ${done || active ? 'text-foreground' : 'text-muted-foreground'}`}>
+        {label}
+        {sub && <span className="block text-xs text-muted-foreground">{sub}</span>}
+      </span>
+    </li>
+  );
+}
+
+const STAGE_ORDER: CouncilStage[] = ['search', 'review', 'debate', 'ruling'];
+
+function Progress({ state, onStop }: { state: CouncilState; onStop: () => void }) {
+  const at = state.stage ? STAGE_ORDER.indexOf(state.stage) : 0;
+  const r1 = state.checks.filter((c) => c.round === 1);
+  const has = (role: CheckResult['role'], round: CheckResult['round']) => state.checks.some((c) => c.role === role && c.round === round);
+  const reviewers = `${COUNCIL_MODELS.gemini.name} ${has('gemini', 1) ? '✓' : '…'} · ${COUNCIL_MODELS.openai.name} ${has('openai', 1) ? '✓' : '…'}`;
+  return (
+    <div className="space-y-3" role="status" aria-live="polite">
+      <ol className="space-y-2 text-sm">
+        <StepRow done={at > 0} active={at === 0} label="Searching live sources" sub="Perplexity + Parallel" />
+        <StepRow done={at > 1 || r1.length >= 2} active={at === 1} label="Independent review" sub={reviewers} />
+        {at >= 2 && <StepRow done={at > 2} active={at === 2} label="Debate round" sub="Each reviewer answers the other's objections" />}
+        {at >= 3 && <StepRow done={false} active label={`${COUNCIL_MODELS.chair.name} confirming`} sub="Weighs every objection before the final ruling" />}
+      </ol>
+      <Button variant="ghost" size="sm" className="h-8 px-2 text-xs" onClick={onStop}><Square className="size-3" />Stop check</Button>
+    </div>
+  );
+}
+
+function Result({ state, onRecheck, onAskTutor }: { state: CouncilState; onRecheck: () => void; onAskTutor?: (text: string) => void }) {
+  const r = state.result!;
+  const { Icon, tone, label } = VERDICT_UI[r.verdict];
+  const headline = r.verdict === 'verified' && r.decidedBy === 'all-agree' ? 'Verified by all 3 AIs' : label;
+  const byRound = [1, 2, 3].map((n) => r.checks.filter((c) => c.round === n)).filter((g) => g.length);
+  return (
+    <div className="space-y-3">
+      <div className="flex items-start gap-2">
+        <Icon className={`mt-0.5 size-4 shrink-0 ${tone}`} />
+        <div className="min-w-0">
+          <p className={`text-sm font-semibold ${tone}`}>{headline}</p>
+          {r.note && <p className="text-sm text-muted-foreground">{r.note}</p>}
+        </div>
+      </div>
+      {r.issues.length > 0 && (
+        <ul className="space-y-2">
+          {r.issues.map((i, n) => (
+            <li key={n} className="rounded-md border border-destructive/30 bg-destructive/5 p-2.5 text-sm">
+              <div className="flex gap-1.5 text-muted-foreground"><X className="mt-1 size-3.5 shrink-0 text-destructive" /><MessageResponse className="min-w-0 text-sm line-through decoration-destructive/60">{normalizeMath(i.line)}</MessageResponse></div>
+              <div className="mt-1.5 flex gap-1.5"><Check className="mt-1 size-3.5 shrink-0 text-primary" /><MessageResponse className="min-w-0 text-sm">{normalizeMath(i.fix)}</MessageResponse></div>
+            </li>
+          ))}
+        </ul>
+      )}
+      {r.sources.length > 0 && (
+        <div className="flex flex-wrap gap-1.5" aria-label="Sources">
+          {r.sources.slice(0, 6).map((s) => (
+            <a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer" title={s.title ?? s.url}
+              className="inline-flex max-w-[12rem] items-center gap-1 rounded-full border border-border bg-background px-2 py-0.5 text-xs text-muted-foreground hover:border-primary/40 hover:text-foreground">
+              <ExternalLink className="size-3 shrink-0" /><span className="truncate">{host(s.url)}</span>
+            </a>
+          ))}
+        </div>
+      )}
+      <details className="group text-sm">
+        <summary className="flex cursor-pointer list-none items-center gap-1 text-xs text-muted-foreground hover:text-foreground">
+          <ChevronDown className="size-3.5 transition-transform group-open:rotate-180" />How the council decided
+        </summary>
+        <div className="mt-2 space-y-3 border-l-2 border-border pl-3">
+          {byRound.map((group) => (
+            <div key={group[0]!.round} className="space-y-1.5">
+              <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{ROUND_LABEL[group[0]!.round]}</p>
+              {group.map((c) => {
+                const v = VERDICT_UI[c.verdict];
+                return (
+                  <p key={c.role} className="text-sm">
+                    <span className="font-medium">{COUNCIL_MODELS[c.role].name}</span>
+                    <span className={`ml-1.5 text-xs ${v.tone}`}>{c.failed ? 'unavailable' : v.label.toLowerCase()}</span>
+                    {c.note && <span className="block text-muted-foreground">{c.note}</span>}
+                  </p>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      </details>
+      {r.verdict === 'needs_fix' && r.issues.length > 0 && onAskTutor && (
+        <Button variant="outline" size="sm" className="h-9 w-full justify-center" onClick={() => onAskTutor(correctionRequest(r.issues))}>
+          <MessageSquareReply className="size-4" />Ask the tutor to explain the correction
+        </Button>
+      )}
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-xs text-muted-foreground">Claude's answer above is unchanged.</span>
+        <Button variant="ghost" size="sm" className="h-8 px-2 text-xs" onClick={onRecheck}><RotateCcw className="size-3" />Re-check</Button>
+      </div>
+    </div>
+  );
+}
+
+/** Answer-check panel shown under an answer while checking or when opened. */
+export function VerifyPanel({ state, onStart, onStop, onAskTutor }: { state: CouncilState; onStart: () => void; onStop: () => void; onAskTutor?: (text: string) => void }) {
+  if (state.status === 'idle') return null;
+  return (
+    <section aria-label="Answer check" className="msg-in mt-2 w-full max-w-xl rounded-lg border border-border bg-card/70 p-3">
+      {state.status === 'running' && <Progress state={state} onStop={onStop} />}
+      {state.status === 'done' && state.result && <Result state={state} onRecheck={onStart} {...(onAskTutor ? { onAskTutor } : {})} />}
+      {state.status === 'error' && (
+        <div className="flex items-start gap-2 text-sm" role="alert">
+          <AlertTriangle className="mt-0.5 size-4 shrink-0 text-destructive" />
+          <div className="min-w-0 flex-1">
+            <p className="text-foreground">Answer check unavailable</p>
+            <p className="text-muted-foreground">{state.error}</p>
+          </div>
+          <Button variant="outline" size="sm" className="h-8 shrink-0" onClick={onStart}><RotateCcw className="size-3" />Retry</Button>
+        </div>
+      )}
+    </section>
+  );
+}

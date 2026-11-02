@@ -1,1 +1,35 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGl0LCBleHBlY3QgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBjbGVhblRyYW5zY3JpcHQsIGlzTm9pc2VPbmx5IH0gZnJvbSAnQC9saWIvbm9pc2UtZmlsdGVyJzsKCmRlc2NyaWJlKCd0cmFuc2NyaXB0IG5vaXNlIGZpbHRlcicsICgpID0+IHsKICBpdCgnZHJvcHMgd2hpc3BlciBhbmQgbm9pc2UgdGFncycsICgpID0+IHsKICAgIGV4cGVjdChpc05vaXNlT25seSgnW3doaXNwZXJpbmddJykpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoaXNOb2lzZU9ubHkoJyhiYWNrZ3JvdW5kIG5vaXNlKScpKS50b0JlKHRydWUpOwogICAgZXhwZWN0KGNsZWFuVHJhbnNjcmlwdCgnTWl0b2Nob25kcmlhIGt5YSBoYWkgW2luYXVkaWJsZV0nKS50cmltKCkpLnRvQmUoJ01pdG9jaG9uZHJpYSBreWEgaGFpJyk7CiAgfSk7CiAgaXQoJ2Ryb3BzIHBoYW50b20gcGhyYXNlcyBmcm9tIHNpbGVuY2UnLCAoKSA9PiB7CiAgICBleHBlY3QoaXNOb2lzZU9ubHkoJ1RoYW5rIHlvdSBmb3Igd2F0Y2hpbmchJykpLnRvQmUodHJ1ZSk7CiAgfSk7CiAgaXQoJ2tlZXBzIHJlYWwgc3BlZWNoJywgKCkgPT4gewogICAgZXhwZWN0KGNsZWFuVHJhbnNjcmlwdCgnT3B0aW9uIEIgc2FoaSBoYWknKS50cmltKCkpLnRvQmUoJ09wdGlvbiBCIHNhaGkgaGFpJyk7CiAgICBleHBlY3QoaXNOb2lzZU9ubHkoJ0InKSkudG9CZShmYWxzZSk7CiAgfSk7Cn0pOwoKZGVzY3JpYmUoJ3RyYWZmaWMgYW5kIG1hY2hpbmVyeSBub2lzZScsICgpID0+IHsKICBpdCgnZHJvcHMgdmVoaWNsZSwgZmFjdG9yeSwgd2VhdGhlciBhbmQgYW5pbWFsIHNvdW5kIHRhZ3MnLCAoKSA9PiB7CiAgICBleHBlY3QoaXNOb2lzZU9ubHkoJyhjYXIgaG9ybiknKSkudG9CZSh0cnVlKTsKICAgIGV4cGVjdChpc05vaXNlT25seSgnKGVuZ2luZSBub2lzZSknKSkudG9CZSh0cnVlKTsKICAgIGV4cGVjdChpc05vaXNlT25seSgnKHRyYWZmaWMpJykpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoaXNOb2lzZU9ubHkoJ1tkb2cgYmFya2luZ10nKSkudG9CZSh0cnVlKTsKICAgIGV4cGVjdChpc05vaXNlT25seSgnKGZhY3RvcnkgbWFjaGluZSknKSkudG9CZSh0cnVlKTsKICAgIGV4cGVjdChpc05vaXNlT25seSgnKHRyYWluIHBhc3NpbmcpJykpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoaXNOb2lzZU9ubHkoJyjgpLngpYngpLDgpY3gpKgpJykpLnRvQmUodHJ1ZSk7CiAgfSk7CiAgaXQoJ2tlZXBzIHRoZSBzcGVlY2ggYXJvdW5kIGEgbm9pc2UgdGFnJywgKCkgPT4gewogICAgZXhwZWN0KGNsZWFuVHJhbnNjcmlwdCgnQmV0YSBzdW5vIChidXMgcGFzc2luZykgeWUgaW1wb3J0YW50IGhhaScpLnRyaW0oKSkudG9CZSgnQmV0YSBzdW5vIHllIGltcG9ydGFudCBoYWknKTsKICB9KTsKICBpdCgnbmV2ZXIgZWF0cyByZWFsIHNwZWVjaCBjb250YWluaW5nIHRoZXNlIHdvcmRzIG91dHNpZGUgdGFncycsICgpID0+IHsKICAgIGV4cGVjdChjbGVhblRyYW5zY3JpcHQoJ1RyYWluIGthIGV4YW1wbGUgc2FtamhvJykudHJpbSgpKS50b0JlKCdUcmFpbiBrYSBleGFtcGxlIHNhbWpobycpOwogIH0pOwp9KTsK
+import { describe, it, expect } from 'vitest';
+import { cleanTranscript, isNoiseOnly } from '@/lib/noise-filter';
+
+describe('transcript noise filter', () => {
+  it('drops whisper and noise tags', () => {
+    expect(isNoiseOnly('[whispering]')).toBe(true);
+    expect(isNoiseOnly('(background noise)')).toBe(true);
+    expect(cleanTranscript('Mitochondria kya hai [inaudible]').trim()).toBe('Mitochondria kya hai');
+  });
+  it('drops phantom phrases from silence', () => {
+    expect(isNoiseOnly('Thank you for watching!')).toBe(true);
+  });
+  it('keeps real speech', () => {
+    expect(cleanTranscript('Option B sahi hai').trim()).toBe('Option B sahi hai');
+    expect(isNoiseOnly('B')).toBe(false);
+  });
+});
+
+describe('traffic and machinery noise', () => {
+  it('drops vehicle, factory, weather and animal sound tags', () => {
+    expect(isNoiseOnly('(car horn)')).toBe(true);
+    expect(isNoiseOnly('(engine noise)')).toBe(true);
+    expect(isNoiseOnly('(traffic)')).toBe(true);
+    expect(isNoiseOnly('[dog barking]')).toBe(true);
+    expect(isNoiseOnly('(factory machine)')).toBe(true);
+    expect(isNoiseOnly('(train passing)')).toBe(true);
+    expect(isNoiseOnly('(हॉर्न)')).toBe(true);
+  });
+  it('keeps the speech around a noise tag', () => {
+    expect(cleanTranscript('Beta suno (bus passing) ye important hai').trim()).toBe('Beta suno ye important hai');
+  });
+  it('never eats real speech containing these words outside tags', () => {
+    expect(cleanTranscript('Train ka example samjho').trim()).toBe('Train ka example samjho');
+  });
+});

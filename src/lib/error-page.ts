@@ -1,1 +1,30 @@
-ZXhwb3J0IGZ1bmN0aW9uIHJlbmRlckVycm9yUGFnZSgpOiBzdHJpbmcgewogIHJldHVybiBgPCFkb2N0eXBlIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KICA8aGVhZD4KICAgIDxtZXRhIGNoYXJzZXQ9InV0Zi04IiAvPgogICAgPHRpdGxlPlRoaXMgcGFnZSBkaWRuJ3QgbG9hZDwvdGl0bGU+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEiIC8+CiAgICA8c3R5bGU+CiAgICAgIGJvZHkgeyBmb250OiAxNXB4LzEuNSBzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWY7IGJhY2tncm91bmQ6ICNmYWZhZmE7IGNvbG9yOiAjMTExOyBkaXNwbGF5OiBncmlkOyBwbGFjZS1pdGVtczogY2VudGVyOyBtaW4taGVpZ2h0OiAxMDB2aDsgbWFyZ2luOiAwOyBwYWRkaW5nOiAxLjVyZW07IH0KICAgICAgLmNhcmQgeyBtYXgtd2lkdGg6IDI4cmVtOyB3aWR0aDogMTAwJTsgdGV4dC1hbGlnbjogY2VudGVyOyBwYWRkaW5nOiAycmVtOyB9CiAgICAgIGgxIHsgZm9udC1zaXplOiAxLjI1cmVtOyBtYXJnaW46IDAgMCAwLjVyZW07IH0KICAgICAgcCB7IGNvbG9yOiAjNGI1NTYzOyBtYXJnaW46IDAgMCAxLjVyZW07IH0KICAgICAgLmFjdGlvbnMgeyBkaXNwbGF5OiBmbGV4OyBnYXA6IDAuNXJlbTsganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IGZsZXgtd3JhcDogd3JhcDsgfQogICAgICBhLCBidXR0b24geyBwYWRkaW5nOiAwLjVyZW0gMXJlbTsgYm9yZGVyLXJhZGl1czogMC4zNzVyZW07IGZvbnQ6IGluaGVyaXQ7IGN1cnNvcjogcG9pbnRlcjsgdGV4dC1kZWNvcmF0aW9uOiBub25lOyBib3JkZXI6IDFweCBzb2xpZCB0cmFuc3BhcmVudDsgfQogICAgICAucHJpbWFyeSB7IGJhY2tncm91bmQ6ICMxMTE7IGNvbG9yOiAjZmZmOyB9CiAgICAgIC5zZWNvbmRhcnkgeyBiYWNrZ3JvdW5kOiAjZmZmOyBjb2xvcjogIzExMTsgYm9yZGVyLWNvbG9yOiAjZDFkNWRiOyB9CiAgICA8L3N0eWxlPgogIDwvaGVhZD4KICA8Ym9keT4KICAgIDxkaXYgY2xhc3M9ImNhcmQiPgogICAgICA8aDE+VGhpcyBwYWdlIGRpZG4ndCBsb2FkPC9oMT4KICAgICAgPHA+U29tZXRoaW5nIHdlbnQgd3Jvbmcgb24gb3VyIGVuZC4gWW91IGNhbiB0cnkgcmVmcmVzaGluZyBvciBoZWFkIGJhY2sgaG9tZS48L3A+CiAgICAgIDxkaXYgY2xhc3M9ImFjdGlvbnMiPgogICAgICAgIDxidXR0b24gY2xhc3M9InByaW1hcnkiIG9uY2xpY2s9ImxvY2F0aW9uLnJlbG9hZCgpIj5UcnkgYWdhaW48L2J1dHRvbj4KICAgICAgICA8YSBjbGFzcz0ic2Vjb25kYXJ5IiBocmVmPSIvIj5HbyBob21lPC9hPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogIDwvYm9keT4KPC9odG1sPmA7Cn0K
+export function renderErrorPage(): string {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>This page didn't load</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body { font: 15px/1.5 system-ui, -apple-system, sans-serif; background: #fafafa; color: #111; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 1.5rem; }
+      .card { max-width: 28rem; width: 100%; text-align: center; padding: 2rem; }
+      h1 { font-size: 1.25rem; margin: 0 0 0.5rem; }
+      p { color: #4b5563; margin: 0 0 1.5rem; }
+      .actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+      a, button { padding: 0.5rem 1rem; border-radius: 0.375rem; font: inherit; cursor: pointer; text-decoration: none; border: 1px solid transparent; }
+      .primary { background: #111; color: #fff; }
+      .secondary { background: #fff; color: #111; border-color: #d1d5db; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>This page didn't load</h1>
+      <p>Something went wrong on our end. You can try refreshing or head back home.</p>
+      <div class="actions">
+        <button class="primary" onclick="location.reload()">Try again</button>
+        <a class="secondary" href="/">Go home</a>
+      </div>
+    </div>
+  </body>
+</html>`;
+}

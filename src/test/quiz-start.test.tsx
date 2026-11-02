@@ -1,1 +1,21 @@
-aW1wb3J0IHsgYWN0LCByZW5kZXJIb29rIH0gZnJvbSAnQHRlc3RpbmctbGlicmFyeS9yZWFjdCc7CmltcG9ydCB7IGV4cGVjdCwgaXQsIHZpIH0gZnJvbSAndml0ZXN0JzsKaW1wb3J0IHsgdXNlUXVpelN0YXJ0IH0gZnJvbSAnQC9ob29rcy91c2UtcXVpei1zdGFydCc7CgppdCgncXVldWVzIFF1aXogT04gdW50aWwgdGhlIGN1cnJlbnQgYW5zd2VyIGZpbmlzaGVzLCBvbmNlIG9ubHknLCAoKSA9PiB7CiAgY29uc3Qgc3RhcnQgPSB2aS5mbigpOwogIGNvbnN0IHsgcmVzdWx0LCByZXJlbmRlciB9ID0gcmVuZGVySG9vaygoeyByZWFkeSB9KSA9PiB1c2VRdWl6U3RhcnQocmVhZHksIHN0YXJ0KSwgeyBpbml0aWFsUHJvcHM6IHsgcmVhZHk6IGZhbHNlIH0gfSk7CiAgYWN0KCgpID0+IHJlc3VsdC5jdXJyZW50KHRydWUpKTsKICBleHBlY3Qoc3RhcnQpLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygwKTsKICByZXJlbmRlcih7IHJlYWR5OiB0cnVlIH0pOwogIGV4cGVjdChzdGFydCkudG9IYXZlQmVlbkNhbGxlZFRpbWVzKDEpOwogIHJlcmVuZGVyKHsgcmVhZHk6IHRydWUgfSk7CiAgZXhwZWN0KHN0YXJ0KS50b0hhdmVCZWVuQ2FsbGVkVGltZXMoMSk7Cn0pOwppdCgnUXVpeiBPRkYgY2FuY2VscyBhIHF1ZXVlZCBxdWl6IHdpdGhvdXQgaW50ZXJydXB0aW5nIHRoZSBhbnN3ZXInLCAoKSA9PiB7CiAgY29uc3Qgc3RhcnQgPSB2aS5mbigpOwogIGNvbnN0IHsgcmVzdWx0LCByZXJlbmRlciB9ID0gcmVuZGVySG9vaygoeyByZWFkeSB9KSA9PiB1c2VRdWl6U3RhcnQocmVhZHksIHN0YXJ0KSwgeyBpbml0aWFsUHJvcHM6IHsgcmVhZHk6IGZhbHNlIH0gfSk7CiAgYWN0KCgpID0+IHsgcmVzdWx0LmN1cnJlbnQodHJ1ZSk7IHJlc3VsdC5jdXJyZW50KGZhbHNlKTsgfSk7CiAgcmVyZW5kZXIoeyByZWFkeTogdHJ1ZSB9KTsKICBleHBlY3Qoc3RhcnQpLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygwKTsKfSk7
+import { act, renderHook } from '@testing-library/react';
+import { expect, it, vi } from 'vitest';
+import { useQuizStart } from '@/hooks/use-quiz-start';
+
+it('queues Quiz ON until the current answer finishes, once only', () => {
+  const start = vi.fn();
+  const { result, rerender } = renderHook(({ ready }) => useQuizStart(ready, start), { initialProps: { ready: false } });
+  act(() => result.current(true));
+  expect(start).toHaveBeenCalledTimes(0);
+  rerender({ ready: true });
+  expect(start).toHaveBeenCalledTimes(1);
+  rerender({ ready: true });
+  expect(start).toHaveBeenCalledTimes(1);
+});
+it('Quiz OFF cancels a queued quiz without interrupting the answer', () => {
+  const start = vi.fn();
+  const { result, rerender } = renderHook(({ ready }) => useQuizStart(ready, start), { initialProps: { ready: false } });
+  act(() => { result.current(true); result.current(false); });
+  rerender({ ready: true });
+  expect(start).toHaveBeenCalledTimes(0);
+});

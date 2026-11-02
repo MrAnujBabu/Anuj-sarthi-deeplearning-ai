@@ -1,1 +1,11 @@
-ewogICJ2ZXJzaW9uIjogMSwKICAiYXNzZXRfaWQiOiAiODcyZWViMTEtN2FmOS00OTNhLTlkZWEtY2Y4ODkwYWZkNWE0IiwKICAicHJvamVjdF9pZCI6ICIyOWJhMmM3My1iN2RjLTQyZTUtOTMyOS0wNTU2ZGNiNzk4MTAiLAogICJ1cmwiOiAiL19fbDVlL2Fzc2V0cy12MS84NzJlZWIxMS03YWY5LTQ5M2EtOWRlYS1jZjg4OTBhZmQ1YTQvdGVhY2hlci1zYW1wbGUtYW9lZGUud2F2IiwKICAicjJfa2V5IjogImEvdjEvMjliYTJjNzMtYjdkYy00MmU1LTkzMjktMDU1NmRjYjc5ODEwLzg3MmVlYjExLTdhZjktNDkzYS05ZGVhLWNmODg5MGFmZDVhNC90ZWFjaGVyLXNhbXBsZS1hb2VkZS53YXYiLAogICJvcmlnaW5hbF9maWxlbmFtZSI6ICJ0ZWFjaGVyLXNhbXBsZS1hb2VkZS53YXYiLAogICJzaXplIjogNTQwMDkwLAogICJjb250ZW50X3R5cGUiOiAiYXVkaW8vd2F2IiwKICAiY3JlYXRlZF9hdCI6ICIyMDI2LTEwLTIzVDE3OjMzOjE2WiIKfQo=
+{
+  "version": 1,
+  "asset_id": "872eeb11-7af9-493a-9dea-cf8890afd5a4",
+  "project_id": "29ba2c73-b7dc-42e5-9329-0556dcb79810",
+  "url": "/__l5e/assets-v1/872eeb11-7af9-493a-9dea-cf8890afd5a4/teacher-sample-aoede.wav",
+  "r2_key": "a/v1/29ba2c73-b7dc-42e5-9329-0556dcb79810/872eeb11-7af9-493a-9dea-cf8890afd5a4/teacher-sample-aoede.wav",
+  "original_filename": "teacher-sample-aoede.wav",
+  "size": 540090,
+  "content_type": "audio/wav",
+  "created_at": "2026-10-23T17:33:16Z"
+}

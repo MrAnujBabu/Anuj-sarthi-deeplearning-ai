@@ -1,1 +1,7 @@
-IyBSb2FkbWFwCgotIFt4XSBJbXBvcnQgdGhlIGFwcCBmcm9tIEdpdEh1YiByZXBvIE1yQW51akJhYnUvQW51ai1zYXJ0aGktZGVlcGxlYXJuaW5nLWFpIGludG8gdGhpcyBwcm9qZWN0Ci0gW3hdIExpbmsgR2l0SHViIGNvbm5lY3RvcgotIFt4XSBGaXggcXVpeiBvcHRpb24gc2VsZWN0aW9uIGFuZCB2b2ljZSBxdWl6IHN5bmNocm9uaXphdGlvbiDigJQgcGxheWJhY2sgYW5kIHNlbGVjdGlvbiB0ZXN0cyBwYXNzZWQ7IHJlYWwgdm9pY2UgcGxheWJhY2sgcmVtYWlucyB1bnZlcmlmaWVkICh0ZXN0IGNhbGwgZGlkIG5vdCBjb25uZWN0KQotIFsgXSBMaW5rIHJlbWFpbmluZyBzZXJ2aWNlcyAoRmlyZWNyYXdsLCBQYXJhbGxlbCwgUGVycGxleGl0eSwgU2FydmFtLCBHb29nbGUgU2hlZXRzKSDigJQgd2FpdGluZyBvbiB1c2VyCi0gWyBdIEV4aXN0aW5nIGRhdGEgKGFkbWluIG1lbW9yeSwgdXNlciBhY2NvdW50cykg4oCUIHdhaXRpbmcgb24gZXhwb3J0IGZyb20gdGhlIG9sZCBwcm9qZWN0Cg==
+# Roadmap
+
+- [x] Import the app from GitHub repo MrAnujBabu/Anuj-sarthi-deeplearning-ai into this project
+- [x] Link GitHub connector
+- [x] Fix quiz option selection and voice quiz synchronization — playback and selection tests passed; real voice playback remains unverified (test call did not connect)
+- [ ] Link remaining services (Firecrawl, Parallel, Perplexity, Sarvam, Google Sheets) — waiting on user
+- [ ] Existing data (admin memory, user accounts) — waiting on export from the old project

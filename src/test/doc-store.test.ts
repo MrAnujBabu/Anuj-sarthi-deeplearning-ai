@@ -1,1 +1,23 @@
-aW1wb3J0ICdmYWtlLWluZGV4ZWRkYi9hdXRvJzsKaW1wb3J0IHsgYWZ0ZXJFYWNoLCBleHBlY3QsIGl0LCB2aSB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB0eXBlIHsgVUlNZXNzYWdlIH0gZnJvbSAnYWknOwppbXBvcnQgeyBjbGVhckRvY3VtZW50U3RvcmUsIHJlc3RvcmVEb2NzLCBzdHJpcERvY3MgfSBmcm9tICdAL2xpYi9kb2Mtc3RvcmUnOwpjb25zdCBtZXNzYWdlczogVUlNZXNzYWdlW10gPSBbeyBpZDogJ3BkZicsIHJvbGU6ICd1c2VyJywgcGFydHM6IFt7IHR5cGU6ICdmaWxlJywgZmlsZW5hbWU6ICdmb3JjZS5wZGYnLCBtZWRpYVR5cGU6ICdhcHBsaWNhdGlvbi9wZGYnLCB1cmw6ICdkYXRhOmFwcGxpY2F0aW9uL3BkZjtiYXNlNjQsVUVaRVJnPT0nIH1dIH1dOwphZnRlckVhY2goYXN5bmMgKCkgPT4geyB2aS5yZXN0b3JlQWxsTW9ja3MoKTsgYXdhaXQgY2xlYXJEb2N1bWVudFN0b3JlKCk7IH0pOwppdCgnY29tbWl0cyBQREYgcG9pbnRlcnMgb25seSBhZnRlciBkYXRhIGlzIHN0b3JlZCBhbmQgcmVsb2FkIHJlc3RvcmVzIGl0JywgYXN5bmMgKCkgPT4gewogIGNvbnN0IHN0b3JlZCA9IGF3YWl0IHN0cmlwRG9jcyhtZXNzYWdlcyk7CiAgZXhwZWN0KEpTT04uc3RyaW5naWZ5KHN0b3JlZCkpLnRvQ29udGFpbignaWRiOicpOwogIGV4cGVjdChhd2FpdCByZXN0b3JlRG9jcyhzdG9yZWQpKS50b0VxdWFsKG1lc3NhZ2VzKTsKfSk7Cml0KCdyZXBvcnRzIGZhaWxlZCBQREYgd3JpdGVzIHdpdGhvdXQgcmV0dXJuaW5nIGEgYnJva2VuIHBvaW50ZXIgYW5kIHBlcm1pdHMgcmV0cnknLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgZmFpbHVyZSA9IHZpLnNweU9uKElEQk9iamVjdFN0b3JlLnByb3RvdHlwZSwgJ3B1dCcpLm1vY2tJbXBsZW1lbnRhdGlvbigoKSA9PiB7IHRocm93IG5ldyBET01FeGNlcHRpb24oJ0Z1bGwnLCAnUXVvdGFFeGNlZWRlZEVycm9yJyk7IH0pOwogIGF3YWl0IGV4cGVjdChzdHJpcERvY3MobWVzc2FnZXMpKS5yZWplY3RzLnRvVGhyb3coJ0Z1bGwnKTsKICBmYWlsdXJlLm1vY2tSZXN0b3JlKCk7CiAgZXhwZWN0KGF3YWl0IHJlc3RvcmVEb2NzKGF3YWl0IHN0cmlwRG9jcyhtZXNzYWdlcykpKS50b0VxdWFsKG1lc3NhZ2VzKTsKfSk7Cml0KCdjbGVhbnVwIHJlbW92ZXMgc3RvcmVkIGRvY3VtZW50cyB3aXRob3V0IGNoYW5naW5nIHRoZSBpbnB1dCBtZXNzYWdlcycsIGFzeW5jICgpID0+IHsKICBjb25zdCBzdG9yZWQgPSBhd2FpdCBzdHJpcERvY3MobWVzc2FnZXMpOwogIGF3YWl0IGNsZWFyRG9jdW1lbnRTdG9yZSgpOwogIGV4cGVjdChKU09OLnN0cmluZ2lmeShhd2FpdCByZXN0b3JlRG9jcyhzdG9yZWQpKSkudG9Db250YWluKCdubyBsb25nZXIgYXZhaWxhYmxlJyk7CiAgZXhwZWN0KEpTT04uc3RyaW5naWZ5KG1lc3NhZ2VzKSkudG9Db250YWluKCdkYXRhOmFwcGxpY2F0aW9uL3BkZicpOwp9KTs=
+import 'fake-indexeddb/auto';
+import { afterEach, expect, it, vi } from 'vitest';
+import type { UIMessage } from 'ai';
+import { clearDocumentStore, restoreDocs, stripDocs } from '@/lib/doc-store';
+const messages: UIMessage[] = [{ id: 'pdf', role: 'user', parts: [{ type: 'file', filename: 'force.pdf', mediaType: 'application/pdf', url: 'data:application/pdf;base64,UEZERg==' }] }];
+afterEach(async () => { vi.restoreAllMocks(); await clearDocumentStore(); });
+it('commits PDF pointers only after data is stored and reload restores it', async () => {
+  const stored = await stripDocs(messages);
+  expect(JSON.stringify(stored)).toContain('idb:');
+  expect(await restoreDocs(stored)).toEqual(messages);
+});
+it('reports failed PDF writes without returning a broken pointer and permits retry', async () => {
+  const failure = vi.spyOn(IDBObjectStore.prototype, 'put').mockImplementation(() => { throw new DOMException('Full', 'QuotaExceededError'); });
+  await expect(stripDocs(messages)).rejects.toThrow('Full');
+  failure.mockRestore();
+  expect(await restoreDocs(await stripDocs(messages))).toEqual(messages);
+});
+it('cleanup removes stored documents without changing the input messages', async () => {
+  const stored = await stripDocs(messages);
+  await clearDocumentStore();
+  expect(JSON.stringify(await restoreDocs(stored))).toContain('no longer available');
+  expect(JSON.stringify(messages)).toContain('data:application/pdf');
+});

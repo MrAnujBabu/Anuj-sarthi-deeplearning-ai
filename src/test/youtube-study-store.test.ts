@@ -1,1 +1,19 @@
-aW1wb3J0ICdmYWtlLWluZGV4ZWRkYi9hdXRvJzsKaW1wb3J0IHsgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IGlzU2F2ZWRZb3VUdWJlU3R1ZHksIGxvYWRZb3VUdWJlU3R1ZHksIHNhdmVZb3VUdWJlU3R1ZHksIGxpYnJhcnlLZXksIHR5cGUgU2F2ZWRZb3VUdWJlU3R1ZHkgfSBmcm9tICdAL2xpYi95b3V0dWJlLXN0dWR5LXN0b3JlJzsKCml0KCdrZWVwcyBkaXN0aW5jdCBjb252ZXJzaW9ucyBvZiB0aGUgc2FtZSB2aWRlbyBpbiBzZXBhcmF0ZSBsaWJyYXJ5IGVudHJpZXMnLCAoKSA9PiB7CiAgZXhwZWN0KGxpYnJhcnlLZXkoeyB0aXRsZTogJ1QnLCB2aWRlb0lkOiAnTHQ1NENYOURtUzQnLCBzb3VyY2VLZXk6ICdyZXZpZXdlZCcgfSwgJycsICcnKSkuCiAgICBub3QudG9CZShsaWJyYXJ5S2V5KHsgdGl0bGU6ICdUJywgdmlkZW9JZDogJ0x0NTRDWDlEbVM0Jywgc291cmNlS2V5OiAnZmFzdCcgfSwgJycsICcnKSk7Cn0pOwoKaXQoJ3Jlc3RvcmVzIGNvbXBsZXRlZCB0cmFuc2NyaXB0LCB0aW1lc3RhbXBzLCBVUkwgYW5kIHZvaWNlIGZyb20gZGV2aWNlIHN0b3JhZ2UnLCBhc3luYyAoKSA9PiB7CiAgY29uc3Qgc3R1ZHk6IFNhdmVkWW91VHViZVN0dWR5ID0geyB2ZXJzaW9uOiAxLCB1cmw6ICdodHRwczovL3lvdXR1LmJlL0tBNWtQYmRrSzJFJywgdHJhbnNjcmlwdDogJycsIHZvaWNlOiAnaXNoaXRhX2hpX2VkdGVjaCcsCiAgICByZXN1bHQ6IHsgdGl0bGU6ICdMZWN0dXJlJywgaGluZGk6ICfgpKrgpLngpLLgpL7gpaQg4KSm4KWC4KS44KSw4KS+4KWkJywgdHJ1bmNhdGVkOiBmYWxzZSwgdmlkZW9JZDogJ0tBNWtQYmRrSzJFJywgZHViOiBbeyBzdGFydDogMCwgZW5kOiAzMCwgaGluZGk6ICfgpKrgpLngpLLgpL7gpaQnIH0sIHsgc3RhcnQ6IDMwLCBlbmQ6IDYwLCBoaW5kaTogJ+CkpuClguCkuOCksOCkvuClpCcgfV0gfSB9OwogIGF3YWl0IHNhdmVZb3VUdWJlU3R1ZHkoc3R1ZHkpOwogIGV4cGVjdChhd2FpdCBsb2FkWW91VHViZVN0dWR5KCkpLnRvRXF1YWwoc3R1ZHkpOwp9KTsKaXQoJ3JlamVjdHMgY29ycnVwdCBzdG9yZWQgdGltZXN0YW1wcyBhbmQgdW5rbm93biB2b2ljZXMnLCAoKSA9PiB7CiAgZXhwZWN0KGlzU2F2ZWRZb3VUdWJlU3R1ZHkoeyB2ZXJzaW9uOiAxLCB2b2ljZTogJ2Zha2UnLCB1cmw6ICcnLCB0cmFuc2NyaXB0OiAnJywgcmVzdWx0OiB7fSB9KSkudG9CZShmYWxzZSk7CiAgZXhwZWN0KGlzU2F2ZWRZb3VUdWJlU3R1ZHkoeyB2ZXJzaW9uOiAxLCB2b2ljZTogJ2lzaGl0YV9oaV9lZHRlY2gnLCB1cmw6ICcnLCB0cmFuc2NyaXB0OiAnJywgcmVzdWx0OiB7IHRpdGxlOiAnJywgaGluZGk6ICdhJywgdHJ1bmNhdGVkOiBmYWxzZSwgZHViOiBbeyBzdGFydDogMzAsIGVuZDogMSwgaGluZGk6ICdhJyB9XSB9IH0pKS50b0JlKGZhbHNlKTsKfSk7
+import 'fake-indexeddb/auto';
+import { expect, it } from 'vitest';
+import { isSavedYouTubeStudy, loadYouTubeStudy, saveYouTubeStudy, libraryKey, type SavedYouTubeStudy } from '@/lib/youtube-study-store';
+
+it('keeps distinct conversions of the same video in separate library entries', () => {
+  expect(libraryKey({ title: 'T', videoId: 'Lt54CX9DmS4', sourceKey: 'reviewed' }, '', '')).
+    not.toBe(libraryKey({ title: 'T', videoId: 'Lt54CX9DmS4', sourceKey: 'fast' }, '', ''));
+});
+
+it('restores completed transcript, timestamps, URL and voice from device storage', async () => {
+  const study: SavedYouTubeStudy = { version: 1, url: 'https://youtu.be/KA5kPbdkK2E', transcript: '', voice: 'ishita_hi_edtech',
+    result: { title: 'Lecture', hindi: 'पहला। दूसरा।', truncated: false, videoId: 'KA5kPbdkK2E', dub: [{ start: 0, end: 30, hindi: 'पहला।' }, { start: 30, end: 60, hindi: 'दूसरा।' }] } };
+  await saveYouTubeStudy(study);
+  expect(await loadYouTubeStudy()).toEqual(study);
+});
+it('rejects corrupt stored timestamps and unknown voices', () => {
+  expect(isSavedYouTubeStudy({ version: 1, voice: 'fake', url: '', transcript: '', result: {} })).toBe(false);
+  expect(isSavedYouTubeStudy({ version: 1, voice: 'ishita_hi_edtech', url: '', transcript: '', result: { title: '', hindi: 'a', truncated: false, dub: [{ start: 30, end: 1, hindi: 'a' }] } })).toBe(false);
+});

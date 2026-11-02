@@ -1,1 +1,10 @@
-LyoqIEEgc2VydmVyLXNpZGUgYm90IGNoZWNrIGlzIG5vdCBldmlkZW5jZSB0aGF0IGEgcHVibGljIHZpZGVvIGlzIHByaXZhdGUuICovCmV4cG9ydCBmdW5jdGlvbiBpc1lvdVR1YmVSZXN0cmljdGVkKHBsYXllcjogeyByZWFzb246IHN0cmluZyB9KTogYm9vbGVhbiB7CiAgcmV0dXJuIC9wcml2YXRlIHZpZGVvfGNvbmZpcm0geW91ciBhZ2V8YWdlWy0gXXJlc3RyaWN0fHZpZGVvICg/OmhhcyBiZWVuIHx3YXMgKT8oPzpyZW1vdmVkfGRlbGV0ZWQpfHZpZGVvIHVuYXZhaWxhYmxlfG5vdCBhdmFpbGFibGUgaW4geW91ciBjb3VudHJ5L2kudGVzdChwbGF5ZXIucmVhc29uKTsKfQoKZXhwb3J0IGZ1bmN0aW9uIGNhblRyeVlvdVR1YmVMaXN0ZW5pbmcocGxheWVyOiB7IHN0YXR1czogc3RyaW5nOyByZWFzb246IHN0cmluZzsgdGl0bGU6IHN0cmluZyB9KTogYm9vbGVhbiB7CiAgaWYgKGlzWW91VHViZVJlc3RyaWN0ZWQocGxheWVyKSkgcmV0dXJuIGZhbHNlOwogIGlmIChwbGF5ZXIuc3RhdHVzID09PSAnT0snIHx8IHBsYXllci5zdGF0dXMgPT09ICdMSVZFX1NUUkVBTV9PRkZMSU5FJyB8fCBwbGF5ZXIudGl0bGUpIHJldHVybiB0cnVlOwogIHJldHVybiAvY29uZmlybVxzKyg/OnRoYXRccyspP3lvdVvigJknXT9yZVxzK25vdFxzK2Fccytib3R8dW51c3VhbCB0cmFmZmljfGF1dG9tYXRlZCAoPzpxdWVyaWVzfHJlcXVlc3RzKS9pLnRlc3QocGxheWVyLnJlYXNvbik7Cn0=
+/** A server-side bot check is not evidence that a public video is private. */
+export function isYouTubeRestricted(player: { reason: string }): boolean {
+  return /private video|confirm your age|age[- ]restrict|video (?:has been |was )?(?:removed|deleted)|video unavailable|not available in your country/i.test(player.reason);
+}
+
+export function canTryYouTubeListening(player: { status: string; reason: string; title: string }): boolean {
+  if (isYouTubeRestricted(player)) return false;
+  if (player.status === 'OK' || player.status === 'LIVE_STREAM_OFFLINE' || player.title) return true;
+  return /confirm\s+(?:that\s+)?you[’']?re\s+not\s+a\s+bot|unusual traffic|automated (?:queries|requests)/i.test(player.reason);
+}

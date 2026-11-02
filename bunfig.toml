@@ -1,1 +1,7 @@
-W2luc3RhbGxdCnNhdmVUZXh0TG9ja2ZpbGUgPSB0cnVlCiMgMjRoIHN1cHBseS1jaGFpbiBndWFyZDogc2tpcCBwYWNrYWdlIHZlcnNpb25zIHB1Ymxpc2hlZCBsZXNzIHRoYW4gYSBkYXkgYWdvLgptaW5pbXVtUmVsZWFzZUFnZSA9IDg2NDAwCiMgRWFjaCBlbnRyeSBieXBhc3NlcyB0aGUgMjRoIGd1YXJkIGZvciBvbmUgcGFja2FnZSDigJQgY29uZmlybSB3aXRoIHRoZSB1c2VyCiMgYmVmb3JlIGFkZGluZyBhbnkuCm1pbmltdW1SZWxlYXNlQWdlRXhjbHVkZXMgPSBbIkBsb3ZhYmxlLmRldi92aXRlLXRhbnN0YWNrLWNvbmZpZyIsICJAbG92YWJsZS5kZXYvbWNwLWpzIiwgIkBsb3ZhYmxlLmRldi9haS1nYXRld2F5IiwgIkBsb3ZhYmxlLmRldi9lbWFpbC1qcyIsICJAbG92YWJsZS5kZXYvd2ViaG9va3MtanMiXQo=
+[install]
+saveTextLockfile = true
+# 24h supply-chain guard: skip package versions published less than a day ago.
+minimumReleaseAge = 86400
+# Each entry bypasses the 24h guard for one package — confirm with the user
+# before adding any.
+minimumReleaseAgeExcludes = ["@lovable.dev/vite-tanstack-config", "@lovable.dev/mcp-js", "@lovable.dev/ai-gateway", "@lovable.dev/email-js", "@lovable.dev/webhooks-js"]

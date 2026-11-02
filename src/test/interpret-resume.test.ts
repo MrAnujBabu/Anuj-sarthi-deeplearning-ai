@@ -1,1 +1,75 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBpbnRlcnByZXRUaW1lZCwgVElNRURfQkFUQ0ggfSBmcm9tICdAL2xpYi9pbnRlcnByZXRlci5zZXJ2ZXInOwppbXBvcnQgeyBjaGVja3BvaW50S2V5LCBob3VyU2VjdGlvbnMsIGlzUmVzdW1hYmxlLCBpc1JlY292ZXJhYmxlLCBpc1RyYW5zaWVudEZhaWx1cmUgfSBmcm9tICdAL2xpYi9pbnRlcnByZXQtY2hlY2twb2ludCc7CmltcG9ydCB7IGNyZWRpdFBhdXNlRGVjaXNpb24sIENSRURJVF9QUk9CRV9NUyB9IGZyb20gJ0AvbGliL2FpL3BhdXNlLXBvbGljeSc7CmltcG9ydCB7IEludGVycHJldFN0cmVhbUVycm9yIH0gZnJvbSAnQC9saWIvaW50ZXJwcmV0LXByb3RvY29sJzsKCmNvbnN0IHNlZ3MgPSBBcnJheS5mcm9tKHsgbGVuZ3RoOiBUSU1FRF9CQVRDSCAqIDIgfSwgKF8sIGkpID0+ICh7IHN0YXJ0OiBpICogMzAsIGVuZDogaSAqIDMwICsgMzAsIHRleHQ6IGBwYXJ0ICR7aX1gIH0pKTsKY29uc3QgYW5zd2VyID0gKGNvdW50OiBudW1iZXIpID0+IEFycmF5LmZyb20oeyBsZW5ndGg6IGNvdW50IH0sIChfLCBpKSA9PiBgIyMjICR7aSArIDF9XG7gpLngpL/gpLjgpY3gpLjgpL4gJHtpICsgMX3gpaRgKS5qb2luKCdcbicpOwoKZGVzY3JpYmUoJ3Jlc3VtaW5nIGEgbG9uZyBpbnRlcnByZXRhdGlvbicsICgpID0+IHsKICBpdCgnZG9lcyBub3QgcGF5IGFnYWluIGZvciBiYXRjaGVzIGFscmVhZHkgZmluaXNoZWQgKG9ubHkgdGhlIHVuZmluaXNoZWQgYmF0Y2ggaXMgc2VudCknLCBhc3luYyAoKSA9PiB7CiAgICBsZXQgY2FsbHMgPSAwOwogICAgY29uc3QgZG9uZSA9IEFycmF5LmZyb20oeyBsZW5ndGg6IFRJTUVEX0JBVENIIH0sIChfLCBpKSA9PiBgcyR7aX3gpaRgKTsKICAgIGNvbnN0IHNhdmVkID0gWy4uLmRvbmUsIC4uLkFycmF5KFRJTUVEX0JBVENIKS5maWxsKCcnKV07CiAgICBjb25zdCBzZWVuOiBudW1iZXJbXSA9IFtdOwogICAgY29uc3Qgb3V0ID0gYXdhaXQgaW50ZXJwcmV0VGltZWQoewogICAgICBzZWdtZW50czogc2VncywgY29udGV4dDogeyB0aXRsZTogJ1QnLCBicmllZjogbnVsbCB9LCBlbmdpbmU6ICdjbGF1ZGUnLCBzaWduYWw6IG5ldyBBYm9ydENvbnRyb2xsZXIoKS5zaWduYWwsIHJldmlldzogZmFsc2UsIHNhdmVkLAogICAgICBvblNlZ21lbnQ6IGkgPT4gc2Vlbi5wdXNoKGkpLAogICAgICBjYWxsOiBhc3luYyAoKSA9PiB7IGNhbGxzKys7IHJldHVybiBhbnN3ZXIoVElNRURfQkFUQ0gpOyB9LAogICAgfSk7CiAgICBleHBlY3QoY2FsbHMpLnRvQmUoMSk7CiAgICBleHBlY3Qob3V0LmxpbmVzLnNsaWNlKDAsIFRJTUVEX0JBVENIKSkudG9FcXVhbChkb25lKTsKICAgIGV4cGVjdChvdXQubGluZXMuc2xpY2UoVElNRURfQkFUQ0gpLmV2ZXJ5KEJvb2xlYW4pKS50b0JlKHRydWUpOwogICAgZXhwZWN0KHNlZW4uc29ydCgoYSwgYikgPT4gYSAtIGIpKS50b0VxdWFsKHNlZ3MubWFwKChfLCBpKSA9PiBpKSk7CiAgfSk7CgogIGl0KCdpZ25vcmVzIHNhdmVkIGxpbmVzIHRoYXQgZG8gbm90IG1hdGNoIHRoZSBzZWdtZW50IGNvdW50JywgYXN5bmMgKCkgPT4gewogICAgbGV0IGNhbGxzID0gMDsKICAgIGF3YWl0IGludGVycHJldFRpbWVkKHsKICAgICAgc2VnbWVudHM6IHNlZ3MsIGNvbnRleHQ6IHsgdGl0bGU6ICdUJywgYnJpZWY6IG51bGwgfSwgZW5naW5lOiAnY2xhdWRlJywgc2lnbmFsOiBuZXcgQWJvcnRDb250cm9sbGVyKCkuc2lnbmFsLCByZXZpZXc6IGZhbHNlLCBzYXZlZDogWyd44KWkJ10sCiAgICAgIG9uU2VnbWVudDogKCkgPT4ge30sIGNhbGw6IGFzeW5jICgpID0+IHsgY2FsbHMrKzsgcmV0dXJuIGFuc3dlcihUSU1FRF9CQVRDSCk7IH0sCiAgICB9KTsKICAgIGV4cGVjdChjYWxscykudG9CZSgyKTsKICB9KTsKCiAgaXQoJ2dyb3VwcyBhIGxvbmcgdmlkZW8gYnkgaG91cicsICgpID0+IHsKICAgIGNvbnN0IHN0YXJ0cyA9IFswLCAxODAwLCAzNjAwLCA1NDAwLCA3MjAwXTsKICAgIGV4cGVjdChob3VyU2VjdGlvbnMoc3RhcnRzLCBbJ3gnLCAneScsICd6JywgJycsICcnXSkpLnRvRXF1YWwoW3sgaG91cjogMCwgZG9uZTogMiwgdG90YWw6IDIgfSwgeyBob3VyOiAxLCBkb25lOiAxLCB0b3RhbDogMiB9LCB7IGhvdXI6IDIsIGRvbmU6IDAsIHRvdGFsOiAxIH1dKTsKICB9KTsKCiAgaXQoJ29mZmVycyBjb250aW51ZSBvbmx5IGZvciBwYXJ0bHkgZmluaXNoZWQgd29yaycsICgpID0+IHsKICAgIGNvbnN0IGJhc2UgPSB7IGtleTogJ2snLCBzYXZlZEF0OiAwLCB0aXRsZTogJycsIHN0YXJ0czogWzAsIDMwXSwgYnJpZWY6IG51bGwgfTsKICAgIGV4cGVjdChpc1Jlc3VtYWJsZSh7IC4uLmJhc2UsIGxpbmVzOiBbJ3gnLCAnJ10gfSkpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoaXNSZXN1bWFibGUoeyAuLi5iYXNlLCBsaW5lczogWyd4JywgJ3knXSB9KSkudG9CZShmYWxzZSk7CiAgICBleHBlY3QoaXNSZXN1bWFibGUoeyAuLi5iYXNlLCBsaW5lczogWycnLCAnJ10gfSkpLnRvQmUoZmFsc2UpOwogICAgZXhwZWN0KGlzUmVjb3ZlcmFibGUoeyAuLi5iYXNlLCBsaW5lczogWyd4JywgJ3knXSB9KSkudG9CZSh0cnVlKTsKICAgIGV4cGVjdChpc1JlY292ZXJhYmxlKHsgLi4uYmFzZSwgbGluZXM6IFsnJywgJyddIH0pKS50b0JlKGZhbHNlKTsKICB9KTsKCiAgaXQoJ2tleXMgcHJvZ3Jlc3MgYnkgc291cmNlLCBpbnRlcnByZXRlciBhbmQgcmV2aWV3IHNldHRpbmcnLCAoKSA9PiB7CiAgICBjb25zdCBhID0gY2hlY2twb2ludEtleSh7IGtpbmQ6ICdsaW5rJywgdXJsOiAnaHR0cHM6Ly95b3V0dS5iZS94ICcgfSwgJ2NsYXVkZScsIHRydWUpOwogICAgZXhwZWN0KGEpLnRvQmUoY2hlY2twb2ludEtleSh7IGtpbmQ6ICdsaW5rJywgdXJsOiAnaHR0cHM6Ly95b3V0dS5iZS94JyB9LCAnY2xhdWRlJywgdHJ1ZSkpOwogICAgZXhwZWN0KGEpLm5vdC50b0JlKGNoZWNrcG9pbnRLZXkoeyBraW5kOiAnbGluaycsIHVybDogJ2h0dHBzOi8veW91dHUuYmUveCcgfSwgJ2NsYXVkZScsIGZhbHNlKSk7CiAgfSk7CgogIGl0KCdhdXRvLWNvbnRpbnVlcyBvbmx5IGZvciBidXN5L25ldHdvcmsgZmFpbHVyZXMsIG5ldmVyIGZvciBjcmVkaXRzIG9yIGRlbmlhbHMnLCAoKSA9PiB7CiAgICBleHBlY3QoaXNUcmFuc2llbnRGYWlsdXJlKG5ldyBJbnRlcnByZXRTdHJlYW1FcnJvcignYnVzeScsIDQyOSkpKS50b0JlKHRydWUpOwogICAgZXhwZWN0KGlzVHJhbnNpZW50RmFpbHVyZShuZXcgSW50ZXJwcmV0U3RyZWFtRXJyb3IoJ2N1dCcsIDUwMikpKS50b0JlKHRydWUpOwogICAgZXhwZWN0KGlzVHJhbnNpZW50RmFpbHVyZShuZXcgVHlwZUVycm9yKCdGYWlsZWQgdG8gZmV0Y2gnKSkpLnRvQmUodHJ1ZSk7CiAgICBleHBlY3QoaXNUcmFuc2llbnRGYWlsdXJlKG5ldyBJbnRlcnByZXRTdHJlYW1FcnJvcignY3JlZGl0cycsIDQwMikpKS50b0JlKGZhbHNlKTsKICAgIGV4cGVjdChpc1RyYW5zaWVudEZhaWx1cmUobmV3IEludGVycHJldFN0cmVhbUVycm9yKCdkZW5pZWQnLCA0MDMpKSkudG9CZShmYWxzZSk7CiAgfSk7Cn0pOwoKZGVzY3JpYmUoJ3JlbWVtYmVyZWQgImNyZWRpdHMgZmluaXNoZWQiIHBhdXNlJywgKCkgPT4gewogIGNvbnN0IG5vdyA9IERhdGUucGFyc2UoJzIwMjYtMTAtMjhUMTI6MDA6MDBaJyk7CiAgaXQoJ2Jsb2NrcyBmb3IgMTAgbWludXRlcywgdGhlbiBsZXRzIG9uZSBwcm9iZSBjaGVjayB3aGV0aGVyIGNyZWRpdHMgd2VyZSBhZGRlZCcsICgpID0+IHsKICAgIGV4cGVjdChDUkVESVRfUFJPQkVfTVMpLnRvQmUoMTAgKiA2MF8wMDApOwogICAgZXhwZWN0KGNyZWRpdFBhdXNlRGVjaXNpb24oeyBraW5kOiAnY3JlZGl0cycsIHVwZGF0ZWRfYXQ6IG5ldyBEYXRlKG5vdyAtIDkgKiA2MF8wMDApLnRvSVNPU3RyaW5nKCkgfSwgbm93KSkudG9CZSgnYmxvY2snKTsKICAgIGV4cGVjdChjcmVkaXRQYXVzZURlY2lzaW9uKHsga2luZDogJ2NyZWRpdHMnLCB1cGRhdGVkX2F0OiBuZXcgRGF0ZShub3cgLSAxMCAqIDYwXzAwMCkudG9JU09TdHJpbmcoKSB9LCBub3cpKS50b0JlKCdwcm9iZScpOwogIH0pOwogIGl0KCduZXZlciBwcm9iZXMgYSBwcm92aWRlciBkZW5pYWwnLCAoKSA9PiB7CiAgICBleHBlY3QoY3JlZGl0UGF1c2VEZWNpc2lvbih7IGtpbmQ6ICdkZW5pZWQnLCB1cGRhdGVkX2F0OiAnMjAyMC0wMS0wMVQwMDowMDowMFonIH0sIG5vdykpLnRvQmUoJ2Jsb2NrJyk7CiAgfSk7Cn0pOwo=
+import { describe, expect, it } from 'vitest';
+import { interpretTimed, TIMED_BATCH } from '@/lib/interpreter.server';
+import { checkpointKey, hourSections, isResumable, isRecoverable, isTransientFailure } from '@/lib/interpret-checkpoint';
+import { creditPauseDecision, CREDIT_PROBE_MS } from '@/lib/ai/pause-policy';
+import { InterpretStreamError } from '@/lib/interpret-protocol';
+
+const segs = Array.from({ length: TIMED_BATCH * 2 }, (_, i) => ({ start: i * 30, end: i * 30 + 30, text: `part ${i}` }));
+const answer = (count: number) => Array.from({ length: count }, (_, i) => `### ${i + 1}\nहिस्सा ${i + 1}।`).join('\n');
+
+describe('resuming a long interpretation', () => {
+  it('does not pay again for batches already finished (only the unfinished batch is sent)', async () => {
+    let calls = 0;
+    const done = Array.from({ length: TIMED_BATCH }, (_, i) => `s${i}।`);
+    const saved = [...done, ...Array(TIMED_BATCH).fill('')];
+    const seen: number[] = [];
+    const out = await interpretTimed({
+      segments: segs, context: { title: 'T', brief: null }, engine: 'claude', signal: new AbortController().signal, review: false, saved,
+      onSegment: i => seen.push(i),
+      call: async () => { calls++; return answer(TIMED_BATCH); },
+    });
+    expect(calls).toBe(1);
+    expect(out.lines.slice(0, TIMED_BATCH)).toEqual(done);
+    expect(out.lines.slice(TIMED_BATCH).every(Boolean)).toBe(true);
+    expect(seen.sort((a, b) => a - b)).toEqual(segs.map((_, i) => i));
+  });
+
+  it('ignores saved lines that do not match the segment count', async () => {
+    let calls = 0;
+    await interpretTimed({
+      segments: segs, context: { title: 'T', brief: null }, engine: 'claude', signal: new AbortController().signal, review: false, saved: ['x।'],
+      onSegment: () => {}, call: async () => { calls++; return answer(TIMED_BATCH); },
+    });
+    expect(calls).toBe(2);
+  });
+
+  it('groups a long video by hour', () => {
+    const starts = [0, 1800, 3600, 5400, 7200];
+    expect(hourSections(starts, ['x', 'y', 'z', '', ''])).toEqual([{ hour: 0, done: 2, total: 2 }, { hour: 1, done: 1, total: 2 }, { hour: 2, done: 0, total: 1 }]);
+  });
+
+  it('offers continue only for partly finished work', () => {
+    const base = { key: 'k', savedAt: 0, title: '', starts: [0, 30], brief: null };
+    expect(isResumable({ ...base, lines: ['x', ''] })).toBe(true);
+    expect(isResumable({ ...base, lines: ['x', 'y'] })).toBe(false);
+    expect(isResumable({ ...base, lines: ['', ''] })).toBe(false);
+    expect(isRecoverable({ ...base, lines: ['x', 'y'] })).toBe(true);
+    expect(isRecoverable({ ...base, lines: ['', ''] })).toBe(false);
+  });
+
+  it('keys progress by source, interpreter and review setting', () => {
+    const a = checkpointKey({ kind: 'link', url: 'https://youtu.be/x ' }, 'claude', true);
+    expect(a).toBe(checkpointKey({ kind: 'link', url: 'https://youtu.be/x' }, 'claude', true));
+    expect(a).not.toBe(checkpointKey({ kind: 'link', url: 'https://youtu.be/x' }, 'claude', false));
+  });
+
+  it('auto-continues only for busy/network failures, never for credits or denials', () => {
+    expect(isTransientFailure(new InterpretStreamError('busy', 429))).toBe(true);
+    expect(isTransientFailure(new InterpretStreamError('cut', 502))).toBe(true);
+    expect(isTransientFailure(new TypeError('Failed to fetch'))).toBe(true);
+    expect(isTransientFailure(new InterpretStreamError('credits', 402))).toBe(false);
+    expect(isTransientFailure(new InterpretStreamError('denied', 403))).toBe(false);
+  });
+});
+
+describe('remembered "credits finished" pause', () => {
+  const now = Date.parse('2026-10-28T12:00:00Z');
+  it('blocks for 10 minutes, then lets one probe check whether credits were added', () => {
+    expect(CREDIT_PROBE_MS).toBe(10 * 60_000);
+    expect(creditPauseDecision({ kind: 'credits', updated_at: new Date(now - 9 * 60_000).toISOString() }, now)).toBe('block');
+    expect(creditPauseDecision({ kind: 'credits', updated_at: new Date(now - 10 * 60_000).toISOString() }, now)).toBe('probe');
+  });
+  it('never probes a provider denial', () => {
+    expect(creditPauseDecision({ kind: 'denied', updated_at: '2020-01-01T00:00:00Z' }, now)).toBe('block');
+  });
+});

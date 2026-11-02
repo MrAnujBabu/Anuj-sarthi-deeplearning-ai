@@ -1,1 +1,139 @@
-Ci8qKgogKiBFeHBvcnQgdGhlIHZvaWNlLWNhbGwgdHJhbnNjcmlwdCB0byBXb3JkICguZG9jKSBhbmQgUERGIHdpdGhvdXQgYnJlYWtpbmcgdGhlCiAqIG1hcmtkb3duIHN0cnVjdHVyZTogdGFibGVzIHN0YXkgdGFibGVzLCBudW1iZXJlZC9idWxsZXQgbGlzdHMgc3RheSBsaXN0cywKICogY2FsbG91dHMgc3RheSBxdW90ZWQgYmxvY2tzLiBXb3JkIG9wZW5zIGFuIEhUTUwgZG9jdW1lbnQgc2F2ZWQgYXMgLmRvYzsKICogUERGIGdvZXMgdGhyb3VnaCB0aGUgYnJvd3NlciBwcmludCBkaWFsb2cgKCJTYXZlIGFzIFBERiIpIHNvIHRoZSBsYXlvdXQKICogbWF0Y2hlcyBleGFjdGx5IHdoYXQgdGhlIHN0dWRlbnQgc2Vlcy4KICovCgpleHBvcnQgZnVuY3Rpb24gZXNjYXBlSHRtbChzOiBzdHJpbmcpOiBzdHJpbmcgewogIHJldHVybiBzLnJlcGxhY2UoLyYvZywgIiZhbXA7IikucmVwbGFjZSgvPC9nLCAiJmx0OyIpLnJlcGxhY2UoLz4vZywgIiZndDsiKS5yZXBsYWNlKC8iL2csICImcXVvdDsiKTsKfQoKLyoqIElubGluZSBtYXJrZG93biDihpIgSFRNTDogYm9sZCwgaXRhbGljLCBjb2RlLiBUZXh0IGlzIGVzY2FwZWQgZmlyc3QuICovCmV4cG9ydCBmdW5jdGlvbiBpbmxpbmVNZChzOiBzdHJpbmcpOiBzdHJpbmcgewogIHJldHVybiBlc2NhcGVIdG1sKHMpCiAgICAucmVwbGFjZSgvXCpcKihbXipdKylcKlwqL2csICI8c3Ryb25nPiQxPC9zdHJvbmc+IikKICAgIC5yZXBsYWNlKC9cKihbXipdKylcKi9nLCAiPGVtPiQxPC9lbT4iKQogICAgLnJlcGxhY2UoL2AoW15gXSspYC9nLCAiPGNvZGU+JDE8L2NvZGU+Iik7Cn0KCi8qKiBNYXJrZG93biDihpIgSFRNTCBib2R5LiBIZWFkaW5ncywgdGFibGVzLCBsaXN0cywgYmxvY2txdW90ZXMsIGhyLCBwYXJhZ3JhcGhzLiAqLwpleHBvcnQgZnVuY3Rpb24gbWRUb0h0bWwobWQ6IHN0cmluZyk6IHN0cmluZyB7CiAgY29uc3QgbGluZXMgPSBtZC5yZXBsYWNlKC9cclxuL2csICJcbiIpLnNwbGl0KCJcbiIpOwogIC8vIERyb3AgdGhlIFlBTUwgZnJvbnRtYXR0ZXIgYmxvY2sgKC0tLSAuLi4gLS0tKSDigJQgaXQgaXMgbWV0YWRhdGEsIG5vdCBub3Rlcy4KICBpZiAobGluZXNbMF0/LnRyaW0oKSA9PT0gIi0tLSIpIHsKICAgIGNvbnN0IGVuZCA9IGxpbmVzLmluZGV4T2YoIi0tLSIsIDEpOwogICAgaWYgKGVuZCA+IDApIGxpbmVzLnNwbGljZSgwLCBlbmQgKyAxKTsKICB9CiAgY29uc3Qgb3V0OiBzdHJpbmdbXSA9IFtdOwogIGxldCBpID0gMDsKICBsZXQgcGFyYTogc3RyaW5nW10gPSBbXTsKICBsZXQgbGlzdDogeyB0YWc6ICJ1bCIgfCAib2wiOyBpdGVtczogc3RyaW5nW10gfSB8IG51bGwgPSBudWxsOwogIGxldCBxdW90ZTogc3RyaW5nW10gPSBbXTsKICBjb25zdCBmbHVzaFBhcmEgPSAoKSA9PiB7IGlmIChwYXJhLmxlbmd0aCkgeyBvdXQucHVzaChgPHA+JHtwYXJhLm1hcChpbmxpbmVNZCkuam9pbigiPGJyPiIpfTwvcD5gKTsgcGFyYSA9IFtdOyB9IH07CiAgY29uc3QgZmx1c2hMaXN0ID0gKCkgPT4geyBpZiAobGlzdCkgeyBvdXQucHVzaChgPCR7bGlzdC50YWd9PiR7bGlzdC5pdGVtcy5tYXAoKHgpID0+IGA8bGk+JHtpbmxpbmVNZCh4KX08L2xpPmApLmpvaW4oIiIpfTwvJHtsaXN0LnRhZ30+YCk7IGxpc3QgPSBudWxsOyB9IH07CiAgY29uc3QgZmx1c2hRdW90ZSA9ICgpID0+IHsgaWYgKHF1b3RlLmxlbmd0aCkgeyBvdXQucHVzaChgPGJsb2NrcXVvdGU+JHtxdW90ZS5tYXAoaW5saW5lTWQpLmpvaW4oIjxicj4iKX08L2Jsb2NrcXVvdGU+YCk7IHF1b3RlID0gW107IH0gfTsKICBjb25zdCBmbHVzaCA9ICgpID0+IHsgZmx1c2hQYXJhKCk7IGZsdXNoTGlzdCgpOyBmbHVzaFF1b3RlKCk7IH07CgogIHdoaWxlIChpIDwgbGluZXMubGVuZ3RoKSB7CiAgICBjb25zdCB0ID0gKGxpbmVzW2ldID8/ICIiKS50cmltKCk7CiAgICBpZiAoIXQpIHsgZmx1c2goKTsgaSsrOyBjb250aW51ZTsgfQogICAgaWYgKC9eXHwuKlx8JC8udGVzdCh0KSkgewogICAgICBmbHVzaCgpOwogICAgICBjb25zdCByb3dzOiBzdHJpbmdbXVtdID0gW107CiAgICAgIHdoaWxlIChpIDwgbGluZXMubGVuZ3RoICYmIC9eXHwuKlx8JC8udGVzdCgobGluZXNbaV0gPz8gIiIpLnRyaW0oKSkpIHsKICAgICAgICBjb25zdCBjZWxscyA9IChsaW5lc1tpXSA/PyAiIikudHJpbSgpLnNsaWNlKDEsIC0xKS5zcGxpdCgifCIpLm1hcCgoYykgPT4gYy50cmltKCkpOwogICAgICAgIGlmICghY2VsbHMuZXZlcnkoKGMpID0+IC9eOj8tezMsfTo/JC8udGVzdChjKSkpIHJvd3MucHVzaChjZWxscyk7CiAgICAgICAgaSsrOwogICAgICB9CiAgICAgIGNvbnN0IFtoZWFkLCAuLi5ib2R5XSA9IHJvd3M7CiAgICAgIGlmIChoZWFkKSB7CiAgICAgICAgb3V0LnB1c2goYDx0YWJsZT48dGhlYWQ+PHRyPiR7aGVhZC5tYXAoKGMpID0+IGA8dGg+JHtpbmxpbmVNZChjKX08L3RoPmApLmpvaW4oIiIpfTwvdHI+PC90aGVhZD48dGJvZHk+JHtib2R5Lm1hcCgocikgPT4gYDx0cj4ke3IubWFwKChjKSA9PiBgPHRkPiR7aW5saW5lTWQoYyl9PC90ZD5gKS5qb2luKCIiKX08L3RyPmApLmpvaW4oIiIpfTwvdGJvZHk+PC90YWJsZT5gKTsKICAgICAgfQogICAgICBjb250aW51ZTsKICAgIH0KICAgIC8vIEhpZGRlbiBub3RlcyAodGhlIGltcG9ydCBjb3B5IG9mIHRoZSBjYWxsKSBuZXZlciByZWFjaCB0aGUgZG9jdW1lbnQuCiAgICBpZiAodC5zdGFydHNXaXRoKCI8IS0tIikpIHsgZmx1c2goKTsgd2hpbGUgKGkgPCBsaW5lcy5sZW5ndGggJiYgIShsaW5lc1tpXSA/PyAiIikuaW5jbHVkZXMoIi0tPiIpKSBpKys7IGkrKzsgY29udGludWU7IH0KICAgIC8vIENvbGxhcHNpYmxlIHRvZ2dsZSBibG9ja3MgcGFzcyB0aHJvdWdoIGFzIEhUTUwsIG9wZW5lZCBzbyBwcmludCBhbmQgV29yZCBzaG93IHRoZWlyIGNvbnRlbnQuCiAgICBpZiAoL148ZGV0YWlscyg/OlxzK29wZW4pPz4kLy50ZXN0KHQpKSB7IGZsdXNoKCk7IG91dC5wdXNoKCI8ZGV0YWlscyBvcGVuPiIpOyBpKys7IGNvbnRpbnVlOyB9CiAgICBpZiAodCA9PT0gIjwvZGV0YWlscz4iKSB7IGZsdXNoKCk7IG91dC5wdXNoKHQpOyBpKys7IGNvbnRpbnVlOyB9CiAgICBjb25zdCBzdW0gPSB0Lm1hdGNoKC9ePHN1bW1hcnk+KC4qKTxcL3N1bW1hcnk+JC8pOwogICAgaWYgKHN1bSkgeyBmbHVzaCgpOyBvdXQucHVzaChgPHN1bW1hcnk+JHtpbmxpbmVNZChzdW1bMV0gPz8gIiIpfTwvc3VtbWFyeT5gKTsgaSsrOyBjb250aW51ZTsgfQogICAgY29uc3QgaCA9IHQubWF0Y2goL14oI3sxLDZ9KVxzKyguKikkLyk7CiAgICBpZiAoaCkgeyBmbHVzaCgpOyBjb25zdCBsZXZlbCA9IE1hdGgubWluKGhbMV0/Lmxlbmd0aCA/PyAxLCA2KTsgb3V0LnB1c2goYDxoJHtsZXZlbH0+JHtpbmxpbmVNZChoWzJdID8/ICIiKX08L2gke2xldmVsfT5gKTsgaSsrOyBjb250aW51ZTsgfQogICAgaWYgKC9eLXszLH0kLy50ZXN0KHQpKSB7IGZsdXNoKCk7IG91dC5wdXNoKCI8aHI+Iik7IGkrKzsgY29udGludWU7IH0KICAgIGlmICh0LnN0YXJ0c1dpdGgoIj4iKSkgeyBmbHVzaFBhcmEoKTsgZmx1c2hMaXN0KCk7IHF1b3RlLnB1c2godC5yZXBsYWNlKC9ePlxzPy8sICIiKSk7IGkrKzsgY29udGludWU7IH0KICAgIGNvbnN0IHVsID0gdC5tYXRjaCgvXlstKl1ccysoLiopJC8pOwogICAgaWYgKHVsKSB7IGZsdXNoUGFyYSgpOyBmbHVzaFF1b3RlKCk7IGlmIChsaXN0Py50YWcgIT09ICJ1bCIpIHsgZmx1c2hMaXN0KCk7IGxpc3QgPSB7IHRhZzogInVsIiwgaXRlbXM6IFtdIH07IH0gbGlzdD8uaXRlbXMucHVzaCh1bFsxXSA/PyAiIik7IGkrKzsgY29udGludWU7IH0KICAgIGNvbnN0IG9sID0gdC5tYXRjaCgvXlxkK1suKV1ccysoLiopJC8pOwogICAgaWYgKG9sKSB7IGZsdXNoUGFyYSgpOyBmbHVzaFF1b3RlKCk7IGlmIChsaXN0Py50YWcgIT09ICJvbCIpIHsgZmx1c2hMaXN0KCk7IGxpc3QgPSB7IHRhZzogIm9sIiwgaXRlbXM6IFtdIH07IH0gbGlzdD8uaXRlbXMucHVzaChvbFsxXSA/PyAiIik7IGkrKzsgY29udGludWU7IH0KICAgIGZsdXNoTGlzdCgpOyBmbHVzaFF1b3RlKCk7CiAgICBwYXJhLnB1c2godCk7IGkrKzsKICB9CiAgZmx1c2goKTsKICByZXR1cm4gb3V0LmpvaW4oIlxuIik7Cn0KCmV4cG9ydCBmdW5jdGlvbiB0cmFuc2NyaXB0U3RhbXAoZCA9IG5ldyBEYXRlKCkpOiBzdHJpbmcgewogIHJldHVybiBkLnRvSVNPU3RyaW5nKCkuc2xpY2UoMCwgMTYpLnJlcGxhY2UoL1s6VF0vZywgIi0iKTsKfQoKZXhwb3J0IGZ1bmN0aW9uIHRyYW5zY3JpcHRGaWxlTmFtZShleHQ6ICJtZCIgfCAiZG9jIiB8ICJwZGYiLCBkID0gbmV3IERhdGUoKSk6IHN0cmluZyB7CiAgcmV0dXJuIGBzbmFwc29sdmUtdm9pY2UtJHt0cmFuc2NyaXB0U3RhbXAoZCl9LiR7ZXh0fWA7Cn0KCmV4cG9ydCBmdW5jdGlvbiBkb3dubG9hZEJsb2IobmFtZTogc3RyaW5nLCBibG9iOiBCbG9iKTogdm9pZCB7CiAgY29uc3QgdXJsID0gVVJMLmNyZWF0ZU9iamVjdFVSTChibG9iKTsKICBjb25zdCBhID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiYSIpOwogIGEuaHJlZiA9IHVybDsKICBhLmRvd25sb2FkID0gbmFtZTsKICBkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpOwogIGEuY2xpY2soKTsKICBhLnJlbW92ZSgpOwogIHNldFRpbWVvdXQoKCkgPT4gVVJMLnJldm9rZU9iamVjdFVSTCh1cmwpLCAzMF8wMDApOwp9Cgpjb25zdCBQQUdFX0NTUyA9IGAKICBAcGFnZSB7IHNpemU6IEE0OyBtYXJnaW46IDE0bW07IH0KICBib2R5IHsgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgIlNlZ29lIFVJIiwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxM3B4OyBsaW5lLWhlaWdodDogMS41NTsgY29sb3I6ICMxMTE7IG1heC13aWR0aDogNzAwcHg7IG1hcmdpbjogMCBhdXRvOyBwYWRkaW5nOiAxNnB4OyB9CiAgaDEgeyBmb250LXNpemU6IDIwcHg7IH0gaDIgeyBmb250LXNpemU6IDE3cHg7IH0gaDMgeyBmb250LXNpemU6IDE1cHg7IH0gaDQgeyBmb250LXNpemU6IDEzLjVweDsgbWFyZ2luLWJvdHRvbTogNHB4OyB9CiAgdGFibGUgeyBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOyB3aWR0aDogMTAwJTsgbWFyZ2luOiAxMHB4IDA7IH0KICB0aCwgdGQgeyBib3JkZXI6IDFweCBzb2xpZCAjOTk5OyBwYWRkaW5nOiA1cHggOHB4OyB0ZXh0LWFsaWduOiBsZWZ0OyB2ZXJ0aWNhbC1hbGlnbjogdG9wOyB9CiAgdGggeyBiYWNrZ3JvdW5kOiAjZjBmMGYwOyB9CiAgYmxvY2txdW90ZSB7IGJvcmRlci1sZWZ0OiAzcHggc29saWQgIzRmN2NmZjsgbWFyZ2luOiA4cHggMDsgcGFkZGluZzogNHB4IDEycHg7IGJhY2tncm91bmQ6ICNmNmY4ZmY7IH0KICB1bCwgb2wgeyBtYXJnaW46IDZweCAwOyBwYWRkaW5nLWxlZnQ6IDIycHg7IH0KICBwIHsgbWFyZ2luOiA4cHggMDsgfQogIGhyIHsgYm9yZGVyOiBub25lOyBib3JkZXItdG9wOiAxcHggc29saWQgI2NjYzsgbWFyZ2luOiAxNHB4IDA7IH0KICBjb2RlIHsgYmFja2dyb3VuZDogI2YwZjBmMDsgcGFkZGluZzogMXB4IDRweDsgYm9yZGVyLXJhZGl1czogM3B4OyB9CiAgdHIsIGJsb2NrcXVvdGUsIGxpIHsgYnJlYWstaW5zaWRlOiBhdm9pZDsgfQogIGRldGFpbHMgeyBtYXJnaW46IDhweCAwOyBwYWRkaW5nOiA0cHggMTBweDsgYm9yZGVyOiAxcHggc29saWQgI2RkZDsgYm9yZGVyLXJhZGl1czogNnB4OyB9CiAgc3VtbWFyeSB7IGZvbnQtd2VpZ2h0OiA2MDA7IH0KYDsKCi8qKiBGdWxsIHByaW50YWJsZSBIVE1MIGRvY3VtZW50IGZvciB0aGUgdHJhbnNjcmlwdCAoV29yZCBvcGVucyB0aGlzIHRvbykuICovCmV4cG9ydCBmdW5jdGlvbiB0cmFuc2NyaXB0RG9jdW1lbnRIdG1sKHRpdGxlOiBzdHJpbmcsIG1kOiBzdHJpbmcpOiBzdHJpbmcgewogIHJldHVybiBgPCFET0NUWVBFIGh0bWw+PGh0bWw+PGhlYWQ+PG1ldGEgY2hhcnNldD0idXRmLTgiPjx0aXRsZT4ke2VzY2FwZUh0bWwodGl0bGUpfTwvdGl0bGU+PHN0eWxlPiR7UEFHRV9DU1N9PC9zdHlsZT48L2hlYWQ+PGJvZHk+JHttZFRvSHRtbChtZCl9PC9ib2R5PjwvaHRtbD5gOwp9CgovKiogV29yZCBleHBvcnQ6IGFuIEhUTUwgZG9jdW1lbnQgc2F2ZWQgYXMgLmRvYyDigJQgV29yZCBhbmQgR29vZ2xlIERvY3Mgb3BlbiBpdCB3aXRoIGZvcm1hdHRpbmcgaW50YWN0LiAqLwpleHBvcnQgZnVuY3Rpb24gZXhwb3J0VHJhbnNjcmlwdFdvcmQobWQ6IHN0cmluZyk6IHZvaWQgewogIGNvbnN0IGh0bWwgPSB0cmFuc2NyaXB0RG9jdW1lbnRIdG1sKCJTbmFwU29sdmUgdm9pY2UgY2FsbCIsIG1kKTsKICBkb3dubG9hZEJsb2IodHJhbnNjcmlwdEZpbGVOYW1lKCJkb2MiKSwgbmV3IEJsb2IoWyJcdWZlZmYiLCBodG1sXSwgeyB0eXBlOiAiYXBwbGljYXRpb24vbXN3b3JkIiB9KSk7Cn0KCi8qKgogKiBQREYgZXhwb3J0OiBvcGVuIGEgcHJpbnQtcmVhZHkgdGFiIGFuZCBjYWxsIHByaW50KCkgc28gdGhlIHN0dWRlbnQgcGlja3MKICogIlNhdmUgYXMgUERGIi4gd2luZG93Lm9wZW4gbXVzdCBydW4gc3luY2hyb25vdXNseSBpbiB0aGUgY2xpY2sgaGFuZGxlciBvcgogKiB0aGUgcG9wdXAgYmxvY2tlciBzdG9wcyBpdC4gUmV0dXJucyBmYWxzZSB3aGVuIHRoZSBwb3B1cCB3YXMgYmxvY2tlZC4KICovCmV4cG9ydCBmdW5jdGlvbiBvcGVuVHJhbnNjcmlwdFBkZihtZDogc3RyaW5nKTogYm9vbGVhbiB7CiAgY29uc3Qgd2luID0gd2luZG93Lm9wZW4oIiIsICJfYmxhbmsiKTsKICBpZiAoIXdpbikgcmV0dXJuIGZhbHNlOwogIHdpbi5kb2N1bWVudC53cml0ZSh0cmFuc2NyaXB0RG9jdW1lbnRIdG1sKCJTbmFwU29sdmUgdm9pY2UgY2FsbCIsIG1kKSk7CiAgd2luLmRvY3VtZW50LmNsb3NlKCk7CiAgd2luLmZvY3VzKCk7CiAgd2luLnByaW50KCk7CiAgcmV0dXJuIHRydWU7Cn0K
+
+/**
+ * Export the voice-call transcript to Word (.doc) and PDF without breaking the
+ * markdown structure: tables stay tables, numbered/bullet lists stay lists,
+ * callouts stay quoted blocks. Word opens an HTML document saved as .doc;
+ * PDF goes through the browser print dialog ("Save as PDF") so the layout
+ * matches exactly what the student sees.
+ */
+
+export function escapeHtml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+/** Inline markdown → HTML: bold, italic, code. Text is escaped first. */
+export function inlineMd(s: string): string {
+  return escapeHtml(s)
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+
+/** Markdown → HTML body. Headings, tables, lists, blockquotes, hr, paragraphs. */
+export function mdToHtml(md: string): string {
+  const lines = md.replace(/\r\n/g, "\n").split("\n");
+  // Drop the YAML frontmatter block (--- ... ---) — it is metadata, not notes.
+  if (lines[0]?.trim() === "---") {
+    const end = lines.indexOf("---", 1);
+    if (end > 0) lines.splice(0, end + 1);
+  }
+  const out: string[] = [];
+  let i = 0;
+  let para: string[] = [];
+  let list: { tag: "ul" | "ol"; items: string[] } | null = null;
+  let quote: string[] = [];
+  const flushPara = () => { if (para.length) { out.push(`<p>${para.map(inlineMd).join("<br>")}</p>`); para = []; } };
+  const flushList = () => { if (list) { out.push(`<${list.tag}>${list.items.map((x) => `<li>${inlineMd(x)}</li>`).join("")}</${list.tag}>`); list = null; } };
+  const flushQuote = () => { if (quote.length) { out.push(`<blockquote>${quote.map(inlineMd).join("<br>")}</blockquote>`); quote = []; } };
+  const flush = () => { flushPara(); flushList(); flushQuote(); };
+
+  while (i < lines.length) {
+    const t = (lines[i] ?? "").trim();
+    if (!t) { flush(); i++; continue; }
+    if (/^\|.*\|$/.test(t)) {
+      flush();
+      const rows: string[][] = [];
+      while (i < lines.length && /^\|.*\|$/.test((lines[i] ?? "").trim())) {
+        const cells = (lines[i] ?? "").trim().slice(1, -1).split("|").map((c) => c.trim());
+        if (!cells.every((c) => /^:?-{3,}:?$/.test(c))) rows.push(cells);
+        i++;
+      }
+      const [head, ...body] = rows;
+      if (head) {
+        out.push(`<table><thead><tr>${head.map((c) => `<th>${inlineMd(c)}</th>`).join("")}</tr></thead><tbody>${body.map((r) => `<tr>${r.map((c) => `<td>${inlineMd(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`);
+      }
+      continue;
+    }
+    // Hidden notes (the import copy of the call) never reach the document.
+    if (t.startsWith("<!--")) { flush(); while (i < lines.length && !(lines[i] ?? "").includes("-->")) i++; i++; continue; }
+    // Collapsible toggle blocks pass through as HTML, opened so print and Word show their content.
+    if (/^<details(?:\s+open)?>$/.test(t)) { flush(); out.push("<details open>"); i++; continue; }
+    if (t === "</details>") { flush(); out.push(t); i++; continue; }
+    const sum = t.match(/^<summary>(.*)<\/summary>$/);
+    if (sum) { flush(); out.push(`<summary>${inlineMd(sum[1] ?? "")}</summary>`); i++; continue; }
+    const h = t.match(/^(#{1,6})\s+(.*)$/);
+    if (h) { flush(); const level = Math.min(h[1]?.length ?? 1, 6); out.push(`<h${level}>${inlineMd(h[2] ?? "")}</h${level}>`); i++; continue; }
+    if (/^-{3,}$/.test(t)) { flush(); out.push("<hr>"); i++; continue; }
+    if (t.startsWith(">")) { flushPara(); flushList(); quote.push(t.replace(/^>\s?/, "")); i++; continue; }
+    const ul = t.match(/^[-*]\s+(.*)$/);
+    if (ul) { flushPara(); flushQuote(); if (list?.tag !== "ul") { flushList(); list = { tag: "ul", items: [] }; } list?.items.push(ul[1] ?? ""); i++; continue; }
+    const ol = t.match(/^\d+[.)]\s+(.*)$/);
+    if (ol) { flushPara(); flushQuote(); if (list?.tag !== "ol") { flushList(); list = { tag: "ol", items: [] }; } list?.items.push(ol[1] ?? ""); i++; continue; }
+    flushList(); flushQuote();
+    para.push(t); i++;
+  }
+  flush();
+  return out.join("\n");
+}
+
+export function transcriptStamp(d = new Date()): string {
+  return d.toISOString().slice(0, 16).replace(/[:T]/g, "-");
+}
+
+export function transcriptFileName(ext: "md" | "doc" | "pdf", d = new Date()): string {
+  return `snapsolve-voice-${transcriptStamp(d)}.${ext}`;
+}
+
+export function downloadBlob(name: string, blob: Blob): void {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30_000);
+}
+
+const PAGE_CSS = `
+  @page { size: A4; margin: 14mm; }
+  body { font-family: system-ui, "Segoe UI", sans-serif; font-size: 13px; line-height: 1.55; color: #111; max-width: 700px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 20px; } h2 { font-size: 17px; } h3 { font-size: 15px; } h4 { font-size: 13.5px; margin-bottom: 4px; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+  th, td { border: 1px solid #999; padding: 5px 8px; text-align: left; vertical-align: top; }
+  th { background: #f0f0f0; }
+  blockquote { border-left: 3px solid #4f7cff; margin: 8px 0; padding: 4px 12px; background: #f6f8ff; }
+  ul, ol { margin: 6px 0; padding-left: 22px; }
+  p { margin: 8px 0; }
+  hr { border: none; border-top: 1px solid #ccc; margin: 14px 0; }
+  code { background: #f0f0f0; padding: 1px 4px; border-radius: 3px; }
+  tr, blockquote, li { break-inside: avoid; }
+  details { margin: 8px 0; padding: 4px 10px; border: 1px solid #ddd; border-radius: 6px; }
+  summary { font-weight: 600; }
+`;
+
+/** Full printable HTML document for the transcript (Word opens this too). */
+export function transcriptDocumentHtml(title: string, md: string): string {
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(title)}</title><style>${PAGE_CSS}</style></head><body>${mdToHtml(md)}</body></html>`;
+}
+
+/** Word export: an HTML document saved as .doc — Word and Google Docs open it with formatting intact. */
+export function exportTranscriptWord(md: string): void {
+  const html = transcriptDocumentHtml("SnapSolve voice call", md);
+  downloadBlob(transcriptFileName("doc"), new Blob(["\ufeff", html], { type: "application/msword" }));
+}
+
+/**
+ * PDF export: open a print-ready tab and call print() so the student picks
+ * "Save as PDF". window.open must run synchronously in the click handler or
+ * the popup blocker stops it. Returns false when the popup was blocked.
+ */
+export function openTranscriptPdf(md: string): boolean {
+  const win = window.open("", "_blank");
+  if (!win) return false;
+  win.document.write(transcriptDocumentHtml("SnapSolve voice call", md));
+  win.document.close();
+  win.focus();
+  win.print();
+  return true;
+}

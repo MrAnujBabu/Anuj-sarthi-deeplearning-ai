@@ -1,1 +1,31 @@
-aW1wb3J0IHsgY3JlYXRlU3RhcnQsIGNyZWF0ZUNzcmZNaWRkbGV3YXJlLCBjcmVhdGVNaWRkbGV3YXJlIH0gZnJvbSAiQHRhbnN0YWNrL3JlYWN0LXN0YXJ0IjsKCmltcG9ydCB7IHJlbmRlckVycm9yUGFnZSB9IGZyb20gIi4vbGliL2Vycm9yLXBhZ2UiOwppbXBvcnQgeyBhdHRhY2hTdXBhYmFzZUF1dGggfSBmcm9tICJAL2ludGVncmF0aW9ucy9zdXBhYmFzZS9hdXRoLWF0dGFjaGVyIjsKCmNvbnN0IGVycm9yTWlkZGxld2FyZSA9IGNyZWF0ZU1pZGRsZXdhcmUoKS5zZXJ2ZXIoYXN5bmMgKHsgbmV4dCB9KSA9PiB7CiAgdHJ5IHsKICAgIHJldHVybiBhd2FpdCBuZXh0KCk7CiAgfSBjYXRjaCAoZXJyb3IpIHsKICAgIGlmIChlcnJvciAhPSBudWxsICYmIHR5cGVvZiBlcnJvciA9PT0gIm9iamVjdCIgJiYgInN0YXR1c0NvZGUiIGluIGVycm9yKSB7CiAgICAgIHRocm93IGVycm9yOwogICAgfQogICAgY29uc29sZS5lcnJvcihlcnJvcik7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKHJlbmRlckVycm9yUGFnZSgpLCB7CiAgICAgIHN0YXR1czogNTAwLAogICAgICBoZWFkZXJzOiB7ICJjb250ZW50LXR5cGUiOiAidGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04IiB9LAogICAgfSk7CiAgfQp9KTsKCi8vIFN0YXJ0IGluc3RhbGxzIHRoaXMgYXV0b21hdGljYWxseSB3aGVuIHNyYy9zdGFydC50cyBpcyBhYnNlbnQ7IGRlZmluaW5nIHRoZQovLyBmaWxlIG9wdHMgb3V0LCBzbyByZS1hZGQgaXQgZXhwbGljaXRseSB0byBrZWVwIHNlcnZlciBmdW5jdGlvbnMgcHJvdGVjdGVkCi8vIGZyb20gY3Jvc3Mtc2l0ZSByZXF1ZXN0cy4KY29uc3QgY3NyZk1pZGRsZXdhcmUgPSBjcmVhdGVDc3JmTWlkZGxld2FyZSh7CiAgZmlsdGVyOiAoY3R4KSA9PiBjdHguaGFuZGxlclR5cGUgPT09ICJzZXJ2ZXJGbiIsCn0pOwoKZXhwb3J0IGNvbnN0IHN0YXJ0SW5zdGFuY2UgPSBjcmVhdGVTdGFydCgoKSA9PiAoewogIGZ1bmN0aW9uTWlkZGxld2FyZTogW2F0dGFjaFN1cGFiYXNlQXV0aF0sCiAgcmVxdWVzdE1pZGRsZXdhcmU6IFtlcnJvck1pZGRsZXdhcmUsIGNzcmZNaWRkbGV3YXJlXSwKfSkpOwo=
+import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
+
+import { renderErrorPage } from "./lib/error-page";
+import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+
+const errorMiddleware = createMiddleware().server(async ({ next }) => {
+  try {
+    return await next();
+  } catch (error) {
+    if (error != null && typeof error === "object" && "statusCode" in error) {
+      throw error;
+    }
+    console.error(error);
+    return new Response(renderErrorPage(), {
+      status: 500,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    });
+  }
+});
+
+// Start installs this automatically when src/start.ts is absent; defining the
+// file opts out, so re-add it explicitly to keep server functions protected
+// from cross-site requests.
+const csrfMiddleware = createCsrfMiddleware({
+  filter: (ctx) => ctx.handlerType === "serverFn",
+});
+
+export const startInstance = createStart(() => ({
+  functionMiddleware: [attachSupabaseAuth],
+  requestMiddleware: [errorMiddleware, csrfMiddleware],
+}));

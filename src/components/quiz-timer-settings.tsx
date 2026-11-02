@@ -1,1 +1,19 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JzsKaW1wb3J0IHsgSW5wdXQgfSBmcm9tICdAL2NvbXBvbmVudHMvdWkvaW5wdXQnOwppbXBvcnQgeyBTZWxlY3QsIFNlbGVjdENvbnRlbnQsIFNlbGVjdEl0ZW0sIFNlbGVjdFRyaWdnZXIsIFNlbGVjdFZhbHVlIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL3NlbGVjdCc7CmltcG9ydCB7IGNsYW1wUXVpelNlY29uZHMsIHVzZVF1aXpUaW1lclByZWZlcmVuY2UgfSBmcm9tICdAL2xpYi9xdWl6LXRpbWVyLXByZWZlcmVuY2UnOwoKZXhwb3J0IGZ1bmN0aW9uIFF1aXpUaW1lclNldHRpbmdzKCkgewogIGNvbnN0IHRpbWVyID0gdXNlUXVpelRpbWVyUHJlZmVyZW5jZSgpOwogIGNvbnN0IFtkcmFmdCwgc2V0RHJhZnRdID0gdXNlU3RhdGUoU3RyaW5nKHRpbWVyLnNlY29uZHMpKTsKICB1c2VFZmZlY3QoKCkgPT4geyBzZXREcmFmdChTdHJpbmcodGltZXIuc2Vjb25kcykpOyB9LCBbdGltZXIuc2Vjb25kc10pOwogIGNvbnN0IGNvbW1pdCA9ICgpID0+IHsKICAgIGlmICghZHJhZnQudHJpbSgpKSB7IHNldERyYWZ0KFN0cmluZyh0aW1lci5zZWNvbmRzKSk7IHJldHVybjsgfQogICAgY29uc3Qgc2Vjb25kcyA9IGNsYW1wUXVpelNlY29uZHMoTnVtYmVyKGRyYWZ0KSk7CiAgICB0aW1lci51cGRhdGUoc2Vjb25kcyk7IHNldERyYWZ0KFN0cmluZyhzZWNvbmRzKSk7CiAgfTsKICByZXR1cm4gPGRpdiBjbGFzc05hbWU9InNwYWNlLXktMyBweS0zIj4KICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gZ2FwLTQiPjxzcGFuIGNsYXNzTmFtZT0idGV4dC1zbSI+UXVpeiB0aW1lcjwvc3Bhbj48U2VsZWN0IHZhbHVlPXt0aW1lci5vdmVycmlkZSA9PT0gbnVsbCA/ICdhZG1pbicgOiAnZGV2aWNlJ30gb25WYWx1ZUNoYW5nZT17dmFsdWUgPT4gdGltZXIudXBkYXRlKHZhbHVlID09PSAnYWRtaW4nID8gbnVsbCA6IHRpbWVyLnNlY29uZHMpfT48U2VsZWN0VHJpZ2dlciBhcmlhLWxhYmVsPSJRdWl6IHRpbWVyIHNvdXJjZSIgY2xhc3NOYW1lPSJ3LTM2Ij48U2VsZWN0VmFsdWUgLz48L1NlbGVjdFRyaWdnZXI+PFNlbGVjdENvbnRlbnQ+PFNlbGVjdEl0ZW0gdmFsdWU9ImFkbWluIj5BZG1pbiBkZWZhdWx0PC9TZWxlY3RJdGVtPjxTZWxlY3RJdGVtIHZhbHVlPSJkZXZpY2UiPlRoaXMgZGV2aWNlPC9TZWxlY3RJdGVtPjwvU2VsZWN0Q29udGVudD48L1NlbGVjdD48L2Rpdj4KICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gZ2FwLTQiPjxsYWJlbCBodG1sRm9yPSJ2b2ljZS1xdWl6LXNlY29uZHMiIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPlNlY29uZHMgwrcgMCA9IG9mZjwvbGFiZWw+PElucHV0IGlkPSJ2b2ljZS1xdWl6LXNlY29uZHMiIGFyaWEtbGFiZWw9IlF1aXogdGltZXIgc2Vjb25kcyIgdHlwZT0ibnVtYmVyIiBpbnB1dE1vZGU9Im51bWVyaWMiIG1pbj17MH0gbWF4PXs2MDB9IHN0ZXA9ezF9IGNsYXNzTmFtZT0idy0yOCIgdmFsdWU9e2RyYWZ0fSBvbkNoYW5nZT17ZXZlbnQgPT4gc2V0RHJhZnQoZXZlbnQudGFyZ2V0LnZhbHVlKX0gb25CbHVyPXtjb21taXR9IG9uS2V5RG93bj17ZXZlbnQgPT4geyBpZiAoZXZlbnQua2V5ID09PSAnRW50ZXInKSB7IGV2ZW50LnByZXZlbnREZWZhdWx0KCk7IGNvbW1pdCgpOyB9IH19IC8+PC9kaXY+CiAgPC9kaXY+Owp9
+import { useEffect, useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { clampQuizSeconds, useQuizTimerPreference } from '@/lib/quiz-timer-preference';
+
+export function QuizTimerSettings() {
+  const timer = useQuizTimerPreference();
+  const [draft, setDraft] = useState(String(timer.seconds));
+  useEffect(() => { setDraft(String(timer.seconds)); }, [timer.seconds]);
+  const commit = () => {
+    if (!draft.trim()) { setDraft(String(timer.seconds)); return; }
+    const seconds = clampQuizSeconds(Number(draft));
+    timer.update(seconds); setDraft(String(seconds));
+  };
+  return <div className="space-y-3 py-3">
+    <div className="flex items-center justify-between gap-4"><span className="text-sm">Quiz timer</span><Select value={timer.override === null ? 'admin' : 'device'} onValueChange={value => timer.update(value === 'admin' ? null : timer.seconds)}><SelectTrigger aria-label="Quiz timer source" className="w-36"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="admin">Admin default</SelectItem><SelectItem value="device">This device</SelectItem></SelectContent></Select></div>
+    <div className="flex items-center justify-between gap-4"><label htmlFor="voice-quiz-seconds" className="text-xs text-muted-foreground">Seconds · 0 = off</label><Input id="voice-quiz-seconds" aria-label="Quiz timer seconds" type="number" inputMode="numeric" min={0} max={600} step={1} className="w-28" value={draft} onChange={event => setDraft(event.target.value)} onBlur={commit} onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); commit(); } }} /></div>
+  </div>;
+}

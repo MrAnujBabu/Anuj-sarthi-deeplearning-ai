@@ -1,1 +1,7 @@
-aW1wb3J0IHsgY24gfSBmcm9tICJAL2xpYi91dGlscyI7CgpmdW5jdGlvbiBTa2VsZXRvbih7IGNsYXNzTmFtZSwgLi4ucHJvcHMgfTogUmVhY3QuSFRNTEF0dHJpYnV0ZXM8SFRNTERpdkVsZW1lbnQ+KSB7CiAgcmV0dXJuIDxkaXYgY2xhc3NOYW1lPXtjbigiYW5pbWF0ZS1wdWxzZSByb3VuZGVkLW1kIGJnLXByaW1hcnkvMTAiLCBjbGFzc05hbWUpfSB7Li4ucHJvcHN9IC8+Owp9CgpleHBvcnQgeyBTa2VsZXRvbiB9Owo=
+import { cn } from "@/lib/utils";
+
+function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("animate-pulse rounded-md bg-primary/10", className)} {...props} />;
+}
+
+export { Skeleton };

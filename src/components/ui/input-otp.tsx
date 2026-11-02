@@ -1,1 +1,73 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgeyBPVFBJbnB1dCwgT1RQSW5wdXRDb250ZXh0IH0gZnJvbSAiaW5wdXQtb3RwIjsKaW1wb3J0IHsgTWludXMgfSBmcm9tICJsdWNpZGUtcmVhY3QiOwoKaW1wb3J0IHsgY24gfSBmcm9tICJAL2xpYi91dGlscyI7Cgpjb25zdCBJbnB1dE9UUCA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgT1RQSW5wdXQ+LAogIFJlYWN0LkNvbXBvbmVudFByb3BzV2l0aG91dFJlZjx0eXBlb2YgT1RQSW5wdXQ+Cj4oKHsgY2xhc3NOYW1lLCBjb250YWluZXJDbGFzc05hbWUsIC4uLnByb3BzIH0sIHJlZikgPT4gKAogIDxPVFBJbnB1dAogICAgcmVmPXtyZWZ9CiAgICBjb250YWluZXJDbGFzc05hbWU9e2NuKAogICAgICAiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIgaGFzLVs6ZGlzYWJsZWRdOm9wYWNpdHktNTAiLAogICAgICBjb250YWluZXJDbGFzc05hbWUsCiAgICApfQogICAgY2xhc3NOYW1lPXtjbigiZGlzYWJsZWQ6Y3Vyc29yLW5vdC1hbGxvd2VkIiwgY2xhc3NOYW1lKX0KICAgIHsuLi5wcm9wc30KICAvPgopKTsKSW5wdXRPVFAuZGlzcGxheU5hbWUgPSAiSW5wdXRPVFAiOwoKY29uc3QgSW5wdXRPVFBHcm91cCA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjwiZGl2Ij4sCiAgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPCJkaXYiPgo+KCh7IGNsYXNzTmFtZSwgLi4ucHJvcHMgfSwgcmVmKSA9PiAoCiAgPGRpdiByZWY9e3JlZn0gY2xhc3NOYW1lPXtjbigiZmxleCBpdGVtcy1jZW50ZXIiLCBjbGFzc05hbWUpfSB7Li4ucHJvcHN9IC8+CikpOwpJbnB1dE9UUEdyb3VwLmRpc3BsYXlOYW1lID0gIklucHV0T1RQR3JvdXAiOwoKY29uc3QgSW5wdXRPVFBTbG90ID0gUmVhY3QuZm9yd2FyZFJlZjwKICBSZWFjdC5FbGVtZW50UmVmPCJkaXYiPiwKICBSZWFjdC5Db21wb25lbnRQcm9wc1dpdGhvdXRSZWY8ImRpdiI+ICYgeyBpbmRleDogbnVtYmVyIH0KPigoeyBpbmRleCwgY2xhc3NOYW1lLCAuLi5wcm9wcyB9LCByZWYpID0+IHsKICBjb25zdCBpbnB1dE9UUENvbnRleHQgPSBSZWFjdC51c2VDb250ZXh0KE9UUElucHV0Q29udGV4dCk7CiAgY29uc3QgeyBjaGFyLCBoYXNGYWtlQ2FyZXQsIGlzQWN0aXZlIH0gPSBpbnB1dE9UUENvbnRleHQuc2xvdHNbaW5kZXhdID8/IHsKICAgIGNoYXI6IG51bGwsCiAgICBoYXNGYWtlQ2FyZXQ6IGZhbHNlLAogICAgaXNBY3RpdmU6IGZhbHNlLAogIH07CgogIHJldHVybiAoCiAgICA8ZGl2CiAgICAgIHJlZj17cmVmfQogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICJyZWxhdGl2ZSBmbGV4IGgtOSB3LTkgaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIGJvcmRlci15IGJvcmRlci1yIGJvcmRlci1pbnB1dCB0ZXh0LXNtIHNoYWRvdy1zbSB0cmFuc2l0aW9uLWFsbCBmaXJzdDpyb3VuZGVkLWwtbWQgZmlyc3Q6Ym9yZGVyLWwgbGFzdDpyb3VuZGVkLXItbWQiLAogICAgICAgIGlzQWN0aXZlICYmICJ6LTEwIHJpbmctMSByaW5nLXJpbmciLAogICAgICAgIGNsYXNzTmFtZSwKICAgICAgKX0KICAgICAgey4uLnByb3BzfQogICAgPgogICAgICB7Y2hhcn0KICAgICAge2hhc0Zha2VDYXJldCAmJiAoCiAgICAgICAgPGRpdiBjbGFzc05hbWU9InBvaW50ZXItZXZlbnRzLW5vbmUgYWJzb2x1dGUgaW5zZXQtMCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciI+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iaC00IHctcHggYW5pbWF0ZS1jYXJldC1ibGluayBiZy1mb3JlZ3JvdW5kIGR1cmF0aW9uLTEwMDAiIC8+CiAgICAgICAgPC9kaXY+CiAgICAgICl9CiAgICA8L2Rpdj4KICApOwp9KTsKSW5wdXRPVFBTbG90LmRpc3BsYXlOYW1lID0gIklucHV0T1RQU2xvdCI7Cgpjb25zdCBJbnB1dE9UUFNlcGFyYXRvciA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjwiZGl2Ij4sCiAgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPCJkaXYiPgo+KCh7IC4uLnByb3BzIH0sIHJlZikgPT4gKAogIDxkaXYgcmVmPXtyZWZ9IHJvbGU9InNlcGFyYXRvciIgey4uLnByb3BzfT4KICAgIDxNaW51cyAvPgogIDwvZGl2PgopKTsKSW5wdXRPVFBTZXBhcmF0b3IuZGlzcGxheU5hbWUgPSAiSW5wdXRPVFBTZXBhcmF0b3IiOwoKZXhwb3J0IHsgSW5wdXRPVFAsIElucHV0T1RQR3JvdXAsIElucHV0T1RQU2xvdCwgSW5wdXRPVFBTZXBhcmF0b3IgfTsK
+import * as React from "react";
+import { OTPInput, OTPInputContext } from "input-otp";
+import { Minus } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+const InputOTP = React.forwardRef<
+  React.ElementRef<typeof OTPInput>,
+  React.ComponentPropsWithoutRef<typeof OTPInput>
+>(({ className, containerClassName, ...props }, ref) => (
+  <OTPInput
+    ref={ref}
+    containerClassName={cn(
+      "flex items-center gap-2 has-[:disabled]:opacity-50",
+      containerClassName,
+    )}
+    className={cn("disabled:cursor-not-allowed", className)}
+    {...props}
+  />
+));
+InputOTP.displayName = "InputOTP";
+
+const InputOTPGroup = React.forwardRef<
+  React.ElementRef<"div">,
+  React.ComponentPropsWithoutRef<"div">
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("flex items-center", className)} {...props} />
+));
+InputOTPGroup.displayName = "InputOTPGroup";
+
+const InputOTPSlot = React.forwardRef<
+  React.ElementRef<"div">,
+  React.ComponentPropsWithoutRef<"div"> & { index: number }
+>(({ index, className, ...props }, ref) => {
+  const inputOTPContext = React.useContext(OTPInputContext);
+  const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index] ?? {
+    char: null,
+    hasFakeCaret: false,
+    isActive: false,
+  };
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "relative flex h-9 w-9 items-center justify-center border-y border-r border-input text-sm shadow-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
+        isActive && "z-10 ring-1 ring-ring",
+        className,
+      )}
+      {...props}
+    >
+      {char}
+      {hasFakeCaret && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />
+        </div>
+      )}
+    </div>
+  );
+});
+InputOTPSlot.displayName = "InputOTPSlot";
+
+const InputOTPSeparator = React.forwardRef<
+  React.ElementRef<"div">,
+  React.ComponentPropsWithoutRef<"div">
+>(({ ...props }, ref) => (
+  <div ref={ref} role="separator" {...props}>
+    <Minus />
+  </div>
+));
+InputOTPSeparator.displayName = "InputOTPSeparator";
+
+export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };

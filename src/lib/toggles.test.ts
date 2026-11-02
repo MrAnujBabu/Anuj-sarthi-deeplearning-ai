@@ -1,1 +1,51 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBzcGxpdFRvZ2dsZXMgfSBmcm9tICJAL2xpYi90b2dnbGVzIjsKCmRlc2NyaWJlKCJzcGxpdFRvZ2dsZXMiLCAoKSA9PiB7CiAgaXQoInBhc3NlcyBwbGFpbiBtYXJrZG93biB0aHJvdWdoIHVudG91Y2hlZCIsICgpID0+IHsKICAgIGNvbnN0IG1kID0gIiMjIEhlYWRpbmdcblxuLSBvbmVcbi0gdHdvIjsKICAgIGV4cGVjdChzcGxpdFRvZ2dsZXMobWQpKS50b0VxdWFsKFt7IGtpbmQ6ICJ0ZXh0IiwgdGV4dDogbWQgfV0pOwogIH0pOwoKICBpdCgia2VlcHMgaGVhZGluZ3MsIGxpc3RzLCB0YWJsZXMgYW5kIGNhbGxvdXRzIGluc2lkZSB0aGUgdG9nZ2xlIGJvZHkiLCAoKSA9PiB7CiAgICBjb25zdCBtZCA9IGA8ZGV0YWlscz5cbjxzdW1tYXJ5PvCfk4IgUGhvdG9zeW50aGVzaXMgZGV0YWlsPC9zdW1tYXJ5PlxuXG4jIyBTdGVwc1xuXG4tIExpZ2h0IHJlYWN0aW9uXG4tIERhcmsgcmVhY3Rpb25cblxuMS4gRmlyc3RcbjIuIFNlY29uZFxuXG58IEEgfCBCIHxcbnwtLS18LS0tfFxufCAxIHwgMiB8XG5cbj4g8J+SoSAqKllhYWQgcmFraG86KiogdGh5bGFrb2lkIG1lIGxpZ2h0IHJlYWN0aW9uLlxuXG48L2RldGFpbHM+YDsKICAgIGNvbnN0IHNlZ3MgPSBzcGxpdFRvZ2dsZXMobWQpOwogICAgZXhwZWN0KHNlZ3MpLnRvSGF2ZUxlbmd0aCgxKTsKICAgIGNvbnN0IHQgPSBzZWdzWzBdOwogICAgZXhwZWN0KHQ/LmtpbmQpLnRvQmUoInRvZ2dsZSIpOwogICAgaWYgKHQ/LmtpbmQgIT09ICJ0b2dnbGUiKSByZXR1cm47CiAgICBleHBlY3QodC5zdW1tYXJ5KS50b0JlKCLwn5OCIFBob3Rvc3ludGhlc2lzIGRldGFpbCIpOwogICAgZXhwZWN0KHQuYm9keSkudG9Db250YWluKCIjIyBTdGVwcyIpOwogICAgZXhwZWN0KHQuYm9keSkudG9Db250YWluKCItIExpZ2h0IHJlYWN0aW9uIik7CiAgICBleHBlY3QodC5ib2R5KS50b0NvbnRhaW4oIjEuIEZpcnN0Iik7CiAgICBleHBlY3QodC5ib2R5KS50b0NvbnRhaW4oInwgQSB8IEIgfCIpOwogICAgZXhwZWN0KHQuYm9keSkudG9Db250YWluKCI+IPCfkqEgKipZYWFkIHJha2hvOioqIik7CiAgfSk7CgogIGl0KCJzcGxpdHMgdGV4dCBhcm91bmQgYSB0b2dnbGUgaW50byBzZXBhcmF0ZSBzZWdtZW50cyIsICgpID0+IHsKICAgIGNvbnN0IG1kID0gYFBlaGxlIHllLlxuXG48ZGV0YWlscz5cbjxzdW1tYXJ5PkFuZGFyPC9zdW1tYXJ5PlxuXG5DaGh1cGEgaHVhIHRleHQuXG5cbjwvZGV0YWlscz5cblxuQmFhZCBtZSB5ZS5gOwogICAgY29uc3Qgc2VncyA9IHNwbGl0VG9nZ2xlcyhtZCk7CiAgICBleHBlY3Qoc2Vncy5tYXAoKHMpID0+IHMua2luZCkpLnRvRXF1YWwoWyJ0ZXh0IiwgInRvZ2dsZSIsICJ0ZXh0Il0pOwogICAgZXhwZWN0KHNlZ3NbMF0pLnRvTWF0Y2hPYmplY3QoeyB0ZXh0OiAiUGVobGUgeWUuXG5cbiIgfSk7CiAgICBleHBlY3Qoc2Vnc1syXSkudG9NYXRjaE9iamVjdCh7IHRleHQ6ICJcblxuQmFhZCBtZSB5ZS4iIH0pOwogIH0pOwoKICBpdCgiaGFuZGxlcyBtdWx0aXBsZSB0b2dnbGVzIGluIG9uZSByZXBseSIsICgpID0+IHsKICAgIGNvbnN0IG1kID0gYDxkZXRhaWxzPjxzdW1tYXJ5Pk9uZTwvc3VtbWFyeT5cblxuQVxuXG48L2RldGFpbHM+XG5cbjxkZXRhaWxzPjxzdW1tYXJ5PlR3bzwvc3VtbWFyeT5cblxuQlxuXG48L2RldGFpbHM+YDsKICAgIGNvbnN0IHNlZ3MgPSBzcGxpdFRvZ2dsZXMobWQpOwogICAgZXhwZWN0KHNlZ3MubWFwKChzKSA9PiBzLmtpbmQpKS50b0VxdWFsKFsidG9nZ2xlIiwgInRvZ2dsZSJdKTsKICAgIGV4cGVjdChzZWdzWzBdKS50b01hdGNoT2JqZWN0KHsgc3VtbWFyeTogIk9uZSIsIGJvZHk6ICJBIiB9KTsKICAgIGV4cGVjdChzZWdzWzFdKS50b01hdGNoT2JqZWN0KHsgc3VtbWFyeTogIlR3byIsIGJvZHk6ICJCIiB9KTsKICB9KTsKCiAgaXQoImxlYXZlcyBhbiB1bmNsb3NlZCB0b2dnbGUgYXMgcGxhaW4gdGV4dCAoc3RpbGwgc3RyZWFtaW5nKSIsICgpID0+IHsKICAgIGNvbnN0IG1kID0gYDxkZXRhaWxzPlxuPHN1bW1hcnk+QWRodXJhPC9zdW1tYXJ5PlxuXG5BYmhpIGFhIHJhaGEgaGFp4oCmYDsKICAgIGNvbnN0IHNlZ3MgPSBzcGxpdFRvZ2dsZXMobWQpOwogICAgZXhwZWN0KHNlZ3MpLnRvRXF1YWwoW3sga2luZDogInRleHQiLCB0ZXh0OiBtZCB9XSk7CiAgfSk7CgogIGl0KCJzdHJpcHMgc3RyYXkgdGFncyBmcm9tIHRoZSBzdW1tYXJ5IiwgKCkgPT4gewogICAgY29uc3QgbWQgPSBgPGRldGFpbHM+PHN1bW1hcnk+PGI+Qm9sZCB0aXRsZTwvYj48L3N1bW1hcnk+XG5cbkJvZHkuXG5cbjwvZGV0YWlscz5gOwogICAgZXhwZWN0KHNwbGl0VG9nZ2xlcyhtZClbMF0pLnRvTWF0Y2hPYmplY3QoeyBzdW1tYXJ5OiAiQm9sZCB0aXRsZSIgfSk7CiAgfSk7Cn0pOwo=
+import { describe, expect, it } from "vitest";
+import { splitToggles } from "@/lib/toggles";
+
+describe("splitToggles", () => {
+  it("passes plain markdown through untouched", () => {
+    const md = "## Heading\n\n- one\n- two";
+    expect(splitToggles(md)).toEqual([{ kind: "text", text: md }]);
+  });
+
+  it("keeps headings, lists, tables and callouts inside the toggle body", () => {
+    const md = `<details>\n<summary>📂 Photosynthesis detail</summary>\n\n## Steps\n\n- Light reaction\n- Dark reaction\n\n1. First\n2. Second\n\n| A | B |\n|---|---|\n| 1 | 2 |\n\n> 💡 **Yaad rakho:** thylakoid me light reaction.\n\n</details>`;
+    const segs = splitToggles(md);
+    expect(segs).toHaveLength(1);
+    const t = segs[0];
+    expect(t?.kind).toBe("toggle");
+    if (t?.kind !== "toggle") return;
+    expect(t.summary).toBe("📂 Photosynthesis detail");
+    expect(t.body).toContain("## Steps");
+    expect(t.body).toContain("- Light reaction");
+    expect(t.body).toContain("1. First");
+    expect(t.body).toContain("| A | B |");
+    expect(t.body).toContain("> 💡 **Yaad rakho:**");
+  });
+
+  it("splits text around a toggle into separate segments", () => {
+    const md = `Pehle ye.\n\n<details>\n<summary>Andar</summary>\n\nChhupa hua text.\n\n</details>\n\nBaad me ye.`;
+    const segs = splitToggles(md);
+    expect(segs.map((s) => s.kind)).toEqual(["text", "toggle", "text"]);
+    expect(segs[0]).toMatchObject({ text: "Pehle ye.\n\n" });
+    expect(segs[2]).toMatchObject({ text: "\n\nBaad me ye." });
+  });
+
+  it("handles multiple toggles in one reply", () => {
+    const md = `<details><summary>One</summary>\n\nA\n\n</details>\n\n<details><summary>Two</summary>\n\nB\n\n</details>`;
+    const segs = splitToggles(md);
+    expect(segs.map((s) => s.kind)).toEqual(["toggle", "toggle"]);
+    expect(segs[0]).toMatchObject({ summary: "One", body: "A" });
+    expect(segs[1]).toMatchObject({ summary: "Two", body: "B" });
+  });
+
+  it("leaves an unclosed toggle as plain text (still streaming)", () => {
+    const md = `<details>\n<summary>Adhura</summary>\n\nAbhi aa raha hai…`;
+    const segs = splitToggles(md);
+    expect(segs).toEqual([{ kind: "text", text: md }]);
+  });
+
+  it("strips stray tags from the summary", () => {
+    const md = `<details><summary><b>Bold title</b></summary>\n\nBody.\n\n</details>`;
+    expect(splitToggles(md)[0]).toMatchObject({ summary: "Bold title" });
+  });
+});

@@ -1,1 +1,38 @@
-aW1wb3J0IHsgQm9va09wZW4sIENoZWNrLCBMb2FkZXIyLCBTZWFyY2gsIEFsZXJ0Q2lyY2xlIH0gZnJvbSAibHVjaWRlLXJlYWN0IjsKCnR5cGUgUGFydCA9IHsKICB0eXBlOiBzdHJpbmc7CiAgc3RhdGU/OiBzdHJpbmc7CiAgaW5wdXQ/OiB7IHF1ZXJ5Pzogc3RyaW5nOyBjbGFzc051bT86IG51bWJlcjsgc3ViamVjdD86IHN0cmluZzsgdXJsPzogc3RyaW5nOyB0b3BpYz86IHN0cmluZyB9OwogIG91dHB1dD86IHsgcmVzdWx0cz86IHVua25vd25bXTsgZXJyb3I/OiBzdHJpbmcgfTsKfTsKCmZ1bmN0aW9uIGxhYmVsKHA6IFBhcnQpIHsKICBjb25zdCBpID0gcC5pbnB1dCA/PyB7fTsKICBpZiAocC50eXBlID09PSAidG9vbC1uY2VydF9zZWFyY2giKQogICAgcmV0dXJuIGBDaGVja2luZyBOQ0VSVCBDbGFzcyAke2kuY2xhc3NOdW0gPz8gIiJ9ICR7aS5zdWJqZWN0ID8/ICIifSR7aS5xdWVyeSA/IGAg4oCUICR7aS5xdWVyeX1gIDogIiJ9YDsKICBpZiAocC50eXBlID09PSAidG9vbC1uY2VydF9yZWFkIikgcmV0dXJuICJSZWFkaW5nIHRoZSBOQ0VSVCBjaGFwdGVyIjsKICBpZiAocC50eXBlID09PSAidG9vbC1yZWFkX2xpbmsiKSByZXR1cm4gYFJlYWRpbmcgeW91ciBsaW5rJHtpLnVybCA/IGAg4oCUICR7aS51cmx9YCA6ICIifWA7CiAgaWYgKHAudHlwZSA9PT0gInRvb2wtbmVldF9weXFfc2VhcmNoIikgcmV0dXJuIGBDaGVja2luZyBORUVUIHBhc3QgcXVlc3Rpb25zJHtpLnRvcGljID8gYCDigJQgJHtpLnRvcGljfWAgOiAiIn1gOwogIHJldHVybiAiUmVzZWFyY2hpbmciOwp9CgovKiogT25lIGNvbXBhY3Qgcm93IHBlciByZXNlYXJjaCBzdGVwIHRoZSB0dXRvciB0b29rLiAqLwpleHBvcnQgZnVuY3Rpb24gVG9vbFN0ZXAoeyBwYXJ0IH06IHsgcGFydDogUGFydCB9KSB7CiAgY29uc3QgZG9uZSA9IHBhcnQuc3RhdGUgPT09ICJvdXRwdXQtYXZhaWxhYmxlIjsKICBjb25zdCBmYWlsZWQgPSBwYXJ0LnN0YXRlID09PSAib3V0cHV0LWVycm9yIiB8fCAoZG9uZSAmJiAhIXBhcnQub3V0cHV0Py5lcnJvcik7CiAgY29uc3QgSWNvbiA9IHBhcnQudHlwZSA9PT0gInRvb2wtbmNlcnRfcmVhZCIgfHwgcGFydC50eXBlID09PSAidG9vbC1yZWFkX2xpbmsiID8gQm9va09wZW4gOiBTZWFyY2g7CiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiByb3VuZGVkLW1kIGJvcmRlciBib3JkZXItYm9yZGVyIGJnLW11dGVkLzUwIHB4LTMgcHktMS41IHRleHQteHMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj4KICAgICAgPEljb24gY2xhc3NOYW1lPSJzaXplLTMuNSBzaHJpbmstMCB0ZXh0LXByaW1hcnkiIC8+CiAgICAgIDxzcGFuIGNsYXNzTmFtZT0ibWluLXctMCBmbGV4LTEgdHJ1bmNhdGUgY2FwaXRhbGl6ZS1maXJzdCI+e2xhYmVsKHBhcnQpfTwvc3Bhbj4KICAgICAge2ZhaWxlZCA/ICgKICAgICAgICA8QWxlcnRDaXJjbGUgY2xhc3NOYW1lPSJzaXplLTMuNSB0ZXh0LWFjY2VudC1mb3JlZ3JvdW5kIiAvPgogICAgICApIDogZG9uZSA/ICgKICAgICAgICA8Q2hlY2sgY2xhc3NOYW1lPSJzaXplLTMuNSB0ZXh0LXByaW1hcnkiIC8+CiAgICAgICkgOiAoCiAgICAgICAgPExvYWRlcjIgY2xhc3NOYW1lPSJzaXplLTMuNSBhbmltYXRlLXNwaW4iIC8+CiAgICAgICl9CiAgICA8L2Rpdj4KICApOwp9Cg==
+import { BookOpen, Check, Loader2, Search, AlertCircle } from "lucide-react";
+
+type Part = {
+  type: string;
+  state?: string;
+  input?: { query?: string; classNum?: number; subject?: string; url?: string; topic?: string };
+  output?: { results?: unknown[]; error?: string };
+};
+
+function label(p: Part) {
+  const i = p.input ?? {};
+  if (p.type === "tool-ncert_search")
+    return `Checking NCERT Class ${i.classNum ?? ""} ${i.subject ?? ""}${i.query ? ` — ${i.query}` : ""}`;
+  if (p.type === "tool-ncert_read") return "Reading the NCERT chapter";
+  if (p.type === "tool-read_link") return `Reading your link${i.url ? ` — ${i.url}` : ""}`;
+  if (p.type === "tool-neet_pyq_search") return `Checking NEET past questions${i.topic ? ` — ${i.topic}` : ""}`;
+  return "Researching";
+}
+
+/** One compact row per research step the tutor took. */
+export function ToolStep({ part }: { part: Part }) {
+  const done = part.state === "output-available";
+  const failed = part.state === "output-error" || (done && !!part.output?.error);
+  const Icon = part.type === "tool-ncert_read" || part.type === "tool-read_link" ? BookOpen : Search;
+  return (
+    <div className="flex items-center gap-2 rounded-md border border-border bg-muted/50 px-3 py-1.5 text-xs text-muted-foreground">
+      <Icon className="size-3.5 shrink-0 text-primary" />
+      <span className="min-w-0 flex-1 truncate capitalize-first">{label(part)}</span>
+      {failed ? (
+        <AlertCircle className="size-3.5 text-accent-foreground" />
+      ) : done ? (
+        <Check className="size-3.5 text-primary" />
+      ) : (
+        <Loader2 className="size-3.5 animate-spin" />
+      )}
+    </div>
+  );
+}

@@ -1,1 +1,24 @@
-aW1wb3J0IHsgU2FydmFtQUlDbGllbnQgfSBmcm9tICJzYXJ2YW1haSI7Cgpjb25zdCBhcGlTdWJzY3JpcHRpb25LZXkgPSBwcm9jZXNzLmVudi5TQVJWQU1fQVBJX0tFWTsKaWYgKCFhcGlTdWJzY3JpcHRpb25LZXkpIHsKICBjb25zb2xlLmVycm9yKCJTZXQgU0FSVkFNX0FQSV9LRVkgaW4geW91ciBsb2NhbCAuZW52IGJlZm9yZSBydW5uaW5nIHRoaXMgc2NyaXB0LiIpOwogIHByb2Nlc3MuZXhpdCgxKTsKfQoKY29uc3QgY2xpZW50ID0gbmV3IFNhcnZhbUFJQ2xpZW50KHsgYXBpU3Vic2NyaXB0aW9uS2V5IH0pOwoKdHJ5IHsKICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGNsaWVudC5jaGF0LmNvbXBsZXRpb25zKHsKICAgIG1vZGVsOiAic2FydmFtLTEwNWItY29udmVyc2F0aW9ucyIsCiAgICBtZXNzYWdlczogW3sgcm9sZTogInVzZXIiLCBjb250ZW50OiAi4KSo4KSu4KS44KWN4KSk4KWHISDgpIXgpKrgpKjgpL4g4KSq4KSw4KS/4KSa4KSvIOCkj+CklSDgpLXgpL7gpJXgpY3gpK8g4KSu4KWH4KSCIOCkpuClgOCknOCkv+Ckj+ClpCIgfV0sCiAgfSwgeyBtYXhSZXRyaWVzOiAwIH0pOwogIGNvbnN0IHJlcGx5ID0gcmVzcG9uc2UuY2hvaWNlcz8uWzBdPy5tZXNzYWdlPy5jb250ZW50OwogIGlmICghcmVwbHkpIHRocm93IG5ldyBFcnJvcigiTm8gcmVwbHkgcmV0dXJuZWQiKTsKICBjb25zb2xlLmxvZyhyZXBseSk7Cn0gY2F0Y2ggKGVycm9yKSB7CiAgLy8gRG8gbm90IGR1bXAgU0RLIGVycm9yczogdGhleSBjYW4gY29udGFpbiByZXF1ZXN0IGNyZWRlbnRpYWxzLgogIGNvbnN0IHN0YXR1cyA9IHR5cGVvZiBlcnJvcj8uc3RhdHVzQ29kZSA9PT0gIm51bWJlciIgPyBlcnJvci5zdGF0dXNDb2RlIDogbnVsbDsKICBjb25zb2xlLmVycm9yKHN0YXR1cyA/IGBTYXJ2YW0gY2FsbCBmYWlsZWQgKEhUVFAgJHtzdGF0dXN9KS5gIDogIlNhcnZhbSBjYWxsIGZhaWxlZCBvciByZXR1cm5lZCBubyByZXBseS4iKTsKICBwcm9jZXNzLmV4aXRDb2RlID0gMTsKfQ==
+import { SarvamAIClient } from "sarvamai";
+
+const apiSubscriptionKey = process.env.SARVAM_API_KEY;
+if (!apiSubscriptionKey) {
+  console.error("Set SARVAM_API_KEY in your local .env before running this script.");
+  process.exit(1);
+}
+
+const client = new SarvamAIClient({ apiSubscriptionKey });
+
+try {
+  const response = await client.chat.completions({
+    model: "sarvam-105b-conversations",
+    messages: [{ role: "user", content: "नमस्ते! अपना परिचय एक वाक्य में दीजिए।" }],
+  }, { maxRetries: 0 });
+  const reply = response.choices?.[0]?.message?.content;
+  if (!reply) throw new Error("No reply returned");
+  console.log(reply);
+} catch (error) {
+  // Do not dump SDK errors: they can contain request credentials.
+  const status = typeof error?.statusCode === "number" ? error.statusCode : null;
+  console.error(status ? `Sarvam call failed (HTTP ${status}).` : "Sarvam call failed or returned no reply.");
+  process.exitCode = 1;
+}

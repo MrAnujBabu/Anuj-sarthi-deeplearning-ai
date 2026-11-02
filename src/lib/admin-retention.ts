@@ -1,1 +1,14 @@
-LyoqIE9yaWdpbmFscyBhcmUgb3B0aW9uYWw7IHN1Y2Nlc3NmdWxseSBleHRyYWN0ZWQgbWVtb3J5IHJlbWFpbnMgdXNhYmxlIHdpdGhvdXQgdGhlbS4gKi8KZXhwb3J0IGZ1bmN0aW9uIGNsZWFuTWVtb3J5VGV4dCh0ZXh0OiBzdHJpbmcpOiBzdHJpbmcgewogIC8vIFBvc3RncmVTUUwgdGV4dCBjYW5ub3QgY29udGFpbiBOVUw7IG1hbGZvcm1lZCBQREYgZ2x5cGhzIGNhbiBhbHNvIGNvbnRhaW4gbG9uZSBzdXJyb2dhdGVzLgogIHJldHVybiB0ZXh0LnJlcGxhY2UoL1x1MDAwMC9nLCAnJykucmVwbGFjZSgvW1x1RDgwMC1cdURCRkZdKD8hW1x1REMwMC1cdURGRkZdKXwoPzwhW1x1RDgwMC1cdURCRkZdKVtcdURDMDAtXHVERkZGXS9nLCAnXHVGRkZEJyk7Cn0KCmV4cG9ydCBmdW5jdGlvbiByZXRhaW5lZEZpbGVQYXRoKHBhdGg6IHN0cmluZywga2VlcE9yaWdpbmFsOiBib29sZWFuKTogc3RyaW5nIHwgbnVsbCB7CiAgcmV0dXJuIGtlZXBPcmlnaW5hbCA/IHBhdGggOiBudWxsOwp9CgpleHBvcnQgZnVuY3Rpb24gcmVhZGFibGVNZW1vcnlUZXh0KHRleHQ6IHN0cmluZyB8IG51bGwpOiBzdHJpbmcgewogIGlmICghdGV4dD8udHJpbSgpKSB0aHJvdyBuZXcgRXJyb3IoJ0RvY3VtZW50IHJlYWQgbmFoaSBodWEg4oCUIG1lbW9yeSBzYXZlIG5haGkga2kuIFJlYWRhYmxlIFBERiwgdGV4dCB5YSBwdWJsaWMgbGluayBkZWluLicpOwogIHJldHVybiB0ZXh0LnRyaW0oKTsKfQ==
+/** Originals are optional; successfully extracted memory remains usable without them. */
+export function cleanMemoryText(text: string): string {
+  // PostgreSQL text cannot contain NUL; malformed PDF glyphs can also contain lone surrogates.
+  return text.replace(/\u0000/g, '').replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, '\uFFFD');
+}
+
+export function retainedFilePath(path: string, keepOriginal: boolean): string | null {
+  return keepOriginal ? path : null;
+}
+
+export function readableMemoryText(text: string | null): string {
+  if (!text?.trim()) throw new Error('Document read nahi hua — memory save nahi ki. Readable PDF, text ya public link dein.');
+  return text.trim();
+}

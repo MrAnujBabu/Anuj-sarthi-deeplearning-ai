@@ -1,1 +1,97 @@
-aW1wb3J0IHsgYWZ0ZXJFYWNoLCBkZXNjcmliZSwgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IGNsZWFudXAsIGZpcmVFdmVudCwgcmVuZGVyLCBzY3JlZW4gfSBmcm9tICdAdGVzdGluZy1saWJyYXJ5L3JlYWN0JzsKaW1wb3J0IHsgQXNzaXN0YW50QW5zd2VyIH0gZnJvbSAnQC9jb21wb25lbnRzL2Fzc2lzdGFudC1hbnN3ZXInOwppbXBvcnQgeyBmb3JtYXRWb2ljZVJlcGx5IH0gZnJvbSAnQC9saWIvdm9pY2UtZm9ybWF0JzsKCmFmdGVyRWFjaChjbGVhbnVwKTsKCmNvbnN0IHN1bW1hcnlPZiA9IChlbDogSFRNTEVsZW1lbnQpID0+IGVsLnF1ZXJ5U2VsZWN0b3IoJ3N1bW1hcnknKTsKCmRlc2NyaWJlKCd2b2ljZSBtb2RlIHRvZ2dsZSBlbmQgdG8gZW5kJywgKCkgPT4gewogIGl0KCdxdWl6IGZlZWRiYWNrIGZvbGRzIGludG8gYSBjbG9zZWQgdG9nZ2xlLCB0YXAgb3BlbnMgdGhlIGV4cGxhbmF0aW9uJywgKCkgPT4gewogICAgY29uc3Qgc3Bva2VuID0KICAgICAgJ1NoYWJhc2ghIFNhaGkgamF3YWIgKEIpIGhhaSDigJQgTWl0b2Nob25kcmlhLiBEZXRhaWwgbWVpbjogQVRQIHlhaGluIGJhbnRhIGhhaSBhdXIgaXNsaXllIGlzZSBwb3dlcmhvdXNlIGtlaHRlIGhhaW4uICcgKwogICAgICAnQWdsYSBzYXdhbDogUmlib3NvbWUga2FoYW4gbWlsdGUgaGFpbj8gKEEpIE51Y2xldXMgKEIpIEN5dG9wbGFzbSAoQykgVmFjdW9sZSAoRCkgQ2VsbCB3YWxsJzsKICAgIGNvbnN0IG1kID0gZm9ybWF0Vm9pY2VSZXBseShzcG9rZW4sIHsgb3B0aW9uczogZmFsc2UsIGZlZWRiYWNrVG9nZ2xlOiB0cnVlIH0pOwogICAgZXhwZWN0KG1kKS50b0NvbnRhaW4oJzxkZXRhaWxzPicpOwogICAgcmVuZGVyKDxBc3Npc3RhbnRBbnN3ZXIgdGV4dD17bWR9IGlzQW5pbWF0aW5nPXtmYWxzZX0gY29tcGFjdCBib2xkUXVlc3Rpb24gLz4pOwogICAgY29uc3QgZGV0YWlscyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ2RldGFpbHMnKTsKICAgIGV4cGVjdChkZXRhaWxzKS5ub3QudG9CZU51bGwoKTsKICAgIGV4cGVjdChkZXRhaWxzIS5vcGVuKS50b0JlKGZhbHNlKTsKICAgIGV4cGVjdChzdW1tYXJ5T2YoZGV0YWlscyEpPy50ZXh0Q29udGVudCkudG9Db250YWluKCdTaGFiYXNoJyk7CiAgICAvLyBFeHBsYW5hdGlvbiBpcyBpbnNpZGUgdGhlIGZvbGQsIG5vdCBsb29zZSBvbiB0aGUgcGFnZS4KICAgIGV4cGVjdChkZXRhaWxzIS50ZXh0Q29udGVudCkudG9Db250YWluKCdBVFAnKTsKICAgIGZpcmVFdmVudC5jbGljayhzdW1tYXJ5T2YoZGV0YWlscyEpISk7CiAgICBleHBlY3QoZGV0YWlscyEub3BlbikudG9CZSh0cnVlKTsKICAgIC8vIFRoZSBuZXh0IHF1ZXN0aW9uIHJlbmRlcnMgb3V0c2lkZSB0aGUgdG9nZ2xlLgogICAgZXhwZWN0KGRldGFpbHMhLnRleHRDb250ZW50KS5ub3QudG9Db250YWluKCdSaWJvc29tZSBrYWhhbiBtaWx0ZSBoYWluPycpOwogICAgZXhwZWN0KGRvY3VtZW50LmJvZHkudGV4dENvbnRlbnQpLnRvQ29udGFpbignUmlib3NvbWUga2FoYW4gbWlsdGUgaGFpbj8nKTsKICB9KTsKCiAgaXQoJ3RvZ2dsZSBrZWVwcyBoZWFkaW5ncywgbGlzdHMgYW5kIHRhYmxlcyBmb3JtYXR0ZWQgaW5zaWRlIHRoZSBmb2xkJywgKCkgPT4gewogICAgY29uc3QgbWQgPSBbCiAgICAgICdQZWhsZSB5ZSBsaW5lIGJhaGFyIGhhaS4nLAogICAgICAnJywKICAgICAgJzxkZXRhaWxzPicsCiAgICAgICc8c3VtbWFyeT7wn5OYIEV4cGxhbmF0aW9uPC9zdW1tYXJ5PicsCiAgICAgICcnLAogICAgICAnIyMgS3JlYnMgQ3ljbGUnLAogICAgICAnJywKICAgICAgJy0gUGVobGEgcG9pbnQnLAogICAgICAnLSBEb29zcmEgcG9pbnQnLAogICAgICAnJywKICAgICAgJ3wgU3RlcCB8IEVuenltZSB8JywKICAgICAgJ3wgLS0tIHwgLS0tIHwnLAogICAgICAnfCBPbmUgfCBTeW50aGFzZSB8JywKICAgICAgJycsCiAgICAgICc+ICoq8J+SoSBZYWFkIHJha2hvOioqIEFUUCBiYW50YSBoYWknLAogICAgICAnJywKICAgICAgJzwvZGV0YWlscz4nLAogICAgICAnJywKICAgICAgJ0JhYWQga2kgbGluZSBiYWhhciBoYWkuJywKICAgIF0uam9pbignXG4nKTsKICAgIHJlbmRlcig8QXNzaXN0YW50QW5zd2VyIHRleHQ9e21kfSBpc0FuaW1hdGluZz17ZmFsc2V9IGNvbXBhY3QgLz4pOwogICAgY29uc3QgZGV0YWlscyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ2RldGFpbHMnKTsKICAgIGV4cGVjdChkZXRhaWxzKS5ub3QudG9CZU51bGwoKTsKICAgIGV4cGVjdChkZXRhaWxzIS5vcGVuKS50b0JlKGZhbHNlKTsKICAgIGV4cGVjdChzdW1tYXJ5T2YoZGV0YWlscyEpPy50ZXh0Q29udGVudCkudG9Db250YWluKCdFeHBsYW5hdGlvbicpOwogICAgZmlyZUV2ZW50LmNsaWNrKHN1bW1hcnlPZihkZXRhaWxzISkhKTsKICAgIGV4cGVjdChkZXRhaWxzIS5vcGVuKS50b0JlKHRydWUpOwogICAgLy8gRm9ybWF0dGVkIHN0cnVjdHVyZSBzdXJ2aXZlcyBpbnNpZGUgdGhlIGZvbGQuCiAgICBleHBlY3QoZGV0YWlscyEucXVlcnlTZWxlY3RvcignaDInKT8udGV4dENvbnRlbnQpLnRvQmUoJ0tyZWJzIEN5Y2xlJyk7CiAgICBleHBlY3QoZGV0YWlscyEucXVlcnlTZWxlY3RvckFsbCgnbGknKSkudG9IYXZlTGVuZ3RoKDIpOwogICAgZXhwZWN0KGRldGFpbHMhLnF1ZXJ5U2VsZWN0b3IoJ3RhYmxlJykpLm5vdC50b0JlTnVsbCgpOwogICAgZXhwZWN0KGRldGFpbHMhLnRleHRDb250ZW50KS50b0NvbnRhaW4oJ1lhYWQgcmFraG8nKTsKICAgIC8vIFRleHQgYmVmb3JlIGFuZCBhZnRlciBzdGF5cyBvdXRzaWRlIHRoZSBmb2xkLgogICAgZXhwZWN0KGRldGFpbHMhLnRleHRDb250ZW50KS5ub3QudG9Db250YWluKCdQZWhsZSB5ZSBsaW5lJyk7CiAgICBleHBlY3QoZGV0YWlscyEudGV4dENvbnRlbnQpLm5vdC50b0NvbnRhaW4oJ0JhYWQga2kgbGluZScpOwogICAgZXhwZWN0KGRvY3VtZW50LmJvZHkudGV4dENvbnRlbnQpLnRvQ29udGFpbignUGVobGUgeWUgbGluZScpOwogICAgZXhwZWN0KGRvY3VtZW50LmJvZHkudGV4dENvbnRlbnQpLnRvQ29udGFpbignQmFhZCBraSBsaW5lJyk7CiAgfSk7CgogIGl0KCdtdWx0aXBsZSB0b2dnbGVzIGluIG9uZSByZXBseSBlYWNoIGZvbGQgaW5kZXBlbmRlbnRseScsICgpID0+IHsKICAgIGNvbnN0IG1kID0gWwogICAgICAnPGRldGFpbHM+JywKICAgICAgJzxzdW1tYXJ5PlBlaGxhIHRvZ2dsZTwvc3VtbWFyeT4nLAogICAgICAnJywKICAgICAgJ1BlaGxhIGNvbnRlbnQnLAogICAgICAnJywKICAgICAgJzwvZGV0YWlscz4nLAogICAgICAnJywKICAgICAgJzxkZXRhaWxzPicsCiAgICAgICc8c3VtbWFyeT5Eb29zcmEgdG9nZ2xlPC9zdW1tYXJ5PicsCiAgICAgICcnLAogICAgICAnRG9vc3JhIGNvbnRlbnQnLAogICAgICAnJywKICAgICAgJzwvZGV0YWlscz4nLAogICAgXS5qb2luKCdcbicpOwogICAgcmVuZGVyKDxBc3Npc3RhbnRBbnN3ZXIgdGV4dD17bWR9IGlzQW5pbWF0aW5nPXtmYWxzZX0gY29tcGFjdCAvPik7CiAgICBjb25zdCBhbGwgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCdkZXRhaWxzJyk7CiAgICBleHBlY3QoYWxsKS50b0hhdmVMZW5ndGgoMik7CiAgICBleHBlY3QoYWxsWzBdIS5vcGVuKS50b0JlKGZhbHNlKTsKICAgIGV4cGVjdChhbGxbMV0hLm9wZW4pLnRvQmUoZmFsc2UpOwogICAgZmlyZUV2ZW50LmNsaWNrKHN1bW1hcnlPZihhbGxbMF0gYXMgSFRNTEVsZW1lbnQpISk7CiAgICBleHBlY3QoYWxsWzBdIS5vcGVuKS50b0JlKHRydWUpOwogICAgZXhwZWN0KGFsbFsxXSEub3BlbikudG9CZShmYWxzZSk7CiAgfSk7Cn0pOwo=
+import { afterEach, describe, expect, it } from 'vitest';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { AssistantAnswer } from '@/components/assistant-answer';
+import { formatVoiceReply } from '@/lib/voice-format';
+
+afterEach(cleanup);
+
+const summaryOf = (el: HTMLElement) => el.querySelector('summary');
+
+describe('voice mode toggle end to end', () => {
+  it('quiz feedback folds into a closed toggle, tap opens the explanation', () => {
+    const spoken =
+      'Shabash! Sahi jawab (B) hai — Mitochondria. Detail mein: ATP yahin banta hai aur isliye ise powerhouse kehte hain. ' +
+      'Agla sawal: Ribosome kahan milte hain? (A) Nucleus (B) Cytoplasm (C) Vacuole (D) Cell wall';
+    const md = formatVoiceReply(spoken, { options: false, feedbackToggle: true });
+    expect(md).toContain('<details>');
+    render(<AssistantAnswer text={md} isAnimating={false} compact boldQuestion />);
+    const details = document.querySelector('details');
+    expect(details).not.toBeNull();
+    expect(details!.open).toBe(false);
+    expect(summaryOf(details!)?.textContent).toContain('Shabash');
+    // Explanation is inside the fold, not loose on the page.
+    expect(details!.textContent).toContain('ATP');
+    fireEvent.click(summaryOf(details!)!);
+    expect(details!.open).toBe(true);
+    // The next question renders outside the toggle.
+    expect(details!.textContent).not.toContain('Ribosome kahan milte hain?');
+    expect(document.body.textContent).toContain('Ribosome kahan milte hain?');
+  });
+
+  it('toggle keeps headings, lists and tables formatted inside the fold', () => {
+    const md = [
+      'Pehle ye line bahar hai.',
+      '',
+      '<details>',
+      '<summary>📘 Explanation</summary>',
+      '',
+      '## Krebs Cycle',
+      '',
+      '- Pehla point',
+      '- Doosra point',
+      '',
+      '| Step | Enzyme |',
+      '| --- | --- |',
+      '| One | Synthase |',
+      '',
+      '> **💡 Yaad rakho:** ATP banta hai',
+      '',
+      '</details>',
+      '',
+      'Baad ki line bahar hai.',
+    ].join('\n');
+    render(<AssistantAnswer text={md} isAnimating={false} compact />);
+    const details = document.querySelector('details');
+    expect(details).not.toBeNull();
+    expect(details!.open).toBe(false);
+    expect(summaryOf(details!)?.textContent).toContain('Explanation');
+    fireEvent.click(summaryOf(details!)!);
+    expect(details!.open).toBe(true);
+    // Formatted structure survives inside the fold.
+    expect(details!.querySelector('h2')?.textContent).toBe('Krebs Cycle');
+    expect(details!.querySelectorAll('li')).toHaveLength(2);
+    expect(details!.querySelector('table')).not.toBeNull();
+    expect(details!.textContent).toContain('Yaad rakho');
+    // Text before and after stays outside the fold.
+    expect(details!.textContent).not.toContain('Pehle ye line');
+    expect(details!.textContent).not.toContain('Baad ki line');
+    expect(document.body.textContent).toContain('Pehle ye line');
+    expect(document.body.textContent).toContain('Baad ki line');
+  });
+
+  it('multiple toggles in one reply each fold independently', () => {
+    const md = [
+      '<details>',
+      '<summary>Pehla toggle</summary>',
+      '',
+      'Pehla content',
+      '',
+      '</details>',
+      '',
+      '<details>',
+      '<summary>Doosra toggle</summary>',
+      '',
+      'Doosra content',
+      '',
+      '</details>',
+    ].join('\n');
+    render(<AssistantAnswer text={md} isAnimating={false} compact />);
+    const all = document.querySelectorAll('details');
+    expect(all).toHaveLength(2);
+    expect(all[0]!.open).toBe(false);
+    expect(all[1]!.open).toBe(false);
+    fireEvent.click(summaryOf(all[0] as HTMLElement)!);
+    expect(all[0]!.open).toBe(true);
+    expect(all[1]!.open).toBe(false);
+  });
+});

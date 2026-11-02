@@ -1,1 +1,17 @@
-aW1wb3J0IHsgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IEJsb2IgYXMgTm9kZUJsb2IgfSBmcm9tICdub2RlOmJ1ZmZlcic7CmltcG9ydCB7IG5hcnJhdGlvbldhdiB9IGZyb20gJ0AvbGliL3lvdXR1YmUtZG93bmxvYWQnOwoKaXQoJ2V4cG9ydHMgY29tcGxldGUgMjQga0h6IG1vbm8gSGluZGkgbmFycmF0aW9uIGluIHRoZSBvcmlnaW5hbCB0cmFuc2NyaXB0IG9yZGVyJywgYXN5bmMgKCkgPT4gewogIGNvbnN0IHsgdmkgfSA9IGF3YWl0IGltcG9ydCgndml0ZXN0Jyk7CiAgdmkuc3R1Ykdsb2JhbCgnQmxvYicsIE5vZGVCbG9iKTsKICBjb25zdCBmaXJzdCA9IG5ldyBVaW50OEFycmF5KFsxLCAwLCAyLCAwXSksIHNlY29uZCA9IG5ldyBVaW50OEFycmF5KFszLCAwXSk7CiAgY29uc3Qgd2F2ID0gYXdhaXQgbmFycmF0aW9uV2F2KFtuZXcgQmxvYihbZmlyc3RdKSwgbmV3IEJsb2IoW3NlY29uZF0pXSk7CiAgY29uc3QgYnl0ZXMgPSBhd2FpdCB3YXYuYXJyYXlCdWZmZXIoKSwgaGVhZGVyID0gbmV3IERhdGFWaWV3KGJ5dGVzKTsKICBleHBlY3Qod2F2LnR5cGUpLnRvQmUoJ2F1ZGlvL3dhdicpOwogIGV4cGVjdChoZWFkZXIuZ2V0VWludDMyKDI0LCB0cnVlKSkudG9CZSgyNDAwMCk7CiAgZXhwZWN0KGhlYWRlci5nZXRVaW50MTYoMjIsIHRydWUpKS50b0JlKDEpOwogIGV4cGVjdChoZWFkZXIuZ2V0VWludDMyKDQwLCB0cnVlKSkudG9CZSg2KTsKICBleHBlY3QoWy4uLm5ldyBVaW50OEFycmF5KGJ5dGVzLCA0NCldKS50b0VxdWFsKFsxLCAwLCAyLCAwLCAzLCAwXSk7CiAgdmkudW5zdHViQWxsR2xvYmFscygpOwp9KTs=
+import { expect, it } from 'vitest';
+import { Blob as NodeBlob } from 'node:buffer';
+import { narrationWav } from '@/lib/youtube-download';
+
+it('exports complete 24 kHz mono Hindi narration in the original transcript order', async () => {
+  const { vi } = await import('vitest');
+  vi.stubGlobal('Blob', NodeBlob);
+  const first = new Uint8Array([1, 0, 2, 0]), second = new Uint8Array([3, 0]);
+  const wav = await narrationWav([new Blob([first]), new Blob([second])]);
+  const bytes = await wav.arrayBuffer(), header = new DataView(bytes);
+  expect(wav.type).toBe('audio/wav');
+  expect(header.getUint32(24, true)).toBe(24000);
+  expect(header.getUint16(22, true)).toBe(1);
+  expect(header.getUint32(40, true)).toBe(6);
+  expect([...new Uint8Array(bytes, 44)]).toEqual([1, 0, 2, 0, 3, 0]);
+  vi.unstubAllGlobals();
+});

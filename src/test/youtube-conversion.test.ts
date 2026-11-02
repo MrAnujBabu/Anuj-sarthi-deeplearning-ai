@@ -1,1 +1,11 @@
-aW1wb3J0IHsgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IGFzc2VtYmxlSGluZGlEdWIgfSBmcm9tICdAL2xpYi95b3V0dWJlLWNvbnZlcnNpb24nOwoKaXQoJ3JldXNlcyBhbGwgb3JkZXJlZCBIaW5kaSBzZWdtZW50cyB3aXRob3V0IGNoYW5naW5nIHRoZWlyIHRpbWVzdGFtcHMnLCAoKSA9PiB7CiAgY29uc3QgcmVzdWx0ID0gYXNzZW1ibGVIaW5kaUR1YihbeyBzdGFydDogMSwgZW5kOiAyMiwgdGV4dDogJ2EnIH0sIHsgc3RhcnQ6IDQwLCBlbmQ6IDQ1LCB0ZXh0OiAnYicgfV0sIFsn4KSq4KS54KSy4KS+4KWkJywgJ+CkpuClguCkuOCksOCkvuClpCddKTsKICBleHBlY3QocmVzdWx0KS50b0VxdWFsKHsgaGluZGk6ICfgpKrgpLngpLLgpL7gpaRcblxu4KSm4KWC4KS44KSw4KS+4KWkJywgZHViOiBbeyBzdGFydDogMSwgZW5kOiAyMiwgaGluZGk6ICfgpKrgpLngpLLgpL7gpaQnIH0sIHsgc3RhcnQ6IDQwLCBlbmQ6IDQ1LCBoaW5kaTogJ+CkpuClguCkuOCksOCkvuClpCcgfV0gfSk7Cn0pOwppdCgncmVqZWN0cyBtaXNzaW5nIHRyYW5zbGF0ZWQgcGFydHMgaW5zdGVhZCBvZiBzaWxlbnRseSBza2lwcGluZyBsZWN0dXJlIGNvbnRlbnQnLCAoKSA9PiB7CiAgZXhwZWN0KCgpID0+IGFzc2VtYmxlSGluZGlEdWIoW3sgc3RhcnQ6IDAsIGVuZDogMjAsIHRleHQ6ICdmYWN0JyB9XSwgW10pKS50b1Rocm93KCdpbmNvbXBsZXRlJyk7CiAgZXhwZWN0KCgpID0+IGFzc2VtYmxlSGluZGlEdWIoW3sgc3RhcnQ6IDAsIGVuZDogMjAsIHRleHQ6ICdmYWN0JyB9XSwgWycgJ10pKS50b1Rocm93KCdpbmNvbXBsZXRlJyk7Cn0pOw==
+import { expect, it } from 'vitest';
+import { assembleHindiDub } from '@/lib/youtube-conversion';
+
+it('reuses all ordered Hindi segments without changing their timestamps', () => {
+  const result = assembleHindiDub([{ start: 1, end: 22, text: 'a' }, { start: 40, end: 45, text: 'b' }], ['पहला।', 'दूसरा।']);
+  expect(result).toEqual({ hindi: 'पहला।\n\nदूसरा।', dub: [{ start: 1, end: 22, hindi: 'पहला।' }, { start: 40, end: 45, hindi: 'दूसरा।' }] });
+});
+it('rejects missing translated parts instead of silently skipping lecture content', () => {
+  expect(() => assembleHindiDub([{ start: 0, end: 20, text: 'fact' }], [])).toThrow('incomplete');
+  expect(() => assembleHindiDub([{ start: 0, end: 20, text: 'fact' }], [' '])).toThrow('incomplete');
+});

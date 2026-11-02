@@ -1,1 +1,4 @@
-LyoqIFNlc3Npb24gY3JlYXRpb24gc2V0dGluZ3MgY2Fubm90IGJlIHJlbmVnb3RpYXRlZCB3aXRob3V0IGVuZGluZyBhIHBhaWQgY2FsbC4gKi8KZXhwb3J0IGZ1bmN0aW9uIHZvaWNlU2V0dGluZ3NMb2NrZWQoc3RhdHVzOiAnaWRsZScgfCAnY29ubmVjdGluZycgfCAnY29ubmVjdGVkJyB8ICdzdG9wcGluZycgfCAnY2xvc2VkJyk6IGJvb2xlYW4gewogIHJldHVybiBzdGF0dXMgIT09ICdpZGxlJyAmJiBzdGF0dXMgIT09ICdjbG9zZWQnOwp9
+/** Session creation settings cannot be renegotiated without ending a paid call. */
+export function voiceSettingsLocked(status: 'idle' | 'connecting' | 'connected' | 'stopping' | 'closed'): boolean {
+  return status !== 'idle' && status !== 'closed';
+}

@@ -1,1 +1,20 @@
-Ly8gQWRhcHRzIGFuIEhUTUwgPHZpZGVvPi88YXVkaW8+IGVsZW1lbnQgdG8gdGhlIGR1YiBjb250cm9sbGVyJ3MgcGxheWVyIGNvbnRyYWN0Ci8vIChZb3VUdWJlIHN0YXRlIGNvZGVzOiAwIGVuZGVkLCAxIHBsYXlpbmcsIDIgcGF1c2VkLCAzIGJ1ZmZlcmluZykuCmltcG9ydCB0eXBlIHsgRHViUGxheWVyIH0gZnJvbSAnLi95b3V0dWJlLWR1Yi1zeW5jJzsKCmV4cG9ydCBjb25zdCBIVE1MX1BMQVlCQUNLX1JBVEVTID0gWzAuMjUsIDAuNSwgMC43NSwgMSwgMS4yNSwgMS41LCAxLjc1LCAyXTsKCmV4cG9ydCBmdW5jdGlvbiBodG1sTWVkaWFEdWJQbGF5ZXIoZWw6IEhUTUxNZWRpYUVsZW1lbnQpOiBEdWJQbGF5ZXIgewogIHJldHVybiB7CiAgICBwbGF5VmlkZW86ICgpID0+IHsgdm9pZCBlbC5wbGF5KCkuY2F0Y2goKCkgPT4geyAvKiBwYXVzZWQgYnkgdGhlIGJyb3dzZXI7IHN0YXRlIHN0YXlzIDIgKi8gfSk7IH0sCiAgICBwYXVzZVZpZGVvOiAoKSA9PiBlbC5wYXVzZSgpLAogICAgbXV0ZTogKCkgPT4geyBlbC5tdXRlZCA9IHRydWU7IH0sCiAgICB1bk11dGU6ICgpID0+IHsgZWwubXV0ZWQgPSBmYWxzZTsgfSwKICAgIHNlZWtUbzogKHRpbWU6IG51bWJlcikgPT4geyBlbC5jdXJyZW50VGltZSA9IE1hdGgubWF4KDAsIHRpbWUpOyB9LAogICAgZ2V0Q3VycmVudFRpbWU6ICgpID0+IGVsLmN1cnJlbnRUaW1lLAogICAgZ2V0UGxheWVyU3RhdGU6ICgpID0+IChlbC5lbmRlZCA/IDAgOiBlbC5wYXVzZWQgPyAyIDogZWwuc2Vla2luZyB8fCBlbC5yZWFkeVN0YXRlIDwgMyA/IDMgOiAxKSwKICAgIGdldFBsYXliYWNrUmF0ZTogKCkgPT4gZWwucGxheWJhY2tSYXRlLAogICAgc2V0UGxheWJhY2tSYXRlOiAocmF0ZTogbnVtYmVyKSA9PiB7IGVsLnBsYXliYWNrUmF0ZSA9IHJhdGU7IH0sCiAgICBnZXRBdmFpbGFibGVQbGF5YmFja1JhdGVzOiAoKSA9PiBIVE1MX1BMQVlCQUNLX1JBVEVTLAogIH07Cn0K
+// Adapts an HTML <video>/<audio> element to the dub controller's player contract
+// (YouTube state codes: 0 ended, 1 playing, 2 paused, 3 buffering).
+import type { DubPlayer } from './youtube-dub-sync';
+
+export const HTML_PLAYBACK_RATES = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
+
+export function htmlMediaDubPlayer(el: HTMLMediaElement): DubPlayer {
+  return {
+    playVideo: () => { void el.play().catch(() => { /* paused by the browser; state stays 2 */ }); },
+    pauseVideo: () => el.pause(),
+    mute: () => { el.muted = true; },
+    unMute: () => { el.muted = false; },
+    seekTo: (time: number) => { el.currentTime = Math.max(0, time); },
+    getCurrentTime: () => el.currentTime,
+    getPlayerState: () => (el.ended ? 0 : el.paused ? 2 : el.seeking || el.readyState < 3 ? 3 : 1),
+    getPlaybackRate: () => el.playbackRate,
+    setPlaybackRate: (rate: number) => { el.playbackRate = rate; },
+    getAvailablePlaybackRates: () => HTML_PLAYBACK_RATES,
+  };
+}

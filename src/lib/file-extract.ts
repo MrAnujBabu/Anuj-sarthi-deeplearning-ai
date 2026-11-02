@@ -1,1 +1,29 @@
-aW1wb3J0IHsgdW56aXBTeW5jLCBzdHJGcm9tVTggfSBmcm9tICJmZmxhdGUiOwoKY29uc3QgVEVYVF9FWFQgPSAvXC4obWR8bWFya2Rvd258dHh0fGNzdnx0c3Z8anNvbnxodG1sP3x4bWx8dGV4fHJ0Znxsb2d8eWE/bWwpJC9pOwoKZnVuY3Rpb24geG1sVGV4dCh4bWw6IHN0cmluZykgewogIHJldHVybiB4bWwKICAgIC5yZXBsYWNlKC88XC8odzpwfGE6cHxyb3cpPi9nLCAiXG4iKQogICAgLnJlcGxhY2UoLzwodzp0YWJ8YylbXj5dKlwvPz4vZywgIiAiKQogICAgLnJlcGxhY2UoLzxbXj5dKz4vZywgIiIpCiAgICAucmVwbGFjZSgvJmFtcDsvZywgIiYiKS5yZXBsYWNlKC8mbHQ7L2csICI8IikucmVwbGFjZSgvJmd0Oy9nLCAiPiIpLnJlcGxhY2UoLyZxdW90Oy9nLCAnIicpLnJlcGxhY2UoLyYjMzk7L2csICInIikKICAgIC5yZXBsYWNlKC9cbnszLH0vZywgIlxuXG4iKQogICAgLnRyaW0oKTsKfQoKLyoqIEV4dHJhY3QgdGV4dCBpbiB0aGUgYnJvd3NlciB3aGVuIHBvc3NpYmxlOyByZXR1cm5zIG51bGwgd2hlbiB0aGUgQUkgcmVhZGVyIGlzIG5lZWRlZCAoUERGLCBpbWFnZXMpLiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZXh0cmFjdExvY2FsbHkoZmlsZTogRmlsZSk6IFByb21pc2U8c3RyaW5nIHwgbnVsbD4gewogIGlmIChURVhUX0VYVC50ZXN0KGZpbGUubmFtZSkgfHwgZmlsZS50eXBlLnN0YXJ0c1dpdGgoInRleHQvIikpIHJldHVybiAoYXdhaXQgZmlsZS50ZXh0KCkpLnNsaWNlKDAsIDQwMDAwMCk7CiAgY29uc3QgZXh0ID0gZmlsZS5uYW1lLnNwbGl0KCIuIikucG9wKCk/LnRvTG93ZXJDYXNlKCk7CiAgaWYgKGV4dCA9PT0gImRvY3giIHx8IGV4dCA9PT0gInBwdHgiIHx8IGV4dCA9PT0gInhsc3giKSB7CiAgICBjb25zdCBmaWxlcyA9IHVuemlwU3luYyhuZXcgVWludDhBcnJheShhd2FpdCBmaWxlLmFycmF5QnVmZmVyKCkpKTsKICAgIGNvbnN0IHBpY2sgPSBPYmplY3Qua2V5cyhmaWxlcykKICAgICAgLmZpbHRlcigobikgPT4gKGV4dCA9PT0gImRvY3giID8gbiA9PT0gIndvcmQvZG9jdW1lbnQueG1sIiA6IGV4dCA9PT0gInBwdHgiID8gL15wcHRcL3NsaWRlc1wvc2xpZGVcZCtcLnhtbCQvLnRlc3QobikgOiBuID09PSAieGwvc2hhcmVkU3RyaW5ncy54bWwiIHx8IC9eeGxcL3dvcmtzaGVldHNcL3NoZWV0XGQrXC54bWwkLy50ZXN0KG4pKSkKICAgICAgLnNvcnQoKGEsIGIpID0+IGEubG9jYWxlQ29tcGFyZShiLCB1bmRlZmluZWQsIHsgbnVtZXJpYzogdHJ1ZSB9KSk7CiAgICByZXR1cm4gcGljay5tYXAoKG4sIGkpID0+IHsgY29uc3QgYnl0ZXMgPSBmaWxlc1tuXTsgcmV0dXJuIGJ5dGVzID8gYCR7ZXh0ID09PSAncHB0eCcgPyBgW1NsaWRlICR7aSArIDF9XVxuYCA6ICcnfSR7eG1sVGV4dChzdHJGcm9tVTgoYnl0ZXMpKX1gIDogJyc7IH0pLmpvaW4oIlxuXG4tLS1cblxuIikuc2xpY2UoMCwgNDAwMDAwKTsKICB9CiAgcmV0dXJuIG51bGw7Cn0KCmV4cG9ydCBjb25zdCBuZWVkc0FpID0gKGZpbGU6IEZpbGUpID0+IGZpbGUudHlwZSA9PT0gImFwcGxpY2F0aW9uL3BkZiIgfHwgZmlsZS50eXBlLnN0YXJ0c1dpdGgoImltYWdlLyIpOwo=
+import { unzipSync, strFromU8 } from "fflate";
+
+const TEXT_EXT = /\.(md|markdown|txt|csv|tsv|json|html?|xml|tex|rtf|log|ya?ml)$/i;
+
+function xmlText(xml: string) {
+  return xml
+    .replace(/<\/(w:p|a:p|row)>/g, "\n")
+    .replace(/<(w:tab|c)[^>]*\/?>/g, " ")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+/** Extract text in the browser when possible; returns null when the AI reader is needed (PDF, images). */
+export async function extractLocally(file: File): Promise<string | null> {
+  if (TEXT_EXT.test(file.name) || file.type.startsWith("text/")) return (await file.text()).slice(0, 400000);
+  const ext = file.name.split(".").pop()?.toLowerCase();
+  if (ext === "docx" || ext === "pptx" || ext === "xlsx") {
+    const files = unzipSync(new Uint8Array(await file.arrayBuffer()));
+    const pick = Object.keys(files)
+      .filter((n) => (ext === "docx" ? n === "word/document.xml" : ext === "pptx" ? /^ppt\/slides\/slide\d+\.xml$/.test(n) : n === "xl/sharedStrings.xml" || /^xl\/worksheets\/sheet\d+\.xml$/.test(n)))
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+    return pick.map((n, i) => { const bytes = files[n]; return bytes ? `${ext === 'pptx' ? `[Slide ${i + 1}]\n` : ''}${xmlText(strFromU8(bytes))}` : ''; }).join("\n\n---\n\n").slice(0, 400000);
+  }
+  return null;
+}
+
+export const needsAi = (file: File) => file.type === "application/pdf" || file.type.startsWith("image/");

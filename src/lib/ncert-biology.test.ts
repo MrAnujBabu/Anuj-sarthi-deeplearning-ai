@@ -1,1 +1,72 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBOQ0VSVF9CSU9MT0dZX0NIQVBURVJTLCBuY2VydENoYXB0ZXIsIHRha2VDaGFwdGVyIH0gZnJvbSAiLi9uY2VydC1iaW9sb2d5IjsKaW1wb3J0IHsgTkNFUlRfQkFOSywgY3JlYXRlTmNlcnREZWNrLCBuY2VydERlY2tQcm9tcHQsIHJlbmRlclF1ZXN0aW9uIH0gZnJvbSAiLi9uY2VydC1iaW9sb2d5LWJhbmsiOwppbXBvcnQgeyB2b2ljZVF1aXpPcHRpb25zIH0gZnJvbSAiLi92b2ljZS1xdWl6IjsKaW1wb3J0IHsgZm9ybWF0Vm9pY2VSZXBseSB9IGZyb20gIi4vdm9pY2UtZm9ybWF0IjsKCmRlc2NyaWJlKCJOQ0VSVCBCaW9sb2d5IGNoYXB0ZXJzIiwgKCkgPT4gewogIGl0KCJoYXMgMTkgQ2xhc3MgMTEgYW5kIDEzIENsYXNzIDEyIGNoYXB0ZXJzIHdpdGggb2ZmaWNpYWwgbmFtZXMiLCAoKSA9PiB7CiAgICBleHBlY3QoTkNFUlRfQklPTE9HWV9DSEFQVEVSUy5maWx0ZXIoKGMpID0+IGMuY2xzID09PSAxMSkpLnRvSGF2ZUxlbmd0aCgxOSk7CiAgICBleHBlY3QoTkNFUlRfQklPTE9HWV9DSEFQVEVSUy5maWx0ZXIoKGMpID0+IGMuY2xzID09PSAxMikpLnRvSGF2ZUxlbmd0aCgxMyk7CiAgICBleHBlY3QobmNlcnRDaGFwdGVyKDExLCA1KT8ubmFtZSkudG9CZSgiTW9ycGhvbG9neSBvZiBGbG93ZXJpbmcgUGxhbnRzIik7CiAgICBleHBlY3QobmNlcnRDaGFwdGVyKDExLCAxOSk/Lm5hbWUpLnRvQmUoIkNoZW1pY2FsIENvb3JkaW5hdGlvbiBhbmQgSW50ZWdyYXRpb24iKTsKICAgIGV4cGVjdChuY2VydENoYXB0ZXIoMTIsIDUpPy5uYW1lKS50b0JlKCJNb2xlY3VsYXIgQmFzaXMgb2YgSW5oZXJpdGFuY2UiKTsKICAgIGV4cGVjdChuY2VydENoYXB0ZXIoMTIsIDEzKT8ubmFtZSkudG9CZSgiQmlvZGl2ZXJzaXR5IGFuZCBDb25zZXJ2YXRpb24iKTsKICB9KTsKICBpdCgiYSBzcG9rZW4gY2hhcHRlciBuYW1lIHdpbnMgb3ZlciBhIHdyb25nIHNwb2tlbiBudW1iZXIiLCAoKSA9PiB7CiAgICBjb25zdCByID0gdGFrZUNoYXB0ZXIoIlllaCBxdWVzdGlvbiBOQ0VSVCBDbGFzcyAxMiBCaW9sb2d5LCBDaGFwdGVyIDQsIE1vbGVjdWxhciBCYXNpcyBvZiBJbmhlcml0YW5jZSBzZSBoYWkuIEROQSBtZWluLi4uIik7CiAgICBleHBlY3Qoci5jaGFwdGVyPy5ubykudG9CZSg1KTsKICAgIGV4cGVjdChyLnRleHQpLnRvQmUoIkROQSBtZWluLi4uIik7CiAgfSk7Cn0pOwoKZGVzY3JpYmUoImRlZXAgTkNFUlQgcXVlc3Rpb24gYmFuayIsICgpID0+IHsKICBpdCgiZXZlcnkgcXVlc3Rpb24gYmVsb25ncyB0byBhIHJlYWwgY2hhcHRlciBhbmQgZXZlcnkgY2hhcHRlciBoYXMgcXVlc3Rpb25zIiwgKCkgPT4gewogICAgZm9yIChjb25zdCBxIG9mIE5DRVJUX0JBTkspIGV4cGVjdChuY2VydENoYXB0ZXIocS5jbHMsIHEuY2gpKS50b0JlRGVmaW5lZCgpOwogICAgZm9yIChjb25zdCBjIG9mIE5DRVJUX0JJT0xPR1lfQ0hBUFRFUlMpIGV4cGVjdChOQ0VSVF9CQU5LLnNvbWUoKHEpID0+IHEuY2xzID09PSBjLmNscyAmJiBxLmNoID09PSBjLm5vKSkudG9CZSh0cnVlKTsKICB9KTsKICBpdCgicmVuZGVycyBlYWNoIHF1ZXN0aW9uIHdpdGggdGhlIGNoYXB0ZXIgbGluZSwgcmVhZGFibGUgQeKAk0Qgb3B0aW9ucyBhbmQgdGhlIHJpZ2h0IGtleSIsICgpID0+IHsKICAgIGZvciAoY29uc3QgcSBvZiBOQ0VSVF9CQU5LKSB7CiAgICAgIGNvbnN0IHIgPSByZW5kZXJRdWVzdGlvbihxKTsKICAgICAgZXhwZWN0KHIudGV4dC5zdGFydHNXaXRoKGBOQ0VSVCBDbGFzcyAke3EuY2xzfSBCaW9sb2d5IMK3IENoYXB0ZXIgJHtxLmNofSDigJQgYCkpLnRvQmUodHJ1ZSk7CiAgICAgIGNvbnN0IGxhYmVscyA9IHZvaWNlUXVpek9wdGlvbnMoci50ZXh0KTsKICAgICAgZXhwZWN0KGxhYmVscywgcS5pZCkubm90LnRvQmVOdWxsKCk7CiAgICAgIGV4cGVjdChsYWJlbHMhW3IuYW5zd2VyXSkudG9CZShyLmFuc3dlclRleHQpOwogICAgICBpZiAocS50eXBlID09PSAibWNxIikgZXhwZWN0KHIuYW5zd2VyVGV4dCkudG9CZShxLm9wdGlvbnNbMF0pOwogICAgfQogIH0pOwogIGl0KCJvbmx5IE1hdGNoIHF1ZXN0aW9ucyB3aGVuIG9ubHkgTWF0Y2ggaXMgb24sIGFsdGVybmF0aW5nIHdpdGggQXNzZXJ0aW9u4oCTUmVhc29uIHdoZW4gYm90aCBhcmUgb24iLCAoKSA9PiB7CiAgICBjb25zdCBvbmx5ID0gY3JlYXRlTmNlcnREZWNrKHsgbWF0Y2hROiB0cnVlLCBhc3NlcnRpb25ROiBmYWxzZSB9KTsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgNTsgaSsrKSB7IGNvbnN0IHEgPSBvbmx5Lm5leHQoKTsgZXhwZWN0KHEudGV4dCkudG9Db250YWluKCJDb2x1bW4gSToiKTsgb25seS5vYnNlcnZlKHEudGV4dCk7IH0KICAgIGNvbnN0IGJvdGggPSBjcmVhdGVOY2VydERlY2soeyBtYXRjaFE6IHRydWUsIGFzc2VydGlvblE6IHRydWUgfSk7CiAgICBjb25zdCBraW5kczogc3RyaW5nW10gPSBbXTsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgNDsgaSsrKSB7IGNvbnN0IHEgPSBib3RoLm5leHQoKTsga2luZHMucHVzaChxLnRleHQuaW5jbHVkZXMoIkFzc2VydGlvbiAoQSkiKSA/ICJhciIgOiAibWF0Y2giKTsgYm90aC5vYnNlcnZlKHEudGV4dCk7IH0KICAgIGV4cGVjdChraW5kcykudG9FcXVhbChraW5kc1swXSA9PT0gImFyIiA/IFsiYXIiLCAibWF0Y2giLCAiYXIiLCAibWF0Y2giXSA6IFsibWF0Y2giLCAiYXIiLCAibWF0Y2giLCAiYXIiXSk7CiAgfSk7CiAgaXQoImhhbmRzIHRoZSBncmFkaW5nIGtleSB0byB0aGUgbmV4dCB0dXJuIG9ubHkgYWZ0ZXIgdGhlIHF1ZXN0aW9uIHdhcyBhY3R1YWxseSBhc2tlZCIsICgpID0+IHsKICAgIGNvbnN0IGRlY2sgPSBjcmVhdGVOY2VydERlY2soeyBtYXRjaFE6IGZhbHNlLCBhc3NlcnRpb25ROiBmYWxzZSB9KTsKICAgIGNvbnN0IGZpcnN0ID0gZGVjay5uZXh0KCk7CiAgICBkZWNrLm9ic2VydmUoIk5hbWFzdGUhIEthdW5zYSB0b3BpYyBwYWRobmEgaGFpPyIpOwogICAgZXhwZWN0KGRlY2sucGVuZGluZygpKS50b0JlVW5kZWZpbmVkKCk7CiAgICBleHBlY3QoZGVjay5uZXh0KCkuaWQpLnRvQmUoZmlyc3QuaWQpOwogICAgZGVjay5vYnNlcnZlKGZpcnN0LnRleHQpOwogICAgZXhwZWN0KGRlY2sucGVuZGluZygpPy5pZCkudG9CZShmaXJzdC5pZCk7CiAgICBjb25zdCBwcm9tcHQgPSBuY2VydERlY2tQcm9tcHQoZGVjay5uZXh0KCksIGRlY2sucGVuZGluZygpKTsKICAgIGV4cGVjdChwcm9tcHQpLnRvQ29udGFpbihgQW5zd2VyIGtleSAoc2VjcmV0IHVudGlsIGdyYWRlZCk6ICgke2ZpcnN0LmFuc3dlcn0pYCk7CiAgICBleHBlY3QoZGVjay5uZXh0KCkuaWQpLm5vdC50b0JlKGZpcnN0LmlkKTsKICB9KTsKfSk7CgpkZXNjcmliZSgiY2hhcHRlciBzaG93biBpbiB0aGUgdm9pY2UgdHJhbnNjcmlwdCIsICgpID0+IHsKICBpdCgicXVpeiBjYXJkIHNob3dzIHRoZSBvZmZpY2lhbCBjaGFwdGVyIGJhZGdlIiwgKCkgPT4gewogICAgY29uc3QgcSA9IHJlbmRlclF1ZXN0aW9uKE5DRVJUX0JBTksuZmluZCgoeCkgPT4geC5pZCA9PT0gIjExLTUtbWF0Y2giKSEpOwogICAgY29uc3Qgb3V0ID0gZm9ybWF0Vm9pY2VSZXBseShxLnRleHQsIHsgb3B0aW9uczogZmFsc2UgfSk7CiAgICBleHBlY3Qob3V0KS50b0NvbnRhaW4oIj4g8J+TliAqKk5DRVJUIENsYXNzIDExIEJpb2xvZ3kgwrcgQ2hhcHRlciA1IOKAlCBNb3JwaG9sb2d5IG9mIEZsb3dlcmluZyBQbGFudHMqKiIpOwogICAgZXhwZWN0KG91dCkudG9Db250YWluKCJ8IGEuIE1hcmdpbmFsIHBsYWNlbnRhdGlvbiB8IGkuIERpYW50aHVzIHwiKTsKICB9KTsKICBpdCgiZ3JhZGluZyBuYW1lcyB0aGUgY2hhcHRlciBpdCBjYW1lIGZyb20iLCAoKSA9PiB7CiAgICBjb25zdCBvdXQgPSBmb3JtYXRWb2ljZVJlcGx5KCJHYWxhdC4gU2FoaSBqYXdhYiBvcHRpb24gQSBoYWkg4oCUIDMwJS4gQ2hhcmdhZmYga2UgcnVsZSBzZSBBIGJhcmFiYXIgVCBob3RhIGhhaS4gWWVoIE5DRVJUIENsYXNzIDEyIEJpb2xvZ3ksIENoYXB0ZXIgNSwgTW9sZWN1bGFyIEJhc2lzIG9mIEluaGVyaXRhbmNlIHNlIHRoYS4iKTsKICAgIGV4cGVjdChvdXQpLnRvQ29udGFpbigiPiDwn5OWICoqTkNFUlQgY2hhcHRlcjoqKiBDbGFzcyAxMiBCaW9sb2d5IMK3IENoYXB0ZXIgNSDigJQgTW9sZWN1bGFyIEJhc2lzIG9mIEluaGVyaXRhbmNlIik7CiAgICBleHBlY3Qob3V0KS50b0NvbnRhaW4oIj4gKirinIUgU2FoaSBqYXdhYjogKEEpIOKAlCAzMCUqKiIpOwogIH0pOwp9KTsK
+import { describe, expect, it } from "vitest";
+import { NCERT_BIOLOGY_CHAPTERS, ncertChapter, takeChapter } from "./ncert-biology";
+import { NCERT_BANK, createNcertDeck, ncertDeckPrompt, renderQuestion } from "./ncert-biology-bank";
+import { voiceQuizOptions } from "./voice-quiz";
+import { formatVoiceReply } from "./voice-format";
+
+describe("NCERT Biology chapters", () => {
+  it("has 19 Class 11 and 13 Class 12 chapters with official names", () => {
+    expect(NCERT_BIOLOGY_CHAPTERS.filter((c) => c.cls === 11)).toHaveLength(19);
+    expect(NCERT_BIOLOGY_CHAPTERS.filter((c) => c.cls === 12)).toHaveLength(13);
+    expect(ncertChapter(11, 5)?.name).toBe("Morphology of Flowering Plants");
+    expect(ncertChapter(11, 19)?.name).toBe("Chemical Coordination and Integration");
+    expect(ncertChapter(12, 5)?.name).toBe("Molecular Basis of Inheritance");
+    expect(ncertChapter(12, 13)?.name).toBe("Biodiversity and Conservation");
+  });
+  it("a spoken chapter name wins over a wrong spoken number", () => {
+    const r = takeChapter("Yeh question NCERT Class 12 Biology, Chapter 4, Molecular Basis of Inheritance se hai. DNA mein...");
+    expect(r.chapter?.no).toBe(5);
+    expect(r.text).toBe("DNA mein...");
+  });
+});
+
+describe("deep NCERT question bank", () => {
+  it("every question belongs to a real chapter and every chapter has questions", () => {
+    for (const q of NCERT_BANK) expect(ncertChapter(q.cls, q.ch)).toBeDefined();
+    for (const c of NCERT_BIOLOGY_CHAPTERS) expect(NCERT_BANK.some((q) => q.cls === c.cls && q.ch === c.no)).toBe(true);
+  });
+  it("renders each question with the chapter line, readable A–D options and the right key", () => {
+    for (const q of NCERT_BANK) {
+      const r = renderQuestion(q);
+      expect(r.text.startsWith(`NCERT Class ${q.cls} Biology · Chapter ${q.ch} — `)).toBe(true);
+      const labels = voiceQuizOptions(r.text);
+      expect(labels, q.id).not.toBeNull();
+      expect(labels![r.answer]).toBe(r.answerText);
+      if (q.type === "mcq") expect(r.answerText).toBe(q.options[0]);
+    }
+  });
+  it("only Match questions when only Match is on, alternating with Assertion–Reason when both are on", () => {
+    const only = createNcertDeck({ matchQ: true, assertionQ: false });
+    for (let i = 0; i < 5; i++) { const q = only.next(); expect(q.text).toContain("Column I:"); only.observe(q.text); }
+    const both = createNcertDeck({ matchQ: true, assertionQ: true });
+    const kinds: string[] = [];
+    for (let i = 0; i < 4; i++) { const q = both.next(); kinds.push(q.text.includes("Assertion (A)") ? "ar" : "match"); both.observe(q.text); }
+    expect(kinds).toEqual(kinds[0] === "ar" ? ["ar", "match", "ar", "match"] : ["match", "ar", "match", "ar"]);
+  });
+  it("hands the grading key to the next turn only after the question was actually asked", () => {
+    const deck = createNcertDeck({ matchQ: false, assertionQ: false });
+    const first = deck.next();
+    deck.observe("Namaste! Kaunsa topic padhna hai?");
+    expect(deck.pending()).toBeUndefined();
+    expect(deck.next().id).toBe(first.id);
+    deck.observe(first.text);
+    expect(deck.pending()?.id).toBe(first.id);
+    const prompt = ncertDeckPrompt(deck.next(), deck.pending());
+    expect(prompt).toContain(`Answer key (secret until graded): (${first.answer})`);
+    expect(deck.next().id).not.toBe(first.id);
+  });
+});
+
+describe("chapter shown in the voice transcript", () => {
+  it("quiz card shows the official chapter badge", () => {
+    const q = renderQuestion(NCERT_BANK.find((x) => x.id === "11-5-match")!);
+    const out = formatVoiceReply(q.text, { options: false });
+    expect(out).toContain("> 📖 **NCERT Class 11 Biology · Chapter 5 — Morphology of Flowering Plants**");
+    expect(out).toContain("| a. Marginal placentation | i. Dianthus |");
+  });
+  it("grading names the chapter it came from", () => {
+    const out = formatVoiceReply("Galat. Sahi jawab option A hai — 30%. Chargaff ke rule se A barabar T hota hai. Yeh NCERT Class 12 Biology, Chapter 5, Molecular Basis of Inheritance se tha.");
+    expect(out).toContain("> 📖 **NCERT chapter:** Class 12 Biology · Chapter 5 — Molecular Basis of Inheritance");
+    expect(out).toContain("> **✅ Sahi jawab: (A) — 30%**");
+  });
+});

@@ -1,1 +1,44 @@
-LyoqIFNoYXJlZCBzcG9rZW4gcHJvdG9jb2w6IGJyb3dzZXIgZGlzcGxheSBhbmQgdGhlIGxpdmUgdHV0b3IgdXNlIHRoZSBzYW1lIGNvbnRyYWN0LiAqLwpleHBvcnQgY29uc3QgVk9JQ0VfVEFCTEVfR1VJREFOQ0UgPSBgRm9yIGFueSByZXF1ZXN0ZWQgdGFibGUsIGNob29zZSB0aGUgY29sdW1uIG5hbWVzIGFuZCBudW1iZXIgb2Ygcm93cyBmcm9tIHRoZSBzdHVkZW50J3MgcXVlc3Rpb24sIG5vdCBhIGZpeGVkIHRlbXBsYXRlLiBTcGVhazogJ1RhYmxlOiBQYXJ0LCBCb25lcyBhdXIgTG9jYXRpb24uIFJvdzogU2t1bGw7IDIyOyBIZWFkLiBSb3c6IFJpYnM7IDI0OyBDaGVzdC4gVGFibGUga2hhdGFtLicgVXNlIGFueSB0d28gb3IgbW9yZSBjb2x1bW5zLCBjb21tYS1zZXBhcmF0ZWQgaGVhZGVycyB3aXRoICdhdXInIGJlZm9yZSB0aGUgbGFzdDsgc2F5ICdSb3c6JyBiZWZvcmUgZWFjaCByb3cgYW5kIHNlcGFyYXRlIGNlbGxzIHdpdGggc2VtaWNvbG9ucy4gS2VlcCBleGFjdGx5IG9uZSBjZWxsIHBlciBoZWFkZXIgYW5kIGVhY2ggcm93IGluIGl0cyBvd24gc2VudGVuY2UuIERlY2ltYWwgdmFsdWVzIGxpa2UgMi41IHN0YXkgaW50YWN0LiBGb3IgY29tcGFyaXNvbnMgeW91IGNhbiB1c2UgJ1R1bG5hOiBYIGF1ciBZLiBGZWF0dXJlIOKAlCBYOiB2YWx1ZSwgWTogdmFsdWUuIFR1bG5hIGtoYXRhbS4nIFRoZSBzY3JlZW4gcmVhbGx5IGRyYXdzIHRoZXNlIHBhdHRlcm5zIGFzIHRhYmxlczsgbmV2ZXIgc2F5IHlvdSBjYW5ub3QgbWFrZSBhIHRhYmxlIG9yIGFzayB0aGUgc3R1ZGVudCB0byBkcmF3IGl0LiBOZXZlciBpbnZlbnQgbWlzc2luZyBmYWN0cyB0byBmaWxsIGNlbGxzOyBzYXkgJ25vdCBnaXZlbicuYDsKCmV4cG9ydCB0eXBlIFNwb2tlblRhYmxlID0geyBiZWZvcmU6IHN0cmluZzsgdGFibGU6IHN0cmluZzsgYWZ0ZXI6IHN0cmluZyB9OwoKZXhwb3J0IGZ1bmN0aW9uIHNwb2tlblRhYmxlQ29sdW1ucyhoZWFkZXI6IHN0cmluZyk6IHN0cmluZ1tdIHsKICByZXR1cm4gaGVhZGVyLnNwbGl0KC9ccyosXHMqfFxzKyg/OmF1cnxhbmR8dnNcLj98dmVyc3VzfOCklOCksClccysvaSkubWFwKChjZWxsKSA9PiBjZWxsLnRyaW0oKSkuZmlsdGVyKEJvb2xlYW4pOwp9CgovKiogRXhwbGljaXQgcm93IGJvdW5kYXJpZXMgYXZvaWQgZ3Vlc3Npbmcgd2hldGhlciBjb21tYXMvZGVjaW1hbHMgYXJlIGRhdGEgb3Igc2VwYXJhdG9ycy4gKi8KZXhwb3J0IGZ1bmN0aW9uIGR5bmFtaWNWb2ljZVRhYmxlKHRleHQ6IHN0cmluZyk6IFNwb2tlblRhYmxlIHwgbnVsbCB7CiAgY29uc3QgaGVhZCA9IC8oPzpcYlRhYmxlfOCkn+Clh+CkrOCksnzgpKTgpL7gpLLgpL/gpJXgpL4pXHMqOlxzKihbXi4hP1xuXSspWy4hP11ccyovaS5leGVjKHRleHQpOwogIGlmICghaGVhZCkgcmV0dXJuIG51bGw7CiAgY29uc3QgY29sdW1ucyA9IHNwb2tlblRhYmxlQ29sdW1ucyhoZWFkWzFdID8/ICcnKTsKICBpZiAoY29sdW1ucy5sZW5ndGggPCAyKSByZXR1cm4gbnVsbDsKICBjb25zdCBzdGFydCA9IGhlYWQuaW5kZXggKyBoZWFkWzBdLmxlbmd0aDsKICBjb25zdCByZXN0ID0gdGV4dC5zbGljZShzdGFydCk7CiAgY29uc3QgZW5kID0gLyg/OlxiVGFibGVccysoPzpraGF0YW18ZW5kfG92ZXIpfCg/OuCkn+Clh+CkrOCksnzgpKTgpL7gpLLgpL/gpJXgpL4pXHMqKD864KSW4KSk4KWN4KSufOCkuOCkruCkvuCkquCljeCkpCkpWy4hP10/L2kuZXhlYyhyZXN0KTsKICBjb25zdCBib2R5ID0gZW5kID8gcmVzdC5zbGljZSgwLCBlbmQuaW5kZXgpIDogcmVzdDsKICBjb25zdCBtYXJrZXJzID0gWy4uLmJvZHkubWF0Y2hBbGwoLyg/OlxiUm93fOCkquCkguCkleCljeCkpOCkv3zgpLDgpYspXHMqOlxzKi9naSldOwogIGlmICghbWFya2Vycy5sZW5ndGgpIHJldHVybiBudWxsOwogIGNvbnN0IGVzY2FwZSA9IChjZWxsOiBzdHJpbmcpID0+IGNlbGwucmVwbGFjZSgvXHwvZywgJ1xcfCcpLnJlcGxhY2UoL1xzKy9nLCAnICcpLnRyaW0oKTsKICBjb25zdCByb3dzOiBzdHJpbmdbXVtdID0gW107CiAgbGV0IHRhaWwgPSBib2R5LnNsaWNlKDAsIG1hcmtlcnNbMF0/LmluZGV4ID8/IDApLnRyaW0oKTsKICBmb3IgKGxldCBpID0gMDsgaSA8IG1hcmtlcnMubGVuZ3RoOyBpKyspIHsKICAgIGNvbnN0IG1hcmtlciA9IG1hcmtlcnNbaV07CiAgICBpZiAoIW1hcmtlciB8fCBtYXJrZXIuaW5kZXggPT09IHVuZGVmaW5lZCkgY29udGludWU7CiAgICBjb25zdCBjaHVuayA9IGJvZHkuc2xpY2UobWFya2VyLmluZGV4ICsgbWFya2VyWzBdLmxlbmd0aCwgbWFya2Vyc1tpICsgMV0/LmluZGV4ID8/IGJvZHkubGVuZ3RoKS50cmltKCk7CiAgICAvLyBEbyBub3QgZGlzcGxheSBhIHBhcnRpYWxseSBzcG9rZW4gZmluYWwgY2VsbCBhcyBhIGNvbXBsZXRlZCByb3cuCiAgICBpZiAoIS9bLiE/4KWkXSQvLnRlc3QoY2h1bmspKSB7IHRhaWwgKz0gYCAke2JvZHkuc2xpY2UobWFya2VyLmluZGV4KX1gOyBicmVhazsgfQogICAgY29uc3QgY2VsbHMgPSBjaHVuay5yZXBsYWNlKC9bLiE/4KWkXSQvLCAnJykuc3BsaXQoL1xzKjtccyovKTsKICAgIGlmIChjZWxscy5sZW5ndGggIT09IGNvbHVtbnMubGVuZ3RoIHx8IGNlbGxzLnNvbWUoKGNlbGwpID0+ICFjZWxsLnRyaW0oKSkpIHsKICAgICAgdGFpbCArPSBgICR7Ym9keS5zbGljZShtYXJrZXIuaW5kZXgpfWA7CiAgICAgIGJyZWFrOwogICAgfQogICAgcm93cy5wdXNoKGNlbGxzLm1hcChlc2NhcGUpKTsKICB9CiAgaWYgKHJvd3MubGVuZ3RoIDwgMikgcmV0dXJuIG51bGw7CiAgcmV0dXJuIHsKICAgIGJlZm9yZTogdGV4dC5zbGljZSgwLCBoZWFkLmluZGV4KS50cmltKCksCiAgICB0YWJsZTogW2B8ICR7Y29sdW1ucy5tYXAoZXNjYXBlKS5qb2luKCcgfCAnKX0gfGAsIGB8JHsnLS0tfCcucmVwZWF0KGNvbHVtbnMubGVuZ3RoKX1gLCAuLi5yb3dzLm1hcCgocm93KSA9PiBgfCAke3Jvdy5qb2luKCcgfCAnKX0gfGApXS5qb2luKCdcbicpLAogICAgYWZ0ZXI6IFt0YWlsLnRyaW0oKSwgZW5kID8gcmVzdC5zbGljZShlbmQuaW5kZXggKyBlbmRbMF0ubGVuZ3RoKS50cmltKCkgOiAnJ10uZmlsdGVyKEJvb2xlYW4pLmpvaW4oJyAnKSwKICB9Owp9
+/** Shared spoken protocol: browser display and the live tutor use the same contract. */
+export const VOICE_TABLE_GUIDANCE = `For any requested table, choose the column names and number of rows from the student's question, not a fixed template. Speak: 'Table: Part, Bones aur Location. Row: Skull; 22; Head. Row: Ribs; 24; Chest. Table khatam.' Use any two or more columns, comma-separated headers with 'aur' before the last; say 'Row:' before each row and separate cells with semicolons. Keep exactly one cell per header and each row in its own sentence. Decimal values like 2.5 stay intact. For comparisons you can use 'Tulna: X aur Y. Feature — X: value, Y: value. Tulna khatam.' The screen really draws these patterns as tables; never say you cannot make a table or ask the student to draw it. Never invent missing facts to fill cells; say 'not given'.`;
+
+export type SpokenTable = { before: string; table: string; after: string };
+
+export function spokenTableColumns(header: string): string[] {
+  return header.split(/\s*,\s*|\s+(?:aur|and|vs\.?|versus|और)\s+/i).map((cell) => cell.trim()).filter(Boolean);
+}
+
+/** Explicit row boundaries avoid guessing whether commas/decimals are data or separators. */
+export function dynamicVoiceTable(text: string): SpokenTable | null {
+  const head = /(?:\bTable|टेबल|तालिका)\s*:\s*([^.!?\n]+)[.!?]\s*/i.exec(text);
+  if (!head) return null;
+  const columns = spokenTableColumns(head[1] ?? '');
+  if (columns.length < 2) return null;
+  const start = head.index + head[0].length;
+  const rest = text.slice(start);
+  const end = /(?:\bTable\s+(?:khatam|end|over)|(?:टेबल|तालिका)\s*(?:खत्म|समाप्त))[.!?]?/i.exec(rest);
+  const body = end ? rest.slice(0, end.index) : rest;
+  const markers = [...body.matchAll(/(?:\bRow|पंक्ति|रो)\s*:\s*/gi)];
+  if (!markers.length) return null;
+  const escape = (cell: string) => cell.replace(/\|/g, '\\|').replace(/\s+/g, ' ').trim();
+  const rows: string[][] = [];
+  let tail = body.slice(0, markers[0]?.index ?? 0).trim();
+  for (let i = 0; i < markers.length; i++) {
+    const marker = markers[i];
+    if (!marker || marker.index === undefined) continue;
+    const chunk = body.slice(marker.index + marker[0].length, markers[i + 1]?.index ?? body.length).trim();
+    // Do not display a partially spoken final cell as a completed row.
+    if (!/[.!?।]$/.test(chunk)) { tail += ` ${body.slice(marker.index)}`; break; }
+    const cells = chunk.replace(/[.!?।]$/, '').split(/\s*;\s*/);
+    if (cells.length !== columns.length || cells.some((cell) => !cell.trim())) {
+      tail += ` ${body.slice(marker.index)}`;
+      break;
+    }
+    rows.push(cells.map(escape));
+  }
+  if (rows.length < 2) return null;
+  return {
+    before: text.slice(0, head.index).trim(),
+    table: [`| ${columns.map(escape).join(' | ')} |`, `|${'---|'.repeat(columns.length)}`, ...rows.map((row) => `| ${row.join(' | ')} |`)].join('\n'),
+    after: [tail.trim(), end ? rest.slice(end.index + end[0].length).trim() : ''].filter(Boolean).join(' '),
+  };
+}

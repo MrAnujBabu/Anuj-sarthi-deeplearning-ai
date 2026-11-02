@@ -1,1 +1,12 @@
-Ly8gUHVyZSBwb2xpY3kgZm9yIHJlbWVtYmVyZWQgQUkgcGF1c2VzIChrZXB0IHNlcGFyYXRlIHNvIGl0IGNhbiBiZSB1bml0LXRlc3RlZCB3aXRob3V0IGEgZGF0YWJhc2UpLgoKLyoqIEhvdyBsb25nIGEgY3JlZGl0cyBwYXVzZSBibG9ja3MgYmVmb3JlIG9uZSBwcm9iZSByZXF1ZXN0IG1heSBjaGVjayB3aGV0aGVyIGNyZWRpdHMgd2VyZSBhZGRlZC4gKi8KZXhwb3J0IGNvbnN0IENSRURJVF9QUk9CRV9NUyA9IDEwICogNjBfMDAwOwoKLyoqICdibG9jaycgPSBrZWVwIHJlZnVzaW5nOyAncHJvYmUnID0gY29vbGRvd24gb3ZlciwgbGV0IG9uZSByZXF1ZXN0IHRlc3QgdGhlIGdhdGV3YXkuIERlbmlhbHMgbmV2ZXIgcHJvYmUuICovCmV4cG9ydCBmdW5jdGlvbiBjcmVkaXRQYXVzZURlY2lzaW9uKHJvdzogeyBraW5kPzogc3RyaW5nIHwgbnVsbDsgdXBkYXRlZF9hdD86IHN0cmluZyB8IG51bGwgfSwgbm93OiBudW1iZXIpOiAnYmxvY2snIHwgJ3Byb2JlJyB7CiAgaWYgKHJvdy5raW5kICE9PSAnY3JlZGl0cycpIHJldHVybiAnYmxvY2snOwogIGNvbnN0IGF0ID0gRGF0ZS5wYXJzZShyb3cudXBkYXRlZF9hdCA/PyAnJyk7CiAgaWYgKCFOdW1iZXIuaXNGaW5pdGUoYXQpKSByZXR1cm4gJ3Byb2JlJzsKICByZXR1cm4gbm93IC0gYXQgPj0gQ1JFRElUX1BST0JFX01TID8gJ3Byb2JlJyA6ICdibG9jayc7Cn0K
+// Pure policy for remembered AI pauses (kept separate so it can be unit-tested without a database).
+
+/** How long a credits pause blocks before one probe request may check whether credits were added. */
+export const CREDIT_PROBE_MS = 10 * 60_000;
+
+/** 'block' = keep refusing; 'probe' = cooldown over, let one request test the gateway. Denials never probe. */
+export function creditPauseDecision(row: { kind?: string | null; updated_at?: string | null }, now: number): 'block' | 'probe' {
+  if (row.kind !== 'credits') return 'block';
+  const at = Date.parse(row.updated_at ?? '');
+  if (!Number.isFinite(at)) return 'probe';
+  return now - at >= CREDIT_PROBE_MS ? 'probe' : 'block';
+}

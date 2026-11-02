@@ -1,1 +1,16 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBQTEFZQkFDS19TUEVFRFMsIGNsYW1wUGxheWJhY2tSYXRlIH0gZnJvbSAiQC9ob29rcy91c2UtbGl2ZS12b2ljZSI7CgpkZXNjcmliZSgidm9pY2UgcGxheWJhY2sgc3BlZWQiLCAoKSA9PiB7CiAgaXQoIm9mZmVycyB0aGUgcmV2aXNpb24gc3BlZWQgY2hvaWNlcyBpbmNsdWRpbmcgMS4yNcOXIiwgKCkgPT4gewogICAgZXhwZWN0KFsuLi5QTEFZQkFDS19TUEVFRFNdKS50b0VxdWFsKFswLjc1LCAxLCAxLjI1LCAxLjUsIDEuNzUsIDJdKTsKICB9KTsKICBpdCgiY2xhbXBzIGV4dHJlbWUgcmF0ZXMgdG8gdGhlIGNsZWFyLXNwZWVjaCByYW5nZSIsICgpID0+IHsKICAgIGV4cGVjdChjbGFtcFBsYXliYWNrUmF0ZSgwLjEpKS50b0JlKDAuNSk7CiAgICBleHBlY3QoY2xhbXBQbGF5YmFja1JhdGUoNSkpLnRvQmUoMyk7CiAgICBleHBlY3QoY2xhbXBQbGF5YmFja1JhdGUoMS4yNSkpLnRvQmUoMS4yNSk7CiAgfSk7CiAgaXQoImZhbGxzIGJhY2sgdG8gbm9ybWFsIHNwZWVkIGZvciBpbnZhbGlkIGlucHV0IiwgKCkgPT4gewogICAgZXhwZWN0KGNsYW1wUGxheWJhY2tSYXRlKE51bWJlci5OYU4pKS50b0JlKDEpOwogIH0pOwp9KTsK
+import { describe, expect, it } from "vitest";
+import { PLAYBACK_SPEEDS, clampPlaybackRate } from "@/hooks/use-live-voice";
+
+describe("voice playback speed", () => {
+  it("offers the revision speed choices including 1.25×", () => {
+    expect([...PLAYBACK_SPEEDS]).toEqual([0.75, 1, 1.25, 1.5, 1.75, 2]);
+  });
+  it("clamps extreme rates to the clear-speech range", () => {
+    expect(clampPlaybackRate(0.1)).toBe(0.5);
+    expect(clampPlaybackRate(5)).toBe(3);
+    expect(clampPlaybackRate(1.25)).toBe(1.25);
+  });
+  it("falls back to normal speed for invalid input", () => {
+    expect(clampPlaybackRate(Number.NaN)).toBe(1);
+  });
+});

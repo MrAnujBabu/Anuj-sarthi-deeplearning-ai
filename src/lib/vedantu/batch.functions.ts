@@ -1,1 +1,125 @@
-LyoqCiAqIEFkbWluLW9ubHkgUlBDcyBmb3IgdGhlICJNZXJhIEJhdGNoIiBwYWdlLiBFdmVyeSBmdW5jdGlvbiB2ZXJpZmllcyB0aGUgY2FsbGVyIGlzIGFuIGFkbWluCiAqIChzZXJ2ZXItc2lkZSBoYXNfcm9sZSkgYW5kIHRoZW4gdXNlcyB0aGUgc2VydmljZS1yb2xlIGNsaWVudCwgYmVjYXVzZSB0aGUgVmVkYW50dSBtaXJyb3IKICogdGFibGVzIGFyZSByZWFkLW9ubHkgZm9yIGF1dGhlbnRpY2F0ZWQgdXNlcnMuIFZlZGFudHUvc3luYyBtb2R1bGVzIGFyZSBpbXBvcnRlZCBsYXppbHkgc28KICogdGhleSBuZXZlciBzaGlwIHRvIHRoZSBjbGllbnQgYnVuZGxlLgogKi8KaW1wb3J0IHsgY3JlYXRlU2VydmVyRm4gfSBmcm9tICJAdGFuc3RhY2svcmVhY3Qtc3RhcnQiOwppbXBvcnQgeyByZXF1aXJlU3VwYWJhc2VBdXRoIH0gZnJvbSAiQC9pbnRlZ3JhdGlvbnMvc3VwYWJhc2UvYXV0aC1taWRkbGV3YXJlIjsKCnR5cGUgQ3R4ID0geyBzdXBhYmFzZTogYW55OyB1c2VySWQ6IHN0cmluZyB9OwoKYXN5bmMgZnVuY3Rpb24gYXNzZXJ0QWRtaW4oeyBzdXBhYmFzZSwgdXNlcklkIH06IEN0eCkgewogIGNvbnN0IHsgZGF0YSwgZXJyb3IgfSA9IGF3YWl0IHN1cGFiYXNlLnJwYygiaGFzX3JvbGUiLCB7IF91c2VyX2lkOiB1c2VySWQsIF9yb2xlOiAiYWRtaW4iIH0pOwogIGlmIChlcnJvciB8fCAhZGF0YSkgdGhyb3cgbmV3IEVycm9yKCJBY2Nlc3MgZGVuaWVkIik7Cn0KCmFzeW5jIGZ1bmN0aW9uIGFkbWluQ2xpZW50KCkgewogIGNvbnN0IHsgc3VwYWJhc2VBZG1pbiB9ID0gYXdhaXQgaW1wb3J0KCJAL2ludGVncmF0aW9ucy9zdXBhYmFzZS9jbGllbnQuc2VydmVyIik7CiAgcmV0dXJuIHN1cGFiYXNlQWRtaW47Cn0KCmV4cG9ydCB0eXBlIEJhdGNoQ2xhc3MgPSB7CiAgZW5yb2xsbWVudF9pZDogc3RyaW5nOwogIHNlc3Npb25faWQ6IHN0cmluZzsKICBiYXRjaF9pZDogc3RyaW5nOwogIHN1YmplY3Q6IHN0cmluZzsKICBjaGFwdGVyOiBzdHJpbmc7CiAgdGl0bGU6IHN0cmluZzsKICB0ZWFjaGVyOiBzdHJpbmc7CiAgc3RhcnRzX2F0OiBzdHJpbmcgfCBudWxsOwogIGVuZHNfYXQ6IHN0cmluZyB8IG51bGw7CiAgYXR0ZW5kZWRfc2Vjb25kczogbnVtYmVyOwogIGhhc19ub3Rlc19wZGY6IGJvb2xlYW47CiAgaGFzX3NtYXJ0X25vdGVzOiBib29sZWFuOwogIGNvdXJzZV90aXRsZT86IHN0cmluZzsKfTsKCmV4cG9ydCB0eXBlIEJhdGNoVGVzdCA9IHsKICBlbnJvbGxtZW50X2lkOiBzdHJpbmc7CiAgY29udGVudF9pZDogc3RyaW5nOwogIHRpdGxlOiBzdHJpbmc7CiAgc3ViamVjdHM6IHN0cmluZ1tdOwogIHN0YXR1czogc3RyaW5nOwogIG9wZW5zX2F0OiBzdHJpbmcgfCBudWxsOwogIGNsb3Nlc19hdDogc3RyaW5nIHwgbnVsbDsKICBtYXJrczogbnVtYmVyIHwgbnVsbDsKICB0b3RhbF9tYXJrczogbnVtYmVyIHwgbnVsbDsKICBxdWVzdGlvbnM6IG51bWJlciB8IG51bGw7CiAgZHVyYXRpb25fbWludXRlczogbnVtYmVyIHwgbnVsbDsKICB0ZXN0X3VybDogc3RyaW5nIHwgbnVsbDsKICBzZXJpZXM6IHN0cmluZzsKfTsKCmV4cG9ydCBjb25zdCBnZXRCYXRjaE92ZXJ2aWV3ID0gY3JlYXRlU2VydmVyRm4oeyBtZXRob2Q6ICJQT1NUIiB9KQogIC5taWRkbGV3YXJlKFtyZXF1aXJlU3VwYWJhc2VBdXRoXSkKICAuaGFuZGxlcihhc3luYyAoeyBjb250ZXh0IH0pID0+IHsKICAgIGF3YWl0IGFzc2VydEFkbWluKGNvbnRleHQgYXMgQ3R4KTsKICAgIGNvbnN0IHsgZmV0Y2hPbmxpbmVPdmVydmlldyB9ID0gYXdhaXQgaW1wb3J0KCIuL29ubGluZS5zZXJ2ZXIiKTsKICAgIHJldHVybiBmZXRjaE9ubGluZU92ZXJ2aWV3KCk7CiAgfSk7CgpleHBvcnQgY29uc3Qgc3RhcnRCYXRjaFN5bmMgPSBjcmVhdGVTZXJ2ZXJGbih7IG1ldGhvZDogIlBPU1QiIH0pCiAgLm1pZGRsZXdhcmUoW3JlcXVpcmVTdXBhYmFzZUF1dGhdKQogIC5oYW5kbGVyKGFzeW5jICh7IGNvbnRleHQgfSkgPT4gewogICAgYXdhaXQgYXNzZXJ0QWRtaW4oY29udGV4dCBhcyBDdHgpOwogICAgY29uc3QgYWRtaW4gPSBhd2FpdCBhZG1pbkNsaWVudCgpOwogICAgY29uc3QgeyBzdGFydFN5bmMgfSA9IGF3YWl0IGltcG9ydCgiLi9zeW5jLnNlcnZlciIpOwogICAgcmV0dXJuIHN0YXJ0U3luYyhhZG1pbik7CiAgfSk7CgpleHBvcnQgY29uc3Qgc3luY0JhdGNoQ291cnNlID0gY3JlYXRlU2VydmVyRm4oeyBtZXRob2Q6ICJQT1NUIiB9KQogIC5taWRkbGV3YXJlKFtyZXF1aXJlU3VwYWJhc2VBdXRoXSkKICAuaW5wdXRWYWxpZGF0b3IoKGQ6IHsgbGVhc2VJZDogc3RyaW5nOyBlbnJvbGxtZW50SWQ6IHN0cmluZyB9KSA9PiBkKQogIC5oYW5kbGVyKGFzeW5jICh7IGRhdGEsIGNvbnRleHQgfSkgPT4gewogICAgYXdhaXQgYXNzZXJ0QWRtaW4oY29udGV4dCBhcyBDdHgpOwogICAgY29uc3QgYWRtaW4gPSBhd2FpdCBhZG1pbkNsaWVudCgpOwogICAgY29uc3QgeyBzeW5jQ291cnNlIH0gPSBhd2FpdCBpbXBvcnQoIi4vc3luYy5zZXJ2ZXIiKTsKICAgIHJldHVybiBzeW5jQ291cnNlKGFkbWluLCBkYXRhLmxlYXNlSWQsIGRhdGEuZW5yb2xsbWVudElkKTsKICB9KTsKCmV4cG9ydCBjb25zdCBzeW5jQmF0Y2hOb3RlcyA9IGNyZWF0ZVNlcnZlckZuKHsgbWV0aG9kOiAiUE9TVCIgfSkKICAubWlkZGxld2FyZShbcmVxdWlyZVN1cGFiYXNlQXV0aF0pCiAgLmlucHV0VmFsaWRhdG9yKChkOiB7IGxlYXNlSWQ6IHN0cmluZyB9KSA9PiBkKQogIC5oYW5kbGVyKGFzeW5jICh7IGRhdGEsIGNvbnRleHQgfSkgPT4gewogICAgYXdhaXQgYXNzZXJ0QWRtaW4oY29udGV4dCBhcyBDdHgpOwogICAgY29uc3QgYWRtaW4gPSBhd2FpdCBhZG1pbkNsaWVudCgpOwogICAgY29uc3QgeyBzeW5jUmVjZW50Tm90ZXMgfSA9IGF3YWl0IGltcG9ydCgiLi9zeW5jLnNlcnZlciIpOwogICAgcmV0dXJuIHN5bmNSZWNlbnROb3RlcyhhZG1pbiwgZGF0YS5sZWFzZUlkLCA4KTsKICB9KTsKCmV4cG9ydCBjb25zdCBmaW5pc2hCYXRjaFN5bmMgPSBjcmVhdGVTZXJ2ZXJGbih7IG1ldGhvZDogIlBPU1QiIH0pCiAgLm1pZGRsZXdhcmUoW3JlcXVpcmVTdXBhYmFzZUF1dGhdKQogIC5pbnB1dFZhbGlkYXRvcigoZDogeyBsZWFzZUlkOiBzdHJpbmc7IG9rOiBib29sZWFuOyBtZXNzYWdlOiBzdHJpbmc7IGNvdW50cz86IFJlY29yZDxzdHJpbmcsIG51bWJlcj4gfSkgPT4gZCkKICAuaGFuZGxlcihhc3luYyAoeyBkYXRhLCBjb250ZXh0IH0pID0+IHsKICAgIGF3YWl0IGFzc2VydEFkbWluKGNvbnRleHQgYXMgQ3R4KTsKICAgIGNvbnN0IGFkbWluID0gYXdhaXQgYWRtaW5DbGllbnQoKTsKICAgIGNvbnN0IHsgZmluaXNoU3luYyB9ID0gYXdhaXQgaW1wb3J0KCIuL3N5bmMuc2VydmVyIik7CiAgICBhd2FpdCBmaW5pc2hTeW5jKGFkbWluLCBkYXRhLmxlYXNlSWQsIHsgb2s6IGRhdGEub2ssIG1lc3NhZ2U6IGRhdGEubWVzc2FnZS5zbGljZSgwLCAzMDApLCAuLi4oZGF0YS5jb3VudHMgPyB7IGNvdW50czogZGF0YS5jb3VudHMgfSA6IHt9KSB9KTsKICAgIHJldHVybiB7IG9rOiB0cnVlIH07CiAgfSk7CgovKiogU21hcnQgbm90ZXMgZmV0Y2hlZCBvbiBkZW1hbmQsIG5ldmVyIHN0b3JlZCBpbiB0aGUgZGF0YWJhc2UuICovCmV4cG9ydCBjb25zdCBnZXRDbGFzc05vdGVzID0gY3JlYXRlU2VydmVyRm4oeyBtZXRob2Q6ICJQT1NUIiB9KQogIC5taWRkbGV3YXJlKFtyZXF1aXJlU3VwYWJhc2VBdXRoXSkKICAuaW5wdXRWYWxpZGF0b3IoKGQ6IHsgc2Vzc2lvbklkOiBzdHJpbmc7IHRpdGxlOiBzdHJpbmcgfSkgPT4gZCkKICAuaGFuZGxlcihhc3luYyAoeyBkYXRhLCBjb250ZXh0IH0pID0+IHsKICAgIGF3YWl0IGFzc2VydEFkbWluKGNvbnRleHQgYXMgQ3R4KTsKICAgIGNvbnN0IHsgZmV0Y2hPbmxpbmVOb3RlcyB9ID0gYXdhaXQgaW1wb3J0KCIuL29ubGluZS5zZXJ2ZXIiKTsKICAgIGNvbnN0IG5vdGVzID0gYXdhaXQgZmV0Y2hPbmxpbmVOb3RlcyhkYXRhLnNlc3Npb25JZCk7CiAgICByZXR1cm4geyBtYXJrZG93bjogbm90ZXMubWFya2Rvd24sIHNlY3Rpb25zOiBub3Rlcy5zZWN0aW9ucywgc2Vzc2lvbklkOiBub3Rlcy5zZXNzaW9uSWQsIHBkZlVybDogbm90ZXMucGRmVXJsLCBjYWNoZWQ6IGZhbHNlIH07CiAgfSk7CgovKiogT25lIGxlY3R1cmUgYXMgYW4gaW4tYXBwIHZpZXdlcjogdGltZXN0YW1wZWQgc21hcnQtbm90ZSBzZWN0aW9ucywgc2xpZGUgaW1hZ2VzIGFuZCB0b3BpYyBvdXRsaW5lLiBMaXZlLCBuZXZlciBzdG9yZWQuICovCmV4cG9ydCBjb25zdCBnZXRMZWN0dXJlID0gY3JlYXRlU2VydmVyRm4oeyBtZXRob2Q6ICJQT1NUIiB9KQogIC5taWRkbGV3YXJlKFtyZXF1aXJlU3VwYWJhc2VBdXRoXSkKICAuaW5wdXRWYWxpZGF0b3IoKGQ6IHsgc2Vzc2lvbklkOiBzdHJpbmcgfSkgPT4gewogICAgaWYgKHR5cGVvZiBkPy5zZXNzaW9uSWQgIT09ICJzdHJpbmciIHx8ICEvXlthLXpBLVowLTldezgsNDB9JC8udGVzdChkLnNlc3Npb25JZCkpIHRocm93IG5ldyBFcnJvcigiSW52YWxpZCBzZXNzaW9uIGlkIik7CiAgICByZXR1cm4gZDsKICB9KQogIC5oYW5kbGVyKGFzeW5jICh7IGRhdGEsIGNvbnRleHQgfSkgPT4gewogICAgYXdhaXQgYXNzZXJ0QWRtaW4oY29udGV4dCBhcyBDdHgpOwogICAgY29uc3QgeyBmZXRjaE9ubGluZUxlY3R1cmUgfSA9IGF3YWl0IGltcG9ydCgiLi9vbmxpbmUuc2VydmVyIik7CiAgICBjb25zdCBsID0gYXdhaXQgZmV0Y2hPbmxpbmVMZWN0dXJlKGRhdGEuc2Vzc2lvbklkKTsKICAgIHJldHVybiB7IHNlc3Npb25JZDogbC5zZXNzaW9uSWQsIG5vdGVzOiBsLm5vdGVzLCB0b3BpY3M6IGwudG9waWNzLCBzdW1tYXJ5OiBsLnN1bW1hcnksIHBkZlVybDogbC5wZGZVcmwsIHNtYXJ0Tm90ZXNVcmw6IGwuc21hcnROb3Rlc1VybCB9OwogIH0pOwo=
+/**
+ * Admin-only RPCs for the "Mera Batch" page. Every function verifies the caller is an admin
+ * (server-side has_role) and then uses the service-role client, because the Vedantu mirror
+ * tables are read-only for authenticated users. Vedantu/sync modules are imported lazily so
+ * they never ship to the client bundle.
+ */
+import { createServerFn } from "@tanstack/react-start";
+import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+
+type Ctx = { supabase: any; userId: string };
+
+async function assertAdmin({ supabase, userId }: Ctx) {
+  const { data, error } = await supabase.rpc("has_role", { _user_id: userId, _role: "admin" });
+  if (error || !data) throw new Error("Access denied");
+}
+
+async function adminClient() {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  return supabaseAdmin;
+}
+
+export type BatchClass = {
+  enrollment_id: string;
+  session_id: string;
+  batch_id: string;
+  subject: string;
+  chapter: string;
+  title: string;
+  teacher: string;
+  starts_at: string | null;
+  ends_at: string | null;
+  attended_seconds: number;
+  has_notes_pdf: boolean;
+  has_smart_notes: boolean;
+  course_title?: string;
+};
+
+export type BatchTest = {
+  enrollment_id: string;
+  content_id: string;
+  title: string;
+  subjects: string[];
+  status: string;
+  opens_at: string | null;
+  closes_at: string | null;
+  marks: number | null;
+  total_marks: number | null;
+  questions: number | null;
+  duration_minutes: number | null;
+  test_url: string | null;
+  series: string;
+};
+
+export const getBatchOverview = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await assertAdmin(context as Ctx);
+    const { fetchOnlineOverview } = await import("./online.server");
+    return fetchOnlineOverview();
+  });
+
+export const startBatchSync = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await assertAdmin(context as Ctx);
+    const admin = await adminClient();
+    const { startSync } = await import("./sync.server");
+    return startSync(admin);
+  });
+
+export const syncBatchCourse = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { leaseId: string; enrollmentId: string }) => d)
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context as Ctx);
+    const admin = await adminClient();
+    const { syncCourse } = await import("./sync.server");
+    return syncCourse(admin, data.leaseId, data.enrollmentId);
+  });
+
+export const syncBatchNotes = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { leaseId: string }) => d)
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context as Ctx);
+    const admin = await adminClient();
+    const { syncRecentNotes } = await import("./sync.server");
+    return syncRecentNotes(admin, data.leaseId, 8);
+  });
+
+export const finishBatchSync = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { leaseId: string; ok: boolean; message: string; counts?: Record<string, number> }) => d)
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context as Ctx);
+    const admin = await adminClient();
+    const { finishSync } = await import("./sync.server");
+    await finishSync(admin, data.leaseId, { ok: data.ok, message: data.message.slice(0, 300), ...(data.counts ? { counts: data.counts } : {}) });
+    return { ok: true };
+  });
+
+/** Smart notes fetched on demand, never stored in the database. */
+export const getClassNotes = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { sessionId: string; title: string }) => d)
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context as Ctx);
+    const { fetchOnlineNotes } = await import("./online.server");
+    const notes = await fetchOnlineNotes(data.sessionId);
+    return { markdown: notes.markdown, sections: notes.sections, sessionId: notes.sessionId, pdfUrl: notes.pdfUrl, cached: false };
+  });
+
+/** One lecture as an in-app viewer: timestamped smart-note sections, slide images and topic outline. Live, never stored. */
+export const getLecture = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { sessionId: string }) => {
+    if (typeof d?.sessionId !== "string" || !/^[a-zA-Z0-9]{8,40}$/.test(d.sessionId)) throw new Error("Invalid session id");
+    return d;
+  })
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context as Ctx);
+    const { fetchOnlineLecture } = await import("./online.server");
+    const l = await fetchOnlineLecture(data.sessionId);
+    return { sessionId: l.sessionId, notes: l.notes, topics: l.topics, summary: l.summary, pdfUrl: l.pdfUrl, smartNotesUrl: l.smartNotesUrl };
+  });

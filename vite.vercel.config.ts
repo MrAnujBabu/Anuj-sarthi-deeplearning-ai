@@ -1,1 +1,7 @@
-aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAiQGxvdmFibGUuZGV2L3ZpdGUtdGFuc3RhY2stY29uZmlnIjsKCi8vIEtlZXAgTG92YWJsZSdzIG5vcm1hbCBidWlsZCBpbmRlcGVuZGVudCBvZiB0aGUgZXh0ZXJuYWwgaG9zdGluZyB0YXJnZXQuCmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7CiAgbml0cm86IHsgcHJlc2V0OiAidmVyY2VsIiB9LAogIHRhbnN0YWNrU3RhcnQ6IHsgc2VydmVyOiB7IGVudHJ5OiAic2VydmVyIiB9IH0sCn0pOw==
+import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+
+// Keep Lovable's normal build independent of the external hosting target.
+export default defineConfig({
+  nitro: { preset: "vercel" },
+  tanstackStart: { server: { entry: "server" } },
+});

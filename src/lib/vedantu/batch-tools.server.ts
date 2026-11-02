@@ -1,1 +1,94 @@
-aW1wb3J0IHsgdG9vbCB9IGZyb20gImFpIjsKaW1wb3J0IHsgeiB9IGZyb20gInpvZCI7CmltcG9ydCB7IG5vdGVzUGRmVXJsIH0gZnJvbSAiLi9wYXJzZSI7CmltcG9ydCB7IGNsYXNzTGluZSwgZ2V0QmF0Y2hPdmVydmlldywgaXN0IH0gZnJvbSAiLi9jb250ZXh0LnNlcnZlciI7Cgpjb25zdCBOT1RFU19DSEFSUyA9IDEyXzAwMDsKY29uc3Qgbm9ybSA9IChzOiBzdHJpbmcpID0+IHMudG9Mb3dlckNhc2UoKS5ub3JtYWxpemUoIk5GS0QiKS5yZXBsYWNlKC9bXlxwe0x9XHB7Tn0gXS9ndSwgIiAiKTsKCi8qKgogKiBBZG1pbi1vbmx5IE1lcmEgQmF0Y2ggdG9vbHMuIENhbGxlcnMgbXVzdCBoYXZlIHZlcmlmaWVkIHRoZSBhZG1pbiBmaXJzdC4KICogUmVhZHMgZ28gdGhyb3VnaCB0aGUgc2hhcmVkIDUtbWludXRlIG9ubGluZSBvdmVydmlldzsgbm90ZXMgYXJlIGZldGNoZWQgb24KICogZGVtYW5kIGZyb20gVmVkYW50dSBhbmQgbmV2ZXIgc3RvcmVkLgogKi8KZXhwb3J0IGZ1bmN0aW9uIGNyZWF0ZUJhdGNoVG9vbHMoZGVwczogeyBvdmVydmlldz86IHR5cGVvZiBnZXRCYXRjaE92ZXJ2aWV3OyBub3Rlcz86IChzZXNzaW9uSWQ6IHN0cmluZykgPT4gUHJvbWlzZTxzdHJpbmc+OyBwZGZOb3Rlcz86IChzZXNzaW9uSWQ6IHN0cmluZykgPT4gUHJvbWlzZTxzdHJpbmc+IH0gPSB7fSkgewogIGNvbnN0IHBkZk5vdGVzID0gZGVwcy5wZGZOb3RlcyA/PyAoYXN5bmMgKGlkOiBzdHJpbmcpID0+IChhd2FpdCBpbXBvcnQoIi4vb25saW5lLnNlcnZlciIpKS5mZXRjaE9ubGluZVBkZk5vdGVzKGlkKSk7CiAgY29uc3Qgb3ZlcnZpZXcgPSBkZXBzLm92ZXJ2aWV3ID8/IGdldEJhdGNoT3ZlcnZpZXc7CiAgY29uc3Qgbm90ZXMgPSBkZXBzLm5vdGVzID8/IChhc3luYyAoaWQ6IHN0cmluZykgPT4gKGF3YWl0IChhd2FpdCBpbXBvcnQoIi4vb25saW5lLnNlcnZlciIpKS5mZXRjaE9ubGluZU5vdGVzKGlkKSkubWFya2Rvd24pOwogIHJldHVybiB7CiAgICBiYXRjaF9zY2hlZHVsZTogdG9vbCh7CiAgICAgIGRlc2NyaXB0aW9uOiAiTG9vayB1cCB0aGUgc3R1ZGVudCdzIG93biBWZWRhbnR1IGJhdGNoOiBjbGFzc2VzICh0b2RheSwgdXBjb21pbmcsIHJlY2VudCB3aXRoIG5vdGVzKSBhbmQgdXBjb21pbmcgdGVzdHMuIEZpbHRlciBieSBJU1QgZGF0ZSAoWVlZWS1NTS1ERCkgYW5kL29yIGtleXdvcmRzIChzdWJqZWN0LCBjaGFwdGVyLCB0ZWFjaGVyLCB0ZXN0IG5hbWUpLiIsCiAgICAgIGlucHV0U2NoZW1hOiB6Lm9iamVjdCh7CiAgICAgICAgZGF0ZTogei5zdHJpbmcoKS5yZWdleCgvXlxkezR9LVxkezJ9LVxkezJ9JC8pLm9wdGlvbmFsKCkuZGVzY3JpYmUoIklTVCBkYXRlLCBlLmcuIDIwMjYtMTAtMjQiKSwKICAgICAgICBxdWVyeTogei5zdHJpbmcoKS5tYXgoODApLm9wdGlvbmFsKCkuZGVzY3JpYmUoIktleXdvcmRzIGxpa2UgJ2JvdGFueScsICdNb3JwaG9sb2d5JywgJ3Rlc3QnIiksCiAgICAgIH0pLAogICAgICBleGVjdXRlOiBhc3luYyAoeyBkYXRlLCBxdWVyeSB9KSA9PiB7CiAgICAgICAgdHJ5IHsKICAgICAgICAgIGNvbnN0IG8gPSBhd2FpdCBvdmVydmlldygpOwogICAgICAgICAgY29uc3Qgc2VlbiA9IG5ldyBTZXQ8c3RyaW5nPigpOwogICAgICAgICAgbGV0IGNsYXNzZXMgPSBbLi4uby5yZWNlbnRDbGFzc2VzLCAuLi5vLnVwY29taW5nQ2xhc3NlcywgLi4uby50b2RheUNsYXNzZXNdLmZpbHRlcigoYykgPT4gKHNlZW4uaGFzKGMuc2Vzc2lvbl9pZCkgPyBmYWxzZSA6IChzZWVuLmFkZChjLnNlc3Npb25faWQpLCB0cnVlKSkpOwogICAgICAgICAgbGV0IHRlc3RzID0gby51cGNvbWluZ1Rlc3RzOwogICAgICAgICAgaWYgKGRhdGUpIHsKICAgICAgICAgICAgY29uc3QgZGF5ID0gKGlzbzogc3RyaW5nIHwgbnVsbCkgPT4gKGlzbyA/IG5ldyBJbnRsLkRhdGVUaW1lRm9ybWF0KCJlbi1DQSIsIHsgdGltZVpvbmU6ICJBc2lhL0tvbGthdGEiIH0pLmZvcm1hdChuZXcgRGF0ZShpc28pKSA6ICIiKTsKICAgICAgICAgICAgY2xhc3NlcyA9IGNsYXNzZXMuZmlsdGVyKChjKSA9PiBkYXkoYy5zdGFydHNfYXQpID09PSBkYXRlKTsKICAgICAgICAgICAgdGVzdHMgPSB0ZXN0cy5maWx0ZXIoKHQpID0+IGRheSh0Lm9wZW5zX2F0KSA9PT0gZGF0ZSB8fCBkYXkodC5jbG9zZXNfYXQpID09PSBkYXRlKTsKICAgICAgICAgIH0KICAgICAgICAgIGlmIChxdWVyeT8udHJpbSgpKSB7CiAgICAgICAgICAgIGNvbnN0IHdvcmRzID0gbm9ybShxdWVyeSkuc3BsaXQoL1xzKy8pLmZpbHRlcihCb29sZWFuKTsKICAgICAgICAgICAgLy8gVmVkYW50dSBsYWJlbHMgQm90YW55L1pvb2xvZ3kgY2xhc3NlcyBhcyAiQmlvbG9neSIuCiAgICAgICAgICAgIGNvbnN0IGhpdCA9ICh0ZXh0OiBzdHJpbmcpID0+IHdvcmRzLmV2ZXJ5KCh3KSA9PiBub3JtKHRleHQpLmluY2x1ZGVzKHcpIHx8ICgvXihib3Rhbnl8em9vbG9neSkkLy50ZXN0KHcpICYmIG5vcm0odGV4dCkuaW5jbHVkZXMoImJpb2xvZ3kiKSkpOwogICAgICAgICAgICBjbGFzc2VzID0gY2xhc3Nlcy5maWx0ZXIoKGMpID0+IGhpdChgJHtjLnRpdGxlfSAke2Muc3ViamVjdH0gJHtjLmNoYXB0ZXJ9ICR7Yy50ZWFjaGVyfSAke2MuY291cnNlX3RpdGxlfWApKTsKICAgICAgICAgICAgdGVzdHMgPSB0ZXN0cy5maWx0ZXIoKHQpID0+IGhpdChgJHt0LnRpdGxlfSAke3Quc3ViamVjdHMuam9pbigiICIpfWApKTsKICAgICAgICAgIH0KICAgICAgICAgIGNsYXNzZXMuc29ydCgoYSwgYikgPT4gKGEuc3RhcnRzX2F0ID8/ICIiKS5sb2NhbGVDb21wYXJlKGIuc3RhcnRzX2F0ID8/ICIiKSk7CiAgICAgICAgICByZXR1cm4gewogICAgICAgICAgICBjbGFzc2VzOiBjbGFzc2VzLnNsaWNlKDAsIDMwKS5tYXAoKGMpID0+IGNsYXNzTGluZShjLCB0cnVlLCB0cnVlKSksCiAgICAgICAgICAgIHRlc3RzOiB0ZXN0cy5zbGljZSgwLCAxMCkubWFwKCh0KSA9PiBgLSAke3QudGl0bGV9JHt0LnN1YmplY3RzLmxlbmd0aCA/IGAgWyR7dC5zdWJqZWN0cy5qb2luKCIsICIpfV1gIDogIiJ9IOKAlCAke2lzdCh0Lm9wZW5zX2F0KX0gc2UgJHtpc3QodC5jbG9zZXNfYXQpfWApLAogICAgICAgICAgICBub3RlOiBvLnN5bmMuY291bnRzLndhcm5pbmdzID8gIlNvbWUgVmVkYW50dSBsaXN0cyB3ZXJlIHVuYXZhaWxhYmxlIG9yIGNhcHBlZDsgbWlzc2luZyBpdGVtcyBhcmUgbm90IHByb29mIG9mIGNhbmNlbGxhdGlvbi4iIDogdW5kZWZpbmVkLAogICAgICAgICAgfTsKICAgICAgICB9IGNhdGNoIChlKSB7CiAgICAgICAgICBjb25zb2xlLmVycm9yKCJiYXRjaF9zY2hlZHVsZSBmYWlsZWQ6IiwgZSk7CiAgICAgICAgICByZXR1cm4geyBjbGFzc2VzOiBbXSwgdGVzdHM6IFtdLCBlcnJvcjogIlZlZGFudHUgc2NoZWR1bGUgYWJoaSB1bmF2YWlsYWJsZSBoYWkg4oCUIHN0dWRlbnQga28gL2JhdGNoIHBhZ2UgZGVraG5lIGtvIGthaG8uIiB9OwogICAgICAgIH0KICAgICAgfSwKICAgIH0pLAogICAgYmF0Y2hfY2xhc3Nfbm90ZXM6IHRvb2woewogICAgICBkZXNjcmlwdGlvbjogIkZldGNoIG9uZSBvZiB0aGUgc3R1ZGVudCdzIG93biBWZWRhbnR1IGxlY3R1cmVzIGJ5IFtub3RlcyBpZF0gKHNlc3Npb24gSUQpOiB0aW1lc3RhbXBlZCBzbWFydCBub3RlcyBmcm9tIHRoZSBsaXZlIGxlY3R1cmUgdHJhbnNjcmlwdCBwbHVzIHRoZSBsZWN0dXJlIHRvcGljIG91dGxpbmUuIFVzZSB0byB0ZWFjaCBvciBxdWl6IGZyb20gdGhhdCBjbGFzcyBhbmQgY2l0ZSB0aW1lIHBvaW50cyAoZS5nLiAnc2lyIG5lIDEzOjA4IHBlJykuIiwKICAgICAgaW5wdXRTY2hlbWE6IHoub2JqZWN0KHsgc2Vzc2lvbl9pZDogei5zdHJpbmcoKS5taW4oNCkubWF4KDY0KSB9KSwKICAgICAgZXhlY3V0ZTogYXN5bmMgKHsgc2Vzc2lvbl9pZCB9KSA9PiB7CiAgICAgICAgdHJ5IHsKICAgICAgICAgIGNvbnN0IG8gPSBhd2FpdCBvdmVydmlldygpOwogICAgICAgICAgY29uc3Qga25vd24gPSBbLi4uby50b2RheUNsYXNzZXMsIC4uLm8ucmVjZW50Q2xhc3NlcywgLi4uby51cGNvbWluZ0NsYXNzZXNdLmZpbmQoKGMpID0+IGMuc2Vzc2lvbl9pZCA9PT0gc2Vzc2lvbl9pZCk7CiAgICAgICAgICAvLyBPbmx5IGNsYXNzZXMgZnJvbSB0aGUgc3R1ZGVudCdzIG93biBmZXRjaGVkIGxpc3RzIOKAlCBuZXZlciBhcmJpdHJhcnkgaWRzLgogICAgICAgICAgaWYgKCFrbm93bikgcmV0dXJuIHsgZXJyb3I6ICJZZWggY2xhc3MgaWQgc3R1ZGVudCBrZSBiYXRjaCBsaXN0IG1laW4gbmFoaSBtaWxpLiBQZWhsZSBiYXRjaF9zY2hlZHVsZSBzZSBzYWhpIFtub3RlcyBpZF0gbG8uIiB9OwogICAgICAgICAgY29uc3QgcGRmX3VybCA9IGtub3duLmhhc19ub3Rlc19wZGYgPyBub3Rlc1BkZlVybChzZXNzaW9uX2lkKSA6IHVuZGVmaW5lZDsKICAgICAgICAgIGlmICgha25vd24uaGFzX3NtYXJ0X25vdGVzKSByZXR1cm4gcGRmX3VybCA/IHsgdGl0bGU6IGtub3duLnRpdGxlLCBzZXNzaW9uX2lkLCBwZGZfdXJsLCBlcnJvcjogIlNtYXJ0IG5vdGVzIG5haGkgaGFpbjsgYmF0Y2hfY2xhc3NfcGRmX25vdGVzIHNlIGlzIGNsYXNzIGtpIHdoaXRlYm9hcmQgUERGIHBhZGhvLiIgfSA6IHsgdGl0bGU6IGtub3duLnRpdGxlLCBlcnJvcjogIklzIGNsYXNzIGtlIG5vdGVzIGFiaGkgYXZhaWxhYmxlIG5haGkgaGFpbi4iIH07CiAgICAgICAgICBjb25zdCB0ZXh0ID0gYXdhaXQgbm90ZXMoc2Vzc2lvbl9pZCk7CiAgICAgICAgICBpZiAoIXRleHQudHJpbSgpKSByZXR1cm4geyB0aXRsZToga25vd24udGl0bGUsIHNlc3Npb25faWQsIHBkZl91cmwsIGVycm9yOiAiU21hcnQgbm90ZXMga2hhYWxpIGFheWUuIiB9OwogICAgICAgICAgcmV0dXJuIHsgdGl0bGU6IGtub3duLnRpdGxlLCBzdWJqZWN0OiBrbm93bi5zdWJqZWN0LCBjaGFwdGVyOiBrbm93bi5jaGFwdGVyLCB0ZWFjaGVyOiBrbm93bi50ZWFjaGVyLCBzZXNzaW9uX2lkLCBwZGZfdXJsLCBzbWFydF9ub3Rlc191cmw6IGBodHRwczovL3Nlc3Npb24udmVkYW50dS5jb20vc2Vzc2lvbi1zbWFydC1ub3Rlcy8ke3Nlc3Npb25faWR9YCwgbm90ZXM6IHRleHQuc2xpY2UoMCwgTk9URVNfQ0hBUlMpLCB0cnVuY2F0ZWQ6IHRleHQubGVuZ3RoID4gTk9URVNfQ0hBUlMgfTsKICAgICAgICB9IGNhdGNoIChlKSB7CiAgICAgICAgICBjb25zb2xlLmVycm9yKCJiYXRjaF9jbGFzc19ub3RlcyBmYWlsZWQ6IiwgZSk7CiAgICAgICAgICByZXR1cm4geyBlcnJvcjogIlZlZGFudHUgbm90ZXMgYWJoaSBsb2FkIG5haGkgaHVlIOKAlCBiYWFkIG1laW4gdHJ5IGthcm8uIiB9OwogICAgICAgIH0KICAgICAgfSwKICAgIH0pLAogICAgYmF0Y2hfY2xhc3NfcGRmX25vdGVzOiB0b29sKHsKICAgICAgZGVzY3JpcHRpb246ICJSZWFkIHRoZSBoYW5kd3JpdHRlbiB3aGl0ZWJvYXJkIFBERiBvZiBvbmUgb2YgdGhlIHN0dWRlbnQncyBvd24gVmVkYW50dSBjbGFzc2VzIChieSBbbm90ZXMgaWRdKSBhcyB0ZXh0LiBTbG93ZXI7IHVzZSB3aGVuIHNtYXJ0IG5vdGVzIGFyZSBtaXNzaW5nIG9yIHRoZSBzdHVkZW50IGFza3MgYWJvdXQgdGhlIGJvYXJkL1BERiBub3RlcywgZGlhZ3JhbXMgb3Igd2hhdCB0aGUgdGVhY2hlciB3cm90ZS4iLAogICAgICBpbnB1dFNjaGVtYTogei5vYmplY3QoeyBzZXNzaW9uX2lkOiB6LnN0cmluZygpLm1pbig0KS5tYXgoNjQpIH0pLAogICAgICBleGVjdXRlOiBhc3luYyAoeyBzZXNzaW9uX2lkIH0pID0+IHsKICAgICAgICB0cnkgewogICAgICAgICAgY29uc3QgbyA9IGF3YWl0IG92ZXJ2aWV3KCk7CiAgICAgICAgICBjb25zdCBrbm93biA9IFsuLi5vLnRvZGF5Q2xhc3NlcywgLi4uby5yZWNlbnRDbGFzc2VzLCAuLi5vLnVwY29taW5nQ2xhc3Nlc10uZmluZCgoYykgPT4gYy5zZXNzaW9uX2lkID09PSBzZXNzaW9uX2lkKTsKICAgICAgICAgIGlmICgha25vd24pIHJldHVybiB7IGVycm9yOiAiWWVoIGNsYXNzIGlkIHN0dWRlbnQga2UgYmF0Y2ggbGlzdCBtZWluIG5haGkgbWlsaS4iIH07CiAgICAgICAgICBpZiAoIWtub3duLmhhc19ub3Rlc19wZGYpIHJldHVybiB7IHRpdGxlOiBrbm93bi50aXRsZSwgZXJyb3I6ICJJcyBjbGFzcyBraSBQREYgYWJoaSBiYW5pIG5haGkgaGFpLiIgfTsKICAgICAgICAgIGNvbnN0IHRleHQgPSBhd2FpdCBwZGZOb3RlcyhzZXNzaW9uX2lkKTsKICAgICAgICAgIGlmICghdGV4dCkgcmV0dXJuIHsgdGl0bGU6IGtub3duLnRpdGxlLCBlcnJvcjogIlBERiBwYWRoaSBuYWhpIGphIHNha2kuIiB9OwogICAgICAgICAgcmV0dXJuIHsgdGl0bGU6IGtub3duLnRpdGxlLCBzdWJqZWN0OiBrbm93bi5zdWJqZWN0LCBzZXNzaW9uX2lkLCBwZGZfdXJsOiBub3Rlc1BkZlVybChzZXNzaW9uX2lkKSwgcGRmX25vdGVzOiB0ZXh0LnNsaWNlKDAsIE5PVEVTX0NIQVJTKSwgdHJ1bmNhdGVkOiB0ZXh0Lmxlbmd0aCA+IE5PVEVTX0NIQVJTIH07CiAgICAgICAgfSBjYXRjaCAoZSkgewogICAgICAgICAgY29uc29sZS5lcnJvcigiYmF0Y2hfY2xhc3NfcGRmX25vdGVzIGZhaWxlZDoiLCBlKTsKICAgICAgICAgIHJldHVybiB7IGVycm9yOiAiQ2xhc3MgUERGIGFiaGkgcGFkaGkgbmFoaSBqYSBzYWtpIOKAlCBsaW5rIHNlIGRla2ggbG8uIiwgcGRmX3VybDogbm90ZXNQZGZVcmwoc2Vzc2lvbl9pZCkgfTsKICAgICAgICB9CiAgICAgIH0sCiAgICB9KSwKICB9Owp9Cg==
+import { tool } from "ai";
+import { z } from "zod";
+import { notesPdfUrl } from "./parse";
+import { classLine, getBatchOverview, ist } from "./context.server";
+
+const NOTES_CHARS = 12_000;
+const norm = (s: string) => s.toLowerCase().normalize("NFKD").replace(/[^\p{L}\p{N} ]/gu, " ");
+
+/**
+ * Admin-only Mera Batch tools. Callers must have verified the admin first.
+ * Reads go through the shared 5-minute online overview; notes are fetched on
+ * demand from Vedantu and never stored.
+ */
+export function createBatchTools(deps: { overview?: typeof getBatchOverview; notes?: (sessionId: string) => Promise<string>; pdfNotes?: (sessionId: string) => Promise<string> } = {}) {
+  const pdfNotes = deps.pdfNotes ?? (async (id: string) => (await import("./online.server")).fetchOnlinePdfNotes(id));
+  const overview = deps.overview ?? getBatchOverview;
+  const notes = deps.notes ?? (async (id: string) => (await (await import("./online.server")).fetchOnlineNotes(id)).markdown);
+  return {
+    batch_schedule: tool({
+      description: "Look up the student's own Vedantu batch: classes (today, upcoming, recent with notes) and upcoming tests. Filter by IST date (YYYY-MM-DD) and/or keywords (subject, chapter, teacher, test name).",
+      inputSchema: z.object({
+        date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("IST date, e.g. 2026-10-24"),
+        query: z.string().max(80).optional().describe("Keywords like 'botany', 'Morphology', 'test'"),
+      }),
+      execute: async ({ date, query }) => {
+        try {
+          const o = await overview();
+          const seen = new Set<string>();
+          let classes = [...o.recentClasses, ...o.upcomingClasses, ...o.todayClasses].filter((c) => (seen.has(c.session_id) ? false : (seen.add(c.session_id), true)));
+          let tests = o.upcomingTests;
+          if (date) {
+            const day = (iso: string | null) => (iso ? new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(new Date(iso)) : "");
+            classes = classes.filter((c) => day(c.starts_at) === date);
+            tests = tests.filter((t) => day(t.opens_at) === date || day(t.closes_at) === date);
+          }
+          if (query?.trim()) {
+            const words = norm(query).split(/\s+/).filter(Boolean);
+            // Vedantu labels Botany/Zoology classes as "Biology".
+            const hit = (text: string) => words.every((w) => norm(text).includes(w) || (/^(botany|zoology)$/.test(w) && norm(text).includes("biology")));
+            classes = classes.filter((c) => hit(`${c.title} ${c.subject} ${c.chapter} ${c.teacher} ${c.course_title}`));
+            tests = tests.filter((t) => hit(`${t.title} ${t.subjects.join(" ")}`));
+          }
+          classes.sort((a, b) => (a.starts_at ?? "").localeCompare(b.starts_at ?? ""));
+          return {
+            classes: classes.slice(0, 30).map((c) => classLine(c, true, true)),
+            tests: tests.slice(0, 10).map((t) => `- ${t.title}${t.subjects.length ? ` [${t.subjects.join(", ")}]` : ""} — ${ist(t.opens_at)} se ${ist(t.closes_at)}`),
+            note: o.sync.counts.warnings ? "Some Vedantu lists were unavailable or capped; missing items are not proof of cancellation." : undefined,
+          };
+        } catch (e) {
+          console.error("batch_schedule failed:", e);
+          return { classes: [], tests: [], error: "Vedantu schedule abhi unavailable hai — student ko /batch page dekhne ko kaho." };
+        }
+      },
+    }),
+    batch_class_notes: tool({
+      description: "Fetch one of the student's own Vedantu lectures by [notes id] (session ID): timestamped smart notes from the live lecture transcript plus the lecture topic outline. Use to teach or quiz from that class and cite time points (e.g. 'sir ne 13:08 pe').",
+      inputSchema: z.object({ session_id: z.string().min(4).max(64) }),
+      execute: async ({ session_id }) => {
+        try {
+          const o = await overview();
+          const known = [...o.todayClasses, ...o.recentClasses, ...o.upcomingClasses].find((c) => c.session_id === session_id);
+          // Only classes from the student's own fetched lists — never arbitrary ids.
+          if (!known) return { error: "Yeh class id student ke batch list mein nahi mili. Pehle batch_schedule se sahi [notes id] lo." };
+          const pdf_url = known.has_notes_pdf ? notesPdfUrl(session_id) : undefined;
+          if (!known.has_smart_notes) return pdf_url ? { title: known.title, session_id, pdf_url, error: "Smart notes nahi hain; batch_class_pdf_notes se is class ki whiteboard PDF padho." } : { title: known.title, error: "Is class ke notes abhi available nahi hain." };
+          const text = await notes(session_id);
+          if (!text.trim()) return { title: known.title, session_id, pdf_url, error: "Smart notes khaali aaye." };
+          return { title: known.title, subject: known.subject, chapter: known.chapter, teacher: known.teacher, session_id, pdf_url, smart_notes_url: `https://session.vedantu.com/session-smart-notes/${session_id}`, notes: text.slice(0, NOTES_CHARS), truncated: text.length > NOTES_CHARS };
+        } catch (e) {
+          console.error("batch_class_notes failed:", e);
+          return { error: "Vedantu notes abhi load nahi hue — baad mein try karo." };
+        }
+      },
+    }),
+    batch_class_pdf_notes: tool({
+      description: "Read the handwritten whiteboard PDF of one of the student's own Vedantu classes (by [notes id]) as text. Slower; use when smart notes are missing or the student asks about the board/PDF notes, diagrams or what the teacher wrote.",
+      inputSchema: z.object({ session_id: z.string().min(4).max(64) }),
+      execute: async ({ session_id }) => {
+        try {
+          const o = await overview();
+          const known = [...o.todayClasses, ...o.recentClasses, ...o.upcomingClasses].find((c) => c.session_id === session_id);
+          if (!known) return { error: "Yeh class id student ke batch list mein nahi mili." };
+          if (!known.has_notes_pdf) return { title: known.title, error: "Is class ki PDF abhi bani nahi hai." };
+          const text = await pdfNotes(session_id);
+          if (!text) return { title: known.title, error: "PDF padhi nahi ja saki." };
+          return { title: known.title, subject: known.subject, session_id, pdf_url: notesPdfUrl(session_id), pdf_notes: text.slice(0, NOTES_CHARS), truncated: text.length > NOTES_CHARS };
+        } catch (e) {
+          console.error("batch_class_pdf_notes failed:", e);
+          return { error: "Class PDF abhi padhi nahi ja saki — link se dekh lo.", pdf_url: notesPdfUrl(session_id) };
+        }
+      },
+    }),
+  };
+}

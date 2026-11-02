@@ -1,1 +1,1 @@
-Q09NTUVOVCBPTiBUQUJMRSBwdWJsaWMubWVtb3J5X2l0ZW1zIElTICdBZG1pbi1vbmx5IHR1dG9yIG1lbW9yeSAoY2hhcHRlciBvdXRsaW5lcywgdHJhY2tlcnMsIGZpbGVzLCBsaW5rcykuJzs=
+COMMENT ON TABLE public.memory_items IS 'Admin-only tutor memory (chapter outlines, trackers, files, links).';

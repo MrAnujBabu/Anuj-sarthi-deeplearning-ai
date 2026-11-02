@@ -1,1 +1,64 @@
-Ly8gU3RyZWFtZWQgQ2hhdCBDb21wbGV0aW9ucyBjYWxsIHRvIExvdmFibGUgQUkgR2F0ZXdheTsgcmV0dXJucyB0aGUgZmluYWwgdGV4dC4KLy8gNDI5LzV4eCBnZXQgdHdvIGJvdW5kZWQgYmFja29mZiByZXRyaWVzOyBldmVyeSBvdGhlciBmYWlsdXJlIGlzIHRlcm1pbmFsLgpleHBvcnQgY2xhc3MgR2F0ZXdheUVycm9yIGV4dGVuZHMgRXJyb3IgewogIGNvbnN0cnVjdG9yKHB1YmxpYyBzdGF0dXM6IG51bWJlciwgbWVzc2FnZTogc3RyaW5nLCBwdWJsaWMgZGV0YWlsczogdW5rbm93biA9IHt9KSB7IHN1cGVyKG1lc3NhZ2UpOyB9Cn0KCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBnYXRld2F5Q2hhdFRleHQoYm9keTogUmVjb3JkPHN0cmluZywgdW5rbm93bj4sIHNpZ25hbD86IEFib3J0U2lnbmFsKTogUHJvbWlzZTxzdHJpbmc+IHsKICBjb25zdCBrZXkgPSBwcm9jZXNzLmVudlsnTE9WQUJMRV9BUElfS0VZJ107CiAgaWYgKCFrZXkpIHRocm93IG5ldyBHYXRld2F5RXJyb3IoNDAxLCAnQUkgaXMgbm90IGNvbmZpZ3VyZWQgZm9yIHRoaXMgYXBwLicpOwogIGxldCBhdHRlbXB0ID0gMDsKICBmb3IgKDs7KSB7CiAgICBjb25zdCByZXMgPSBhd2FpdCBmZXRjaCgnaHR0cHM6Ly9haS5nYXRld2F5LmxvdmFibGUuZGV2L3YxL2NoYXQvY29tcGxldGlvbnMnLCB7CiAgICAgIG1ldGhvZDogJ1BPU1QnLAogICAgICBzaWduYWw6IHNpZ25hbCA/PyBudWxsLAogICAgICBoZWFkZXJzOiB7IEF1dGhvcml6YXRpb246IGBCZWFyZXIgJHtrZXl9YCwgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJywgJ1gtTG92YWJsZS1BSUctU0RLJzogJ2ZldGNoJyB9LAogICAgICBib2R5OiBKU09OLnN0cmluZ2lmeSh7IC4uLmJvZHksIHN0cmVhbTogdHJ1ZSB9KSwKICAgIH0pOwogICAgaWYgKChyZXMuc3RhdHVzID09PSA0MjkgfHwgcmVzLnN0YXR1cyA+PSA1MDApICYmIGF0dGVtcHQgPCAyKSB7CiAgICAgIGF0dGVtcHQrKzsKICAgICAgY29uc3QgcmV0cnlBZnRlciA9IE51bWJlcihyZXMuaGVhZGVycy5nZXQoJ3JldHJ5LWFmdGVyJykpICogMTAwMDsKICAgICAgY29uc3Qgd2FpdCA9IHJldHJ5QWZ0ZXIgPiAwID8gcmV0cnlBZnRlciA6IDE1MDAgKiAyICoqIGF0dGVtcHQgKyBNYXRoLnJhbmRvbSgpICogNTAwOwogICAgICBhd2FpdCByZXMuYm9keT8uY2FuY2VsKCk7CiAgICAgIGF3YWl0IG5ldyBQcm9taXNlKChyKSA9PiBzZXRUaW1lb3V0KHIsIE1hdGgubWluKHdhaXQsIDgwMDApKSk7CiAgICAgIGNvbnRpbnVlOwogICAgfQogICAgaWYgKCFyZXMub2sgfHwgIXJlcy5ib2R5KSB7CiAgICAgIGNvbnN0IHQgPSBhd2FpdCByZXMudGV4dCgpLmNhdGNoKCgpID0+ICcnKTsKICAgICAgbGV0IGRldGFpbHM6IHVua25vd24gPSB0OwogICAgICB0cnkgeyBkZXRhaWxzID0gSlNPTi5wYXJzZSh0KTsgfSBjYXRjaCB7IC8qIHBsYWluIHRleHQgKi8gfQogICAgICBjb25zdCBkID0gZGV0YWlscyBhcyB7IGVycm9yPzogeyBtZXNzYWdlPzogc3RyaW5nIH07IG1lc3NhZ2U/OiBzdHJpbmcgfTsKICAgICAgdGhyb3cgbmV3IEdhdGV3YXlFcnJvcihyZXMuc3RhdHVzLCBkPy5lcnJvcj8ubWVzc2FnZSB8fCBkPy5tZXNzYWdlIHx8IGBBSSByZXF1ZXN0IGZhaWxlZCAoJHtyZXMuc3RhdHVzfSlgLCBkZXRhaWxzKTsKICAgIH0KICAgIGNvbnN0IHJlYWRlciA9IHJlcy5ib2R5LmdldFJlYWRlcigpOwogICAgY29uc3QgZGVjID0gbmV3IFRleHREZWNvZGVyKCk7CiAgICBsZXQgYnVmID0gJyc7CiAgICBsZXQgb3V0ID0gJyc7CiAgICBsZXQgZmluaXNoID0gJyc7CiAgICBmb3IgKDs7KSB7CiAgICAgIGNvbnN0IHsgZG9uZSwgdmFsdWUgfSA9IGF3YWl0IHJlYWRlci5yZWFkKCk7CiAgICAgIGlmIChkb25lKSBicmVhazsKICAgICAgYnVmICs9IGRlYy5kZWNvZGUodmFsdWUsIHsgc3RyZWFtOiB0cnVlIH0pOwogICAgICBsZXQgaTogbnVtYmVyOwogICAgICB3aGlsZSAoKGkgPSBidWYuaW5kZXhPZignXG4nKSkgPj0gMCkgewogICAgICAgIGNvbnN0IGxpbmUgPSBidWYuc2xpY2UoMCwgaSkudHJpbSgpOwogICAgICAgIGJ1ZiA9IGJ1Zi5zbGljZShpICsgMSk7CiAgICAgICAgaWYgKCFsaW5lLnN0YXJ0c1dpdGgoJ2RhdGE6JykpIGNvbnRpbnVlOwogICAgICAgIGNvbnN0IGRhdGEgPSBsaW5lLnNsaWNlKDUpLnRyaW0oKTsKICAgICAgICBpZiAoIWRhdGEgfHwgZGF0YSA9PT0gJ1tET05FXScpIGNvbnRpbnVlOwogICAgICAgIHRyeSB7CiAgICAgICAgICBjb25zdCBqID0gSlNPTi5wYXJzZShkYXRhKTsKICAgICAgICAgIGlmIChqPy5lcnJvcikgdGhyb3cgbmV3IEdhdGV3YXlFcnJvcihOdW1iZXIoai5lcnJvci5jb2RlKSB8fCA1MDAsIGouZXJyb3IubWVzc2FnZSB8fCAnQUkgc3RyZWFtIGZhaWxlZCcsIGopOwogICAgICAgICAgY29uc3QgYyA9IGo/LmNob2ljZXM/LlswXTsKICAgICAgICAgIG91dCArPSBjPy5kZWx0YT8uY29udGVudCA/PyAnJzsKICAgICAgICAgIGlmIChjPy5maW5pc2hfcmVhc29uKSBmaW5pc2ggPSBjLmZpbmlzaF9yZWFzb247CiAgICAgICAgfSBjYXRjaCAoZSkgewogICAgICAgICAgaWYgKGUgaW5zdGFuY2VvZiBHYXRld2F5RXJyb3IpIHRocm93IGU7CiAgICAgICAgICAvKiBwYXJ0aWFsIGZyYW1lICovCiAgICAgICAgfQogICAgICB9CiAgICB9CiAgICBpZiAoIW91dC50cmltKCkgJiYgL2NvbnRlbnRfZmlsdGVyfHJlZnVzYWx8c2FmZXR5L2kudGVzdChmaW5pc2gpKSB0aHJvdyBuZXcgR2F0ZXdheUVycm9yKDQwMywgJ1RoZSBtb2RlbCBkZWNsaW5lZCB0aGlzIHJlcXVlc3QuJywgeyBmaW5pc2ggfSk7CiAgICByZXR1cm4gb3V0OwogIH0KfQo=
+// Streamed Chat Completions call to Lovable AI Gateway; returns the final text.
+// 429/5xx get two bounded backoff retries; every other failure is terminal.
+export class GatewayError extends Error {
+  constructor(public status: number, message: string, public details: unknown = {}) { super(message); }
+}
+
+export async function gatewayChatText(body: Record<string, unknown>, signal?: AbortSignal): Promise<string> {
+  const key = process.env['LOVABLE_API_KEY'];
+  if (!key) throw new GatewayError(401, 'AI is not configured for this app.');
+  let attempt = 0;
+  for (;;) {
+    const res = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+      method: 'POST',
+      signal: signal ?? null,
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', 'X-Lovable-AIG-SDK': 'fetch' },
+      body: JSON.stringify({ ...body, stream: true }),
+    });
+    if ((res.status === 429 || res.status >= 500) && attempt < 2) {
+      attempt++;
+      const retryAfter = Number(res.headers.get('retry-after')) * 1000;
+      const wait = retryAfter > 0 ? retryAfter : 1500 * 2 ** attempt + Math.random() * 500;
+      await res.body?.cancel();
+      await new Promise((r) => setTimeout(r, Math.min(wait, 8000)));
+      continue;
+    }
+    if (!res.ok || !res.body) {
+      const t = await res.text().catch(() => '');
+      let details: unknown = t;
+      try { details = JSON.parse(t); } catch { /* plain text */ }
+      const d = details as { error?: { message?: string }; message?: string };
+      throw new GatewayError(res.status, d?.error?.message || d?.message || `AI request failed (${res.status})`, details);
+    }
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '';
+    let out = '';
+    let finish = '';
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      let i: number;
+      while ((i = buf.indexOf('\n')) >= 0) {
+        const line = buf.slice(0, i).trim();
+        buf = buf.slice(i + 1);
+        if (!line.startsWith('data:')) continue;
+        const data = line.slice(5).trim();
+        if (!data || data === '[DONE]') continue;
+        try {
+          const j = JSON.parse(data);
+          if (j?.error) throw new GatewayError(Number(j.error.code) || 500, j.error.message || 'AI stream failed', j);
+          const c = j?.choices?.[0];
+          out += c?.delta?.content ?? '';
+          if (c?.finish_reason) finish = c.finish_reason;
+        } catch (e) {
+          if (e instanceof GatewayError) throw e;
+          /* partial frame */
+        }
+      }
+    }
+    if (!out.trim() && /content_filter|refusal|safety/i.test(finish)) throw new GatewayError(403, 'The model declined this request.', { finish });
+    return out;
+  }
+}

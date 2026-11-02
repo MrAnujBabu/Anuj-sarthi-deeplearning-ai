@@ -1,1 +1,62 @@
-LyoqCiAqIEh5YnJpZCByZXRyaWV2YWwgKERlZXBMZWFybmluZy5BSSBSQUcgY291cnNlLCBtb2R1bGVzIDLigJMzKToKICoga2V5d29yZCBCTTI1ICsgc2VtYW50aWMgY29zaW5lLCBtZXJnZWQgd2l0aCBSZWNpcHJvY2FsIFJhbmsgRnVzaW9uLgogKiBLZXl3b3JkIHNlYXJjaCBjYXRjaGVzIGV4YWN0IE5DRVJUIHRlcm1zOyB2ZWN0b3JzIGNhdGNoIHBhcmFwaHJhc2VzLgogKi8KY29uc3QgU1RPUCA9IG5ldyBTZXQoWyJ0aGUiLCAiYW5kIiwgImZvciIsICJ3aXRoIiwgInRoYXQiLCAidGhpcyIsICJmcm9tIiwgImFyZSIsICJ3YXMiLCAid2VyZSIsICJ3aGljaCIsICJ3aGF0IiwgIndoZW4iLCAia3lhIiwgImhhaSIsICJrYSIsICJraSIsICJrZSIsICJob3RhIiwgImthaXNlIiwgImt5dW4iXSk7CgpleHBvcnQgZnVuY3Rpb24gdG9rZW5pemUodGV4dDogc3RyaW5nKTogc3RyaW5nW10gewogIHJldHVybiB0ZXh0LnRvTG93ZXJDYXNlKCkucmVwbGFjZSgvW15hLXowLTlcdTA5MDAtXHUwOTdGIF0vZywgIiAiKS5zcGxpdCgvXHMrLykuZmlsdGVyKCh3KSA9PiB3Lmxlbmd0aCA+IDIgJiYgIVNUT1AuaGFzKHcpKTsKfQoKZXhwb3J0IGZ1bmN0aW9uIGNvc2luZShhOiBudW1iZXJbXSwgYjogbnVtYmVyW10pOiBudW1iZXIgewogIGxldCBkb3QgPSAwLCBuYSA9IDAsIG5iID0gMDsKICBjb25zdCBuID0gTWF0aC5taW4oYS5sZW5ndGgsIGIubGVuZ3RoKTsKICBmb3IgKGxldCBpID0gMDsgaSA8IG47IGkrKykgeyBjb25zdCB4ID0gYVtpXSEsIHkgPSBiW2ldITsgZG90ICs9IHggKiB5OyBuYSArPSB4ICogeDsgbmIgKz0geSAqIHk7IH0KICByZXR1cm4gbmEgJiYgbmIgPyBkb3QgLyAoTWF0aC5zcXJ0KG5hKSAqIE1hdGguc3FydChuYikpIDogMDsKfQoKLyoqIEJNMjUgc2NvcmVzIChrMT0xLjIsIGI9MC43NSkgZm9yIGVhY2ggZG9jdW1lbnQgYWdhaW5zdCB0aGUgcXVlcnkuICovCmV4cG9ydCBmdW5jdGlvbiBibTI1KHF1ZXJ5OiBzdHJpbmcsIGRvY3M6IHN0cmluZ1tdLCBrMSA9IDEuMiwgYiA9IDAuNzUpOiBudW1iZXJbXSB7CiAgY29uc3QgcSA9IFsuLi5uZXcgU2V0KHRva2VuaXplKHF1ZXJ5KSldOwogIGNvbnN0IHRva3MgPSBkb2NzLm1hcCh0b2tlbml6ZSk7CiAgY29uc3QgTiA9IGRvY3MubGVuZ3RoIHx8IDE7CiAgY29uc3QgYXZnID0gdG9rcy5yZWR1Y2UoKHMsIHQpID0+IHMgKyB0Lmxlbmd0aCwgMCkgLyBOIHx8IDE7CiAgY29uc3QgZGYgPSBuZXcgTWFwPHN0cmluZywgbnVtYmVyPigpOwogIGZvciAoY29uc3QgdCBvZiB0b2tzKSBmb3IgKGNvbnN0IHcgb2YgbmV3IFNldCh0KSkgZGYuc2V0KHcsIChkZi5nZXQodykgPz8gMCkgKyAxKTsKICByZXR1cm4gdG9rcy5tYXAoKHQpID0+IHsKICAgIGNvbnN0IHRmID0gbmV3IE1hcDxzdHJpbmcsIG51bWJlcj4oKTsKICAgIGZvciAoY29uc3QgdyBvZiB0KSB0Zi5zZXQodywgKHRmLmdldCh3KSA/PyAwKSArIDEpOwogICAgbGV0IHMgPSAwOwogICAgZm9yIChjb25zdCB3IG9mIHEpIHsKICAgICAgY29uc3QgZiA9IHRmLmdldCh3KTsKICAgICAgaWYgKCFmKSBjb250aW51ZTsKICAgICAgY29uc3QgbiA9IGRmLmdldCh3KSA/PyAwOwogICAgICBjb25zdCBpZGYgPSBNYXRoLmxvZygxICsgKE4gLSBuICsgMC41KSAvIChuICsgMC41KSk7CiAgICAgIHMgKz0gaWRmICogKChmICogKGsxICsgMSkpIC8gKGYgKyBrMSAqICgxIC0gYiArIChiICogdC5sZW5ndGgpIC8gYXZnKSkpOwogICAgfQogICAgcmV0dXJuIHM7CiAgfSk7Cn0KCi8qKiBSZWNpcHJvY2FsIFJhbmsgRnVzaW9uIG9mIHNldmVyYWwgcmFua2VkIGlkIGxpc3RzIChrPTYwIHBlciB0aGUgb3JpZ2luYWwgcGFwZXIpLiAqLwpleHBvcnQgZnVuY3Rpb24gcnJmKHJhbmtpbmdzOiBzdHJpbmdbXVtdLCBrID0gNjApOiBNYXA8c3RyaW5nLCBudW1iZXI+IHsKICBjb25zdCBvdXQgPSBuZXcgTWFwPHN0cmluZywgbnVtYmVyPigpOwogIGZvciAoY29uc3QgbGlzdCBvZiByYW5raW5ncykgbGlzdC5mb3JFYWNoKChpZCwgaSkgPT4gb3V0LnNldChpZCwgKG91dC5nZXQoaWQpID8/IDApICsgMSAvIChrICsgaSArIDEpKSk7CiAgcmV0dXJuIG91dDsKfQoKZXhwb3J0IHR5cGUgSHlicmlkRG9jID0geyBpZDogc3RyaW5nOyB0ZXh0OiBzdHJpbmc7IHZlY3RvcjogbnVtYmVyW10gfTsKCi8qKiBUb3AtayBieSBoeWJyaWQgc2VhcmNoOyBkcm9wcyBkb2NzIHdlYWsgb24gYm90aCBzaWduYWxzIHNvIG9mZi10b3BpYyBjaHVua3MgbmV2ZXIgcmVhY2ggdGhlIHR1dG9yLiAqLwpleHBvcnQgZnVuY3Rpb24gaHlicmlkU2VhcmNoPFQgZXh0ZW5kcyBIeWJyaWREb2M+KHF1ZXJ5OiBzdHJpbmcsIHF1ZXJ5VmVjdG9yOiBudW1iZXJbXSwgZG9jczogVFtdLCBrID0gNSwgbWluQ29zaW5lID0gMC4zKTogVFtdIHsKICBpZiAoIWRvY3MubGVuZ3RoKSByZXR1cm4gW107CiAgY29uc3Qgc2VtID0gZG9jcy5tYXAoKGQpID0+IGNvc2luZShxdWVyeVZlY3RvciwgZC52ZWN0b3IpKTsKICBjb25zdCBrdyA9IGJtMjUocXVlcnksIGRvY3MubWFwKChkKSA9PiBkLnRleHQpKTsKICBjb25zdCBpZHggPSBkb2NzLm1hcCgoXywgaSkgPT4gaSk7CiAgY29uc3QgdG9wID0gNTA7CiAgY29uc3Qgc2VtUmFuayA9IGlkeC5maWx0ZXIoKGkpID0+IHNlbVtpXSEgPj0gbWluQ29zaW5lKS5zb3J0KChhLCBiKSA9PiBzZW1bYl0hIC0gc2VtW2FdISkuc2xpY2UoMCwgdG9wKTsKICBjb25zdCBrd1JhbmsgPSBpZHguZmlsdGVyKChpKSA9PiBrd1tpXSEgPiAwKS5zb3J0KChhLCBiKSA9PiBrd1tiXSEgLSBrd1thXSEpLnNsaWNlKDAsIHRvcCk7CiAgY29uc3QgZnVzZWQgPSBycmYoW3NlbVJhbmsubWFwKFN0cmluZyksIGt3UmFuay5tYXAoU3RyaW5nKV0pOwogIHJldHVybiBbLi4uZnVzZWQuZW50cmllcygpXS5zb3J0KChhLCBiKSA9PiBiWzFdIC0gYVsxXSkuc2xpY2UoMCwgaykubWFwKChbaV0pID0+IGRvY3NbTnVtYmVyKGkpXSEpOwp9Cg==
+/**
+ * Hybrid retrieval (DeepLearning.AI RAG course, modules 2–3):
+ * keyword BM25 + semantic cosine, merged with Reciprocal Rank Fusion.
+ * Keyword search catches exact NCERT terms; vectors catch paraphrases.
+ */
+const STOP = new Set(["the", "and", "for", "with", "that", "this", "from", "are", "was", "were", "which", "what", "when", "kya", "hai", "ka", "ki", "ke", "hota", "kaise", "kyun"]);
+
+export function tokenize(text: string): string[] {
+  return text.toLowerCase().replace(/[^a-z0-9\u0900-\u097F ]/g, " ").split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w));
+}
+
+export function cosine(a: number[], b: number[]): number {
+  let dot = 0, na = 0, nb = 0;
+  const n = Math.min(a.length, b.length);
+  for (let i = 0; i < n; i++) { const x = a[i]!, y = b[i]!; dot += x * y; na += x * x; nb += y * y; }
+  return na && nb ? dot / (Math.sqrt(na) * Math.sqrt(nb)) : 0;
+}
+
+/** BM25 scores (k1=1.2, b=0.75) for each document against the query. */
+export function bm25(query: string, docs: string[], k1 = 1.2, b = 0.75): number[] {
+  const q = [...new Set(tokenize(query))];
+  const toks = docs.map(tokenize);
+  const N = docs.length || 1;
+  const avg = toks.reduce((s, t) => s + t.length, 0) / N || 1;
+  const df = new Map<string, number>();
+  for (const t of toks) for (const w of new Set(t)) df.set(w, (df.get(w) ?? 0) + 1);
+  return toks.map((t) => {
+    const tf = new Map<string, number>();
+    for (const w of t) tf.set(w, (tf.get(w) ?? 0) + 1);
+    let s = 0;
+    for (const w of q) {
+      const f = tf.get(w);
+      if (!f) continue;
+      const n = df.get(w) ?? 0;
+      const idf = Math.log(1 + (N - n + 0.5) / (n + 0.5));
+      s += idf * ((f * (k1 + 1)) / (f + k1 * (1 - b + (b * t.length) / avg)));
+    }
+    return s;
+  });
+}
+
+/** Reciprocal Rank Fusion of several ranked id lists (k=60 per the original paper). */
+export function rrf(rankings: string[][], k = 60): Map<string, number> {
+  const out = new Map<string, number>();
+  for (const list of rankings) list.forEach((id, i) => out.set(id, (out.get(id) ?? 0) + 1 / (k + i + 1)));
+  return out;
+}
+
+export type HybridDoc = { id: string; text: string; vector: number[] };
+
+/** Top-k by hybrid search; drops docs weak on both signals so off-topic chunks never reach the tutor. */
+export function hybridSearch<T extends HybridDoc>(query: string, queryVector: number[], docs: T[], k = 5, minCosine = 0.3): T[] {
+  if (!docs.length) return [];
+  const sem = docs.map((d) => cosine(queryVector, d.vector));
+  const kw = bm25(query, docs.map((d) => d.text));
+  const idx = docs.map((_, i) => i);
+  const top = 50;
+  const semRank = idx.filter((i) => sem[i]! >= minCosine).sort((a, b) => sem[b]! - sem[a]!).slice(0, top);
+  const kwRank = idx.filter((i) => kw[i]! > 0).sort((a, b) => kw[b]! - kw[a]!).slice(0, top);
+  const fused = rrf([semRank.map(String), kwRank.map(String)]);
+  return [...fused.entries()].sort((a, b) => b[1] - a[1]).slice(0, k).map(([i]) => docs[Number(i)]!);
+}

@@ -1,1 +1,44 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgKiBhcyBTY3JvbGxBcmVhUHJpbWl0aXZlIGZyb20gIkByYWRpeC11aS9yZWFjdC1zY3JvbGwtYXJlYSI7CgppbXBvcnQgeyBjbiB9IGZyb20gIkAvbGliL3V0aWxzIjsKCmNvbnN0IFNjcm9sbEFyZWEgPSBSZWFjdC5mb3J3YXJkUmVmPAogIFJlYWN0LkVsZW1lbnRSZWY8dHlwZW9mIFNjcm9sbEFyZWFQcmltaXRpdmUuUm9vdD4sCiAgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPHR5cGVvZiBTY3JvbGxBcmVhUHJpbWl0aXZlLlJvb3Q+Cj4oKHsgY2xhc3NOYW1lLCBjaGlsZHJlbiwgLi4ucHJvcHMgfSwgcmVmKSA9PiAoCiAgPFNjcm9sbEFyZWFQcmltaXRpdmUuUm9vdAogICAgcmVmPXtyZWZ9CiAgICBjbGFzc05hbWU9e2NuKCJyZWxhdGl2ZSBvdmVyZmxvdy1oaWRkZW4iLCBjbGFzc05hbWUpfQogICAgey4uLnByb3BzfQogID4KICAgIDxTY3JvbGxBcmVhUHJpbWl0aXZlLlZpZXdwb3J0IGNsYXNzTmFtZT0iaC1mdWxsIHctZnVsbCByb3VuZGVkLVtpbmhlcml0XSI+CiAgICAgIHtjaGlsZHJlbn0KICAgIDwvU2Nyb2xsQXJlYVByaW1pdGl2ZS5WaWV3cG9ydD4KICAgIDxTY3JvbGxCYXIgLz4KICAgIDxTY3JvbGxBcmVhUHJpbWl0aXZlLkNvcm5lciAvPgogIDwvU2Nyb2xsQXJlYVByaW1pdGl2ZS5Sb290PgopKTsKU2Nyb2xsQXJlYS5kaXNwbGF5TmFtZSA9IFNjcm9sbEFyZWFQcmltaXRpdmUuUm9vdC5kaXNwbGF5TmFtZTsKCmNvbnN0IFNjcm9sbEJhciA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgU2Nyb2xsQXJlYVByaW1pdGl2ZS5TY3JvbGxBcmVhU2Nyb2xsYmFyPiwKICBSZWFjdC5Db21wb25lbnRQcm9wc1dpdGhvdXRSZWY8dHlwZW9mIFNjcm9sbEFyZWFQcmltaXRpdmUuU2Nyb2xsQXJlYVNjcm9sbGJhcj4KPigoeyBjbGFzc05hbWUsIG9yaWVudGF0aW9uID0gInZlcnRpY2FsIiwgLi4ucHJvcHMgfSwgcmVmKSA9PiAoCiAgPFNjcm9sbEFyZWFQcmltaXRpdmUuU2Nyb2xsQXJlYVNjcm9sbGJhcgogICAgcmVmPXtyZWZ9CiAgICBvcmllbnRhdGlvbj17b3JpZW50YXRpb259CiAgICBjbGFzc05hbWU9e2NuKAogICAgICAiZmxleCB0b3VjaC1ub25lIHNlbGVjdC1ub25lIHRyYW5zaXRpb24tY29sb3JzIiwKICAgICAgb3JpZW50YXRpb24gPT09ICJ2ZXJ0aWNhbCIgJiYgImgtZnVsbCB3LTIuNSBib3JkZXItbCBib3JkZXItbC10cmFuc3BhcmVudCBwLVsxcHhdIiwKICAgICAgb3JpZW50YXRpb24gPT09ICJob3Jpem9udGFsIiAmJiAiaC0yLjUgZmxleC1jb2wgYm9yZGVyLXQgYm9yZGVyLXQtdHJhbnNwYXJlbnQgcC1bMXB4XSIsCiAgICAgIGNsYXNzTmFtZSwKICAgICl9CiAgICB7Li4ucHJvcHN9CiAgPgogICAgPFNjcm9sbEFyZWFQcmltaXRpdmUuU2Nyb2xsQXJlYVRodW1iIGNsYXNzTmFtZT0icmVsYXRpdmUgZmxleC0xIHJvdW5kZWQtZnVsbCBiZy1ib3JkZXIiIC8+CiAgPC9TY3JvbGxBcmVhUHJpbWl0aXZlLlNjcm9sbEFyZWFTY3JvbGxiYXI+CikpOwpTY3JvbGxCYXIuZGlzcGxheU5hbWUgPSBTY3JvbGxBcmVhUHJpbWl0aXZlLlNjcm9sbEFyZWFTY3JvbGxiYXIuZGlzcGxheU5hbWU7CgpleHBvcnQgeyBTY3JvbGxBcmVhLCBTY3JvbGxCYXIgfTsK
+import * as React from "react";
+import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
+
+import { cn } from "@/lib/utils";
+
+const ScrollArea = React.forwardRef<
+  React.ElementRef<typeof ScrollAreaPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
+>(({ className, children, ...props }, ref) => (
+  <ScrollAreaPrimitive.Root
+    ref={ref}
+    className={cn("relative overflow-hidden", className)}
+    {...props}
+  >
+    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
+      {children}
+    </ScrollAreaPrimitive.Viewport>
+    <ScrollBar />
+    <ScrollAreaPrimitive.Corner />
+  </ScrollAreaPrimitive.Root>
+));
+ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
+
+const ScrollBar = React.forwardRef<
+  React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
+  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
+>(({ className, orientation = "vertical", ...props }, ref) => (
+  <ScrollAreaPrimitive.ScrollAreaScrollbar
+    ref={ref}
+    orientation={orientation}
+    className={cn(
+      "flex touch-none select-none transition-colors",
+      orientation === "vertical" && "h-full w-2.5 border-l border-l-transparent p-[1px]",
+      orientation === "horizontal" && "h-2.5 flex-col border-t border-t-transparent p-[1px]",
+      className,
+    )}
+    {...props}
+  >
+    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" />
+  </ScrollAreaPrimitive.ScrollAreaScrollbar>
+));
+ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
+
+export { ScrollArea, ScrollBar };

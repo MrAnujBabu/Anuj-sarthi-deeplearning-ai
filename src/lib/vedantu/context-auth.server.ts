@@ -1,1 +1,27 @@
-aW1wb3J0IHsgY3JlYXRlQ2xpZW50IH0gZnJvbSAnQHN1cGFiYXNlL3N1cGFiYXNlLWpzJzsKCmV4cG9ydCB0eXBlIEJhdGNoQXV0aFJlc3VsdCA9IHsgb2s6IHRydWUgfSB8IHsgb2s6IGZhbHNlOyBzdGF0dXM6IDQwMSB8IDQwMyB8IDUwMzsgZXJyb3I6IHN0cmluZyB9OwoKLyoqIFZlcmlmaWVzIGEgU3VwYWJhc2UgYWNjZXNzIHRva2VuIGJlbG9uZ3MgdG8gYW4gYWRtaW4uIE5ldmVyIGxvZ3MgdGhlIHRva2VuLiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gYXV0aG9yaXplQmF0Y2hUb2tlbih0b2tlbjogc3RyaW5nIHwgbnVsbCB8IHVuZGVmaW5lZCk6IFByb21pc2U8QmF0Y2hBdXRoUmVzdWx0PiB7CiAgaWYgKCF0b2tlbikgcmV0dXJuIHsgb2s6IGZhbHNlLCBzdGF0dXM6IDQwMSwgZXJyb3I6ICdNZXJhIEJhdGNoIGtlIGxpeWUgYWRtaW4gc2lnbiBpbiBrYXJlaW4uJyB9OwogIGNvbnN0IHVybCA9IHByb2Nlc3MuZW52WydTVVBBQkFTRV9VUkwnXTsKICBjb25zdCBrZXkgPSBwcm9jZXNzLmVudlsnU1VQQUJBU0VfUFVCTElTSEFCTEVfS0VZJ107CiAgaWYgKCF1cmwgfHwgIWtleSkgcmV0dXJuIHsgb2s6IGZhbHNlLCBzdGF0dXM6IDUwMywgZXJyb3I6ICdCYXRjaCBhY2Nlc3MgaXMgbm90IGNvbmZpZ3VyZWQuJyB9OwogIGNvbnN0IGNsaWVudCA9IGNyZWF0ZUNsaWVudCh1cmwsIGtleSwgewogICAgYXV0aDogeyBwZXJzaXN0U2Vzc2lvbjogZmFsc2UsIGF1dG9SZWZyZXNoVG9rZW46IGZhbHNlIH0sCiAgICBnbG9iYWw6IHsgaGVhZGVyczogeyBBdXRob3JpemF0aW9uOiBgQmVhcmVyICR7dG9rZW59YCB9IH0sCiAgfSk7CiAgY29uc3QgeyBkYXRhLCBlcnJvciB9ID0gYXdhaXQgY2xpZW50LmF1dGguZ2V0VXNlcih0b2tlbik7CiAgaWYgKGVycm9yIHx8ICFkYXRhLnVzZXIpIHJldHVybiB7IG9rOiBmYWxzZSwgc3RhdHVzOiA0MDEsIGVycm9yOiAnTWVyYSBCYXRjaCBrZSBsaXllIGFkbWluIHNpZ24gaW4ga2FyZWluLicgfTsKICBjb25zdCByb2xlID0gYXdhaXQgY2xpZW50LnJwYygnaGFzX3JvbGUnLCB7IF91c2VyX2lkOiBkYXRhLnVzZXIuaWQsIF9yb2xlOiAnYWRtaW4nIH0pOwogIGlmIChyb2xlLmVycm9yIHx8IHJvbGUuZGF0YSAhPT0gdHJ1ZSkgcmV0dXJuIHsgb2s6IGZhbHNlLCBzdGF0dXM6IDQwMywgZXJyb3I6ICdNZXJhIEJhdGNoIHNpcmYgYWRtaW4ga2UgbGl5ZSBoYWkuJyB9OwogIHJldHVybiB7IG9rOiB0cnVlIH07Cn0KCi8qKiBCYXRjaCBkYXRhIGlzIHByaXZhdGUgZXZlbiB3aGVuIHRoZSBvcmRpbmFyeSB0dXRvciBpcyBwdWJsaWMuICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBhdXRob3JpemVCYXRjaENvbnRleHQocmVxdWVzdDogUmVxdWVzdCk6IFByb21pc2U8UmVzcG9uc2UgfCBudWxsPiB7CiAgY29uc3QgbWF0Y2ggPSAvXkJlYXJlciAoW15ccyxdKykkLy5leGVjKHJlcXVlc3QuaGVhZGVycy5nZXQoJ2F1dGhvcml6YXRpb24nKSA/PyAnJyk7CiAgY29uc3QgcmVzdWx0ID0gYXdhaXQgYXV0aG9yaXplQmF0Y2hUb2tlbihtYXRjaD8uWzFdKTsKICByZXR1cm4gcmVzdWx0Lm9rID8gbnVsbCA6IFJlc3BvbnNlLmpzb24oeyBlcnJvcjogcmVzdWx0LmVycm9yIH0sIHsgc3RhdHVzOiByZXN1bHQuc3RhdHVzIH0pOwp9Cg==
+import { createClient } from '@supabase/supabase-js';
+
+export type BatchAuthResult = { ok: true } | { ok: false; status: 401 | 403 | 503; error: string };
+
+/** Verifies a Supabase access token belongs to an admin. Never logs the token. */
+export async function authorizeBatchToken(token: string | null | undefined): Promise<BatchAuthResult> {
+  if (!token) return { ok: false, status: 401, error: 'Mera Batch ke liye admin sign in karein.' };
+  const url = process.env['SUPABASE_URL'];
+  const key = process.env['SUPABASE_PUBLISHABLE_KEY'];
+  if (!url || !key) return { ok: false, status: 503, error: 'Batch access is not configured.' };
+  const client = createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  });
+  const { data, error } = await client.auth.getUser(token);
+  if (error || !data.user) return { ok: false, status: 401, error: 'Mera Batch ke liye admin sign in karein.' };
+  const role = await client.rpc('has_role', { _user_id: data.user.id, _role: 'admin' });
+  if (role.error || role.data !== true) return { ok: false, status: 403, error: 'Mera Batch sirf admin ke liye hai.' };
+  return { ok: true };
+}
+
+/** Batch data is private even when the ordinary tutor is public. */
+export async function authorizeBatchContext(request: Request): Promise<Response | null> {
+  const match = /^Bearer ([^\s,]+)$/.exec(request.headers.get('authorization') ?? '');
+  const result = await authorizeBatchToken(match?.[1]);
+  return result.ok ? null : Response.json({ error: result.error }, { status: result.status });
+}

@@ -1,1 +1,50 @@
-aW1wb3J0IHsgYWZ0ZXJFYWNoLCBkZXNjcmliZSwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwoKY29uc3QgbGlzdGVuZXIgPSB2aS5ob2lzdGVkKCgpID0+IHZpLmZuKCkpOwp2aS5tb2NrKCdAL2xpYi9haS9wYXVzZS5zZXJ2ZXInLCAoKSA9PiAoeyBnZXRBaVBhdXNlOiBhc3luYyAoKSA9PiBudWxsLCBub3RlQWlTdWNjZXNzOiBhc3luYyAoKSA9PiB7fSwgc2V0QWlQYXVzZTogYXN5bmMgKCkgPT4ge30gfSkpOwp2aS5tb2NrKCdAL2xpYi9pbnRlcnByZXRlci5zZXJ2ZXInLCAoKSA9PiAoewogIEludGVycHJldEVycm9yOiBjbGFzcyBleHRlbmRzIEVycm9yIHsgY29uc3RydWN0b3IobWVzc2FnZTogc3RyaW5nLCBwdWJsaWMgc3RhdHVzOiBudW1iZXIpIHsgc3VwZXIobWVzc2FnZSk7IH0gfSwKICBsaXN0ZW5Zb3VUdWJlOiBsaXN0ZW5lciwKICBtYWtlQnJpZWY6IGFzeW5jICgpID0+ICh7IGJyaWVmOiBudWxsLCBtb2RlbDogJ3Rlc3QnIH0pLAogIG5vcm1hbGl6ZUJyaWVmOiAoKSA9PiBudWxsLAogIGludGVycHJldFByb3NlOiB2aS5mbigpLAogIGludGVycHJldFRpbWVkOiBhc3luYyAoKSA9PiAoeyBsaW5lczogWyfgpKjgpK7gpLjgpY3gpKTgpYfgpaQnXSwgaW50ZXJwcmV0ZXJzOiBbJ3Rlc3QnXSwgcXVhbGl0eTogeyByZXZpZXdlcnM6IFtdLCByZXZpZXdlZDogMCwgY29ycmVjdGVkOiAwIH0gfSksCiAgZGVzY3JpYmVGYWlsdXJlOiAoZXJyb3I6IHsgbWVzc2FnZTogc3RyaW5nOyBzdGF0dXM/OiBudW1iZXIgfSkgPT4gKHsgbWVzc2FnZTogZXJyb3IubWVzc2FnZSwgc3RhdHVzOiBlcnJvci5zdGF0dXMgPz8gNTAzIH0pLAp9KSk7CnZpLm1vY2soJ0AvbGliL3dlYi12aWRlby5zZXJ2ZXInLCAoKSA9PiAoeyByZXNvbHZlV2ViVmlkZW86IHZpLmZuKCksIGZldGNoQ2FwdGlvbnNUZXh0OiB2aS5mbigpLCBXZWJWaWRlb0Vycm9yOiBjbGFzcyBleHRlbmRzIEVycm9yIHt9IH0pKTsKCmltcG9ydCB7IFJvdXRlIH0gZnJvbSAnQC9yb3V0ZXMvYXBpL3lvdXR1YmUtaGluZGknOwoKYWZ0ZXJFYWNoKCgpID0+IHsgdmkudW5zdHViQWxsR2xvYmFscygpOyBsaXN0ZW5lci5tb2NrUmVzZXQoKTsgfSk7CgpkZXNjcmliZSgndHJhbnNjcmlwdGlvbiByZXF1ZXN0IHdpdGggWW91VHViZSBib3QgY2hlY2snLCAoKSA9PiB7CiAgaXQoJ2Jsb2NrcyBleHBsaWNpdCByZXN0cmljdGlvbnMgZXZlbiB3aGVuIFlvdVR1YmUgaW5jbHVkZXMgYSB0aXRsZSBhbmQgY2FwdGlvbiB0cmFjaycsIGFzeW5jICgpID0+IHsKICAgIHZpLnN0dWJHbG9iYWwoJ2ZldGNoJywgdmkuZm4oYXN5bmMgKCkgPT4gUmVzcG9uc2UuanNvbih7IHZpZGVvRGV0YWlsczogeyB0aXRsZTogJ1ByaXZhdGUgbGVjdHVyZScgfSwKICAgICAgcGxheWFiaWxpdHlTdGF0dXM6IHsgc3RhdHVzOiAnTE9HSU5fUkVRVUlSRUQnLCByZWFzb246ICdUaGlzIGlzIGEgcHJpdmF0ZSB2aWRlbycgfSwKICAgICAgY2FwdGlvbnM6IHsgcGxheWVyQ2FwdGlvbnNUcmFja2xpc3RSZW5kZXJlcjogeyBjYXB0aW9uVHJhY2tzOiBbeyBiYXNlVXJsOiAnaHR0cHM6Ly9leGFtcGxlLmNvbS9jYXB0aW9ucycsIGxhbmd1YWdlQ29kZTogJ2VuJyB9XSB9IH0sCiAgICB9KSkpOwogICAgY29uc3QgaGFuZGxlcnMgPSBSb3V0ZS5vcHRpb25zLnNlcnZlcj8uaGFuZGxlcnM7CiAgICBpZiAoIWhhbmRsZXJzIHx8IHR5cGVvZiBoYW5kbGVycyA9PT0gJ2Z1bmN0aW9uJyB8fCB0eXBlb2YgaGFuZGxlcnMuUE9TVCAhPT0gJ2Z1bmN0aW9uJykgdGhyb3cgbmV3IEVycm9yKCdQT1NUIG1pc3NpbmcnKTsKICAgIGNvbnN0IGhhbmRsZXIgPSBoYW5kbGVycy5QT1NUOwogICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBoYW5kbGVyKHsgcmVxdWVzdDogbmV3IFJlcXVlc3QoJ2h0dHA6Ly9sb2NhbGhvc3QvYXBpL3lvdXR1YmUtaGluZGknLCB7IG1ldGhvZDogJ1BPU1QnLCBib2R5OiBKU09OLnN0cmluZ2lmeSh7IHVybDogJ2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9ak5RWEFDOUlWUncnIH0pIH0pIH0gYXMgUGFyYW1ldGVyczx0eXBlb2YgaGFuZGxlcj5bMF0pOwogICAgaWYgKCEocmVzcG9uc2UgaW5zdGFuY2VvZiBSZXNwb25zZSkpIHRocm93IG5ldyBFcnJvcignUmVzcG9uc2UgbWlzc2luZycpOwogICAgY29uc3QgZXZlbnRzID0gKGF3YWl0IHJlc3BvbnNlLnRleHQoKSkudHJpbSgpLnNwbGl0KCdcbicpLm1hcChsaW5lID0+IEpTT04ucGFyc2UobGluZSkpOwogICAgZXhwZWN0KGV2ZW50cy5maW5kKGV2ZW50ID0+IGV2ZW50LnR5cGUgPT09ICdlcnJvcicpPy5zdGF0dXMpLnRvQmUoNDIyKTsKICAgIGV4cGVjdChsaXN0ZW5lcikubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKICB9KTsKICBpdCgncmVhY2hlcyBpbmRlcGVuZGVudCBsaXN0ZW5pbmcgYW5kIHJldHVybnMgaW50ZXJwcmV0ZWQgcmVzdWx0cyBpbnN0ZWFkIG9mIHJlcXVlc3RpbmcgcGFzdGVkIHRleHQnLCBhc3luYyAoKSA9PiB7CiAgICB2aS5zdHViR2xvYmFsKCdmZXRjaCcsIHZpLmZuKGFzeW5jICgpID0+IFJlc3BvbnNlLmpzb24oeyBwbGF5YWJpbGl0eVN0YXR1czogeyBzdGF0dXM6ICdMT0dJTl9SRVFVSVJFRCcsIHJlYXNvbjogJ1NpZ24gaW4gdG8gY29uZmlybSB5b3XigJlyZSBub3QgYSBib3QnIH0gfSkpKTsKICAgIGxpc3RlbmVyLm1vY2tSZXNvbHZlZFZhbHVlKHsgbGFuZ3VhZ2U6ICdlbicsIGN1ZXM6IFt7IHN0YXJ0OiAwLCBlbmQ6IDE1LCB0ZXh0OiAnSGVsbG8uJyB9XSB9KTsKICAgIGNvbnN0IGhhbmRsZXJzID0gUm91dGUub3B0aW9ucy5zZXJ2ZXI/LmhhbmRsZXJzOwogICAgaWYgKCFoYW5kbGVycyB8fCB0eXBlb2YgaGFuZGxlcnMgPT09ICdmdW5jdGlvbicpIHRocm93IG5ldyBFcnJvcignSGFuZGxlciByZWNvcmQgbWlzc2luZycpOwogICAgY29uc3QgaGFuZGxlciA9IGhhbmRsZXJzLlBPU1Q7CiAgICBpZiAodHlwZW9mIGhhbmRsZXIgIT09ICdmdW5jdGlvbicpIHRocm93IG5ldyBFcnJvcignUE9TVCBoYW5kbGVyIG1pc3NpbmcnKTsKICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgaGFuZGxlcih7IHJlcXVlc3Q6IG5ldyBSZXF1ZXN0KCdodHRwOi8vbG9jYWxob3N0L2FwaS95b3V0dWJlLWhpbmRpJywgeyBtZXRob2Q6ICdQT1NUJywgYm9keTogSlNPTi5zdHJpbmdpZnkoeyB1cmw6ICdodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWpOUVhBQzlJVlJ3JywgcXVhbGl0eTogZmFsc2UgfSkgfSkgfSBhcyBQYXJhbWV0ZXJzPHR5cGVvZiBoYW5kbGVyPlswXSk7CiAgICBpZiAoIShyZXNwb25zZSBpbnN0YW5jZW9mIFJlc3BvbnNlKSkgdGhyb3cgbmV3IEVycm9yKCdTdHJlYW1pbmcgcmVzcG9uc2UgbWlzc2luZycpOwogICAgY29uc3QgZXZlbnRzID0gKGF3YWl0IHJlc3BvbnNlLnRleHQoKSkudHJpbSgpLnNwbGl0KCdcbicpLm1hcChsaW5lID0+IEpTT04ucGFyc2UobGluZSkpOwogICAgZXhwZWN0KGxpc3RlbmVyKS50b0hhdmVCZWVuQ2FsbGVkT25jZSgpOwogICAgZXhwZWN0KGxpc3RlbmVyLm1vY2suY2FsbHNbMF0/LlswXSkudG9CZSgnak5RWEFDOUlWUncnKTsKICAgIGV4cGVjdChldmVudHMuc29tZShldmVudCA9PiBldmVudC50eXBlID09PSAnZXJyb3InKSkudG9CZShmYWxzZSk7CiAgICBleHBlY3QoZXZlbnRzLmZpbmQoZXZlbnQgPT4gZXZlbnQudHlwZSA9PT0gJ2RvbmUnKT8ucmVzdWx0LnNvdXJjZS5vcmlnaW4pLnRvQmUoJ2xpc3RlbmVkJyk7CiAgfSk7Cn0pOw==
+import { afterEach, describe, expect, it, vi } from 'vitest';
+
+const listener = vi.hoisted(() => vi.fn());
+vi.mock('@/lib/ai/pause.server', () => ({ getAiPause: async () => null, noteAiSuccess: async () => {}, setAiPause: async () => {} }));
+vi.mock('@/lib/interpreter.server', () => ({
+  InterpretError: class extends Error { constructor(message: string, public status: number) { super(message); } },
+  listenYouTube: listener,
+  makeBrief: async () => ({ brief: null, model: 'test' }),
+  normalizeBrief: () => null,
+  interpretProse: vi.fn(),
+  interpretTimed: async () => ({ lines: ['नमस्ते।'], interpreters: ['test'], quality: { reviewers: [], reviewed: 0, corrected: 0 } }),
+  describeFailure: (error: { message: string; status?: number }) => ({ message: error.message, status: error.status ?? 503 }),
+}));
+vi.mock('@/lib/web-video.server', () => ({ resolveWebVideo: vi.fn(), fetchCaptionsText: vi.fn(), WebVideoError: class extends Error {} }));
+
+import { Route } from '@/routes/api/youtube-hindi';
+
+afterEach(() => { vi.unstubAllGlobals(); listener.mockReset(); });
+
+describe('transcription request with YouTube bot check', () => {
+  it('blocks explicit restrictions even when YouTube includes a title and caption track', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => Response.json({ videoDetails: { title: 'Private lecture' },
+      playabilityStatus: { status: 'LOGIN_REQUIRED', reason: 'This is a private video' },
+      captions: { playerCaptionsTracklistRenderer: { captionTracks: [{ baseUrl: 'https://example.com/captions', languageCode: 'en' }] } },
+    })));
+    const handlers = Route.options.server?.handlers;
+    if (!handlers || typeof handlers === 'function' || typeof handlers.POST !== 'function') throw new Error('POST missing');
+    const handler = handlers.POST;
+    const response = await handler({ request: new Request('http://localhost/api/youtube-hindi', { method: 'POST', body: JSON.stringify({ url: 'https://www.youtube.com/watch?v=jNQXAC9IVRw' }) }) } as Parameters<typeof handler>[0]);
+    if (!(response instanceof Response)) throw new Error('Response missing');
+    const events = (await response.text()).trim().split('\n').map(line => JSON.parse(line));
+    expect(events.find(event => event.type === 'error')?.status).toBe(422);
+    expect(listener).not.toHaveBeenCalled();
+  });
+  it('reaches independent listening and returns interpreted results instead of requesting pasted text', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => Response.json({ playabilityStatus: { status: 'LOGIN_REQUIRED', reason: 'Sign in to confirm you’re not a bot' } })));
+    listener.mockResolvedValue({ language: 'en', cues: [{ start: 0, end: 15, text: 'Hello.' }] });
+    const handlers = Route.options.server?.handlers;
+    if (!handlers || typeof handlers === 'function') throw new Error('Handler record missing');
+    const handler = handlers.POST;
+    if (typeof handler !== 'function') throw new Error('POST handler missing');
+    const response = await handler({ request: new Request('http://localhost/api/youtube-hindi', { method: 'POST', body: JSON.stringify({ url: 'https://www.youtube.com/watch?v=jNQXAC9IVRw', quality: false }) }) } as Parameters<typeof handler>[0]);
+    if (!(response instanceof Response)) throw new Error('Streaming response missing');
+    const events = (await response.text()).trim().split('\n').map(line => JSON.parse(line));
+    expect(listener).toHaveBeenCalledOnce();
+    expect(listener.mock.calls[0]?.[0]).toBe('jNQXAC9IVRw');
+    expect(events.some(event => event.type === 'error')).toBe(false);
+    expect(events.find(event => event.type === 'done')?.result.source.origin).toBe('listened');
+  });
+});

@@ -1,1 +1,95 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VSZWYsIHVzZVN0YXRlIH0gZnJvbSAicmVhY3QiOwppbXBvcnQgeyBMaW5rIH0gZnJvbSAiQHRhbnN0YWNrL3JlYWN0LXJvdXRlciI7CmltcG9ydCB7IEFycm93TGVmdCwgTG9hZGVyMiwgTWljLCBTcXVhcmUsIFZvbHVtZTIgfSBmcm9tICJsdWNpZGUtcmVhY3QiOwppbXBvcnQgeyBCdXR0b24gfSBmcm9tICJAL2NvbXBvbmVudHMvdWkvYnV0dG9uIjsKaW1wb3J0IHsgcmVjb3JkV2F2LCB0eXBlIFJlY29yZGluZyB9IGZyb20gIkAvbGliL3JlY29yZC13YXYiOwppbXBvcnQgeyByZWFkVHJhbnNjcmlwdCB9IGZyb20gIkAvbGliL3RyYW5zY3JpcHRpb24iOwppbXBvcnQgeyBzdHJlYW1TcGVlY2ggfSBmcm9tICJAL2xpYi9zdHJlYW0tc3BlZWNoIjsKaW1wb3J0IHsgZGlzcGxheUFpRXJyb3IsIGlzQ3JlZGl0RXJyb3IgfSBmcm9tICJAL2xpYi9haS9lcnJvcnMiOwppbXBvcnQgeyByZWFkRGV2aWNlRmxhZyB9IGZyb20gIkAvbGliL3F1aXotbGFiZWwtcHJlZmVyZW5jZSI7CmltcG9ydCB7IGJhdGNoUmVxdWVzdEhlYWRlcnMgfSBmcm9tICdAL2xpYi9iYXRjaC1yZXF1ZXN0LWhlYWRlcnMnOwppbXBvcnQgeyByZWFkVHV0b3JBbnN3ZXIsIHNwZWFrYWJsZVRleHQsIHRvVUlNZXNzYWdlcywgdHlwZSBUYWxrTWVzc2FnZSB9IGZyb20gIkAvbGliL3RhbGstdHVybiI7Cgp0eXBlIFBoYXNlID0gJ2lkbGUnIHwgJ2xpc3RlbmluZycgfCAnaGVhcmluZycgfCAndGhpbmtpbmcnIHwgJ3NwZWFraW5nJzsKY29uc3QgTEFCRUw6IFJlY29yZDxQaGFzZSwgc3RyaW5nPiA9IHsKICBpZGxlOiAnTWljIGRhYmFvIGF1ciBhcG5hIHNhd2FsIGJvbG8nLAogIGxpc3RlbmluZzogJ1N1biByYWhhIGhvb27igKYgYm9sa2FyIGtoYXRhbSBobyB0byBkYWJhbycsCiAgaGVhcmluZzogJ1NhbWFqaCByYWhhIGhvb27igKYnLAogIHRoaW5raW5nOiAnSmF3YWIgc29jaCByYWhhIGhvb27igKYnLAogIHNwZWFraW5nOiAnQm9sIHJhaGEgaG9vbuKApicsCn07CgpleHBvcnQgZnVuY3Rpb24gVGFsa1ZvaWNlKCkgewogIGNvbnN0IFtwaGFzZSwgc2V0UGhhc2VdID0gdXNlU3RhdGU8UGhhc2U+KCdpZGxlJyk7CiAgY29uc3QgW21lc3NhZ2VzLCBzZXRNZXNzYWdlc10gPSB1c2VTdGF0ZTxUYWxrTWVzc2FnZVtdPihbXSk7CiAgY29uc3QgW2Vycm9yLCBzZXRFcnJvcl0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgcmVjID0gdXNlUmVmPFJlY29yZGluZyB8IG51bGw+KG51bGwpOwogIGNvbnN0IGFib3J0ID0gdXNlUmVmPEFib3J0Q29udHJvbGxlciB8IG51bGw+KG51bGwpOwogIHVzZUVmZmVjdCgoKSA9PiAoKSA9PiB7IHJlYy5jdXJyZW50Py5jYW5jZWwoKTsgYWJvcnQuY3VycmVudD8uYWJvcnQoKTsgfSwgW10pOwoKICBjb25zdCBzdG9wQWxsID0gKCkgPT4geyByZWMuY3VycmVudD8uY2FuY2VsKCk7IHJlYy5jdXJyZW50ID0gbnVsbDsgYWJvcnQuY3VycmVudD8uYWJvcnQoKTsgYWJvcnQuY3VycmVudCA9IG51bGw7IHNldFBoYXNlKCdpZGxlJyk7IH07CgogIGNvbnN0IHN0YXJ0TGlzdGVuaW5nID0gYXN5bmMgKCkgPT4gewogICAgc2V0RXJyb3IoJycpOwogICAgaWYgKCFuYXZpZ2F0b3IubWVkaWFEZXZpY2VzPy5nZXRVc2VyTWVkaWEpIHsgc2V0RXJyb3IoJ0lzIGJyb3dzZXIgbWVpbiBtaWMgc3VwcG9ydCBuYWhpIGhhaS4nKTsgcmV0dXJuOyB9CiAgICB0cnkgeyByZWMuY3VycmVudCA9IGF3YWl0IHJlY29yZFdhdigpOyBzZXRQaGFzZSgnbGlzdGVuaW5nJyk7IH0KICAgIGNhdGNoIChlKSB7IHNldEVycm9yKChlIGFzIERPTUV4Y2VwdGlvbikubmFtZSA9PT0gJ05vdEFsbG93ZWRFcnJvcicgPyAnTWljIGtpIHBlcm1pc3Npb24gZG8gKGFkZHJlc3MgYmFyIG1laW4gbWljIGljb24pLicgOiAnTWljIHNodXJ1IG5haGkgaG8gcGF5YS4nKTsgfQogIH07CgogIGNvbnN0IGZpbmlzaFR1cm4gPSBhc3luYyAoKSA9PiB7CiAgICBjb25zdCByZWNvcmRpbmcgPSByZWMuY3VycmVudDsgaWYgKCFyZWNvcmRpbmcpIHJldHVybjsKICAgIHJlYy5jdXJyZW50ID0gbnVsbDsKICAgIGNvbnN0IGN0cmwgPSBuZXcgQWJvcnRDb250cm9sbGVyKCk7IGFib3J0LmN1cnJlbnQgPSBjdHJsOwogICAgdHJ5IHsKICAgICAgc2V0UGhhc2UoJ2hlYXJpbmcnKTsKICAgICAgY29uc3QgYm9keSA9IG5ldyBGb3JtRGF0YSgpOyBib2R5LmFwcGVuZCgnZmlsZScsIGF3YWl0IHJlY29yZGluZy5zdG9wKCkpOwogICAgICBjb25zdCBxdWVzdGlvbiA9IGF3YWl0IHJlYWRUcmFuc2NyaXB0KGF3YWl0IGZldGNoKCcvYXBpL3RyYW5zY3JpYmUnLCB7IG1ldGhvZDogJ1BPU1QnLCBib2R5LCBzaWduYWw6IGN0cmwuc2lnbmFsIH0pLCAoKSA9PiB7fSk7CiAgICAgIGNvbnN0IHVzZXI6IFRhbGtNZXNzYWdlID0geyBpZDogY3J5cHRvLnJhbmRvbVVVSUQoKSwgcm9sZTogJ3VzZXInLCB0ZXh0OiBxdWVzdGlvbiB9OwogICAgICBjb25zdCBhbnN3ZXJJZCA9IGNyeXB0by5yYW5kb21VVUlEKCk7CiAgICAgIGNvbnN0IGhpc3RvcnkgPSBbLi4ubWVzc2FnZXMsIHVzZXJdOwogICAgICBzZXRNZXNzYWdlcyhbLi4uaGlzdG9yeSwgeyBpZDogYW5zd2VySWQsIHJvbGU6ICdhc3Npc3RhbnQnLCB0ZXh0OiAnJyB9XSk7CiAgICAgIHNldFBoYXNlKCd0aGlua2luZycpOwogICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKCcvYXBpL2NoYXQnLCB7IG1ldGhvZDogJ1BPU1QnLCBoZWFkZXJzOiB7ICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicsIC4uLmF3YWl0IGJhdGNoUmVxdWVzdEhlYWRlcnMoKSB9LCBzaWduYWw6IGN0cmwuc2lnbmFsLCBib2R5OiBKU09OLnN0cmluZ2lmeSh7IG1lc3NhZ2VzOiB0b1VJTWVzc2FnZXMoaGlzdG9yeSksIG1vZGU6ICdkb3VidCcsIGJhdGNoOiByZWFkRGV2aWNlRmxhZygnc25hcHNvbHZlLmJhdGNoLWNvbnRleHQnLCBmYWxzZSkgfSkgfSk7CiAgICAgIGNvbnN0IGFuc3dlciA9IGF3YWl0IHJlYWRUdXRvckFuc3dlcihyZXNwb25zZSwgdGV4dCA9PiBzZXRNZXNzYWdlcyhtID0+IG0ubWFwKHggPT4geC5pZCA9PT0gYW5zd2VySWQgPyB7IC4uLngsIHRleHQgfSA6IHgpKSk7CiAgICAgIGlmIChjdHJsLnNpZ25hbC5hYm9ydGVkKSByZXR1cm47CiAgICAgIHNldFBoYXNlKCdzcGVha2luZycpOwogICAgICBhd2FpdCBzdHJlYW1TcGVlY2goJy9hcGkvc3BlZWNoJywgc3BlYWthYmxlVGV4dChhbnN3ZXIpLCBjdHJsLnNpZ25hbCk7CiAgICB9IGNhdGNoIChlKSB7CiAgICAgIGlmIChjdHJsLnNpZ25hbC5hYm9ydGVkKSByZXR1cm47CiAgICAgIGNvbnN0IG1lc3NhZ2UgPSBlIGluc3RhbmNlb2YgRXJyb3IgPyBlLm1lc3NhZ2UgOiAnS3VjaCBnYWRiYWQgaG8gZ2F5aS4nOwogICAgICBzZXRFcnJvcihpc0NyZWRpdEVycm9yKG1lc3NhZ2UpID8gYCR7ZGlzcGxheUFpRXJyb3IobWVzc2FnZSl9IFNhdmVkIHByYWN0aWNlIGFiaGkgYmhpIGNoYWxlZ2kuYCA6IGRpc3BsYXlBaUVycm9yKG1lc3NhZ2UpKTsKICAgIH0gZmluYWxseSB7CiAgICAgIGlmIChhYm9ydC5jdXJyZW50ID09PSBjdHJsKSB7IGFib3J0LmN1cnJlbnQgPSBudWxsOyBzZXRQaGFzZSgnaWRsZScpOyB9CiAgICB9CiAgfTsKCiAgY29uc3QgYnVzeSA9IHBoYXNlID09PSAnaGVhcmluZycgfHwgcGhhc2UgPT09ICd0aGlua2luZycgfHwgcGhhc2UgPT09ICdzcGVha2luZyc7CiAgcmV0dXJuICgKICAgIDxtYWluIGNsYXNzTmFtZT0ibXgtYXV0byBmbGV4IG1pbi1oLWR2aCBtYXgtdy0yeGwgZmxleC1jb2wgcHgtNCI+CiAgICAgIDxoZWFkZXIgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMyBib3JkZXItYiBweS00Ij4KICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9Imdob3N0IiBzaXplPSJpY29uIiBhc0NoaWxkPjxMaW5rIHRvPSIvIiBhcmlhLWxhYmVsPSJCYWNrIj48QXJyb3dMZWZ0IGNsYXNzTmFtZT0ic2l6ZS01IiAvPjwvTGluaz48L0J1dHRvbj4KICAgICAgICA8ZGl2PjxoMSBjbGFzc05hbWU9InRleHQteGwgZm9udC1zZW1pYm9sZCI+Vm9pY2UgbW9kZTwvaDE+PHAgY2xhc3NOYW1lPSJ0ZXh0LXNtIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+Qm9sbywgcGhpciBqYXdhYiBzdW5vPC9wPjwvZGl2PgogICAgICA8L2hlYWRlcj4KICAgICAgPHNlY3Rpb24gY2xhc3NOYW1lPSJmbGV4LTEgc3BhY2UteS0zIG92ZXJmbG93LXktYXV0byBweS02IiBhcmlhLWxpdmU9InBvbGl0ZSI+CiAgICAgICAge21lc3NhZ2VzLmxlbmd0aCA9PT0gMCAmJiA8cCBjbGFzc05hbWU9InRleHQtY2VudGVyIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+QXBuYSBORUVUIGRvdWJ0IGJvbGthciBwb29jaGhvIOKAlCBqYXdhYiBsaWtoYSBiaGkgYWF5ZWdhIGF1ciBzdW5haSBiaGkgZGVnYS48L3A+fQogICAgICAgIHttZXNzYWdlcy5tYXAobSA9PiAoCiAgICAgICAgICA8ZGl2IGtleT17bS5pZH0gY2xhc3NOYW1lPXttLnJvbGUgPT09ICd1c2VyJyA/ICdtbC1hdXRvIG1heC13LVs4NSVdIHJvdW5kZWQtMnhsIGJnLXByaW1hcnkgcHgtNCBweS0yIHRleHQtcHJpbWFyeS1mb3JlZ3JvdW5kJyA6ICdtYXgtdy1bOTAlXSByb3VuZGVkLTJ4bCBiZy1tdXRlZCBweC00IHB5LTIgd2hpdGVzcGFjZS1wcmUtd3JhcCd9PgogICAgICAgICAgICB7bS50ZXh0IHx8IDxMb2FkZXIyIGNsYXNzTmFtZT0ic2l6ZS00IGFuaW1hdGUtc3BpbiIgLz59CiAgICAgICAgICA8L2Rpdj4KICAgICAgICApKX0KICAgICAgPC9zZWN0aW9uPgogICAgICB7ZXJyb3IgJiYgPGRpdiByb2xlPSJhbGVydCIgY2xhc3NOYW1lPSJtYi0zIHJvdW5kZWQteGwgYm9yZGVyIGJvcmRlci1kZXN0cnVjdGl2ZSBweC00IHB5LTMgdGV4dC1kZXN0cnVjdGl2ZSI+e2Vycm9yfSB7L2NyZWRpdC9pLnRlc3QoZXJyb3IpICYmIDxMaW5rIHRvPSIvcHJhY3RpY2UiIGNsYXNzTmFtZT0idW5kZXJsaW5lIj5TYXZlZCBwcmFjdGljZTwvTGluaz59PC9kaXY+fQogICAgICA8Zm9vdGVyIGNsYXNzTmFtZT0iZmxleCBmbGV4LWNvbCBpdGVtcy1jZW50ZXIgZ2FwLTMgYm9yZGVyLXQgcHktNSI+CiAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXNtIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+e0xBQkVMW3BoYXNlXX08L3A+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0zIj4KICAgICAgICAgIHtwaGFzZSA9PT0gJ2xpc3RlbmluZycgPyAoCiAgICAgICAgICAgIDxCdXR0b24gc2l6ZT0ibGciIGNsYXNzTmFtZT0iaC0xNiB3LTE2IHJvdW5kZWQtZnVsbCIgb25DbGljaz17ZmluaXNoVHVybn0gYXJpYS1sYWJlbD0iQm9sbmEga2hhdGFtIj48U3F1YXJlIGNsYXNzTmFtZT0ic2l6ZS02IGZpbGwtY3VycmVudCIgLz48L0J1dHRvbj4KICAgICAgICAgICkgOiAoCiAgICAgICAgICAgIDxCdXR0b24gc2l6ZT0ibGciIGNsYXNzTmFtZT0iaC0xNiB3LTE2IHJvdW5kZWQtZnVsbCIgb25DbGljaz17c3RhcnRMaXN0ZW5pbmd9IGRpc2FibGVkPXtidXN5fSBhcmlhLWxhYmVsPSJCb2xuYSBzaHVydSBrYXJvIj57YnVzeSA/IChwaGFzZSA9PT0gJ3NwZWFraW5nJyA/IDxWb2x1bWUyIGNsYXNzTmFtZT0ic2l6ZS02IiAvPiA6IDxMb2FkZXIyIGNsYXNzTmFtZT0ic2l6ZS02IGFuaW1hdGUtc3BpbiIgLz4pIDogPE1pYyBjbGFzc05hbWU9InNpemUtNiIgLz59PC9CdXR0b24+CiAgICAgICAgICApfQogICAgICAgICAge2J1c3kgJiYgPEJ1dHRvbiB2YXJpYW50PSJvdXRsaW5lIiBvbkNsaWNrPXtzdG9wQWxsfT5Sb2tvPC9CdXR0b24+fQogICAgICAgIDwvZGl2PgogICAgICA8L2Zvb3Rlcj4KICAgIDwvbWFpbj4KICApOwp9Cg==
+import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft, Loader2, Mic, Square, Volume2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { recordWav, type Recording } from "@/lib/record-wav";
+import { readTranscript } from "@/lib/transcription";
+import { streamSpeech } from "@/lib/stream-speech";
+import { displayAiError, isCreditError } from "@/lib/ai/errors";
+import { readDeviceFlag } from "@/lib/quiz-label-preference";
+import { batchRequestHeaders } from '@/lib/batch-request-headers';
+import { readTutorAnswer, speakableText, toUIMessages, type TalkMessage } from "@/lib/talk-turn";
+
+type Phase = 'idle' | 'listening' | 'hearing' | 'thinking' | 'speaking';
+const LABEL: Record<Phase, string> = {
+  idle: 'Mic dabao aur apna sawal bolo',
+  listening: 'Sun raha hoon… bolkar khatam ho to dabao',
+  hearing: 'Samajh raha hoon…',
+  thinking: 'Jawab soch raha hoon…',
+  speaking: 'Bol raha hoon…',
+};
+
+export function TalkVoice() {
+  const [phase, setPhase] = useState<Phase>('idle');
+  const [messages, setMessages] = useState<TalkMessage[]>([]);
+  const [error, setError] = useState('');
+  const rec = useRef<Recording | null>(null);
+  const abort = useRef<AbortController | null>(null);
+  useEffect(() => () => { rec.current?.cancel(); abort.current?.abort(); }, []);
+
+  const stopAll = () => { rec.current?.cancel(); rec.current = null; abort.current?.abort(); abort.current = null; setPhase('idle'); };
+
+  const startListening = async () => {
+    setError('');
+    if (!navigator.mediaDevices?.getUserMedia) { setError('Is browser mein mic support nahi hai.'); return; }
+    try { rec.current = await recordWav(); setPhase('listening'); }
+    catch (e) { setError((e as DOMException).name === 'NotAllowedError' ? 'Mic ki permission do (address bar mein mic icon).' : 'Mic shuru nahi ho paya.'); }
+  };
+
+  const finishTurn = async () => {
+    const recording = rec.current; if (!recording) return;
+    rec.current = null;
+    const ctrl = new AbortController(); abort.current = ctrl;
+    try {
+      setPhase('hearing');
+      const body = new FormData(); body.append('file', await recording.stop());
+      const question = await readTranscript(await fetch('/api/transcribe', { method: 'POST', body, signal: ctrl.signal }), () => {});
+      const user: TalkMessage = { id: crypto.randomUUID(), role: 'user', text: question };
+      const answerId = crypto.randomUUID();
+      const history = [...messages, user];
+      setMessages([...history, { id: answerId, role: 'assistant', text: '' }]);
+      setPhase('thinking');
+      const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json', ...await batchRequestHeaders() }, signal: ctrl.signal, body: JSON.stringify({ messages: toUIMessages(history), mode: 'doubt', batch: readDeviceFlag('snapsolve.batch-context', false) }) });
+      const answer = await readTutorAnswer(response, text => setMessages(m => m.map(x => x.id === answerId ? { ...x, text } : x)));
+      if (ctrl.signal.aborted) return;
+      setPhase('speaking');
+      await streamSpeech('/api/speech', speakableText(answer), ctrl.signal);
+    } catch (e) {
+      if (ctrl.signal.aborted) return;
+      const message = e instanceof Error ? e.message : 'Kuch gadbad ho gayi.';
+      setError(isCreditError(message) ? `${displayAiError(message)} Saved practice abhi bhi chalegi.` : displayAiError(message));
+    } finally {
+      if (abort.current === ctrl) { abort.current = null; setPhase('idle'); }
+    }
+  };
+
+  const busy = phase === 'hearing' || phase === 'thinking' || phase === 'speaking';
+  return (
+    <main className="mx-auto flex min-h-dvh max-w-2xl flex-col px-4">
+      <header className="flex items-center gap-3 border-b py-4">
+        <Button variant="ghost" size="icon" asChild><Link to="/" aria-label="Back"><ArrowLeft className="size-5" /></Link></Button>
+        <div><h1 className="text-xl font-semibold">Voice mode</h1><p className="text-sm text-muted-foreground">Bolo, phir jawab suno</p></div>
+      </header>
+      <section className="flex-1 space-y-3 overflow-y-auto py-6" aria-live="polite">
+        {messages.length === 0 && <p className="text-center text-muted-foreground">Apna NEET doubt bolkar poochho — jawab likha bhi aayega aur sunai bhi dega.</p>}
+        {messages.map(m => (
+          <div key={m.id} className={m.role === 'user' ? 'ml-auto max-w-[85%] rounded-2xl bg-primary px-4 py-2 text-primary-foreground' : 'max-w-[90%] rounded-2xl bg-muted px-4 py-2 whitespace-pre-wrap'}>
+            {m.text || <Loader2 className="size-4 animate-spin" />}
+          </div>
+        ))}
+      </section>
+      {error && <div role="alert" className="mb-3 rounded-xl border border-destructive px-4 py-3 text-destructive">{error} {/credit/i.test(error) && <Link to="/practice" className="underline">Saved practice</Link>}</div>}
+      <footer className="flex flex-col items-center gap-3 border-t py-5">
+        <p className="text-sm text-muted-foreground">{LABEL[phase]}</p>
+        <div className="flex items-center gap-3">
+          {phase === 'listening' ? (
+            <Button size="lg" className="h-16 w-16 rounded-full" onClick={finishTurn} aria-label="Bolna khatam"><Square className="size-6 fill-current" /></Button>
+          ) : (
+            <Button size="lg" className="h-16 w-16 rounded-full" onClick={startListening} disabled={busy} aria-label="Bolna shuru karo">{busy ? (phase === 'speaking' ? <Volume2 className="size-6" /> : <Loader2 className="size-6 animate-spin" />) : <Mic className="size-6" />}</Button>
+          )}
+          {busy && <Button variant="outline" onClick={stopAll}>Roko</Button>}
+        </div>
+      </footer>
+    </main>
+  );
+}

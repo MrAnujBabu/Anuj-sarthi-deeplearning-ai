@@ -1,1 +1,90 @@
-Ly8gQnJvd3Nlci1zYWZlOiB0dXJucyBhbiBhdHRhY2hlZCB0cmFuc2NyaXB0L25vdGVzIGZpbGUgaW50byBwbGFpbiB0cmFuc2NyaXB0IHRleHQsIG9yIGZsYWdzIG1lZGlhIGZvciBsaXN0ZW5pbmcuCi8vIFBERi9ET0NYL09DUiBsaWJyYXJpZXMgbG9hZCBsYXppbHksIG9ubHkgd2hlbiBzdWNoIGEgZmlsZSBpcyBhdHRhY2hlZC4KCmV4cG9ydCBjb25zdCBUUkFOU0NSSVBUX1RFWFRfTElNSVQgPSA0MDBfMDAwOwpleHBvcnQgY29uc3QgVFJBTlNDUklQVF9GSUxFX0JZVEVTID0gMzAgKiAxMDI0ICogMTAyNDsKZXhwb3J0IGNvbnN0IFRSQU5TQ1JJUFRfQUNDRVBUID0gJy5tZCwubWFya2Rvd24sLnR4dCwuc3J0LC52dHQsLnNidiwucGRmLC5kb2N4LC5wcHR4LHRleHQvKixhcHBsaWNhdGlvbi9wZGYsdmlkZW8vKixhdWRpby8qJzsKCmNvbnN0IE1FRElBX0VYVCA9IC9cLihtcDR8bTR2fG1vdnx3ZWJtfG1rdnxhdml8M2dwfG1wM3xtNGF8YWFjfHdhdnxvZ2d8b2dhfG9wdXN8ZmxhY3xhbXIpJC9pOwpjb25zdCBTVUJUSVRMRV9FWFQgPSAvXC4oc3J0fHZ0dHxzYnYpJC9pOwpjb25zdCBNQVJLRE9XTl9FWFQgPSAvXC4obWR8bWFya2Rvd24pJC9pOwpjb25zdCBQTEFJTl9FWFQgPSAvXC4odHh0fHRleHR8bG9nKSQvaTsKY29uc3QgT0ZGSUNFX0VYVCA9IC9cLihkb2N4fHBwdHgpJC9pOwoKZXhwb3J0IHR5cGUgVHJhbnNjcmlwdEZpbGVLaW5kID0gJ21lZGlhJyB8ICdzdWJ0aXRsZXMnIHwgJ21hcmtkb3duJyB8ICd0ZXh0JyB8ICdwZGYnIHwgJ29mZmljZScgfCAndW5zdXBwb3J0ZWQnOwoKZXhwb3J0IGZ1bmN0aW9uIGNsYXNzaWZ5VHJhbnNjcmlwdEZpbGUoZmlsZTogeyBuYW1lOiBzdHJpbmc7IHR5cGU6IHN0cmluZyB9KTogVHJhbnNjcmlwdEZpbGVLaW5kIHsKICBjb25zdCB7IG5hbWUsIHR5cGUgfSA9IGZpbGU7CiAgaWYgKHR5cGUuc3RhcnRzV2l0aCgndmlkZW8vJykgfHwgdHlwZS5zdGFydHNXaXRoKCdhdWRpby8nKSB8fCBNRURJQV9FWFQudGVzdChuYW1lKSkgcmV0dXJuICdtZWRpYSc7CiAgaWYgKFNVQlRJVExFX0VYVC50ZXN0KG5hbWUpKSByZXR1cm4gJ3N1YnRpdGxlcyc7CiAgaWYgKE1BUktET1dOX0VYVC50ZXN0KG5hbWUpIHx8IHR5cGUgPT09ICd0ZXh0L21hcmtkb3duJykgcmV0dXJuICdtYXJrZG93bic7CiAgaWYgKHR5cGUgPT09ICdhcHBsaWNhdGlvbi9wZGYnIHx8IC9cLnBkZiQvaS50ZXN0KG5hbWUpKSByZXR1cm4gJ3BkZic7CiAgaWYgKE9GRklDRV9FWFQudGVzdChuYW1lKSkgcmV0dXJuICdvZmZpY2UnOwogIGlmIChQTEFJTl9FWFQudGVzdChuYW1lKSB8fCB0eXBlLnN0YXJ0c1dpdGgoJ3RleHQvJykpIHJldHVybiAndGV4dCc7CiAgcmV0dXJuICd1bnN1cHBvcnRlZCc7Cn0KCi8qKiBNYXJrZG93biBub3RlcyDihpIgcmVhZGFibGUgdHJhbnNjcmlwdCBwcm9zZSAoa2VlcHMgd29yZHMsIGRyb3BzIGZvcm1hdHRpbmcgYW5kIGZyb250IG1hdHRlcikuICovCmV4cG9ydCBmdW5jdGlvbiBtYXJrZG93blRvVHJhbnNjcmlwdChtZDogc3RyaW5nKSB7CiAgcmV0dXJuIG1kCiAgICAucmVwbGFjZSgvXlx1RkVGRi8sICcnKQogICAgLnJlcGxhY2UoL14tLS1cbltcc1xTXSo/XG4tLS1cbi8sICcnKQogICAgLnJlcGxhY2UoL2BgYFteXG5dKlxuKFtcc1xTXSo/KWBgYC9nLCAnJDEnKQogICAgLnJlcGxhY2UoLyFcWyhbXlxdXSopXF1cKFteKV0qXCkvZywgJyQxJykKICAgIC5yZXBsYWNlKC9cWyhbXlxdXSspXF1cKFteKV0qXCkvZywgJyQxJykKICAgIC5yZXBsYWNlKC9cW1xbKFteXF18XSspXHw/KFteXF1dKilcXVxdL2csIChfbSwgYTogc3RyaW5nLCBiOiBzdHJpbmcpID0+IGIgfHwgYSkKICAgIC5yZXBsYWNlKC9ePlxzP1xbIVteXF1dK1xdWystXT9ccz8vZ20sICcnKQogICAgLnJlcGxhY2UoL15cc3swLDN9KCN7MSw2fXw+fFstKitdfFxkK1wuKVxzKy9nbSwgJycpCiAgICAucmVwbGFjZSgvKFwqXCp8X198fn58YCkvZywgJycpCiAgICAucmVwbGFjZSgvXlxzKihbLSpfXVxzKil7Myx9JC9nbSwgJycpCiAgICAucmVwbGFjZSgvPFtePl0rPi9nLCAnJykKICAgIC5yZXBsYWNlKC9cbnszLH0vZywgJ1xuXG4nKQogICAgLnRyaW0oKTsKfQoKLyoqIFJlbW92ZXMgcGFnZSBtYXJrZXJzL09DUiBub3RlcyBhZGRlZCBieSB0aGUgUERGIHJlYWRlciBzbyB0aGV5IGFyZSBub3QgaW50ZXJwcmV0ZWQgYXMgc3BlZWNoLiAqLwpleHBvcnQgZnVuY3Rpb24gY2xlYW5QZGZUZXh0KHRleHQ6IHN0cmluZykgewogIHJldHVybiB0ZXh0LnJlcGxhY2UoL15cW1BhZ2UgXGQrXF1ccyokL2dtLCAnJykucmVwbGFjZSgvXlxbT0NSOlteXF1dKlxdXHMqJC9nbSwgJycpLnJlcGxhY2UoL1xuezMsfS9nLCAnXG5cbicpLnRyaW0oKTsKfQoKZXhwb3J0IHR5cGUgVHJhbnNjcmlwdEZpbGVSZXN1bHQgPQogIHwgeyBraW5kOiAnbWVkaWEnOyBmaWxlOiBGaWxlIH0KICB8IHsga2luZDogJ3RleHQnOyB0ZXh0OiBzdHJpbmc7IHRydW5jYXRlZDogYm9vbGVhbjsgc2Nhbm5lZDogYm9vbGVhbjsgcGFnZXM/OiBudW1iZXIgfTsKCmV4cG9ydCBjbGFzcyBUcmFuc2NyaXB0RmlsZUVycm9yIGV4dGVuZHMgRXJyb3Ige30KCmV4cG9ydCBmdW5jdGlvbiBsaW1pdFRyYW5zY3JpcHQodGV4dDogc3RyaW5nKSB7CiAgcmV0dXJuIHRleHQubGVuZ3RoID4gVFJBTlNDUklQVF9URVhUX0xJTUlUID8geyB0ZXh0OiB0ZXh0LnNsaWNlKDAsIFRSQU5TQ1JJUFRfVEVYVF9MSU1JVCksIHRydW5jYXRlZDogdHJ1ZSB9IDogeyB0ZXh0LCB0cnVuY2F0ZWQ6IGZhbHNlIH07Cn0KCi8qKiBSZWFkcyBhbiBhdHRhY2hlZCBmaWxlIG9uIHRoaXMgZGV2aWNlLiBNZWRpYSBmaWxlcyBhcmUgcmV0dXJuZWQgdW50b3VjaGVkIGZvciB0aGUgbGlzdGVuaW5nIHBhdGguICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiByZWFkVHJhbnNjcmlwdEZpbGUoZmlsZTogRmlsZSwgcHJvZ3Jlc3M6IChtZXNzYWdlOiBzdHJpbmcpID0+IHZvaWQpOiBQcm9taXNlPFRyYW5zY3JpcHRGaWxlUmVzdWx0PiB7CiAgY29uc3Qga2luZCA9IGNsYXNzaWZ5VHJhbnNjcmlwdEZpbGUoZmlsZSk7CiAgaWYgKGtpbmQgPT09ICdtZWRpYScpIHJldHVybiB7IGtpbmQ6ICdtZWRpYScsIGZpbGUgfTsKICBpZiAoa2luZCA9PT0gJ3Vuc3VwcG9ydGVkJykgdGhyb3cgbmV3IFRyYW5zY3JpcHRGaWxlRXJyb3IoJ+Ckr+CkuSBmaWxlIHR5cGUg4KSo4KS54KWA4KSCIOCkmuCksuCkpOCkvuClpCBNRCwgVFhULCBTUlQsIFZUVCwgUERGLCBET0NYIOCkr+CkviDgpJXgpYvgpIggdmlkZW8vYXVkaW8gZmlsZSDgpLLgpJfgpL7gpI/gpIHgpaQnKTsKICBpZiAoZmlsZS5zaXplID4gVFJBTlNDUklQVF9GSUxFX0JZVEVTKSB0aHJvdyBuZXcgVHJhbnNjcmlwdEZpbGVFcnJvcignRmlsZSAzMCBNQiDgpLjgpYcg4KSs4KSh4KS84KWAIOCkueCliOClpCDgpJvgpYvgpJ/gpYAgZmlsZSDgpLLgpJfgpL7gpI/gpIHgpaQnKTsKICBpZiAoIWZpbGUuc2l6ZSkgdGhyb3cgbmV3IFRyYW5zY3JpcHRGaWxlRXJyb3IoJ0ZpbGUg4KSW4KS+4KSy4KWAIOCkueCliOClpCcpOwogIGxldCByYXcgPSAnJywgc2Nhbm5lZCA9IGZhbHNlLCBwYWdlczogbnVtYmVyIHwgdW5kZWZpbmVkOwogIGlmIChraW5kID09PSAncGRmJykgewogICAgcHJvZ3Jlc3MoJ1BERiDgpKrgpKLgpLwg4KSw4KS54KS+IOCkueClguCkgeKApicpOwogICAgY29uc3QgeyByZWFkVm9pY2VQZGYgfSA9IGF3YWl0IGltcG9ydCgnLi92b2ljZS1wZGYnKTsKICAgIHRyeSB7CiAgICAgIGNvbnN0IHJlYWRpbmcgPSBhd2FpdCByZWFkVm9pY2VQZGYoZmlsZSwgdHJ1ZSwgbWVzc2FnZSA9PiBwcm9ncmVzcyhtZXNzYWdlLnJlcGxhY2UoL15SZWFkaW5nIHBhZ2UvLCAnUERGIHBhZ2UnKS5yZXBsYWNlKC9eU2Nhbm5pbmcgcGFnZS8sICdTY2FuIHBhZ2UnKSkpOwogICAgICByYXcgPSBjbGVhblBkZlRleHQocmVhZGluZy50ZXh0KTsgc2Nhbm5lZCA9IHJlYWRpbmcubWV0aG9kID09PSAnb2NyJzsgcGFnZXMgPSByZWFkaW5nLnBhZ2VzOwogICAgfSBjYXRjaCAoZXJyb3IpIHsKICAgICAgdGhyb3cgbmV3IFRyYW5zY3JpcHRGaWxlRXJyb3IoZXJyb3IgaW5zdGFuY2VvZiBFcnJvciA/IGBQREYg4KSo4KS54KWA4KSCIOCkquCkouCkvOClgCDgpJzgpL4g4KS44KSV4KWAOiAke2Vycm9yLm1lc3NhZ2V9YCA6ICdQREYg4KSo4KS54KWA4KSCIOCkquCkouCkvOClgCDgpJzgpL4g4KS44KSV4KWA4KWkJyk7CiAgICB9CiAgfSBlbHNlIGlmIChraW5kID09PSAnb2ZmaWNlJykgewogICAgcHJvZ3Jlc3MoJ0RvY3VtZW50IOCkquCkouCkvCDgpLDgpLngpL4g4KS54KWC4KSB4oCmJyk7CiAgICBjb25zdCB7IGV4dHJhY3RMb2NhbGx5IH0gPSBhd2FpdCBpbXBvcnQoJy4vZmlsZS1leHRyYWN0Jyk7CiAgICB0cnkgeyByYXcgPSAoYXdhaXQgZXh0cmFjdExvY2FsbHkoZmlsZSkpID8/ICcnOyB9CiAgICBjYXRjaCB7IHRocm93IG5ldyBUcmFuc2NyaXB0RmlsZUVycm9yKCdEb2N1bWVudCDgpJbgpYvgpLLgpL4g4KSo4KS54KWA4KSCIOCknOCkviDgpLjgpJXgpL7gpaQgRE9DWCDgpJXgpYsg4KSr4KS/4KSwIOCkuOClhyBzYXZlIOCkleCksOCkleClhyDgpLLgpJfgpL7gpI/gpIHgpaQnKTsgfQogIH0gZWxzZSB7CiAgICByYXcgPSAoYXdhaXQgZmlsZS50ZXh0KCkpLnJlcGxhY2UoL15cdUZFRkYvLCAnJyk7CiAgICBpZiAoa2luZCA9PT0gJ21hcmtkb3duJykgcmF3ID0gbWFya2Rvd25Ub1RyYW5zY3JpcHQocmF3KTsKICB9CiAgcmF3ID0gcmF3LnRyaW0oKTsKICBpZiAoIXJhdykgdGhyb3cgbmV3IFRyYW5zY3JpcHRGaWxlRXJyb3IoJ+Ckh+CkuCBmaWxlIOCkruClh+CkgiDgpKrgpKLgpLzgpKjgpYcg4KSy4KS+4KSv4KSVIHRleHQg4KSo4KS54KWA4KSCIOCkruCkv+CksuCkvuClpCcpOwogIGNvbnN0IGxpbWl0ZWQgPSBsaW1pdFRyYW5zY3JpcHQocmF3KTsKICByZXR1cm4geyBraW5kOiAndGV4dCcsIHRleHQ6IGxpbWl0ZWQudGV4dCwgdHJ1bmNhdGVkOiBsaW1pdGVkLnRydW5jYXRlZCwgc2Nhbm5lZCwgLi4uKHBhZ2VzID8geyBwYWdlcyB9IDoge30pIH07Cn0K
+// Browser-safe: turns an attached transcript/notes file into plain transcript text, or flags media for listening.
+// PDF/DOCX/OCR libraries load lazily, only when such a file is attached.
+
+export const TRANSCRIPT_TEXT_LIMIT = 400_000;
+export const TRANSCRIPT_FILE_BYTES = 30 * 1024 * 1024;
+export const TRANSCRIPT_ACCEPT = '.md,.markdown,.txt,.srt,.vtt,.sbv,.pdf,.docx,.pptx,text/*,application/pdf,video/*,audio/*';
+
+const MEDIA_EXT = /\.(mp4|m4v|mov|webm|mkv|avi|3gp|mp3|m4a|aac|wav|ogg|oga|opus|flac|amr)$/i;
+const SUBTITLE_EXT = /\.(srt|vtt|sbv)$/i;
+const MARKDOWN_EXT = /\.(md|markdown)$/i;
+const PLAIN_EXT = /\.(txt|text|log)$/i;
+const OFFICE_EXT = /\.(docx|pptx)$/i;
+
+export type TranscriptFileKind = 'media' | 'subtitles' | 'markdown' | 'text' | 'pdf' | 'office' | 'unsupported';
+
+export function classifyTranscriptFile(file: { name: string; type: string }): TranscriptFileKind {
+  const { name, type } = file;
+  if (type.startsWith('video/') || type.startsWith('audio/') || MEDIA_EXT.test(name)) return 'media';
+  if (SUBTITLE_EXT.test(name)) return 'subtitles';
+  if (MARKDOWN_EXT.test(name) || type === 'text/markdown') return 'markdown';
+  if (type === 'application/pdf' || /\.pdf$/i.test(name)) return 'pdf';
+  if (OFFICE_EXT.test(name)) return 'office';
+  if (PLAIN_EXT.test(name) || type.startsWith('text/')) return 'text';
+  return 'unsupported';
+}
+
+/** Markdown notes → readable transcript prose (keeps words, drops formatting and front matter). */
+export function markdownToTranscript(md: string) {
+  return md
+    .replace(/^\uFEFF/, '')
+    .replace(/^---\n[\s\S]*?\n---\n/, '')
+    .replace(/```[^\n]*\n([\s\S]*?)```/g, '$1')
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/\[\[([^\]|]+)\|?([^\]]*)\]\]/g, (_m, a: string, b: string) => b || a)
+    .replace(/^>\s?\[![^\]]+\][+-]?\s?/gm, '')
+    .replace(/^\s{0,3}(#{1,6}|>|[-*+]|\d+\.)\s+/gm, '')
+    .replace(/(\*\*|__|~~|`)/g, '')
+    .replace(/^\s*([-*_]\s*){3,}$/gm, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+/** Removes page markers/OCR notes added by the PDF reader so they are not interpreted as speech. */
+export function cleanPdfText(text: string) {
+  return text.replace(/^\[Page \d+\]\s*$/gm, '').replace(/^\[OCR:[^\]]*\]\s*$/gm, '').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+export type TranscriptFileResult =
+  | { kind: 'media'; file: File }
+  | { kind: 'text'; text: string; truncated: boolean; scanned: boolean; pages?: number };
+
+export class TranscriptFileError extends Error {}
+
+export function limitTranscript(text: string) {
+  return text.length > TRANSCRIPT_TEXT_LIMIT ? { text: text.slice(0, TRANSCRIPT_TEXT_LIMIT), truncated: true } : { text, truncated: false };
+}
+
+/** Reads an attached file on this device. Media files are returned untouched for the listening path. */
+export async function readTranscriptFile(file: File, progress: (message: string) => void): Promise<TranscriptFileResult> {
+  const kind = classifyTranscriptFile(file);
+  if (kind === 'media') return { kind: 'media', file };
+  if (kind === 'unsupported') throw new TranscriptFileError('यह file type नहीं चलता। MD, TXT, SRT, VTT, PDF, DOCX या कोई video/audio file लगाएँ।');
+  if (file.size > TRANSCRIPT_FILE_BYTES) throw new TranscriptFileError('File 30 MB से बड़ी है। छोटी file लगाएँ।');
+  if (!file.size) throw new TranscriptFileError('File खाली है।');
+  let raw = '', scanned = false, pages: number | undefined;
+  if (kind === 'pdf') {
+    progress('PDF पढ़ रहा हूँ…');
+    const { readVoicePdf } = await import('./voice-pdf');
+    try {
+      const reading = await readVoicePdf(file, true, message => progress(message.replace(/^Reading page/, 'PDF page').replace(/^Scanning page/, 'Scan page')));
+      raw = cleanPdfText(reading.text); scanned = reading.method === 'ocr'; pages = reading.pages;
+    } catch (error) {
+      throw new TranscriptFileError(error instanceof Error ? `PDF नहीं पढ़ी जा सकी: ${error.message}` : 'PDF नहीं पढ़ी जा सकी।');
+    }
+  } else if (kind === 'office') {
+    progress('Document पढ़ रहा हूँ…');
+    const { extractLocally } = await import('./file-extract');
+    try { raw = (await extractLocally(file)) ?? ''; }
+    catch { throw new TranscriptFileError('Document खोला नहीं जा सका। DOCX को फिर से save करके लगाएँ।'); }
+  } else {
+    raw = (await file.text()).replace(/^\uFEFF/, '');
+    if (kind === 'markdown') raw = markdownToTranscript(raw);
+  }
+  raw = raw.trim();
+  if (!raw) throw new TranscriptFileError('इस file में पढ़ने लायक text नहीं मिला।');
+  const limited = limitTranscript(raw);
+  return { kind: 'text', text: limited.text, truncated: limited.truncated, scanned, ...(pages ? { pages } : {}) };
+}

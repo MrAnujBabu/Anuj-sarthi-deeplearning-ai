@@ -1,1 +1,130 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGl0LCBleHBlY3QsIHZpIH0gZnJvbSAndml0ZXN0JzsKaW1wb3J0IHsgZHViVmlkZW9SYXRlLCBkdWJBbGlnbmVkUmF0ZSwgZHViU2Vla2VkLCBzZWdtZW50QXRUaW1lLCBydW5EdWJQbGF5YmFjayB9IGZyb20gJ0AvbGliL3lvdXR1YmUtZHViLXN5bmMnOwppbXBvcnQgeyB5b3V0dWJlVm9pY2VQcm9maWxlIH0gZnJvbSAnQC9saWIveW91dHViZS12b2ljZS1wcm9maWxlJzsKCmRlc2NyaWJlKCdZb3VUdWJlIHN5bmNocm9uaXplZCBuYXJyYXRpb24nLCAoKSA9PiB7CiAgaXQoJ2ZpdHMgdmlkZW8gdG8gbG9uZ2VyIHNwZWVjaCB3aXRob3V0IHNwZWVkaW5nIHVwIG9yIHBpdGNoaW5nIHRoZSB2b2ljZScsICgpID0+IHsKICAgIGV4cGVjdChkdWJWaWRlb1JhdGUoNDAsIDMwLCBbMC4yNSwgMC41LCAwLjc1LCAxLCAxLjUsIDJdKSkudG9CZSgwLjc1KTsKICAgIGV4cGVjdChkdWJWaWRlb1JhdGUoMjAsIDMwLCBbMC4yNSwgMC41LCAxLCAyXSkpLnRvQmUoMSk7CiAgfSk7CiAgaXQoJ2RldGVjdHMgZm9yd2FyZCBhbmQgYmFja3dhcmQgc2Vla3MgYnV0IG5vdCBub3JtYWwgcGxheWJhY2sgb3IgYnVmZmVyaW5nJywgKCkgPT4gewogICAgZXhwZWN0KGR1YlNlZWtlZCgxMCwgMTAuMDYsIDAuMDYsIDEsIHRydWUpKS50b0JlKGZhbHNlKTsKICAgIGV4cGVjdChkdWJTZWVrZWQoMTAsIDEwLCAwLjA2LCAxLCBmYWxzZSkpLnRvQmUoZmFsc2UpOwogICAgZXhwZWN0KGR1YlNlZWtlZCgxMCwgNDAsIDAuMDYsIDEsIHRydWUpKS50b0JlKHRydWUpOwogICAgZXhwZWN0KGR1YlNlZWtlZCg0MCwgMTAsIDAuMDYsIDEsIHRydWUpKS50b0JlKHRydWUpOwogIH0pOwogIGl0KCdzZWxlY3RzIHRoZSB0aW1lc3RhbXAgY29udGFpbmluZyBhIHNlZWsgYW5kIHJlY29nbml6ZXMgdGhlIGVuZCcsICgpID0+IHsKICAgIGNvbnN0IHMgPSBbeyBzdGFydDogMCwgZW5kOiAzMCwgaGluZGk6ICdhJyB9LCB7IHN0YXJ0OiAzMCwgZW5kOiA2MCwgaGluZGk6ICdiJyB9XTsKICAgIGV4cGVjdChzZWdtZW50QXRUaW1lKHMsIDM1KSkudG9CZSgxKTsKICAgIGV4cGVjdChzZWdtZW50QXRUaW1lKHMsIDUpKS50b0JlKDApOwogICAgZXhwZWN0KHNlZ21lbnRBdFRpbWUocywgNjApKS50b0JlKC0xKTsKICB9KTsKICBpdCgnbmV2ZXIgcmVwbGF5cyBmaW5pc2hlZCBuYXJyYXRpb24gd2hlbiBzZWVraW5nIGludG8gYSBzaWxlbnQgZ2FwJywgKCkgPT4gewogICAgY29uc3QgcyA9IFt7IHN0YXJ0OiAxLCBlbmQ6IDIyLCBoaW5kaTogJ+CkquCkueCksuCkvuClpCcgfSwgeyBzdGFydDogNDAsIGVuZDogNDUsIGhpbmRpOiAn4KSm4KWC4KS44KSw4KS+4KWkJyB9XTsKICAgIGV4cGVjdChzZWdtZW50QXRUaW1lKHMsIDI1KSkudG9CZSgxKTsKICAgIGV4cGVjdChzZWdtZW50QXRUaW1lKHMsIDQ1KSkudG9CZSgtMSk7CiAgfSk7CiAgaXQoJ2NvcnJlY3RzIHZpZGVvIHRpbWluZyB0b3dhcmRzIHRoZSByZW1haW5pbmcgbmF0dXJhbC1zcGVlZCBhdWRpbycsICgpID0+IHsKICAgIGV4cGVjdChkdWJBbGlnbmVkUmF0ZSg4LCA2LCBbMC4yNSwgMC41LCAwLjc1LCAxLCAxLjVdKSkudG9CZSgwLjc1KTsKICAgIGV4cGVjdChkdWJBbGlnbmVkUmF0ZSg1LCA2LCBbMC41LCAwLjc1LCAxLCAyXSkpLnRvQmUoMSk7CiAgICBleHBlY3QoZHViQWxpZ25lZFJhdGUoMTAsIDYsIFswLjUsIDAuNzUsIDFdKSkudG9CZSgwLjUpOwogIH0pOwogIGl0KCdzZWVrcyBpbnRvIHNwZWVjaCBwcm9wb3J0aW9uYWxseSBhbmQgY29ycmVjdHMgdmlkZW8gZHJpZnQgd2l0aG91dCByZXN0YXJ0aW5nIHRoZSB2b2ljZScsIGFzeW5jICgpID0+IHsKICAgIHZpLnVzZUZha2VUaW1lcnMoKTsKICAgIGNvbnN0IHdhbGxDbG9jayA9IHZpLnNweU9uKHBlcmZvcm1hbmNlLCAnbm93JykubW9ja0ltcGxlbWVudGF0aW9uKCgpID0+IERhdGUubm93KCkpOwogICAgbGV0IHRpbWUgPSA1LCBhdWRpb1RpbWUgPSAwOwogICAgY29uc3Qgc3RhcnQgPSB2aS5mbigpLCBzdG9wID0gdmkuZm4oKTsKICAgIGNvbnN0IGN0eCA9IHsgc3RhdGU6ICdydW5uaW5nJywgZ2V0IGN1cnJlbnRUaW1lKCkgeyByZXR1cm4gYXVkaW9UaW1lOyB9LCBkZXN0aW5hdGlvbjoge30sIHJlc3VtZTogdmkuZm4oKSwgc3VzcGVuZDogdmkuZm4oKSwKICAgICAgY3JlYXRlQnVmZmVyU291cmNlOiAoKSA9PiAoeyBjb25uZWN0OiB2aS5mbigpLCBkaXNjb25uZWN0OiB2aS5mbigpLCBzdGFydCwgc3RvcCwgb25lbmRlZDogbnVsbCB9KSB9IGFzIHVua25vd24gYXMgQXVkaW9Db250ZXh0OwogICAgY29uc3QgcCA9IHsgZ2V0Q3VycmVudFRpbWU6ICgpID0+IHRpbWUsIGdldFBsYXllclN0YXRlOiAoKSA9PiAxLCBnZXRQbGF5YmFja1JhdGU6ICgpID0+IDEsIGdldEF2YWlsYWJsZVBsYXliYWNrUmF0ZXM6ICgpID0+IFswLjUsIDAuNzUsIDFdLAogICAgICBzZXRQbGF5YmFja1JhdGU6IHZpLmZuKCksIG11dGU6IHZpLmZuKCksIHVuTXV0ZTogdmkuZm4oKSwgc2Vla1RvOiB2aS5mbigpLCBwbGF5VmlkZW86IHZpLmZuKCksIHBhdXNlVmlkZW86IHZpLmZuKCkgfTsKICAgIGNvbnN0IGN0bCA9IG5ldyBBYm9ydENvbnRyb2xsZXIoKTsKICAgIGNvbnN0IHRhc2sgPSBydW5EdWJQbGF5YmFjayh7IHBsYXllcjogcCwgY29udGV4dDogY3R4LCBzZWdtZW50czogW3sgc3RhcnQ6IDAsIGVuZDogMjAsIGhpbmRpOiAndGVzdCcgfV0sIGZyb206IDAsCiAgICAgIHNpZ25hbDogY3RsLnNpZ25hbCwgZ2V0QXVkaW86IGFzeW5jICgpID0+ICh7IGR1cmF0aW9uOiAzMCB9KSBhcyBBdWRpb0J1ZmZlciwgdXBkYXRlOiB2aS5mbigpLCBwYXVzZWQ6ICgpID0+IGZhbHNlLCBob2xkaW5nOiB2aS5mbigpIH0pLmNhdGNoKGUgPT4gZSk7CiAgICB0cnkgewogICAgICBhd2FpdCB2aS5hZHZhbmNlVGltZXJzQnlUaW1lQXN5bmMoMTIwKTsKICAgICAgZXhwZWN0KHN0YXJ0Lm1vY2suY2FsbHNbMF0/LlsxXSkudG9CZSg3LjUpOwogICAgICBwLnNldFBsYXliYWNrUmF0ZS5tb2NrQ2xlYXIoKTsKICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCAxMjsgaSsrKSB7IHRpbWUgKz0gMC4zOyBhdWRpb1RpbWUgKz0gMC4wNjsgYXdhaXQgdmkuYWR2YW5jZVRpbWVyc0J5VGltZUFzeW5jKDYwKTsgfQogICAgICBleHBlY3QocC5zZXRQbGF5YmFja1JhdGUpLnRvSGF2ZUJlZW5DYWxsZWRXaXRoKDAuNSk7CiAgICAgIGV4cGVjdChzdGFydCkudG9IYXZlQmVlbkNhbGxlZFRpbWVzKDEpOwogICAgICBleHBlY3Qoc3RvcCkubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKICAgICAgY3RsLmFib3J0KCk7IGF3YWl0IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWVBc3luYygxMjApOyBhd2FpdCB0YXNrOwogICAgICBleHBlY3QocC5zZXRQbGF5YmFja1JhdGUpLnRvSGF2ZUJlZW5MYXN0Q2FsbGVkV2l0aCgxKTsKICAgIH0gZmluYWxseSB7IHdhbGxDbG9jay5tb2NrUmVzdG9yZSgpOyB2aS51c2VSZWFsVGltZXJzKCk7IH0KICB9KTsKICBpdCgncHJlc2VydmVzIGRpc3RpbmN0IElzaGl0YSBhbmQgUmF0YW4gZGVsaXZlcnkgaWRlbnRpdGllcyBvbiBiYWNrdXAnLCAoKSA9PiB7CiAgICBleHBlY3QoeW91dHViZVZvaWNlUHJvZmlsZSgnaXNoaXRhX2hpX2VkdGVjaCcpPy52b2ljZU5hbWUpLnRvQmUoJ0tvcmUnKTsKICAgIGV4cGVjdCh5b3V0dWJlVm9pY2VQcm9maWxlKCdpc2hpdGFfaGlfZWR0ZWNoJyk/LmdlbmRlcikudG9CZSgnZmVtYWxlJyk7CiAgICBleHBlY3QoeW91dHViZVZvaWNlUHJvZmlsZSgncmF0YW5faGlfY3VzdG9tZXJfZXhwcmVzc2l2ZScpPy52b2ljZU5hbWUpLnRvQmUoJ0ZlbnJpcicpOwogICAgZXhwZWN0KHlvdXR1YmVWb2ljZVByb2ZpbGUoJ3JhdGFuX2hpX2N1c3RvbWVyX2V4cHJlc3NpdmUnKT8uZ2VuZGVyKS50b0JlKCdtYWxlJyk7CiAgICBleHBlY3QoeW91dHViZVZvaWNlUHJvZmlsZSgndW50cnVzdGVkJykpLnRvQmVVbmRlZmluZWQoKTsKICB9KTsKICBpdCgnZG9lcyBub3QgcGF1c2UgdGhlIHZpZGVvIG9yIHJlbG9hZCBhdWRpbyB3aGVuIHRoZSBuZXh0IHRpbWVzdGFtcCBpcyBhbHJlYWR5IHByZWZldGNoZWQnLCBhc3luYyAoKSA9PiB7CiAgICB2aS51c2VGYWtlVGltZXJzKCk7CiAgICBsZXQgdGltZSA9IDAuMSwgc3RhdGUgPSAxOwogICAgY29uc3Qgc291cmNlczogeyBvbmVuZGVkOiAoKCkgPT4gdm9pZCkgfCBudWxsIH1bXSA9IFtdOwogICAgY29uc3QgY3R4ID0geyBzdGF0ZTogJ3J1bm5pbmcnLCBjdXJyZW50VGltZTogMCwgZGVzdGluYXRpb246IHt9LCByZXN1bWU6IHZpLmZuKCksIHN1c3BlbmQ6IHZpLmZuKCksCiAgICAgIGNyZWF0ZUJ1ZmZlclNvdXJjZTogKCkgPT4geyBjb25zdCBzb3VyY2UgPSB7IG9uZW5kZWQ6IG51bGwgYXMgKCgpID0+IHZvaWQpIHwgbnVsbCwgY29ubmVjdDogdmkuZm4oKSwgZGlzY29ubmVjdDogdmkuZm4oKSwgc3RhcnQ6IHZpLmZuKCksIHN0b3A6IHZpLmZuKCkgfTsgc291cmNlcy5wdXNoKHNvdXJjZSk7IHJldHVybiBzb3VyY2U7IH0gfSBhcyB1bmtub3duIGFzIEF1ZGlvQ29udGV4dDsKICAgIGNvbnN0IHAgPSB7IGdldEN1cnJlbnRUaW1lOiAoKSA9PiB0aW1lLCBnZXRQbGF5ZXJTdGF0ZTogKCkgPT4gc3RhdGUsIGdldFBsYXliYWNrUmF0ZTogKCkgPT4gMSwgZ2V0QXZhaWxhYmxlUGxheWJhY2tSYXRlczogKCkgPT4gWzFdLAogICAgICBzZXRQbGF5YmFja1JhdGU6IHZpLmZuKCksIG11dGU6IHZpLmZuKCksIHVuTXV0ZTogdmkuZm4oKSwgc2Vla1RvOiB2aS5mbigpLCBwbGF5VmlkZW86IHZpLmZuKCgpID0+IHsgc3RhdGUgPSAxOyB9KSwgcGF1c2VWaWRlbzogdmkuZm4oKCkgPT4geyBzdGF0ZSA9IDI7IH0pIH07CiAgICBjb25zdCBjdGwgPSBuZXcgQWJvcnRDb250cm9sbGVyKCksIGJ1ZmZlciA9IHsgZHVyYXRpb246IDAuOCB9IGFzIEF1ZGlvQnVmZmVyOwogICAgY29uc3QgdGFzayA9IHJ1bkR1YlBsYXliYWNrKHsgcGxheWVyOiBwLCBjb250ZXh0OiBjdHgsIHNlZ21lbnRzOiBbeyBzdGFydDogMCwgZW5kOiAxLCBoaW5kaTogJ29uZScgfSwgeyBzdGFydDogMSwgZW5kOiAyLCBoaW5kaTogJ3R3bycgfV0sIGZyb206IDAsCiAgICAgIHNpZ25hbDogY3RsLnNpZ25hbCwgZ2V0QXVkaW86IGFzeW5jICgpID0+IGJ1ZmZlciwgcmVhZHlBdWRpbzogKCkgPT4gYnVmZmVyLCB1cGRhdGU6IHZpLmZuKCksIHBhdXNlZDogKCkgPT4gZmFsc2UsIGhvbGRpbmc6IHZpLmZuKCkgfSkuY2F0Y2goZXJyb3IgPT4gZXJyb3IpOwogICAgdHJ5IHsKICAgICAgYXdhaXQgdmkuYWR2YW5jZVRpbWVyc0J5VGltZUFzeW5jKDEyMCk7CiAgICAgIGNvbnN0IHBhdXNlcyA9IHAucGF1c2VWaWRlby5tb2NrLmNhbGxzLmxlbmd0aDsKICAgICAgc291cmNlc1swXT8ub25lbmRlZD8uKCk7IHRpbWUgPSAxLjAxOwogICAgICBhd2FpdCB2aS5hZHZhbmNlVGltZXJzQnlUaW1lQXN5bmMoMTIwKTsKICAgICAgZXhwZWN0KHNvdXJjZXMubGVuZ3RoKS50b0JlKDIpOyBleHBlY3QocC5wYXVzZVZpZGVvLm1vY2suY2FsbHMubGVuZ3RoKS50b0JlKHBhdXNlcyk7CiAgICAgIGN0bC5hYm9ydCgpOyBhd2FpdCB2aS5hZHZhbmNlVGltZXJzQnlUaW1lQXN5bmMoMTIwKTsgYXdhaXQgdGFzazsKICAgIH0gZmluYWxseSB7IHZpLnVzZVJlYWxUaW1lcnMoKTsgfQogIH0pOwogIGl0KCdyZXBvcnRzIHNwb2tlbi1hdWRpbyBwcm9ncmVzcyBmcm9tIDAgdG8gMSBmb3Igd29yZCBoaWdobGlnaHRpbmcnLCBhc3luYyAoKSA9PiB7CiAgICB2aS51c2VGYWtlVGltZXJzKCk7CiAgICBsZXQgdGltZSA9IDAuMSwgc3RhdGUgPSAxLCBhdWRpb1RpbWUgPSAwOwogICAgY29uc3Qgc291cmNlczogeyBvbmVuZGVkOiAoKCkgPT4gdm9pZCkgfCBudWxsIH1bXSA9IFtdOwogICAgY29uc3QgY3R4ID0geyBnZXQgY3VycmVudFRpbWUoKSB7IHJldHVybiBhdWRpb1RpbWU7IH0sIHN0YXRlOiAncnVubmluZycsIGRlc3RpbmF0aW9uOiB7fSwgcmVzdW1lOiB2aS5mbigpLCBzdXNwZW5kOiB2aS5mbigpLAogICAgICBjcmVhdGVCdWZmZXJTb3VyY2U6ICgpID0+IHsgY29uc3Qgc291cmNlID0geyBvbmVuZGVkOiBudWxsIGFzICgoKSA9PiB2b2lkKSB8IG51bGwsIGNvbm5lY3Q6IHZpLmZuKCksIGRpc2Nvbm5lY3Q6IHZpLmZuKCksIHN0YXJ0OiB2aS5mbigpLCBzdG9wOiB2aS5mbigpIH07IHNvdXJjZXMucHVzaChzb3VyY2UpOyByZXR1cm4gc291cmNlOyB9IH0gYXMgdW5rbm93biBhcyBBdWRpb0NvbnRleHQ7CiAgICBjb25zdCBwID0geyBnZXRDdXJyZW50VGltZTogKCkgPT4gdGltZSwgZ2V0UGxheWVyU3RhdGU6ICgpID0+IHN0YXRlLCBnZXRQbGF5YmFja1JhdGU6ICgpID0+IDEsIGdldEF2YWlsYWJsZVBsYXliYWNrUmF0ZXM6ICgpID0+IFsxXSwKICAgICAgc2V0UGxheWJhY2tSYXRlOiB2aS5mbigpLCBtdXRlOiB2aS5mbigpLCB1bk11dGU6IHZpLmZuKCksIHNlZWtUbzogdmkuZm4oKSwgcGxheVZpZGVvOiB2aS5mbigoKSA9PiB7IHN0YXRlID0gMTsgfSksIHBhdXNlVmlkZW86IHZpLmZuKCgpID0+IHsgc3RhdGUgPSAyOyB9KSB9OwogICAgY29uc3QgY3RsID0gbmV3IEFib3J0Q29udHJvbGxlcigpLCBidWZmZXIgPSB7IGR1cmF0aW9uOiAwLjggfSBhcyBBdWRpb0J1ZmZlcjsKICAgIGNvbnN0IHNlZW46IFtudW1iZXIsIG51bWJlcl1bXSA9IFtdOwogICAgY29uc3QgdGFzayA9IHJ1bkR1YlBsYXliYWNrKHsgcGxheWVyOiBwLCBjb250ZXh0OiBjdHgsIHNlZ21lbnRzOiBbeyBzdGFydDogMCwgZW5kOiAxLCBoaW5kaTogJ29uZSB0d28nIH1dLCBmcm9tOiAwLAogICAgICBzaWduYWw6IGN0bC5zaWduYWwsIGdldEF1ZGlvOiBhc3luYyAoKSA9PiBidWZmZXIsIHJlYWR5QXVkaW86ICgpID0+IGJ1ZmZlciwgdXBkYXRlOiB2aS5mbigpLCBwYXVzZWQ6ICgpID0+IGZhbHNlLCBob2xkaW5nOiB2aS5mbigpLAogICAgICBwcm9ncmVzczogKGksIGYpID0+IHsgc2Vlbi5wdXNoKFtpLCBmXSk7IH0gfSkuY2F0Y2goZXJyb3IgPT4gZXJyb3IpOwogICAgdHJ5IHsKICAgICAgYXdhaXQgdmkuYWR2YW5jZVRpbWVyc0J5VGltZUFzeW5jKDEyMCk7CiAgICAgIGV4cGVjdChzZWVuWzBdKS50b0VxdWFsKFswLCAwXSk7CiAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgNTsgaSsrKSB7IGF1ZGlvVGltZSArPSAwLjE7IHRpbWUgKz0gMC4xOyBhd2FpdCB2aS5hZHZhbmNlVGltZXJzQnlUaW1lQXN5bmMoNjApOyB9CiAgICAgIGNvbnN0IG1pZCA9IHNlZW4uZmlsdGVyKChbLCBmXSkgPT4gZiA+IDAgJiYgZiA8IDEpOwogICAgICBleHBlY3QobWlkLmxlbmd0aCkudG9CZUdyZWF0ZXJUaGFuKDApOwogICAgICBmb3IgKGxldCBpID0gMTsgaSA8IG1pZC5sZW5ndGg7IGkrKykgZXhwZWN0KG1pZFtpXSFbMV0pLnRvQmVHcmVhdGVyVGhhbk9yRXF1YWwobWlkW2kgLSAxXSFbMV0pOwogICAgICBhdWRpb1RpbWUgPSAxOyBzb3VyY2VzWzBdPy5vbmVuZGVkPy4oKTsgdGltZSA9IDEuMDE7CiAgICAgIGF3YWl0IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWVBc3luYygxMjApOwogICAgICBleHBlY3Qoc2Vlbi5hdCgtMSkpLnRvRXF1YWwoWzAsIDFdKTsKICAgICAgY3RsLmFib3J0KCk7IGF3YWl0IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWVBc3luYygxMjApOyBhd2FpdCB0YXNrOwogICAgfSBmaW5hbGx5IHsgdmkudXNlUmVhbFRpbWVycygpOyB9CiAgfSk7CiAgaXQoJ3N1c3BlbmRzIEhpbmRpIG9uIG5hdGl2ZSBwYXVzZSBhbmQgYnVmZmVyaW5nLCByZXN1bWVzIG9uIHBsYXliYWNrLCBhbmQgc3RvcHMgb24gY2FuY2VsbGF0aW9uJywgYXN5bmMgKCkgPT4gewogICAgdmkudXNlRmFrZVRpbWVycygpOwogICAgbGV0IHN0YXRlID0gMSwgY2xvY2tTdGF0ZSA9ICdydW5uaW5nJzsKICAgIGNvbnN0IHN0b3AgPSB2aS5mbigpLCBzdXNwZW5kID0gdmkuZm4oYXN5bmMgKCkgPT4geyBjbG9ja1N0YXRlID0gJ3N1c3BlbmRlZCc7IH0pLCByZXN1bWUgPSB2aS5mbihhc3luYyAoKSA9PiB7IGNsb2NrU3RhdGUgPSAncnVubmluZyc7IH0pOwogICAgY29uc3QgY3R4ID0geyBnZXQgc3RhdGUoKSB7IHJldHVybiBjbG9ja1N0YXRlOyB9LCBjdXJyZW50VGltZTogMCwgZGVzdGluYXRpb246IHt9LCByZXN1bWUsIHN1c3BlbmQsCiAgICAgIGNyZWF0ZUJ1ZmZlclNvdXJjZTogKCkgPT4gKHsgY29ubmVjdDogdmkuZm4oKSwgZGlzY29ubmVjdDogdmkuZm4oKSwgc3RhcnQ6IHZpLmZuKCksIHN0b3AsIG9uZW5kZWQ6IG51bGwgfSkgfSBhcyB1bmtub3duIGFzIEF1ZGlvQ29udGV4dDsKICAgIGNvbnN0IHAgPSB7IGdldEN1cnJlbnRUaW1lOiAoKSA9PiAwLjEsIGdldFBsYXllclN0YXRlOiAoKSA9PiBzdGF0ZSwgZ2V0UGxheWJhY2tSYXRlOiAoKSA9PiAxLCBnZXRBdmFpbGFibGVQbGF5YmFja1JhdGVzOiAoKSA9PiBbMV0sCiAgICAgIHNldFBsYXliYWNrUmF0ZTogdmkuZm4oKSwgbXV0ZTogdmkuZm4oKSwgdW5NdXRlOiB2aS5mbigpLCBzZWVrVG86IHZpLmZuKCksIHBsYXlWaWRlbzogdmkuZm4oKCkgPT4geyBzdGF0ZSA9IDE7IH0pLCBwYXVzZVZpZGVvOiB2aS5mbigoKSA9PiB7IHN0YXRlID0gMjsgfSkgfTsKICAgIGNvbnN0IGN0bCA9IG5ldyBBYm9ydENvbnRyb2xsZXIoKTsKICAgIGNvbnN0IHRhc2sgPSBydW5EdWJQbGF5YmFjayh7IHBsYXllcjogcCwgY29udGV4dDogY3R4LCBzZWdtZW50czogW3sgc3RhcnQ6IDAsIGVuZDogMzAsIGhpbmRpOiAndGVzdCcgfV0sIGZyb206IDAsCiAgICAgIHNpZ25hbDogY3RsLnNpZ25hbCwgZ2V0QXVkaW86IGFzeW5jICgpID0+ICh7IGR1cmF0aW9uOiAxMCB9KSBhcyBBdWRpb0J1ZmZlciwgdXBkYXRlOiB2aS5mbigpLCBwYXVzZWQ6ICgpID0+IGZhbHNlLCBob2xkaW5nOiB2aS5mbigpIH0pOwogICAgY29uc3Qgb3V0Y29tZSA9IHRhc2suY2F0Y2goZXJyb3IgPT4gZXJyb3IpOwogICAgdHJ5IHsKICAgICAgYXdhaXQgdmkuYWR2YW5jZVRpbWVyc0J5VGltZUFzeW5jKDEyMCk7CiAgICAgIHN0YXRlID0gMjsgYXdhaXQgdmkuYWR2YW5jZVRpbWVyc0J5VGltZUFzeW5jKDEyMCk7IGV4cGVjdChjbG9ja1N0YXRlKS50b0JlKCdzdXNwZW5kZWQnKTsKICAgICAgc3RhdGUgPSAxOyBhd2FpdCB2aS5hZHZhbmNlVGltZXJzQnlUaW1lQXN5bmMoMTIwKTsgZXhwZWN0KGNsb2NrU3RhdGUpLnRvQmUoJ3J1bm5pbmcnKTsKICAgICAgc3RhdGUgPSAzOyBhd2FpdCB2aS5hZHZhbmNlVGltZXJzQnlUaW1lQXN5bmMoMTIwKTsgZXhwZWN0KGNsb2NrU3RhdGUpLnRvQmUoJ3N1c3BlbmRlZCcpOwogICAgICBjdGwuYWJvcnQoKTsgYXdhaXQgdmkuYWR2YW5jZVRpbWVyc0J5VGltZUFzeW5jKDEyMCk7CiAgICAgIGV4cGVjdCgoYXdhaXQgb3V0Y29tZSkubmFtZSkudG9CZSgnQWJvcnRFcnJvcicpOyBleHBlY3Qoc3RvcCkudG9IYXZlQmVlbkNhbGxlZCgpOyBleHBlY3QocC51bk11dGUpLnRvSGF2ZUJlZW5DYWxsZWQoKTsKICAgIH0gZmluYWxseSB7IHZpLnVzZVJlYWxUaW1lcnMoKTsgfQogIH0pOwp9KTs=
+import { describe, it, expect, vi } from 'vitest';
+import { dubVideoRate, dubAlignedRate, dubSeeked, segmentAtTime, runDubPlayback } from '@/lib/youtube-dub-sync';
+import { youtubeVoiceProfile } from '@/lib/youtube-voice-profile';
+
+describe('YouTube synchronized narration', () => {
+  it('fits video to longer speech without speeding up or pitching the voice', () => {
+    expect(dubVideoRate(40, 30, [0.25, 0.5, 0.75, 1, 1.5, 2])).toBe(0.75);
+    expect(dubVideoRate(20, 30, [0.25, 0.5, 1, 2])).toBe(1);
+  });
+  it('detects forward and backward seeks but not normal playback or buffering', () => {
+    expect(dubSeeked(10, 10.06, 0.06, 1, true)).toBe(false);
+    expect(dubSeeked(10, 10, 0.06, 1, false)).toBe(false);
+    expect(dubSeeked(10, 40, 0.06, 1, true)).toBe(true);
+    expect(dubSeeked(40, 10, 0.06, 1, true)).toBe(true);
+  });
+  it('selects the timestamp containing a seek and recognizes the end', () => {
+    const s = [{ start: 0, end: 30, hindi: 'a' }, { start: 30, end: 60, hindi: 'b' }];
+    expect(segmentAtTime(s, 35)).toBe(1);
+    expect(segmentAtTime(s, 5)).toBe(0);
+    expect(segmentAtTime(s, 60)).toBe(-1);
+  });
+  it('never replays finished narration when seeking into a silent gap', () => {
+    const s = [{ start: 1, end: 22, hindi: 'पहला।' }, { start: 40, end: 45, hindi: 'दूसरा।' }];
+    expect(segmentAtTime(s, 25)).toBe(1);
+    expect(segmentAtTime(s, 45)).toBe(-1);
+  });
+  it('corrects video timing towards the remaining natural-speed audio', () => {
+    expect(dubAlignedRate(8, 6, [0.25, 0.5, 0.75, 1, 1.5])).toBe(0.75);
+    expect(dubAlignedRate(5, 6, [0.5, 0.75, 1, 2])).toBe(1);
+    expect(dubAlignedRate(10, 6, [0.5, 0.75, 1])).toBe(0.5);
+  });
+  it('seeks into speech proportionally and corrects video drift without restarting the voice', async () => {
+    vi.useFakeTimers();
+    const wallClock = vi.spyOn(performance, 'now').mockImplementation(() => Date.now());
+    let time = 5, audioTime = 0;
+    const start = vi.fn(), stop = vi.fn();
+    const ctx = { state: 'running', get currentTime() { return audioTime; }, destination: {}, resume: vi.fn(), suspend: vi.fn(),
+      createBufferSource: () => ({ connect: vi.fn(), disconnect: vi.fn(), start, stop, onended: null }) } as unknown as AudioContext;
+    const p = { getCurrentTime: () => time, getPlayerState: () => 1, getPlaybackRate: () => 1, getAvailablePlaybackRates: () => [0.5, 0.75, 1],
+      setPlaybackRate: vi.fn(), mute: vi.fn(), unMute: vi.fn(), seekTo: vi.fn(), playVideo: vi.fn(), pauseVideo: vi.fn() };
+    const ctl = new AbortController();
+    const task = runDubPlayback({ player: p, context: ctx, segments: [{ start: 0, end: 20, hindi: 'test' }], from: 0,
+      signal: ctl.signal, getAudio: async () => ({ duration: 30 }) as AudioBuffer, update: vi.fn(), paused: () => false, holding: vi.fn() }).catch(e => e);
+    try {
+      await vi.advanceTimersByTimeAsync(120);
+      expect(start.mock.calls[0]?.[1]).toBe(7.5);
+      p.setPlaybackRate.mockClear();
+      for (let i = 0; i < 12; i++) { time += 0.3; audioTime += 0.06; await vi.advanceTimersByTimeAsync(60); }
+      expect(p.setPlaybackRate).toHaveBeenCalledWith(0.5);
+      expect(start).toHaveBeenCalledTimes(1);
+      expect(stop).not.toHaveBeenCalled();
+      ctl.abort(); await vi.advanceTimersByTimeAsync(120); await task;
+      expect(p.setPlaybackRate).toHaveBeenLastCalledWith(1);
+    } finally { wallClock.mockRestore(); vi.useRealTimers(); }
+  });
+  it('preserves distinct Ishita and Ratan delivery identities on backup', () => {
+    expect(youtubeVoiceProfile('ishita_hi_edtech')?.voiceName).toBe('Kore');
+    expect(youtubeVoiceProfile('ishita_hi_edtech')?.gender).toBe('female');
+    expect(youtubeVoiceProfile('ratan_hi_customer_expressive')?.voiceName).toBe('Fenrir');
+    expect(youtubeVoiceProfile('ratan_hi_customer_expressive')?.gender).toBe('male');
+    expect(youtubeVoiceProfile('untrusted')).toBeUndefined();
+  });
+  it('does not pause the video or reload audio when the next timestamp is already prefetched', async () => {
+    vi.useFakeTimers();
+    let time = 0.1, state = 1;
+    const sources: { onended: (() => void) | null }[] = [];
+    const ctx = { state: 'running', currentTime: 0, destination: {}, resume: vi.fn(), suspend: vi.fn(),
+      createBufferSource: () => { const source = { onended: null as (() => void) | null, connect: vi.fn(), disconnect: vi.fn(), start: vi.fn(), stop: vi.fn() }; sources.push(source); return source; } } as unknown as AudioContext;
+    const p = { getCurrentTime: () => time, getPlayerState: () => state, getPlaybackRate: () => 1, getAvailablePlaybackRates: () => [1],
+      setPlaybackRate: vi.fn(), mute: vi.fn(), unMute: vi.fn(), seekTo: vi.fn(), playVideo: vi.fn(() => { state = 1; }), pauseVideo: vi.fn(() => { state = 2; }) };
+    const ctl = new AbortController(), buffer = { duration: 0.8 } as AudioBuffer;
+    const task = runDubPlayback({ player: p, context: ctx, segments: [{ start: 0, end: 1, hindi: 'one' }, { start: 1, end: 2, hindi: 'two' }], from: 0,
+      signal: ctl.signal, getAudio: async () => buffer, readyAudio: () => buffer, update: vi.fn(), paused: () => false, holding: vi.fn() }).catch(error => error);
+    try {
+      await vi.advanceTimersByTimeAsync(120);
+      const pauses = p.pauseVideo.mock.calls.length;
+      sources[0]?.onended?.(); time = 1.01;
+      await vi.advanceTimersByTimeAsync(120);
+      expect(sources.length).toBe(2); expect(p.pauseVideo.mock.calls.length).toBe(pauses);
+      ctl.abort(); await vi.advanceTimersByTimeAsync(120); await task;
+    } finally { vi.useRealTimers(); }
+  });
+  it('reports spoken-audio progress from 0 to 1 for word highlighting', async () => {
+    vi.useFakeTimers();
+    let time = 0.1, state = 1, audioTime = 0;
+    const sources: { onended: (() => void) | null }[] = [];
+    const ctx = { get currentTime() { return audioTime; }, state: 'running', destination: {}, resume: vi.fn(), suspend: vi.fn(),
+      createBufferSource: () => { const source = { onended: null as (() => void) | null, connect: vi.fn(), disconnect: vi.fn(), start: vi.fn(), stop: vi.fn() }; sources.push(source); return source; } } as unknown as AudioContext;
+    const p = { getCurrentTime: () => time, getPlayerState: () => state, getPlaybackRate: () => 1, getAvailablePlaybackRates: () => [1],
+      setPlaybackRate: vi.fn(), mute: vi.fn(), unMute: vi.fn(), seekTo: vi.fn(), playVideo: vi.fn(() => { state = 1; }), pauseVideo: vi.fn(() => { state = 2; }) };
+    const ctl = new AbortController(), buffer = { duration: 0.8 } as AudioBuffer;
+    const seen: [number, number][] = [];
+    const task = runDubPlayback({ player: p, context: ctx, segments: [{ start: 0, end: 1, hindi: 'one two' }], from: 0,
+      signal: ctl.signal, getAudio: async () => buffer, readyAudio: () => buffer, update: vi.fn(), paused: () => false, holding: vi.fn(),
+      progress: (i, f) => { seen.push([i, f]); } }).catch(error => error);
+    try {
+      await vi.advanceTimersByTimeAsync(120);
+      expect(seen[0]).toEqual([0, 0]);
+      for (let i = 0; i < 5; i++) { audioTime += 0.1; time += 0.1; await vi.advanceTimersByTimeAsync(60); }
+      const mid = seen.filter(([, f]) => f > 0 && f < 1);
+      expect(mid.length).toBeGreaterThan(0);
+      for (let i = 1; i < mid.length; i++) expect(mid[i]![1]).toBeGreaterThanOrEqual(mid[i - 1]![1]);
+      audioTime = 1; sources[0]?.onended?.(); time = 1.01;
+      await vi.advanceTimersByTimeAsync(120);
+      expect(seen.at(-1)).toEqual([0, 1]);
+      ctl.abort(); await vi.advanceTimersByTimeAsync(120); await task;
+    } finally { vi.useRealTimers(); }
+  });
+  it('suspends Hindi on native pause and buffering, resumes on playback, and stops on cancellation', async () => {
+    vi.useFakeTimers();
+    let state = 1, clockState = 'running';
+    const stop = vi.fn(), suspend = vi.fn(async () => { clockState = 'suspended'; }), resume = vi.fn(async () => { clockState = 'running'; });
+    const ctx = { get state() { return clockState; }, currentTime: 0, destination: {}, resume, suspend,
+      createBufferSource: () => ({ connect: vi.fn(), disconnect: vi.fn(), start: vi.fn(), stop, onended: null }) } as unknown as AudioContext;
+    const p = { getCurrentTime: () => 0.1, getPlayerState: () => state, getPlaybackRate: () => 1, getAvailablePlaybackRates: () => [1],
+      setPlaybackRate: vi.fn(), mute: vi.fn(), unMute: vi.fn(), seekTo: vi.fn(), playVideo: vi.fn(() => { state = 1; }), pauseVideo: vi.fn(() => { state = 2; }) };
+    const ctl = new AbortController();
+    const task = runDubPlayback({ player: p, context: ctx, segments: [{ start: 0, end: 30, hindi: 'test' }], from: 0,
+      signal: ctl.signal, getAudio: async () => ({ duration: 10 }) as AudioBuffer, update: vi.fn(), paused: () => false, holding: vi.fn() });
+    const outcome = task.catch(error => error);
+    try {
+      await vi.advanceTimersByTimeAsync(120);
+      state = 2; await vi.advanceTimersByTimeAsync(120); expect(clockState).toBe('suspended');
+      state = 1; await vi.advanceTimersByTimeAsync(120); expect(clockState).toBe('running');
+      state = 3; await vi.advanceTimersByTimeAsync(120); expect(clockState).toBe('suspended');
+      ctl.abort(); await vi.advanceTimersByTimeAsync(120);
+      expect((await outcome).name).toBe('AbortError'); expect(stop).toHaveBeenCalled(); expect(p.unMute).toHaveBeenCalled();
+    } finally { vi.useRealTimers(); }
+  });
+});

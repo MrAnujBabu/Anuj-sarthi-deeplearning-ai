@@ -1,1 +1,54 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBjbGFzc2lmeUFpRmFpbHVyZSwgZW5jb2RlQWlGYWlsdXJlLCBpc0NvbmZpZ3VyYXRpb25FcnJvciwgaXNDcmVkaXRFcnJvciB9IGZyb20gIkAvbGliL2FpL2Vycm9ycyI7CmltcG9ydCB7IGV4dHJhY3RRdWl6T3B0aW9ucyB9IGZyb20gIkAvbGliL3F1aXotb3B0aW9ucyI7CgpkZXNjcmliZSgiQUkgZmFpbHVyZSBjbGFzc2lmaWNhdGlvbiIsICgpID0+IHsKICBpdCgidHJlYXRzIFVua25vd24gbW9kZWwgYXMgYSBzZXR1cCBpc3N1ZSwgbm90IGEgY3JlZGl0IHNob3J0YWdlIiwgKCkgPT4gewogICAgY29uc3QgZiA9IGNsYXNzaWZ5QWlGYWlsdXJlKDQwMCwgeyBlcnJvcjogeyBtZXNzYWdlOiAiVW5rbm93biBtb2RlbDogYW50aHJvcGljL2ZvbyIgfSB9KTsKICAgIGV4cGVjdChmLmtpbmQpLnRvQmUoImNvbmZpZ3VyYXRpb24iKTsKICAgIGNvbnN0IG1zZyA9IGVuY29kZUFpRmFpbHVyZShmKTsKICAgIGV4cGVjdChpc0NyZWRpdEVycm9yKG1zZykpLnRvQmUoZmFsc2UpOwogICAgZXhwZWN0KGlzQ29uZmlndXJhdGlvbkVycm9yKG1zZykpLnRvQmUodHJ1ZSk7CiAgfSk7CiAgaXQoInRyZWF0cyA0MDIgYXMgY3JlZGl0cyIsICgpID0+IHsKICAgIGV4cGVjdChjbGFzc2lmeUFpRmFpbHVyZSg0MDIsIHt9KS5raW5kKS50b0JlKCJjcmVkaXRzIik7CiAgfSk7CiAgaXQoInRyZWF0cyBhIHJhdyBnYXRld2F5IDQwMSBhcyBhIHdvcmtzcGFjZSBBSS1jb25uZWN0aW9uIGlzc3VlLCBuZXZlciBhcyBjcmVkaXRzIG9yIHJhdyAnVW5hdXRob3JpemVkJyIsICgpID0+IHsKICAgIGNvbnN0IGYgPSBjbGFzc2lmeUFpRmFpbHVyZSg0MDEsIHsgZXJyb3I6IHsgbWVzc2FnZTogIlVuYXV0aG9yaXplZCIgfSB9KTsKICAgIGV4cGVjdChmLmtpbmQpLnRvQmUoImNvbmZpZ3VyYXRpb24iKTsKICAgIGV4cGVjdChmLm1lc3NhZ2UpLm5vdC50b0JlKCJVbmF1dGhvcml6ZWQiKTsKICAgIGV4cGVjdChmLm1lc3NhZ2UpLnRvQ29udGFpbigid29ya3NwYWNlIik7CiAgICBleHBlY3QoaXNDcmVkaXRFcnJvcihlbmNvZGVBaUZhaWx1cmUoZikpKS50b0JlKGZhbHNlKTsKICAgIGV4cGVjdChpc0NvbmZpZ3VyYXRpb25FcnJvcihlbmNvZGVBaUZhaWx1cmUoZikpKS50b0JlKHRydWUpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCJxdWl6IG9wdGlvbnMiLCAoKSA9PiB7CiAgaXQoInB1bGxzIEEtRCBvcHRpb24gdGV4dCBmb3IgYW5zd2VyIGNhcmRzIiwgKCkgPT4gewogICAgY29uc3QgciA9IGV4dHJhY3RRdWl6T3B0aW9ucygiKipRMS4qKiBXaGljaCB0aXNzdWU/XG4oQSkgWHlsZW1cbihCKSBFbmRvZGVybWlzXG4oQykgUGhsb2VtXG4oRCkgQ29ydGV4IiwgWyJBIiwgIkIiLCAiQyIsICJEIl0pOwogICAgZXhwZWN0KHIubGFiZWxzWydCJ10pLnRvQmUoIkVuZG9kZXJtaXMiKTsKICAgIGV4cGVjdChyLnRleHQpLnRvQmUoIioqUTEuKiogV2hpY2ggdGlzc3VlPyIpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCJxdWl6IG9wdGlvbnMgd2l0aCBmdWxsLXRleHQgdGFncyIsICgpID0+IHsKICBpdCgicmVtb3ZlcyB0aGUgaW5saW5lIG9wdGlvbiBsaW5lIHNvIG9wdGlvbnMgc2hvdyBvbmx5IG9uIHRoZSBjYXJkcyIsICgpID0+IHsKICAgIGNvbnN0IHIgPSBleHRyYWN0UXVpek9wdGlvbnMoIioqUTEuKiogU3RyaXBzIG1hZGUgb2Y/XG5cbihBKSBMaWduaW4gKEIpIEN1dGluIChDKSBTdWJlcmluIChEKSBDZWxsdWxvc2UiLCBbIkxpZ25pbiIsICJDdXRpbiIsICJTdWJlcmluIiwgIkNlbGx1bG9zZSJdKTsKICAgIGV4cGVjdChyLnRleHQpLnRvQmUoIioqUTEuKiogU3RyaXBzIG1hZGUgb2Y/Iik7CiAgfSk7Cn0pOwoKZGVzY3JpYmUoInN0YWxlIGFwcCBBSSBrZXkgYWZ0ZXIgYSB3b3Jrc3BhY2UgbW92ZSIsICgpID0+IHsKICBpdCgidHJlYXRzICdMT1ZBQkxFX0FQSV9LRVkgaXMgbm90IHJlZ2lzdGVyZWQnIGFzIGEgc2V0dXAgaXNzdWUsIG5vdCBhIG1vZGVsIGRlbmlhbCBvciBjcmVkaXRzIiwgKCkgPT4gewogICAgY29uc3QgZiA9IGNsYXNzaWZ5QWlGYWlsdXJlKDQwMywgeyBlcnJvcjogeyB0eXBlOiAibG92YWJsZV9hcGlfa2V5X25vdF9yZWdpc3RlcmVkIiwgbWVzc2FnZTogIkxPVkFCTEVfQVBJX0tFWSBpcyBub3QgcmVnaXN0ZXJlZCBmb3IgdGhpcyBwcm9qZWN0IiB9IH0pOwogICAgZXhwZWN0KGYua2luZCkudG9CZSgiY29uZmlndXJhdGlvbiIpOwogICAgZXhwZWN0KGlzQ3JlZGl0RXJyb3IoZW5jb2RlQWlGYWlsdXJlKGYpKSkudG9CZShmYWxzZSk7CiAgICBleHBlY3QoaXNDb25maWd1cmF0aW9uRXJyb3IoZW5jb2RlQWlGYWlsdXJlKGYpKSkudG9CZSh0cnVlKTsKICB9KTsKICBpdCgicmVjb2duaXNlcyB0aGUgbWVzc2FnZSBldmVuIHdoZW4gdGhlIGVycm9yIHR5cGUgaXMgbWlzc2luZyIsICgpID0+IHsKICAgIGV4cGVjdChjbGFzc2lmeUFpRmFpbHVyZSg0MDMsIHsgbWVzc2FnZTogIkxPVkFCTEVfQVBJX0tFWSBpcyBub3QgcmVnaXN0ZXJlZCBmb3IgdGhpcyBwcm9qZWN0IiB9KS5raW5kKS50b0JlKCJjb25maWd1cmF0aW9uIik7CiAgfSk7CiAgaXQoInN0aWxsIHRyZWF0cyBhIHJlYWwgcHJvdmlkZXIgcmVmdXNhbCBhcyBkZW5pZWQiLCAoKSA9PiB7CiAgICBleHBlY3QoY2xhc3NpZnlBaUZhaWx1cmUoNDAzLCB7IGVycm9yOiB7IHR5cGU6ICJwZXJtaXNzaW9uX2Vycm9yIiwgbWVzc2FnZTogIkFjY2VzcyBkZW5pZWQgYnkgcHJvdmlkZXIiIH0gfSkua2luZCkudG9CZSgiZGVuaWVkIik7CiAgfSk7Cn0pOwo=
+import { describe, expect, it } from "vitest";
+import { classifyAiFailure, encodeAiFailure, isConfigurationError, isCreditError } from "@/lib/ai/errors";
+import { extractQuizOptions } from "@/lib/quiz-options";
+
+describe("AI failure classification", () => {
+  it("treats Unknown model as a setup issue, not a credit shortage", () => {
+    const f = classifyAiFailure(400, { error: { message: "Unknown model: anthropic/foo" } });
+    expect(f.kind).toBe("configuration");
+    const msg = encodeAiFailure(f);
+    expect(isCreditError(msg)).toBe(false);
+    expect(isConfigurationError(msg)).toBe(true);
+  });
+  it("treats 402 as credits", () => {
+    expect(classifyAiFailure(402, {}).kind).toBe("credits");
+  });
+  it("treats a raw gateway 401 as a workspace AI-connection issue, never as credits or raw 'Unauthorized'", () => {
+    const f = classifyAiFailure(401, { error: { message: "Unauthorized" } });
+    expect(f.kind).toBe("configuration");
+    expect(f.message).not.toBe("Unauthorized");
+    expect(f.message).toContain("workspace");
+    expect(isCreditError(encodeAiFailure(f))).toBe(false);
+    expect(isConfigurationError(encodeAiFailure(f))).toBe(true);
+  });
+});
+
+describe("quiz options", () => {
+  it("pulls A-D option text for answer cards", () => {
+    const r = extractQuizOptions("**Q1.** Which tissue?\n(A) Xylem\n(B) Endodermis\n(C) Phloem\n(D) Cortex", ["A", "B", "C", "D"]);
+    expect(r.labels['B']).toBe("Endodermis");
+    expect(r.text).toBe("**Q1.** Which tissue?");
+  });
+});
+
+describe("quiz options with full-text tags", () => {
+  it("removes the inline option line so options show only on the cards", () => {
+    const r = extractQuizOptions("**Q1.** Strips made of?\n\n(A) Lignin (B) Cutin (C) Suberin (D) Cellulose", ["Lignin", "Cutin", "Suberin", "Cellulose"]);
+    expect(r.text).toBe("**Q1.** Strips made of?");
+  });
+});
+
+describe("stale app AI key after a workspace move", () => {
+  it("treats 'LOVABLE_API_KEY is not registered' as a setup issue, not a model denial or credits", () => {
+    const f = classifyAiFailure(403, { error: { type: "lovable_api_key_not_registered", message: "LOVABLE_API_KEY is not registered for this project" } });
+    expect(f.kind).toBe("configuration");
+    expect(isCreditError(encodeAiFailure(f))).toBe(false);
+    expect(isConfigurationError(encodeAiFailure(f))).toBe(true);
+  });
+  it("recognises the message even when the error type is missing", () => {
+    expect(classifyAiFailure(403, { message: "LOVABLE_API_KEY is not registered for this project" }).kind).toBe("configuration");
+  });
+  it("still treats a real provider refusal as denied", () => {
+    expect(classifyAiFailure(403, { error: { type: "permission_error", message: "Access denied by provider" } }).kind).toBe("denied");
+  });
+});

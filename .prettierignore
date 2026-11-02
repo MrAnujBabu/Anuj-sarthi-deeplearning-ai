@@ -1,1 +1,8 @@
-bm9kZV9tb2R1bGVzCmRpc3QKLm91dHB1dAoudmlueGkKcG5wbS1sb2NrLnlhbWwKcGFja2FnZS1sb2NrLmpzb24KYnVuLmxvY2sKcm91dGVUcmVlLmdlbi50cwo=
+node_modules
+dist
+.output
+.vinxi
+pnpm-lock.yaml
+package-lock.json
+bun.lock
+routeTree.gen.ts

@@ -1,1 +1,19 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwoKY29uc3QgTU9CSUxFX0JSRUFLUE9JTlQgPSA3Njg7CgpleHBvcnQgZnVuY3Rpb24gdXNlSXNNb2JpbGUoKSB7CiAgY29uc3QgW2lzTW9iaWxlLCBzZXRJc01vYmlsZV0gPSBSZWFjdC51c2VTdGF0ZTxib29sZWFuIHwgdW5kZWZpbmVkPih1bmRlZmluZWQpOwoKICBSZWFjdC51c2VFZmZlY3QoKCkgPT4gewogICAgY29uc3QgbXFsID0gd2luZG93Lm1hdGNoTWVkaWEoYChtYXgtd2lkdGg6ICR7TU9CSUxFX0JSRUFLUE9JTlQgLSAxfXB4KWApOwogICAgY29uc3Qgb25DaGFuZ2UgPSAoKSA9PiB7CiAgICAgIHNldElzTW9iaWxlKHdpbmRvdy5pbm5lcldpZHRoIDwgTU9CSUxFX0JSRUFLUE9JTlQpOwogICAgfTsKICAgIG1xbC5hZGRFdmVudExpc3RlbmVyKCJjaGFuZ2UiLCBvbkNoYW5nZSk7CiAgICBzZXRJc01vYmlsZSh3aW5kb3cuaW5uZXJXaWR0aCA8IE1PQklMRV9CUkVBS1BPSU5UKTsKICAgIHJldHVybiAoKSA9PiBtcWwucmVtb3ZlRXZlbnRMaXN0ZW5lcigiY2hhbmdlIiwgb25DaGFuZ2UpOwogIH0sIFtdKTsKCiAgcmV0dXJuICEhaXNNb2JpbGU7Cn0K
+import * as React from "react";
+
+const MOBILE_BREAKPOINT = 768;
+
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined);
+
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const onChange = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+    mql.addEventListener("change", onChange);
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  return !!isMobile;
+}

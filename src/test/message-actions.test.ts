@@ -1,1 +1,29 @@
-aW1wb3J0IHsgYmVmb3JlRWFjaCwgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBnZXRWb3RlLCBzZXRWb3RlIH0gZnJvbSAiQC9jb21wb25lbnRzL21lc3NhZ2UtYWN0aW9ucyI7CgpkZXNjcmliZSgiYW5zd2VyIHZvdGVzIiwgKCkgPT4gewogIGJlZm9yZUVhY2goKCkgPT4gbG9jYWxTdG9yYWdlLmNsZWFyKCkpOwoKICBpdCgic3RvcmVzIGEgbGlrZSBwZXIgbWVzc2FnZSBpZCIsICgpID0+IHsKICAgIHNldFZvdGUoIm0xIiwgInVwIik7CiAgICBleHBlY3QoZ2V0Vm90ZSgibTEiKSkudG9CZSgidXAiKTsKICAgIGV4cGVjdChnZXRWb3RlKCJtMiIpKS50b0JlTnVsbCgpOwogIH0pOwoKICBpdCgic3dpdGNoZXMgYmV0d2VlbiBsaWtlIGFuZCB1bmxpa2UiLCAoKSA9PiB7CiAgICBzZXRWb3RlKCJtMSIsICJ1cCIpOwogICAgc2V0Vm90ZSgibTEiLCAiZG93biIpOwogICAgZXhwZWN0KGdldFZvdGUoIm0xIikpLnRvQmUoImRvd24iKTsKICB9KTsKCiAgaXQoImNsZWFycyB0aGUgdm90ZSB3aGVuIHRvZ2dsZWQgb2ZmIiwgKCkgPT4gewogICAgc2V0Vm90ZSgibTEiLCAidXAiKTsKICAgIHNldFZvdGUoIm0xIiwgbnVsbCk7CiAgICBleHBlY3QoZ2V0Vm90ZSgibTEiKSkudG9CZU51bGwoKTsKICB9KTsKCiAgaXQoInN1cnZpdmVzIGNvcnJ1cHQgc3RvcmFnZSIsICgpID0+IHsKICAgIGxvY2FsU3RvcmFnZS5zZXRJdGVtKCJzbmFwc29sdmUudm90ZXMudjEiLCAibm90LWpzb24iKTsKICAgIGV4cGVjdChnZXRWb3RlKCJtMSIpKS50b0JlTnVsbCgpOwogIH0pOwp9KTsK
+import { beforeEach, describe, expect, it } from "vitest";
+import { getVote, setVote } from "@/components/message-actions";
+
+describe("answer votes", () => {
+  beforeEach(() => localStorage.clear());
+
+  it("stores a like per message id", () => {
+    setVote("m1", "up");
+    expect(getVote("m1")).toBe("up");
+    expect(getVote("m2")).toBeNull();
+  });
+
+  it("switches between like and unlike", () => {
+    setVote("m1", "up");
+    setVote("m1", "down");
+    expect(getVote("m1")).toBe("down");
+  });
+
+  it("clears the vote when toggled off", () => {
+    setVote("m1", "up");
+    setVote("m1", null);
+    expect(getVote("m1")).toBeNull();
+  });
+
+  it("survives corrupt storage", () => {
+    localStorage.setItem("snapsolve.votes.v1", "not-json");
+    expect(getVote("m1")).toBeNull();
+  });
+});

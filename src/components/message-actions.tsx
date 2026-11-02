@@ -1,1 +1,112 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VSZWYsIHVzZVN0YXRlLCB0eXBlIFJlYWN0Tm9kZSB9IGZyb20gInJlYWN0IjsKaW1wb3J0IHsgQ2hlY2ssIENvcHksIE1vcmVIb3Jpem9udGFsLCBTaGFyZTIsIFNxdWFyZSwgVGh1bWJzRG93biwgVGh1bWJzVXAsIFZvbHVtZTIgfSBmcm9tICJsdWNpZGUtcmVhY3QiOwppbXBvcnQgeyB0b2FzdCB9IGZyb20gInNvbm5lciI7CmltcG9ydCB7IHN0cmVhbVNwZWVjaCB9IGZyb20gIkAvbGliL3N0cmVhbS1zcGVlY2giOwppbXBvcnQgeyBCdXR0b24gfSBmcm9tICJAL2NvbXBvbmVudHMvdWkvYnV0dG9uIjsKaW1wb3J0IHsgRHJvcGRvd25NZW51LCBEcm9wZG93bk1lbnVDb250ZW50LCBEcm9wZG93bk1lbnVJdGVtLCBEcm9wZG93bk1lbnVUcmlnZ2VyIH0gZnJvbSAiQC9jb21wb25lbnRzL3VpL2Ryb3Bkb3duLW1lbnUiOwoKdHlwZSBWb3RlID0gInVwIiB8ICJkb3duIiB8IG51bGw7CmNvbnN0IEtFWSA9ICJzbmFwc29sdmUudm90ZXMudjEiOwoKZnVuY3Rpb24gcmVhZFZvdGVzKCk6IFJlY29yZDxzdHJpbmcsIFZvdGU+IHsKICB0cnkgewogICAgY29uc3QgdiA9IEpTT04ucGFyc2UobG9jYWxTdG9yYWdlLmdldEl0ZW0oS0VZKSB8fCAie30iKTsKICAgIHJldHVybiB2ICYmIHR5cGVvZiB2ID09PSAib2JqZWN0IiA/IHYgOiB7fTsKICB9IGNhdGNoIHsKICAgIHJldHVybiB7fTsKICB9Cn0KCmV4cG9ydCBmdW5jdGlvbiBzZXRWb3RlKGlkOiBzdHJpbmcsIHZvdGU6IFZvdGUpIHsKICBjb25zdCB2b3RlcyA9IHJlYWRWb3RlcygpOwogIGlmICh2b3RlKSB2b3Rlc1tpZF0gPSB2b3RlOwogIGVsc2UgZGVsZXRlIHZvdGVzW2lkXTsKICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbShLRVksIEpTT04uc3RyaW5naWZ5KHZvdGVzKSk7Cn0KCmV4cG9ydCBmdW5jdGlvbiBnZXRWb3RlKGlkOiBzdHJpbmcpOiBWb3RlIHsKICByZXR1cm4gcmVhZFZvdGVzKClbaWRdID8/IG51bGw7Cn0KCi8qKiBMaWtlIC8gdW5saWtlIC8gY29weSAvIHNoYXJlIGFjdGlvbnMgdW5kZXIgYW4gYWdlbnQgcmVwbHkuIFN0b3JlZCBsb2NhbGx5IHBlciBtZXNzYWdlIGlkLiAqLwpleHBvcnQgZnVuY3Rpb24gTWVzc2FnZUFjdGlvbnMoeyBtZXNzYWdlSWQsIHRleHQsIGNoaWxkcmVuIH06IHsgbWVzc2FnZUlkOiBzdHJpbmc7IHRleHQ6IHN0cmluZzsgY2hpbGRyZW4/OiBSZWFjdE5vZGUgfSkgewogIGNvbnN0IFt2b3RlLCBzZXRWb3RlU3RhdGVdID0gdXNlU3RhdGU8Vm90ZT4obnVsbCk7CiAgY29uc3QgW2NvcGllZCwgc2V0Q29waWVkXSA9IHVzZVN0YXRlKGZhbHNlKTsKICB1c2VFZmZlY3QoKCkgPT4gc2V0Vm90ZVN0YXRlKGdldFZvdGUobWVzc2FnZUlkKSksIFttZXNzYWdlSWRdKTsKCiAgY29uc3QgY2FzdCA9ICh2OiBFeGNsdWRlPFZvdGUsIG51bGw+KSA9PiB7CiAgICBjb25zdCBuZXh0ID0gdm90ZSA9PT0gdiA/IG51bGwgOiB2OwogICAgc2V0Vm90ZVN0YXRlKG5leHQpOwogICAgc2V0Vm90ZShtZXNzYWdlSWQsIG5leHQpOwogIH07CgogIGNvbnN0IGNvcHkgPSBhc3luYyAoKSA9PiB7CiAgICB0cnkgewogICAgICBhd2FpdCBuYXZpZ2F0b3IuY2xpcGJvYXJkLndyaXRlVGV4dCh0ZXh0KTsKICAgICAgc2V0Q29waWVkKHRydWUpOwogICAgICBzZXRUaW1lb3V0KCgpID0+IHNldENvcGllZChmYWxzZSksIDE1MDApOwogICAgfSBjYXRjaCB7CiAgICAgIC8qIGNsaXBib2FyZCBibG9ja2VkICovCiAgICB9CiAgfTsKCiAgY29uc3Qgc2hhcmUgPSBhc3luYyAoKSA9PiB7CiAgICBpZiAobmF2aWdhdG9yLnNoYXJlKSB7CiAgICAgIHRyeSB7CiAgICAgICAgYXdhaXQgbmF2aWdhdG9yLnNoYXJlKHsgdGl0bGU6ICJTbmFwU29sdmUgYW5zd2VyIiwgdGV4dCB9KTsKICAgICAgICByZXR1cm47CiAgICAgIH0gY2F0Y2ggewogICAgICAgIC8qIHVzZXIgY2FuY2VsbGVkICovCiAgICAgIH0KICAgIH0gZWxzZSB7CiAgICAgIGF3YWl0IGNvcHkoKTsKICAgIH0KICB9OwoKICBjb25zdCBbc3BlYWtpbmcsIHNldFNwZWFraW5nXSA9IHVzZVN0YXRlKGZhbHNlKTsKICBjb25zdCBhYm9ydCA9IHVzZVJlZjxBYm9ydENvbnRyb2xsZXIgfCBudWxsPihudWxsKTsKICB1c2VFZmZlY3QoKCkgPT4gKCkgPT4gYWJvcnQuY3VycmVudD8uYWJvcnQoKSwgW10pOwogIGNvbnN0IGxpc3RlbiA9IGFzeW5jICgpID0+IHsKICAgIGlmIChzcGVha2luZykgeyBhYm9ydC5jdXJyZW50Py5hYm9ydCgpOyByZXR1cm47IH0KICAgIGNvbnN0IGN0cmwgPSBuZXcgQWJvcnRDb250cm9sbGVyKCk7CiAgICBhYm9ydC5jdXJyZW50ID0gY3RybDsKICAgIHNldFNwZWFraW5nKHRydWUpOwogICAgdHJ5IHsgYXdhaXQgc3RyZWFtU3BlZWNoKCIvYXBpL3NwZWVjaCIsIHRleHQsIGN0cmwuc2lnbmFsKTsgfQogICAgY2F0Y2ggKGUpIHsgaWYgKCFjdHJsLnNpZ25hbC5hYm9ydGVkKSB0b2FzdC5lcnJvcihlIGluc3RhbmNlb2YgRXJyb3IgJiYgZS5tZXNzYWdlLmluY2x1ZGVzKCI0MDIiKSA/ICJBSSBjcmVkaXRzIGtoYXRhbSBobyBnYXllLiIgOiAiQXdhYXogYWJoaSBuYWhpIGNoYWwgcGFheWkuIik7IH0KICAgIGZpbmFsbHkgeyBpZiAoYWJvcnQuY3VycmVudCA9PT0gY3RybCkgYWJvcnQuY3VycmVudCA9IG51bGw7IHNldFNwZWFraW5nKGZhbHNlKTsgfQogIH07CgogIGNvbnN0IGJ0biA9ICJzaXplLTcgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIGhvdmVyOnRleHQtZm9yZWdyb3VuZCI7CiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJtdC0xIGZsZXggaXRlbXMtY2VudGVyIGdhcC0wLjUiIGFyaWEtbGFiZWw9IkFuc3dlciBhY3Rpb25zIj4KICAgICAgPEJ1dHRvbiB2YXJpYW50PSJnaG9zdCIgc2l6ZT0iaWNvbiIgY2xhc3NOYW1lPXtidG59IGFyaWEtbGFiZWw9e3NwZWFraW5nID8gIlN0b3AgbGlzdGVuaW5nIiA6ICJMaXN0ZW4gaW4gSW5kaWFuIHRlYWNoZXIgdm9pY2UifSB0aXRsZT0iSW5kaWFuIHRlYWNoZXIgYXdhYXogbWVpbiBzdW5peWUiIG9uQ2xpY2s9e2xpc3Rlbn0+CiAgICAgICAge3NwZWFraW5nID8gPFNxdWFyZSBjbGFzc05hbWU9InNpemUtMy41IGZpbGwtcHJpbWFyeSB0ZXh0LXByaW1hcnkiIC8+IDogPFZvbHVtZTIgY2xhc3NOYW1lPSJzaXplLTMuNSIgLz59CiAgICAgIDwvQnV0dG9uPgogICAgICA8QnV0dG9uIHZhcmlhbnQ9Imdob3N0IiBzaXplPSJpY29uIiBjbGFzc05hbWU9e2J0bn0gYXJpYS1sYWJlbD0iTGlrZSBhbnN3ZXIiIGFyaWEtcHJlc3NlZD17dm90ZSA9PT0gInVwIn0gb25DbGljaz17KCkgPT4gY2FzdCgidXAiKX0+CiAgICAgICAgPFRodW1ic1VwIGNsYXNzTmFtZT17YHNpemUtMy41ICR7dm90ZSA9PT0gInVwIiA/ICJmaWxsLXByaW1hcnkgdGV4dC1wcmltYXJ5IiA6ICIifWB9IC8+CiAgICAgIDwvQnV0dG9uPgogICAgICA8QnV0dG9uIHZhcmlhbnQ9Imdob3N0IiBzaXplPSJpY29uIiBjbGFzc05hbWU9e2J0bn0gYXJpYS1sYWJlbD0iVW5saWtlIGFuc3dlciIgYXJpYS1wcmVzc2VkPXt2b3RlID09PSAiZG93biJ9IG9uQ2xpY2s9eygpID0+IGNhc3QoImRvd24iKX0+CiAgICAgICAgPFRodW1ic0Rvd24gY2xhc3NOYW1lPXtgc2l6ZS0zLjUgJHt2b3RlID09PSAiZG93biIgPyAiZmlsbC1wcmltYXJ5IHRleHQtcHJpbWFyeSIgOiAiIn1gfSAvPgogICAgICA8L0J1dHRvbj4KICAgICAgPEJ1dHRvbiB2YXJpYW50PSJnaG9zdCIgc2l6ZT0iaWNvbiIgY2xhc3NOYW1lPXtidG59IGFyaWEtbGFiZWw9IkNvcHkgYW5zd2VyIiBvbkNsaWNrPXtjb3B5fT4KICAgICAgICB7Y29waWVkID8gPENoZWNrIGNsYXNzTmFtZT0ic2l6ZS0zLjUgdGV4dC1wcmltYXJ5IiAvPiA6IDxDb3B5IGNsYXNzTmFtZT0ic2l6ZS0zLjUiIC8+fQogICAgICA8L0J1dHRvbj4KICAgICAge2NoaWxkcmVufQogICAgICA8RHJvcGRvd25NZW51PgogICAgICAgIDxEcm9wZG93bk1lbnVUcmlnZ2VyIGFzQ2hpbGQ+CiAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9Imdob3N0IiBzaXplPSJpY29uIiBjbGFzc05hbWU9e2J0bn0gYXJpYS1sYWJlbD0iTW9yZSBhY3Rpb25zIj4KICAgICAgICAgICAgPE1vcmVIb3Jpem9udGFsIGNsYXNzTmFtZT0ic2l6ZS0zLjUiIC8+CiAgICAgICAgICA8L0J1dHRvbj4KICAgICAgICA8L0Ryb3Bkb3duTWVudVRyaWdnZXI+CiAgICAgICAgPERyb3Bkb3duTWVudUNvbnRlbnQgYWxpZ249InN0YXJ0Ij4KICAgICAgICAgIDxEcm9wZG93bk1lbnVJdGVtIG9uQ2xpY2s9e3NoYXJlfT4KICAgICAgICAgICAgPFNoYXJlMiBjbGFzc05hbWU9Im1yLTIgc2l6ZS00IiAvPiBTaGFyZSBhbnN3ZXIKICAgICAgICAgIDwvRHJvcGRvd25NZW51SXRlbT4KICAgICAgICAgIDxEcm9wZG93bk1lbnVJdGVtIG9uQ2xpY2s9e2NvcHl9PgogICAgICAgICAgICA8Q29weSBjbGFzc05hbWU9Im1yLTIgc2l6ZS00IiAvPiBDb3B5IHRleHQKICAgICAgICAgIDwvRHJvcGRvd25NZW51SXRlbT4KICAgICAgICA8L0Ryb3Bkb3duTWVudUNvbnRlbnQ+CiAgICAgIDwvRHJvcGRvd25NZW51PgogICAgPC9kaXY+CiAgKTsKfQo=
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Check, Copy, MoreHorizontal, Share2, Square, ThumbsDown, ThumbsUp, Volume2 } from "lucide-react";
+import { toast } from "sonner";
+import { streamSpeech } from "@/lib/stream-speech";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
+type Vote = "up" | "down" | null;
+const KEY = "snapsolve.votes.v1";
+
+function readVotes(): Record<string, Vote> {
+  try {
+    const v = JSON.parse(localStorage.getItem(KEY) || "{}");
+    return v && typeof v === "object" ? v : {};
+  } catch {
+    return {};
+  }
+}
+
+export function setVote(id: string, vote: Vote) {
+  const votes = readVotes();
+  if (vote) votes[id] = vote;
+  else delete votes[id];
+  localStorage.setItem(KEY, JSON.stringify(votes));
+}
+
+export function getVote(id: string): Vote {
+  return readVotes()[id] ?? null;
+}
+
+/** Like / unlike / copy / share actions under an agent reply. Stored locally per message id. */
+export function MessageActions({ messageId, text, children }: { messageId: string; text: string; children?: ReactNode }) {
+  const [vote, setVoteState] = useState<Vote>(null);
+  const [copied, setCopied] = useState(false);
+  useEffect(() => setVoteState(getVote(messageId)), [messageId]);
+
+  const cast = (v: Exclude<Vote, null>) => {
+    const next = vote === v ? null : v;
+    setVoteState(next);
+    setVote(messageId, next);
+  };
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* clipboard blocked */
+    }
+  };
+
+  const share = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: "SnapSolve answer", text });
+        return;
+      } catch {
+        /* user cancelled */
+      }
+    } else {
+      await copy();
+    }
+  };
+
+  const [speaking, setSpeaking] = useState(false);
+  const abort = useRef<AbortController | null>(null);
+  useEffect(() => () => abort.current?.abort(), []);
+  const listen = async () => {
+    if (speaking) { abort.current?.abort(); return; }
+    const ctrl = new AbortController();
+    abort.current = ctrl;
+    setSpeaking(true);
+    try { await streamSpeech("/api/speech", text, ctrl.signal); }
+    catch (e) { if (!ctrl.signal.aborted) toast.error(e instanceof Error && e.message.includes("402") ? "AI credits khatam ho gaye." : "Awaaz abhi nahi chal paayi."); }
+    finally { if (abort.current === ctrl) abort.current = null; setSpeaking(false); }
+  };
+
+  const btn = "size-7 text-muted-foreground hover:text-foreground";
+  return (
+    <div className="mt-1 flex items-center gap-0.5" aria-label="Answer actions">
+      <Button variant="ghost" size="icon" className={btn} aria-label={speaking ? "Stop listening" : "Listen in Indian teacher voice"} title="Indian teacher awaaz mein suniye" onClick={listen}>
+        {speaking ? <Square className="size-3.5 fill-primary text-primary" /> : <Volume2 className="size-3.5" />}
+      </Button>
+      <Button variant="ghost" size="icon" className={btn} aria-label="Like answer" aria-pressed={vote === "up"} onClick={() => cast("up")}>
+        <ThumbsUp className={`size-3.5 ${vote === "up" ? "fill-primary text-primary" : ""}`} />
+      </Button>
+      <Button variant="ghost" size="icon" className={btn} aria-label="Unlike answer" aria-pressed={vote === "down"} onClick={() => cast("down")}>
+        <ThumbsDown className={`size-3.5 ${vote === "down" ? "fill-primary text-primary" : ""}`} />
+      </Button>
+      <Button variant="ghost" size="icon" className={btn} aria-label="Copy answer" onClick={copy}>
+        {copied ? <Check className="size-3.5 text-primary" /> : <Copy className="size-3.5" />}
+      </Button>
+      {children}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="icon" className={btn} aria-label="More actions">
+            <MoreHorizontal className="size-3.5" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start">
+          <DropdownMenuItem onClick={share}>
+            <Share2 className="mr-2 size-4" /> Share answer
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={copy}>
+            <Copy className="mr-2 size-4" /> Copy text
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  );
+}

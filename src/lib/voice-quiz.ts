@@ -1,1 +1,45 @@
-ZXhwb3J0IGNvbnN0IFZPSUNFX0FOU1dFUlMgPSBbIkEiLCAiQiIsICJDIiwgIkQiXTsKCi8qKgogKiBSZWFkIGEgY29tcGxldGUgc3Bva2VuL3dyaXR0ZW4gTUNROyBpbmNvbXBsZXRlIGNhcHRpb25zIG5ldmVyIGVuYWJsZSBhbnN3ZXJzLgogKiBBY2NlcHRzICJBLiIgLyAiKEEpIiAvICJBKSIgbGV0dGVyIG1hcmtlcnMgYW5kIE5FRVQtc3R5bGUgIigxKSLigJMiKDQpIiAvICIxKSIgbWFya2VycywKICogaW5saW5lIG9yIG9uIHNlcGFyYXRlIGxpbmVzLiBVc2VzIHRoZSBsYXN0IGNvbXBsZXRlIEHihpJEIHJ1biBzbyBhIHN0cmF5ICJWaXRhbWluIEEuIgogKiBpbiB0aGUgcXVlc3Rpb24gY2Fubm90IGJyZWFrIG9wdGlvbiBkZXRlY3Rpb24uCiAqLwpleHBvcnQgZnVuY3Rpb24gdm9pY2VRdWl6T3B0aW9ucyh0ZXh0OiBzdHJpbmcpOiBSZWNvcmQ8c3RyaW5nLCBzdHJpbmc+IHwgbnVsbCB7CiAgY29uc3QgY2xlYW4gPSB0ZXh0LnJlcGxhY2UoL1wqXCovZywgIiIpOwogIGNvbnN0IHBhdHRlcm5zID0gWwogICAgLyg/Ol58XHMpKD86b3B0aW9uXHMrKT9cKD8oW0EtRF0pKD86XCl8Wy46XSlccysvZ2ksCiAgICAvKD86XnxccykoPzpvcHRpb25ccyspPyg/OlwoKFsxLTRdKVwpfChbMS00XSlcKSlccysvZ2ksCiAgXTsKICBmb3IgKGNvbnN0IHJlIG9mIHBhdHRlcm5zKSB7CiAgICBjb25zdCBtYXRjaGVzID0gWy4uLmNsZWFuLm1hdGNoQWxsKHJlKV0ubWFwKChtKSA9PiB7CiAgICAgIGNvbnN0IHJhdyA9IChtWzFdID8/IG1bMl0gPz8gIiIpLnRvVXBwZXJDYXNlKCk7CiAgICAgIGNvbnN0IGxldHRlciA9IC9eWzEtNF0kLy50ZXN0KHJhdykgPyBWT0lDRV9BTlNXRVJTW051bWJlcihyYXcpIC0gMV0gOiByYXc7CiAgICAgIHJldHVybiB7IGxldHRlciwgaW5kZXg6IG0uaW5kZXggPz8gMCwgbGVuZ3RoOiBtWzBdLmxlbmd0aCB9OwogICAgfSk7CiAgICBmb3IgKGxldCBpID0gbWF0Y2hlcy5sZW5ndGggLSA0OyBpID49IDA7IGktLSkgewogICAgICBjb25zdCBydW4gPSBtYXRjaGVzLnNsaWNlKGksIGkgKyA0KTsKICAgICAgaWYgKHJ1bi5zb21lKChtLCBqKSA9PiBtLmxldHRlciAhPT0gVk9JQ0VfQU5TV0VSU1tqXSkpIGNvbnRpbnVlOwogICAgICBjb25zdCBsYWJlbHM6IFJlY29yZDxzdHJpbmcsIHN0cmluZz4gPSB7fTsKICAgICAgbGV0IG9rID0gdHJ1ZTsKICAgICAgZm9yIChsZXQgaiA9IDA7IGogPCA0OyBqKyspIHsKICAgICAgICBjb25zdCBtID0gcnVuW2pdITsKICAgICAgICBjb25zdCBlbmRBdCA9IHJ1bltqICsgMV0/LmluZGV4ID8/IGNsZWFuLmxlbmd0aDsKICAgICAgICBsZXQgbGFiZWwgPSBjbGVhbi5zbGljZShtLmluZGV4ICsgbS5sZW5ndGgsIGVuZEF0KS50cmltKCk7CiAgICAgICAgaWYgKGogPT09IDMpIGxhYmVsID0gbGFiZWwuc3BsaXQoIlxuIilbMF0hLnRyaW0oKTsKICAgICAgICBpZiAoIWxhYmVsKSB7IG9rID0gZmFsc2U7IGJyZWFrOyB9CiAgICAgICAgbGFiZWxzW1ZPSUNFX0FOU1dFUlNbal0hXSA9IGxhYmVsOwogICAgICB9CiAgICAgIGlmIChvaykgcmV0dXJuIGxhYmVsczsKICAgIH0KICB9CiAgcmV0dXJuIG51bGw7Cn0KCi8qKiBUaW1lciBleHBpcnkgLyBTa2lwIGJ1dHRvbiBpbiB2b2ljZSBxdWl6OiBhIHNlcGFyYXRlIGNvbW1hbmQsIG5ldmVyIGdyYWRlZCBhcyBhbiBhbnN3ZXIuICovCmV4cG9ydCBjb25zdCBWT0lDRV9TS0lQID0gInNraXAiOwoKZXhwb3J0IGZ1bmN0aW9uIHZhbGlkVm9pY2VBbnN3ZXIodmFsdWU6IHVua25vd24pOiB2YWx1ZSBpcyBzdHJpbmcgewogIHJldHVybiB0eXBlb2YgdmFsdWUgPT09ICJzdHJpbmciICYmIFZPSUNFX0FOU1dFUlMuaW5jbHVkZXModmFsdWUpOwp9
+export const VOICE_ANSWERS = ["A", "B", "C", "D"];
+
+/**
+ * Read a complete spoken/written MCQ; incomplete captions never enable answers.
+ * Accepts "A." / "(A)" / "A)" letter markers and NEET-style "(1)"–"(4)" / "1)" markers,
+ * inline or on separate lines. Uses the last complete A→D run so a stray "Vitamin A."
+ * in the question cannot break option detection.
+ */
+export function voiceQuizOptions(text: string): Record<string, string> | null {
+  const clean = text.replace(/\*\*/g, "");
+  const patterns = [
+    /(?:^|\s)(?:option\s+)?\(?([A-D])(?:\)|[.:])\s+/gi,
+    /(?:^|\s)(?:option\s+)?(?:\(([1-4])\)|([1-4])\))\s+/gi,
+  ];
+  for (const re of patterns) {
+    const matches = [...clean.matchAll(re)].map((m) => {
+      const raw = (m[1] ?? m[2] ?? "").toUpperCase();
+      const letter = /^[1-4]$/.test(raw) ? VOICE_ANSWERS[Number(raw) - 1] : raw;
+      return { letter, index: m.index ?? 0, length: m[0].length };
+    });
+    for (let i = matches.length - 4; i >= 0; i--) {
+      const run = matches.slice(i, i + 4);
+      if (run.some((m, j) => m.letter !== VOICE_ANSWERS[j])) continue;
+      const labels: Record<string, string> = {};
+      let ok = true;
+      for (let j = 0; j < 4; j++) {
+        const m = run[j]!;
+        const endAt = run[j + 1]?.index ?? clean.length;
+        let label = clean.slice(m.index + m.length, endAt).trim();
+        if (j === 3) label = label.split("\n")[0]!.trim();
+        if (!label) { ok = false; break; }
+        labels[VOICE_ANSWERS[j]!] = label;
+      }
+      if (ok) return labels;
+    }
+  }
+  return null;
+}
+
+/** Timer expiry / Skip button in voice quiz: a separate command, never graded as an answer. */
+export const VOICE_SKIP = "skip";
+
+export function validVoiceAnswer(value: unknown): value is string {
+  return typeof value === "string" && VOICE_ANSWERS.includes(value);
+}

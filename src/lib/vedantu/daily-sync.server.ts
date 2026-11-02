@@ -1,1 +1,38 @@
-aW1wb3J0IHR5cGUgeyBTdXBhYmFzZUNsaWVudCB9IGZyb20gJ0BzdXBhYmFzZS9zdXBhYmFzZS1qcyc7CmltcG9ydCB0eXBlIHsgRGF0YWJhc2UgfSBmcm9tICdAL2ludGVncmF0aW9ucy9zdXBhYmFzZS90eXBlcyc7CmltcG9ydCB7IHN0YXJ0U3luYywgc3luY0NvdXJzZSwgc3luY1JlY2VudE5vdGVzLCBmaW5pc2hTeW5jLCBmcmllbmRseVN5bmNFcnJvciB9IGZyb20gJy4vc3luYy5zZXJ2ZXInOwoKZXhwb3J0IGNvbnN0IERBSUxZX1NZTkNfQ1JPTiA9ICczMCAxOCAqICogKic7IC8vIE1pZG5pZ2h0IEFzaWEvS29sa2F0YSwgZXZlcnkgZGF5LgoKdHlwZSBBZG1pbiA9IFN1cGFiYXNlQ2xpZW50PERhdGFiYXNlPjsKZXhwb3J0IHR5cGUgU3luY1N0ZXBzID0gewogIHN0YXJ0OiB0eXBlb2Ygc3RhcnRTeW5jOwogIGNvdXJzZTogdHlwZW9mIHN5bmNDb3Vyc2U7CiAgbm90ZXM6IHR5cGVvZiBzeW5jUmVjZW50Tm90ZXM7CiAgZmluaXNoOiB0eXBlb2YgZmluaXNoU3luYzsKfTsKCi8qKiBVc2VkIGJ5IHRoZSBleHRlcm5hbCBzY2hlZHVsZXI7IG5ldmVyIHJ1bnMgZnJvbSBhIHBhZ2UgdmlzaXQuICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBydW5EYWlseVN5bmMoYWRtaW46IEFkbWluLCBzdGVwczogU3luY1N0ZXBzID0gewogIHN0YXJ0OiBzdGFydFN5bmMsIGNvdXJzZTogc3luY0NvdXJzZSwgbm90ZXM6IHN5bmNSZWNlbnROb3RlcywgZmluaXNoOiBmaW5pc2hTeW5jLAp9KSB7CiAgY29uc3QgeyBsZWFzZUlkLCBjb3Vyc2VzIH0gPSBhd2FpdCBzdGVwcy5zdGFydChhZG1pbik7CiAgY29uc3QgY291bnRzID0geyBjb3Vyc2VzOiBjb3Vyc2VzLmxlbmd0aCwgY2xhc3NlczogMCwgdGVzdHM6IDAsIHdhcm5pbmdzOiAwLCBub3RlczogMCB9OwogIHRyeSB7CiAgICAvLyBPbmUgY291cnNlIGF0IGEgdGltZTsgZWFjaCBjb3Vyc2UncyBvd24gcG9vbCBzdGF5cyBiZWxvdyBzaXggcmVxdWVzdHMuCiAgICBmb3IgKGNvbnN0IGNvdXJzZSBvZiBjb3Vyc2VzKSB7CiAgICAgIGNvbnN0IHJlc3VsdCA9IGF3YWl0IHN0ZXBzLmNvdXJzZShhZG1pbiwgbGVhc2VJZCwgY291cnNlLmVucm9sbG1lbnRfaWQpOwogICAgICBjb3VudHMuY2xhc3NlcyArPSByZXN1bHQuY2xhc3NlczsKICAgICAgY291bnRzLnRlc3RzICs9IHJlc3VsdC50ZXN0czsKICAgICAgY291bnRzLndhcm5pbmdzICs9IHJlc3VsdC53YXJuaW5nczsKICAgIH0KICAgIGNvbnN0IG5vdGVzID0gYXdhaXQgc3RlcHMubm90ZXMoYWRtaW4sIGxlYXNlSWQsIDgpOwogICAgY291bnRzLm5vdGVzID0gbm90ZXMuZmV0Y2hlZDsKICAgIGNvdW50cy53YXJuaW5ncyArPSBub3Rlcy5mYWlsZWQ7CiAgICBhd2FpdCBzdGVwcy5maW5pc2goYWRtaW4sIGxlYXNlSWQsIHsgb2s6IHRydWUsIG1lc3NhZ2U6ICdEYWlseSBWZWRhbnR1IHN5bmMgY29tcGxldGVkJywgY291bnRzIH0pOwogICAgcmV0dXJuIGNvdW50czsKICB9IGNhdGNoIChlcnJvcikgewogICAgYXdhaXQgc3RlcHMuZmluaXNoKGFkbWluLCBsZWFzZUlkLCB7IG9rOiBmYWxzZSwgbWVzc2FnZTogZnJpZW5kbHlTeW5jRXJyb3IoZXJyb3IpLCBjb3VudHMgfSk7CiAgICB0aHJvdyBlcnJvcjsKICB9Cn0=
+import type { SupabaseClient } from '@supabase/supabase-js';
+import type { Database } from '@/integrations/supabase/types';
+import { startSync, syncCourse, syncRecentNotes, finishSync, friendlySyncError } from './sync.server';
+
+export const DAILY_SYNC_CRON = '30 18 * * *'; // Midnight Asia/Kolkata, every day.
+
+type Admin = SupabaseClient<Database>;
+export type SyncSteps = {
+  start: typeof startSync;
+  course: typeof syncCourse;
+  notes: typeof syncRecentNotes;
+  finish: typeof finishSync;
+};
+
+/** Used by the external scheduler; never runs from a page visit. */
+export async function runDailySync(admin: Admin, steps: SyncSteps = {
+  start: startSync, course: syncCourse, notes: syncRecentNotes, finish: finishSync,
+}) {
+  const { leaseId, courses } = await steps.start(admin);
+  const counts = { courses: courses.length, classes: 0, tests: 0, warnings: 0, notes: 0 };
+  try {
+    // One course at a time; each course's own pool stays below six requests.
+    for (const course of courses) {
+      const result = await steps.course(admin, leaseId, course.enrollment_id);
+      counts.classes += result.classes;
+      counts.tests += result.tests;
+      counts.warnings += result.warnings;
+    }
+    const notes = await steps.notes(admin, leaseId, 8);
+    counts.notes = notes.fetched;
+    counts.warnings += notes.failed;
+    await steps.finish(admin, leaseId, { ok: true, message: 'Daily Vedantu sync completed', counts });
+    return counts;
+  } catch (error) {
+    await steps.finish(admin, leaseId, { ok: false, message: friendlySyncError(error), counts });
+    throw error;
+  }
+}

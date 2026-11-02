@@ -1,1 +1,140 @@
-Y29uc3QgTE9WQUJMRV9BSUdfUlVOX0lEX0hFQURFUiA9ICJYLUxvdmFibGUtQUlHLVJ1bi1JRCI7CgpleHBvcnQgZnVuY3Rpb24gY3JlYXRlTG92YWJsZUFpR2F0ZXdheVJ1bklkRmV0Y2goaW5pdGlhbFJ1bklkPzogc3RyaW5nKSB7CiAgbGV0IHJ1bklkID0gaW5pdGlhbFJ1bklkPy50cmltKCkgfHwgdW5kZWZpbmVkOwogIGxldCByZXNvbHZlUnVuSWQ6ICh2YWx1ZTogc3RyaW5nIHwgdW5kZWZpbmVkKSA9PiB2b2lkID0gKCkgPT4ge307CiAgbGV0IHJ1bklkUmVzb2x2ZWQgPSBmYWxzZTsKICBjb25zdCBydW5JZFJlYWR5ID0gbmV3IFByb21pc2U8c3RyaW5nIHwgdW5kZWZpbmVkPigocmVzb2x2ZSkgPT4gewogICAgcmVzb2x2ZVJ1bklkID0gcmVzb2x2ZTsKICB9KTsKCiAgY29uc3QgcHVibGlzaFJ1bklkID0gKHZhbHVlPzogc3RyaW5nKSA9PiB7CiAgICBjb25zdCBuZXh0UnVuSWQgPSB2YWx1ZT8udHJpbSgpIHx8IHVuZGVmaW5lZDsKICAgIGlmICghcnVuSWQgJiYgbmV4dFJ1bklkKSB7CiAgICAgIHJ1bklkID0gbmV4dFJ1bklkOwogICAgfQogICAgaWYgKCFydW5JZFJlc29sdmVkKSB7CiAgICAgIHJ1bklkUmVzb2x2ZWQgPSB0cnVlOwogICAgICByZXNvbHZlUnVuSWQocnVuSWQpOwogICAgfQogIH07CiAgaWYgKHJ1bklkKSBwdWJsaXNoUnVuSWQocnVuSWQpOwoKICByZXR1cm4gewogICAgZmV0Y2g6IGFzeW5jIChpbnB1dDogUmVxdWVzdEluZm8gfCBVUkwsIGluaXQ/OiBSZXF1ZXN0SW5pdCkgPT4gewogICAgICBjb25zdCBoZWFkZXJzID0gbmV3IEhlYWRlcnMoaW5pdD8uaGVhZGVycyk7CiAgICAgIGlmIChydW5JZCAmJiAhaGVhZGVycy5oYXMoTE9WQUJMRV9BSUdfUlVOX0lEX0hFQURFUikpIHsKICAgICAgICBoZWFkZXJzLnNldChMT1ZBQkxFX0FJR19SVU5fSURfSEVBREVSLCBydW5JZCk7CiAgICAgIH0KCiAgICAgIHRyeSB7CiAgICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChpbnB1dCwgeyAuLi5pbml0LCBoZWFkZXJzIH0pOwogICAgICAgIHB1Ymxpc2hSdW5JZChyZXNwb25zZS5oZWFkZXJzLmdldChMT1ZBQkxFX0FJR19SVU5fSURfSEVBREVSKSA/PyB1bmRlZmluZWQpOwogICAgICAgIHJldHVybiByZXNwb25zZTsKICAgICAgfSBjYXRjaCAoZXJyb3IpIHsKICAgICAgICBwdWJsaXNoUnVuSWQodW5kZWZpbmVkKTsKICAgICAgICB0aHJvdyBlcnJvcjsKICAgICAgfQogICAgfSwKICAgIGdldFJ1bklkOiAoKSA9PiBydW5JZCwKICAgIHdhaXRGb3JSdW5JZDogKCkgPT4gKHJ1bklkID8gUHJvbWlzZS5yZXNvbHZlKHJ1bklkKSA6IHJ1bklkUmVhZHkpLAogIH07Cn0KCmV4cG9ydCBmdW5jdGlvbiBnZXRMb3ZhYmxlQWlHYXRld2F5UnVuSWQocmVxdWVzdDogUmVxdWVzdCkgewogIHJldHVybiByZXF1ZXN0LmhlYWRlcnMuZ2V0KExPVkFCTEVfQUlHX1JVTl9JRF9IRUFERVIpPy50cmltKCkgfHwgdW5kZWZpbmVkOwp9CgpleHBvcnQgZnVuY3Rpb24gZ2V0TG92YWJsZUFpR2F0ZXdheVJlc3BvbnNlSGVhZGVycyhwcm92aWRlckhlYWRlcnM6IEhlYWRlcnNJbml0IHwgdW5kZWZpbmVkLCBpbml0PzogSGVhZGVyc0luaXQpIHsKICBjb25zdCBoZWFkZXJzID0gbmV3IEhlYWRlcnMoaW5pdCk7CiAgY29uc3QgZXhwb3NlZEhlYWRlcnMgPSBuZXcgU2V0KAogICAgKGhlYWRlcnMuZ2V0KCJBY2Nlc3MtQ29udHJvbC1FeHBvc2UtSGVhZGVycyIpID8/ICIiKQogICAgICAuc3BsaXQoIiwiKQogICAgICAubWFwKChoZWFkZXIpID0+IGhlYWRlci50cmltKCkpCiAgICAgIC5maWx0ZXIoQm9vbGVhbiksCiAgKTsKCiAgbmV3IEhlYWRlcnMocHJvdmlkZXJIZWFkZXJzKS5mb3JFYWNoKCh2YWx1ZSwgbmFtZSkgPT4gewogICAgaWYgKG5hbWUudG9Mb3dlckNhc2UoKS5zdGFydHNXaXRoKCJ4LWxvdmFibGUtYWlnLSIpKSB7CiAgICAgIGhlYWRlcnMuc2V0KG5hbWUsIHZhbHVlKTsKICAgICAgZXhwb3NlZEhlYWRlcnMuYWRkKG5hbWUpOwogICAgfQogIH0pOwoKICBoZWFkZXJzLmZvckVhY2goKF8sIG5hbWUpID0+IHsKICAgIGlmIChuYW1lLnRvTG93ZXJDYXNlKCkuc3RhcnRzV2l0aCgieC1sb3ZhYmxlLWFpZy0iKSkgewogICAgICBleHBvc2VkSGVhZGVycy5hZGQobmFtZSk7CiAgICB9CiAgfSk7CgogIGlmIChleHBvc2VkSGVhZGVycy5zaXplID4gMCkgewogICAgaGVhZGVycy5zZXQoIkFjY2Vzcy1Db250cm9sLUV4cG9zZS1IZWFkZXJzIiwgQXJyYXkuZnJvbShleHBvc2VkSGVhZGVycykuam9pbigiLCAiKSk7CiAgfQoKICByZXR1cm4gaGVhZGVyczsKfQoKZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHdpdGhMb3ZhYmxlQWlHYXRld2F5UnVuSWRIZWFkZXIoCiAgcmVzcG9uc2U6IFJlc3BvbnNlLAogIGdhdGV3YXk6IHsKICAgIGdldFJ1bklkOiAoKSA9PiBzdHJpbmcgfCB1bmRlZmluZWQ7CiAgICB3YWl0Rm9yUnVuSWQ6ICgpID0+IFByb21pc2U8c3RyaW5nIHwgdW5kZWZpbmVkPjsKICB9LAogIGluaXQ/OiBIZWFkZXJzSW5pdCwKICBvcHRpb25zOiB7IHdhaXRGb3JVcHN0cmVhbUhlYWRlcnM/OiBib29sZWFuIH0gPSB7fSwKKSB7CiAgaWYgKCFyZXNwb25zZS5ib2R5KSB7CiAgICBjb25zdCBydW5JZCA9IGdhdGV3YXkuZ2V0UnVuSWQoKTsKICAgIGNvbnN0IGhlYWRlcnMgPSBnZXRMb3ZhYmxlQWlHYXRld2F5UmVzcG9uc2VIZWFkZXJzKHVuZGVmaW5lZCwgcmVzcG9uc2UuaGVhZGVycyk7CiAgICBuZXcgSGVhZGVycyhpbml0KS5mb3JFYWNoKCh2YWx1ZSwgbmFtZSkgPT4gaGVhZGVycy5zZXQobmFtZSwgdmFsdWUpKTsKICAgIGlmIChydW5JZCkgaGVhZGVycy5zZXQoTE9WQUJMRV9BSUdfUlVOX0lEX0hFQURFUiwgcnVuSWQpOwogICAgcmV0dXJuIG5ldyBSZXNwb25zZShyZXNwb25zZS5ib2R5LCB7CiAgICAgIHN0YXR1czogcmVzcG9uc2Uuc3RhdHVzLAogICAgICBzdGF0dXNUZXh0OiByZXNwb25zZS5zdGF0dXNUZXh0LAogICAgICBoZWFkZXJzOiBnZXRMb3ZhYmxlQWlHYXRld2F5UmVzcG9uc2VIZWFkZXJzKHVuZGVmaW5lZCwgaGVhZGVycyksCiAgICB9KTsKICB9CgogIGNvbnN0IHJlYWRlciA9IHJlc3BvbnNlLmJvZHkuZ2V0UmVhZGVyKCk7CiAgLy8gQXR0YWNoIHJlamVjdGlvbiBoYW5kbGluZyBpbW1lZGlhdGVseSwgYmVmb3JlIHdhaXRpbmcgZm9yIHVwc3RyZWFtIGhlYWRlcnMuCiAgY29uc3QgZmlyc3RDaHVuayA9IHJlYWRlci5yZWFkKCkudGhlbigKICAgIHZhbHVlID0+ICh7IG9rOiB0cnVlIGFzIGNvbnN0LCB2YWx1ZSB9KSwKICAgIGVycm9yID0+ICh7IG9rOiBmYWxzZSBhcyBjb25zdCwgZXJyb3IgfSksCiAgKTsKICBjb25zdCBydW5JZCA9IG9wdGlvbnMud2FpdEZvclVwc3RyZWFtSGVhZGVycyA9PT0gZmFsc2UgPyBnYXRld2F5LmdldFJ1bklkKCkgOiBhd2FpdCBnYXRld2F5LndhaXRGb3JSdW5JZCgpOwogIGNvbnN0IGhlYWRlcnMgPSBnZXRMb3ZhYmxlQWlHYXRld2F5UmVzcG9uc2VIZWFkZXJzKHVuZGVmaW5lZCwgcmVzcG9uc2UuaGVhZGVycyk7CiAgbmV3IEhlYWRlcnMoaW5pdCkuZm9yRWFjaCgodmFsdWUsIG5hbWUpID0+IGhlYWRlcnMuc2V0KG5hbWUsIHZhbHVlKSk7CiAgaWYgKHJ1bklkKSBoZWFkZXJzLnNldChMT1ZBQkxFX0FJR19SVU5fSURfSEVBREVSLCBydW5JZCk7CgogIGNvbnN0IGJvZHkgPSBuZXcgUmVhZGFibGVTdHJlYW0oewogICAgYXN5bmMgc3RhcnQoY29udHJvbGxlcikgewogICAgICB0cnkgewogICAgICAgIGNvbnN0IGZpcnN0UmVzdWx0ID0gYXdhaXQgZmlyc3RDaHVuazsKICAgICAgICBpZiAoIWZpcnN0UmVzdWx0Lm9rKSB0aHJvdyBmaXJzdFJlc3VsdC5lcnJvcjsKICAgICAgICBjb25zdCBmaXJzdCA9IGZpcnN0UmVzdWx0LnZhbHVlOwogICAgICAgIGlmIChmaXJzdC5kb25lKSB7CiAgICAgICAgICBjb250cm9sbGVyLmNsb3NlKCk7CiAgICAgICAgICByZXR1cm47CiAgICAgICAgfQogICAgICAgIGNvbnRyb2xsZXIuZW5xdWV1ZShmaXJzdC52YWx1ZSk7CiAgICAgICAgd2hpbGUgKHRydWUpIHsKICAgICAgICAgIGNvbnN0IGNodW5rID0gYXdhaXQgcmVhZGVyLnJlYWQoKTsKICAgICAgICAgIGlmIChjaHVuay5kb25lKSBicmVhazsKICAgICAgICAgIGNvbnRyb2xsZXIuZW5xdWV1ZShjaHVuay52YWx1ZSk7CiAgICAgICAgfQogICAgICAgIGNvbnRyb2xsZXIuY2xvc2UoKTsKICAgICAgfSBjYXRjaCAoZXJyb3IpIHsKICAgICAgICBjb250cm9sbGVyLmVycm9yKGVycm9yKTsKICAgICAgfQogICAgfSwKICAgIGNhbmNlbChyZWFzb24/OiB1bmtub3duKSB7CiAgICAgIHJldHVybiByZWFkZXIuY2FuY2VsKHJlYXNvbik7CiAgICB9LAogIH0pOwoKICByZXR1cm4gbmV3IFJlc3BvbnNlKGJvZHksIHsKICAgIHN0YXR1czogcmVzcG9uc2Uuc3RhdHVzLAogICAgc3RhdHVzVGV4dDogcmVzcG9uc2Uuc3RhdHVzVGV4dCwKICAgIGhlYWRlcnM6IGdldExvdmFibGVBaUdhdGV3YXlSZXNwb25zZUhlYWRlcnModW5kZWZpbmVkLCBoZWFkZXJzKSwKICB9KTsKfQo=
+const LOVABLE_AIG_RUN_ID_HEADER = "X-Lovable-AIG-Run-ID";
+
+export function createLovableAiGatewayRunIdFetch(initialRunId?: string) {
+  let runId = initialRunId?.trim() || undefined;
+  let resolveRunId: (value: string | undefined) => void = () => {};
+  let runIdResolved = false;
+  const runIdReady = new Promise<string | undefined>((resolve) => {
+    resolveRunId = resolve;
+  });
+
+  const publishRunId = (value?: string) => {
+    const nextRunId = value?.trim() || undefined;
+    if (!runId && nextRunId) {
+      runId = nextRunId;
+    }
+    if (!runIdResolved) {
+      runIdResolved = true;
+      resolveRunId(runId);
+    }
+  };
+  if (runId) publishRunId(runId);
+
+  return {
+    fetch: async (input: RequestInfo | URL, init?: RequestInit) => {
+      const headers = new Headers(init?.headers);
+      if (runId && !headers.has(LOVABLE_AIG_RUN_ID_HEADER)) {
+        headers.set(LOVABLE_AIG_RUN_ID_HEADER, runId);
+      }
+
+      try {
+        const response = await fetch(input, { ...init, headers });
+        publishRunId(response.headers.get(LOVABLE_AIG_RUN_ID_HEADER) ?? undefined);
+        return response;
+      } catch (error) {
+        publishRunId(undefined);
+        throw error;
+      }
+    },
+    getRunId: () => runId,
+    waitForRunId: () => (runId ? Promise.resolve(runId) : runIdReady),
+  };
+}
+
+export function getLovableAiGatewayRunId(request: Request) {
+  return request.headers.get(LOVABLE_AIG_RUN_ID_HEADER)?.trim() || undefined;
+}
+
+export function getLovableAiGatewayResponseHeaders(providerHeaders: HeadersInit | undefined, init?: HeadersInit) {
+  const headers = new Headers(init);
+  const exposedHeaders = new Set(
+    (headers.get("Access-Control-Expose-Headers") ?? "")
+      .split(",")
+      .map((header) => header.trim())
+      .filter(Boolean),
+  );
+
+  new Headers(providerHeaders).forEach((value, name) => {
+    if (name.toLowerCase().startsWith("x-lovable-aig-")) {
+      headers.set(name, value);
+      exposedHeaders.add(name);
+    }
+  });
+
+  headers.forEach((_, name) => {
+    if (name.toLowerCase().startsWith("x-lovable-aig-")) {
+      exposedHeaders.add(name);
+    }
+  });
+
+  if (exposedHeaders.size > 0) {
+    headers.set("Access-Control-Expose-Headers", Array.from(exposedHeaders).join(", "));
+  }
+
+  return headers;
+}
+
+export async function withLovableAiGatewayRunIdHeader(
+  response: Response,
+  gateway: {
+    getRunId: () => string | undefined;
+    waitForRunId: () => Promise<string | undefined>;
+  },
+  init?: HeadersInit,
+  options: { waitForUpstreamHeaders?: boolean } = {},
+) {
+  if (!response.body) {
+    const runId = gateway.getRunId();
+    const headers = getLovableAiGatewayResponseHeaders(undefined, response.headers);
+    new Headers(init).forEach((value, name) => headers.set(name, value));
+    if (runId) headers.set(LOVABLE_AIG_RUN_ID_HEADER, runId);
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: getLovableAiGatewayResponseHeaders(undefined, headers),
+    });
+  }
+
+  const reader = response.body.getReader();
+  // Attach rejection handling immediately, before waiting for upstream headers.
+  const firstChunk = reader.read().then(
+    value => ({ ok: true as const, value }),
+    error => ({ ok: false as const, error }),
+  );
+  const runId = options.waitForUpstreamHeaders === false ? gateway.getRunId() : await gateway.waitForRunId();
+  const headers = getLovableAiGatewayResponseHeaders(undefined, response.headers);
+  new Headers(init).forEach((value, name) => headers.set(name, value));
+  if (runId) headers.set(LOVABLE_AIG_RUN_ID_HEADER, runId);
+
+  const body = new ReadableStream({
+    async start(controller) {
+      try {
+        const firstResult = await firstChunk;
+        if (!firstResult.ok) throw firstResult.error;
+        const first = firstResult.value;
+        if (first.done) {
+          controller.close();
+          return;
+        }
+        controller.enqueue(first.value);
+        while (true) {
+          const chunk = await reader.read();
+          if (chunk.done) break;
+          controller.enqueue(chunk.value);
+        }
+        controller.close();
+      } catch (error) {
+        controller.error(error);
+      }
+    },
+    cancel(reason?: unknown) {
+      return reader.cancel(reason);
+    },
+  });
+
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: getLovableAiGatewayResponseHeaders(undefined, headers),
+  });
+}

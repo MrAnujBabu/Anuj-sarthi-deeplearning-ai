@@ -1,1 +1,26 @@
-Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGFmdGVyRWFjaCwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwpjb25zdCBtb2NrcyA9IHZpLmhvaXN0ZWQoKCkgPT4gKHsgZmV0Y2g6IHZpLmZuKCksIHJlbmRlcjogdmkuZm4oKSB9KSk7CnZpLm1vY2soJ0AvbGliL2Vycm9yLWNhcHR1cmUnLCAoKSA9PiAoeyBjb25zdW1lTGFzdENhcHR1cmVkRXJyb3I6ICgpID0+IHVuZGVmaW5lZCB9KSk7CnZpLm1vY2soJ0AvbGliL2Vycm9yLXBhZ2UnLCAoKSA9PiAoeyByZW5kZXJFcnJvclBhZ2U6IG1vY2tzLnJlbmRlciB9KSk7CnZpLm1vY2soJ0AvbGliL2xpdmUtcmVsYXkuc2VydmVyJywgKCkgPT4gKHsgaGFuZGxlTGl2ZVJlcXVlc3Q6IHZpLmZuKCkgfSkpOwp2aS5tb2NrKCdAdGFuc3RhY2svcmVhY3Qtc3RhcnQvc2VydmVyLWVudHJ5JywgKCkgPT4gKHsgZGVmYXVsdDogeyBmZXRjaDogbW9ja3MuZmV0Y2ggfSB9KSk7CmltcG9ydCBzZXJ2ZXIgZnJvbSAnQC9zZXJ2ZXInOwphZnRlckVhY2goKCkgPT4gdmkucmVzdG9yZUFsbE1vY2tzKCkpOwppdCgnaGFuZGxlcyBhIGZyYW1ld29yayBkaXNjb25uZWN0IG91dHNpZGUgdGhlIHJvdXRlIHdpdGhvdXQgbG9nZ2luZyBhIHBhZ2UgY3Jhc2gnLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgY29udHJvbGxlciA9IG5ldyBBYm9ydENvbnRyb2xsZXIoKTsKICBtb2Nrcy5mZXRjaC5tb2NrSW1wbGVtZW50YXRpb24oYXN5bmMgKCkgPT4geyBjb250cm9sbGVyLmFib3J0KCk7IHRocm93IG5ldyBFcnJvcignSFRUUEVycm9yJywgeyBjYXVzZTogY29udHJvbGxlci5zaWduYWwucmVhc29uIH0pOyB9KTsKICBjb25zdCBsb2cgPSB2aS5zcHlPbihjb25zb2xlLCAnZXJyb3InKS5tb2NrSW1wbGVtZW50YXRpb24oKCkgPT4ge30pOwogIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgc2VydmVyLmZldGNoKG5ldyBSZXF1ZXN0KCdodHRwOi8vbG9jYWxob3N0L2FwaS9zYXJ2YW0tc3BlZWNoJywgeyBzaWduYWw6IGNvbnRyb2xsZXIuc2lnbmFsIH0pLCB7fSwge30pOwogIGV4cGVjdChyZXNwb25zZS5zdGF0dXMpLnRvQmUoNDk5KTsKICBleHBlY3QobG9nKS5ub3QudG9IYXZlQmVlbkNhbGxlZCgpOwogIGV4cGVjdChtb2Nrcy5yZW5kZXIpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7Cn0pOwppdCgnZG9lcyBub3QgdHVybiBhIHN3YWxsb3dlZCBkaXNjb25uZWN0IHJlc3BvbnNlIGludG8gYW4gU1NSIGNyYXNoIHBhZ2UnLCBhc3luYyAoKSA9PiB7CiAgY29uc3QgY29udHJvbGxlciA9IG5ldyBBYm9ydENvbnRyb2xsZXIoKTsKICBtb2Nrcy5mZXRjaC5tb2NrSW1wbGVtZW50YXRpb24oYXN5bmMgKCkgPT4geyBjb250cm9sbGVyLmFib3J0KCk7IHJldHVybiBSZXNwb25zZS5qc29uKHsgc3RhdHVzOiA1MDAsIHVuaGFuZGxlZDogdHJ1ZSwgbWVzc2FnZTogJ0hUVFBFcnJvcicgfSwgeyBzdGF0dXM6IDUwMCB9KTsgfSk7CiAgY29uc3QgbG9nID0gdmkuc3B5T24oY29uc29sZSwgJ2Vycm9yJykubW9ja0ltcGxlbWVudGF0aW9uKCgpID0+IHt9KTsKICBjb25zdCByZXNwb25zZSA9IGF3YWl0IHNlcnZlci5mZXRjaChuZXcgUmVxdWVzdCgnaHR0cDovL2xvY2FsaG9zdC9hcGkvc2FydmFtLXNwZWVjaCcsIHsgc2lnbmFsOiBjb250cm9sbGVyLnNpZ25hbCB9KSwge30sIHt9KTsKICBleHBlY3QocmVzcG9uc2Uuc3RhdHVzKS50b0JlKDQ5OSk7CiAgZXhwZWN0KGxvZykubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKfSk7
+// @vitest-environment node
+import { afterEach, expect, it, vi } from 'vitest';
+const mocks = vi.hoisted(() => ({ fetch: vi.fn(), render: vi.fn() }));
+vi.mock('@/lib/error-capture', () => ({ consumeLastCapturedError: () => undefined }));
+vi.mock('@/lib/error-page', () => ({ renderErrorPage: mocks.render }));
+vi.mock('@/lib/live-relay.server', () => ({ handleLiveRequest: vi.fn() }));
+vi.mock('@tanstack/react-start/server-entry', () => ({ default: { fetch: mocks.fetch } }));
+import server from '@/server';
+afterEach(() => vi.restoreAllMocks());
+it('handles a framework disconnect outside the route without logging a page crash', async () => {
+  const controller = new AbortController();
+  mocks.fetch.mockImplementation(async () => { controller.abort(); throw new Error('HTTPError', { cause: controller.signal.reason }); });
+  const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+  const response = await server.fetch(new Request('http://localhost/api/sarvam-speech', { signal: controller.signal }), {}, {});
+  expect(response.status).toBe(499);
+  expect(log).not.toHaveBeenCalled();
+  expect(mocks.render).not.toHaveBeenCalled();
+});
+it('does not turn a swallowed disconnect response into an SSR crash page', async () => {
+  const controller = new AbortController();
+  mocks.fetch.mockImplementation(async () => { controller.abort(); return Response.json({ status: 500, unhandled: true, message: 'HTTPError' }, { status: 500 }); });
+  const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+  const response = await server.fetch(new Request('http://localhost/api/sarvam-speech', { signal: controller.signal }), {}, {});
+  expect(response.status).toBe(499);
+  expect(log).not.toHaveBeenCalled();
+});

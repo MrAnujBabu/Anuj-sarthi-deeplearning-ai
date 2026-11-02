@@ -1,1 +1,102 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgdHlwZSB7IFVJTWVzc2FnZSB9IGZyb20gJ2FpJzsKaW1wb3J0IHsgQ09VTkNJTF9NT0RFTFMsIFZJU0lPTl9NT0RFTCwgYWxsQWdyZWUsIGNvdW5jaWxOZXh0U3RlcCwgbWVyZ2VWZXJkaWN0cywgc3BsaXRQaG90b1JlYWRpbmcsIHRvQ2hlY2ssIHdyYXBQaG90b1JlYWRpbmcgfSBmcm9tICdAL2xpYi92ZXJpZnknOwppbXBvcnQgeyBjb3VuY2lsSW5wdXRGb3IsIGlzV29ydGhDaGVja2luZyB9IGZyb20gJ0AvbGliL2NvdW5jaWwtaW5wdXQnOwppbXBvcnQgeyBSRVNVTUVfVEVYVCB9IGZyb20gJ0AvbGliL2NoYXQtcmVzdW1lJzsKCmNvbnN0IG9rID0geyB2ZXJkaWN0OiAndmVyaWZpZWQnIGFzIGNvbnN0IH07CmNvbnN0IGZpeCA9IHsgdmVyZGljdDogJ25lZWRzX2ZpeCcgYXMgY29uc3QgfTsKY29uc3QgdW5zdXJlID0geyB2ZXJkaWN0OiAndW5zdXJlJyBhcyBjb25zdCB9Owpjb25zdCBkb3duID0geyB2ZXJkaWN0OiAndW5zdXJlJyBhcyBjb25zdCwgZmFpbGVkOiB0cnVlIH07CgpkZXNjcmliZSgnY291bmNpbCBsaW5lLXVwICh0b3AgbW9kZWwgcGVyIGpvYiknLCAoKSA9PiB7CiAgaXQoJ0dlbWluaSA0IEFyZ29uIGNoZWNrcyBmYWN0cyBhbmQgcmVhZHMgcGhvdG9zLCBHUFQtNiBBc3RyYSBjaGVja3MgbWF0aHMsIENsYXVkZSBGYWJsZSA1LjEgcnVsZXMnLCAoKSA9PiB7CiAgICBleHBlY3QoQ09VTkNJTF9NT0RFTFMuZ2VtaW5pLmlkKS50b0JlKCdnb29nbGUvZ2VtaW5pLTQtYXJnb24nKTsKICAgIGV4cGVjdChDT1VOQ0lMX01PREVMUy5vcGVuYWkuaWQpLnRvQmUoJ29wZW5haS9ncHQtNi1hc3RyYScpOwogICAgZXhwZWN0KENPVU5DSUxfTU9ERUxTLmNoYWlyLmlkKS50b0JlKCdhbnRocm9waWMvY2xhdWRlLWZhYmxlLTUtMScpOwogICAgZXhwZWN0KFZJU0lPTl9NT0RFTCkudG9CZSgnZ29vZ2xlL2dlbWluaS00LWFyZ29uJyk7CiAgfSk7Cn0pOwoKZGVzY3JpYmUoJ2NvdW5jaWwgZGVjaXNpb24gcnVsZXMnLCAoKSA9PiB7CiAgaXQoJ2JvdGggcmV2aWV3ZXJzIGNvbmZpcm0gdGhlIHR1dG9yIOKGkiBhbGwgdGhyZWUgYWdyZWUsIG5vIGRlYmF0ZSBvciBydWxpbmcnLCAoKSA9PiB7CiAgICBleHBlY3QoY291bmNpbE5leHRTdGVwKDEsIG9rLCBvaykpLnRvQmUoJ2FncmVlJyk7CiAgfSk7CiAgaXQoJ3Jldmlld2VycyByZWFjaCBkaWZmZXJlbnQgdmVyZGljdHMgaW4gcm91bmQgMSDihpIgZGViYXRlJywgKCkgPT4gewogICAgZXhwZWN0KGNvdW5jaWxOZXh0U3RlcCgxLCBvaywgZml4KSkudG9CZSgnZGViYXRlJyk7CiAgICBleHBlY3QoY291bmNpbE5leHRTdGVwKDEsIHVuc3VyZSwgb2spKS50b0JlKCdkZWJhdGUnKTsKICB9KTsKICBpdCgnYm90aCByZXZpZXdlcnMgYWdyZWUgdGhlcmUgaXMgYW4gZXJyb3Ig4oaSIHN0cmFpZ2h0IHRvIENsYXVkZSBydWxpbmcgKG5vIGRlYmF0ZSknLCAoKSA9PiB7CiAgICBleHBlY3QoY291bmNpbE5leHRTdGVwKDEsIGZpeCwgZml4KSkudG9CZSgncnVsaW5nJyk7CiAgfSk7CiAgaXQoJ3N0aWxsIGRpc2FncmVlaW5nIGFmdGVyIHRoZSBkZWJhdGUg4oaSIENsYXVkZSBydWxlcycsICgpID0+IHsKICAgIGV4cGVjdChjb3VuY2lsTmV4dFN0ZXAoMiwgb2ssIGZpeCkpLnRvQmUoJ3J1bGluZycpOwogIH0pOwogIGl0KCdvbmUgcmV2aWV3ZXIgZG93biDihpIgQ2xhdWRlIHJ1bGVzIG9uIHRoZSBvdGhlciByZXBvcnQ7IGJvdGggZG93biDihpIgdW5hdmFpbGFibGUnLCAoKSA9PiB7CiAgICBleHBlY3QoY291bmNpbE5leHRTdGVwKDEsIGRvd24sIGZpeCkpLnRvQmUoJ3J1bGluZycpOwogICAgZXhwZWN0KGNvdW5jaWxOZXh0U3RlcCgxLCBkb3duLCBvaykpLnRvQmUoJ3J1bGluZycpOwogICAgZXhwZWN0KGNvdW5jaWxOZXh0U3RlcCgxLCBkb3duLCBkb3duKSkudG9CZSgndW5hdmFpbGFibGUnKTsKICB9KTsKICBpdCgnYSBmYWlsZWQgcmV2aWV3ZXIgbmV2ZXIgY291bnRzIGFzIGFncmVlbWVudCcsICgpID0+IHsKICAgIGV4cGVjdChhbGxBZ3JlZShbb2ssIHsgdmVyZGljdDogJ3ZlcmlmaWVkJywgZmFpbGVkOiB0cnVlIH1dKSkudG9CZShmYWxzZSk7CiAgfSk7CiAgaXQoJ2FueSBjb3JyZWN0aW9uIHdpbnMgd2hlbiBtZXJnaW5nOyB2ZXJpZmllZCBuZWVkcyBldmVyeW9uZScsICgpID0+IHsKICAgIGV4cGVjdChtZXJnZVZlcmRpY3RzKFtvaywgZml4XSkpLnRvQmUoJ25lZWRzX2ZpeCcpOwogICAgZXhwZWN0KG1lcmdlVmVyZGljdHMoW29rLCB1bnN1cmVdKSkudG9CZSgndW5zdXJlJyk7CiAgICBleHBlY3QobWVyZ2VWZXJkaWN0cyhbb2ssIG9rXSkpLnRvQmUoJ3ZlcmlmaWVkJyk7CiAgICBleHBlY3QobWVyZ2VWZXJkaWN0cyhbXSkpLnRvQmUoJ3Vuc3VyZScpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCdyZXZpZXdlciByZXBseSBwYXJzaW5nJywgKCkgPT4gewogIGl0KCdyZWFkcyBmZW5jZWQgSlNPTiB0ZXh0JywgKCkgPT4gewogICAgY29uc3QgYyA9IHRvQ2hlY2soJ2dlbWluaScsIDEsICdgYGBqc29uXG57InZlcmRpY3QiOiJuZWVkc19maXgiLCJpc3N1ZXMiOlt7ImxpbmUiOiJGID0gMiArIDMgPSA1IE4iLCJmaXgiOiJGID0gMiDDlyAzID0gNiBOIn1dLCJub3RlIjoiQWRkZWQgaW5zdGVhZCBvZiBtdWx0aXBsaWVkLiJ9XG5gYGAnKTsKICAgIGV4cGVjdChjLnZlcmRpY3QpLnRvQmUoJ25lZWRzX2ZpeCcpOwogICAgZXhwZWN0KGMuaXNzdWVzKS50b0VxdWFsKFt7IGxpbmU6ICdGID0gMiArIDMgPSA1IE4nLCBmaXg6ICdGID0gMiDDlyAzID0gNiBOJyB9XSk7CiAgfSk7CiAgaXQoJ2EgY29ycmVjdGlvbiBjbGFpbSB3aXRob3V0IGFueSBjb25jcmV0ZSBmaXggYmVjb21lcyB1bnN1cmUnLCAoKSA9PiB7CiAgICBleHBlY3QodG9DaGVjaygnb3BlbmFpJywgMSwgeyB2ZXJkaWN0OiAnbmVlZHNfZml4JywgaXNzdWVzOiBbXSwgbm90ZTogJ3gnIH0pLnZlcmRpY3QpLnRvQmUoJ3Vuc3VyZScpOwogIH0pOwogIGl0KCd1bnJlYWRhYmxlIHJlcGxpZXMgYmVjb21lIHVuc3VyZSBhbmQgYXJlIG1hcmtlZCBmYWlsZWQnLCAoKSA9PiB7CiAgICBjb25zdCBjID0gdG9DaGVjaygnY2hhaXInLCAzLCAnSSB0aGluayBpdCBpcyBmaW5lJyk7CiAgICBleHBlY3QoYy52ZXJkaWN0KS50b0JlKCd1bnN1cmUnKTsKICAgIGV4cGVjdChjLmZhaWxlZCkudG9CZSh0cnVlKTsKICB9KTsKfSk7CgpkZXNjcmliZSgncGhvdG8gcmVhZGluZycsICgpID0+IHsKICBpdCgnd3JhcHMgdGhlIHJlYWRpbmcgZm9yIHRoZSB0dXRvciBhbmQgZm9sZHMgaXQgYXdheSBmb3IgZGlzcGxheScsICgpID0+IHsKICAgIGNvbnN0IHRleHQgPSB3cmFwUGhvdG9SZWFkaW5nKCdRLiBGaW5kIHRoZSBmb3JjZS4gKEEpIDUgTiAoQikgNiBOJykgKyAnU29sdmUgdGhpcyBxdWVzdGlvbiBzdGVwIGJ5IHN0ZXAuJzsKICAgIGV4cGVjdCh0ZXh0KS50b0NvbnRhaW4oJ0dlbWluaSA0IEFyZ29uJyk7CiAgICBjb25zdCB7IHJlYWRpbmcsIHJlc3QgfSA9IHNwbGl0UGhvdG9SZWFkaW5nKHRleHQpOwogICAgZXhwZWN0KHJlYWRpbmcpLnRvQmUoJ1EuIEZpbmQgdGhlIGZvcmNlLiAoQSkgNSBOIChCKSA2IE4nKTsKICAgIGV4cGVjdChyZXN0KS50b0JlKCdTb2x2ZSB0aGlzIHF1ZXN0aW9uIHN0ZXAgYnkgc3RlcC4nKTsKICB9KTsKfSk7CgpkZXNjcmliZSgnd2hhdCB0aGUgY291bmNpbCBjaGVja3MnLCAoKSA9PiB7CiAgY29uc3QgbXNnID0gKGlkOiBzdHJpbmcsIHJvbGU6IFVJTWVzc2FnZVsncm9sZSddLCBwYXJ0czogVUlNZXNzYWdlWydwYXJ0cyddKTogVUlNZXNzYWdlID0+ICh7IGlkLCByb2xlLCBwYXJ0cyB9KTsKICBjb25zdCBtZXNzYWdlcyA9IFsKICAgIG1zZygndTEnLCAndXNlcicsIFt7IHR5cGU6ICdmaWxlJywgbWVkaWFUeXBlOiAnaW1hZ2UvanBlZycsIHVybDogJ2RhdGE6aW1hZ2UvanBlZztiYXNlNjQsQUFBJyB9LCB7IHR5cGU6ICd0ZXh0JywgdGV4dDogJ1NvbHZlIHRoaXMnIH1dKSwKICAgIG1zZygnYTEnLCAnYXNzaXN0YW50JywgW3sgdHlwZTogJ3RleHQnLCB0ZXh0OiAnQW5zd2VyIHBhcnQgb25lJyB9XSksCiAgICBtc2coJ3UyJywgJ3VzZXInLCBbeyB0eXBlOiAndGV4dCcsIHRleHQ6IFJFU1VNRV9URVhUIH1dKSwKICAgIG1zZygnYTInLCAnYXNzaXN0YW50JywgW3sgdHlwZTogJ3RleHQnLCB0ZXh0OiAnY29udGludWVkJyB9XSksCiAgXTsKICBpdCgndXNlcyB0aGUgbmVhcmVzdCByZWFsIHF1ZXN0aW9uIHdpdGggaXRzIHBob3RvLCBza2lwcGluZyByZXN1bWUgdHVybnMnLCAoKSA9PiB7CiAgICBleHBlY3QoY291bmNpbElucHV0Rm9yKG1lc3NhZ2VzLCAzKSkudG9FcXVhbCh7IHF1ZXN0aW9uOiAnU29sdmUgdGhpcycsIGltYWdlczogWydkYXRhOmltYWdlL2pwZWc7YmFzZTY0LEFBQSddIH0pOwogIH0pOwogIGl0KCdhdXRvLWNoZWNrIHNraXBzIG9uZS1saW5lIHJlcGxpZXMnLCAoKSA9PiB7CiAgICBleHBlY3QoaXNXb3J0aENoZWNraW5nKCdUaGVlayBoYWkhJykpLnRvQmUoZmFsc2UpOwogICAgZXhwZWN0KGlzV29ydGhDaGVja2luZygneCcucmVwZWF0KDIwMCkpKS50b0JlKHRydWUpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCdhc2tpbmcgdGhlIHR1dG9yIGFib3V0IGEgY29ycmVjdGlvbicsICgpID0+IHsKICBpdCgnbGlzdHMgZXZlcnkgYWNjZXB0ZWQgbWlzdGFrZSB3aXRoIGl0cyBmaXgnLCBhc3luYyAoKSA9PiB7CiAgICBjb25zdCB7IGNvcnJlY3Rpb25SZXF1ZXN0IH0gPSBhd2FpdCBpbXBvcnQoJ0AvbGliL3ZlcmlmeScpOwogICAgY29uc3QgdCA9IGNvcnJlY3Rpb25SZXF1ZXN0KFt7IGxpbmU6ICdGID0gMiArIDMgPSA1IE4nLCBmaXg6ICdGID0gMiDDlyAzID0gNiBOJyB9XSk7CiAgICBleHBlY3QodCkudG9Db250YWluKCdXcm9uZzogIkYgPSAyICsgMyA9IDUgTiInKTsKICAgIGV4cGVjdCh0KS50b0NvbnRhaW4oJ0NvcnJlY3Q6ICJGID0gMiDDlyAzID0gNiBOIicpOwogICAgZXhwZWN0KHQpLnRvQ29udGFpbigndGhpcyBtaXN0YWtlJyk7CiAgfSk7Cn0pOwo=
+import { describe, expect, it } from 'vitest';
+import type { UIMessage } from 'ai';
+import { COUNCIL_MODELS, VISION_MODEL, allAgree, councilNextStep, mergeVerdicts, splitPhotoReading, toCheck, wrapPhotoReading } from '@/lib/verify';
+import { councilInputFor, isWorthChecking } from '@/lib/council-input';
+import { RESUME_TEXT } from '@/lib/chat-resume';
+
+const ok = { verdict: 'verified' as const };
+const fix = { verdict: 'needs_fix' as const };
+const unsure = { verdict: 'unsure' as const };
+const down = { verdict: 'unsure' as const, failed: true };
+
+describe('council line-up (top model per job)', () => {
+  it('Gemini 4 Argon checks facts and reads photos, GPT-6 Astra checks maths, Claude Fable 5.1 rules', () => {
+    expect(COUNCIL_MODELS.gemini.id).toBe('google/gemini-4-argon');
+    expect(COUNCIL_MODELS.openai.id).toBe('openai/gpt-6-astra');
+    expect(COUNCIL_MODELS.chair.id).toBe('anthropic/claude-fable-5-1');
+    expect(VISION_MODEL).toBe('google/gemini-4-argon');
+  });
+});
+
+describe('council decision rules', () => {
+  it('both reviewers confirm the tutor → all three agree, no debate or ruling', () => {
+    expect(councilNextStep(1, ok, ok)).toBe('agree');
+  });
+  it('reviewers reach different verdicts in round 1 → debate', () => {
+    expect(councilNextStep(1, ok, fix)).toBe('debate');
+    expect(councilNextStep(1, unsure, ok)).toBe('debate');
+  });
+  it('both reviewers agree there is an error → straight to Claude ruling (no debate)', () => {
+    expect(councilNextStep(1, fix, fix)).toBe('ruling');
+  });
+  it('still disagreeing after the debate → Claude rules', () => {
+    expect(councilNextStep(2, ok, fix)).toBe('ruling');
+  });
+  it('one reviewer down → Claude rules on the other report; both down → unavailable', () => {
+    expect(councilNextStep(1, down, fix)).toBe('ruling');
+    expect(councilNextStep(1, down, ok)).toBe('ruling');
+    expect(councilNextStep(1, down, down)).toBe('unavailable');
+  });
+  it('a failed reviewer never counts as agreement', () => {
+    expect(allAgree([ok, { verdict: 'verified', failed: true }])).toBe(false);
+  });
+  it('any correction wins when merging; verified needs everyone', () => {
+    expect(mergeVerdicts([ok, fix])).toBe('needs_fix');
+    expect(mergeVerdicts([ok, unsure])).toBe('unsure');
+    expect(mergeVerdicts([ok, ok])).toBe('verified');
+    expect(mergeVerdicts([])).toBe('unsure');
+  });
+});
+
+describe('reviewer reply parsing', () => {
+  it('reads fenced JSON text', () => {
+    const c = toCheck('gemini', 1, '```json\n{"verdict":"needs_fix","issues":[{"line":"F = 2 + 3 = 5 N","fix":"F = 2 × 3 = 6 N"}],"note":"Added instead of multiplied."}\n```');
+    expect(c.verdict).toBe('needs_fix');
+    expect(c.issues).toEqual([{ line: 'F = 2 + 3 = 5 N', fix: 'F = 2 × 3 = 6 N' }]);
+  });
+  it('a correction claim without any concrete fix becomes unsure', () => {
+    expect(toCheck('openai', 1, { verdict: 'needs_fix', issues: [], note: 'x' }).verdict).toBe('unsure');
+  });
+  it('unreadable replies become unsure and are marked failed', () => {
+    const c = toCheck('chair', 3, 'I think it is fine');
+    expect(c.verdict).toBe('unsure');
+    expect(c.failed).toBe(true);
+  });
+});
+
+describe('photo reading', () => {
+  it('wraps the reading for the tutor and folds it away for display', () => {
+    const text = wrapPhotoReading('Q. Find the force. (A) 5 N (B) 6 N') + 'Solve this question step by step.';
+    expect(text).toContain('Gemini 4 Argon');
+    const { reading, rest } = splitPhotoReading(text);
+    expect(reading).toBe('Q. Find the force. (A) 5 N (B) 6 N');
+    expect(rest).toBe('Solve this question step by step.');
+  });
+});
+
+describe('what the council checks', () => {
+  const msg = (id: string, role: UIMessage['role'], parts: UIMessage['parts']): UIMessage => ({ id, role, parts });
+  const messages = [
+    msg('u1', 'user', [{ type: 'file', mediaType: 'image/jpeg', url: 'data:image/jpeg;base64,AAA' }, { type: 'text', text: 'Solve this' }]),
+    msg('a1', 'assistant', [{ type: 'text', text: 'Answer part one' }]),
+    msg('u2', 'user', [{ type: 'text', text: RESUME_TEXT }]),
+    msg('a2', 'assistant', [{ type: 'text', text: 'continued' }]),
+  ];
+  it('uses the nearest real question with its photo, skipping resume turns', () => {
+    expect(councilInputFor(messages, 3)).toEqual({ question: 'Solve this', images: ['data:image/jpeg;base64,AAA'] });
+  });
+  it('auto-check skips one-line replies', () => {
+    expect(isWorthChecking('Theek hai!')).toBe(false);
+    expect(isWorthChecking('x'.repeat(200))).toBe(true);
+  });
+});
+
+describe('asking the tutor about a correction', () => {
+  it('lists every accepted mistake with its fix', async () => {
+    const { correctionRequest } = await import('@/lib/verify');
+    const t = correctionRequest([{ line: 'F = 2 + 3 = 5 N', fix: 'F = 2 × 3 = 6 N' }]);
+    expect(t).toContain('Wrong: "F = 2 + 3 = 5 N"');
+    expect(t).toContain('Correct: "F = 2 × 3 = 6 N"');
+    expect(t).toContain('this mistake');
+  });
+});

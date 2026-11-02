@@ -1,1 +1,30 @@
-Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGJlZm9yZUVhY2gsIGRlc2NyaWJlLCBleHBlY3QsIGl0LCB2aSB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IGNyZWF0ZUFnZW50VG9vbHMgfSBmcm9tICdAL2xpYi9hZ2VudC90b29scy5zZXJ2ZXInOwpiZWZvcmVFYWNoKCgpID0+IHsgdmkuc3R1YkVudignTE9WQUJMRV9BUElfS0VZJywgJ3Rlc3QnKTsgdmkuc3R1YkVudignUEFSQUxMRUxfQVBJX0tFWScsICd0ZXN0Jyk7IHZpLnN0dWJFbnYoJ0ZJUkVDUkFXTF9BUElfS0VZJywgJ3Rlc3QnKTsgfSk7CmRlc2NyaWJlKCdzdHVkZW50IGRvY3VtZW50IGxpbmtzJywgKCkgPT4gewogIGl0KCdyZWFkcyBQREYgdGV4dCB1c2luZyBQYXJhbGxlbCB3aXRob3V0IHNjcmFwaW5nIHR3aWNlJywgYXN5bmMgKCkgPT4gewogICAgY29uc3QgZmV0Y2ggPSB2aS5mbigpLm1vY2tSZXNvbHZlZFZhbHVlKFJlc3BvbnNlLmpzb24oeyByZXN1bHRzOiBbeyB0aXRsZTogJ05DRVJUJywgZnVsbF9jb250ZW50OiAnUXVlc3Rpb246IFdoYXQgaXMgaW5lcnRpYT8nIH1dIH0pKTsKICAgIHZpLnN0dWJHbG9iYWwoJ2ZldGNoJywgZmV0Y2gpOwogICAgY29uc3QgdG9vbCA9IGNyZWF0ZUFnZW50VG9vbHMoKS5yZWFkX2xpbms7CiAgICBjb25zdCByZXN1bHQgPSBhd2FpdCB0b29sLmV4ZWN1dGU/Lih7IHVybDogJ2h0dHBzOi8vbmNlcnQubmljLmluL3RleHRib29rL3BkZi9sZXBoMTAxLnBkZicgfSwgeyB0b29sQ2FsbElkOiAndGVzdCcsIG1lc3NhZ2VzOiBbXSwgY29udGV4dDoge30gfSk7CiAgICBleHBlY3QocmVzdWx0KS50b01hdGNoT2JqZWN0KHsgdGV4dDogJ1F1ZXN0aW9uOiBXaGF0IGlzIGluZXJ0aWE/JywgdGl0bGU6ICdOQ0VSVCcgfSk7CiAgICBleHBlY3QoZmV0Y2gpLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygxKTsKICB9KTsKICBpdCgnZmFsbHMgYmFjayB0byBGaXJlY3Jhd2wgd2hlbiB0aGUgZmlyc3QgcmVhZGVyIGNhbm5vdCBleHRyYWN0IHRleHQnLCBhc3luYyAoKSA9PiB7CiAgICBjb25zdCBmZXRjaCA9IHZpLmZuKCkubW9ja1Jlc29sdmVkVmFsdWVPbmNlKFJlc3BvbnNlLmpzb24oeyByZXN1bHRzOiBbXSB9KSkubW9ja1Jlc29sdmVkVmFsdWVPbmNlKFJlc3BvbnNlLmpzb24oeyBkYXRhOiB7IG1hcmtkb3duOiAnUERGIGNoYXB0ZXIgdGV4dCcgfSB9KSk7CiAgICB2aS5zdHViR2xvYmFsKCdmZXRjaCcsIGZldGNoKTsKICAgIGNvbnN0IHJlc3VsdCA9IGF3YWl0IGNyZWF0ZUFnZW50VG9vbHMoKS5yZWFkX2xpbmsuZXhlY3V0ZT8uKHsgdXJsOiAnaHR0cHM6Ly9leGFtcGxlLm9yZy9ub3Rlcy5wZGYnIH0sIHsgdG9vbENhbGxJZDogJ3Rlc3QnLCBtZXNzYWdlczogW10sIGNvbnRleHQ6IHt9IH0pOwogICAgZXhwZWN0KHJlc3VsdCkudG9NYXRjaE9iamVjdCh7IHRleHQ6ICdQREYgY2hhcHRlciB0ZXh0JyB9KTsKICAgIGV4cGVjdChmZXRjaCkudG9IYXZlQmVlbkNhbGxlZFRpbWVzKDIpOwogIH0pOwogIGl0KCdyZXBvcnRzIGVtcHR5IGV4dHJhY3Rpb24gaW5zdGVhZCBvZiBjbGFpbWluZyB0aGUgZG9jdW1lbnQgd2FzIHJlYWQnLCBhc3luYyAoKSA9PiB7CiAgICB2aS5zdHViR2xvYmFsKCdmZXRjaCcsIHZpLmZuKCkubW9ja0ltcGxlbWVudGF0aW9uKGFzeW5jICgpID0+IFJlc3BvbnNlLmpzb24oeyByZXN1bHRzOiBbXSwgZGF0YTogeyBtYXJrZG93bjogJycgfSB9KSkpOwogICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgY3JlYXRlQWdlbnRUb29scygpLnJlYWRfbGluay5leGVjdXRlPy4oeyB1cmw6ICdodHRwczovL2V4YW1wbGUub3JnL2VtcHR5LnBkZicgfSwgeyB0b29sQ2FsbElkOiAndGVzdCcsIG1lc3NhZ2VzOiBbXSwgY29udGV4dDoge30gfSk7CiAgICBleHBlY3QocmVzdWx0KS50b01hdGNoT2JqZWN0KHsgZXJyb3I6IGV4cGVjdC5zdHJpbmdDb250YWluaW5nKCdubyByZWFkYWJsZSB0ZXh0JykgfSk7CiAgfSk7CiAgaXQoJ2RvZXMgbm90IGV4cG9zZSBsaXZlIHNlYXJjaCB3aGVuIHRoZSB0b2dnbGUgaXMgb2ZmJywgKCkgPT4gewogICAgZXhwZWN0KGNyZWF0ZUFnZW50VG9vbHMoKSkubm90LnRvSGF2ZVByb3BlcnR5KCd3ZWJfc2VhcmNoJyk7CiAgICBleHBlY3QoY3JlYXRlQWdlbnRUb29scyh7IHdlYlNlYXJjaDogdHJ1ZSB9KSkudG9IYXZlUHJvcGVydHkoJ3dlYl9zZWFyY2gnKTsKICB9KTsKfSk7
+// @vitest-environment node
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { createAgentTools } from '@/lib/agent/tools.server';
+beforeEach(() => { vi.stubEnv('LOVABLE_API_KEY', 'test'); vi.stubEnv('PARALLEL_API_KEY', 'test'); vi.stubEnv('FIRECRAWL_API_KEY', 'test'); });
+describe('student document links', () => {
+  it('reads PDF text using Parallel without scraping twice', async () => {
+    const fetch = vi.fn().mockResolvedValue(Response.json({ results: [{ title: 'NCERT', full_content: 'Question: What is inertia?' }] }));
+    vi.stubGlobal('fetch', fetch);
+    const tool = createAgentTools().read_link;
+    const result = await tool.execute?.({ url: 'https://ncert.nic.in/textbook/pdf/leph101.pdf' }, { toolCallId: 'test', messages: [], context: {} });
+    expect(result).toMatchObject({ text: 'Question: What is inertia?', title: 'NCERT' });
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+  it('falls back to Firecrawl when the first reader cannot extract text', async () => {
+    const fetch = vi.fn().mockResolvedValueOnce(Response.json({ results: [] })).mockResolvedValueOnce(Response.json({ data: { markdown: 'PDF chapter text' } }));
+    vi.stubGlobal('fetch', fetch);
+    const result = await createAgentTools().read_link.execute?.({ url: 'https://example.org/notes.pdf' }, { toolCallId: 'test', messages: [], context: {} });
+    expect(result).toMatchObject({ text: 'PDF chapter text' });
+    expect(fetch).toHaveBeenCalledTimes(2);
+  });
+  it('reports empty extraction instead of claiming the document was read', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockImplementation(async () => Response.json({ results: [], data: { markdown: '' } })));
+    const result = await createAgentTools().read_link.execute?.({ url: 'https://example.org/empty.pdf' }, { toolCallId: 'test', messages: [], context: {} });
+    expect(result).toMatchObject({ error: expect.stringContaining('no readable text') });
+  });
+  it('does not expose live search when the toggle is off', () => {
+    expect(createAgentTools()).not.toHaveProperty('web_search');
+    expect(createAgentTools({ webSearch: true })).toHaveProperty('web_search');
+  });
+});

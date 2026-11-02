@@ -1,1 +1,16 @@
-aW1wb3J0IHsgUXVlcnlDbGllbnQgfSBmcm9tICJAdGFuc3RhY2svcmVhY3QtcXVlcnkiOwppbXBvcnQgeyBjcmVhdGVSb3V0ZXIgfSBmcm9tICJAdGFuc3RhY2svcmVhY3Qtcm91dGVyIjsKaW1wb3J0IHsgcm91dGVUcmVlIH0gZnJvbSAiLi9yb3V0ZVRyZWUuZ2VuIjsKCmV4cG9ydCBjb25zdCBnZXRSb3V0ZXIgPSAoKSA9PiB7CiAgY29uc3QgcXVlcnlDbGllbnQgPSBuZXcgUXVlcnlDbGllbnQoKTsKCiAgY29uc3Qgcm91dGVyID0gY3JlYXRlUm91dGVyKHsKICAgIHJvdXRlVHJlZSwKICAgIGNvbnRleHQ6IHsgcXVlcnlDbGllbnQgfSwKICAgIHNjcm9sbFJlc3RvcmF0aW9uOiB0cnVlLAogICAgZGVmYXVsdFByZWxvYWRTdGFsZVRpbWU6IDAsCiAgfSk7CgogIHJldHVybiByb3V0ZXI7Cn07Cg==
+import { QueryClient } from "@tanstack/react-query";
+import { createRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
+
+export const getRouter = () => {
+  const queryClient = new QueryClient();
+
+  const router = createRouter({
+    routeTree,
+    context: { queryClient },
+    scrollRestoration: true,
+    defaultPreloadStaleTime: 0,
+  });
+
+  return router;
+};

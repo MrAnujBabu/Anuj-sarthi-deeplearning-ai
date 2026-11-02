@@ -1,1 +1,70 @@
-aW1wb3J0IHsgYWN0LCBjbGVhbnVwLCBmaXJlRXZlbnQsIHJlbmRlciwgc2NyZWVuIH0gZnJvbSAnQHRlc3RpbmctbGlicmFyeS9yZWFjdCc7CmltcG9ydCB7IGFmdGVyRWFjaCwgZXhwZWN0LCBpdCwgdmkgfSBmcm9tICd2aXRlc3QnOwpsZXQgc2Vjb25kcyA9IDM7CnZpLm1vY2soJ0AvbGliL3F1aXotdGltZXItcHJlZmVyZW5jZScsICgpID0+ICh7IHVzZVF1aXpUaW1lclByZWZlcmVuY2U6ICgpID0+ICh7IHNlY29uZHMgfSkgfSkpOwp2aS5tb2NrKCdAL2NvbXBvbmVudHMvYWktZWxlbWVudHMvbWVzc2FnZScsICgpID0+ICh7IE1lc3NhZ2VSZXNwb25zZTogKHsgY2hpbGRyZW4gfTogeyBjaGlsZHJlbjogUmVhY3QuUmVhY3ROb2RlIH0pID0+IDxzcGFuPntjaGlsZHJlbn08L3NwYW4+IH0pKTsKaW1wb3J0IHsgUXVpekFjdGlvbnMgfSBmcm9tICdAL2NvbXBvbmVudHMvcXVpei1hY3Rpb25zJzsKYWZ0ZXJFYWNoKCgpID0+IHsgY2xlYW51cCgpOyB2aS51c2VSZWFsVGltZXJzKCk7IHNlY29uZHMgPSAzOyBsb2NhbFN0b3JhZ2UuY2xlYXIoKTsgfSk7Cml0KCd2b2ljZSBjb3VudGRvd24gd2FpdHMgZm9yIHF1ZXN0aW9uIGRlbGl2ZXJ5IHdoaWxlIG9wdGlvbiB0YXBzIHJlbWFpbiB1c2FibGUnLCAoKSA9PiB7CiAgdmkudXNlRmFrZVRpbWVycygpOyBjb25zdCBzZW5kID0gdmkuZm4oKTsKICBjb25zdCB2aWV3ID0gcmVuZGVyKDxRdWl6QWN0aW9ucyBhbnN3ZXJzT25seSB0aW1lZCB0aW1lclBhdXNlZCBxdWVzdGlvbktleT0icTEiIG9wdGlvbnM9e1snQScsJ0InXX0gb25TZW5kPXtzZW5kfSAvPik7CiAgYWN0KCgpID0+IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWUoMjAwMDApKTsgZXhwZWN0KHNlbmQpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgdmlldy5yZXJlbmRlcig8UXVpekFjdGlvbnMgYW5zd2Vyc09ubHkgdGltZWQgcXVlc3Rpb25LZXk9InExIiBvcHRpb25zPXtbJ0EnLCdCJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIGFjdCgoKSA9PiB2aS5hZHZhbmNlVGltZXJzQnlUaW1lKDIwMDApKTsgZXhwZWN0KHNlbmQpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgYWN0KCgpID0+IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWUoMTAwMCkpOyBleHBlY3Qoc2VuZC5tb2NrLmNhbGxzKS50b0VxdWFsKFtbJ3NraXAnXV0pOwp9KTsKaXQoJ3RocmVlIHNlY29uZHMgY291bnRzIGRvd24gdGhlbiBzdWJtaXRzIHNraXAgZXhhY3RseSBvbmNlJywgKCkgPT4gewogIHZpLnVzZUZha2VUaW1lcnMoKTsgY29uc3Qgc2VuZCA9IHZpLmZuKCk7IHJlbmRlcig8UXVpekFjdGlvbnMgcXVlc3Rpb25LZXk9Im9uZSIgb3B0aW9ucz17WydBJywnQiddfSBvblNlbmQ9e3NlbmR9IC8+KTsKICBleHBlY3Qoc2VuZCkubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTsKICBhY3QoKCkgPT4gdmkuYWR2YW5jZVRpbWVyc0J5VGltZSgxMDAwKSk7IGV4cGVjdChzZW5kKS5ub3QudG9IYXZlQmVlbkNhbGxlZCgpOwogIGFjdCgoKSA9PiB2aS5hZHZhbmNlVGltZXJzQnlUaW1lKDEwMDApKTsgZXhwZWN0KHNlbmQpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgYWN0KCgpID0+IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWUoMTAwMCkpOyBleHBlY3Qoc2VuZC5tb2NrLmNhbGxzKS50b0VxdWFsKFtbJ3NraXAnXV0pOwogIGFjdCgoKSA9PiB2aS5hZHZhbmNlVGltZXJzQnlUaW1lKDUwMDApKTsgZXhwZWN0KHNlbmQpLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygxKTsKfSk7Cml0KCdvZmYgbmV2ZXIgc2tpcHMgYW5kIGdyYWRpbmcgcGF1c2VzIGNvdW50ZG93bicsICgpID0+IHsKICB2aS51c2VGYWtlVGltZXJzKCk7IHNlY29uZHMgPSAwOyBjb25zdCBzZW5kID0gdmkuZm4oKTsgY29uc3QgdmlldyA9IHJlbmRlcig8UXVpekFjdGlvbnMgb3B0aW9ucz17WydBJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIGFjdCgoKSA9PiB2aS5hZHZhbmNlVGltZXJzQnlUaW1lKDEwMDAwKSk7IGV4cGVjdChzZW5kKS5ub3QudG9IYXZlQmVlbkNhbGxlZCgpOwogIHNlY29uZHMgPSAxOyB2aWV3LnJlcmVuZGVyKDxRdWl6QWN0aW9ucyBkaXNhYmxlZCBvcHRpb25zPXtbJ0EnXX0gb25TZW5kPXtzZW5kfSAvPik7CiAgYWN0KCgpID0+IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWUoMTAwMDApKTsgZXhwZWN0KHNlbmQpLm5vdC50b0hhdmVCZWVuQ2FsbGVkKCk7CiAgdmlldy5yZXJlbmRlcig8UXVpekFjdGlvbnMgb3B0aW9ucz17WydBJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIGFjdCgoKSA9PiB2aS5hZHZhbmNlVGltZXJzQnlUaW1lKDEwMDApKTsgZXhwZWN0KHNlbmQubW9jay5jYWxscykudG9FcXVhbChbWydza2lwJ11dKTsKfSk7Cml0KCdjaGFuZ2luZyB0aW1lciBhZnRlciBhbnN3ZXJpbmcgY2Fubm90IHJlb3BlbiB0aGUgc2FtZSBxdWVzdGlvbicsICgpID0+IHsKICB2aS51c2VGYWtlVGltZXJzKCk7IGNvbnN0IHNlbmQgPSB2aS5mbigpOyBjb25zdCB2aWV3ID0gcmVuZGVyKDxRdWl6QWN0aW9ucyBxdWVzdGlvbktleT0ib25lIiBvcHRpb25zPXtbJ0EnLCdCJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdjaGVja2JveCcsIHsgbmFtZTogJ0Fuc3dlciBCJyB9KSk7CiAgc2Vjb25kcyA9IDEwOyB2aWV3LnJlcmVuZGVyKDxRdWl6QWN0aW9ucyBxdWVzdGlvbktleT0ib25lIiBvcHRpb25zPXtbJ0EnLCdCJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdjaGVja2JveCcsIHsgbmFtZTogJ0Fuc3dlciBBJyB9KSk7CiAgYWN0KCgpID0+IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWUoMTIwMDApKTsgZXhwZWN0KHNlbmQubW9jay5jYWxscykudG9FcXVhbChbWydCJ11dKTsKfSk7Cml0KCd2b2ljZSBleHBpcnkgc3VibWl0cyBza2lwIG9uY2UgYW5kIHRoZSBuZXh0IHF1ZXN0aW9uIGFjY2VwdHMgYSB0YXAnLCAoKSA9PiB7CiAgdmkudXNlRmFrZVRpbWVycygpOyBjb25zdCBzZW5kID0gdmkuZm4oKTsKICBjb25zdCB2aWV3ID0gcmVuZGVyKDxRdWl6QWN0aW9ucyBhbnN3ZXJzT25seSB0aW1lZCBxdWVzdGlvbktleT0icTEiIG9wdGlvbnM9e1snQScsJ0InLCdDJywnRCddfSBvblNlbmQ9e3NlbmR9IC8+KTsKICBhY3QoKCkgPT4gdmkuYWR2YW5jZVRpbWVyc0J5VGltZSgzMDAwKSk7CiAgZmlyZUV2ZW50LmNsaWNrKHNjcmVlbi5nZXRCeVJvbGUoJ2NoZWNrYm94JywgeyBuYW1lOiAnQW5zd2VyIEInIH0pKTsKICBleHBlY3Qoc2VuZC5tb2NrLmNhbGxzKS50b0VxdWFsKFtbJ3NraXAnXV0pOwogIHZpZXcucmVyZW5kZXIoPFF1aXpBY3Rpb25zIGFuc3dlcnNPbmx5IHRpbWVkIHF1ZXN0aW9uS2V5PSJxMiIgb3B0aW9ucz17WydBJywnQicsJ0MnLCdEJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdjaGVja2JveCcsIHsgbmFtZTogJ0Fuc3dlciBCJyB9KSk7CiAgYWN0KCgpID0+IHZpLmFkdmFuY2VUaW1lcnNCeVRpbWUoNTAwMCkpOwogIGV4cGVjdChzZW5kLm1vY2suY2FsbHMpLnRvRXF1YWwoW1snc2tpcCddLCBbJ0InXV0pOwp9KTsKaXQoJ3ZvaWNlIHdhbGwtY2xvY2sgZXhwaXJ5IGNhdGNoZXMgdXAgYWZ0ZXIgc3VzcGVuZGVkIHRpbWVycycsICgpID0+IHsKICB2aS51c2VGYWtlVGltZXJzKCk7IGNvbnN0IHNlbmQgPSB2aS5mbigpOwogIHJlbmRlcig8UXVpekFjdGlvbnMgYW5zd2Vyc09ubHkgdGltZWQgcXVlc3Rpb25LZXk9InExIiBvcHRpb25zPXtbJ0EnLCdCJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIHZpLnNldFN5c3RlbVRpbWUoRGF0ZS5ub3coKSArIDEwMDAwKTsKICBhY3QoKCkgPT4geyBkb2N1bWVudC5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudCgndmlzaWJpbGl0eWNoYW5nZScpKTsgfSk7CiAgZXhwZWN0KHNlbmQubW9jay5jYWxscykudG9FcXVhbChbWydza2lwJ11dKTsKfSk7Cml0KCdmYWlsZWQgdm9pY2Ugc2VuZCBsZWF2ZXMgdGhlIGN1cnJlbnQgb3B0aW9ucyB1c2FibGUnLCAoKSA9PiB7CiAgY29uc3Qgc2VuZCA9IHZpLmZuKCkubW9ja1JldHVyblZhbHVlT25jZShmYWxzZSkubW9ja1JldHVyblZhbHVlKHRydWUpOwogIHJlbmRlcig8UXVpekFjdGlvbnMgYW5zd2Vyc09ubHkgcXVlc3Rpb25LZXk9InExIiBvcHRpb25zPXtbJ0EnLCdCJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdjaGVja2JveCcsIHsgbmFtZTogJ0Fuc3dlciBBJyB9KSk7CiAgZmlyZUV2ZW50LmNsaWNrKHNjcmVlbi5nZXRCeVJvbGUoJ2NoZWNrYm94JywgeyBuYW1lOiAnQW5zd2VyIEInIH0pKTsKICBleHBlY3Qoc2VuZC5tb2NrLmNhbGxzKS50b0VxdWFsKFtbJ0EnXSwgWydCJ11dKTsKfSk7Cml0KCdyZWplY3RlZCB2b2ljZSBzdWJtaXNzaW9uIGNhbiBiZSByZXNldCB3aXRob3V0IGNoYW5naW5nIHF1ZXN0aW9uIElEJywgKCkgPT4gewogIGNvbnN0IHNlbmQgPSB2aS5mbigpOyBjb25zdCB2aWV3ID0gcmVuZGVyKDxRdWl6QWN0aW9ucyBhbnN3ZXJzT25seSBxdWVzdGlvbktleT0icTEiIG9wdGlvbnM9e1snQScsJ0InXX0gb25TZW5kPXtzZW5kfSAvPik7CiAgZmlyZUV2ZW50LmNsaWNrKHNjcmVlbi5nZXRCeVJvbGUoJ2NoZWNrYm94JywgeyBuYW1lOiAnQW5zd2VyIEEnIH0pKTsKICB2aWV3LnJlcmVuZGVyKDxRdWl6QWN0aW9ucyBhbnN3ZXJzT25seSByZXRyeUtleT17MX0gcXVlc3Rpb25LZXk9InExIiBvcHRpb25zPXtbJ0EnLCdCJ119IG9uU2VuZD17c2VuZH0gLz4pOwogIGZpcmVFdmVudC5jbGljayhzY3JlZW4uZ2V0QnlSb2xlKCdjaGVja2JveCcsIHsgbmFtZTogJ0Fuc3dlciBCJyB9KSk7CiAgZXhwZWN0KHNlbmQubW9jay5jYWxscykudG9FcXVhbChbWydBJ10sIFsnQiddXSk7Cn0pOw==
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { afterEach, expect, it, vi } from 'vitest';
+let seconds = 3;
+vi.mock('@/lib/quiz-timer-preference', () => ({ useQuizTimerPreference: () => ({ seconds }) }));
+vi.mock('@/components/ai-elements/message', () => ({ MessageResponse: ({ children }: { children: React.ReactNode }) => <span>{children}</span> }));
+import { QuizActions } from '@/components/quiz-actions';
+afterEach(() => { cleanup(); vi.useRealTimers(); seconds = 3; localStorage.clear(); });
+it('voice countdown waits for question delivery while option taps remain usable', () => {
+  vi.useFakeTimers(); const send = vi.fn();
+  const view = render(<QuizActions answersOnly timed timerPaused questionKey="q1" options={['A','B']} onSend={send} />);
+  act(() => vi.advanceTimersByTime(20000)); expect(send).not.toHaveBeenCalled();
+  view.rerender(<QuizActions answersOnly timed questionKey="q1" options={['A','B']} onSend={send} />);
+  act(() => vi.advanceTimersByTime(2000)); expect(send).not.toHaveBeenCalled();
+  act(() => vi.advanceTimersByTime(1000)); expect(send.mock.calls).toEqual([['skip']]);
+});
+it('three seconds counts down then submits skip exactly once', () => {
+  vi.useFakeTimers(); const send = vi.fn(); render(<QuizActions questionKey="one" options={['A','B']} onSend={send} />);
+  expect(send).not.toHaveBeenCalled();
+  act(() => vi.advanceTimersByTime(1000)); expect(send).not.toHaveBeenCalled();
+  act(() => vi.advanceTimersByTime(1000)); expect(send).not.toHaveBeenCalled();
+  act(() => vi.advanceTimersByTime(1000)); expect(send.mock.calls).toEqual([['skip']]);
+  act(() => vi.advanceTimersByTime(5000)); expect(send).toHaveBeenCalledTimes(1);
+});
+it('off never skips and grading pauses countdown', () => {
+  vi.useFakeTimers(); seconds = 0; const send = vi.fn(); const view = render(<QuizActions options={['A']} onSend={send} />);
+  act(() => vi.advanceTimersByTime(10000)); expect(send).not.toHaveBeenCalled();
+  seconds = 1; view.rerender(<QuizActions disabled options={['A']} onSend={send} />);
+  act(() => vi.advanceTimersByTime(10000)); expect(send).not.toHaveBeenCalled();
+  view.rerender(<QuizActions options={['A']} onSend={send} />);
+  act(() => vi.advanceTimersByTime(1000)); expect(send.mock.calls).toEqual([['skip']]);
+});
+it('changing timer after answering cannot reopen the same question', () => {
+  vi.useFakeTimers(); const send = vi.fn(); const view = render(<QuizActions questionKey="one" options={['A','B']} onSend={send} />);
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Answer B' }));
+  seconds = 10; view.rerender(<QuizActions questionKey="one" options={['A','B']} onSend={send} />);
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Answer A' }));
+  act(() => vi.advanceTimersByTime(12000)); expect(send.mock.calls).toEqual([['B']]);
+});
+it('voice expiry submits skip once and the next question accepts a tap', () => {
+  vi.useFakeTimers(); const send = vi.fn();
+  const view = render(<QuizActions answersOnly timed questionKey="q1" options={['A','B','C','D']} onSend={send} />);
+  act(() => vi.advanceTimersByTime(3000));
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Answer B' }));
+  expect(send.mock.calls).toEqual([['skip']]);
+  view.rerender(<QuizActions answersOnly timed questionKey="q2" options={['A','B','C','D']} onSend={send} />);
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Answer B' }));
+  act(() => vi.advanceTimersByTime(5000));
+  expect(send.mock.calls).toEqual([['skip'], ['B']]);
+});
+it('voice wall-clock expiry catches up after suspended timers', () => {
+  vi.useFakeTimers(); const send = vi.fn();
+  render(<QuizActions answersOnly timed questionKey="q1" options={['A','B']} onSend={send} />);
+  vi.setSystemTime(Date.now() + 10000);
+  act(() => { document.dispatchEvent(new Event('visibilitychange')); });
+  expect(send.mock.calls).toEqual([['skip']]);
+});
+it('failed voice send leaves the current options usable', () => {
+  const send = vi.fn().mockReturnValueOnce(false).mockReturnValue(true);
+  render(<QuizActions answersOnly questionKey="q1" options={['A','B']} onSend={send} />);
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Answer A' }));
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Answer B' }));
+  expect(send.mock.calls).toEqual([['A'], ['B']]);
+});
+it('rejected voice submission can be reset without changing question ID', () => {
+  const send = vi.fn(); const view = render(<QuizActions answersOnly questionKey="q1" options={['A','B']} onSend={send} />);
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Answer A' }));
+  view.rerender(<QuizActions answersOnly retryKey={1} questionKey="q1" options={['A','B']} onSend={send} />);
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Answer B' }));
+  expect(send.mock.calls).toEqual([['A'], ['B']]);
+});

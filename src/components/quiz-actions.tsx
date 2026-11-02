@@ -1,1 +1,111 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VSZWYsIHVzZVN0YXRlIH0gZnJvbSAicmVhY3QiOwppbXBvcnQgeyBCdXR0b24gfSBmcm9tICJAL2NvbXBvbmVudHMvdWkvYnV0dG9uIjsKaW1wb3J0IHsgTGlnaHRidWxiLCBTa2lwRm9yd2FyZCwgU3F1YXJlLCBUaW1lciB9IGZyb20gImx1Y2lkZS1yZWFjdCI7CmltcG9ydCB7IHVzZVF1aXpUaW1lclByZWZlcmVuY2UgfSBmcm9tICdAL2xpYi9xdWl6LXRpbWVyLXByZWZlcmVuY2UnOwppbXBvcnQgeyBNZXNzYWdlUmVzcG9uc2UgfSBmcm9tICJAL2NvbXBvbmVudHMvYWktZWxlbWVudHMvbWVzc2FnZSI7CmltcG9ydCB7IG5vcm1hbGl6ZU1hdGggfSBmcm9tICJAL2xpYi9tYXRoLWZvcm1hdCI7CmltcG9ydCB7IFN3aXRjaCB9IGZyb20gIkAvY29tcG9uZW50cy91aS9zd2l0Y2giOwppbXBvcnQgeyB1c2VOdW1lcmljQW5zd2VyTGFiZWxzLCB1c2VRdWl6S2V5Ym9hcmRTaG9ydGN1dHMgfSBmcm9tICdAL2xpYi9xdWl6LWxhYmVsLXByZWZlcmVuY2UnOwppbXBvcnQgeyBxdWl6QW5zd2VyRm9yS2V5IH0gZnJvbSAnQC9saWIvcXVpei1zaG9ydGN1dHMnOwoKLyoqIENvbXBhY3QgY2hlY2tib3gtY2FyZCBhbnN3ZXIgbGlzdCBmb3IgdGhlIG9wZW4gcXVpeiBxdWVzdGlvbiwgd2l0aCBvcHRpb25hbCBhdXRvLXNraXAgdGltZXIuICovCmV4cG9ydCBmdW5jdGlvbiBRdWl6QWN0aW9ucyh7IG9wdGlvbnMsIGxhYmVscyA9IHt9LCBvblNlbmQsIHF1ZXN0aW9uS2V5LCBzZWxlY3RlZEFuc3dlciwgZGlzYWJsZWQgPSBmYWxzZSwgY2hhdEhpZGRlbiA9IGZhbHNlLCBvbkNoYXRIaWRkZW4sIGFuc3dlcnNPbmx5ID0gZmFsc2UsIHRpbWVkID0gZmFsc2UsIHRpbWVyUGF1c2VkID0gZmFsc2UsIHJldHJ5S2V5ID0gMCB9OiB7IG9wdGlvbnM6IHN0cmluZ1tdOyBsYWJlbHM/OiBSZWNvcmQ8c3RyaW5nLCBzdHJpbmc+OyBvblNlbmQ6ICh0ZXh0OiBzdHJpbmcpID0+IHZvaWQgfCBib29sZWFuOyBxdWVzdGlvbktleT86IHN0cmluZzsgc2VsZWN0ZWRBbnN3ZXI/OiBzdHJpbmcgfCB1bmRlZmluZWQ7IGRpc2FibGVkPzogYm9vbGVhbjsgY2hhdEhpZGRlbj86IGJvb2xlYW47IG9uQ2hhdEhpZGRlbj86IChoaWRkZW46IGJvb2xlYW4pID0+IHZvaWQ7IGFuc3dlcnNPbmx5PzogYm9vbGVhbjsgdGltZWQ/OiBib29sZWFuOyB0aW1lclBhdXNlZD86IGJvb2xlYW47IHJldHJ5S2V5PzogbnVtYmVyIH0pIHsKICBjb25zdCBbcGlja2VkLCBzZXRQaWNrZWRdID0gdXNlU3RhdGU8c3RyaW5nIHwgbnVsbD4obnVsbCk7CiAgY29uc3QgW251bWVyaWNMYWJlbHNdID0gdXNlTnVtZXJpY0Fuc3dlckxhYmVscygpOwogIGNvbnN0IFtrZXlib2FyZEVuYWJsZWRdID0gdXNlUXVpektleWJvYXJkU2hvcnRjdXRzKCk7CiAgY29uc3QgeyBzZWNvbmRzOiBsaW1pdCB9ID0gdXNlUXVpelRpbWVyUHJlZmVyZW5jZSgpOwogIGNvbnN0IFtsZWZ0LCBzZXRMZWZ0XSA9IHVzZVN0YXRlKDApOwogIGNvbnN0IGFuc3dlcmVkID0gdXNlUmVmKGZhbHNlKTsKICBjb25zdCBleHBpcmVzQXQgPSB1c2VSZWY8bnVtYmVyIHwgbnVsbD4obnVsbCk7CiAgY29uc3QgcmVtYWluaW5nU2Vjb25kcyA9IHVzZVJlZihsaW1pdCk7CiAgY29uc3QgbGF0ZXN0U2VuZCA9IHVzZVJlZihvblNlbmQpOwogIGxhdGVzdFNlbmQuY3VycmVudCA9IG9uU2VuZDsKCiAgdXNlRWZmZWN0KCgpID0+IHsgYW5zd2VyZWQuY3VycmVudCA9IGZhbHNlOyBzZXRQaWNrZWQobnVsbCk7IHNldExlZnQobGltaXQpOyByZW1haW5pbmdTZWNvbmRzLmN1cnJlbnQgPSBsaW1pdDsgZXhwaXJlc0F0LmN1cnJlbnQgPSBudWxsOyB9LCBbcXVlc3Rpb25LZXksIHJldHJ5S2V5XSk7CiAgdXNlRWZmZWN0KCgpID0+IHsgc2V0TGVmdChsaW1pdCk7IHJlbWFpbmluZ1NlY29uZHMuY3VycmVudCA9IGxpbWl0OyBleHBpcmVzQXQuY3VycmVudCA9IG51bGw7IH0sIFtsaW1pdF0pOwogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBpZiAoKGFuc3dlcnNPbmx5ICYmICF0aW1lZCkgfHwgdGltZXJQYXVzZWQgfHwgZGlzYWJsZWQgfHwgc2VsZWN0ZWRBbnN3ZXIgfHwgIWxpbWl0IHx8IHBpY2tlZCB8fCBhbnN3ZXJlZC5jdXJyZW50IHx8IG9wdGlvbnMubGVuZ3RoID09PSAwKSByZXR1cm47CiAgICBleHBpcmVzQXQuY3VycmVudCA/Pz0gRGF0ZS5ub3coKSArIHJlbWFpbmluZ1NlY29uZHMuY3VycmVudCAqIDEwMDA7CiAgICBjb25zdCB0aWNrID0gKCkgPT4gewogICAgICBpZiAoYW5zd2VyZWQuY3VycmVudCB8fCBleHBpcmVzQXQuY3VycmVudCA9PT0gbnVsbCkgcmV0dXJuOwogICAgICBjb25zdCByZW1haW5pbmcgPSBNYXRoLm1heCgwLCBNYXRoLmNlaWwoKGV4cGlyZXNBdC5jdXJyZW50IC0gRGF0ZS5ub3coKSkgLyAxMDAwKSk7CiAgICAgIHNldExlZnQocmVtYWluaW5nKTsKICAgICAgaWYgKHJlbWFpbmluZyA9PT0gMCkgewogICAgICAgIGFuc3dlcmVkLmN1cnJlbnQgPSB0cnVlOwogICAgICAgIGlmIChsYXRlc3RTZW5kLmN1cnJlbnQoJ3NraXAnKSA9PT0gZmFsc2UpIHsgYW5zd2VyZWQuY3VycmVudCA9IGZhbHNlOyBleHBpcmVzQXQuY3VycmVudCA9IERhdGUubm93KCkgKyAxMDAwOyB9CiAgICAgIH0KICAgIH07CiAgICBjb25zdCB0ID0gc2V0SW50ZXJ2YWwodGljaywgMjUwKTsKICAgIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ3Zpc2liaWxpdHljaGFuZ2UnLCB0aWNrKTsKICAgIHJldHVybiAoKSA9PiB7IGNsZWFySW50ZXJ2YWwodCk7IGRvY3VtZW50LnJlbW92ZUV2ZW50TGlzdGVuZXIoJ3Zpc2liaWxpdHljaGFuZ2UnLCB0aWNrKTsgaWYgKGV4cGlyZXNBdC5jdXJyZW50ICE9PSBudWxsKSB7IHJlbWFpbmluZ1NlY29uZHMuY3VycmVudCA9IE1hdGgubWF4KDAsIE1hdGguY2VpbCgoZXhwaXJlc0F0LmN1cnJlbnQgLSBEYXRlLm5vdygpKSAvIDEwMDApKTsgZXhwaXJlc0F0LmN1cnJlbnQgPSBudWxsOyB9IH07CiAgfSwgW2xpbWl0LCBwaWNrZWQsIG9wdGlvbnMubGVuZ3RoLCBkaXNhYmxlZCwgc2VsZWN0ZWRBbnN3ZXIsIGFuc3dlcnNPbmx5LCB0aW1lZCwgdGltZXJQYXVzZWQsIHF1ZXN0aW9uS2V5LCByZXRyeUtleV0pOwoKICBjb25zdCBjaG9vc2UgPSAobzogc3RyaW5nKSA9PiB7IGlmIChkaXNhYmxlZCB8fCBhbnN3ZXJlZC5jdXJyZW50KSByZXR1cm47IGFuc3dlcmVkLmN1cnJlbnQgPSB0cnVlOyBpZiAob25TZW5kKG8pID09PSBmYWxzZSkgeyBhbnN3ZXJlZC5jdXJyZW50ID0gZmFsc2U7IHJldHVybjsgfSBzZXRQaWNrZWQobyk7IH07CiAgY29uc3QgY29tbWFuZCA9ICh0ZXh0OiBzdHJpbmcpID0+IHsgaWYgKGRpc2FibGVkIHx8IGFuc3dlcmVkLmN1cnJlbnQpIHJldHVybjsgYW5zd2VyZWQuY3VycmVudCA9IHRydWU7IGlmIChvblNlbmQodGV4dCkgPT09IGZhbHNlKSBhbnN3ZXJlZC5jdXJyZW50ID0gZmFsc2U7IH07CiAgdXNlRWZmZWN0KCgpID0+IHsKICAgIGNvbnN0IGtleWRvd24gPSAoZXZlbnQ6IEtleWJvYXJkRXZlbnQpID0+IHsKICAgICAgY29uc3QgdGFyZ2V0ID0gZXZlbnQudGFyZ2V0OwogICAgICBpZiAoIWtleWJvYXJkRW5hYmxlZCB8fCBldmVudC5yZXBlYXQgfHwgZXZlbnQubWV0YUtleSB8fCBldmVudC5jdHJsS2V5IHx8IGV2ZW50LmFsdEtleSB8fCBldmVudC5zaGlmdEtleSB8fCBldmVudC5pc0NvbXBvc2luZyB8fCBkaXNhYmxlZCB8fCBhbnN3ZXJlZC5jdXJyZW50KSByZXR1cm47CiAgICAgIGlmIChkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdbcm9sZT0iZGlhbG9nIl0sIFtyb2xlPSJhbGVydGRpYWxvZyJdJykpIHJldHVybjsKICAgICAgaWYgKHRhcmdldCBpbnN0YW5jZW9mIEVsZW1lbnQgJiYgdGFyZ2V0LmNsb3Nlc3QoJ2lucHV0LHRleHRhcmVhLHNlbGVjdCxbY29udGVudGVkaXRhYmxlPSJ0cnVlIl0sW3JvbGU9ImRpYWxvZyJdLFtyb2xlPSJhbGVydGRpYWxvZyJdJykpIHJldHVybjsKICAgICAgY29uc3QgYW5zd2VyID0gcXVpekFuc3dlckZvcktleShldmVudCk7CiAgICAgIGlmICghYW5zd2VyIHx8ICFvcHRpb25zLmluY2x1ZGVzKGFuc3dlcikpIHJldHVybjsKICAgICAgZXZlbnQucHJldmVudERlZmF1bHQoKTsgY2hvb3NlKGFuc3dlcik7CiAgICB9OwogICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ2tleWRvd24nLCBrZXlkb3duKTsKICAgIHJldHVybiAoKSA9PiB3aW5kb3cucmVtb3ZlRXZlbnRMaXN0ZW5lcigna2V5ZG93bicsIGtleWRvd24pOwogIH0sIFtvcHRpb25zLCBkaXNhYmxlZCwgcXVlc3Rpb25LZXksIG9uU2VuZCwga2V5Ym9hcmRFbmFibGVkXSk7CgogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0ic3BhY2UteS0yIGJvcmRlci10IGJvcmRlci1ib3JkZXIgcHQtMyIgcm9sZT0iZ3JvdXAiIGFyaWEtbGFiZWw9IlF1aXogYW5zd2VyIj4KICAgICAge29wdGlvbnMubGVuZ3RoID4gMCAmJiAoCiAgICAgICAgPGRpdiBjbGFzc05hbWU9e2BncmlkIGdhcC0yICR7T2JqZWN0LmtleXMobGFiZWxzKS5sZW5ndGggPyAiZ3JpZC1jb2xzLTEgc206Z3JpZC1jb2xzLTIiIDogImdyaWQtY29scy0yIHNtOmdyaWQtY29scy00In1gfT4KICAgICAgICAgIHtvcHRpb25zLm1hcCgobykgPT4gewogICAgICAgICAgICBjb25zdCBhY3RpdmUgPSAoc2VsZWN0ZWRBbnN3ZXIgPz8gcGlja2VkKSA9PT0gbzsKICAgICAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgICA8QnV0dG9uCiAgICAgICAgICAgICAgICBrZXk9e299CiAgICAgICAgICAgICAgICB0eXBlPSJidXR0b24iCiAgICAgICAgICAgICAgICB2YXJpYW50PSJvdXRsaW5lIgogICAgICAgICAgICAgICAgcm9sZT0iY2hlY2tib3giCiAgICAgICAgICAgICAgICBhcmlhLWxhYmVsPXtgQW5zd2VyICR7b30ke2xhYmVsc1tvXSA/IGA6ICR7bGFiZWxzW29dfWAgOiAiIn1gfQogICAgICAgICAgICAgICAgYXJpYS1rZXlzaG9ydGN1dHM9e1N0cmluZyhbJ0EnLCdCJywnQycsJ0QnXS5pbmRleE9mKG8pICsgMSl9CiAgICAgICAgICAgICAgICB0aXRsZT17YEFuc3dlciAke299IMK3ICR7WydBJywnQicsJ0MnLCdEJ10uaW5kZXhPZihvKSArIDF9YH0KICAgICAgICAgICAgICAgIGFyaWEtY2hlY2tlZD17YWN0aXZlfQogICAgICAgICAgICAgICAgIGRpc2FibGVkPXtkaXNhYmxlZCB8fCAhIXBpY2tlZCB8fCAhIXNlbGVjdGVkQW5zd2VyfQogICAgICAgICAgICAgICAgYXJpYS1kaXNhYmxlZD17ZGlzYWJsZWQgfHwgISFwaWNrZWR9CiAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBjaG9vc2Uobyl9CiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BoLWF1dG8gbWluLWgtMTAgdy1mdWxsIG1pbi13LTAgaXRlbXMtc3RhcnQganVzdGlmeS1zdGFydCB3aGl0ZXNwYWNlLW5vcm1hbCB0ZXh0LWxlZnQgc2VsZWN0LW5vbmUgZ2FwLTIuNSByb3VuZGVkLWxnIGJvcmRlciBweC0zIHB5LTIgdGV4dC1zbSBsZWFkaW5nLXNudWcgdHJhbnNpdGlvbi1jb2xvcnMgJHsKICAgICAgICAgICAgICAgICAgYWN0aXZlCiAgICAgICAgICAgICAgICAgICAgPyAiYm9yZGVyLXByaW1hcnkvNjAgYmctcHJpbWFyeS8xMCB0ZXh0LXByaW1hcnkgaG92ZXI6YmctcHJpbWFyeS8xMCByaW5nLTEgcmluZy1wcmltYXJ5LzE1IgogICAgICAgICAgICAgICAgICAgIDogcGlja2VkCiAgICAgICAgICAgICAgICAgICAgICA/ICJib3JkZXItYm9yZGVyIGJnLWNhcmQgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIgogICAgICAgICAgICAgICAgICAgICAgOiAiYm9yZGVyLWJvcmRlciBiZy1iYWNrZ3JvdW5kIGhvdmVyOmJvcmRlci1wcmltYXJ5LzQwIGhvdmVyOmJnLXByaW1hcnkvNSIKICAgICAgICAgICAgICAgIH1gfQogICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgIDxpbnB1dCB0eXBlPSJjaGVja2JveCIgY2xhc3NOYW1lPSJwb2ludGVyLWV2ZW50cy1ub25lIG10LTAuNSBzaXplLTQgc2hyaW5rLTAgYWNjZW50LXByaW1hcnkiIGNoZWNrZWQ9e2FjdGl2ZX0gdGFiSW5kZXg9ey0xfSByZWFkT25seSBhcmlhLWhpZGRlbj0idHJ1ZSIgLz4KICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idy02IHNocmluay0wIGZvbnQtc2VtaWJvbGQgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj57bnVtZXJpY0xhYmVscyA/IFsnQScsICdCJywgJ0MnLCAnRCddLmluZGV4T2YobykgKyAxIDogbGFiZWxzW29dID8gYCgke299KWAgOiBvfTwvc3Bhbj4KICAgICAgICAgICAgICAgIHtsYWJlbHNbb10gJiYgPHNwYW4gY2xhc3NOYW1lPSJhc3Npc3RhbnQtYW5zd2VyIG1pbi13LTAgZmxleC0xIGJyZWFrLXdvcmRzIHRleHQtWzEuMDVlbV0gZm9udC1ub3JtYWwgdGV4dC1mb3JlZ3JvdW5kIFtvdmVyZmxvdy13cmFwOmFueXdoZXJlXSBbJl9wXTptLTAgWyZfcF06bGVhZGluZy1yZWxheGVkIj48TWVzc2FnZVJlc3BvbnNlPntub3JtYWxpemVNYXRoKGxhYmVsc1tvXSl9PC9NZXNzYWdlUmVzcG9uc2U+PC9zcGFuPn0KICAgICAgICAgICAgICA8L0J1dHRvbj4KICAgICAgICAgICAgKTsKICAgICAgICAgIH0pfQogICAgICAgIDwvZGl2PgogICAgICApfQogICAgICB7YW5zd2Vyc09ubHkgJiYgdGltZWQgJiYgbGltaXQgPiAwICYmIG9wdGlvbnMubGVuZ3RoID4gMCAmJiAhcGlja2VkICYmICFzZWxlY3RlZEFuc3dlciAmJiAoCiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIj4KICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YGlubGluZS1mbGV4IGl0ZW1zLWNlbnRlciBnYXAtMSB0ZXh0LXhzIHRhYnVsYXItbnVtcyAke2xlZnQgPD0gNSA/ICJ0ZXh0LWRlc3RydWN0aXZlIiA6ICJ0ZXh0LW11dGVkLWZvcmVncm91bmQifWB9IGFyaWEtbGl2ZT0icG9saXRlIj48VGltZXIgY2xhc3NOYW1lPSJzaXplLTMuNSIgLz4ge2xlZnR9czwvc3Bhbj4KICAgICAgICAgIDxCdXR0b24gZGlzYWJsZWQ9e2Rpc2FibGVkfSBzaXplPSJzbSIgdmFyaWFudD0iZ2hvc3QiIGNsYXNzTmFtZT0ibWwtYXV0byBoLTggZ2FwLTEuNSBweC0yIHRleHQteHMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIiBvbkNsaWNrPXsoKSA9PiBjb21tYW5kKCJza2lwIil9PjxTa2lwRm9yd2FyZCBjbGFzc05hbWU9InNpemUtMy41IiAvPlNraXA8L0J1dHRvbj4KICAgICAgICA8L2Rpdj4KICAgICAgKX0KICAgICAgeyFhbnN3ZXJzT25seSAmJiA8ZGl2IGNsYXNzTmFtZT0iZmxleCBmbGV4LXdyYXAgaXRlbXMtY2VudGVyIGdhcC0xIj4KICAgICAgICB7bGltaXQgPiAwICYmIG9wdGlvbnMubGVuZ3RoID4gMCAmJiAhcGlja2VkICYmICgKICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YG1yLTIgaW5saW5lLWZsZXggaXRlbXMtY2VudGVyIGdhcC0xIHRleHQteHMgdGFidWxhci1udW1zICR7bGVmdCA8PSA1ID8gInRleHQtZGVzdHJ1Y3RpdmUiIDogInRleHQtbXV0ZWQtZm9yZWdyb3VuZCJ9YH0gYXJpYS1saXZlPSJwb2xpdGUiPjxUaW1lciBjbGFzc05hbWU9InNpemUtMy41IiAvPiB7bGVmdH1zPC9zcGFuPgogICAgICAgICl9CiAgICAgICAgPEJ1dHRvbiBkaXNhYmxlZD17ZGlzYWJsZWR9IHNpemU9InNtIiB2YXJpYW50PSJnaG9zdCIgY2xhc3NOYW1lPSJoLTggZ2FwLTEuNSBweC0yIHRleHQteHMgdGV4dC1wcmltYXJ5IiBvbkNsaWNrPXsoKSA9PiBjb21tYW5kKCJoaW50Iil9PjxMaWdodGJ1bGIgY2xhc3NOYW1lPSJzaXplLTMuNSIgLz5IaW50PC9CdXR0b24+CiAgICAgICAgPEJ1dHRvbiBkaXNhYmxlZD17ZGlzYWJsZWR9IHNpemU9InNtIiB2YXJpYW50PSJnaG9zdCIgY2xhc3NOYW1lPSJoLTggZ2FwLTEuNSBweC0yIHRleHQteHMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIiBvbkNsaWNrPXsoKSA9PiBjb21tYW5kKCJza2lwIil9PjxTa2lwRm9yd2FyZCBjbGFzc05hbWU9InNpemUtMy41IiAvPlNraXA8L0J1dHRvbj4KICAgICAgICB7b25DaGF0SGlkZGVuICYmIDxsYWJlbCBjbGFzc05hbWU9ImlubGluZS1mbGV4IG1pbi1oLTggaXRlbXMtY2VudGVyIGdhcC0yIHB4LTIgdGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPjxTd2l0Y2ggY2hlY2tlZD17Y2hhdEhpZGRlbn0gb25DaGVja2VkQ2hhbmdlPXtvbkNoYXRIaWRkZW59IGFyaWEtbGFiZWw9IkhpZGUgQ2hhdCBXaWRnZXQiIC8+PHNwYW4+SGlkZSBDaGF0IFdpZGdldDwvc3Bhbj48L2xhYmVsPn0KICAgICAgICA8QnV0dG9uIGRpc2FibGVkPXtkaXNhYmxlZH0gc2l6ZT0ic20iIHZhcmlhbnQ9Imdob3N0IiBjbGFzc05hbWU9Im1sLWF1dG8gaC04IGdhcC0xLjUgcHgtMiB0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCIgb25DbGljaz17KCkgPT4gY29tbWFuZCgic3RvcCBxdWl6Iil9PjxTcXVhcmUgY2xhc3NOYW1lPSJzaXplLTMiIC8+U3RvcCBxdWl6PC9CdXR0b24+CiAgICAgIDwvZGl2Pn0KICAgIDwvZGl2PgogICk7Cn0K
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Lightbulb, SkipForward, Square, Timer } from "lucide-react";
+import { useQuizTimerPreference } from '@/lib/quiz-timer-preference';
+import { MessageResponse } from "@/components/ai-elements/message";
+import { normalizeMath } from "@/lib/math-format";
+import { Switch } from "@/components/ui/switch";
+import { useNumericAnswerLabels, useQuizKeyboardShortcuts } from '@/lib/quiz-label-preference';
+import { quizAnswerForKey } from '@/lib/quiz-shortcuts';
+
+/** Compact checkbox-card answer list for the open quiz question, with optional auto-skip timer. */
+export function QuizActions({ options, labels = {}, onSend, questionKey, selectedAnswer, disabled = false, chatHidden = false, onChatHidden, answersOnly = false, timed = false, timerPaused = false, retryKey = 0 }: { options: string[]; labels?: Record<string, string>; onSend: (text: string) => void | boolean; questionKey?: string; selectedAnswer?: string | undefined; disabled?: boolean; chatHidden?: boolean; onChatHidden?: (hidden: boolean) => void; answersOnly?: boolean; timed?: boolean; timerPaused?: boolean; retryKey?: number }) {
+  const [picked, setPicked] = useState<string | null>(null);
+  const [numericLabels] = useNumericAnswerLabels();
+  const [keyboardEnabled] = useQuizKeyboardShortcuts();
+  const { seconds: limit } = useQuizTimerPreference();
+  const [left, setLeft] = useState(0);
+  const answered = useRef(false);
+  const expiresAt = useRef<number | null>(null);
+  const remainingSeconds = useRef(limit);
+  const latestSend = useRef(onSend);
+  latestSend.current = onSend;
+
+  useEffect(() => { answered.current = false; setPicked(null); setLeft(limit); remainingSeconds.current = limit; expiresAt.current = null; }, [questionKey, retryKey]);
+  useEffect(() => { setLeft(limit); remainingSeconds.current = limit; expiresAt.current = null; }, [limit]);
+  useEffect(() => {
+    if ((answersOnly && !timed) || timerPaused || disabled || selectedAnswer || !limit || picked || answered.current || options.length === 0) return;
+    expiresAt.current ??= Date.now() + remainingSeconds.current * 1000;
+    const tick = () => {
+      if (answered.current || expiresAt.current === null) return;
+      const remaining = Math.max(0, Math.ceil((expiresAt.current - Date.now()) / 1000));
+      setLeft(remaining);
+      if (remaining === 0) {
+        answered.current = true;
+        if (latestSend.current('skip') === false) { answered.current = false; expiresAt.current = Date.now() + 1000; }
+      }
+    };
+    const t = setInterval(tick, 250);
+    document.addEventListener('visibilitychange', tick);
+    return () => { clearInterval(t); document.removeEventListener('visibilitychange', tick); if (expiresAt.current !== null) { remainingSeconds.current = Math.max(0, Math.ceil((expiresAt.current - Date.now()) / 1000)); expiresAt.current = null; } };
+  }, [limit, picked, options.length, disabled, selectedAnswer, answersOnly, timed, timerPaused, questionKey, retryKey]);
+
+  const choose = (o: string) => { if (disabled || answered.current) return; answered.current = true; if (onSend(o) === false) { answered.current = false; return; } setPicked(o); };
+  const command = (text: string) => { if (disabled || answered.current) return; answered.current = true; if (onSend(text) === false) answered.current = false; };
+  useEffect(() => {
+    const keydown = (event: KeyboardEvent) => {
+      const target = event.target;
+      if (!keyboardEnabled || event.repeat || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey || event.isComposing || disabled || answered.current) return;
+      if (document.querySelector('[role="dialog"], [role="alertdialog"]')) return;
+      if (target instanceof Element && target.closest('input,textarea,select,[contenteditable="true"],[role="dialog"],[role="alertdialog"]')) return;
+      const answer = quizAnswerForKey(event);
+      if (!answer || !options.includes(answer)) return;
+      event.preventDefault(); choose(answer);
+    };
+    window.addEventListener('keydown', keydown);
+    return () => window.removeEventListener('keydown', keydown);
+  }, [options, disabled, questionKey, onSend, keyboardEnabled]);
+
+  return (
+    <div className="space-y-2 border-t border-border pt-3" role="group" aria-label="Quiz answer">
+      {options.length > 0 && (
+        <div className={`grid gap-2 ${Object.keys(labels).length ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2 sm:grid-cols-4"}`}>
+          {options.map((o) => {
+            const active = (selectedAnswer ?? picked) === o;
+            return (
+              <Button
+                key={o}
+                type="button"
+                variant="outline"
+                role="checkbox"
+                aria-label={`Answer ${o}${labels[o] ? `: ${labels[o]}` : ""}`}
+                aria-keyshortcuts={String(['A','B','C','D'].indexOf(o) + 1)}
+                title={`Answer ${o} · ${['A','B','C','D'].indexOf(o) + 1}`}
+                aria-checked={active}
+                 disabled={disabled || !!picked || !!selectedAnswer}
+                aria-disabled={disabled || !!picked}
+                onClick={() => choose(o)}
+                className={`h-auto min-h-10 w-full min-w-0 items-start justify-start whitespace-normal text-left select-none gap-2.5 rounded-lg border px-3 py-2 text-sm leading-snug transition-colors ${
+                  active
+                    ? "border-primary/60 bg-primary/10 text-primary hover:bg-primary/10 ring-1 ring-primary/15"
+                    : picked
+                      ? "border-border bg-card text-muted-foreground"
+                      : "border-border bg-background hover:border-primary/40 hover:bg-primary/5"
+                }`}
+              >
+                <input type="checkbox" className="pointer-events-none mt-0.5 size-4 shrink-0 accent-primary" checked={active} tabIndex={-1} readOnly aria-hidden="true" />
+                <span className="w-6 shrink-0 font-semibold text-muted-foreground">{numericLabels ? ['A', 'B', 'C', 'D'].indexOf(o) + 1 : labels[o] ? `(${o})` : o}</span>
+                {labels[o] && <span className="assistant-answer min-w-0 flex-1 break-words text-[1.05em] font-normal text-foreground [overflow-wrap:anywhere] [&_p]:m-0 [&_p]:leading-relaxed"><MessageResponse>{normalizeMath(labels[o])}</MessageResponse></span>}
+              </Button>
+            );
+          })}
+        </div>
+      )}
+      {answersOnly && timed && limit > 0 && options.length > 0 && !picked && !selectedAnswer && (
+        <div className="flex items-center gap-2">
+          <span className={`inline-flex items-center gap-1 text-xs tabular-nums ${left <= 5 ? "text-destructive" : "text-muted-foreground"}`} aria-live="polite"><Timer className="size-3.5" /> {left}s</span>
+          <Button disabled={disabled} size="sm" variant="ghost" className="ml-auto h-8 gap-1.5 px-2 text-xs text-muted-foreground" onClick={() => command("skip")}><SkipForward className="size-3.5" />Skip</Button>
+        </div>
+      )}
+      {!answersOnly && <div className="flex flex-wrap items-center gap-1">
+        {limit > 0 && options.length > 0 && !picked && (
+          <span className={`mr-2 inline-flex items-center gap-1 text-xs tabular-nums ${left <= 5 ? "text-destructive" : "text-muted-foreground"}`} aria-live="polite"><Timer className="size-3.5" /> {left}s</span>
+        )}
+        <Button disabled={disabled} size="sm" variant="ghost" className="h-8 gap-1.5 px-2 text-xs text-primary" onClick={() => command("hint")}><Lightbulb className="size-3.5" />Hint</Button>
+        <Button disabled={disabled} size="sm" variant="ghost" className="h-8 gap-1.5 px-2 text-xs text-muted-foreground" onClick={() => command("skip")}><SkipForward className="size-3.5" />Skip</Button>
+        {onChatHidden && <label className="inline-flex min-h-8 items-center gap-2 px-2 text-xs text-muted-foreground"><Switch checked={chatHidden} onCheckedChange={onChatHidden} aria-label="Hide Chat Widget" /><span>Hide Chat Widget</span></label>}
+        <Button disabled={disabled} size="sm" variant="ghost" className="ml-auto h-8 gap-1.5 px-2 text-xs text-muted-foreground" onClick={() => command("stop quiz")}><Square className="size-3" />Stop quiz</Button>
+      </div>}
+    </div>
+  );
+}

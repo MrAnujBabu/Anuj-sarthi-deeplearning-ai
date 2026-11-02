@@ -1,1 +1,84 @@
-LyoqIFNwbGl0cyBleHRyYWN0ZWQgdGV4dGJvb2sgdGV4dCAod2l0aCBbUGFnZSBOXSBtYXJrZXJzKSBpbnRvIG92ZXJsYXBwaW5nIGNodW5rcyBmb3IgdGhlIG9mZmxpbmUgTkNFUlQgbGlicmFyeS4gKi8KZXhwb3J0IHR5cGUgUmFnQ2h1bmsgPSB7IHBhZ2U6IG51bWJlcjsgdGV4dDogc3RyaW5nIH07Cgpjb25zdCBERUZBVUxUX1RBUkdFVCA9IDkwMDsKY29uc3QgREVGQVVMVF9NQVggPSAxMjAwOwpjb25zdCBERUZBVUxUX09WRVJMQVAgPSAxMjA7CgovKiogU3BsaXRzIGEgbG9uZyBwYXJhZ3JhcGggYXQgc2VudGVuY2UgYm91bmRhcmllcyBzbyBubyBjaHVuayBleGNlZWRzIG1heC4gKi8KZnVuY3Rpb24gaGFyZFNwbGl0KHRleHQ6IHN0cmluZywgbWF4OiBudW1iZXIpOiBzdHJpbmdbXSB7CiAgY29uc3QgcGFydHM6IHN0cmluZ1tdID0gW107CiAgbGV0IHJlc3QgPSB0ZXh0OwogIHdoaWxlIChyZXN0Lmxlbmd0aCA+IG1heCkgewogICAgY29uc3Qgd2luZG93ID0gcmVzdC5zbGljZSgwLCBtYXgpOwogICAgY29uc3QgY3V0ID0gTWF0aC5tYXgod2luZG93Lmxhc3RJbmRleE9mKCIuICIpLCB3aW5kb3cubGFzdEluZGV4T2YoIj8gIiksIHdpbmRvdy5sYXN0SW5kZXhPZigiISAiKSwgd2luZG93Lmxhc3RJbmRleE9mKCJcbiIpKTsKICAgIGNvbnN0IGF0ID0gY3V0ID4gbWF4IC8gMiA/IGN1dCArIDEgOiBtYXg7CiAgICBwYXJ0cy5wdXNoKHJlc3Quc2xpY2UoMCwgYXQpLnRyaW0oKSk7CiAgICByZXN0ID0gcmVzdC5zbGljZShhdCkudHJpbSgpOwogIH0KICBpZiAocmVzdCkgcGFydHMucHVzaChyZXN0KTsKICByZXR1cm4gcGFydHM7Cn0KCi8qKgogKiBDaHVua3MgdGV4dCBhdCBwYXJhZ3JhcGggYm91bmRhcmllcywgdHJhY2tpbmcgW1BhZ2UgTl0gbWFya2Vycy4KICogRWFjaCBjaHVuayBjYXJyaWVzIHRoZSBwYWdlIGl0IHN0YXJ0ZWQgb247IGNvbnNlY3V0aXZlIGNodW5rcyBvdmVybGFwIGJ5IH5vdmVybGFwIGNoYXJzLgogKi8KZXhwb3J0IGZ1bmN0aW9uIGNodW5rVGV4dCgKICByYXc6IHN0cmluZywKICBvcHRzPzogeyB0YXJnZXQ/OiBudW1iZXI7IG1heD86IG51bWJlcjsgb3ZlcmxhcD86IG51bWJlciB9LAopOiBSYWdDaHVua1tdIHsKICBjb25zdCB0YXJnZXQgPSBvcHRzPy50YXJnZXQgPz8gREVGQVVMVF9UQVJHRVQ7CiAgY29uc3QgbWF4ID0gb3B0cz8ubWF4ID8/IERFRkFVTFRfTUFYOwogIGNvbnN0IG92ZXJsYXAgPSBvcHRzPy5vdmVybGFwID8/IERFRkFVTFRfT1ZFUkxBUDsKCiAgLy8gU3BsaXQgaW50byBwYWdlIHNlZ21lbnRzLCBrZWVwaW5nIHRoZSBwYWdlIG51bWJlciB3aXRoIGVhY2ggc2VnbWVudC4KICBjb25zdCBzZWdtZW50czogeyBwYWdlOiBudW1iZXI7IGJvZHk6IHN0cmluZyB9W10gPSBbXTsKICBjb25zdCByZSA9IC9cW1BhZ2UgKFxkKylcXS9nOwogIGxldCBtOiBSZWdFeHBFeGVjQXJyYXkgfCBudWxsOwogIGxldCBsYXN0ID0gMDsKICBsZXQgcGFnZSA9IDA7CiAgd2hpbGUgKChtID0gcmUuZXhlYyhyYXcpKSkgewogICAgaWYgKG0uaW5kZXggPiBsYXN0ICYmIHBhZ2UgPiAwKSBzZWdtZW50cy5wdXNoKHsgcGFnZSwgYm9keTogcmF3LnNsaWNlKGxhc3QsIG0uaW5kZXgpIH0pOwogICAgcGFnZSA9IE51bWJlcihtWzFdKTsKICAgIGxhc3QgPSBtLmluZGV4ICsgbVswXS5sZW5ndGg7CiAgfQogIGlmIChsYXN0IDwgcmF3Lmxlbmd0aCkgc2VnbWVudHMucHVzaCh7IHBhZ2UsIGJvZHk6IHJhdy5zbGljZShsYXN0KSB9KTsKCiAgY29uc3QgY2h1bmtzOiBSYWdDaHVua1tdID0gW107CiAgbGV0IGN1cnJlbnQgPSAiIjsKICBsZXQgY3VycmVudFBhZ2UgPSAwOwogIGNvbnN0IGZsdXNoID0gKCkgPT4gewogICAgY29uc3QgdCA9IGN1cnJlbnQudHJpbSgpOwogICAgaWYgKHQpIGNodW5rcy5wdXNoKHsgcGFnZTogY3VycmVudFBhZ2UsIHRleHQ6IHQgfSk7CiAgICBjdXJyZW50ID0gIiI7CiAgfTsKCiAgZm9yIChjb25zdCBzZWcgb2Ygc2VnbWVudHMpIHsKICAgIGNvbnN0IHBhcmFncmFwaHMgPSBzZWcuYm9keS5zcGxpdCgvXG57Mix9LykubWFwKChwKSA9PiBwLnJlcGxhY2UoL1xzKy9nLCAiICIpLnRyaW0oKSkuZmlsdGVyKEJvb2xlYW4pOwogICAgZm9yIChjb25zdCBwYXJhIG9mIHBhcmFncmFwaHMpIHsKICAgICAgY29uc3QgcGllY2VzID0gcGFyYS5sZW5ndGggPiBtYXggPyBoYXJkU3BsaXQocGFyYSwgbWF4KSA6IFtwYXJhXTsKICAgICAgZm9yIChjb25zdCBwaWVjZSBvZiBwaWVjZXMpIHsKICAgICAgICBpZiAoIWN1cnJlbnQpIGN1cnJlbnRQYWdlID0gc2VnLnBhZ2U7CiAgICAgICAgaWYgKGN1cnJlbnQgJiYgY3VycmVudC5sZW5ndGggKyBwaWVjZS5sZW5ndGggKyAxID4gdGFyZ2V0KSB7CiAgICAgICAgICBjb25zdCB0YWlsID0gY3VycmVudC5zbGljZSgtb3ZlcmxhcCkudHJpbSgpOwogICAgICAgICAgY29uc3QgZG9uZVBhZ2UgPSBjdXJyZW50UGFnZTsKICAgICAgICAgIGZsdXNoKCk7CiAgICAgICAgICBjdXJyZW50ID0gdGFpbCA/IGAke3RhaWx9ICR7cGllY2V9YCA6IHBpZWNlOwogICAgICAgICAgY3VycmVudFBhZ2UgPSB0YWlsICYmIGRvbmVQYWdlICE9PSBzZWcucGFnZSA/IHNlZy5wYWdlIDogZG9uZVBhZ2U7CiAgICAgICAgfSBlbHNlIHsKICAgICAgICAgIGN1cnJlbnQgPSBjdXJyZW50ID8gYCR7Y3VycmVudH0gJHtwaWVjZX1gIDogcGllY2U7CiAgICAgICAgfQogICAgICB9CiAgICB9CiAgfQogIGZsdXNoKCk7CgogIC8vIERyb3AgZXhhY3QgZHVwbGljYXRlcyAocmVwZWF0ZWQgaGVhZGVycy9mb290ZXJzIGFjcm9zcyBwYWdlcykuCiAgY29uc3Qgc2VlbiA9IG5ldyBTZXQ8c3RyaW5nPigpOwogIHJldHVybiBjaHVua3MuZmlsdGVyKChjKSA9PiB7CiAgICBpZiAoc2Vlbi5oYXMoYy50ZXh0KSkgcmV0dXJuIGZhbHNlOwogICAgc2Vlbi5hZGQoYy50ZXh0KTsKICAgIHJldHVybiBjLnRleHQubGVuZ3RoID49IDQwOwogIH0pOwp9Cg==
+/** Splits extracted textbook text (with [Page N] markers) into overlapping chunks for the offline NCERT library. */
+export type RagChunk = { page: number; text: string };
+
+const DEFAULT_TARGET = 900;
+const DEFAULT_MAX = 1200;
+const DEFAULT_OVERLAP = 120;
+
+/** Splits a long paragraph at sentence boundaries so no chunk exceeds max. */
+function hardSplit(text: string, max: number): string[] {
+  const parts: string[] = [];
+  let rest = text;
+  while (rest.length > max) {
+    const window = rest.slice(0, max);
+    const cut = Math.max(window.lastIndexOf(". "), window.lastIndexOf("? "), window.lastIndexOf("! "), window.lastIndexOf("\n"));
+    const at = cut > max / 2 ? cut + 1 : max;
+    parts.push(rest.slice(0, at).trim());
+    rest = rest.slice(at).trim();
+  }
+  if (rest) parts.push(rest);
+  return parts;
+}
+
+/**
+ * Chunks text at paragraph boundaries, tracking [Page N] markers.
+ * Each chunk carries the page it started on; consecutive chunks overlap by ~overlap chars.
+ */
+export function chunkText(
+  raw: string,
+  opts?: { target?: number; max?: number; overlap?: number },
+): RagChunk[] {
+  const target = opts?.target ?? DEFAULT_TARGET;
+  const max = opts?.max ?? DEFAULT_MAX;
+  const overlap = opts?.overlap ?? DEFAULT_OVERLAP;
+
+  // Split into page segments, keeping the page number with each segment.
+  const segments: { page: number; body: string }[] = [];
+  const re = /\[Page (\d+)\]/g;
+  let m: RegExpExecArray | null;
+  let last = 0;
+  let page = 0;
+  while ((m = re.exec(raw))) {
+    if (m.index > last && page > 0) segments.push({ page, body: raw.slice(last, m.index) });
+    page = Number(m[1]);
+    last = m.index + m[0].length;
+  }
+  if (last < raw.length) segments.push({ page, body: raw.slice(last) });
+
+  const chunks: RagChunk[] = [];
+  let current = "";
+  let currentPage = 0;
+  const flush = () => {
+    const t = current.trim();
+    if (t) chunks.push({ page: currentPage, text: t });
+    current = "";
+  };
+
+  for (const seg of segments) {
+    const paragraphs = seg.body.split(/\n{2,}/).map((p) => p.replace(/\s+/g, " ").trim()).filter(Boolean);
+    for (const para of paragraphs) {
+      const pieces = para.length > max ? hardSplit(para, max) : [para];
+      for (const piece of pieces) {
+        if (!current) currentPage = seg.page;
+        if (current && current.length + piece.length + 1 > target) {
+          const tail = current.slice(-overlap).trim();
+          const donePage = currentPage;
+          flush();
+          current = tail ? `${tail} ${piece}` : piece;
+          currentPage = tail && donePage !== seg.page ? seg.page : donePage;
+        } else {
+          current = current ? `${current} ${piece}` : piece;
+        }
+      }
+    }
+  }
+  flush();
+
+  // Drop exact duplicates (repeated headers/footers across pages).
+  const seen = new Set<string>();
+  return chunks.filter((c) => {
+    if (seen.has(c.text)) return false;
+    seen.add(c.text);
+    return c.text.length >= 40;
+  });
+}

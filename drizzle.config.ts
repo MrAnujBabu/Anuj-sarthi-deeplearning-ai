@@ -1,1 +1,10 @@
-aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAiZHJpenpsZS1raXQiOwoKZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHsKICBkaWFsZWN0OiAicG9zdGdyZXNxbCIsCiAgc2NoZW1hOiAiLi9kcml6emxlL3NjaGVtYS50cyIsCiAgb3V0OiAiLi9kcml6emxlL21pZ3JhdGlvbnMiLAogIGRiQ3JlZGVudGlhbHM6IHsKICAgIHVybDogcHJvY2Vzcy5lbnYuTE9WQUJMRV9EQl9NSUdSQVRJT05fVVJMID8/ICIiLAogIH0sCn0pOwo=
+import { defineConfig } from "drizzle-kit";
+
+export default defineConfig({
+  dialect: "postgresql",
+  schema: "./drizzle/schema.ts",
+  out: "./drizzle/migrations",
+  dbCredentials: {
+    url: process.env.LOVABLE_DB_MIGRATION_URL ?? "",
+  },
+});

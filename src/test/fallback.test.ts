@@ -1,1 +1,48 @@
-Ly8gQHZpdGVzdC1lbnZpcm9ubWVudCBub2RlCmltcG9ydCB7IGRlc2NyaWJlLCBleHBlY3QsIGl0IH0gZnJvbSAndml0ZXN0JzsKaW1wb3J0IHsgZWFybHlGYWxsYmFjayB9IGZyb20gJ0AvbGliL2FnZW50L2ZhbGxiYWNrJzsKCmNvbnN0IGRlbGF5ID0gKG1zOiBudW1iZXIsIHY/OiB1bmtub3duKSA9PiBuZXcgUHJvbWlzZSgocikgPT4gc2V0VGltZW91dCgoKSA9PiByKHYpLCBtcykpOwpjb25zdCBvayA9ICh2OiBhbnkpID0+ICEhdj8udGV4dDsKCmRlc2NyaWJlKCdlYXJseUZhbGxiYWNrIChzbG93IHByb3ZpZGVyIG5ldmVyIGJsb2NrcyB0aGUgYW5zd2VyKScsICgpID0+IHsKICBpdCgnZmFzdCB1c2FibGUgcHJpbWFyeSB3aW5zIGFuZCB0aGUgZmFsbGJhY2sgaXMgbmV2ZXIgc3RhcnRlZCcsIGFzeW5jICgpID0+IHsKICAgIGxldCBmYWxsYmFja1N0YXJ0ZWQgPSBmYWxzZTsKICAgIGNvbnN0IHIgPSBhd2FpdCBlYXJseUZhbGxiYWNrKFByb21pc2UucmVzb2x2ZSh7IHRleHQ6ICdwcmltYXJ5JyB9KSwgYXN5bmMgKCkgPT4geyBmYWxsYmFja1N0YXJ0ZWQgPSB0cnVlOyByZXR1cm4geyB0ZXh0OiAnZmFsbGJhY2snIH07IH0sIDIwMCwgb2spOwogICAgZXhwZWN0KHIpLnRvRXF1YWwoeyB0ZXh0OiAncHJpbWFyeScgfSk7CiAgICBleHBlY3QoZmFsbGJhY2tTdGFydGVkKS50b0JlKGZhbHNlKTsKICB9KTsKCiAgaXQoJ2Zhc3QgdW51c2FibGUgcHJpbWFyeSBzdGlsbCBmYWxscyBiYWNrIChzYW1lIGFzIHRoZSBzZXF1ZW50aWFsIHBhdGgpJywgYXN5bmMgKCkgPT4gewogICAgY29uc3QgciA9IGF3YWl0IGVhcmx5RmFsbGJhY2soUHJvbWlzZS5yZXNvbHZlKHsgdGV4dDogJycgfSksIGFzeW5jICgpID0+ICh7IHRleHQ6ICdmYWxsYmFjaycgfSksIDIwMCwgb2spOwogICAgZXhwZWN0KHIpLnRvRXF1YWwoeyB0ZXh0OiAnZmFsbGJhY2snIH0pOwogIH0pOwoKICBpdCgnZmFzdC1mYWlsaW5nIHByaW1hcnkgZmFsbHMgYmFjaycsIGFzeW5jICgpID0+IHsKICAgIGNvbnN0IHIgPSBhd2FpdCBlYXJseUZhbGxiYWNrKFByb21pc2UucmVqZWN0KG5ldyBFcnJvcignZG93bicpKSwgYXN5bmMgKCkgPT4gKHsgdGV4dDogJ2ZhbGxiYWNrJyB9KSwgMjAwLCBvayk7CiAgICBleHBlY3QocikudG9FcXVhbCh7IHRleHQ6ICdmYWxsYmFjaycgfSk7CiAgfSk7CgogIGl0KCdzbG93IHByaW1hcnkg4oaSIGZhbGxiYWNrIHN0YXJ0cyBlYXJseSBhbmQgdGhlIGZpcnN0IHVzYWJsZSBhbnN3ZXIgd2lucycsIGFzeW5jICgpID0+IHsKICAgIGNvbnN0IHQwID0gRGF0ZS5ub3coKTsKICAgIGNvbnN0IHIgPSBhd2FpdCBlYXJseUZhbGxiYWNrKGRlbGF5KDQwMCwgeyB0ZXh0OiAncHJpbWFyeScgfSksIGFzeW5jICgpID0+ICh7IHRleHQ6ICdmYWxsYmFjaycgfSksIDYwLCBvayk7CiAgICBleHBlY3QocikudG9FcXVhbCh7IHRleHQ6ICdmYWxsYmFjaycgfSk7CiAgICBleHBlY3QoRGF0ZS5ub3coKSAtIHQwKS50b0JlTGVzc1RoYW4oMzUwKTsKICB9KTsKCiAgaXQoJ2JvdGggdW51c2FibGUgYnV0IHByaW1hcnkgZnVsZmlscyDihpIgcmV0dXJucyB0aGUgcHJpbWFyeSB2YWx1ZScsIGFzeW5jICgpID0+IHsKICAgIGNvbnN0IHIgPSBhd2FpdCBlYXJseUZhbGxiYWNrKGRlbGF5KDEyMCwgeyB0ZXh0OiAnJyB9KSwgYXN5bmMgKCkgPT4gKHsgdGV4dDogJycgfSksIDYwLCBvayk7CiAgICBleHBlY3QocikudG9FcXVhbCh7IHRleHQ6ICcnIH0pOwogIH0pOwoKICBpdCgnYm90aCBmYWlsIGZhc3Qg4oaSIHRoZSBmYWxsYmFjayByZWplY3Rpb24gc3VyZmFjZXMnLCBhc3luYyAoKSA9PiB7CiAgICBhd2FpdCBleHBlY3QoZWFybHlGYWxsYmFjayhQcm9taXNlLnJlamVjdChuZXcgRXJyb3IoJ3ByaW1hcnkgZG93bicpKSwgYXN5bmMgKCkgPT4geyB0aHJvdyBuZXcgRXJyb3IoJ2ZhbGxiYWNrIGRvd24nKTsgfSwgNjAsIG9rKSkKICAgICAgLnJlamVjdHMudG9UaHJvdygnZmFsbGJhY2sgZG93bicpOwogIH0pOwoKICBpdCgnYm90aCBmYWlsIHNsb3dseSDihpIgdGhlIHByaW1hcnkgcmVqZWN0aW9uIHN1cmZhY2VzJywgYXN5bmMgKCkgPT4gewogICAgY29uc3QgcHJpbWFyeSA9IGRlbGF5KDEyMCkudGhlbigoKSA9PiB7IHRocm93IG5ldyBFcnJvcigncHJpbWFyeSBkb3duJyk7IH0pOwogICAgYXdhaXQgZXhwZWN0KGVhcmx5RmFsbGJhY2socHJpbWFyeSwgYXN5bmMgKCkgPT4geyB0aHJvdyBuZXcgRXJyb3IoJ2ZhbGxiYWNrIGRvd24nKTsgfSwgNjAsIG9rKSkKICAgICAgLnJlamVjdHMudG9UaHJvdygncHJpbWFyeSBkb3duJyk7CiAgfSk7Cn0pOwo=
+// @vitest-environment node
+import { describe, expect, it } from 'vitest';
+import { earlyFallback } from '@/lib/agent/fallback';
+
+const delay = (ms: number, v?: unknown) => new Promise((r) => setTimeout(() => r(v), ms));
+const ok = (v: any) => !!v?.text;
+
+describe('earlyFallback (slow provider never blocks the answer)', () => {
+  it('fast usable primary wins and the fallback is never started', async () => {
+    let fallbackStarted = false;
+    const r = await earlyFallback(Promise.resolve({ text: 'primary' }), async () => { fallbackStarted = true; return { text: 'fallback' }; }, 200, ok);
+    expect(r).toEqual({ text: 'primary' });
+    expect(fallbackStarted).toBe(false);
+  });
+
+  it('fast unusable primary still falls back (same as the sequential path)', async () => {
+    const r = await earlyFallback(Promise.resolve({ text: '' }), async () => ({ text: 'fallback' }), 200, ok);
+    expect(r).toEqual({ text: 'fallback' });
+  });
+
+  it('fast-failing primary falls back', async () => {
+    const r = await earlyFallback(Promise.reject(new Error('down')), async () => ({ text: 'fallback' }), 200, ok);
+    expect(r).toEqual({ text: 'fallback' });
+  });
+
+  it('slow primary → fallback starts early and the first usable answer wins', async () => {
+    const t0 = Date.now();
+    const r = await earlyFallback(delay(400, { text: 'primary' }), async () => ({ text: 'fallback' }), 60, ok);
+    expect(r).toEqual({ text: 'fallback' });
+    expect(Date.now() - t0).toBeLessThan(350);
+  });
+
+  it('both unusable but primary fulfils → returns the primary value', async () => {
+    const r = await earlyFallback(delay(120, { text: '' }), async () => ({ text: '' }), 60, ok);
+    expect(r).toEqual({ text: '' });
+  });
+
+  it('both fail fast → the fallback rejection surfaces', async () => {
+    await expect(earlyFallback(Promise.reject(new Error('primary down')), async () => { throw new Error('fallback down'); }, 60, ok))
+      .rejects.toThrow('fallback down');
+  });
+
+  it('both fail slowly → the primary rejection surfaces', async () => {
+    const primary = delay(120).then(() => { throw new Error('primary down'); });
+    await expect(earlyFallback(primary, async () => { throw new Error('fallback down'); }, 60, ok))
+      .rejects.toThrow('primary down');
+  });
+});

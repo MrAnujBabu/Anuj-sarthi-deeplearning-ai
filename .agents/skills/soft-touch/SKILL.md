@@ -1,1 +1,93 @@
-LS0tCm5hbWU6IHNvZnQtdG91Y2gKZGVzY3JpcHRpb246IEFkZCBzdWJ0bGUgaGFwdGljICsgbWljcm8tYW5pbWF0aW9uIHBvbGlzaCAoInNvZnQgdG91Y2giKSB0byBpbnRlcmFjdGl2ZSBlbGVtZW50cyBpbiB0aGUgTmF2ZWVuIEJoYXJhdCBDYXBhY2l0b3IgQVBLIHNvIHRhcHMgZmVlbCBwcmVtaXVtLCByZXNwb25zaXZlLCBhbmQgcGh5c2ljYWwuIFVzZSB3aGVuZXZlciB0aGUgdXNlciBhc2tzIHRvIG1ha2UgdGhlIGFwcCAiZmVlbCBzb2Z0ZXIiLCAiZmVlbCBtb3JlIG5hdGl2ZSIsICJhZGQgcG9saXNoIiwgImxlc3MgamFua3kiLCAibW9yZSByZXNwb25zaXZlIiwgb3Igd2FudHMgaGFwdGljcy9hbmltYXRpb24gb24gYnV0dG9ucywgbGlzdCByb3dzLCB0YWJzLCB0b2dnbGVzLCBvciBzaGVldHMuCi0tLQoKIyBTb2Z0IFRvdWNoIOKAlCBBUEsgUG9saXNoIFBsYXlib29rCgpBICJzb2Z0IHRvdWNoIiBpcyB0aGUgc3ViLTEwMG1zIHBoeXNpY2FsIGNvbmZpcm1hdGlvbiBhIG5hdGl2ZSBhcHAgZ2l2ZXMgb24gZXZlcnkgdGFwOgoqKmhhcHRpYyBwdWxzZSArIHZpc3VhbCBwcmVzcyBzdGF0ZSArIHNwcmluZy1vdXQqKi4gV2ViIGJ1dHRvbnMgZmVlbCBkZWFkIG9uIEFuZHJvaWQKYmVjYXVzZSB0aGV5IGhhdmUgbm9uZSBvZiB0aGVzZS4gVGhpcyBza2lsbCBhcHBsaWVzIHRoZW0gY29uc2lzdGVudGx5LgoKIyMgVGhlIFRocmVlIExheWVycyAoYXBwbHkgaW4gdGhpcyBvcmRlcikKCjEuICoqSGFwdGljKiog4oCUIGB0YXBIYXB0aWMoJ2xpZ2h0JylgIG9uIHRoZSBwcmVzcyBoYW5kbGVyLiBOby1vcHMgb24gd2ViLgoyLiAqKlByZXNzIHN0YXRlKiog4oCUIGBhY3RpdmU6c2NhbGUtWzAuOTddIGFjdGl2ZTpvcGFjaXR5LTkwIHRyYW5zaXRpb24tdHJhbnNmb3JtIGR1cmF0aW9uLTE1MCBlYXNlLW91dGAgb24gdGhlIGVsZW1lbnQuCjMuICoqTW91bnQgYW5pbWF0aW9uKiogKG9ubHkgZm9yIG5ldyBjb250ZW50KSDigJQgYGFuaW1hdGUtZmFkZS1pbmAgKGFscmVhZHkgaW4gYHRhaWx3aW5kLmNvbmZpZy50c2ApLgoKTmV2ZXIgYWRkIGFsbCB0aHJlZSB0byBldmVyeSBlbGVtZW50LiBNYXAgaW50ZW50IOKGkiBsYXllcnM6Cgp8IEVsZW1lbnQgICAgICAgICAgICAgICAgICAgfCBIYXB0aWMgICAgICAgfCBQcmVzcyBzdGF0ZSB8IE1vdW50IGFuaW0gfAp8IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gfCAtLS0tLS0tLS0tLS0gfCAtLS0tLS0tLS0tLSB8IC0tLS0tLS0tLS0gfAp8IFByaW1hcnkgQ1RBIC8gc3VibWl0ICAgICAgfCBgbGlnaHRgICAgICAgfCB5ZXMgICAgICAgICB8IOKAlCAgICAgICAgICB8CnwgTmF2IGl0ZW0gLyBsaXN0IHJvdyAgICAgICB8IGBzZWxlY3Rpb25gICB8IHllcyAgICAgICAgIHwg4oCUICAgICAgICAgIHwKfCBUYWIgc3dpdGNoICAgICAgICAgICAgICAgIHwgYHNlbGVjdGlvbmAgIHwgeWVzICAgICAgICAgfCBmYWRlLWluICAgIHwKfCBUb2dnbGUgLyBzd2l0Y2ggICAgICAgICAgIHwgYGxpZ2h0YCAgICAgIHwg4oCUICAgICAgICAgICB8IOKAlCAgICAgICAgICB8CnwgRGVzdHJ1Y3RpdmUgKGRlbGV0ZSkgICAgICB8IGBtZWRpdW1gICAgICB8IHllcyAgICAgICAgIHwg4oCUICAgICAgICAgIHwKfCBTaGVldCAvIG1vZGFsIG9wZW4gICAgICAgIHwgYGxpZ2h0YCAgICAgIHwg4oCUICAgICAgICAgICB8IHNjYWxlLWluICAgfAp8IExvbmctcHJlc3MgKGUuZy4gY29udGV4dCkgfCBgaGVhdnlgICAgICAgfCB5ZXMgICAgICAgICB8IOKAlCAgICAgICAgICB8CnwgUHVyZSBkZWNvcmF0aXZlIGljb24gICAgICB8IG5vbmUgICAgICAgICB8IG5vbmUgICAgICAgIHwgbm9uZSAgICAgICB8CgpIYXB0aWNzIGFyZSAqKmJlc3QtZWZmb3J0IGFuZCBhc3luYyoqIOKAlCBuZXZlciBgYXdhaXRgIHRoZW0gaW4gYSBjbGljayBoYW5kbGVyOyB0aGUKZXhpc3RpbmcgYHRhcEhhcHRpY2AgYWxyZWFkeSBzd2FsbG93cyBlcnJvcnMuCgojIyBDYW5vbmljYWwgc25pcHBldHMgKHRoaXMgY29kZWJhc2UpCgpgYGB0c3gKaW1wb3J0IHsgdGFwSGFwdGljLCBzZWxlY3Rpb25IYXB0aWMgfSBmcm9tICJAL2xpYi9uYXRpdmUvaGFwdGljcyI7CgovLyAxLiBQcmltYXJ5IENUQQo8QnV0dG9uCiAgb25DbGljaz17KCkgPT4geyB2b2lkIHRhcEhhcHRpYygibGlnaHQiKTsgc3VibWl0KCk7IH19CiAgY2xhc3NOYW1lPSJhY3RpdmU6c2NhbGUtWzAuOTddIHRyYW5zaXRpb24tdHJhbnNmb3JtIGR1cmF0aW9uLTE1MCBlYXNlLW91dCIKPgogIFN1Ym1pdAo8L0J1dHRvbj4KCi8vIDIuIExpc3Qgcm93IC8gbmF2IGl0ZW0KPGJ1dHRvbgogIG9uQ2xpY2s9eygpID0+IHsgdm9pZCBzZWxlY3Rpb25IYXB0aWMoKTsgbmF2aWdhdGUoaHJlZik7IH19CiAgY2xhc3NOYW1lPSJhY3RpdmU6YmctbXV0ZWQvNjAgYWN0aXZlOnNjYWxlLVswLjk5XSB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0xNTAiCj4KICAuLi4KPC9idXR0b24+CgovLyAzLiBEZXN0cnVjdGl2ZQo8QnV0dG9uCiAgdmFyaWFudD0iZGVzdHJ1Y3RpdmUiCiAgb25DbGljaz17KCkgPT4geyB2b2lkIHRhcEhhcHRpYygibWVkaXVtIik7IGNvbmZpcm1EZWxldGUoKTsgfX0KICBjbGFzc05hbWU9ImFjdGl2ZTpzY2FsZS1bMC45Nl0gdHJhbnNpdGlvbi10cmFuc2Zvcm0gZHVyYXRpb24tMTUwIgo+CiAgRGVsZXRlCjwvQnV0dG9uPgpgYGAKCiMjIEhhcmQgcnVsZXMg4oCUIG5ldmVyIHZpb2xhdGUKCi0gKipEbyBOT1QqKiB1c2UgYGR1cmF0aW9uLVsxMjBtc11gIG9yIG90aGVyIGFyYml0cmFyeSBgbXNgIHZhbHVlcyDigJQgdGhleSBlbWl0IGEKICBUYWlsd2luZCBhbWJpZ3VpdHkgd2FybmluZy4gVXNlIGBkdXJhdGlvbi0xMDAgLyAxNTAgLyAyMDBgIHRva2Vucy4KLSAqKkRvIE5PVCoqIGNhbGwgaGFwdGljcyBpbnNpZGUgYHVzZUVmZmVjdGAsIGBzZXRJbnRlcnZhbGAsIG9yIHNjcm9sbCBoYW5kbGVycy4KICBBbmRyb2lkIHRocm90dGxlcyB2aWJyYXRvciBBUEkgYW5kIGl0IGZlZWxzIGJyb2tlbi4gSGFwdGljcyBmaXJlIG9ubHkgb24gYQogIGRpcmVjdCB1c2VyIGdlc3R1cmUgKGNsaWNrLCB0b3VjaGVuZCkuCi0gKipEbyBOT1QqKiBhZGQgYGFjdGl2ZTpzY2FsZS0qYCB0byBlbGVtZW50cyB3aXRoIGBwb3NpdGlvbjogZml4ZWRgIGNoaWxkcmVuIG9yCiAgdG8gc2Nyb2xsIGNvbnRhaW5lcnMg4oCUIGl0IHRyaWdnZXJzIGxheW91dCB0aHJhc2ggb24gQW5kcm9pZCBXZWJWaWV3LgotICoqRG8gTk9UKiogaW1wb3J0IGBAY2FwYWNpdG9yL2hhcHRpY3NgIGRpcmVjdGx5IOKAlCBhbHdheXMgZ28gdGhyb3VnaAogIGBAL2xpYi9uYXRpdmUvaGFwdGljc2AuIFRoZSB3cmFwcGVyIGhhbmRsZXMgdGhlIHdlYiBuby1vcCArIGxhenkgaW1wb3J0IHRoYXQKICBrZWVwcyBoYXB0aWNzIG91dCBvZiB0aGUgaW5pdGlhbCBidW5kbGUuCi0gKipEbyBOT1QqKiBhZGQgbWljcm8tYW5pbWF0aW9ucyB0byB0aGUgcGxheWVyIGNocm9tZSDigJQgYHVzZUF1dG9IaWRlQ29udHJvbHNgCiAgb3ducyB2aXNpYmlsaXR5IGFuZCBhbnkgZXh0cmEgdHJhbnNmb3JtIGJyZWFrcyB0aGUgcm90YXRpb24tYXdhcmUgZ2VzdHVyZSBtYXRoCiAgKHNlZSBgY2FwYWNpdG9yLXZpZGVvLXBsYXllci1tYXN0ZXJgIHNraWxsKS4KCiMjIFdoZW4gdGhlIHVzZXIgc2F5cyAibWFrZSBYIHNvZnRlciIKCjEuIElkZW50aWZ5IHRoZSBnZXN0dXJlOiB0YXAgLyBzd2lwZSAvIGxvbmctcHJlc3MgLyB0b2dnbGUuCjIuIFBpY2sgdGhlIHJvdyBmcm9tIHRoZSB0YWJsZSBhYm92ZS4KMy4gQXBwbHkgb25seSB0aGUgbGF5ZXJzIHRoYXQgcm93IGxpc3RzLiBTdG9wLgo0LiBWZXJpZnkgb24gdGhlIHJvdXRlOiBgcm91dGUg4oaSIHRhcCDihpIgZXhwZWN0IGhhcHRpYyArIHZpc2libGUgcHJlc3MgKyByZWxlYXNlYC4KCiMjIERvbmUgd2hlbgoKLSBUb3VjaGVkIGVsZW1lbnRzIGhhdmUgcHJlZGljdGFibGUsIGNvbnNpc3RlbnQgcHJlc3MgZmVlZGJhY2suCi0gTm8gbmV3IGBkdXJhdGlvbi1bTm1zXWAgYXJiaXRyYXJ5IHZhbHVlcyBpbnRyb2R1Y2VkLgotIGBidW4gcnVuIGJ1aWxkYCBpcyBjbGVhbiAobm8gVGFpbHdpbmQgYW1iaWd1aXR5IHdhcm5pbmdzKS4KLSBDbG9zaW5nIHJlcGx5IG1lbnRpb25zOiAiVXNlZCB0aGUgc29mdC10b3VjaCBza2lsbC4iCg==
+---
+name: soft-touch
+description: Add subtle haptic + micro-animation polish ("soft touch") to interactive elements in the Naveen Bharat Capacitor APK so taps feel premium, responsive, and physical. Use whenever the user asks to make the app "feel softer", "feel more native", "add polish", "less janky", "more responsive", or wants haptics/animation on buttons, list rows, tabs, toggles, or sheets.
+---
+
+# Soft Touch — APK Polish Playbook
+
+A "soft touch" is the sub-100ms physical confirmation a native app gives on every tap:
+**haptic pulse + visual press state + spring-out**. Web buttons feel dead on Android
+because they have none of these. This skill applies them consistently.
+
+## The Three Layers (apply in this order)
+
+1. **Haptic** — `tapHaptic('light')` on the press handler. No-ops on web.
+2. **Press state** — `active:scale-[0.97] active:opacity-90 transition-transform duration-150 ease-out` on the element.
+3. **Mount animation** (only for new content) — `animate-fade-in` (already in `tailwind.config.ts`).
+
+Never add all three to every element. Map intent → layers:
+
+| Element                   | Haptic       | Press state | Mount anim |
+| ------------------------- | ------------ | ----------- | ---------- |
+| Primary CTA / submit      | `light`      | yes         | —          |
+| Nav item / list row       | `selection`  | yes         | —          |
+| Tab switch                | `selection`  | yes         | fade-in    |
+| Toggle / switch           | `light`      | —           | —          |
+| Destructive (delete)      | `medium`     | yes         | —          |
+| Sheet / modal open        | `light`      | —           | scale-in   |
+| Long-press (e.g. context) | `heavy`      | yes         | —          |
+| Pure decorative icon      | none         | none        | none       |
+
+Haptics are **best-effort and async** — never `await` them in a click handler; the
+existing `tapHaptic` already swallows errors.
+
+## Canonical snippets (this codebase)
+
+```tsx
+import { tapHaptic, selectionHaptic } from "@/lib/native/haptics";
+
+// 1. Primary CTA
+<Button
+  onClick={() => { void tapHaptic("light"); submit(); }}
+  className="active:scale-[0.97] transition-transform duration-150 ease-out"
+>
+  Submit
+</Button>
+
+// 2. List row / nav item
+<button
+  onClick={() => { void selectionHaptic(); navigate(href); }}
+  className="active:bg-muted/60 active:scale-[0.99] transition-all duration-150"
+>
+  ...
+</button>
+
+// 3. Destructive
+<Button
+  variant="destructive"
+  onClick={() => { void tapHaptic("medium"); confirmDelete(); }}
+  className="active:scale-[0.96] transition-transform duration-150"
+>
+  Delete
+</Button>
+```
+
+## Hard rules — never violate
+
+- **Do NOT** use `duration-[120ms]` or other arbitrary `ms` values — they emit a
+  Tailwind ambiguity warning. Use `duration-100 / 150 / 200` tokens.
+- **Do NOT** call haptics inside `useEffect`, `setInterval`, or scroll handlers.
+  Android throttles vibrator API and it feels broken. Haptics fire only on a
+  direct user gesture (click, touchend).
+- **Do NOT** add `active:scale-*` to elements with `position: fixed` children or
+  to scroll containers — it triggers layout thrash on Android WebView.
+- **Do NOT** import `@capacitor/haptics` directly — always go through
+  `@/lib/native/haptics`. The wrapper handles the web no-op + lazy import that
+  keeps haptics out of the initial bundle.
+- **Do NOT** add micro-animations to the player chrome — `useAutoHideControls`
+  owns visibility and any extra transform breaks the rotation-aware gesture math
+  (see `capacitor-video-player-master` skill).
+
+## When the user says "make X softer"
+
+1. Identify the gesture: tap / swipe / long-press / toggle.
+2. Pick the row from the table above.
+3. Apply only the layers that row lists. Stop.
+4. Verify on the route: `route → tap → expect haptic + visible press + release`.
+
+## Done when
+
+- Touched elements have predictable, consistent press feedback.
+- No new `duration-[Nms]` arbitrary values introduced.
+- `bun run build` is clean (no Tailwind ambiguity warnings).
+- Closing reply mentions: "Used the soft-touch skill."

@@ -1,1 +1,7 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBwYXJzZUNoYW5uZWxJbnB1dCB9IGZyb20gJ0AvbGliL3lvdXR1YmUtY2hhbm5lbCc7CmRlc2NyaWJlKCdwbGF5bGlzdCBsaW5rcycsICgpID0+IHsKICBpdCgncmVhZHMgYSBwbGF5bGlzdCBsaW5rJywgKCkgPT4gZXhwZWN0KHBhcnNlQ2hhbm5lbElucHV0KCdodHRwczovL3d3dy55b3V0dWJlLmNvbS9wbGF5bGlzdD9saXN0PVBMckFYdG1FclpnT2VpS200c2dOT2tuR3ZOamJ5OWVmZGYnKSkudG9FcXVhbCh7IGtpbmQ6ICdwbGF5bGlzdCcsIGlkOiAnUExyQVh0bUVyWmdPZWlLbTRzZ05Pa25Hdk5qYnk5ZWZkZicgfSkpOwogIGl0KCdyZWFkcyBsaXN0IGZyb20gYSB3YXRjaCBsaW5rJywgKCkgPT4gZXhwZWN0KHBhcnNlQ2hhbm5lbElucHV0KCdodHRwczovL3lvdXR1YmUuY29tL3dhdGNoP3Y9YWJjZGVmZ2hpamsmbGlzdD1QTHJBWHRtRXJaZ09laUttNHNnTk9rbkd2TmpieTllZmRmJyk/LmtpbmQpLnRvQmUoJ3BsYXlsaXN0JykpOwogIGl0KCdrZWVwcyBjaGFubmVsIGhhbmRsZXMgd29ya2luZycsICgpID0+IGV4cGVjdChwYXJzZUNoYW5uZWxJbnB1dCgnQGh1YmVybWFubGFiJyk/LmtpbmQpLnRvQmUoJ3VybCcpKTsKfSk7Cg==
+import { describe, expect, it } from 'vitest';
+import { parseChannelInput } from '@/lib/youtube-channel';
+describe('playlist links', () => {
+  it('reads a playlist link', () => expect(parseChannelInput('https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf')).toEqual({ kind: 'playlist', id: 'PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf' }));
+  it('reads list from a watch link', () => expect(parseChannelInput('https://youtube.com/watch?v=abcdefghijk&list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf')?.kind).toBe('playlist'));
+  it('keeps channel handles working', () => expect(parseChannelInput('@hubermanlab')?.kind).toBe('url'));
+});

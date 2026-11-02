@@ -1,1 +1,96 @@
-Ly8gQ2FwdHVyZXMgdGhlIG9yaWdpbmFsIEVycm9yIG91dC1vZi1iYW5kIHNvIHNlcnZlci50cyBjYW4gcmVjb3ZlciB0aGUgc3RhY2sKLy8gd2hlbiBoMyBoYXMgYWxyZWFkeSBzd2FsbG93ZWQgdGhlIHRocm93IGludG8gYSBnZW5lcmljIDUwMCBSZXNwb25zZS4KaW1wb3J0IHsgaXNBaUNhbmNlbGxhdGlvbiB9IGZyb20gJy4vYWkvY2FuY2VsbGF0aW9uJzsKCmxldCBsYXN0Q2FwdHVyZWRFcnJvcjogeyBlcnJvcjogdW5rbm93bjsgYXQ6IG51bWJlciB9IHwgdW5kZWZpbmVkOwpjb25zdCBUVExfTVMgPSA1XzAwMDsKCmZ1bmN0aW9uIHJlY29yZChlcnJvcjogdW5rbm93bikgewogIGxhc3RDYXB0dXJlZEVycm9yID0geyBlcnJvciwgYXQ6IERhdGUubm93KCkgfTsKfQoKLy8gaDMncyBIVFRQRXJyb3Igc2VyaWFsaXplcyB0byB7InN0YXR1cyI6NTAwLCJ1bmhhbmRsZWQiOnRydWUsIm1lc3NhZ2UiOiJIVFRQRXJyb3IifSDigJQKLy8gbm8gc3RhY2ssIG5vIGNhdXNlIOKAlCBzbyBhIHBsYWluIGNvbnNvbGUuZXJyb3IoZXJyb3IpIHJlYWNoZXMgdGhlIGxvZyBwaXBlbGluZSB3aXRoCi8vIHRoZSBmYWlsdXJlIGRldGFpbCBzdHJpcHBlZC4gRXhwYW5kIEVycm9yLWxpa2UgYXJncyBpbnRvIGEgc3RyaW5nIHRoYXQga2VlcHMgdGhlCi8vIG1lc3NhZ2UsIHN0YWNrLCBhbmQgdGhlIGZ1bGwgY2F1c2UgY2hhaW4uCmNvbnN0IENBVVNFX0RFUFRIX0xJTUlUID0gNTsKY29uc3QgREVTQ1JJUFRJT05fTEVOR1RIX0xJTUlUID0gOF8wMDA7CgpleHBvcnQgZnVuY3Rpb24gZGVzY3JpYmVFcnJvcihlcnJvcjogdW5rbm93bik6IHN0cmluZyB7CiAgY29uc3QgcGFydHM6IHN0cmluZ1tdID0gW107CiAgbGV0IGN1cnJlbnQ6IHVua25vd24gPSBlcnJvcjsKICBmb3IgKGxldCBkZXB0aCA9IDA7IGRlcHRoIDwgQ0FVU0VfREVQVEhfTElNSVQgJiYgY3VycmVudCAhPSBudWxsOyBkZXB0aCsrKSB7CiAgICBpZiAoIShjdXJyZW50IGluc3RhbmNlb2YgRXJyb3IpKSB7CiAgICAgIHBhcnRzLnB1c2godHlwZW9mIGN1cnJlbnQgPT09ICJzdHJpbmciID8gY3VycmVudCA6IHNhZmVTdHJpbmdpZnkoY3VycmVudCkpOwogICAgICBicmVhazsKICAgIH0KICAgIGNvbnN0IGxhYmVsID0gZGVwdGggPT09IDAgPyAiIiA6ICJjYXVzZWQgYnk6ICI7CiAgICBjb25zdCBzdGF0dXMgPSBkZXNjcmliZVN0YXR1cyhjdXJyZW50KTsKICAgIHBhcnRzLnB1c2goYCR7bGFiZWx9JHtjdXJyZW50LnN0YWNrID8/IGAke2N1cnJlbnQubmFtZX06ICR7Y3VycmVudC5tZXNzYWdlfWB9JHtzdGF0dXN9YCk7CiAgICBjdXJyZW50ID0gY3VycmVudC5jYXVzZTsKICB9CiAgcmV0dXJuIHBhcnRzLmpvaW4oIlxuIikuc2xpY2UoMCwgREVTQ1JJUFRJT05fTEVOR1RIX0xJTUlUKTsKfQoKZnVuY3Rpb24gZGVzY3JpYmVTdGF0dXMoZXJyb3I6IEVycm9yKTogc3RyaW5nIHsKICBjb25zdCB7IHN0YXR1cywgc3RhdHVzQ29kZSB9ID0gZXJyb3IgYXMgeyBzdGF0dXM/OiB1bmtub3duOyBzdGF0dXNDb2RlPzogdW5rbm93biB9OwogIGNvbnN0IHZhbHVlID0gc3RhdHVzID8/IHN0YXR1c0NvZGU7CiAgcmV0dXJuIHR5cGVvZiB2YWx1ZSA9PT0gIm51bWJlciIgPyBgIChzdGF0dXMgJHt2YWx1ZX0pYCA6ICIiOwp9CgpmdW5jdGlvbiBzYWZlU3RyaW5naWZ5KHZhbHVlOiB1bmtub3duKTogc3RyaW5nIHsKICB0cnkgewogICAgcmV0dXJuIEpTT04uc3RyaW5naWZ5KHZhbHVlKSA/PyBTdHJpbmcodmFsdWUpOwogIH0gY2F0Y2ggewogICAgcmV0dXJuIFN0cmluZyh2YWx1ZSk7CiAgfQp9CgpmdW5jdGlvbiBpc0Vycm9yTGlrZSh2YWx1ZTogdW5rbm93bik6IHZhbHVlIGlzIEVycm9yIHsKICByZXR1cm4gdmFsdWUgaW5zdGFuY2VvZiBFcnJvcjsKfQoKLy8gV3JhcCBjb25zb2xlLmVycm9yIHNvIGVycm9ycyBsb2dnZWQgYnkgYW55IGxheWVyIOKAlCBpbmNsdWRpbmcgaDMncyBpbnRlcm5hbAovLyB1bmhhbmRsZWQtZXJyb3IgbG9nZ2luZywgd2hpY2ggdGhpcyBmaWxlIGNhbm5vdCBob29rIGRpcmVjdGx5IOKAlCBhcmUgYm90aAovLyByZWNvcmRlZCBmb3IgY29uc3VtZUxhc3RDYXB0dXJlZEVycm9yIGFuZCBleHBhbmRlZCBiZWZvcmUgc2VyaWFsaXphdGlvbi4KY29uc3Qgb3JpZ2luYWxDb25zb2xlRXJyb3IgPSBjb25zb2xlLmVycm9yLmJpbmQoY29uc29sZSk7CmNvbnNvbGUuZXJyb3IgPSAoLi4uYXJnczogdW5rbm93bltdKSA9PiB7CiAgLy8gVGhlIEhUVFAgYWRhcHRlciBhbHNvIGxvZ3MgZGlzY29ubmVjdGVkIHJlcXVlc3RzIGFmdGVyIHRoZSByb3V0ZSBoYXMKICAvLyBoYW5kbGVkIHRoZW0uIEtlZXAgZXhwZWN0ZWQgY2FuY2VsbGF0aW9uIG91dCBvZiBjcmFzaCB0ZWxlbWV0cnksIGJ1dAogIC8vIG9ubHkgd2hlbiB0aGUgYWN0dWFsIEVycm9yL2NhdXNlIGlzIEFib3J0RXJyb3IgKG5ldmVyIGJ5IG1lc3NhZ2UgdGV4dCkuCiAgaWYgKGFyZ3Muc29tZShpc0NhbmNlbGxhdGlvbkxvZykpIHJldHVybjsKICBjb25zdCBleHBhbmRlZCA9IGFyZ3MubWFwKChhcmcpID0+IHsKICAgIGlmICghaXNFcnJvckxpa2UoYXJnKSkgcmV0dXJuIGFyZzsKICAgIHJlY29yZChhcmcpOwogICAgcmV0dXJuIGRlc2NyaWJlRXJyb3IoYXJnKTsKICB9KTsKICBvcmlnaW5hbENvbnNvbGVFcnJvciguLi5leHBhbmRlZCk7Cn07CgpleHBvcnQgZnVuY3Rpb24gaXNDYW5jZWxsYXRpb25Mb2coZXJyb3I6IHVua25vd24pOiBib29sZWFuIHsKICBsZXQgY3VycmVudCA9IGVycm9yOwogIGZvciAobGV0IGRlcHRoID0gMDsgZGVwdGggPCBDQVVTRV9ERVBUSF9MSU1JVDsgZGVwdGgrKykgewogICAgaWYgKGlzQWlDYW5jZWxsYXRpb24oY3VycmVudCkpIHJldHVybiB0cnVlOwogICAgaWYgKCEoY3VycmVudCBpbnN0YW5jZW9mIEVycm9yKSB8fCAoY3VycmVudC5uYW1lICE9PSAnSFRUUEVycm9yJyAmJiBjdXJyZW50Lm1lc3NhZ2UgIT09ICdIVFRQRXJyb3InKSkgcmV0dXJuIGZhbHNlOwogICAgY3VycmVudCA9IGN1cnJlbnQuY2F1c2U7CiAgfQogIHJldHVybiBmYWxzZTsKfQoKaWYgKHR5cGVvZiBnbG9iYWxUaGlzLmFkZEV2ZW50TGlzdGVuZXIgPT09ICJmdW5jdGlvbiIpIHsKICBnbG9iYWxUaGlzLmFkZEV2ZW50TGlzdGVuZXIoImVycm9yIiwgKGV2ZW50KSA9PiByZWNvcmQoKGV2ZW50IGFzIEVycm9yRXZlbnQpLmVycm9yID8/IGV2ZW50KSk7CiAgZ2xvYmFsVGhpcy5hZGRFdmVudExpc3RlbmVyKCJ1bmhhbmRsZWRyZWplY3Rpb24iLCAoZXZlbnQpID0+CiAgICByZWNvcmQoKGV2ZW50IGFzIFByb21pc2VSZWplY3Rpb25FdmVudCkucmVhc29uKSwKICApOwp9CgpleHBvcnQgZnVuY3Rpb24gY29uc3VtZUxhc3RDYXB0dXJlZEVycm9yKCk6IHVua25vd24gewogIGlmICghbGFzdENhcHR1cmVkRXJyb3IpIHJldHVybiB1bmRlZmluZWQ7CiAgaWYgKERhdGUubm93KCkgLSBsYXN0Q2FwdHVyZWRFcnJvci5hdCA+IFRUTF9NUykgewogICAgbGFzdENhcHR1cmVkRXJyb3IgPSB1bmRlZmluZWQ7CiAgICByZXR1cm4gdW5kZWZpbmVkOwogIH0KICBjb25zdCB7IGVycm9yIH0gPSBsYXN0Q2FwdHVyZWRFcnJvcjsKICBsYXN0Q2FwdHVyZWRFcnJvciA9IHVuZGVmaW5lZDsKICByZXR1cm4gZXJyb3I7Cn0K
+// Captures the original Error out-of-band so server.ts can recover the stack
+// when h3 has already swallowed the throw into a generic 500 Response.
+import { isAiCancellation } from './ai/cancellation';
+
+let lastCapturedError: { error: unknown; at: number } | undefined;
+const TTL_MS = 5_000;
+
+function record(error: unknown) {
+  lastCapturedError = { error, at: Date.now() };
+}
+
+// h3's HTTPError serializes to {"status":500,"unhandled":true,"message":"HTTPError"} —
+// no stack, no cause — so a plain console.error(error) reaches the log pipeline with
+// the failure detail stripped. Expand Error-like args into a string that keeps the
+// message, stack, and the full cause chain.
+const CAUSE_DEPTH_LIMIT = 5;
+const DESCRIPTION_LENGTH_LIMIT = 8_000;
+
+export function describeError(error: unknown): string {
+  const parts: string[] = [];
+  let current: unknown = error;
+  for (let depth = 0; depth < CAUSE_DEPTH_LIMIT && current != null; depth++) {
+    if (!(current instanceof Error)) {
+      parts.push(typeof current === "string" ? current : safeStringify(current));
+      break;
+    }
+    const label = depth === 0 ? "" : "caused by: ";
+    const status = describeStatus(current);
+    parts.push(`${label}${current.stack ?? `${current.name}: ${current.message}`}${status}`);
+    current = current.cause;
+  }
+  return parts.join("\n").slice(0, DESCRIPTION_LENGTH_LIMIT);
+}
+
+function describeStatus(error: Error): string {
+  const { status, statusCode } = error as { status?: unknown; statusCode?: unknown };
+  const value = status ?? statusCode;
+  return typeof value === "number" ? ` (status ${value})` : "";
+}
+
+function safeStringify(value: unknown): string {
+  try {
+    return JSON.stringify(value) ?? String(value);
+  } catch {
+    return String(value);
+  }
+}
+
+function isErrorLike(value: unknown): value is Error {
+  return value instanceof Error;
+}
+
+// Wrap console.error so errors logged by any layer — including h3's internal
+// unhandled-error logging, which this file cannot hook directly — are both
+// recorded for consumeLastCapturedError and expanded before serialization.
+const originalConsoleError = console.error.bind(console);
+console.error = (...args: unknown[]) => {
+  // The HTTP adapter also logs disconnected requests after the route has
+  // handled them. Keep expected cancellation out of crash telemetry, but
+  // only when the actual Error/cause is AbortError (never by message text).
+  if (args.some(isCancellationLog)) return;
+  const expanded = args.map((arg) => {
+    if (!isErrorLike(arg)) return arg;
+    record(arg);
+    return describeError(arg);
+  });
+  originalConsoleError(...expanded);
+};
+
+export function isCancellationLog(error: unknown): boolean {
+  let current = error;
+  for (let depth = 0; depth < CAUSE_DEPTH_LIMIT; depth++) {
+    if (isAiCancellation(current)) return true;
+    if (!(current instanceof Error) || (current.name !== 'HTTPError' && current.message !== 'HTTPError')) return false;
+    current = current.cause;
+  }
+  return false;
+}
+
+if (typeof globalThis.addEventListener === "function") {
+  globalThis.addEventListener("error", (event) => record((event as ErrorEvent).error ?? event));
+  globalThis.addEventListener("unhandledrejection", (event) =>
+    record((event as PromiseRejectionEvent).reason),
+  );
+}
+
+export function consumeLastCapturedError(): unknown {
+  if (!lastCapturedError) return undefined;
+  if (Date.now() - lastCapturedError.at > TTL_MS) {
+    lastCapturedError = undefined;
+    return undefined;
+  }
+  const { error } = lastCapturedError;
+  lastCapturedError = undefined;
+  return error;
+}

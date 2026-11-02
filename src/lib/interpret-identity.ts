@@ -1,1 +1,19 @@
-aW1wb3J0IHR5cGUgeyBUaW1lZFNlZ21lbnQgfSBmcm9tICcuL3lvdXR1YmUtaGluZGknOwppbXBvcnQgdHlwZSB7IEludGVycHJldGVySWQgfSBmcm9tICcuL2ludGVycHJldGVyLW1vZGVscyc7CgpleHBvcnQgY29uc3QgSU5URVJQUkVUX1BJUEVMSU5FID0gJ3NvdXJjZS1ib3VuZC12Mic7CgovKiogRXhhY3Qgbm9ybWFsaXplZCBzb3VyY2UgaWRlbnRpdHksIHNoYXJlZCBieSB0aGUgc2VydmVyIGFuZCBkZXZpY2UgcmVjb3ZlcnkuICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBpbnRlcnByZXRhdGlvbklkZW50aXR5KHNlZ21lbnRzOiBUaW1lZFNlZ21lbnRbXSwgbGFuZ3VhZ2U6IHN0cmluZywgc291cmNlOiBzdHJpbmcsIGVuZ2luZTogSW50ZXJwcmV0ZXJJZCwgcmV2aWV3OiBib29sZWFuLCBkZWVwTGlzdGVuOiBib29sZWFuKSB7CiAgY29uc3QgYnl0ZXMgPSBuZXcgVGV4dEVuY29kZXIoKS5lbmNvZGUoSlNPTi5zdHJpbmdpZnkoW0lOVEVSUFJFVF9QSVBFTElORSwgc291cmNlLCBsYW5ndWFnZSwgZW5naW5lLCByZXZpZXcsIGRlZXBMaXN0ZW4sIHNlZ21lbnRzXSkpOwogIGNvbnN0IGRpZ2VzdCA9IGF3YWl0IGNyeXB0by5zdWJ0bGUuZGlnZXN0KCdTSEEtMjU2JywgYnl0ZXMpOwogIHJldHVybiBBcnJheS5mcm9tKG5ldyBVaW50OEFycmF5KGRpZ2VzdCksIGJ5dGUgPT4gYnl0ZS50b1N0cmluZygxNikucGFkU3RhcnQoMiwgJzAnKSkuam9pbignJyk7Cn0KCmV4cG9ydCBmdW5jdGlvbiBtYXRjaGluZ1Jlc3VtZSh2YWx1ZTogdW5rbm93biwgY291bnQ6IG51bWJlciwgc291cmNlS2V5OiBzdHJpbmcpIHsKICBpZiAoIXZhbHVlIHx8IHR5cGVvZiB2YWx1ZSAhPT0gJ29iamVjdCcgfHwgIWNvdW50KSByZXR1cm4gbnVsbDsKICBjb25zdCB2ID0gdmFsdWUgYXMgUmVjb3JkPHN0cmluZywgdW5rbm93bj47CiAgaWYgKHZbJ3NvdXJjZUtleSddICE9PSBzb3VyY2VLZXkgfHwgIUFycmF5LmlzQXJyYXkodlsnbGluZXMnXSkgfHwgdlsnbGluZXMnXS5sZW5ndGggIT09IGNvdW50KSByZXR1cm4gbnVsbDsKICBjb25zdCBsaW5lcyA9IHZbJ2xpbmVzJ10ubWFwKGxpbmUgPT4gdHlwZW9mIGxpbmUgPT09ICdzdHJpbmcnID8gbGluZS5zbGljZSgwLCA4MDAwKSA6ICcnKTsKICByZXR1cm4gbGluZXMuc29tZShsaW5lID0+IGxpbmUudHJpbSgpKSA/IHsgbGluZXMsIGJyaWVmOiB2WydicmllZiddLCBicmllZk1vZGVsOiB0eXBlb2YgdlsnYnJpZWZNb2RlbCddID09PSAnc3RyaW5nJyA/IHZbJ2JyaWVmTW9kZWwnXS5zbGljZSgwLCA2MCkgOiAnJyB9IDogbnVsbDsKfQ==
+import type { TimedSegment } from './youtube-hindi';
+import type { InterpreterId } from './interpreter-models';
+
+export const INTERPRET_PIPELINE = 'source-bound-v2';
+
+/** Exact normalized source identity, shared by the server and device recovery. */
+export async function interpretationIdentity(segments: TimedSegment[], language: string, source: string, engine: InterpreterId, review: boolean, deepListen: boolean) {
+  const bytes = new TextEncoder().encode(JSON.stringify([INTERPRET_PIPELINE, source, language, engine, review, deepListen, segments]));
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+export function matchingResume(value: unknown, count: number, sourceKey: string) {
+  if (!value || typeof value !== 'object' || !count) return null;
+  const v = value as Record<string, unknown>;
+  if (v['sourceKey'] !== sourceKey || !Array.isArray(v['lines']) || v['lines'].length !== count) return null;
+  const lines = v['lines'].map(line => typeof line === 'string' ? line.slice(0, 8000) : '');
+  return lines.some(line => line.trim()) ? { lines, brief: v['brief'], briefModel: typeof v['briefModel'] === 'string' ? v['briefModel'].slice(0, 60) : '' } : null;
+}

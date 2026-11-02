@@ -1,1 +1,2 @@
-QUxURVIgVEFCTEUgcHVibGljLm1lbW9yeV9pdGVtcyBEUk9QIENPTlNUUkFJTlQgSUYgRVhJU1RTIG1lbW9yeV9pdGVtc19raW5kX2NoZWNrOwpBTFRFUiBUQUJMRSBwdWJsaWMubWVtb3J5X2l0ZW1zIEFERCBDT05TVFJBSU5UIG1lbW9yeV9pdGVtc19raW5kX2NoZWNrIENIRUNLIChraW5kIElOICgnbm90ZScsJ2xpbmsnLCdmaWxlJywndHJhY2tlcicsJ2ZhY3QnLCdhc3NlcnRpb25fcmVhc29uJywnaW5zaWdodCcsJ3RlYWNoZXJfcXVlc3Rpb24nLCdtaXN0YWtlX3F1ZXN0aW9uJywnZmxhc2hjYXJkJywnYWN0aXZlX3JlY2FsbCcsJ3B5cScsJ2Z5cScpKTs=
+ALTER TABLE public.memory_items DROP CONSTRAINT IF EXISTS memory_items_kind_check;
+ALTER TABLE public.memory_items ADD CONSTRAINT memory_items_kind_check CHECK (kind IN ('note','link','file','tracker','fact','assertion_reason','insight','teacher_question','mistake_question','flashcard','active_recall','pyq','fyq'));

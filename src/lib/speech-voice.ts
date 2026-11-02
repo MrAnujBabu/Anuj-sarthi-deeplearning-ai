@@ -1,1 +1,20 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JzsKCmV4cG9ydCBjb25zdCBTUEVFQ0hfVk9JQ0VTID0gWydLb3JlJywgJ0FvZWRlJywgJ0xlZGEnXSBhcyBjb25zdDsKZXhwb3J0IHR5cGUgU3BlZWNoVm9pY2UgPSB0eXBlb2YgU1BFRUNIX1ZPSUNFU1tudW1iZXJdOwpleHBvcnQgZnVuY3Rpb24gcmVzb2x2ZVNwZWVjaFZvaWNlKHZhbHVlOiB1bmtub3duKTogU3BlZWNoVm9pY2UgfCB1bmRlZmluZWQgewogIHJldHVybiBTUEVFQ0hfVk9JQ0VTLmZpbmQodm9pY2UgPT4gdm9pY2UudG9Mb3dlckNhc2UoKSA9PT0gU3RyaW5nKHZhbHVlKS50b0xvd2VyQ2FzZSgpKTsKfQpleHBvcnQgZnVuY3Rpb24gdXNlU3BlZWNoVm9pY2UoKSB7CiAgY29uc3QgW3ZvaWNlLCBzZXRWb2ljZV0gPSB1c2VTdGF0ZTxTcGVlY2hWb2ljZT4oJ0tvcmUnKTsKICB1c2VFZmZlY3QoKCkgPT4gewogICAgY29uc3QgcmVmcmVzaCA9ICgpID0+IHsgdHJ5IHsgc2V0Vm9pY2UocmVzb2x2ZVNwZWVjaFZvaWNlKGxvY2FsU3RvcmFnZS5nZXRJdGVtKCdzbmFwc29sdmUuc3BlZWNoLXZvaWNlJykpID8/ICdLb3JlJyk7IH0gY2F0Y2ggeyAvKiBLZWVwIGRldmljZSBkZWZhdWx0LiAqLyB9IH07CiAgICByZWZyZXNoKCk7IHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdzbmFwc29sdmU6c3BlZWNoLXZvaWNlJywgcmVmcmVzaCk7CiAgICByZXR1cm4gKCkgPT4gd2luZG93LnJlbW92ZUV2ZW50TGlzdGVuZXIoJ3NuYXBzb2x2ZTpzcGVlY2gtdm9pY2UnLCByZWZyZXNoKTsKICB9LCBbXSk7CiAgY29uc3QgdXBkYXRlID0gKHZhbHVlOiBTcGVlY2hWb2ljZSkgPT4gewogICAgc2V0Vm9pY2UodmFsdWUpOwogICAgdHJ5IHsgbG9jYWxTdG9yYWdlLnNldEl0ZW0oJ3NuYXBzb2x2ZS5zcGVlY2gtdm9pY2UnLCB2YWx1ZSk7IHdpbmRvdy5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudCgnc25hcHNvbHZlOnNwZWVjaC12b2ljZScpKTsgfSBjYXRjaCB7IC8qIEtlZXAgaW4tbWVtb3J5IHNlbGVjdGlvbi4gKi8gfQogIH07CiAgcmV0dXJuIFt2b2ljZSwgdXBkYXRlXSBhcyBjb25zdDsKfQ==
+import { useEffect, useState } from 'react';
+
+export const SPEECH_VOICES = ['Kore', 'Aoede', 'Leda'] as const;
+export type SpeechVoice = typeof SPEECH_VOICES[number];
+export function resolveSpeechVoice(value: unknown): SpeechVoice | undefined {
+  return SPEECH_VOICES.find(voice => voice.toLowerCase() === String(value).toLowerCase());
+}
+export function useSpeechVoice() {
+  const [voice, setVoice] = useState<SpeechVoice>('Kore');
+  useEffect(() => {
+    const refresh = () => { try { setVoice(resolveSpeechVoice(localStorage.getItem('snapsolve.speech-voice')) ?? 'Kore'); } catch { /* Keep device default. */ } };
+    refresh(); window.addEventListener('snapsolve:speech-voice', refresh);
+    return () => window.removeEventListener('snapsolve:speech-voice', refresh);
+  }, []);
+  const update = (value: SpeechVoice) => {
+    setVoice(value);
+    try { localStorage.setItem('snapsolve.speech-voice', value); window.dispatchEvent(new Event('snapsolve:speech-voice')); } catch { /* Keep in-memory selection. */ }
+  };
+  return [voice, update] as const;
+}

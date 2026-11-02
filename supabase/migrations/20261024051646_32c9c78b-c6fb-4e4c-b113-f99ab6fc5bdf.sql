@@ -1,1 +1,1 @@
-Z3JhbnQgc2VsZWN0IG9uIHB1YmxpYy5uY2VydF9zbmlwcGV0cyB0byBhbm9uOyBncmFudCBzZWxlY3Qgb24gcHVibGljLm5jZXJ0X3NuaXBwZXRzIHRvIGF1dGhlbnRpY2F0ZWQ7IGdyYW50IGFsbCBvbiBwdWJsaWMubmNlcnRfc25pcHBldHMgdG8gc2VydmljZV9yb2xlOw==
+grant select on public.ncert_snippets to anon; grant select on public.ncert_snippets to authenticated; grant all on public.ncert_snippets to service_role;

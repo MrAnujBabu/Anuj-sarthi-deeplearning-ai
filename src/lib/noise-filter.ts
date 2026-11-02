@@ -1,1 +1,37 @@
-Ly8gU2hhcmVkIGNsZWFuLXVwIGZvciBzcG9rZW4gdHJhbnNjcmlwdHM6IHJlbW92ZXMgbm9pc2UgdGFncywgd2hpc3BlciBtYXJrZXJzIGFuZAovLyB0aGUgcGhhbnRvbSBwaHJhc2VzIHNwZWVjaCBtb2RlbHMgaW52ZW50IGZyb20gc2lsZW5jZSBvciBiYWNrZ3JvdW5kIGhpc3MuCgovKiogTWljIHNldHRpbmdzIGZvciBjbGVhciBzcGVlY2g6IGVjaG8vbm9pc2UgcmVtb3ZhbCwgYXV0byB2b2x1bWUsIG1vbm8sIHZvaWNlIGlzb2xhdGlvbiB3aGVyZSBzdXBwb3J0ZWQuICovCmV4cG9ydCBjb25zdCBDTEVBTl9NSUM6IE1lZGlhVHJhY2tDb25zdHJhaW50cyA9IHsKICBlY2hvQ2FuY2VsbGF0aW9uOiB0cnVlLAogIG5vaXNlU3VwcHJlc3Npb246IHRydWUsCiAgYXV0b0dhaW5Db250cm9sOiB0cnVlLAogIGNoYW5uZWxDb3VudDogMSwKICAvLyBDaHJvbWUvQW5kcm9pZCBzdXBwb3J0IHRoaXM7IG90aGVyIGJyb3dzZXJzIGlnbm9yZSB1bmtub3duIGNvbnN0cmFpbnRzLgogIC4uLih7IHZvaWNlSXNvbGF0aW9uOiB0cnVlIH0gYXMgUmVjb3JkPHN0cmluZywgYm9vbGVhbj4pLAp9OwoKLy8gVHJhZmZpYywgdmVoaWNsZSwgbWFjaGluZXJ5LCBjcm93ZCwgd2VhdGhlciBhbmQgYW5pbWFsIHNvdW5kcyB0aGUgc3BlZWNoIG1vZGVsCi8vIHRhZ3MgaW5zdGVhZCBvZiBzcGVlY2gg4oCUIHRoZXNlIG11c3QgbmV2ZXIgcmVhY2ggdGhlIHR1dG9yIG9yIHRoZSB0cmFuc2NyaXB0Lgpjb25zdCBUQUcgPSAvW1so77yI44CQPCrimapdXHMqKD86d2hpc3Blclx3KnxpbmF1ZGlibGV8bm9pc2V8YmFja2dyb3VuZFxzKm5vaXNlfHN0YXRpY3xzaWxlbmNlfG11c2ljfGJyZWF0aFx3Knxjb3VnaFx3KnxsYXVnaFx3KnxzaWdoXHcqfHVuY2xlYXJ8YmxhbmtfYXVkaW98bm9ccypzcGVlY2h8YXBwbGF1c2V8Zm9yZWlnbnxoaXNzXHcqfGVuZ2luZXxob3JuXHcqfGhvbmtcdyp8dHJhZmZpY3x2ZWhpY2xlfGNhcnxidXN8dHJhaW58YmlrZXxtb3RvcmN5Y2xlfHNjb290ZXJ8bWFjaGluZVx3KnxmYWN0b3J5fGNyb3dkfGNoYXR0ZXJ8d2luZHxyYWlufHRodW5kZXJ8ZG9nfGJhcmtcdyp8c2lyZW58Y29uc3RydWN0aW9ufGZhbnzgpKvgpYHgpLjgpKvgpYHgpLhcdyp84KS24KWL4KSwfOCkn+CljeCksOCliOCkq+Ckv+CklXzgpLngpYngpLDgpY3gpKh84KSX4KS+4KSh4KS84KWAfOCkh+CkguCknOCkqHzgpK3gpYDgpKHgpLx84KS54KS14KS+KVteXF0p77yJ44CRPirimapdKltcXSnvvInjgJE+KuKZql0/L2dpdTsKCmNvbnN0IFBIQU5UT01TID0gWwogIC90aGFuayg/OnN8IHlvdSkoPzogc28gbXVjaCk/IGZvciB3YXRjaGluZ1suIV0qL2dpdSwKICAvcGxlYXNlICg/Omxpa2UgYW5kICk/c3Vic2NyaWJlW14uIV0qWy4hXSovZ2l1LAogIC9zdWJ0aXRsZXM/ICg/OmJ5fGZyb20pW14uIV0qWy4hXSovZ2l1LAogIC8oPzphbWFyYVwub3JnfHd3d1wuXFMrKVteLiFdKlsuIV0qL2dpdSwKICAv4pmqKy9ndSwKXTsKCi8qKiBDbGVhbiBhIHRyYW5zY3JpcHQgZnJhZ21lbnQ7IHJldHVybnMgIiIgd2hlbiBpdCB3YXMgb25seSBub2lzZS4gKi8KZXhwb3J0IGZ1bmN0aW9uIGNsZWFuVHJhbnNjcmlwdCh0ZXh0OiBzdHJpbmcpOiBzdHJpbmcgewogIGxldCBvdXQgPSB0ZXh0LnJlcGxhY2UoVEFHLCAnICcpOwogIGZvciAoY29uc3QgcmUgb2YgUEhBTlRPTVMpIG91dCA9IG91dC5yZXBsYWNlKHJlLCAnICcpOwogIG91dCA9IG91dC5yZXBsYWNlKC9cc3syLH0vZywgJyAnKTsKICByZXR1cm4gL1tccHtMfVxwe059XS91LnRlc3Qob3V0KSA/IG91dCA6ICcnOwp9CgovKiogVHJ1ZSB3aGVuIGEgZnJhZ21lbnQgY2FycmllcyBubyByZWFsIHNwZWVjaCAobm9pc2Uvd2hpc3BlciB0YWcgb3IgcGhhbnRvbSBwaHJhc2Ugb25seSkuICovCmV4cG9ydCBmdW5jdGlvbiBpc05vaXNlT25seSh0ZXh0OiBzdHJpbmcpOiBib29sZWFuIHsKICByZXR1cm4gdGV4dC50cmltKCkgIT09ICcnICYmIGNsZWFuVHJhbnNjcmlwdCh0ZXh0KS50cmltKCkgPT09ICcnOwp9Cg==
+// Shared clean-up for spoken transcripts: removes noise tags, whisper markers and
+// the phantom phrases speech models invent from silence or background hiss.
+
+/** Mic settings for clear speech: echo/noise removal, auto volume, mono, voice isolation where supported. */
+export const CLEAN_MIC: MediaTrackConstraints = {
+  echoCancellation: true,
+  noiseSuppression: true,
+  autoGainControl: true,
+  channelCount: 1,
+  // Chrome/Android support this; other browsers ignore unknown constraints.
+  ...({ voiceIsolation: true } as Record<string, boolean>),
+};
+
+// Traffic, vehicle, machinery, crowd, weather and animal sounds the speech model
+// tags instead of speech — these must never reach the tutor or the transcript.
+const TAG = /[[(（【<*♪]\s*(?:whisper\w*|inaudible|noise|background\s*noise|static|silence|music|breath\w*|cough\w*|laugh\w*|sigh\w*|unclear|blank_audio|no\s*speech|applause|foreign|hiss\w*|engine|horn\w*|honk\w*|traffic|vehicle|car|bus|train|bike|motorcycle|scooter|machine\w*|factory|crowd|chatter|wind|rain|thunder|dog|bark\w*|siren|construction|fan|फुसफुस\w*|शोर|ट्रैफिक|हॉर्न|गाड़ी|इंजन|भीड़|हवा)[^\])）】>*♪]*[\])）】>*♪]?/giu;
+
+const PHANTOMS = [
+  /thank(?:s| you)(?: so much)? for watching[.!]*/giu,
+  /please (?:like and )?subscribe[^.!]*[.!]*/giu,
+  /subtitles? (?:by|from)[^.!]*[.!]*/giu,
+  /(?:amara\.org|www\.\S+)[^.!]*[.!]*/giu,
+  /♪+/gu,
+];
+
+/** Clean a transcript fragment; returns "" when it was only noise. */
+export function cleanTranscript(text: string): string {
+  let out = text.replace(TAG, ' ');
+  for (const re of PHANTOMS) out = out.replace(re, ' ');
+  out = out.replace(/\s{2,}/g, ' ');
+  return /[\p{L}\p{N}]/u.test(out) ? out : '';
+}
+
+/** True when a fragment carries no real speech (noise/whisper tag or phantom phrase only). */
+export function isNoiseOnly(text: string): boolean {
+  return text.trim() !== '' && cleanTranscript(text).trim() === '';
+}

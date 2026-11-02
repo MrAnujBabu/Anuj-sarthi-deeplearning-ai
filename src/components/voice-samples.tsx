@@ -1,1 +1,84 @@
-aW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VSZWYsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyBEb3dubG9hZCwgUGF1c2UsIFBsYXksIFJvdGF0ZUNjdyB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7CmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJ0AvY29tcG9uZW50cy91aS9idXR0b24nOwppbXBvcnQgb3JpZ2luYWxUZWFjaGVyIGZyb20gJ0AvYXNzZXRzL2luZGlhbi10ZWFjaGVyLXZvaWNlLXNhbXBsZS53YXYuYXNzZXQuanNvbic7CmltcG9ydCBvcmlnaW5hbFBvbGlzaGVkIGZyb20gJ0AvYXNzZXRzL2luZGlhbi10ZWFjaGVyLXBvbGlzaGVkLndhdi5hc3NldC5qc29uJzsKaW1wb3J0IG9yaWdpbmFsU2NlbmUgZnJvbSAnQC9hc3NldHMvbWl0aGFsaS1zY2VuZS0xaDM0bTAwcy0xaDM0bTM4cy0yLndhdi5hc3NldC5qc29uJzsKaW1wb3J0IGtvcmUgZnJvbSAnQC9hc3NldHMvdGVhY2hlci1zYW1wbGUta29yZS53YXYuYXNzZXQuanNvbic7CmltcG9ydCBhb2VkZSBmcm9tICdAL2Fzc2V0cy90ZWFjaGVyLXNhbXBsZS1hb2VkZS53YXYuYXNzZXQuanNvbic7CmltcG9ydCBsZWRhIGZyb20gJ0AvYXNzZXRzL3RlYWNoZXItc2FtcGxlLWxlZGEud2F2LmFzc2V0Lmpzb24nOwoKY29uc3Qgb3JpZ2luYWxzID0gWwogIHsgaWQ6ICdvcmlnaW5hbC10ZWFjaGVyJywgbmFtZTogJ0luZGlhbiB0ZWFjaGVyJywgdXJsOiBvcmlnaW5hbFRlYWNoZXIudXJsIH0sCiAgeyBpZDogJ29yaWdpbmFsLXBvbGlzaGVkJywgbmFtZTogJ0luZGlhbiB0ZWFjaGVyIMK3IHBvbGlzaGVkJywgdXJsOiBvcmlnaW5hbFBvbGlzaGVkLnVybCB9LAogIHsgaWQ6ICdvcmlnaW5hbC1zY2VuZScsIG5hbWU6ICdNaXRoYWxpIMK3IHNjZW5lJywgdXJsOiBvcmlnaW5hbFNjZW5lLnVybCB9LApdOwpjb25zdCBhbHRlcm5hdGl2ZXMgPSBbCiAgeyBpZDogJ2tvcmUnLCBuYW1lOiAnS29yZScsIHVybDoga29yZS51cmwgfSwKICB7IGlkOiAnYW9lZGUnLCBuYW1lOiAnQW9lZGUnLCB1cmw6IGFvZWRlLnVybCB9LAogIHsgaWQ6ICdsZWRhJywgbmFtZTogJ0xlZGEnLCB1cmw6IGxlZGEudXJsIH0sCl07CgovKiogU2F2ZWQgcmVjb3JkaW5ncyBvbmx5OyBuZXZlciBhc3NpZ25zIGEgc2FtcGxlJ3MgaWRlbnRpdHkgdG8gdGhlIGxpdmUgdHV0b3IuICovCmV4cG9ydCBmdW5jdGlvbiBWb2ljZVNhbXBsZXMoeyBkaXNhYmxlZCA9IGZhbHNlLCBzYW1wbGVJZCB9OiB7IGRpc2FibGVkPzogYm9vbGVhbjsgc2FtcGxlSWQ/OiBzdHJpbmcgfSkgewogIGNvbnN0IFtncm91cCwgc2V0R3JvdXBdID0gdXNlU3RhdGU8J29yaWdpbmFsJyB8ICdhbHRlcm5hdGl2ZSc+KHNhbXBsZUlkID8gJ2FsdGVybmF0aXZlJyA6ICdvcmlnaW5hbCcpOwogIGNvbnN0IFtwbGF5aW5nLCBzZXRQbGF5aW5nXSA9IHVzZVN0YXRlPHN0cmluZyB8IG51bGw+KG51bGwpOwogIGNvbnN0IFtwYXVzZWQsIHNldFBhdXNlZF0gPSB1c2VTdGF0ZShmYWxzZSk7CiAgY29uc3QgW2VsYXBzZWQsIHNldEVsYXBzZWRdID0gdXNlU3RhdGUoMCk7CiAgY29uc3QgW2R1cmF0aW9uLCBzZXREdXJhdGlvbl0gPSB1c2VTdGF0ZSgwKTsKICBjb25zdCBbbG9hZGluZywgc2V0TG9hZGluZ10gPSB1c2VTdGF0ZShmYWxzZSk7CiAgY29uc3QgW2Vycm9yLCBzZXRFcnJvcl0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgYXVkaW8gPSB1c2VSZWY8SFRNTEF1ZGlvRWxlbWVudD4obnVsbCk7CiAgY29uc3QgcmV2aXNpb24gPSB1c2VSZWYoMCk7CiAgY29uc3Qgc3RvcCA9ICgpID0+IHsKICAgIHJldmlzaW9uLmN1cnJlbnQgKz0gMTsKICAgIGlmIChhdWRpby5jdXJyZW50ICYmICFhdWRpby5jdXJyZW50LnBhdXNlZCkgYXVkaW8uY3VycmVudC5wYXVzZSgpOwogICAgc2V0UGxheWluZyhudWxsKTsgc2V0UGF1c2VkKGZhbHNlKTsgc2V0TG9hZGluZyhmYWxzZSk7IHNldEVsYXBzZWQoMCk7IHNldER1cmF0aW9uKDApOwogIH07CiAgdXNlRWZmZWN0KCgpID0+IHsgaWYgKGRpc2FibGVkKSBzdG9wKCk7IH0sIFtkaXNhYmxlZF0pOwogIHVzZUVmZmVjdCgoKSA9PiAoKSA9PiB7IHJldmlzaW9uLmN1cnJlbnQgKz0gMTsgaWYgKGF1ZGlvLmN1cnJlbnQgJiYgIWF1ZGlvLmN1cnJlbnQucGF1c2VkKSBhdWRpby5jdXJyZW50LnBhdXNlKCk7IH0sIFtdKTsKICBjb25zdCBwbGF5ID0gYXN5bmMgKHNhbXBsZTogKHR5cGVvZiBvcmlnaW5hbHMpW251bWJlcl0sIHJlcGxheSA9IGZhbHNlKSA9PiB7CiAgICBpZiAoZGlzYWJsZWQpIHJldHVybjsKICAgIGNvbnN0IHBsYXllciA9IGF1ZGlvLmN1cnJlbnQ7CiAgICBpZiAoIXBsYXllcikgcmV0dXJuOwogICAgaWYgKHBsYXlpbmcgPT09IHNhbXBsZS5pZCAmJiAhcGF1c2VkICYmICFyZXBsYXkpIHsKICAgICAgcmV2aXNpb24uY3VycmVudCArPSAxOwogICAgICBwbGF5ZXIucGF1c2UoKTsgc2V0UGF1c2VkKHRydWUpOyBzZXRMb2FkaW5nKGZhbHNlKTsKICAgICAgcmV0dXJuOwogICAgfQogICAgY29uc3Qgc2FtZSA9IHBsYXlpbmcgPT09IHNhbXBsZS5pZDsKICAgIGlmICghc2FtZSkgewogICAgICBzdG9wKCk7IHBsYXllci5zcmMgPSBzYW1wbGUudXJsOwogICAgfQogICAgaWYgKHJlcGxheSB8fCAhc2FtZSB8fCBwbGF5ZXIuZW5kZWQpIHsgcGxheWVyLmN1cnJlbnRUaW1lID0gMDsgc2V0RWxhcHNlZCgwKTsgfQogICAgc2V0RXJyb3IoJycpOyBzZXRQYXVzZWQoZmFsc2UpOwogICAgY29uc3QgY3VycmVudCA9IHJldmlzaW9uLmN1cnJlbnQ7CiAgICBzZXRQbGF5aW5nKHNhbXBsZS5pZCk7IHNldExvYWRpbmcodHJ1ZSk7CiAgICB0cnkgewogICAgICBhd2FpdCBwbGF5ZXIucGxheSgpOwogICAgICBpZiAocmV2aXNpb24uY3VycmVudCA9PT0gY3VycmVudCkgc2V0TG9hZGluZyhmYWxzZSk7CiAgICB9IGNhdGNoIHsKICAgICAgaWYgKHJldmlzaW9uLmN1cnJlbnQgPT09IGN1cnJlbnQpIHsgc3RvcCgpOyBzZXRFcnJvcignU2FtcGxlIG5haGkgY2hhbGEuIERvYmFyYSBQbGF5IGRhYmFvLicpOyB9CiAgICB9CiAgfTsKICByZXR1cm4gPHNlY3Rpb24gY2xhc3NOYW1lPSJzcGFjZS15LTMgdGV4dC1sZWZ0IiBhcmlhLWxhYmVsPSJWb2ljZSBzYW1wbGVzIj4KICAgIDxoMiBjbGFzc05hbWU9InRleHQtc20gZm9udC1zZW1pYm9sZCI+Vm9pY2Ugc2FtcGxlczwvaDI+CiAgICB7IXNhbXBsZUlkICYmIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGdhcC0xIGJvcmRlci1iIHBiLTIiPgogICAgICA8QnV0dG9uIHNpemU9InNtIiB2YXJpYW50PXtncm91cCA9PT0gJ29yaWdpbmFsJyA/ICdzZWNvbmRhcnknIDogJ2dob3N0J30gYXJpYS1wcmVzc2VkPXtncm91cCA9PT0gJ29yaWdpbmFsJ30gb25DbGljaz17KCkgPT4geyBzdG9wKCk7IHNldEdyb3VwKCdvcmlnaW5hbCcpOyB9fT5VcGxvYWRlZCBvcmlnaW5hbHM8L0J1dHRvbj4KICAgICAgPEJ1dHRvbiBzaXplPSJzbSIgdmFyaWFudD17Z3JvdXAgPT09ICdhbHRlcm5hdGl2ZScgPyAnc2Vjb25kYXJ5JyA6ICdnaG9zdCd9IGFyaWEtcHJlc3NlZD17Z3JvdXAgPT09ICdhbHRlcm5hdGl2ZSd9IG9uQ2xpY2s9eygpID0+IHsgc3RvcCgpOyBzZXRHcm91cCgnYWx0ZXJuYXRpdmUnKTsgfX0+QUkgYWx0ZXJuYXRpdmVzPC9CdXR0b24+CiAgICA8L2Rpdj59CiAgICA8cCBjbGFzc05hbWU9InRleHQteHMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj57Z3JvdXAgPT09ICdvcmlnaW5hbCcgPyAnT3JpZ2luYWwgcmVjb3JkaW5ncyDCtyBsaXZlIHR1dG9yIGNsb25lIGF2YWlsYWJsZSBuYWhpIGhhaS4nIDogJ0dlbWluaSBIaW5kaS9IaW5nbGlzaCBzYW1wbGVzIMK3IGxpdmUtY2FsbCBhd2FheiBzZSBhbGFnLCBleGFjdCBjbG9uZSBuYWhpLid9PC9wPgogICAgPGRpdiBjbGFzc05hbWU9ImRpdmlkZS15IGRpdmlkZS1ib3JkZXIiPgogICAgICB7KGdyb3VwID09PSAnb3JpZ2luYWwnID8gb3JpZ2luYWxzIDogYWx0ZXJuYXRpdmVzKS5maWx0ZXIoc2FtcGxlID0+ICFzYW1wbGVJZCB8fCBzYW1wbGUuaWQgPT09IHNhbXBsZUlkKS5tYXAoc2FtcGxlID0+IDxkaXYga2V5PXtzYW1wbGUuaWR9IGNsYXNzTmFtZT0iZmxleCBtaW4taC0xMiBpdGVtcy1jZW50ZXIgZ2FwLTIgcHktMSI+CiAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJtaW4tdy0wIGZsZXgtMSBicmVhay13b3JkcyB0ZXh0LXNtIj57c2FtcGxlLm5hbWV9PC9zcGFuPgogICAgICAgIDxCdXR0b24gc2l6ZT0iaWNvbiIgdmFyaWFudD0ib3V0bGluZSIgY2xhc3NOYW1lPSJzaXplLTEwIHNocmluay0wIiBkaXNhYmxlZD17ZGlzYWJsZWR9IGFyaWEtbGFiZWw9e2Ake3BsYXlpbmcgPT09IHNhbXBsZS5pZCAmJiAhcGF1c2VkID8gJ1BhdXNlJyA6ICdQbGF5J30gJHtzYW1wbGUubmFtZX0gc2FtcGxlYH0gdGl0bGU9e2Ake3BsYXlpbmcgPT09IHNhbXBsZS5pZCAmJiAhcGF1c2VkID8gJ1BhdXNlJyA6ICdQbGF5J30gJHtzYW1wbGUubmFtZX1gfSBvbkNsaWNrPXsoKSA9PiB2b2lkIHBsYXkoc2FtcGxlKX0+e3BsYXlpbmcgPT09IHNhbXBsZS5pZCAmJiAhcGF1c2VkID8gPFBhdXNlIGNsYXNzTmFtZT0ic2l6ZS00IiAvPiA6IDxQbGF5IGNsYXNzTmFtZT0ic2l6ZS00IiAvPn08L0J1dHRvbj4KICAgICAgICA8QnV0dG9uIHNpemU9Imljb24iIHZhcmlhbnQ9Imdob3N0IiBjbGFzc05hbWU9InNpemUtMTAgc2hyaW5rLTAiIGRpc2FibGVkPXtkaXNhYmxlZH0gYXJpYS1sYWJlbD17YFJlcGxheSAke3NhbXBsZS5uYW1lfSBzYW1wbGVgfSB0aXRsZT17YFJlcGxheSAke3NhbXBsZS5uYW1lfWB9IG9uQ2xpY2s9eygpID0+IHZvaWQgcGxheShzYW1wbGUsIHRydWUpfT48Um90YXRlQ2N3IGNsYXNzTmFtZT0ic2l6ZS00IiAvPjwvQnV0dG9uPgogICAgICAgIDxCdXR0b24gc2l6ZT0iaWNvbiIgdmFyaWFudD0iZ2hvc3QiIGNsYXNzTmFtZT0ic2l6ZS0xMCBzaHJpbmstMCIgYXNDaGlsZD48YSBocmVmPXtzYW1wbGUudXJsfSBkb3dubG9hZD17YCR7c2FtcGxlLmlkfS53YXZgfSBhcmlhLWxhYmVsPXtgRG93bmxvYWQgJHtzYW1wbGUubmFtZX0gc2FtcGxlYH0gdGl0bGU9e2BEb3dubG9hZCAke3NhbXBsZS5uYW1lfWB9PjxEb3dubG9hZCBjbGFzc05hbWU9InNpemUtNCIgLz48L2E+PC9CdXR0b24+CiAgICAgIDwvZGl2Pil9CiAgICA8L2Rpdj4KICAgIHtwbGF5aW5nICYmIDxwIHJvbGU9InN0YXR1cyIgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRhYnVsYXItbnVtcyB0ZXh0LW11dGVkLWZvcmVncm91bmQiPntwYXVzZWQgPyAnUGF1c2VkJyA6ICdQbGF5aW5nJ30gwrcge01hdGguZmxvb3IoZWxhcHNlZCl9IC8ge01hdGguZmxvb3IoZHVyYXRpb24pfSBzPC9wPn0KICAgIHtsb2FkaW5nICYmIDxwIHJvbGU9InN0YXR1cyIgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+U2FtcGxlIGxvYWQgaG8gcmFoYSBoYWnigKY8L3A+fQogICAge2Vycm9yICYmIDxwIHJvbGU9ImFsZXJ0IiBjbGFzc05hbWU9InRleHQteHMgdGV4dC1kZXN0cnVjdGl2ZSI+e2Vycm9yfTwvcD59CiAgICA8YXVkaW8gcmVmPXthdWRpb30gYXJpYS1sYWJlbD0iU2FtcGxlIGF1ZGlvIiBwcmVsb2FkPSJub25lIiBvblRpbWVVcGRhdGU9e2UgPT4gc2V0RWxhcHNlZChlLmN1cnJlbnRUYXJnZXQuY3VycmVudFRpbWUpfSBvbkxvYWRlZE1ldGFkYXRhPXtlID0+IHNldER1cmF0aW9uKGUuY3VycmVudFRhcmdldC5kdXJhdGlvbil9IG9uRW5kZWQ9eygpID0+IHsgc2V0UGF1c2VkKHRydWUpOyBzZXRMb2FkaW5nKGZhbHNlKTsgfX0gb25FcnJvcj17KCkgPT4geyBzdG9wKCk7IHNldEVycm9yKCdTYW1wbGUgYXVkaW8gbG9hZCBuYWhpIGh1YS4nKTsgfX0gLz4KICA8L3NlY3Rpb24+Owp9
+import { useEffect, useRef, useState } from 'react';
+import { Download, Pause, Play, RotateCcw } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import originalTeacher from '@/assets/indian-teacher-voice-sample.wav.asset.json';
+import originalPolished from '@/assets/indian-teacher-polished.wav.asset.json';
+import originalScene from '@/assets/mithali-scene-1h34m00s-1h34m38s-2.wav.asset.json';
+import kore from '@/assets/teacher-sample-kore.wav.asset.json';
+import aoede from '@/assets/teacher-sample-aoede.wav.asset.json';
+import leda from '@/assets/teacher-sample-leda.wav.asset.json';
+
+const originals = [
+  { id: 'original-teacher', name: 'Indian teacher', url: originalTeacher.url },
+  { id: 'original-polished', name: 'Indian teacher · polished', url: originalPolished.url },
+  { id: 'original-scene', name: 'Mithali · scene', url: originalScene.url },
+];
+const alternatives = [
+  { id: 'kore', name: 'Kore', url: kore.url },
+  { id: 'aoede', name: 'Aoede', url: aoede.url },
+  { id: 'leda', name: 'Leda', url: leda.url },
+];
+
+/** Saved recordings only; never assigns a sample's identity to the live tutor. */
+export function VoiceSamples({ disabled = false, sampleId }: { disabled?: boolean; sampleId?: string }) {
+  const [group, setGroup] = useState<'original' | 'alternative'>(sampleId ? 'alternative' : 'original');
+  const [playing, setPlaying] = useState<string | null>(null);
+  const [paused, setPaused] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const audio = useRef<HTMLAudioElement>(null);
+  const revision = useRef(0);
+  const stop = () => {
+    revision.current += 1;
+    if (audio.current && !audio.current.paused) audio.current.pause();
+    setPlaying(null); setPaused(false); setLoading(false); setElapsed(0); setDuration(0);
+  };
+  useEffect(() => { if (disabled) stop(); }, [disabled]);
+  useEffect(() => () => { revision.current += 1; if (audio.current && !audio.current.paused) audio.current.pause(); }, []);
+  const play = async (sample: (typeof originals)[number], replay = false) => {
+    if (disabled) return;
+    const player = audio.current;
+    if (!player) return;
+    if (playing === sample.id && !paused && !replay) {
+      revision.current += 1;
+      player.pause(); setPaused(true); setLoading(false);
+      return;
+    }
+    const same = playing === sample.id;
+    if (!same) {
+      stop(); player.src = sample.url;
+    }
+    if (replay || !same || player.ended) { player.currentTime = 0; setElapsed(0); }
+    setError(''); setPaused(false);
+    const current = revision.current;
+    setPlaying(sample.id); setLoading(true);
+    try {
+      await player.play();
+      if (revision.current === current) setLoading(false);
+    } catch {
+      if (revision.current === current) { stop(); setError('Sample nahi chala. Dobara Play dabao.'); }
+    }
+  };
+  return <section className="space-y-3 text-left" aria-label="Voice samples">
+    <h2 className="text-sm font-semibold">Voice samples</h2>
+    {!sampleId && <div className="flex gap-1 border-b pb-2">
+      <Button size="sm" variant={group === 'original' ? 'secondary' : 'ghost'} aria-pressed={group === 'original'} onClick={() => { stop(); setGroup('original'); }}>Uploaded originals</Button>
+      <Button size="sm" variant={group === 'alternative' ? 'secondary' : 'ghost'} aria-pressed={group === 'alternative'} onClick={() => { stop(); setGroup('alternative'); }}>AI alternatives</Button>
+    </div>}
+    <p className="text-xs text-muted-foreground">{group === 'original' ? 'Original recordings · live tutor clone available nahi hai.' : 'Gemini Hindi/Hinglish samples · live-call awaaz se alag, exact clone nahi.'}</p>
+    <div className="divide-y divide-border">
+      {(group === 'original' ? originals : alternatives).filter(sample => !sampleId || sample.id === sampleId).map(sample => <div key={sample.id} className="flex min-h-12 items-center gap-2 py-1">
+        <span className="min-w-0 flex-1 break-words text-sm">{sample.name}</span>
+        <Button size="icon" variant="outline" className="size-10 shrink-0" disabled={disabled} aria-label={`${playing === sample.id && !paused ? 'Pause' : 'Play'} ${sample.name} sample`} title={`${playing === sample.id && !paused ? 'Pause' : 'Play'} ${sample.name}`} onClick={() => void play(sample)}>{playing === sample.id && !paused ? <Pause className="size-4" /> : <Play className="size-4" />}</Button>
+        <Button size="icon" variant="ghost" className="size-10 shrink-0" disabled={disabled} aria-label={`Replay ${sample.name} sample`} title={`Replay ${sample.name}`} onClick={() => void play(sample, true)}><RotateCcw className="size-4" /></Button>
+        <Button size="icon" variant="ghost" className="size-10 shrink-0" asChild><a href={sample.url} download={`${sample.id}.wav`} aria-label={`Download ${sample.name} sample`} title={`Download ${sample.name}`}><Download className="size-4" /></a></Button>
+      </div>)}
+    </div>
+    {playing && <p role="status" className="text-xs tabular-nums text-muted-foreground">{paused ? 'Paused' : 'Playing'} · {Math.floor(elapsed)} / {Math.floor(duration)} s</p>}
+    {loading && <p role="status" className="text-xs text-muted-foreground">Sample load ho raha hai…</p>}
+    {error && <p role="alert" className="text-xs text-destructive">{error}</p>}
+    <audio ref={audio} aria-label="Sample audio" preload="none" onTimeUpdate={e => setElapsed(e.currentTarget.currentTime)} onLoadedMetadata={e => setDuration(e.currentTarget.duration)} onEnded={() => { setPaused(true); setLoading(false); }} onError={() => { stop(); setError('Sample audio load nahi hua.'); }} />
+  </section>;
+}

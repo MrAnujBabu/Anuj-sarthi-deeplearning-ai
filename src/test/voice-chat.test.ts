@@ -1,1 +1,18 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBWT0lDRV9DSEFUX01BWCwgdm9pY2VDaGF0VGV4dCB9IGZyb20gJ0AvbGliL3ZvaWNlLWNoYXQnOwoKZGVzY3JpYmUoJ3R5cGVkIHZvaWNlLWNhbGwgbWVzc2FnZXMnLCAoKSA9PiB7CiAgaXQoJ2FsbG93cyB1cCB0byAxMDAwIGNoYXJhY3RlcnMgYW5kIHJlZnVzZXMgbG9uZ2VyIG9uZXMnLCAoKSA9PiB7CiAgICBleHBlY3QoVk9JQ0VfQ0hBVF9NQVgpLnRvQmUoMTAwMCk7CiAgICBleHBlY3Qodm9pY2VDaGF0VGV4dCgnYScucmVwZWF0KDEwMDApKSkudG9IYXZlTGVuZ3RoKDEwMDApOwogICAgZXhwZWN0KHZvaWNlQ2hhdFRleHQoJ2EnLnJlcGVhdCgxMDAxKSkpLnRvQmVOdWxsKCk7CiAgfSk7CiAgaXQoJ3JlZnVzZXMgZW1wdHkgdGV4dCBhbmQgYW55dGhpbmcgdGhhdCBpcyBub3QgdGV4dCcsICgpID0+IHsKICAgIGV4cGVjdCh2b2ljZUNoYXRUZXh0KCcgICBcbiAnKSkudG9CZU51bGwoKTsKICAgIGV4cGVjdCh2b2ljZUNoYXRUZXh0KDQyKSkudG9CZU51bGwoKTsKICAgIGV4cGVjdCh2b2ljZUNoYXRUZXh0KHVuZGVmaW5lZCkpLnRvQmVOdWxsKCk7CiAgfSk7CiAgaXQoJ3RyaW1zLCBkcm9wcyBjb250cm9sIGNoYXJhY3RlcnMgYW5kIGtlZXBzIGxpbmUgYnJlYWtzJywgKCkgPT4gewogICAgZXhwZWN0KHZvaWNlQ2hhdFRleHQoJyAgS3JlYnNcdTAwMDcgY3ljbGVcclxua2FoYW4gaG90YSBoYWk/ICAnKSkudG9CZSgnS3JlYnMgY3ljbGVcbmthaGFuIGhvdGEgaGFpPycpOwogIH0pOwp9KTsK
+import { describe, expect, it } from 'vitest';
+import { VOICE_CHAT_MAX, voiceChatText } from '@/lib/voice-chat';
+
+describe('typed voice-call messages', () => {
+  it('allows up to 1000 characters and refuses longer ones', () => {
+    expect(VOICE_CHAT_MAX).toBe(1000);
+    expect(voiceChatText('a'.repeat(1000))).toHaveLength(1000);
+    expect(voiceChatText('a'.repeat(1001))).toBeNull();
+  });
+  it('refuses empty text and anything that is not text', () => {
+    expect(voiceChatText('   \n ')).toBeNull();
+    expect(voiceChatText(42)).toBeNull();
+    expect(voiceChatText(undefined)).toBeNull();
+  });
+  it('trims, drops control characters and keeps line breaks', () => {
+    expect(voiceChatText('  Krebs\u0007 cycle\r\nkahan hota hai?  ')).toBe('Krebs cycle\nkahan hota hai?');
+  });
+});

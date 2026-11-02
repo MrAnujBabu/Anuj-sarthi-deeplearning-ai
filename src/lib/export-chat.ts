@@ -1,1 +1,177 @@
-aW1wb3J0IHR5cGUgeyBVSU1lc3NhZ2UgfSBmcm9tICJhaSI7CmltcG9ydCB7IHJlc3RvcmVEb2NzIH0gZnJvbSAiLi9kb2Mtc3RvcmUiOwppbXBvcnQgdHlwZSB7IFRocmVhZCB9IGZyb20gIi4vdGhyZWFkcyI7Cgp0eXBlIEZpbGVQYXJ0ID0gRXh0cmFjdDxVSU1lc3NhZ2VbInBhcnRzIl1bbnVtYmVyXSwgeyB0eXBlOiAiZmlsZSIgfT47CgovKiogT2JzaWRpYW4tZnJpZW5kbHkgbWFya2Rvd24gZm9yIG9uZSBtZXNzYWdlIHBhcnQuICovCmZ1bmN0aW9uIHBhcnRUb01hcmtkb3duKHA6IFVJTWVzc2FnZVsicGFydHMiXVtudW1iZXJdKTogc3RyaW5nIHsKICBpZiAocC50eXBlID09PSAidGV4dCIpIHJldHVybiBwLnRleHQudHJpbSgpOwogIGlmIChwLnR5cGUgPT09ICJmaWxlIiAmJiBwLm1lZGlhVHlwZT8uc3RhcnRzV2l0aCgiaW1hZ2UvIikpIHJldHVybiAiX1tQaG90byBhdHRhY2hlZF1fIjsKICBpZiAocC50eXBlID09PSAiZmlsZSIgJiYgcC5tZWRpYVR5cGUgPT09ICJhcHBsaWNhdGlvbi9wZGYiKQogICAgcmV0dXJuIGBfW1BERiBhdHRhY2hlZDogJHsoImZpbGVuYW1lIiBpbiBwICYmIHAuZmlsZW5hbWUpIHx8ICJkb2N1bWVudCJ9XV9gOwogIHJldHVybiAiIjsKfQoKZnVuY3Rpb24gbWVzc2FnZVRvTWFya2Rvd24obTogVUlNZXNzYWdlKTogc3RyaW5nIHsKICBjb25zdCBib2R5ID0gbS5wYXJ0cy5tYXAocGFydFRvTWFya2Rvd24pLmZpbHRlcihCb29sZWFuKS5qb2luKCJcblxuIik7CiAgaWYgKCFib2R5KSByZXR1cm4gIiI7CiAgcmV0dXJuIGAjIyAke20ucm9sZSA9PT0gInVzZXIiID8gIvCfp5EgU3R1ZGVudCIgOiAi8J+kliBTbmFwU29sdmUifVxuXG4ke2JvZHl9YDsKfQoKZnVuY3Rpb24gc2x1Zyh0aXRsZTogc3RyaW5nKTogc3RyaW5nIHsKICBjb25zdCBzID0gdGl0bGUKICAgIC50b0xvd2VyQ2FzZSgpCiAgICAucmVwbGFjZSgvW15hLXowLTlcdTA5MDAtXHUwOTdGXSsvZ2ksICItIikKICAgIC5yZXBsYWNlKC9eLSt8LSskL2csICIiKQogICAgLnNsaWNlKDAsIDYwKTsKICByZXR1cm4gcyB8fCAiZG91YnQiOwp9CgovKiogT25lIE9ic2lkaWFuIG5vdGUgcGVyIGRvdWJ0LCB3aXRoIFlBTUwgZnJvbnRtYXR0ZXIgKGF0dGFjaG1lbnRzIGFzIHBsYWNlaG9sZGVycykuICovCmV4cG9ydCBmdW5jdGlvbiB0aHJlYWRUb01hcmtkb3duKHRocmVhZDogVGhyZWFkKTogc3RyaW5nIHsKICBjb25zdCBkYXRlID0gbmV3IERhdGUodGhyZWFkLnVwZGF0ZWRBdCkudG9JU09TdHJpbmcoKS5zbGljZSgwLCAxMCk7CiAgY29uc3QgYm9keSA9IHRocmVhZC5tZXNzYWdlcy5tYXAobWVzc2FnZVRvTWFya2Rvd24pLmZpbHRlcihCb29sZWFuKS5qb2luKCJcblxuLS0tXG5cbiIpOwogIHJldHVybiBbCiAgICAiLS0tIiwKICAgIGB0aXRsZTogIiR7dGhyZWFkLnRpdGxlLnJlcGxhY2UoLyIvZywgIiciKX0iYCwKICAgIGBkYXRlOiAke2RhdGV9YCwKICAgICJ0YWdzOiBbc25hcHNvbHZlLCBuZWV0LCBkb3VidF0iLAogICAgIi0tLSIsCiAgICAiIiwKICAgIGAjICR7dGhyZWFkLnRpdGxlfWAsCiAgICAiIiwKICAgIGJvZHkgfHwgIl9FbXB0eSBkb3VidF8iLAogICAgIiIsCiAgXS5qb2luKCJcbiIpOwp9CgpleHBvcnQgZnVuY3Rpb24gdGhyZWFkRmlsZU5hbWUodGhyZWFkOiBUaHJlYWQpOiBzdHJpbmcgewogIHJldHVybiBgJHtzbHVnKHRocmVhZC50aXRsZSl9LSR7dGhyZWFkLmlkLnNsaWNlKDAsIDgpfS5tZGA7Cn0KCmZ1bmN0aW9uIGRvd25sb2FkKG5hbWU6IHN0cmluZywgYmxvYjogQmxvYikgewogIGNvbnN0IHVybCA9IFVSTC5jcmVhdGVPYmplY3RVUkwoYmxvYik7CiAgY29uc3QgYSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImEiKTsKICBhLmhyZWYgPSB1cmw7CiAgYS5kb3dubG9hZCA9IG5hbWU7CiAgYS5jbGljaygpOwogIHNldFRpbWVvdXQoKCkgPT4gVVJMLnJldm9rZU9iamVjdFVSTCh1cmwpLCA1MDAwKTsKfQoKLyoqIERvd25sb2FkIGEgc2luZ2xlIGRvdWJ0IGFzIGEgLm1kIG5vdGUuICovCmV4cG9ydCBmdW5jdGlvbiBleHBvcnRUaHJlYWRNYXJrZG93bih0aHJlYWQ6IFRocmVhZCkgewogIGRvd25sb2FkKHRocmVhZEZpbGVOYW1lKHRocmVhZCksIG5ldyBCbG9iKFt0aHJlYWRUb01hcmtkb3duKHRocmVhZCldLCB7IHR5cGU6ICJ0ZXh0L21hcmtkb3duIiB9KSk7Cn0KCi8qIC0tLS0tLS0tLS0gUmljaCBleHBvcnQ6IHJlYWwgcGhvdG9zL1BERnMgaW4gYW4gYXR0YWNobWVudHMgZm9sZGVyIC0tLS0tLS0tLS0gKi8KCnR5cGUgQXR0YWNobWVudCA9IHsgbmFtZTogc3RyaW5nOyBkYXRhOiBVaW50OEFycmF5OyBsaW5rOiBzdHJpbmcgfTsKCmNvbnN0IGV4dEZvciA9IChtZWRpYVR5cGU/OiBzdHJpbmcpID0+CiAgbWVkaWFUeXBlID09PSAiYXBwbGljYXRpb24vcGRmIiA/ICJwZGYiIDogbWVkaWFUeXBlID09PSAiaW1hZ2UvcG5nIiA/ICJwbmciIDogImpwZyI7CgovKiogRGVjb2RlIGEgZGF0YTogVVJMIGludG8gYnl0ZXMgKHN1cHBvcnRzIGJhc2U2NCBhbmQgcGVyY2VudC1lbmNvZGVkKS4gKi8KZXhwb3J0IGZ1bmN0aW9uIGRhdGFVcmxUb0J5dGVzKHVybDogc3RyaW5nKTogVWludDhBcnJheSB7CiAgY29uc3QgY29tbWEgPSB1cmwuaW5kZXhPZigiLCIpOwogIGNvbnN0IG1ldGEgPSB1cmwuc2xpY2UoMCwgY29tbWEpOwogIGNvbnN0IGJvZHkgPSB1cmwuc2xpY2UoY29tbWEgKyAxKTsKICBpZiAobWV0YS5pbmNsdWRlcygiO2Jhc2U2NCIpKSB7CiAgICBjb25zdCBiaW4gPSBhdG9iKGJvZHkpOwogICAgY29uc3Qgb3V0ID0gbmV3IFVpbnQ4QXJyYXkoYmluLmxlbmd0aCk7CiAgICBmb3IgKGxldCBpID0gMDsgaSA8IGJpbi5sZW5ndGg7IGkrKykgb3V0W2ldID0gYmluLmNoYXJDb2RlQXQoaSk7CiAgICByZXR1cm4gb3V0OwogIH0KICByZXR1cm4gbmV3IFRleHRFbmNvZGVyKCkuZW5jb2RlKGRlY29kZVVSSUNvbXBvbmVudChib2R5KSk7Cn0KCi8qKgogKiBDb2xsZWN0IHJlYWwgYXR0YWNobWVudCBmaWxlcyBmcm9tIGEgdGhyZWFkJ3MgbWVzc2FnZXMuCiAqIFJlc29sdmVzIGBpZGI6YCBwb2ludGVycyBmcm9tIEluZGV4ZWREQiBzbyBQREZzIGFyZSBpbmNsdWRlZCB0b28uCiAqIFJldHVybnMgYXR0YWNobWVudHMgcGx1cyBhIHBlci1tZXNzYWdlIG1hcCBvZiBwYXJ0IGluZGV4IC0+IG1hcmtkb3duIGxpbmsuCiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY29sbGVjdEF0dGFjaG1lbnRzKHRocmVhZDogVGhyZWFkKTogUHJvbWlzZTx7CiAgYXR0YWNobWVudHM6IEF0dGFjaG1lbnRbXTsKICBsaW5rczogTWFwPHN0cmluZywgTWFwPG51bWJlciwgc3RyaW5nPj47Cn0+IHsKICBjb25zdCBtZXNzYWdlcyA9IGF3YWl0IHJlc3RvcmVEb2NzKHRocmVhZC5tZXNzYWdlcyk7CiAgY29uc3QgYXR0YWNobWVudHM6IEF0dGFjaG1lbnRbXSA9IFtdOwogIGNvbnN0IGxpbmtzID0gbmV3IE1hcDxzdHJpbmcsIE1hcDxudW1iZXIsIHN0cmluZz4+KCk7CiAgbGV0IG4gPSAwOwogIGZvciAoY29uc3QgbSBvZiBtZXNzYWdlcykgewogICAgZm9yIChsZXQgaSA9IDA7IGkgPCBtLnBhcnRzLmxlbmd0aDsgaSsrKSB7CiAgICAgIGNvbnN0IHAgPSBtLnBhcnRzW2ldOwogICAgICBpZiAoIXAgfHwgcC50eXBlICE9PSAiZmlsZSIgfHwgISgidXJsIiBpbiBwKSB8fCAhcC51cmwuc3RhcnRzV2l0aCgiZGF0YToiKSkgY29udGludWU7CiAgICAgIGNvbnN0IG1lZGlhVHlwZSA9ICJtZWRpYVR5cGUiIGluIHAgPyBwLm1lZGlhVHlwZSA6IHVuZGVmaW5lZDsKICAgICAgbiArPSAxOwogICAgICBjb25zdCByYXdOYW1lID0gKCJmaWxlbmFtZSIgaW4gcCAmJiBwLmZpbGVuYW1lKSB8fCBgYXR0YWNobWVudC0ke259YDsKICAgICAgY29uc3Qgc2FmZSA9IHJhd05hbWUucmVwbGFjZSgvW15hLXpBLVowLTkuXy1dKy9nLCAiLSIpLnNsaWNlKDAsIDUwKTsKICAgICAgY29uc3QgbmFtZSA9IGAke3RocmVhZC5pZC5zbGljZSgwLCA4KX0tJHtufS0ke3NhZmV9LiR7ZXh0Rm9yKG1lZGlhVHlwZSl9YDsKICAgICAgYXR0YWNobWVudHMucHVzaCh7IG5hbWUsIGRhdGE6IGRhdGFVcmxUb0J5dGVzKHAudXJsKSwgbGluazogYGF0dGFjaG1lbnRzLyR7bmFtZX1gIH0pOwogICAgICBpZiAoIWxpbmtzLmhhcyhtLmlkKSkgbGlua3Muc2V0KG0uaWQsIG5ldyBNYXAoKSk7CiAgICAgIGxpbmtzLmdldChtLmlkKSEuc2V0KGksIGBhdHRhY2htZW50cy8ke25hbWV9YCk7CiAgICB9CiAgfQogIHJldHVybiB7IGF0dGFjaG1lbnRzLCBsaW5rcyB9Owp9CgovKiogTm90ZSBtYXJrZG93biBmb3IgYSB0aHJlYWQsIGVtYmVkZGluZyByZWxhdGl2ZSBhdHRhY2htZW50IGxpbmtzIHdoZXJlIGF2YWlsYWJsZS4gKi8KZXhwb3J0IGZ1bmN0aW9uIHRocmVhZFRvTWFya2Rvd25XaXRoTGlua3ModGhyZWFkOiBUaHJlYWQsIGxpbmtzOiBNYXA8c3RyaW5nLCBNYXA8bnVtYmVyLCBzdHJpbmc+Pik6IHN0cmluZyB7CiAgY29uc3QgZGF0ZSA9IG5ldyBEYXRlKHRocmVhZC51cGRhdGVkQXQpLnRvSVNPU3RyaW5nKCkuc2xpY2UoMCwgMTApOwogIGNvbnN0IGJvZHkgPSB0aHJlYWQubWVzc2FnZXMKICAgIC5tYXAoKG0pID0+IHsKICAgICAgY29uc3QgcGFydHMgPSBtLnBhcnRzCiAgICAgICAgLm1hcCgocCwgaSkgPT4gewogICAgICAgICAgY29uc3QgbGluayA9IGxpbmtzLmdldChtLmlkKT8uZ2V0KGkpOwogICAgICAgICAgaWYgKGxpbmspIHsKICAgICAgICAgICAgcmV0dXJuICJtZWRpYVR5cGUiIGluIHAgJiYgcC5tZWRpYVR5cGU/LnN0YXJ0c1dpdGgoImltYWdlLyIpID8gYCFbWyR7bGlua31dXWAgOiBgW1ske2xpbmt9XV1gOwogICAgICAgICAgfQogICAgICAgICAgcmV0dXJuIHBhcnRUb01hcmtkb3duKHApOwogICAgICAgIH0pCiAgICAgICAgLmZpbHRlcihCb29sZWFuKQogICAgICAgIC5qb2luKCJcblxuIik7CiAgICAgIGlmICghcGFydHMpIHJldHVybiAiIjsKICAgICAgcmV0dXJuIGAjIyAke20ucm9sZSA9PT0gInVzZXIiID8gIvCfp5EgU3R1ZGVudCIgOiAi8J+kliBTbmFwU29sdmUifVxuXG4ke3BhcnRzfWA7CiAgICB9KQogICAgLmZpbHRlcihCb29sZWFuKQogICAgLmpvaW4oIlxuXG4tLS1cblxuIik7CiAgcmV0dXJuIFsKICAgICItLS0iLAogICAgYHRpdGxlOiAiJHt0aHJlYWQudGl0bGUucmVwbGFjZSgvIi9nLCAiJyIpfSJgLAogICAgYGRhdGU6ICR7ZGF0ZX1gLAogICAgInRhZ3M6IFtzbmFwc29sdmUsIG5lZXQsIGRvdWJ0XSIsCiAgICAiLS0tIiwKICAgICIiLAogICAgYCMgJHt0aHJlYWQudGl0bGV9YCwKICAgICIiLAogICAgYm9keSB8fCAiX0VtcHR5IGRvdWJ0XyIsCiAgICAiIiwKICBdLmpvaW4oIlxuIik7Cn0KCi8qKiBEb3dubG9hZCBldmVyeSBkb3VidCBhcyBhbiBPYnNpZGlhbiB2YXVsdCB6aXA6IG5vdGVzICsgaW5kZXggKyByZWFsIGF0dGFjaG1lbnRzLiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZXhwb3J0QWxsTWFya2Rvd24odGhyZWFkczogVGhyZWFkW10pIHsKICBjb25zdCB7IHppcFN5bmMsIHN0clRvVTggfSA9IGF3YWl0IGltcG9ydCgiZmZsYXRlIik7CiAgY29uc3QgZmlsZXM6IFJlY29yZDxzdHJpbmcsIFVpbnQ4QXJyYXk+ID0ge307CiAgY29uc3QgaW5kZXg6IHN0cmluZ1tdID0gWwogICAgIi0tLSIsCiAgICAidGl0bGU6IFNuYXBTb2x2ZSBkb3VidHMiLAogICAgInRhZ3M6IFtzbmFwc29sdmUsIG5lZXRdIiwKICAgICItLS0iLAogICAgIiIsCiAgICAiIyBTbmFwU29sdmUg4oCUIEFsbCBkb3VidHMiLAogICAgIiIsCiAgXTsKICBmb3IgKGNvbnN0IHQgb2YgdGhyZWFkcykgewogICAgY29uc3QgbmFtZSA9IHRocmVhZEZpbGVOYW1lKHQpOwogICAgY29uc3QgeyBhdHRhY2htZW50cywgbGlua3MgfSA9IGF3YWl0IGNvbGxlY3RBdHRhY2htZW50cyh0KTsKICAgIGZpbGVzW25hbWVdID0gc3RyVG9VOCh0aHJlYWRUb01hcmtkb3duV2l0aExpbmtzKHQsIGxpbmtzKSk7CiAgICBmb3IgKGNvbnN0IGEgb2YgYXR0YWNobWVudHMpIGZpbGVzW2EubGlua10gPSBhLmRhdGE7CiAgICBpbmRleC5wdXNoKGAtIFtbJHtuYW1lLnJlcGxhY2UoL1wubWQkLywgIiIpfXwke3QudGl0bGV9XV0g4oCUICR7bmV3IERhdGUodC51cGRhdGVkQXQpLnRvTG9jYWxlRGF0ZVN0cmluZygpfWApOwogIH0KICBpbmRleC5wdXNoKCIiKTsKICBmaWxlc1siaW5kZXgubWQiXSA9IHN0clRvVTgoaW5kZXguam9pbigiXG4iKSk7CiAgY29uc3QgemlwcGVkID0gemlwU3luYyhmaWxlcywgeyBsZXZlbDogNiB9KTsKICBjb25zdCBzdGFtcCA9IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKS5zbGljZSgwLCAxMCk7CiAgZG93bmxvYWQoYHNuYXBzb2x2ZS1vYnNpZGlhbi0ke3N0YW1wfS56aXBgLCBuZXcgQmxvYihbemlwcGVkLmJ1ZmZlciBhcyBBcnJheUJ1ZmZlcl0sIHsgdHlwZTogImFwcGxpY2F0aW9uL3ppcCIgfSkpOwp9Cg==
+import type { UIMessage } from "ai";
+import { restoreDocs } from "./doc-store";
+import type { Thread } from "./threads";
+
+type FilePart = Extract<UIMessage["parts"][number], { type: "file" }>;
+
+/** Obsidian-friendly markdown for one message part. */
+function partToMarkdown(p: UIMessage["parts"][number]): string {
+  if (p.type === "text") return p.text.trim();
+  if (p.type === "file" && p.mediaType?.startsWith("image/")) return "_[Photo attached]_";
+  if (p.type === "file" && p.mediaType === "application/pdf")
+    return `_[PDF attached: ${("filename" in p && p.filename) || "document"}]_`;
+  return "";
+}
+
+function messageToMarkdown(m: UIMessage): string {
+  const body = m.parts.map(partToMarkdown).filter(Boolean).join("\n\n");
+  if (!body) return "";
+  return `## ${m.role === "user" ? "🧑 Student" : "🤖 SnapSolve"}\n\n${body}`;
+}
+
+function slug(title: string): string {
+  const s = title
+    .toLowerCase()
+    .replace(/[^a-z0-9\u0900-\u097F]+/gi, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+  return s || "doubt";
+}
+
+/** One Obsidian note per doubt, with YAML frontmatter (attachments as placeholders). */
+export function threadToMarkdown(thread: Thread): string {
+  const date = new Date(thread.updatedAt).toISOString().slice(0, 10);
+  const body = thread.messages.map(messageToMarkdown).filter(Boolean).join("\n\n---\n\n");
+  return [
+    "---",
+    `title: "${thread.title.replace(/"/g, "'")}"`,
+    `date: ${date}`,
+    "tags: [snapsolve, neet, doubt]",
+    "---",
+    "",
+    `# ${thread.title}`,
+    "",
+    body || "_Empty doubt_",
+    "",
+  ].join("\n");
+}
+
+export function threadFileName(thread: Thread): string {
+  return `${slug(thread.title)}-${thread.id.slice(0, 8)}.md`;
+}
+
+function download(name: string, blob: Blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+}
+
+/** Download a single doubt as a .md note. */
+export function exportThreadMarkdown(thread: Thread) {
+  download(threadFileName(thread), new Blob([threadToMarkdown(thread)], { type: "text/markdown" }));
+}
+
+/* ---------- Rich export: real photos/PDFs in an attachments folder ---------- */
+
+type Attachment = { name: string; data: Uint8Array; link: string };
+
+const extFor = (mediaType?: string) =>
+  mediaType === "application/pdf" ? "pdf" : mediaType === "image/png" ? "png" : "jpg";
+
+/** Decode a data: URL into bytes (supports base64 and percent-encoded). */
+export function dataUrlToBytes(url: string): Uint8Array {
+  const comma = url.indexOf(",");
+  const meta = url.slice(0, comma);
+  const body = url.slice(comma + 1);
+  if (meta.includes(";base64")) {
+    const bin = atob(body);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  return new TextEncoder().encode(decodeURIComponent(body));
+}
+
+/**
+ * Collect real attachment files from a thread's messages.
+ * Resolves `idb:` pointers from IndexedDB so PDFs are included too.
+ * Returns attachments plus a per-message map of part index -> markdown link.
+ */
+export async function collectAttachments(thread: Thread): Promise<{
+  attachments: Attachment[];
+  links: Map<string, Map<number, string>>;
+}> {
+  const messages = await restoreDocs(thread.messages);
+  const attachments: Attachment[] = [];
+  const links = new Map<string, Map<number, string>>();
+  let n = 0;
+  for (const m of messages) {
+    for (let i = 0; i < m.parts.length; i++) {
+      const p = m.parts[i];
+      if (!p || p.type !== "file" || !("url" in p) || !p.url.startsWith("data:")) continue;
+      const mediaType = "mediaType" in p ? p.mediaType : undefined;
+      n += 1;
+      const rawName = ("filename" in p && p.filename) || `attachment-${n}`;
+      const safe = rawName.replace(/[^a-zA-Z0-9._-]+/g, "-").slice(0, 50);
+      const name = `${thread.id.slice(0, 8)}-${n}-${safe}.${extFor(mediaType)}`;
+      attachments.push({ name, data: dataUrlToBytes(p.url), link: `attachments/${name}` });
+      if (!links.has(m.id)) links.set(m.id, new Map());
+      links.get(m.id)!.set(i, `attachments/${name}`);
+    }
+  }
+  return { attachments, links };
+}
+
+/** Note markdown for a thread, embedding relative attachment links where available. */
+export function threadToMarkdownWithLinks(thread: Thread, links: Map<string, Map<number, string>>): string {
+  const date = new Date(thread.updatedAt).toISOString().slice(0, 10);
+  const body = thread.messages
+    .map((m) => {
+      const parts = m.parts
+        .map((p, i) => {
+          const link = links.get(m.id)?.get(i);
+          if (link) {
+            return "mediaType" in p && p.mediaType?.startsWith("image/") ? `![[${link}]]` : `[[${link}]]`;
+          }
+          return partToMarkdown(p);
+        })
+        .filter(Boolean)
+        .join("\n\n");
+      if (!parts) return "";
+      return `## ${m.role === "user" ? "🧑 Student" : "🤖 SnapSolve"}\n\n${parts}`;
+    })
+    .filter(Boolean)
+    .join("\n\n---\n\n");
+  return [
+    "---",
+    `title: "${thread.title.replace(/"/g, "'")}"`,
+    `date: ${date}`,
+    "tags: [snapsolve, neet, doubt]",
+    "---",
+    "",
+    `# ${thread.title}`,
+    "",
+    body || "_Empty doubt_",
+    "",
+  ].join("\n");
+}
+
+/** Download every doubt as an Obsidian vault zip: notes + index + real attachments. */
+export async function exportAllMarkdown(threads: Thread[]) {
+  const { zipSync, strToU8 } = await import("fflate");
+  const files: Record<string, Uint8Array> = {};
+  const index: string[] = [
+    "---",
+    "title: SnapSolve doubts",
+    "tags: [snapsolve, neet]",
+    "---",
+    "",
+    "# SnapSolve — All doubts",
+    "",
+  ];
+  for (const t of threads) {
+    const name = threadFileName(t);
+    const { attachments, links } = await collectAttachments(t);
+    files[name] = strToU8(threadToMarkdownWithLinks(t, links));
+    for (const a of attachments) files[a.link] = a.data;
+    index.push(`- [[${name.replace(/\.md$/, "")}|${t.title}]] — ${new Date(t.updatedAt).toLocaleDateString()}`);
+  }
+  index.push("");
+  files["index.md"] = strToU8(index.join("\n"));
+  const zipped = zipSync(files, { level: 6 });
+  const stamp = new Date().toISOString().slice(0, 10);
+  download(`snapsolve-obsidian-${stamp}.zip`, new Blob([zipped.buffer as ArrayBuffer], { type: "application/zip" }));
+}

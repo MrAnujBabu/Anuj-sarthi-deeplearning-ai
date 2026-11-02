@@ -1,1 +1,37 @@
-Ly8gUHVibGljIGFkZHJlc3NlcyBvbmx5LCBuZXZlciBjcmVkZW50aWFscy4KZXhwb3J0IGNvbnN0IFZFUkNFTF9BUFBfT1JJR0lOID0gJ2h0dHBzOi8vc25hcHNvbHZlYW51ai52ZXJjZWwuYXBwJzsKLyoqIFRoaXMgcHJvamVjdCdzIHB1Ymxpc2hlZCByZWxheTogaXRzIGFkZHJlc3Mgc3Vydml2ZXMgd29ya3NwYWNlIG1vdmVzIGFuZCBnZXRzIGV2ZXJ5IHJlbGF5IHVwZGF0ZSBvbiBwdWJsaXNoLiAqLwpleHBvcnQgY29uc3QgSE9TVEVEX0xJVkVfRU5EUE9JTlQgPSAnaHR0cHM6Ly9zYXJ0aGktYWktYnJpZGdlLmxvdmFibGUuYXBwL2FwaS9wdWJsaWMvbGl2ZSc7CgpleHBvcnQgZnVuY3Rpb24gbGl2ZUVuZHBvaW50KHBhZ2VVcmw6IHN0cmluZywgb3ZlcnJpZGU/OiBzdHJpbmcpOiBzdHJpbmcgewogIGNvbnN0IHBhZ2UgPSBuZXcgVVJMKHBhZ2VVcmwpOwogIGNvbnN0IGVuZHBvaW50ID0gbmV3IFVSTChvdmVycmlkZSA/PyAocGFnZS5vcmlnaW4gPT09IFZFUkNFTF9BUFBfT1JJR0lOID8gSE9TVEVEX0xJVkVfRU5EUE9JTlQgOiAnL2FwaS9saXZlJyksIHBhZ2UpOwogIGlmIChlbmRwb2ludC51c2VybmFtZSB8fCBlbmRwb2ludC5wYXNzd29yZCkgdGhyb3cgbmV3IEVycm9yKCdJbnZhbGlkIHZvaWNlIGNvbm5lY3Rpb24gVVJMJyk7CiAgaWYgKGVuZHBvaW50LnByb3RvY29sID09PSAnaHR0cHM6JykgZW5kcG9pbnQucHJvdG9jb2wgPSAnd3NzOic7CiAgaWYgKGVuZHBvaW50LnByb3RvY29sID09PSAnaHR0cDonKSBlbmRwb2ludC5wcm90b2NvbCA9ICd3czonOwogIGlmICghWyd3czonLCAnd3NzOiddLmluY2x1ZGVzKGVuZHBvaW50LnByb3RvY29sKSB8fCAocGFnZS5wcm90b2NvbCA9PT0gJ2h0dHBzOicgJiYgZW5kcG9pbnQucHJvdG9jb2wgIT09ICd3c3M6JykpIHRocm93IG5ldyBFcnJvcignVm9pY2UgcmVxdWlyZXMgYSBzZWN1cmUgV2ViU29ja2V0IGNvbm5lY3Rpb24nKTsKICByZXR1cm4gZW5kcG9pbnQuaHJlZjsKfQoKLyoqCiAqIFRoZSBIVFRQUyBhZGRyZXNzIHRvIHdhcm0gYmVmb3JlIGEgY2FsbCB3aGVuIHRoZSByZWxheSBsaXZlcyBvbiBhbm90aGVyCiAqIHNpdGUgKFZlcmNlbCDihpIgcHVibGlzaGVkIHJlbGF5KS4gQSBjb2xkIHJlbGF5IGFkZHMgRE5TLCBUTFMgYW5kIHN0YXJ0LXVwCiAqIHRpbWUgdG8gdGhlIGZpcnN0IGNhbGw7IG9uZSBjaGVhcCByZXF1ZXN0IG9uIHBhZ2Ugb3BlbiByZW1vdmVzIGl0LgogKiBTYW1lLXNpdGUgcmVsYXlzIGFyZSBhbHJlYWR5IHdhcm0gZnJvbSBsb2FkaW5nIHRoZSBwYWdlLCBzbyB0aGV5IHJldHVybiBudWxsLgogKi8KZXhwb3J0IGZ1bmN0aW9uIHJlbGF5V2FybXVwVXJsKHBhZ2VVcmw6IHN0cmluZywgb3ZlcnJpZGU/OiBzdHJpbmcpOiBzdHJpbmcgfCBudWxsIHsKICBjb25zdCBwYWdlID0gbmV3IFVSTChwYWdlVXJsKTsKICBjb25zdCBlbmRwb2ludCA9IG5ldyBVUkwobGl2ZUVuZHBvaW50KHBhZ2VVcmwsIG92ZXJyaWRlKSk7CiAgZW5kcG9pbnQucHJvdG9jb2wgPSBlbmRwb2ludC5wcm90b2NvbCA9PT0gJ3dzczonID8gJ2h0dHBzOicgOiAnaHR0cDonOwogIHJldHVybiBlbmRwb2ludC5vcmlnaW4gPT09IHBhZ2Uub3JpZ2luID8gbnVsbCA6IGVuZHBvaW50LmhyZWY7Cn0KCi8qKiBGaXJlLWFuZC1mb3JnZXQgd2FybS11cDsgbmV2ZXIgdGhyb3dzIGFuZCBuZXZlciBvcGVucyBhIHZvaWNlIHNlc3Npb24uICovCmV4cG9ydCBmdW5jdGlvbiBwcmV3YXJtTGl2ZVJlbGF5KHBhZ2VVcmw6IHN0cmluZywgb3ZlcnJpZGU/OiBzdHJpbmcpOiB2b2lkIHsKICB0cnkgewogICAgY29uc3QgdXJsID0gcmVsYXlXYXJtdXBVcmwocGFnZVVybCwgb3ZlcnJpZGUpOwogICAgaWYgKHVybCkgdm9pZCBmZXRjaCh1cmwsIHsgbW9kZTogJ25vLWNvcnMnLCBjYWNoZTogJ25vLXN0b3JlJywgY3JlZGVudGlhbHM6ICdvbWl0JyB9KS5jYXRjaCgoKSA9PiB7fSk7CiAgfSBjYXRjaCB7CiAgICAvKiB3YXJtLXVwIGlzIG9wdGlvbmFsICovCiAgfQp9Cg==
+// Public addresses only, never credentials.
+export const VERCEL_APP_ORIGIN = 'https://snapsolveanuj.vercel.app';
+/** This project's published relay: its address survives workspace moves and gets every relay update on publish. */
+export const HOSTED_LIVE_ENDPOINT = 'https://sarthi-ai-bridge.lovable.app/api/public/live';
+
+export function liveEndpoint(pageUrl: string, override?: string): string {
+  const page = new URL(pageUrl);
+  const endpoint = new URL(override ?? (page.origin === VERCEL_APP_ORIGIN ? HOSTED_LIVE_ENDPOINT : '/api/live'), page);
+  if (endpoint.username || endpoint.password) throw new Error('Invalid voice connection URL');
+  if (endpoint.protocol === 'https:') endpoint.protocol = 'wss:';
+  if (endpoint.protocol === 'http:') endpoint.protocol = 'ws:';
+  if (!['ws:', 'wss:'].includes(endpoint.protocol) || (page.protocol === 'https:' && endpoint.protocol !== 'wss:')) throw new Error('Voice requires a secure WebSocket connection');
+  return endpoint.href;
+}
+
+/**
+ * The HTTPS address to warm before a call when the relay lives on another
+ * site (Vercel → published relay). A cold relay adds DNS, TLS and start-up
+ * time to the first call; one cheap request on page open removes it.
+ * Same-site relays are already warm from loading the page, so they return null.
+ */
+export function relayWarmupUrl(pageUrl: string, override?: string): string | null {
+  const page = new URL(pageUrl);
+  const endpoint = new URL(liveEndpoint(pageUrl, override));
+  endpoint.protocol = endpoint.protocol === 'wss:' ? 'https:' : 'http:';
+  return endpoint.origin === page.origin ? null : endpoint.href;
+}
+
+/** Fire-and-forget warm-up; never throws and never opens a voice session. */
+export function prewarmLiveRelay(pageUrl: string, override?: string): void {
+  try {
+    const url = relayWarmupUrl(pageUrl, override);
+    if (url) void fetch(url, { mode: 'no-cors', cache: 'no-store', credentials: 'omit' }).catch(() => {});
+  } catch {
+    /* warm-up is optional */
+  }
+}

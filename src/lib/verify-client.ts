@@ -1,1 +1,122 @@
-Ly8gQnJvd3NlciBzaWRlIG9mIHRoZSBhbnN3ZXItY2hlY2tpbmcgY291bmNpbDogcGVyLWRldmljZSBjYWNoZSArIHN0cmVhbWluZyBob29rLgovLyBSZXN1bHRzIGxpdmUgb25seSBpbiB0aGlzIGJyb3dzZXIgKG5vIGRhdGFiYXNlIGxvYWQpLgppbXBvcnQgeyB1c2VDYWxsYmFjaywgdXNlRWZmZWN0LCB1c2VSZWYsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyBwYXJzZUNvdW5jaWxMaW5lLCB0eXBlIENoZWNrUmVzdWx0LCB0eXBlIENvdW5jaWxSZXN1bHQsIHR5cGUgQ291bmNpbFN0YWdlLCB0eXBlIFNvdXJjZSB9IGZyb20gJ0AvbGliL3ZlcmlmeSc7Cgpjb25zdCBDQUNIRV9LRVkgPSAnc25hcHNvbHZlLnZlcmlmeS52MSc7CmNvbnN0IENBQ0hFX01BWCA9IDgwOwovKiogTWVzc2FnZSBpZHMgYXV0by1jaGVja2VkIGluIHRoaXMgdGFiLCBzbyBhIHJlLXJlbmRlciBuZXZlciBwYXlzIHR3aWNlLiAqLwpjb25zdCBhdXRvVHJpZWQgPSBuZXcgU2V0PHN0cmluZz4oKTsKCmZ1bmN0aW9uIHJlYWRDYWNoZSgpOiBSZWNvcmQ8c3RyaW5nLCBDb3VuY2lsUmVzdWx0PiB7CiAgdHJ5IHsKICAgIGNvbnN0IHYgPSBKU09OLnBhcnNlKGxvY2FsU3RvcmFnZS5nZXRJdGVtKENBQ0hFX0tFWSkgfHwgJ3t9Jyk7CiAgICByZXR1cm4gdiAmJiB0eXBlb2YgdiA9PT0gJ29iamVjdCcgPyB2IDoge307CiAgfSBjYXRjaCB7IHJldHVybiB7fTsgfQp9CgpleHBvcnQgZnVuY3Rpb24gZ2V0Q2FjaGVkVmVyZGljdChpZDogc3RyaW5nKTogQ291bmNpbFJlc3VsdCB8IG51bGwgewogIHJldHVybiByZWFkQ2FjaGUoKVtpZF0gPz8gbnVsbDsKfQoKZXhwb3J0IGZ1bmN0aW9uIHNhdmVWZXJkaWN0KGlkOiBzdHJpbmcsIHJlc3VsdDogQ291bmNpbFJlc3VsdCkgewogIHRyeSB7CiAgICBjb25zdCBhbGwgPSByZWFkQ2FjaGUoKTsKICAgIGFsbFtpZF0gPSByZXN1bHQ7CiAgICBjb25zdCBpZHMgPSBPYmplY3Qua2V5cyhhbGwpLnNvcnQoKGEsIGIpID0+IChhbGxbYl0/LmF0ID8/IDApIC0gKGFsbFthXT8uYXQgPz8gMCkpOwogICAgZm9yIChjb25zdCBvbGQgb2YgaWRzLnNsaWNlKENBQ0hFX01BWCkpIGRlbGV0ZSBhbGxbb2xkXTsKICAgIGxvY2FsU3RvcmFnZS5zZXRJdGVtKENBQ0hFX0tFWSwgSlNPTi5zdHJpbmdpZnkoYWxsKSk7CiAgfSBjYXRjaCB7IC8qIHN0b3JhZ2UgZnVsbDoga2VlcCB0aGUgcmVzdWx0IGluIG1lbW9yeSBvbmx5ICovIH0KfQoKZXhwb3J0IHR5cGUgQ291bmNpbFN0YXRlID0gewogIHN0YXR1czogJ2lkbGUnIHwgJ3J1bm5pbmcnIHwgJ2RvbmUnIHwgJ2Vycm9yJzsKICBzdGFnZTogQ291bmNpbFN0YWdlIHwgbnVsbDsKICBjaGVja3M6IENoZWNrUmVzdWx0W107CiAgc291cmNlczogU291cmNlW107CiAgcmVzdWx0OiBDb3VuY2lsUmVzdWx0IHwgbnVsbDsKICBlcnJvcjogc3RyaW5nIHwgbnVsbDsKfTsKCmNvbnN0IElETEU6IENvdW5jaWxTdGF0ZSA9IHsgc3RhdHVzOiAnaWRsZScsIHN0YWdlOiBudWxsLCBjaGVja3M6IFtdLCBzb3VyY2VzOiBbXSwgcmVzdWx0OiBudWxsLCBlcnJvcjogbnVsbCB9OwoKZXhwb3J0IHR5cGUgQ291bmNpbFJlcXVlc3QgPSB7IG1lc3NhZ2VJZDogc3RyaW5nOyBxdWVzdGlvbjogc3RyaW5nOyBhbnN3ZXI6IHN0cmluZzsgaW1hZ2VzOiBzdHJpbmdbXSB9OwoKZXhwb3J0IGZ1bmN0aW9uIHVzZUNvdW5jaWwocmVxOiBDb3VuY2lsUmVxdWVzdCwgb3B0czogeyBhdXRvU3RhcnQ6IGJvb2xlYW47IGVuYWJsZWQ6IGJvb2xlYW4gfSkgewogIGNvbnN0IFtzdGF0ZSwgc2V0U3RhdGVdID0gdXNlU3RhdGU8Q291bmNpbFN0YXRlPihJRExFKTsKICBjb25zdCBjdHJsID0gdXNlUmVmPEFib3J0Q29udHJvbGxlciB8IG51bGw+KG51bGwpOwogIGNvbnN0IHJlcVJlZiA9IHVzZVJlZihyZXEpOwogIHJlcVJlZi5jdXJyZW50ID0gcmVxOwoKICB1c2VFZmZlY3QoKCkgPT4gewogICAgY29uc3QgY2FjaGVkID0gZ2V0Q2FjaGVkVmVyZGljdChyZXEubWVzc2FnZUlkKTsKICAgIHNldFN0YXRlKGNhY2hlZCA/IHsgLi4uSURMRSwgc3RhdHVzOiAnZG9uZScsIHJlc3VsdDogY2FjaGVkLCBjaGVja3M6IGNhY2hlZC5jaGVja3MsIHNvdXJjZXM6IGNhY2hlZC5zb3VyY2VzIH0gOiBJRExFKTsKICB9LCBbcmVxLm1lc3NhZ2VJZF0pOwoKICB1c2VFZmZlY3QoKCkgPT4gKCkgPT4gY3RybC5jdXJyZW50Py5hYm9ydCgpLCBbXSk7CgogIGNvbnN0IHN0b3AgPSB1c2VDYWxsYmFjaygoKSA9PiB7CiAgICBjdHJsLmN1cnJlbnQ/LmFib3J0KCk7CiAgICBjdHJsLmN1cnJlbnQgPSBudWxsOwogICAgc2V0U3RhdGUoKHMpID0+IChzLnN0YXR1cyA9PT0gJ3J1bm5pbmcnID8geyAuLi5JRExFIH0gOiBzKSk7CiAgfSwgW10pOwoKICBjb25zdCBzdGFydCA9IHVzZUNhbGxiYWNrKGFzeW5jICgpID0+IHsKICAgIGNvbnN0IHIgPSByZXFSZWYuY3VycmVudDsKICAgIGN0cmwuY3VycmVudD8uYWJvcnQoKTsKICAgIGNvbnN0IGMgPSBuZXcgQWJvcnRDb250cm9sbGVyKCk7CiAgICBjdHJsLmN1cnJlbnQgPSBjOwogICAgc2V0U3RhdGUoeyAuLi5JRExFLCBzdGF0dXM6ICdydW5uaW5nJywgc3RhZ2U6ICdzZWFyY2gnIH0pOwogICAgdHJ5IHsKICAgICAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goJy9hcGkvdmVyaWZ5JywgewogICAgICAgIG1ldGhvZDogJ1BPU1QnLAogICAgICAgIGhlYWRlcnM6IHsgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJyB9LAogICAgICAgIGJvZHk6IEpTT04uc3RyaW5naWZ5KHsgcXVlc3Rpb246IHIucXVlc3Rpb24uc2xpY2UoMCwgMTIwMDApLCBhbnN3ZXI6IHIuYW5zd2VyLnNsaWNlKDAsIDYwMDAwKSwgaW1hZ2VzOiByLmltYWdlcy5zbGljZSgwLCAyKSwgbW9kZTogJ3NvbHZlJyB9KSwKICAgICAgICBzaWduYWw6IGMuc2lnbmFsLAogICAgICB9KTsKICAgICAgaWYgKCFyZXMub2sgfHwgIXJlcy5ib2R5KSB7CiAgICAgICAgY29uc3QgaiA9IGF3YWl0IHJlcy5qc29uKCkuY2F0Y2goKCkgPT4gKHt9IGFzIHsgZXJyb3I/OiBzdHJpbmcgfSkpOwogICAgICAgIHRocm93IG5ldyBFcnJvcihyZXMuc3RhdHVzID09PSA0MDIgPyAnQUkgY3JlZGl0cyBhcmUgdXNlZCB1cCDigJQgYW5zd2VyIGNoZWNrIHBhdXNlZC4nIDogai5lcnJvciB8fCAnQW5zd2VyIGNoZWNrIGlzIHVuYXZhaWxhYmxlIHJpZ2h0IG5vdy4nKTsKICAgICAgfQogICAgICBjb25zdCByZWFkZXIgPSByZXMuYm9keS5nZXRSZWFkZXIoKTsKICAgICAgY29uc3QgZGVjID0gbmV3IFRleHREZWNvZGVyKCk7CiAgICAgIGxldCBidWYgPSAnJzsKICAgICAgbGV0IGZpbmlzaGVkID0gZmFsc2U7CiAgICAgIGZvciAoOzspIHsKICAgICAgICBjb25zdCB7IGRvbmUsIHZhbHVlIH0gPSBhd2FpdCByZWFkZXIucmVhZCgpOwogICAgICAgIGlmIChkb25lKSBicmVhazsKICAgICAgICBidWYgKz0gZGVjLmRlY29kZSh2YWx1ZSwgeyBzdHJlYW06IHRydWUgfSk7CiAgICAgICAgbGV0IGk6IG51bWJlcjsKICAgICAgICB3aGlsZSAoKGkgPSBidWYuaW5kZXhPZignXG4nKSkgPj0gMCkgewogICAgICAgICAgY29uc3QgZSA9IHBhcnNlQ291bmNpbExpbmUoYnVmLnNsaWNlKDAsIGkpKTsKICAgICAgICAgIGJ1ZiA9IGJ1Zi5zbGljZShpICsgMSk7CiAgICAgICAgICBpZiAoIWUgfHwgYy5zaWduYWwuYWJvcnRlZCkgY29udGludWU7CiAgICAgICAgICBpZiAoZS50eXBlID09PSAnc3RhZ2UnKSBzZXRTdGF0ZSgocykgPT4gKHsgLi4ucywgc3RhZ2U6IGUuc3RhZ2UgfSkpOwogICAgICAgICAgZWxzZSBpZiAoZS50eXBlID09PSAnY2hlY2snKSBzZXRTdGF0ZSgocykgPT4gKHsgLi4ucywgY2hlY2tzOiBbLi4ucy5jaGVja3MsIGUuY2hlY2tdIH0pKTsKICAgICAgICAgIGVsc2UgaWYgKGUudHlwZSA9PT0gJ3NvdXJjZXMnKSBzZXRTdGF0ZSgocykgPT4gKHsgLi4ucywgc291cmNlczogZS5zb3VyY2VzIH0pKTsKICAgICAgICAgIGVsc2UgaWYgKGUudHlwZSA9PT0gJ2Vycm9yJykgdGhyb3cgbmV3IEVycm9yKGUuc3RhdHVzID09PSA0MDIgPyAnQUkgY3JlZGl0cyBhcmUgdXNlZCB1cCDigJQgYW5zd2VyIGNoZWNrIHBhdXNlZC4nIDogZS5tZXNzYWdlKTsKICAgICAgICAgIGVsc2UgaWYgKGUudHlwZSA9PT0gJ2RvbmUnKSB7CiAgICAgICAgICAgIGZpbmlzaGVkID0gdHJ1ZTsKICAgICAgICAgICAgc2F2ZVZlcmRpY3Qoci5tZXNzYWdlSWQsIGUucmVzdWx0KTsKICAgICAgICAgICAgc2V0U3RhdGUoeyAuLi5JRExFLCBzdGF0dXM6ICdkb25lJywgcmVzdWx0OiBlLnJlc3VsdCwgY2hlY2tzOiBlLnJlc3VsdC5jaGVja3MsIHNvdXJjZXM6IGUucmVzdWx0LnNvdXJjZXMgfSk7CiAgICAgICAgICB9CiAgICAgICAgfQogICAgICB9CiAgICAgIGlmICghZmluaXNoZWQgJiYgIWMuc2lnbmFsLmFib3J0ZWQpIHRocm93IG5ldyBFcnJvcignVGhlIGFuc3dlciBjaGVjayBzdG9wcGVkIGVhcmx5LiBQbGVhc2UgdHJ5IGFnYWluLicpOwogICAgfSBjYXRjaCAoZSkgewogICAgICBpZiAoYy5zaWduYWwuYWJvcnRlZCkgcmV0dXJuOwogICAgICBzZXRTdGF0ZSgocykgPT4gKHsgLi4ucywgc3RhdHVzOiAnZXJyb3InLCBlcnJvcjogZSBpbnN0YW5jZW9mIEVycm9yID8gZS5tZXNzYWdlIDogJ0Fuc3dlciBjaGVjayBmYWlsZWQuJyB9KSk7CiAgICB9IGZpbmFsbHkgewogICAgICBpZiAoY3RybC5jdXJyZW50ID09PSBjKSBjdHJsLmN1cnJlbnQgPSBudWxsOwogICAgfQogIH0sIFtdKTsKCiAgdXNlRWZmZWN0KCgpID0+IHsKICAgIGlmICghb3B0cy5hdXRvU3RhcnQgfHwgIW9wdHMuZW5hYmxlZCB8fCBhdXRvVHJpZWQuaGFzKHJlcS5tZXNzYWdlSWQpKSByZXR1cm47CiAgICBpZiAoZ2V0Q2FjaGVkVmVyZGljdChyZXEubWVzc2FnZUlkKSkgcmV0dXJuOwogICAgYXV0b1RyaWVkLmFkZChyZXEubWVzc2FnZUlkKTsKICAgIHZvaWQgc3RhcnQoKTsKICB9LCBbb3B0cy5hdXRvU3RhcnQsIG9wdHMuZW5hYmxlZCwgcmVxLm1lc3NhZ2VJZCwgc3RhcnRdKTsKCiAgcmV0dXJuIHsgc3RhdGUsIHN0YXJ0LCBzdG9wIH07Cn0K
+// Browser side of the answer-checking council: per-device cache + streaming hook.
+// Results live only in this browser (no database load).
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { parseCouncilLine, type CheckResult, type CouncilResult, type CouncilStage, type Source } from '@/lib/verify';
+
+const CACHE_KEY = 'snapsolve.verify.v1';
+const CACHE_MAX = 80;
+/** Message ids auto-checked in this tab, so a re-render never pays twice. */
+const autoTried = new Set<string>();
+
+function readCache(): Record<string, CouncilResult> {
+  try {
+    const v = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+    return v && typeof v === 'object' ? v : {};
+  } catch { return {}; }
+}
+
+export function getCachedVerdict(id: string): CouncilResult | null {
+  return readCache()[id] ?? null;
+}
+
+export function saveVerdict(id: string, result: CouncilResult) {
+  try {
+    const all = readCache();
+    all[id] = result;
+    const ids = Object.keys(all).sort((a, b) => (all[b]?.at ?? 0) - (all[a]?.at ?? 0));
+    for (const old of ids.slice(CACHE_MAX)) delete all[old];
+    localStorage.setItem(CACHE_KEY, JSON.stringify(all));
+  } catch { /* storage full: keep the result in memory only */ }
+}
+
+export type CouncilState = {
+  status: 'idle' | 'running' | 'done' | 'error';
+  stage: CouncilStage | null;
+  checks: CheckResult[];
+  sources: Source[];
+  result: CouncilResult | null;
+  error: string | null;
+};
+
+const IDLE: CouncilState = { status: 'idle', stage: null, checks: [], sources: [], result: null, error: null };
+
+export type CouncilRequest = { messageId: string; question: string; answer: string; images: string[] };
+
+export function useCouncil(req: CouncilRequest, opts: { autoStart: boolean; enabled: boolean }) {
+  const [state, setState] = useState<CouncilState>(IDLE);
+  const ctrl = useRef<AbortController | null>(null);
+  const reqRef = useRef(req);
+  reqRef.current = req;
+
+  useEffect(() => {
+    const cached = getCachedVerdict(req.messageId);
+    setState(cached ? { ...IDLE, status: 'done', result: cached, checks: cached.checks, sources: cached.sources } : IDLE);
+  }, [req.messageId]);
+
+  useEffect(() => () => ctrl.current?.abort(), []);
+
+  const stop = useCallback(() => {
+    ctrl.current?.abort();
+    ctrl.current = null;
+    setState((s) => (s.status === 'running' ? { ...IDLE } : s));
+  }, []);
+
+  const start = useCallback(async () => {
+    const r = reqRef.current;
+    ctrl.current?.abort();
+    const c = new AbortController();
+    ctrl.current = c;
+    setState({ ...IDLE, status: 'running', stage: 'search' });
+    try {
+      const res = await fetch('/api/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: r.question.slice(0, 12000), answer: r.answer.slice(0, 60000), images: r.images.slice(0, 2), mode: 'solve' }),
+        signal: c.signal,
+      });
+      if (!res.ok || !res.body) {
+        const j = await res.json().catch(() => ({} as { error?: string }));
+        throw new Error(res.status === 402 ? 'AI credits are used up — answer check paused.' : j.error || 'Answer check is unavailable right now.');
+      }
+      const reader = res.body.getReader();
+      const dec = new TextDecoder();
+      let buf = '';
+      let finished = false;
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let i: number;
+        while ((i = buf.indexOf('\n')) >= 0) {
+          const e = parseCouncilLine(buf.slice(0, i));
+          buf = buf.slice(i + 1);
+          if (!e || c.signal.aborted) continue;
+          if (e.type === 'stage') setState((s) => ({ ...s, stage: e.stage }));
+          else if (e.type === 'check') setState((s) => ({ ...s, checks: [...s.checks, e.check] }));
+          else if (e.type === 'sources') setState((s) => ({ ...s, sources: e.sources }));
+          else if (e.type === 'error') throw new Error(e.status === 402 ? 'AI credits are used up — answer check paused.' : e.message);
+          else if (e.type === 'done') {
+            finished = true;
+            saveVerdict(r.messageId, e.result);
+            setState({ ...IDLE, status: 'done', result: e.result, checks: e.result.checks, sources: e.result.sources });
+          }
+        }
+      }
+      if (!finished && !c.signal.aborted) throw new Error('The answer check stopped early. Please try again.');
+    } catch (e) {
+      if (c.signal.aborted) return;
+      setState((s) => ({ ...s, status: 'error', error: e instanceof Error ? e.message : 'Answer check failed.' }));
+    } finally {
+      if (ctrl.current === c) ctrl.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!opts.autoStart || !opts.enabled || autoTried.has(req.messageId)) return;
+    if (getCachedVerdict(req.messageId)) return;
+    autoTried.add(req.messageId);
+    void start();
+  }, [opts.autoStart, opts.enabled, req.messageId, start]);
+
+  return { state, start, stop };
+}

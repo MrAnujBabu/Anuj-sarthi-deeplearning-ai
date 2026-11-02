@@ -1,1 +1,51 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAicmVhY3QiOwppbXBvcnQgKiBhcyBBY2NvcmRpb25QcmltaXRpdmUgZnJvbSAiQHJhZGl4LXVpL3JlYWN0LWFjY29yZGlvbiI7CmltcG9ydCB7IENoZXZyb25Eb3duIH0gZnJvbSAibHVjaWRlLXJlYWN0IjsKCmltcG9ydCB7IGNuIH0gZnJvbSAiQC9saWIvdXRpbHMiOwoKY29uc3QgQWNjb3JkaW9uID0gQWNjb3JkaW9uUHJpbWl0aXZlLlJvb3Q7Cgpjb25zdCBBY2NvcmRpb25JdGVtID0gUmVhY3QuZm9yd2FyZFJlZjwKICBSZWFjdC5FbGVtZW50UmVmPHR5cGVvZiBBY2NvcmRpb25QcmltaXRpdmUuSXRlbT4sCiAgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPHR5cGVvZiBBY2NvcmRpb25QcmltaXRpdmUuSXRlbT4KPigoeyBjbGFzc05hbWUsIC4uLnByb3BzIH0sIHJlZikgPT4gKAogIDxBY2NvcmRpb25QcmltaXRpdmUuSXRlbSByZWY9e3JlZn0gY2xhc3NOYW1lPXtjbigiYm9yZGVyLWIiLCBjbGFzc05hbWUpfSB7Li4ucHJvcHN9IC8+CikpOwpBY2NvcmRpb25JdGVtLmRpc3BsYXlOYW1lID0gIkFjY29yZGlvbkl0ZW0iOwoKY29uc3QgQWNjb3JkaW9uVHJpZ2dlciA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgQWNjb3JkaW9uUHJpbWl0aXZlLlRyaWdnZXI+LAogIFJlYWN0LkNvbXBvbmVudFByb3BzV2l0aG91dFJlZjx0eXBlb2YgQWNjb3JkaW9uUHJpbWl0aXZlLlRyaWdnZXI+Cj4oKHsgY2xhc3NOYW1lLCBjaGlsZHJlbiwgLi4ucHJvcHMgfSwgcmVmKSA9PiAoCiAgPEFjY29yZGlvblByaW1pdGl2ZS5IZWFkZXIgY2xhc3NOYW1lPSJmbGV4Ij4KICAgIDxBY2NvcmRpb25QcmltaXRpdmUuVHJpZ2dlcgogICAgICByZWY9e3JlZn0KICAgICAgY2xhc3NOYW1lPXtjbigKICAgICAgICAiZmxleCBmbGV4LTEgaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBweS00IHRleHQtc20gZm9udC1tZWRpdW0gY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbi1hbGwgaG92ZXI6dW5kZXJsaW5lIHRleHQtbGVmdCBbJltkYXRhLXN0YXRlPW9wZW5dPnN2Z106cm90YXRlLTE4MCIsCiAgICAgICAgY2xhc3NOYW1lLAogICAgICApfQogICAgICB7Li4ucHJvcHN9CiAgICA+CiAgICAgIHtjaGlsZHJlbn0KICAgICAgPENoZXZyb25Eb3duIGNsYXNzTmFtZT0iaC00IHctNCBzaHJpbmstMCB0ZXh0LW11dGVkLWZvcmVncm91bmQgdHJhbnNpdGlvbi10cmFuc2Zvcm0gZHVyYXRpb24tMjAwIiAvPgogICAgPC9BY2NvcmRpb25QcmltaXRpdmUuVHJpZ2dlcj4KICA8L0FjY29yZGlvblByaW1pdGl2ZS5IZWFkZXI+CikpOwpBY2NvcmRpb25UcmlnZ2VyLmRpc3BsYXlOYW1lID0gQWNjb3JkaW9uUHJpbWl0aXZlLlRyaWdnZXIuZGlzcGxheU5hbWU7Cgpjb25zdCBBY2NvcmRpb25Db250ZW50ID0gUmVhY3QuZm9yd2FyZFJlZjwKICBSZWFjdC5FbGVtZW50UmVmPHR5cGVvZiBBY2NvcmRpb25QcmltaXRpdmUuQ29udGVudD4sCiAgUmVhY3QuQ29tcG9uZW50UHJvcHNXaXRob3V0UmVmPHR5cGVvZiBBY2NvcmRpb25QcmltaXRpdmUuQ29udGVudD4KPigoeyBjbGFzc05hbWUsIGNoaWxkcmVuLCAuLi5wcm9wcyB9LCByZWYpID0+ICgKICA8QWNjb3JkaW9uUHJpbWl0aXZlLkNvbnRlbnQKICAgIHJlZj17cmVmfQogICAgY2xhc3NOYW1lPSJvdmVyZmxvdy1oaWRkZW4gdGV4dC1zbSBkYXRhLVtzdGF0ZT1jbG9zZWRdOmFuaW1hdGUtYWNjb3JkaW9uLXVwIGRhdGEtW3N0YXRlPW9wZW5dOmFuaW1hdGUtYWNjb3JkaW9uLWRvd24iCiAgICB7Li4ucHJvcHN9CiAgPgogICAgPGRpdiBjbGFzc05hbWU9e2NuKCJwYi00IHB0LTAiLCBjbGFzc05hbWUpfT57Y2hpbGRyZW59PC9kaXY+CiAgPC9BY2NvcmRpb25QcmltaXRpdmUuQ29udGVudD4KKSk7CkFjY29yZGlvbkNvbnRlbnQuZGlzcGxheU5hbWUgPSBBY2NvcmRpb25QcmltaXRpdmUuQ29udGVudC5kaXNwbGF5TmFtZTsKCmV4cG9ydCB7IEFjY29yZGlvbiwgQWNjb3JkaW9uSXRlbSwgQWNjb3JkaW9uVHJpZ2dlciwgQWNjb3JkaW9uQ29udGVudCB9Owo=
+import * as React from "react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { ChevronDown } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+const Accordion = AccordionPrimitive.Root;
+
+const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Item ref={ref} className={cn("border-b", className)} {...props} />
+));
+AccordionItem.displayName = "AccordionItem";
+
+const AccordionTrigger = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className="flex">
+    <AccordionPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        "flex flex-1 items-center justify-between py-4 text-sm font-medium cursor-pointer transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
+));
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
+
+const AccordionContent = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    {...props}
+  >
+    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+  </AccordionPrimitive.Content>
+));
+AccordionContent.displayName = AccordionPrimitive.Content.displayName;
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

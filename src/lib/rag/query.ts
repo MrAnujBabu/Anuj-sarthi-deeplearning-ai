@@ -1,1 +1,21 @@
-LyoqIFF1ZXJ5IHBhcnNpbmcgZm9yIHJldHJpZXZhbCAoRGVlcExlYXJuaW5nLkFJIFJBRyBjb3Vyc2UsIG1vZHVsZSAyKTogc3ViamVjdCBmaWx0ZXIgKyBmb2xsb3ctdXAgZXhwYW5zaW9uLiBObyBBSSBjYWxsLiAqLwoKY29uc3QgU1VCSkVDVF9XT1JEUzogUmVjb3JkPHN0cmluZywgUmVnRXhwPiA9IHsKICBiaW9sb2d5OiAvXGIoY2VsbHxtaXRvY2hvbmRyaXxjaGxvcm9wbGFzdHxkbmF8cm5hfGdlbmV8ZW56eW1lfHBob3Rvc3ludGh8cmVzcGlyYXR8cGxhbnR8YW5pbWFsfHRpc3N1ZXxob3Jtb25lfGtpZG5leXxuZXVyb258Ymxvb2R8aGVhcnR8cmVwcm9kdWN0fGVjb3N5c3RlbXxldm9sdXRpb258cHJvdGVpbnxtZWlvc2lzfG1pdG9zaXN8YmFjdGVyaWF8dmlydXN8YmlvbG9nKS9pLAogIHBoeXNpY3M6IC9cYihmb3JjZXx2ZWxvY2l0eXxhY2NlbGVyYXRpb258bW9tZW50dW18ZW5lcmd5fGN1cnJlbnR8dm9sdGFnZXxyZXNpc3RhbmNlfG1hZ25ldGljfGxlbnN8bWlycm9yfHdhdmV8b3B0aWNzfGdyYXZpdGF0aW9ufHRvcnF1ZXxmcmljdGlvbnxjYXBhY2l0b3J8ZWxlY3RyaWMgZmllbGR8dGhlcm1vZHluYW1pY3xuZXd0b258a2luZW1hdGljfHBoeXNpYykvaSwKICBjaGVtaXN0cnk6IC9cYihtb2xlfGJvbmR8b3JiaXRhbHxhY2lkfGJhc2V8cGhcYnxveGlkYXRpb258cmVkdWN0aW9ufGVsZWN0cm9jaGVtfG9yZ2FuaWN8YWxrYW5lfGFsa2VuZXxiZW56ZW5lfGlzb21lcnxwZXJpb2RpY3xlcXVpbGlicml1bXxzYWx0fHJlYWN0aW9ufGh5YnJpZGlbc3pdYXRpb258Y2hlbWlzKS9pLAp9OwoKLyoqIERldGVjdCB0aGUgc2luZ2xlIHN1YmplY3QgYSBxdWVzdGlvbiBpcyBhYm91dDsgbnVsbCB3aGVuIHVuY2xlYXIgb3IgbWl4ZWQuICovCmV4cG9ydCBmdW5jdGlvbiBkZXRlY3RTdWJqZWN0KHRleHQ6IHN0cmluZyk6IHN0cmluZyB8IG51bGwgewogIGNvbnN0IGhpdHMgPSBPYmplY3QuZW50cmllcyhTVUJKRUNUX1dPUkRTKS5maWx0ZXIoKFssIHJlXSkgPT4gcmUudGVzdCh0ZXh0KSkubWFwKChbc10pID0+IHMpOwogIHJldHVybiBoaXRzLmxlbmd0aCA9PT0gMSA/IGhpdHNbMF0hIDogbnVsbDsKfQoKLyoqIFNob3J0IGZvbGxvdy11cHMgKCJhdXIgaXNrYSBleGFtcGxlPyIpIGNhcnJ5IG5vIHRvcGljIHdvcmRzLCBzbyBwcmVwZW5kIHRoZSBwcmV2aW91cyBxdWVzdGlvbi4gKi8KZXhwb3J0IGZ1bmN0aW9uIGV4cGFuZEZvbGxvd1VwKHF1ZXN0aW9uOiBzdHJpbmcsIHByZXZpb3VzPzogc3RyaW5nKTogc3RyaW5nIHsKICBjb25zdCBxID0gcXVlc3Rpb24udHJpbSgpOwogIGlmICghcHJldmlvdXM/LnRyaW0oKSkgcmV0dXJuIHE7CiAgY29uc3Qgd29yZHMgPSBxLnNwbGl0KC9ccysvKS5maWx0ZXIoKHcpID0+IHcubGVuZ3RoID4gMyk7CiAgcmV0dXJuIHdvcmRzLmxlbmd0aCA8IDQgPyBgJHtwcmV2aW91cy50cmltKCkuc2xpY2UoMCwgNjAwKX1cbiR7cX1gIDogcTsKfQo=
+/** Query parsing for retrieval (DeepLearning.AI RAG course, module 2): subject filter + follow-up expansion. No AI call. */
+
+const SUBJECT_WORDS: Record<string, RegExp> = {
+  biology: /\b(cell|mitochondri|chloroplast|dna|rna|gene|enzyme|photosynth|respirat|plant|animal|tissue|hormone|kidney|neuron|blood|heart|reproduct|ecosystem|evolution|protein|meiosis|mitosis|bacteria|virus|biolog)/i,
+  physics: /\b(force|velocity|acceleration|momentum|energy|current|voltage|resistance|magnetic|lens|mirror|wave|optics|gravitation|torque|friction|capacitor|electric field|thermodynamic|newton|kinematic|physic)/i,
+  chemistry: /\b(mole|bond|orbital|acid|base|ph\b|oxidation|reduction|electrochem|organic|alkane|alkene|benzene|isomer|periodic|equilibrium|salt|reaction|hybridi[sz]ation|chemis)/i,
+};
+
+/** Detect the single subject a question is about; null when unclear or mixed. */
+export function detectSubject(text: string): string | null {
+  const hits = Object.entries(SUBJECT_WORDS).filter(([, re]) => re.test(text)).map(([s]) => s);
+  return hits.length === 1 ? hits[0]! : null;
+}
+
+/** Short follow-ups ("aur iska example?") carry no topic words, so prepend the previous question. */
+export function expandFollowUp(question: string, previous?: string): string {
+  const q = question.trim();
+  if (!previous?.trim()) return q;
+  const words = q.split(/\s+/).filter((w) => w.length > 3);
+  return words.length < 4 ? `${previous.trim().slice(0, 600)}\n${q}` : q;
+}

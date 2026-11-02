@@ -1,1 +1,5 @@
-aW1wb3J0IHsgZXhwZWN0LCBpdCB9IGZyb20gJ3ZpdGVzdCc7CmltcG9ydCB7IGNsZWFuTWVtb3J5VGV4dCB9IGZyb20gJ0AvbGliL2FkbWluLXJldGVudGlvbic7Cml0KCdyZW1vdmVzIHVuc3VwcG9ydGVkIFBERiBOVUwgZ2x5cGhzIHdoaWxlIHByZXNlcnZpbmcgSGluZGkgYW5kIHZhbGlkIGVtb2ppJywgKCkgPT4gewogIGV4cGVjdChjbGVhbk1lbW9yeVRleHQoJ+CkrOCkslx1MDAwMGZvcmNlIPCfmIBcdUQ4MDAnKSkudG9CZSgn4KSs4KSyZm9yY2Ug8J+YgFx1RkZGRCcpOwp9KTs=
+import { expect, it } from 'vitest';
+import { cleanMemoryText } from '@/lib/admin-retention';
+it('removes unsupported PDF NUL glyphs while preserving Hindi and valid emoji', () => {
+  expect(cleanMemoryText('बल\u0000force 😀\uD800')).toBe('बलforce 😀\uFFFD');
+});

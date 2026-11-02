@@ -1,1 +1,107 @@
-aW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICJ2aXRlc3QiOwppbXBvcnQgeyBmb3JtYXRWb2ljZVJlcGx5IH0gZnJvbSAiLi92b2ljZS1mb3JtYXQiOwoKY29uc3QgcmVwbHkgPSAiSG1tLCBpcyBiYWFyIHRob2RhIGNob29rIGdheWUuIFNhaGkgamF3YWIgb3B0aW9uIEIgaGFpIOKAlCB1bmRlcmdyb3VuZCBzdGVtLiBQb3RhdG8ga2EgdHViZXIgZWsgbW9kaWZpZWQgdW5kZXJncm91bmQgc3RlbSBob3RhIGhhaS4gSXNrbyBwZWhjaGFubmUga2EgdGFyZWVrYSB5YWFkIHJha2hvOiBwb3RhdG8gcGFyIFwiZXllc1wiIGhvdGUgaGFpbi4gTkNFUlQga2UgbXV0YWJpaywgZ2luZ2VyLCB0dXJtZXJpYywgemFtaW5rYW5kLCBhdXIgQ29sb2Nhc2lhIGJoaSBhaXNlIGhpIHVuZGVyZ3JvdW5kIHN0ZW0gbW9kaWZpY2F0aW9ucyBoYWluLiBDaGFsbywgYWdsYSBwcmFzaG4sIG51bWJlciB0ZWVuLiBQaHlsbG90YXh5IG1laW4gXCJ3aG9ybGVkXCIgYXJyYW5nZW1lbnQga2EgZXhhbXBsZSBrYXVuIHNhIGhhaT8gT3B0aW9uIEE6IENoaW5hIHJvc2UuIEI6IENhbG90cm9waXMuIEM6IEFsc3RvbmlhLiBEOiBNdXN0YXJkLiBBYiBiYXRhbyBhbnN3ZXI/IjsKCmRlc2NyaWJlKCJ2b2ljZSByZXBseSBmb3JtYXR0aW5nIiwgKCkgPT4gewogIGNvbnN0IG91dCA9IGZvcm1hdFZvaWNlUmVwbHkocmVwbHkpOwogIGl0KCJkcm9wcyBmaWxsZXJzIGFuZCBzaG93cyBhIHdyb25nLWFuc3dlciBoZWFkaW5nIiwgKCkgPT4gewogICAgZXhwZWN0KG91dC5zdGFydHNXaXRoKCIjIyMjIOKdjCBJcyBiYWFyIHRob2RhIGNob29rIGdheWUiKSkudG9CZSh0cnVlKTsKICB9KTsKICBpdCgiaGlnaGxpZ2h0cyB0aGUgY29ycmVjdCBhbnN3ZXIiLCAoKSA9PiB7CiAgICBleHBlY3Qob3V0KS50b0NvbnRhaW4oIj4gKirinIUgU2FoaSBqYXdhYjogKEIpIOKAlCB1bmRlcmdyb3VuZCBzdGVtKioiKTsKICB9KTsKICBpdCgicHV0cyB0aGUgZXhwbGFuYXRpb24gaW4gYnVsbGV0cyB3aXRoIE5DRVJUIGFuZCB0aXAgY2FsbG91dHMiLCAoKSA9PiB7CiAgICBleHBlY3Qob3V0KS50b0NvbnRhaW4oIiMjIyMg8J+TmCBFeHBsYW5hdGlvbiIpOwogICAgZXhwZWN0KG91dCkudG9Db250YWluKCItIFBvdGF0byBrYSB0dWJlciBlayBtb2RpZmllZCB1bmRlcmdyb3VuZCBzdGVtIGhvdGEgaGFpLiIpOwogICAgZXhwZWN0KG91dCkudG9Db250YWluKCI+IPCfkqEgKipZYWFkIHJha2hvOioqIik7CiAgICBleHBlY3Qob3V0KS50b0NvbnRhaW4oIj4g8J+TmiAqKk5DRVJUOioqIik7CiAgfSk7CiAgaXQoInN0YXJ0cyB0aGUgbmV4dCBxdWVzdGlvbiBhcyBhIG51bWJlcmVkIGNhcmQgd2l0aCBvcHRpb25zIEHigJNEIiwgKCkgPT4gewogICAgZXhwZWN0KG91dCkudG9Db250YWluKCItLS1cblxuIyMjIyDinZMgUXVlc3Rpb24gMyIpOwogICAgZXhwZWN0KG91dCkudG9Db250YWluKCIqKlBoeWxsb3RheHkgbWVpbiBcIndob3JsZWRcIiBhcnJhbmdlbWVudCBrYSBleGFtcGxlIGthdW4gc2EgaGFpPyoqIik7CiAgICBmb3IgKGNvbnN0IFtsLCB2XSBvZiBbWyJBIiwgIkNoaW5hIHJvc2UiXSwgWyJCIiwgIkNhbG90cm9waXMiXSwgWyJDIiwgIkFsc3RvbmlhIl0sIFsiRCIsICJNdXN0YXJkIl1dKSBleHBlY3Qob3V0KS50b0NvbnRhaW4oYC0gKiooJHtsfSkqKiAke3Z9XG5gLnRyaW1FbmQoKSk7CiAgICBleHBlY3Qob3V0KS50b0NvbnRhaW4oIirwn46kIEFiIGJhdGFvIGFuc3dlcj8qIik7CiAgfSk7CiAgaXQoInR1cm5zIE1hdGNoIHRoZSBGb2xsb3dpbmcgY29sdW1ucyBpbnRvIGEgdGFibGUiLCAoKSA9PiB7CiAgICBjb25zdCBtID0gZm9ybWF0Vm9pY2VSZXBseSgiTWF0Y2gga2Fyby4gQ29sdW1uIEk6IGEuIFR1YmVyLCBiLiBSaGl6b21lLCBjLiBDb3JtLCBkLiBCdWxiLiBDb2x1bW4gSUk6IGkuIEdpbmdlciwgaWkuIFBvdGF0bywgaWlpLiBPbmlvbiwgaXYuIENvbG9jYXNpYS4gT3B0aW9uIEE6IGEtaWksIGItaSwgYy1pdiwgZC1paWkuIEI6IGEtaSwgYi1paSwgYy1paWksIGQtaXYuIik7CiAgICBleHBlY3QobSkudG9Db250YWluKCJ8IENvbHVtbiBJIHwgQ29sdW1uIElJIHwiKTsKICAgIGV4cGVjdChtKS50b0NvbnRhaW4oInwgYS4gVHViZXIgfCBpLiBHaW5nZXIgfCIpOwogICAgZXhwZWN0KG0pLnRvQ29udGFpbigifCBkLiBCdWxiIHwgaXYuIENvbG9jYXNpYSB8Iik7CiAgICBleHBlY3QobSkudG9Db250YWluKCItICoqKEEpKiogYS1paSwgYi1pLCBjLWl2LCBkLWlpaSIpOwogIH0pOwogIGl0KCJrZWVwcyBhIG1lbnRpb24gb2YgdGhlIG5leHQgcXVlc3Rpb24gYXMgcGxhaW4gdGV4dCB3aGVuIG5vIG9wdGlvbnMgZm9sbG93IiwgKCkgPT4gewogICAgY29uc3QgbyA9IGZvcm1hdFZvaWNlUmVwbHkoIlBlaGxhIHNhd2FhbCBhYmhpIHBlbmRpbmcgaGFpLiBLeWEgdXNlIGRvYmFyYSBzdW5uYSBoYWk/IFlhIHNraXAga2Fya2UgYWdsYSBzYXdhbCBzdW5vZ2U/Iik7CiAgICBleHBlY3Qobykubm90LnRvQ29udGFpbigi4p2TIik7CiAgICBleHBlY3QobykudG9Db250YWluKCJZYSBza2lwIGthcmtlIGFnbGEgc2F3YWwgc3Vub2dlPyIpOwogIH0pOwogIGl0KCJyZWFkcyBvcHRpb25zIHNwb2tlbiB3aXRoIGNvbW1hcyIsICgpID0+IHsKICAgIGNvbnN0IG8gPSBmb3JtYXRWb2ljZVJlcGx5KCJOYWhpLCBBIGdhbGF0IGhhaS4gU2FoaSBqYXdhYiBDIGhhaSwgdHJpcGxvaWQuIEFnbGEgc2F3YWFsLCBleGluZSBraXMgcGFkYXJ0aCBzZSBiYW5pIGhhaT8gQSwgY2VsbHVsb3NlLCBCLCBwZWN0aW4sIEMsIGxpZ25pbiwgRCwgc3Bvcm9wb2xsZW5pbi4gS3lhIGxhZ3RhIGhhaT8iKTsKICAgIGV4cGVjdChvKS50b0NvbnRhaW4oIj4gKirinIUgU2FoaSBqYXdhYjogKEMpIOKAlCB0cmlwbG9pZCoqIik7CiAgICBleHBlY3QobykudG9Db250YWluKCIjIyMjIOKdkyBBZ2xhIHNhd2FsIik7CiAgICBleHBlY3QobykudG9Db250YWluKCItICoqKEQpKiogc3Bvcm9wb2xsZW5pbiIpOwogICAgZXhwZWN0KG8pLnRvQ29udGFpbigiKvCfjqQgS3lhIGxhZ3RhIGhhaT8qIik7CiAgfSk7CiAgaXQoImZvcm1hdHMgYSBxdWl6IGNhcmQgd2l0aCB1bnNlcGFyYXRlZCBjb2x1bW5zIGFuZCAoQSkgb3B0aW9ucyIsICgpID0+IHsKICAgIGNvbnN0IG8gPSBmb3JtYXRWb2ljZVJlcGx5KCJNbS4gU2FoaSBtYXRjaCBrYXJvLiBDb2x1bW4gSTogYS4gUmhpem9tZSBiLiBUdWJlciBjLiBCdWxiIGQuIENvcm0gQ29sdW1uIElJOiBpLiBQb3RhdG8gaWkuIEdpbmdlciBpaWkuIENvbG9jYXNpYSBpdi4gT25pb25cbihBKSBhLWlpLCBiLWksIGMtaXYsIGQtaWlpXG4oQikgYS1pLCBiLWlpLCBjLWlpaSwgZC1pdlxuKEMpIGEtaWksIGItaWlpLCBjLWl2LCBkLWlcbihEKSBhLWlpaSwgYi1pLCBjLWlpLCBkLWl2IEFwbmEgYW5zd2VyIGJvbG8sIEEsIEIsIEMgeWEgRCIpOwogICAgZXhwZWN0KG8pLnRvQ29udGFpbigifCBhLiBSaGl6b21lIHwgaS4gUG90YXRvIHwiKTsKICAgIGV4cGVjdChvKS50b0NvbnRhaW4oInwgZC4gQ29ybSB8IGl2LiBPbmlvbiB8Iik7CiAgICBleHBlY3QobykudG9Db250YWluKCItICoqKEIpKiogYS1pLCBiLWlpLCBjLWlpaSwgZC1pdiIpOwogICAgZXhwZWN0KG8pLm5vdC50b0NvbnRhaW4oIk1tLiIpOwogICAgY29uc3QgY2FyZCA9IGZvcm1hdFZvaWNlUmVwbHkoIkNvbHVtbiBJOiBhLiBSaGl6b21lIGIuIFR1YmVyIENvbHVtbiBJSTogaS4gUG90YXRvIGlpLiBHaW5nZXIgKEEpIGEtaWksIGItaSAoQikgYS1pLCBiLWlpIChDKSB4IChEKSB5IiwgeyBvcHRpb25zOiBmYWxzZSB9KTsKICAgIGV4cGVjdChjYXJkKS50b0NvbnRhaW4oInwgYi4gVHViZXIgfCBpaS4gR2luZ2VyIHwiKTsKICAgIGV4cGVjdChjYXJkKS5ub3QudG9Db250YWluKCIqKihBKSoqIik7CiAgfSk7CiAgaXQoInNob3dzIHRoZSBNYXRjaCB0YWJsZSBvbiB0aGUgY2FyZCBldmVuIHdpdGggbm8gb3B0aW9ucyBhbmQgYSAnQ29sdW1uIEkga28gQ29sdW1uIElJJyBsZWFkLWluIiwgKCkgPT4gewogICAgY29uc3QgbyA9IGZvcm1hdFZvaWNlUmVwbHkoIkNvbHVtbiBJIGtvIENvbHVtbiBJSSBzZSBtYXRjaCBrYXJvLiBDb2x1bW4gSTogYS4gTWFyZ2luYWwgYi4gQXhpbGUgQ29sdW1uIElJOiBpLiBNdXN0YXJkIGlpLiBQZWEiLCB7IG9wdGlvbnM6IGZhbHNlIH0pOwogICAgZXhwZWN0KG8pLnRvQ29udGFpbigifCBhLiBNYXJnaW5hbCB8IGkuIE11c3RhcmQgfCIpOwogICAgZXhwZWN0KG8pLnRvQ29udGFpbigifCBiLiBBeGlsZSB8IGlpLiBQZWEgfCIpOwogIH0pOwogIGl0KCJrZWVwcyBhIGhhbGYtc3Bva2VuIE1hdGNoIGNvbHVtbiBpbiBvbmUgcGFyYWdyYXBoIiwgKCkgPT4gewogICAgZXhwZWN0KGZvcm1hdFZvaWNlUmVwbHkoIlNhaGkgbWF0Y2gga2Fyby4gQ29sdW1uIEk6IGEuIFJoaXpvbWUsIGIuIFR1YmVyLCBjLiBCdWxiLCBkLiBDb3JtLiIpKS5ub3QudG9Db250YWluKCJhLlxuIik7CiAgfSk7CiAgaXQoImJveGVzIEFzc2VydGlvbiBhbmQgUmVhc29uIiwgKCkgPT4gewogICAgY29uc3QgYSA9IGZvcm1hdFZvaWNlUmVwbHkoIkFzc2VydGlvbjogUG90YXRvIGlzIGEgc3RlbS4gUmVhc29uOiBJdCBoYXMgbm9kZXMuIE9wdGlvbiBBOiBCb3RoIHRydWUuIEI6IEEgdHJ1ZSwgUiBmYWxzZS4gQzogQSBmYWxzZS4gRDogQm90aCBmYWxzZS4iKTsKICAgIGV4cGVjdChhKS50b0NvbnRhaW4oIj4gKipBc3NlcnRpb24gKEEpOioqIFBvdGF0byBpcyBhIHN0ZW0uIik7CiAgICBleHBlY3QoYSkudG9Db250YWluKCI+ICoqUmVhc29uIChSKToqKiBJdCBoYXMgbm9kZXMuIik7CiAgICBjb25zdCBiID0gZm9ybWF0Vm9pY2VSZXBseSgiQXNzZXJ0aW9uIChBKTogUG90YXRvIGlzIGEgc3RlbS4gUmVhc29uIChSKTogSXQgaGFzIG5vZGVzLiAoQSkgQm90aCB0cnVlIChCKSBBIHRydWUsIFIgZmFsc2UgKEMpIEEgZmFsc2UgKEQpIEJvdGggZmFsc2UiKTsKICAgIGV4cGVjdChiKS50b0NvbnRhaW4oIj4gKipBc3NlcnRpb24gKEEpOioqIFBvdGF0byBpcyBhIHN0ZW0uIik7CiAgICBleHBlY3QoYikudG9Db250YWluKCItICoqKEMpKiogQSBmYWxzZSIpOwogICAgY29uc3QgYyA9IGZvcm1hdFZvaWNlUmVwbHkoIkRoeWFuIHNlIHN1bml5ZS4gQXNzZXJ0aW9uLCBhbG9vIGVrIHVuZGVyZ3JvdW5kIHN0ZW0gaGFpLiBSZWFzb24sIHBvdGF0byBwYXIgZXllcyBob3RlIGhhaW4uIChBKSBkb25vIHNhaGkgKEIpIGRvbm8gc2FoaSwgUiBleHBsYWluIG5haGkga2FydGEgKEMpIEEgc2FoaSwgUiBnYWxhdCAoRCkgQSBnYWxhdCwgUiBzYWhpIik7CiAgICBleHBlY3QoYykudG9Db250YWluKCI+ICoqQXNzZXJ0aW9uIChBKToqKiBhbG9vIGVrIHVuZGVyZ3JvdW5kIHN0ZW0gaGFpLiIpOwogICAgZXhwZWN0KGMpLnRvQ29udGFpbigiPiAqKlJlYXNvbiAoUik6KiogcG90YXRvIHBhciBleWVzIGhvdGUgaGFpbi4iKTsKICB9KTsKICBpdCgidHVybnMgc3Bva2VuIG9yZGluYWxzIGludG8gYSBudW1iZXJlZCBsaXN0IiwgKCkgPT4gewogICAgY29uc3QgbyA9IGZvcm1hdFZvaWNlUmVwbHkoIklza2UgdGVlbiBrYWFyYW4gaGFpbi4gUGVobGEsIGxpZ2h0IGVuZXJneSBjaGVtaWNhbCBlbmVyZ3kgbWVpbiBjb252ZXJ0IGhvdGkgaGFpLiBEb29zcmEsIHdhdGVyIHNwbGl0IGhva2FyIG94eWdlbiBkZXRhIGhhaS4gVGVlc3JhLCBBVFAgYXVyIE5BRFBIIGJhbnRlIGhhaW4uIik7CiAgICBleHBlY3QobykudG9Db250YWluKCIxLiBMaWdodCBlbmVyZ3kgY2hlbWljYWwgZW5lcmd5IG1laW4gY29udmVydCBob3RpIGhhaS4iKTsKICAgIGV4cGVjdChvKS50b0NvbnRhaW4oIjIuIFdhdGVyIHNwbGl0IGhva2FyIG94eWdlbiBkZXRhIGhhaS4iKTsKICAgIGV4cGVjdChvKS50b0NvbnRhaW4oIjMuIEFUUCBhdXIgTkFEUEggYmFudGUgaGFpbi4iKTsKICB9KTsKICBpdCgia2VlcHMgYSBzaW5nbGUgb3JkaW5hbCBtZW50aW9uIGFzIHBsYWluIHRleHQiLCAoKSA9PiB7CiAgICBjb25zdCBvID0gZm9ybWF0Vm9pY2VSZXBseSgiUGVobGEgc2F3YWFsIGFiaGkgcGVuZGluZyBoYWkuIEt5YSB1c2UgZG9iYXJhIHN1bm5hIGhhaT8iKTsKICAgIGV4cGVjdChvKS5ub3QudG9Db250YWluKCIxLiAiKTsKICB9KTsKfSk7CgpkZXNjcmliZSgndG9nZ2xlIHNlY3Rpb25zJywgKCkgPT4gewogIGl0KCd0dXJucyAiRGV0YWlsIG1laW46IOKApiIgaW50byBhIGNvbGxhcHNpYmxlIGRldGFpbHMgYmxvY2snLCAoKSA9PiB7CiAgICBjb25zdCBvdXQgPSBmb3JtYXRWb2ljZVJlcGx5KCdEZXRhaWwgbWVpbjogbWl0b2Nob25kcmlhIGtlIGRvIG1lbWJyYW5lIGhvdGUgaGFpbiwgb3V0ZXIgc21vb3RoIGF1ciBpbm5lciBmb2xkZWQuJyk7CiAgICBleHBlY3Qob3V0KS50b0NvbnRhaW4oJzxkZXRhaWxzPicpOwogICAgZXhwZWN0KG91dCkudG9Db250YWluKCc8c3VtbWFyeT7wn5OCICcpOwogICAgZXhwZWN0KG91dCkudG9Db250YWluKCdtaXRvY2hvbmRyaWEga2UgZG8gbWVtYnJhbmUnKTsKICAgIGV4cGVjdChvdXQpLnRvQ29udGFpbignPC9kZXRhaWxzPicpOwogIH0pOwogIGl0KCdpZ25vcmVzIHNob3J0IG9yIG5vbi10b2dnbGUgdXNlcyBvZiB0aGUgd29yZCBkZXRhaWwnLCAoKSA9PiB7CiAgICBjb25zdCBvdXQgPSBmb3JtYXRWb2ljZVJlcGx5KCdZZSBkZXRhaWwgeWFhZCByYWtoby4nKTsKICAgIGV4cGVjdChvdXQpLm5vdC50b0NvbnRhaW4oJzxkZXRhaWxzPicpOwogIH0pOwp9KTsKCmRlc2NyaWJlKCJxdWl6IGNhcmQgZm9sZHMgdGhlIHByZXZpb3VzIGFuc3dlciIsICgpID0+IHsKICBpdCgicHV0cyB0aGUgdmVyZGljdCBpbiBhIHRvZ2dsZSBzdW1tYXJ5IGFuZCBrZWVwcyB0aGUgbmV4dCBxdWVzdGlvbiBvdXRzaWRlIiwgKCkgPT4gewogICAgY29uc3QgbWQgPSBmb3JtYXRWb2ljZVJlcGx5KCJTaGFiYXNoISBTYWhpIGphd2FiIChCKSBoYWkg4oCUIE1pdG9jaG9uZHJpYS4gRGV0YWlsIG1laW46IEFUUCB5YWhpbiBiYW50YSBoYWkgYXVyIGlzbGl5ZSBpc2UgcG93ZXJob3VzZSBrZWh0ZSBoYWluLiBBZ2xhIHNhd2FsOiBSaWJvc29tZSBrYWhhbiBtaWx0ZSBoYWluPyAoQSkgTnVjbGV1cyAoQikgQ3l0b3BsYXNtIChDKSBWYWN1b2xlIChEKSBDZWxsIHdhbGwiLCB7IG9wdGlvbnM6IGZhbHNlLCBmZWVkYmFja1RvZ2dsZTogdHJ1ZSB9KTsKICAgIGV4cGVjdChtZCkudG9NYXRjaCgvXjxkZXRhaWxzPlxuPHN1bW1hcnk+8J+OiSBTaGFiYXNoIMK3IOKchSBTYWhpIGphd2FiOiBcKEJcKSDigJQgTWl0b2Nob25kcmlhPFwvc3VtbWFyeT4vKTsKICAgIGV4cGVjdChtZC5tYXRjaCgvPGRldGFpbHM+L2cpKS50b0hhdmVMZW5ndGgoMSk7CiAgICBleHBlY3QobWQuaW5kZXhPZigiUmlib3NvbWUga2FoYW4gbWlsdGUgaGFpbj8iKSkudG9CZUdyZWF0ZXJUaGFuKG1kLmluZGV4T2YoIjwvZGV0YWlscz4iKSk7CiAgfSk7Cn0pOwo=
+import { describe, expect, it } from "vitest";
+import { formatVoiceReply } from "./voice-format";
+
+const reply = "Hmm, is baar thoda chook gaye. Sahi jawab option B hai — underground stem. Potato ka tuber ek modified underground stem hota hai. Isko pehchanne ka tareeka yaad rakho: potato par \"eyes\" hote hain. NCERT ke mutabik, ginger, turmeric, zaminkand, aur Colocasia bhi aise hi underground stem modifications hain. Chalo, agla prashn, number teen. Phyllotaxy mein \"whorled\" arrangement ka example kaun sa hai? Option A: China rose. B: Calotropis. C: Alstonia. D: Mustard. Ab batao answer?";
+
+describe("voice reply formatting", () => {
+  const out = formatVoiceReply(reply);
+  it("drops fillers and shows a wrong-answer heading", () => {
+    expect(out.startsWith("#### ❌ Is baar thoda chook gaye")).toBe(true);
+  });
+  it("highlights the correct answer", () => {
+    expect(out).toContain("> **✅ Sahi jawab: (B) — underground stem**");
+  });
+  it("puts the explanation in bullets with NCERT and tip callouts", () => {
+    expect(out).toContain("#### 📘 Explanation");
+    expect(out).toContain("- Potato ka tuber ek modified underground stem hota hai.");
+    expect(out).toContain("> 💡 **Yaad rakho:**");
+    expect(out).toContain("> 📚 **NCERT:**");
+  });
+  it("starts the next question as a numbered card with options A–D", () => {
+    expect(out).toContain("---\n\n#### ❓ Question 3");
+    expect(out).toContain("**Phyllotaxy mein \"whorled\" arrangement ka example kaun sa hai?**");
+    for (const [l, v] of [["A", "China rose"], ["B", "Calotropis"], ["C", "Alstonia"], ["D", "Mustard"]]) expect(out).toContain(`- **(${l})** ${v}\n`.trimEnd());
+    expect(out).toContain("*🎤 Ab batao answer?*");
+  });
+  it("turns Match the Following columns into a table", () => {
+    const m = formatVoiceReply("Match karo. Column I: a. Tuber, b. Rhizome, c. Corm, d. Bulb. Column II: i. Ginger, ii. Potato, iii. Onion, iv. Colocasia. Option A: a-ii, b-i, c-iv, d-iii. B: a-i, b-ii, c-iii, d-iv.");
+    expect(m).toContain("| Column I | Column II |");
+    expect(m).toContain("| a. Tuber | i. Ginger |");
+    expect(m).toContain("| d. Bulb | iv. Colocasia |");
+    expect(m).toContain("- **(A)** a-ii, b-i, c-iv, d-iii");
+  });
+  it("keeps a mention of the next question as plain text when no options follow", () => {
+    const o = formatVoiceReply("Pehla sawaal abhi pending hai. Kya use dobara sunna hai? Ya skip karke agla sawal sunoge?");
+    expect(o).not.toContain("❓");
+    expect(o).toContain("Ya skip karke agla sawal sunoge?");
+  });
+  it("reads options spoken with commas", () => {
+    const o = formatVoiceReply("Nahi, A galat hai. Sahi jawab C hai, triploid. Agla sawaal, exine kis padarth se bani hai? A, cellulose, B, pectin, C, lignin, D, sporopollenin. Kya lagta hai?");
+    expect(o).toContain("> **✅ Sahi jawab: (C) — triploid**");
+    expect(o).toContain("#### ❓ Agla sawal");
+    expect(o).toContain("- **(D)** sporopollenin");
+    expect(o).toContain("*🎤 Kya lagta hai?*");
+  });
+  it("formats a quiz card with unseparated columns and (A) options", () => {
+    const o = formatVoiceReply("Mm. Sahi match karo. Column I: a. Rhizome b. Tuber c. Bulb d. Corm Column II: i. Potato ii. Ginger iii. Colocasia iv. Onion\n(A) a-ii, b-i, c-iv, d-iii\n(B) a-i, b-ii, c-iii, d-iv\n(C) a-ii, b-iii, c-iv, d-i\n(D) a-iii, b-i, c-ii, d-iv Apna answer bolo, A, B, C ya D");
+    expect(o).toContain("| a. Rhizome | i. Potato |");
+    expect(o).toContain("| d. Corm | iv. Onion |");
+    expect(o).toContain("- **(B)** a-i, b-ii, c-iii, d-iv");
+    expect(o).not.toContain("Mm.");
+    const card = formatVoiceReply("Column I: a. Rhizome b. Tuber Column II: i. Potato ii. Ginger (A) a-ii, b-i (B) a-i, b-ii (C) x (D) y", { options: false });
+    expect(card).toContain("| b. Tuber | ii. Ginger |");
+    expect(card).not.toContain("**(A)**");
+  });
+  it("shows the Match table on the card even with no options and a 'Column I ko Column II' lead-in", () => {
+    const o = formatVoiceReply("Column I ko Column II se match karo. Column I: a. Marginal b. Axile Column II: i. Mustard ii. Pea", { options: false });
+    expect(o).toContain("| a. Marginal | i. Mustard |");
+    expect(o).toContain("| b. Axile | ii. Pea |");
+  });
+  it("keeps a half-spoken Match column in one paragraph", () => {
+    expect(formatVoiceReply("Sahi match karo. Column I: a. Rhizome, b. Tuber, c. Bulb, d. Corm.")).not.toContain("a.\n");
+  });
+  it("boxes Assertion and Reason", () => {
+    const a = formatVoiceReply("Assertion: Potato is a stem. Reason: It has nodes. Option A: Both true. B: A true, R false. C: A false. D: Both false.");
+    expect(a).toContain("> **Assertion (A):** Potato is a stem.");
+    expect(a).toContain("> **Reason (R):** It has nodes.");
+    const b = formatVoiceReply("Assertion (A): Potato is a stem. Reason (R): It has nodes. (A) Both true (B) A true, R false (C) A false (D) Both false");
+    expect(b).toContain("> **Assertion (A):** Potato is a stem.");
+    expect(b).toContain("- **(C)** A false");
+    const c = formatVoiceReply("Dhyan se suniye. Assertion, aloo ek underground stem hai. Reason, potato par eyes hote hain. (A) dono sahi (B) dono sahi, R explain nahi karta (C) A sahi, R galat (D) A galat, R sahi");
+    expect(c).toContain("> **Assertion (A):** aloo ek underground stem hai.");
+    expect(c).toContain("> **Reason (R):** potato par eyes hote hain.");
+  });
+  it("turns spoken ordinals into a numbered list", () => {
+    const o = formatVoiceReply("Iske teen kaaran hain. Pehla, light energy chemical energy mein convert hoti hai. Doosra, water split hokar oxygen deta hai. Teesra, ATP aur NADPH bante hain.");
+    expect(o).toContain("1. Light energy chemical energy mein convert hoti hai.");
+    expect(o).toContain("2. Water split hokar oxygen deta hai.");
+    expect(o).toContain("3. ATP aur NADPH bante hain.");
+  });
+  it("keeps a single ordinal mention as plain text", () => {
+    const o = formatVoiceReply("Pehla sawaal abhi pending hai. Kya use dobara sunna hai?");
+    expect(o).not.toContain("1. ");
+  });
+});
+
+describe('toggle sections', () => {
+  it('turns "Detail mein: …" into a collapsible details block', () => {
+    const out = formatVoiceReply('Detail mein: mitochondria ke do membrane hote hain, outer smooth aur inner folded.');
+    expect(out).toContain('<details>');
+    expect(out).toContain('<summary>📂 ');
+    expect(out).toContain('mitochondria ke do membrane');
+    expect(out).toContain('</details>');
+  });
+  it('ignores short or non-toggle uses of the word detail', () => {
+    const out = formatVoiceReply('Ye detail yaad rakho.');
+    expect(out).not.toContain('<details>');
+  });
+});
+
+describe("quiz card folds the previous answer", () => {
+  it("puts the verdict in a toggle summary and keeps the next question outside", () => {
+    const md = formatVoiceReply("Shabash! Sahi jawab (B) hai — Mitochondria. Detail mein: ATP yahin banta hai aur isliye ise powerhouse kehte hain. Agla sawal: Ribosome kahan milte hain? (A) Nucleus (B) Cytoplasm (C) Vacuole (D) Cell wall", { options: false, feedbackToggle: true });
+    expect(md).toMatch(/^<details>\n<summary>🎉 Shabash · ✅ Sahi jawab: \(B\) — Mitochondria<\/summary>/);
+    expect(md.match(/<details>/g)).toHaveLength(1);
+    expect(md.indexOf("Ribosome kahan milte hain?")).toBeGreaterThan(md.indexOf("</details>"));
+  });
+});

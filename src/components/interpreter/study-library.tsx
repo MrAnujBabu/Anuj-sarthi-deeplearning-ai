@@ -1,1 +1,39 @@
-aW1wb3J0IHsgSGlzdG9yeSwgVHJhc2gyLCBQbGF5Q2lyY2xlIH0gZnJvbSAnbHVjaWRlLXJlYWN0JzsKaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL2J1dHRvbic7CmltcG9ydCB0eXBlIHsgTGlicmFyeUVudHJ5IH0gZnJvbSAnQC9saWIveW91dHViZS1zdHVkeS1zdG9yZSc7CmltcG9ydCB7IGludGVycHJldGVySW5mbyB9IGZyb20gJ0AvbGliL2ludGVycHJldGVyLW1vZGVscyc7CmltcG9ydCB7IGZvcm1hdFRpbWUgfSBmcm9tICdAL2NvbXBvbmVudHMveW91dHViZS1kdWInOwoKLyoqIEZpbmlzaGVkIGludGVycHJldGF0aW9ucyBzYXZlZCBvbiB0aGlzIGRldmljZTsgb3BlbiBpbnN0YW50bHkgd2l0aG91dCBzcGVuZGluZyBjcmVkaXRzIGFnYWluLiAqLwpleHBvcnQgZnVuY3Rpb24gU3R1ZHlMaWJyYXJ5KHsgZW50cmllcywgYWN0aXZlS2V5LCBkaXNhYmxlZCwgb25PcGVuLCBvblJlbW92ZSB9OiB7CiAgZW50cmllczogTGlicmFyeUVudHJ5W107IGFjdGl2ZUtleTogc3RyaW5nIHwgbnVsbDsgZGlzYWJsZWQ/OiBib29sZWFuOyBvbk9wZW4oZW50cnk6IExpYnJhcnlFbnRyeSk6IHZvaWQ7IG9uUmVtb3ZlKGVudHJ5OiBMaWJyYXJ5RW50cnkpOiB2b2lkOwp9KSB7CiAgaWYgKCFlbnRyaWVzLmxlbmd0aCkgcmV0dXJuIG51bGw7CiAgcmV0dXJuICgKICAgIDxzZWN0aW9uIGNsYXNzTmFtZT0ibXQtMTIiIGFyaWEtbGFiZWxsZWRieT0ibGlicmFyeS10aXRsZSI+CiAgICAgIDxoMiBpZD0ibGlicmFyeS10aXRsZSIgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiB0ZXh0LWxnIGZvbnQtc2VtaWJvbGQiPjxIaXN0b3J5IGNsYXNzTmFtZT0ic2l6ZS01IHRleHQtcHJpbWFyeSIgLz7gpIbgpKrgpJXgpYAg4KSy4KS+4KSH4KSs4KWN4KSw4KWH4KSw4KWAPC9oMj4KICAgICAgPHAgY2xhc3NOYW1lPSJtdC0xIHRleHQtc20gdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj7gpIfgpLjgpYAgZGV2aWNlIOCkquCksCBzYXZlIOCkueCliCDigJQg4KSm4KWL4KSs4KS+4KSw4KS+IOCkluCli+CksuCkqOClhyDgpKrgpLAgY3JlZGl0cyDgpKjgpLngpYDgpIIg4KSy4KSX4KSk4KWH4KWkPC9wPgogICAgICA8dWwgY2xhc3NOYW1lPSJtdC00IGdyaWQgZ2FwLTIgc206Z3JpZC1jb2xzLTIiPgogICAgICAgIHtlbnRyaWVzLm1hcChlID0+IHsKICAgICAgICAgIGNvbnN0IHIgPSBlLnJlc3VsdCwgZHVyYXRpb24gPSByLmR1Yj8uYXQoLTEpPy5lbmQ7CiAgICAgICAgICByZXR1cm4gKAogICAgICAgICAgICA8bGkga2V5PXtlLmtleX0gZGF0YS1hY3RpdmU9e2Uua2V5ID09PSBhY3RpdmVLZXl9IGNsYXNzTmFtZT0iZ3JvdXAgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTMgcm91bmRlZC14bCBib3JkZXIgYmctY2FyZCBwLTIgcHItMSBkYXRhLVthY3RpdmU9dHJ1ZV06Ym9yZGVyLXByaW1hcnkiPgogICAgICAgICAgICAgIDxidXR0b24gdHlwZT0iYnV0dG9uIiBkaXNhYmxlZD17ZGlzYWJsZWR9IG9uQ2xpY2s9eygpID0+IG9uT3BlbihlKX0gY2xhc3NOYW1lPSJ0b3VjaC1idG4gZmxleCBtaW4tdy0wIGZsZXgtMSBpdGVtcy1jZW50ZXIgZ2FwLTMgdGV4dC1sZWZ0IGRpc2FibGVkOm9wYWNpdHktNTAiPgogICAgICAgICAgICAgICAge3IudmlkZW9JZAogICAgICAgICAgICAgICAgICA/IDxpbWcgc3JjPXtgaHR0cHM6Ly9pLnl0aW1nLmNvbS92aS8ke3IudmlkZW9JZH0vbXFkZWZhdWx0LmpwZ2B9IGFsdD0iIiBsb2FkaW5nPSJsYXp5IiByZWZlcnJlclBvbGljeT0ibm8tcmVmZXJyZXIiIGNsYXNzTmFtZT0iYXNwZWN0LXZpZGVvIHctMjQgc2hyaW5rLTAgcm91bmRlZC1sZyBvYmplY3QtY292ZXIiIC8+CiAgICAgICAgICAgICAgICAgIDogPHNwYW4gY2xhc3NOYW1lPSJmbGV4IGFzcGVjdC12aWRlbyB3LTI0IHNocmluay0wIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciByb3VuZGVkLWxnIGJnLWFjY2VudCI+PFBsYXlDaXJjbGUgY2xhc3NOYW1lPSJzaXplLTYgdGV4dC1wcmltYXJ5IiAvPjwvc3Bhbj59CiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9Im1pbi13LTAiPgogICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9ImxpbmUtY2xhbXAtMiB0ZXh0LXNtIGxlYWRpbmctc251ZyBmb250LW1lZGl1bSI+e3IudGl0bGUgfHwgJ1ZpZGVvJ308L3NwYW4+CiAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0ibXQtMC41IGJsb2NrIHRydW5jYXRlIHRleHQtWzExcHhdIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+CiAgICAgICAgICAgICAgICAgICAge1tyLmVuZ2luZSA/IGludGVycHJldGVySW5mbyhyLmVuZ2luZSkubmFtZSA6IG51bGwsIGR1cmF0aW9uID8gZm9ybWF0VGltZShkdXJhdGlvbikgOiBudWxsLCBuZXcgRGF0ZShlLnNhdmVkQXQpLnRvTG9jYWxlRGF0ZVN0cmluZygnaGktSU4nLCB7IGRheTogJ251bWVyaWMnLCBtb250aDogJ3Nob3J0JyB9KV0uZmlsdGVyKEJvb2xlYW4pLmpvaW4oJyDCtyAnKX0KICAgICAgICAgICAgICAgICAgPC9zcGFuPgogICAgICAgICAgICAgICAgPC9zcGFuPgogICAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgICAgICAgIDxCdXR0b24gdmFyaWFudD0iZ2hvc3QiIHNpemU9Imljb24iIGRpc2FibGVkPXtkaXNhYmxlZH0gYXJpYS1sYWJlbD17YCR7ci50aXRsZSB8fCAnVmlkZW8nfSDgpLLgpL7gpIfgpKzgpY3gpLDgpYfgpLDgpYAg4KS44KWHIOCkueCkn+CkvuCkk2B9IG9uQ2xpY2s9eygpID0+IG9uUmVtb3ZlKGUpfSBjbGFzc05hbWU9InNocmluay0wIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+PFRyYXNoMiBjbGFzc05hbWU9InNpemUtNCIgLz48L0J1dHRvbj4KICAgICAgICAgICAgPC9saT4KICAgICAgICAgICk7CiAgICAgICAgfSl9CiAgICAgIDwvdWw+CiAgICA8L3NlY3Rpb24+CiAgKTsKfQo=
+import { History, Trash2, PlayCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import type { LibraryEntry } from '@/lib/youtube-study-store';
+import { interpreterInfo } from '@/lib/interpreter-models';
+import { formatTime } from '@/components/youtube-dub';
+
+/** Finished interpretations saved on this device; open instantly without spending credits again. */
+export function StudyLibrary({ entries, activeKey, disabled, onOpen, onRemove }: {
+  entries: LibraryEntry[]; activeKey: string | null; disabled?: boolean; onOpen(entry: LibraryEntry): void; onRemove(entry: LibraryEntry): void;
+}) {
+  if (!entries.length) return null;
+  return (
+    <section className="mt-12" aria-labelledby="library-title">
+      <h2 id="library-title" className="flex items-center gap-2 text-lg font-semibold"><History className="size-5 text-primary" />आपकी लाइब्रेरी</h2>
+      <p className="mt-1 text-sm text-muted-foreground">इसी device पर save है — दोबारा खोलने पर credits नहीं लगते।</p>
+      <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+        {entries.map(e => {
+          const r = e.result, duration = r.dub?.at(-1)?.end;
+          return (
+            <li key={e.key} data-active={e.key === activeKey} className="group flex items-center gap-3 rounded-xl border bg-card p-2 pr-1 data-[active=true]:border-primary">
+              <button type="button" disabled={disabled} onClick={() => onOpen(e)} className="touch-btn flex min-w-0 flex-1 items-center gap-3 text-left disabled:opacity-50">
+                {r.videoId
+                  ? <img src={`https://i.ytimg.com/vi/${r.videoId}/mqdefault.jpg`} alt="" loading="lazy" referrerPolicy="no-referrer" className="aspect-video w-24 shrink-0 rounded-lg object-cover" />
+                  : <span className="flex aspect-video w-24 shrink-0 items-center justify-center rounded-lg bg-accent"><PlayCircle className="size-6 text-primary" /></span>}
+                <span className="min-w-0">
+                  <span className="line-clamp-2 text-sm leading-snug font-medium">{r.title || 'Video'}</span>
+                  <span className="mt-0.5 block truncate text-[11px] text-muted-foreground">
+                    {[r.engine ? interpreterInfo(r.engine).name : null, duration ? formatTime(duration) : null, new Date(e.savedAt).toLocaleDateString('hi-IN', { day: 'numeric', month: 'short' })].filter(Boolean).join(' · ')}
+                  </span>
+                </span>
+              </button>
+              <Button variant="ghost" size="icon" disabled={disabled} aria-label={`${r.title || 'Video'} लाइब्रेरी से हटाओ`} onClick={() => onRemove(e)} className="shrink-0 text-muted-foreground"><Trash2 className="size-4" /></Button>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
