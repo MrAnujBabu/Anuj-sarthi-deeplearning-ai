@@ -21,4 +21,14 @@ describe('rolling captions', () => {
     const parts = groupCues([{ start: 0, end: 3, text: 'the cell' }, { start: 3, end: 6, text: 'is the unit of life' }]);
     expect(parts[0]?.text).toBe('the cell is the unit of life');
   });
+
+  it('does not say the last word twice when the next cue repeats it', () => {
+    const parts = groupCues([{ start: 0, end: 3, text: 'energy comes from the' }, { start: 3, end: 6, text: 'the sun' }]);
+    expect(parts[0]?.text).toBe('energy comes from the sun');
+  });
+
+  it('keeps a deliberate repeat after a pause', () => {
+    const parts = groupCues([{ start: 0, end: 3, text: 'say it again' }, { start: 5, end: 7, text: 'again and again' }]);
+    expect(parts[0]?.text).toBe('say it again again and again');
+  });
 });

@@ -16,6 +16,7 @@ import { decodePCM, SPEECH_SAMPLE_RATE } from '@/lib/stream-speech';
 import { splitForSpeech } from '@/lib/youtube-hindi';
 import { YouTubeDub } from '@/components/youtube-dub';
 import { YouTubeNarrationDownload } from '@/components/youtube-narration-download';
+import { YouTubeTranscriptDownload } from '@/components/youtube-transcript-download';
 import { ChannelPicker } from '@/components/interpreter/channel-picker';
 import { RunProgress } from '@/components/interpreter/run-progress';
 import { StudyLibrary } from '@/components/interpreter/study-library';
@@ -408,6 +409,7 @@ function YouTubeHindi() {
           ) : null}
           <div className="mt-4 grid gap-4 md:grid-cols-2"><TeamCard result={result} /><BriefCard result={result} /></div>
           <YouTubeNarrationDownload text={result.hindi} voice={voice} voiceEngine={voiceEngine} videoId={result.videoId ?? null} disabled={busy || dubbing || playing} onBusyChange={setExporting} />
+          <div className="mt-3"><YouTubeTranscriptDownload result={result} transcript={transcript} disabled={busy} /></div>
           <details className="mt-8 border-t pt-4" open={!result.dub?.length}>
             <summary className="flex cursor-pointer list-none items-center justify-between text-base font-medium">सरल Hindi explanation<ChevronDown className="size-4" /></summary>
             <div className="mt-3 flex items-center gap-3">

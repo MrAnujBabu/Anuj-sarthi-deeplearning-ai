@@ -91,13 +91,13 @@ export function parseListenOutput(text: string, offset = 0): ListenResult {
  * Rolling captions (YouTube auto-captions, many SRT exports) repeat the previous line at the
  * start of the next cue. Returns only the words of `next` not already said at the end of `prev`.
  */
-export function stripRepeatedLead(prev: string, next: string): string {
+export function stripRepeatedLead(prev: string, next: string, allowSingle = false): string {
   const norm = (w: string) => w.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
   const a = prev.split(/\s+/).filter(Boolean), b = next.split(/\s+/).filter(Boolean);
   for (let k = Math.min(a.length, b.length); k >= 1; k--) {
     let same = true;
     for (let i = 0; i < k; i++) if (norm(a[a.length - k + i] ?? '') !== norm(b[i] ?? '')) { same = false; break; }
-    if (same && (k >= 2 || k === b.length)) return b.slice(k).join(' ');
+    if (same && (k >= 2 || k === b.length || allowSingle)) return b.slice(k).join(' ');
   }
   return next;
 }
@@ -106,9 +106,12 @@ export function stripRepeatedLead(prev: string, next: string): string {
 export function groupCues(cues: Cue[], windowSec = 30): TimedSegment[] {
   const out: TimedSegment[] = [];
   let said = '';
+  let prevEnd = -Infinity;
   for (const c of cues) {
     if (!c.text) continue;
-    const text = said ? stripRepeatedLead(said, c.text) : c.text;
+    // A one-word overlap is a rolling-caption echo only when the cues touch in time.
+    const text = said ? stripRepeatedLead(said, c.text, c.start <= prevEnd + 0.5) : c.text;
+    prevEnd = Math.max(prevEnd, c.end);
     said = `${said} ${c.text}`.split(/\s+/).slice(-60).join(' ');
     if (!text) { const last = out[out.length - 1]; if (last) last.end = Math.max(last.end, c.end); continue; }
     const last = out[out.length - 1];
