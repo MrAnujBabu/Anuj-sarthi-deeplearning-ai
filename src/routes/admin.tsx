@@ -92,21 +92,33 @@ function SignIn({ onDone }: { onDone: () => void }) {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
+  const [create, setCreate] = useState(false);
+  const [sent, setSent] = useState(false);
   return (
     <form
       className="mx-auto mt-10 max-w-sm space-y-3 rounded-xl border border-border bg-card p-6"
       onSubmit={async (e) => {
         e.preventDefault(); setBusy(true); setErr("");
+        if (create) {
+          const { error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/admin` } });
+          setBusy(false);
+          if (error) setErr(error.message); else setSent(true);
+          return;
+        }
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         setBusy(false);
         if (error) setErr(error.message === "Invalid login credentials" ? "Galat email ya password." : error.message); else onDone();
       }}
     >
-      <h1 className="font-display text-2xl">Admin sign in</h1>
+      <h1 className="font-display text-2xl">{create ? "Admin account banao" : "Admin sign in"}</h1>
+      {sent && <p className="text-sm text-muted-foreground">Email check karein — confirm link dabane ke baad yahan sign in karein.</p>}
       <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
       <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
       {err && <p className="text-sm text-destructive">{err}</p>}
-      <Button type="submit" className="w-full" disabled={busy}>{busy ? "Please wait…" : "Sign in"}</Button>
+      <Button type="submit" className="w-full" disabled={busy}>{busy ? "Please wait…" : create ? "Account banao" : "Sign in"}</Button>
+      <button type="button" className="w-full text-sm text-muted-foreground underline" onClick={() => { setCreate(!create); setErr(""); setSent(false); }}>
+        {create ? "Account hai? Sign in karein" : "Pehli baar? Account banao"}
+      </button>
     </form>
   );
 }
