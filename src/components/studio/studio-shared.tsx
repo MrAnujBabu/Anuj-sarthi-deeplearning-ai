@@ -3,12 +3,21 @@ import { Coins, PowerOff } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { STUDIO_TOOLS, useStudioTool, type StudioToolId } from '@/lib/studio-tools';
 import { cn } from '@/lib/utils';
+import { beginStudioRequest, endStudioRequest, deferStudio, responseWaitSeconds, useStudioRecovery } from '@/lib/studio-recovery';
+
+export class StudioRequestError extends Error {
+  constructor(message: string, public status: number) { super(message); }
+}
 
 export async function postJson<T>(url: string, body: unknown, signal?: AbortSignal): Promise<T> {
+  beginStudioRequest();
+  try {
   const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), ...(signal ? { signal } : {}) });
   const json = await res.json().catch(() => ({})) as { error?: string };
-  if (!res.ok) throw new Error(json.error || `Request failed (${res.status})`);
+  if (res.status === 429) deferStudio(responseWaitSeconds(res));
+  if (!res.ok) throw new StudioRequestError(json.error || `Request failed (${res.status})`, res.status);
   return json as T;
+  } finally { endStudioRequest(); }
 }
 
 /** Tool title with its own on/off switch; when off, the form is replaced by a short note. */
@@ -39,6 +48,8 @@ export function ToolPanel({ id, icon, children }: { id: StudioToolId; icon: Reac
 
 /** Stays on screen (unlike a toast) so a "vendor switched off" or credits message can be read and acted on. */
 export function ToolError({ message }: { message: string | null }) {
+  const { seconds } = useStudioRecovery();
+  if (seconds) return <p role="alert" className="mt-3 rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2.5 text-sm text-destructive">AI busy hai — {seconds} second baad dobara try kar sakte hain.</p>;
   if (!message) return null;
   return <p role="alert" className="mt-3 rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2.5 text-sm text-destructive">{message}</p>;
 }

@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Shimmer } from '@/components/ai-elements/shimmer';
 import { DETAILS_MAX, SEEDREAM_IMAGE_CREDITS, TOPIC_MAX, formatCredits, type ImageOrientation, type ImageStyle } from '@/lib/studio-tools';
 import { saveStudioItem } from '@/lib/studio-store';
+import { useStudioRecovery } from '@/lib/studio-recovery';
 import { Choice, CostNote, FieldLabel, ToolError, ToolPanel, downloadDataUrl, postJson, slug } from './studio-shared';
 
 const STYLES = [{ value: 'diagram', label: 'Labelled diagram' }, { value: 'poster', label: 'Revision poster' }] as const;
@@ -21,6 +22,7 @@ export function ImageTool({ initialTopic = '' }: { initialTopic?: string }) {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<{ image: string; topic: string } | null>(null);
   const abort = useRef<AbortController | null>(null);
+  const { blocked } = useStudioRecovery();
   useEffect(() => { if (initialTopic) setTopic(initialTopic); }, [initialTopic]);
   useEffect(() => () => abort.current?.abort(), []);
 
@@ -67,7 +69,7 @@ export function ImageTool({ initialTopic = '' }: { initialTopic?: string }) {
           {busy ? (
             <Button type="button" variant="outline" className="touch-btn" onClick={() => abort.current?.abort()}><Square className="size-4" />Stop</Button>
           ) : (
-            <Button type="submit" className="touch-btn"><Wand2 className="size-4" />Image banao</Button>
+            <Button type="submit" className="touch-btn" disabled={blocked}><Wand2 className="size-4" />Image banao</Button>
           )}
         </div>
       </form>

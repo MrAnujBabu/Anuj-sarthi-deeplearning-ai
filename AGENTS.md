@@ -31,6 +31,7 @@ use the editor.
 
 
 ## Architecture
+- Studio rate limits share a browser cooldown and honor provider Retry-After; never automatically replay paid generation, because a retry can create duplicate billed jobs.
 - Sarvam prefers its linked gateway connector; direct keys only for hosts without it. Never send connection keys directly to providers.
 - Sarvam SDK smoke scripts stay outside app imports; run only after key confirmation, never replace tutor/voice.
 - Sarvam request and stream cancellation use the shared realm-safe cancellation predicate; stream cleanup observes reader cancellation rejections so normal stop/disconnect never becomes an unhandled provider error.

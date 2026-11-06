@@ -44,7 +44,7 @@ export const Route = createFileRoute('/api/studio-video')({
           return Response.json({ job: await readStudioJob(id) }, { headers: { 'Cache-Control': 'no-store' } });
         } catch (e) {
           const f = await studioFailure(e);
-          return Response.json({ error: f.message }, { status: f.status });
+          return Response.json({ error: f.message }, { status: f.status, headers: f.retryAfterSeconds ? { 'Retry-After': String(f.retryAfterSeconds) } : {} });
         }
       },
       POST: async ({ request }) => {
@@ -70,7 +70,7 @@ export const Route = createFileRoute('/api/studio-video')({
           return Response.json({ error: 'Tool chuniye.' }, { status: 400 });
         } catch (e) {
           const f = await server.studioFailure(e, tool === 'enhance' ? 'Topaz Labs' : 'ByteDance');
-          return Response.json({ error: f.message }, { status: f.status });
+          return Response.json({ error: f.message }, { status: f.status, headers: f.retryAfterSeconds ? { 'Retry-After': String(f.retryAfterSeconds) } : {} });
         }
       },
     },

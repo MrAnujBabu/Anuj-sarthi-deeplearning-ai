@@ -9,6 +9,7 @@ import {
   type AnimationAspect, type AnimationDuration, type AnimationResolution, type StudioJob,
 } from '@/lib/studio-tools';
 import { saveStudioItem } from '@/lib/studio-store';
+import { useStudioRecovery } from '@/lib/studio-recovery';
 import { Choice, CostNote, FieldLabel, ToolError, ToolPanel, postJson } from './studio-shared';
 
 const DURATIONS = ANIMATION_DURATIONS.map(d => ({ value: d, label: `${d} sec` }));
@@ -23,6 +24,7 @@ export function AnimationTool({ initialTopic = '' }: { initialTopic?: string }) 
   const [aspect, setAspect] = useState<AnimationAspect>('16:9');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { blocked } = useStudioRecovery();
   useEffect(() => { if (initialTopic) setTopic(initialTopic); }, [initialTopic]);
   const cost = animationCost(duration, resolution);
 
@@ -38,7 +40,7 @@ export function AnimationTool({ initialTopic = '' }: { initialTopic?: string }) 
         id: crypto.randomUUID(), tool: 'animation', title: t, createdAt: Date.now(), status: job.status, progress: job.progress,
         jobId: job.id, expiresAt: job.expiresAt, credits: job.billedCredits ?? cost, error: job.error,
         detail: `${duration} sec · ${resolution} · ${aspect}`,
-      });
+      }).catch(() => toast.error(`Animation shuru ho gayi (job: ${job.id}), par device par save nahi hui. Gallery khuli rakhiye; dobara generate mat kariye.`));
       toast.success('Animation ban rahi hai — 1–3 minute. Neeche gallery mein dikhegi.');
       setTopic('');
       setDetails('');
@@ -69,7 +71,7 @@ export function AnimationTool({ initialTopic = '' }: { initialTopic?: string }) 
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <CostNote>≈ {formatCredits(cost)} · bina awaaz, bina text · 1–3 minute</CostNote>
-          <Button type="submit" className="touch-btn" disabled={busy}>{busy ? <Loader2 className="size-4 animate-spin" /> : <Play className="size-4" />}Animation banao</Button>
+          <Button type="submit" className="touch-btn" disabled={busy || blocked}>{busy ? <Loader2 className="size-4 animate-spin" /> : <Play className="size-4" />}Animation banao</Button>
         </div>
       </form>
       <ToolError message={error} />

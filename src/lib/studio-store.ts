@@ -21,7 +21,7 @@ export type StudioItem = {
   /** Finished animation saved on this device. */
   video?: Blob;
   /** Temporary upload of the source clip (enhance), removed once the job ends. */
-  uploadPath?: string;
+  uploadPath?: string | undefined;
   detail?: string;
 };
 
@@ -29,6 +29,8 @@ const DB = 'snapsolve-studio';
 const STORE = 'items';
 export const STUDIO_EVENT = 'snapsolve:studio';
 export const STUDIO_MAX_ITEMS = 40;
+// Accepted jobs remain visible in this session even when device storage fails.
+const unsaved = new Map<string, StudioItem>();
 
 function open(): Promise<IDBDatabase> {
   return new Promise((res, rej) => {
@@ -57,13 +59,20 @@ async function tx<T>(mode: IDBTransactionMode, run: (store: IDBObjectStore) => I
 const notify = () => window.dispatchEvent(new Event(STUDIO_EVENT));
 
 export async function listStudioItems(): Promise<StudioItem[]> {
-  const all = (await tx<StudioItem[]>('readonly', s => s.getAll() as IDBRequest<StudioItem[]>)) ?? [];
-  return all.sort((a, b) => b.createdAt - a.createdAt);
+  const all = (await tx<StudioItem[]>('readonly', s => s.getAll() as IDBRequest<StudioItem[]>).catch(() => [])) ?? [];
+  return [...new Map([...all, ...unsaved.values()].map(item => [item.id, item])).values()].sort((a, b) => b.createdAt - a.createdAt);
 }
 
 /** Saves an item; keeps only the newest STUDIO_MAX_ITEMS so the device never fills up. */
 export async function saveStudioItem(item: StudioItem) {
-  await tx('readwrite', s => { s.put(item); });
+  try {
+    await tx('readwrite', s => { s.put(item); });
+    unsaved.delete(item.id);
+  } catch (e) {
+    unsaved.set(item.id, item);
+    notify();
+    throw e;
+  }
   const all = await listStudioItems();
   const extra = all.slice(STUDIO_MAX_ITEMS).filter(i => i.status === 'completed' || i.status === 'failed');
   if (extra.length) await tx('readwrite', s => { for (const i of extra) s.delete(i.id); });
@@ -71,12 +80,13 @@ export async function saveStudioItem(item: StudioItem) {
 }
 
 export async function patchStudioItem(id: string, patch: Partial<StudioItem>) {
-  const current = await tx<StudioItem>('readonly', s => s.get(id) as IDBRequest<StudioItem>);
+  const current = unsaved.get(id) ?? await tx<StudioItem>('readonly', s => s.get(id) as IDBRequest<StudioItem>);
   if (!current) return;
   await saveStudioItem({ ...current, ...patch });
 }
 
 export async function deleteStudioItem(id: string) {
+  unsaved.delete(id);
   await tx('readwrite', s => { s.delete(id); });
   notify();
 }

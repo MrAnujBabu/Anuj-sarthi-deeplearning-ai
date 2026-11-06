@@ -27,10 +27,15 @@ export const Route = createFileRoute('/api/studio-upload')({
       },
       DELETE: async ({ request }) => {
         const path = new URL(request.url).searchParams.get('path') ?? '';
-        const { isStudioUploadPath, removeUpload } = await import('@/lib/studio.server');
+        const { isStudioUploadPath, removeUpload, studioFailure } = await import('@/lib/studio.server');
         if (!isStudioUploadPath(path)) return Response.json({ error: 'Path galat hai.' }, { status: 400 });
-        await removeUpload(path);
-        return new Response(null, { status: 204 });
+        try {
+          await removeUpload(path);
+          return new Response(null, { status: 204 });
+        } catch (e) {
+          const f = await studioFailure(e);
+          return Response.json({ error: f.message }, { status: f.status });
+        }
       },
     },
   },

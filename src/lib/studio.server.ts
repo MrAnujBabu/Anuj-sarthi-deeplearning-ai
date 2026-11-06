@@ -10,13 +10,14 @@ import {
   type AnimationAspect, type AnimationDuration, type AnimationResolution, type EnhanceContainer, type EnhanceTarget,
   type ImageOrientation, type ImageStyle, type StudioJob,
 } from './studio-tools';
+import { studioWaitSeconds } from './studio-recovery';
 
 export class StudioError extends Error {
   constructor(message: string, public status: number) { super(message); }
 }
 
 /** Maps SDK failures to a status and a short Hinglish message; remembers credit exhaustion. */
-export async function studioFailure(error: unknown, vendor = 'Yeh AI model'): Promise<{ status: number; message: string }> {
+export async function studioFailure(error: unknown, vendor = 'Yeh AI model'): Promise<{ status: number; message: string; retryAfterSeconds?: number }> {
   if (error instanceof StudioError) return { status: error.status, message: error.message };
   if (error instanceof CancelledError || (error instanceof Error && error.name === 'AbortError')) return { status: 499, message: 'Roka gaya.' };
   if (error instanceof PaymentRequiredError) {
@@ -26,7 +27,11 @@ export async function studioFailure(error: unknown, vendor = 'Yeh AI model'): Pr
     return { status: 402, message };
   }
   if (error instanceof ConfigurationError || error instanceof AuthenticationError) return { status: 503, message: 'AI connection is workspace mein setup nahi hai.' };
-  if (error instanceof RateLimitError) return { status: 429, message: 'AI abhi busy hai — ek minute baad phir try kariye.' };
+  if (error instanceof RateLimitError) {
+    const retryAfterSeconds = studioWaitSeconds(error.retryAfter);
+    console.warn('[studio] rate limited', error.code, error.ids?.logId, error.ids?.requestId, retryAfterSeconds);
+    return { status: 429, message: `AI abhi busy hai — ${retryAfterSeconds} second baad phir try kariye.`, retryAfterSeconds };
+  }
   if (error instanceof PermissionDeniedError) {
     const remote = (error as { remote?: { type?: unknown } }).remote;
     if (remote?.type === 'model_vendor_not_enabled') {
@@ -168,7 +173,7 @@ export async function signedReadUrl(path: string) {
 export async function removeUpload(path: string) {
   const sb = await admin();
   const { error } = await sb.storage.from(STUDIO_BUCKET).remove([path]);
-  if (error) console.error('[studio] temp cleanup failed', error.message);
+  if (error) throw new StudioError('Temporary video abhi delete nahi hui — cleanup dobara try kariye.', 503);
 }
 
 async function sweepOldUploads(sb: Awaited<ReturnType<typeof admin>>) {

@@ -9,7 +9,8 @@ import {
   type EnhanceTarget, type StudioJob, type VideoProbe,
 } from '@/lib/studio-tools';
 import { saveStudioItem } from '@/lib/studio-store';
-import { Choice, CostNote, FieldLabel, ToolError, ToolPanel, postJson } from './studio-shared';
+import { useStudioRecovery } from '@/lib/studio-recovery';
+import { Choice, CostNote, FieldLabel, ToolError, ToolPanel, postJson, StudioRequestError } from './studio-shared';
 
 const TARGETS = [{ value: '1080p', label: '1080p Full HD' }, { value: '4k', label: '4K' }] as const;
 type Stage = 'idle' | 'reading' | 'uploading' | 'starting';
@@ -25,6 +26,7 @@ export function EnhanceTool() {
   const [error, setError] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { blocked } = useStudioRecovery();
   useEffect(() => () => { if (preview) URL.revokeObjectURL(preview); }, [preview]);
 
   function reset() {
@@ -57,6 +59,7 @@ export function EnhanceTool() {
     if (!file || !probe || !clip) return;
     if (!window.confirm(`${clip.seconds.toFixed(1)} second ka clip Topaz se ${target === '4k' ? '4K' : '1080p'} mein saaf hoga. Credits clip ki lambai ke hisaab se lagenge. Shuru karein?`)) return;
     let path: string | null = null;
+    let uploaded = false;
     setError(null);
     try {
       setStage('uploading');
@@ -64,6 +67,7 @@ export function EnhanceTool() {
       path = slot.path;
       const { error } = await supabase.storage.from('studio-temp').uploadToSignedUrl(slot.path, slot.token, file, { contentType: file.type || 'video/mp4' });
       if (error) throw new Error('Video upload nahi ho paayi — internet check karke phir try kariye.');
+      uploaded = true;
       setStage('starting');
       const { job } = await postJson<{ job: StudioJob }>('/api/studio-video', {
         tool: 'enhance', path: slot.path, container: probe.container, width: probe.width, height: probe.height,
@@ -73,11 +77,14 @@ export function EnhanceTool() {
         id: crypto.randomUUID(), tool: 'enhance', title: file.name, createdAt: Date.now(), status: job.status, progress: job.progress,
         jobId: job.id, expiresAt: job.expiresAt, credits: job.billedCredits, error: job.error, uploadPath: slot.path,
         detail: `${probe.width}×${probe.height} → ${target === '4k' ? '4K' : '1080p'} · ${clip.seconds.toFixed(1)} sec`,
-      });
+      }).catch(() => toast.error(`Video ka kaam shuru ho gaya (job: ${job.id}), par device par save nahi hua. Gallery khuli rakhiye; dobara submit mat kariye.`));
       toast.success('Topaz video saaf kar raha hai — kuch minute lagenge. Gallery mein progress dikhega.');
       reset();
     } catch (e) {
-      if (path) void fetch(`/api/studio-upload?path=${encodeURIComponent(path)}`, { method: 'DELETE' });
+      // A lost response may hide an accepted paid job: never remove its source.
+      if (path && (!uploaded || (e instanceof StudioRequestError && [400, 401, 402, 403, 429].includes(e.status)))) {
+        void fetch(`/api/studio-upload?path=${encodeURIComponent(path)}`, { method: 'DELETE' }).catch(() => {});
+      }
       setError(e instanceof Error ? e.message : 'Video saaf karna shuru nahi ho paaya.');
     } finally {
       setStage('idle');
@@ -126,7 +133,7 @@ export function EnhanceTool() {
           {clip && <p className="text-xs text-muted-foreground">Clip: {(clip.start_index / probe.frameRate).toFixed(1)}s → {((clip.end_index + 1) / probe.frameRate).toFixed(1)}s · {clip.frames} frames</p>}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CostNote>Topaz clip ki lambai ke hisaab se charge karta hai · asli credits job ke baad gallery mein</CostNote>
-            <Button type="button" className="touch-btn" onClick={() => void enhance()} disabled={busy}>
+            <Button type="button" className="touch-btn" onClick={() => void enhance()} disabled={busy || blocked}>
               {busy ? <Loader2 className="size-4 animate-spin" /> : <Sparkles className="size-4" />}
               {stage === 'uploading' ? 'Upload ho raha hai…' : stage === 'starting' ? 'Shuru ho raha hai…' : 'Video saaf karo'}
             </Button>

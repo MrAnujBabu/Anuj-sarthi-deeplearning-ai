@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { AlertTriangle, Clapperboard, Clock, Download, ImageIcon, Loader2, Sparkles, Trash2 } from 'lucide-react';
+import { AlertTriangle, Clapperboard, Clock, Download, ImageIcon, Loader2, Sparkles, Trash2, HardDriveDownload } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { STUDIO_TOOLS, formatCredits, type StudioJob, type StudioToolId } from '@/lib/studio-tools';
 import { STUDIO_EVENT, deleteStudioItem, isPendingItem, listStudioItems, patchStudioItem, type StudioItem } from '@/lib/studio-store';
 import { downloadBlob, downloadDataUrl, slug } from './studio-shared';
+import { deferStudio, responseWaitSeconds, studioRemaining } from '@/lib/studio-recovery';
 
 const ICONS: Record<StudioToolId, typeof ImageIcon> = { diagram: ImageIcon, animation: Clapperboard, enhance: Sparkles };
 
@@ -31,12 +32,17 @@ function usePollJobs(items: StudioItem[] | null) {
     let stopped = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
     const tick = async () => {
+      if (studioRemaining()) {
+        timer = setTimeout(tick, studioRemaining() * 1000);
+        return;
+      }
       if (document.visibilityState === 'visible') {
         for (const item of pending) {
           if (stopped) return;
           try {
             const res = await fetch(`/api/studio-video?id=${encodeURIComponent(item.jobId ?? '')}`);
             const body = await res.json().catch(() => ({})) as { job?: StudioJob; error?: string };
+            if (res.status === 429) { deferStudio(responseWaitSeconds(res)); break; }
             if (res.status === 404) { await finish(item, { status: 'failed', error: 'Job nahi mila — shayad time khatam ho gaya.' }); continue; }
             if (!res.ok || !body.job) throw new Error(body.error || `Status ${res.status}`);
             failures.current = 0;
@@ -57,12 +63,15 @@ function usePollJobs(items: StudioItem[] | null) {
 }
 
 async function finish(item: StudioItem, job: Partial<StudioJob> & { status: 'completed' | 'failed' }) {
-  if (item.uploadPath) void fetch(`/api/studio-upload?path=${encodeURIComponent(item.uploadPath)}`, { method: 'DELETE' }).catch(() => {});
+  let cleaned = false;
+  if (item.uploadPath) {
+    try { cleaned = (await fetch(`/api/studio-upload?path=${encodeURIComponent(item.uploadPath)}`, { method: 'DELETE' })).ok; } catch { /* Preserve cleanup pointer on failure. */ }
+  }
   const base: Partial<StudioItem> = {
     status: job.status, progress: job.status === 'completed' ? 100 : item.progress, error: job.error ?? (job.status === 'failed' ? 'Video nahi ban paayi.' : null),
     expiresAt: job.expiresAt ?? item.expiresAt ?? null, credits: job.billedCredits ?? item.credits ?? null,
   };
-  delete (base as { uploadPath?: string }).uploadPath;
+  if (cleaned) base.uploadPath = undefined;
   if (job.status === 'completed' && item.tool === 'animation' && item.jobId) {
     try {
       const res = await fetch(`/api/studio-video-file?id=${encodeURIComponent(item.jobId)}`);
@@ -87,6 +96,19 @@ function VideoBlob({ blob, label }: { blob: Blob; label: string }) {
 }
 
 function ItemCard({ item }: { item: StudioItem }) {
+  const [saving, setSaving] = useState(false);
+  async function saveOnDevice() {
+    if (!item.jobId || saving) return;
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/studio-video-file?id=${encodeURIComponent(item.jobId)}`);
+      if (res.status === 429) deferStudio(responseWaitSeconds(res));
+      if (!res.ok) throw new Error('Video abhi save nahi hui — thodi der baad phir try kariye.');
+      await patchStudioItem(item.id, { video: await res.blob() });
+      toast.success('Video device par saved.');
+    } catch (e) { toast.error(e instanceof Error ? e.message : 'Save nahi hui.'); }
+    finally { setSaving(false); }
+  }
   const Icon = ICONS[item.tool];
   const pending = item.status === 'queued' || item.status === 'in_progress';
   const left = hoursLeft(item.expiresAt);
@@ -122,6 +144,9 @@ function ItemCard({ item }: { item: StudioItem }) {
         <div className="flex shrink-0 gap-0.5">
           {item.image && <Button variant="ghost" size="icon" className="size-8" aria-label={`Download ${item.title}`} onClick={() => downloadDataUrl(item.image ?? '', `${slug(item.title)}.png`)}><Download className="size-4" /></Button>}
           {item.video && <Button variant="ghost" size="icon" className="size-8" aria-label={`Download ${item.title}`} onClick={() => item.video && downloadBlob(item.video, `${slug(item.title)}.mp4`)}><Download className="size-4" /></Button>}
+          {!item.video && item.tool !== 'diagram' && remoteAvailable && (
+            <Button variant="ghost" size="icon" className="size-8" disabled={saving} aria-label={`Save on device ${item.title}`} title="Save on device" onClick={() => void saveOnDevice()}>{saving ? <Loader2 className="size-4 animate-spin" /> : <HardDriveDownload className="size-4" />}</Button>
+          )}
           {!item.video && item.tool !== 'diagram' && remoteAvailable && (
             <Button asChild variant="ghost" size="icon" className="size-8"><a href={`/api/studio-video-file?id=${encodeURIComponent(item.jobId ?? '')}&download=1`} aria-label={`Download ${item.title}`}><Download className="size-4" /></a></Button>
           )}

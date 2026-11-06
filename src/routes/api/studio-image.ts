@@ -24,7 +24,7 @@ export const Route = createFileRoute('/api/studio-image')({
         } catch (e) {
           if (request.signal.aborted) return new Response(null, { status: 499 });
           const f = await studioFailure(e, 'ByteDance');
-          return Response.json({ error: f.message }, { status: f.status });
+          return Response.json({ error: f.message }, { status: f.status, headers: f.retryAfterSeconds ? { 'Retry-After': String(f.retryAfterSeconds) } : {} });
         }
       },
     },
