@@ -16,7 +16,8 @@ export function TelegramSave({ item }: { item: StudioItem }) {
     try {
       const { data } = await supabase.auth.getSession();
       if (!data.session) { setNeedsSignIn(true); return; }
-      const source = item.image ?? (item.jobId ? `/api/studio-video-file?id=${encodeURIComponent(item.jobId)}` : null);
+      const fresh = item.imagePath && Date.now() - item.createdAt < 24 * 60 * 60 * 1000 ? `/api/studio-image?path=${encodeURIComponent(item.imagePath)}` : null;
+      const source = item.image ?? fresh ?? (item.jobId ? `/api/studio-video-file?id=${encodeURIComponent(item.jobId)}` : null);
       let blob = item.video;
       if (!blob && source) {
         const res = await fetch(source);
@@ -36,6 +37,9 @@ export function TelegramSave({ item }: { item: StudioItem }) {
     } catch (e) { toast.error(e instanceof Error ? e.message : 'Telegram save nahi hua.'); }
     finally { lock.current = false; setBusy(false); }
   }
+  // Images live only in the open session (never stored on the device); after a reload there is nothing to upload.
+  const lost = !item.telegramRef && !item.image && !item.video && !item.jobId && !(item.imagePath && Date.now() - item.createdAt < 24 * 60 * 60 * 1000);
+  if (lost) return <p className="text-xs text-muted-foreground">Yeh image ab available nahi hai (24 ghante khatam ya purani image). Nayi image banakar "Save to Telegram" dabaiye.</p>;
   return <div className="flex flex-wrap items-center gap-2"><Button type="button" size="sm" variant="outline" disabled={busy || !!item.telegramRef} onClick={() => void save()}>
     {busy ? <Loader2 className="size-4 animate-spin" /> : item.telegramRef ? <Check className="size-4" /> : <Send className="size-4" />}
     {busy ? 'Uploading…' : item.telegramRef ? 'Saved to Telegram' : 'Save to Telegram'}

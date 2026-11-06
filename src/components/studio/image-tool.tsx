@@ -1,3 +1,5 @@
+import { FieldMic } from '@/components/studio/field-mic';
+import { LabelCheck } from '@/components/studio/label-check';
 import { useEffect, useRef, useState } from 'react';
 import { Download, ImageIcon, Loader2, Square, Wand2 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -20,7 +22,7 @@ export function ImageTool({ initialTopic = '' }: { initialTopic?: string }) {
   const [details, setDetails] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<{ image: string; topic: string } | null>(null);
+  const [result, setResult] = useState<{ image: string; topic: string; labels: string } | null>(null);
   const abort = useRef<AbortController | null>(null);
   const { blocked } = useStudioRecovery();
   useEffect(() => { if (initialTopic) setTopic(initialTopic); }, [initialTopic]);
@@ -35,11 +37,11 @@ export function ImageTool({ initialTopic = '' }: { initialTopic?: string }) {
     setError(null);
     setResult(null);
     try {
-      const { image } = await postJson<{ image: string }>('/api/studio-image', { style, topic: t, details, orientation }, ctrl.signal);
-      setResult({ image, topic: t });
+      const { image, imagePath } = await postJson<{ image: string; imagePath?: string | null }>('/api/studio-image', { style, topic: t, details, orientation }, ctrl.signal);
+      setResult({ image, topic: t, labels: details.trim() });
       await saveStudioItem({
         id: crypto.randomUUID(), tool: 'diagram', title: t, createdAt: Date.now(), status: 'completed', progress: 100,
-        image, credits: SEEDREAM_IMAGE_CREDITS, detail: style === 'diagram' ? 'Labelled diagram' : 'Revision poster',
+        image, imagePath: imagePath ?? undefined, credits: SEEDREAM_IMAGE_CREDITS, detail: style === 'diagram' ? 'Labelled diagram' : 'Revision poster',
       }).catch(() => toast.error('Image bani, par is device par save nahi ho paayi — abhi download kar lijiye.'));
     } catch (e) {
       if (!ctrl.signal.aborted) setError(e instanceof Error ? e.message : 'Image nahi ban paayi.');
@@ -55,13 +57,13 @@ export function ImageTool({ initialTopic = '' }: { initialTopic?: string }) {
         <Choice label="Image type" value={style} options={STYLES} onChange={setStyle} disabled={busy} />
         <div>
           <FieldLabel htmlFor="studio-image-topic">Topic</FieldLabel>
-          <Input id="studio-image-topic" value={topic} maxLength={TOPIC_MAX} disabled={busy} onChange={e => setTopic(e.target.value)}
-            placeholder={style === 'diagram' ? 'e.g. Human heart — L.S. view' : 'e.g. Photosynthesis — light reaction'} />
+          <div className="relative"><Input id="studio-image-topic" value={topic} maxLength={TOPIC_MAX} disabled={busy} className="pr-12" onChange={e => setTopic(e.target.value)}
+            placeholder={style === 'diagram' ? 'e.g. Human heart — L.S. view' : 'e.g. Photosynthesis — light reaction'} /><FieldMic value={topic} onText={setTopic} disabled={busy} maxLength={TOPIC_MAX} /></div>
         </div>
         <div>
           <FieldLabel htmlFor="studio-image-details" hint="(optional)">{style === 'diagram' ? 'Zaroori labels' : 'Zaroori points'}</FieldLabel>
-          <Textarea id="studio-image-details" value={details} maxLength={DETAILS_MAX} disabled={busy} rows={2} onChange={e => setDetails(e.target.value)}
-            placeholder={style === 'diagram' ? 'e.g. right atrium, SA node, bicuspid valve, aorta' : 'e.g. Z-scheme, photolysis of water, NADPH, ATP'} />
+          <div className="relative"><Textarea id="studio-image-details" value={details} maxLength={DETAILS_MAX} disabled={busy} rows={2} className="pr-12" onChange={e => setDetails(e.target.value)}
+            placeholder={style === 'diagram' ? 'e.g. right atrium, SA node, bicuspid valve, aorta' : 'e.g. Z-scheme, photolysis of water, NADPH, ATP'} /><FieldMic value={details} onText={setDetails} disabled={busy} maxLength={DETAILS_MAX} /></div>
         </div>
         <Choice label="Image size" value={orientation} options={SIZES} onChange={setOrientation} disabled={busy} />
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -76,7 +78,7 @@ export function ImageTool({ initialTopic = '' }: { initialTopic?: string }) {
       <ToolError message={error} />
       {busy && (
         <div className="mt-4 flex items-center gap-2 rounded-xl border border-dashed px-4 py-8 text-sm text-muted-foreground">
-          <Loader2 className="size-4 animate-spin" /><Shimmer>ByteDance Seedream image bana raha hai…</Shimmer>
+          <Loader2 className="size-4 animate-spin" /><Shimmer>ByteDance Seedream image bana raha hai… (lagbhag 50 second)</Shimmer>
         </div>
       )}
       {result && !busy && (
@@ -88,7 +90,8 @@ export function ImageTool({ initialTopic = '' }: { initialTopic?: string }) {
           </figcaption>
         </figure>
       )}
-      <p className="mt-3 text-xs text-muted-foreground">AI image hai — labels ko NCERT figure se ek baar milaa lijiye.</p>
+      {result && !busy ? <LabelCheck image={result.image} topic={result.topic} labels={result.labels} />
+        : <p className="mt-3 text-xs text-muted-foreground">Har image ke labels NCERT figure se apne-aap milaaye jaayenge.</p>}
     </ToolPanel>
   );
 }

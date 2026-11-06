@@ -1,5 +1,10 @@
 import { isKeyRegistryProblem, type AiFailure } from './errors';
-import { creditPauseDecision } from './pause-policy';
+import { createHash } from 'node:crypto';
+import { creditPauseDecision, isStaleCreditPause, pauseMessageText, tagPauseMessage } from './pause-policy';
+/** Short non-secret fingerprint of the current project key: changes when the project moves. */
+function ownerTag() {
+  return createHash('sha256').update(process.env['LOVABLE_API_KEY'] ?? 'none').digest('base64url').slice(0, 12);
+}
 // Pause state is advisory: if the database is unreachable, the tutor keeps working.
 // Every AI route reads it, so one cached read per id per minute keeps the free-tier database quiet.
 async function loadPause(id: string) {
@@ -41,7 +46,14 @@ export async function getAiPause(id = 'workspace') {
     const row = await loadPause(id);
     // Older builds saved "key not registered" as a model denial. That is a key setup
     // problem, fixed by updating the key, so such rows never block new requests.
-    const data = row && typeof row.message === 'string' && isKeyRegistryProblem(row.message) ? null : row;
+    let data = row && typeof row.message === 'string' && isKeyRegistryProblem(row.message) ? null : row;
+    if (data && isStaleCreditPause(data, ownerTag())) {
+      // Project moved (or old untagged row): forget the old credits pause so new credits apply.
+      const { supabaseAdmin } = await import('@/integrations/supabase/client.server');
+      await supabaseAdmin.from('ai_pause_state').delete().eq('id', id).eq('kind', 'credits');
+      data = null;
+    }
+    if (data) data = { ...data, message: pauseMessageText(data.message) };
     if (data && creditPauseDecision(data, Date.now()) === 'probe') {
       const { claimed, refreshed } = await claimCreditProbe(data);
       cache.set(id, { at: Date.now(), value: refreshed });
@@ -65,7 +77,7 @@ export async function setAiPause(failure: AiFailure, id = 'workspace') {
   cache.clear();
   try {
     const { supabaseAdmin } = await import('@/integrations/supabase/client.server');
-    const { error } = await supabaseAdmin.from('ai_pause_state').upsert({ id, kind: failure.kind, message: failure.message, updated_at: new Date().toISOString() });
+    const { error } = await supabaseAdmin.from('ai_pause_state').upsert({ id, kind: failure.kind, message: failure.kind === 'credits' ? tagPauseMessage(failure.message, ownerTag()) : failure.message, updated_at: new Date().toISOString() });
     if (error) throw error;
   } catch (e) {
     console.error('[setAiPause] could not save pause state', e instanceof Error ? e.message : e);

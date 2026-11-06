@@ -1,3 +1,4 @@
+import { FieldMic } from '@/components/studio/field-mic';
 import { useEffect, useState } from 'react';
 import { Clapperboard, Loader2, Play } from 'lucide-react';
 import { toast } from 'sonner';
@@ -56,13 +57,13 @@ export function AnimationTool({ initialTopic = '' }: { initialTopic?: string }) 
       <form className="space-y-4" onSubmit={e => { e.preventDefault(); void start(); }}>
         <div>
           <FieldLabel htmlFor="studio-anim-topic">Kya dikhana hai?</FieldLabel>
-          <Input id="studio-anim-topic" value={topic} maxLength={TOPIC_MAX} disabled={busy} onChange={e => setTopic(e.target.value)}
-            placeholder="e.g. Blood flow through the human heart" />
+          <div className="relative"><Input id="studio-anim-topic" value={topic} maxLength={TOPIC_MAX} disabled={busy} className="pr-12" onChange={e => setTopic(e.target.value)}
+            placeholder="e.g. Blood flow through the human heart" /><FieldMic value={topic} onText={setTopic} disabled={busy} maxLength={TOPIC_MAX} /></div>
         </div>
         <div>
           <FieldLabel htmlFor="studio-anim-details" hint="(optional)">Kaunse steps dikhne chahiye</FieldLabel>
-          <Textarea id="studio-anim-details" value={details} maxLength={DETAILS_MAX} disabled={busy} rows={2} onChange={e => setDetails(e.target.value)}
-            placeholder="e.g. deoxygenated blood right atrium se right ventricle, phir lungs" />
+          <div className="relative"><Textarea id="studio-anim-details" value={details} maxLength={DETAILS_MAX} disabled={busy} rows={2} className="pr-12" onChange={e => setDetails(e.target.value)}
+            placeholder="e.g. deoxygenated blood right atrium se right ventricle, phir lungs" /><FieldMic value={details} onText={setDetails} disabled={busy} maxLength={DETAILS_MAX} /></div>
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
           <div><FieldLabel>Length</FieldLabel><Choice label="Length" value={duration} options={DURATIONS} onChange={setDuration} disabled={busy} /><Button type="button" variant="outline" size="sm" disabled title="60 sec ke liye alag clips jodni hongi" className="mt-1.5">60 sec</Button><p className="mt-1 text-xs text-muted-foreground">60 sec: alag clips jodna zaroori hai; ek video 30 sec tak.</p></div>

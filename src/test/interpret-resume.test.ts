@@ -73,3 +73,22 @@ describe('remembered "credits finished" pause', () => {
     expect(creditPauseDecision({ kind: 'denied', updated_at: '2020-01-01T00:00:00Z' }, now)).toBe('block');
   });
 });
+
+import { isStaleCreditPause, tagPauseMessage, pauseMessageText } from '@/lib/ai/pause-policy';
+describe('credits pause follows the project', () => {
+  it('drops a credits pause recorded under another project key', () => {
+    expect(isStaleCreditPause({ kind: 'credits', message: tagPauseMessage('No credits', 'oldKey') }, 'newKey')).toBe(true);
+  });
+  it('keeps a credits pause recorded under the current key', () => {
+    expect(isStaleCreditPause({ kind: 'credits', message: tagPauseMessage('No credits', 'k1') }, 'k1')).toBe(false);
+  });
+  it('drops untagged old credits pauses', () => {
+    expect(isStaleCreditPause({ kind: 'credits', message: 'No credits' }, 'k1')).toBe(true);
+  });
+  it('never auto-drops a denial', () => {
+    expect(isStaleCreditPause({ kind: 'denied', message: 'Vendor off' }, 'k1')).toBe(false);
+  });
+  it('hides the tag from people', () => {
+    expect(pauseMessageText(tagPauseMessage('AI credits khatam', 'k1'))).toBe('AI credits khatam');
+  });
+});

@@ -24,6 +24,8 @@ import { Route as ApiNcertScanRouteImport } from './routes/api/ncert-scan'
 import { Route as ApiSarvamSpeechRouteImport } from './routes/api/sarvam-speech'
 import { Route as ApiSpeechRouteImport } from './routes/api/speech'
 import { Route as ApiStudioImageRouteImport } from './routes/api/studio-image'
+import { Route as ApiStudioLabelCheckRouteImport } from './routes/api/studio-label-check'
+import { Route as ApiStudioTelegramRouteImport } from './routes/api/studio-telegram'
 import { Route as ApiStudioUploadRouteImport } from './routes/api/studio-upload'
 import { Route as ApiStudioVideoRouteImport } from './routes/api/studio-video'
 import { Route as ApiStudioVideoFileRouteImport } from './routes/api/studio-video-file'
@@ -109,6 +111,16 @@ const ApiStudioImageRoute = ApiStudioImageRouteImport.update({
   path: '/api/studio-image',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiStudioLabelCheckRoute = ApiStudioLabelCheckRouteImport.update({
+  id: '/api/studio-label-check',
+  path: '/api/studio-label-check',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStudioTelegramRoute = ApiStudioTelegramRouteImport.update({
+  id: '/api/studio-telegram',
+  path: '/api/studio-telegram',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiStudioUploadRoute = ApiStudioUploadRouteImport.update({
   id: '/api/studio-upload',
   path: '/api/studio-upload',
@@ -171,6 +183,8 @@ export interface FileRoutesByFullPath {
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/studio-image': typeof ApiStudioImageRoute
+  '/api/studio-label-check': typeof ApiStudioLabelCheckRoute
+  '/api/studio-telegram': typeof ApiStudioTelegramRoute
   '/api/studio-upload': typeof ApiStudioUploadRoute
   '/api/studio-video': typeof ApiStudioVideoRoute
   '/api/studio-video-file': typeof ApiStudioVideoFileRoute
@@ -197,6 +211,8 @@ export interface FileRoutesByTo {
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/studio-image': typeof ApiStudioImageRoute
+  '/api/studio-label-check': typeof ApiStudioLabelCheckRoute
+  '/api/studio-telegram': typeof ApiStudioTelegramRoute
   '/api/studio-upload': typeof ApiStudioUploadRoute
   '/api/studio-video': typeof ApiStudioVideoRoute
   '/api/studio-video-file': typeof ApiStudioVideoFileRoute
@@ -224,6 +240,8 @@ export interface FileRoutesById {
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
   '/api/studio-image': typeof ApiStudioImageRoute
+  '/api/studio-label-check': typeof ApiStudioLabelCheckRoute
+  '/api/studio-telegram': typeof ApiStudioTelegramRoute
   '/api/studio-upload': typeof ApiStudioUploadRoute
   '/api/studio-video': typeof ApiStudioVideoRoute
   '/api/studio-video-file': typeof ApiStudioVideoFileRoute
@@ -252,6 +270,8 @@ export interface FileRouteTypes {
     | '/api/sarvam-speech'
     | '/api/speech'
     | '/api/studio-image'
+    | '/api/studio-label-check'
+    | '/api/studio-telegram'
     | '/api/studio-upload'
     | '/api/studio-video'
     | '/api/studio-video-file'
@@ -278,6 +298,8 @@ export interface FileRouteTypes {
     | '/api/sarvam-speech'
     | '/api/speech'
     | '/api/studio-image'
+    | '/api/studio-label-check'
+    | '/api/studio-telegram'
     | '/api/studio-upload'
     | '/api/studio-video'
     | '/api/studio-video-file'
@@ -304,6 +326,8 @@ export interface FileRouteTypes {
     | '/api/sarvam-speech'
     | '/api/speech'
     | '/api/studio-image'
+    | '/api/studio-label-check'
+    | '/api/studio-telegram'
     | '/api/studio-upload'
     | '/api/studio-video'
     | '/api/studio-video-file'
@@ -331,6 +355,8 @@ export interface RootRouteChildren {
   ApiSarvamSpeechRoute: typeof ApiSarvamSpeechRoute
   ApiSpeechRoute: typeof ApiSpeechRoute
   ApiStudioImageRoute: typeof ApiStudioImageRoute
+  ApiStudioLabelCheckRoute: typeof ApiStudioLabelCheckRoute
+  ApiStudioTelegramRoute: typeof ApiStudioTelegramRoute
   ApiStudioUploadRoute: typeof ApiStudioUploadRoute
   ApiStudioVideoRoute: typeof ApiStudioVideoRoute
   ApiStudioVideoFileRoute: typeof ApiStudioVideoFileRoute
@@ -449,6 +475,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiStudioImageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/studio-label-check': {
+      id: '/api/studio-label-check'
+      path: '/api/studio-label-check'
+      fullPath: '/api/studio-label-check'
+      preLoaderRoute: typeof ApiStudioLabelCheckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/studio-telegram': {
+      id: '/api/studio-telegram'
+      path: '/api/studio-telegram'
+      fullPath: '/api/studio-telegram'
+      preLoaderRoute: typeof ApiStudioTelegramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/studio-upload': {
       id: '/api/studio-upload'
       path: '/api/studio-upload'
@@ -531,6 +571,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiSarvamSpeechRoute: ApiSarvamSpeechRoute,
   ApiSpeechRoute: ApiSpeechRoute,
   ApiStudioImageRoute: ApiStudioImageRoute,
+  ApiStudioLabelCheckRoute: ApiStudioLabelCheckRoute,
+  ApiStudioTelegramRoute: ApiStudioTelegramRoute,
   ApiStudioUploadRoute: ApiStudioUploadRoute,
   ApiStudioVideoRoute: ApiStudioVideoRoute,
   ApiStudioVideoFileRoute: ApiStudioVideoFileRoute,

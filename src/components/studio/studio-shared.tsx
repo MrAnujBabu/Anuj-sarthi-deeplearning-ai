@@ -9,15 +9,16 @@ export class StudioRequestError extends Error {
   constructor(message: string, public status: number) { super(message); }
 }
 
-export async function postJson<T>(url: string, body: unknown, signal?: AbortSignal): Promise<T> {
-  beginStudioRequest();
+/** `exclusive: false` skips the one-paid-request-at-a-time lock (used by the cheap automatic label check). */
+export async function postJson<T>(url: string, body: unknown, signal?: AbortSignal, { exclusive = true } = {}): Promise<T> {
+  if (exclusive) beginStudioRequest();
   try {
   const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), ...(signal ? { signal } : {}) });
   const json = await res.json().catch(() => ({})) as { error?: string };
   if (res.status === 429) deferStudio(responseWaitSeconds(res));
   if (!res.ok) throw new StudioRequestError(json.error || `Request failed (${res.status})`, res.status);
   return json as T;
-  } finally { endStudioRequest(); }
+  } finally { if (exclusive) endStudioRequest(); }
 }
 
 /** Tool title with its own on/off switch; when off, the form is replaced by a short note. */

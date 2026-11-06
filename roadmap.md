@@ -34,3 +34,12 @@
 - [ ] Vedantu login for "Sync now" (declined)
 - [ ] Workspace credits are low — tutor answers, voice calls, Deep Scan and AI Studio stop when they run out
 - [ ] Existing data (admin memory, user accounts) — waiting on export from the old project
+
+- [x] Auto-clear stale AI credits pause when project/key moves or credits return
+- [x] Explain ByteDance + Topaz Labs and how they run through the AI Gateway
+- [x] Make AI Studio picture-making (Seedream) faster with good output
+- [x] Fix "Output abhi available nahi hai" error
+- [x] AI Studio work survives page refresh (keeps running in background)
+- [x] Reconnect Perplexity, Firecrawl, Parallel in new workspace and test
+- [x] Fix label check blocked by "Ek AI request shuru ho rahi hai"
+- [ ] Git commit request (Lovable saves automatically; GitHub push needs reconnect)

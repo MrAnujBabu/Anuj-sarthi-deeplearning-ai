@@ -76,7 +76,8 @@ export function formatCredits(credits: number) {
 // ---------- Image styles ----------
 export const IMAGE_STYLES = ['diagram', 'poster'] as const;
 export type ImageStyle = (typeof IMAGE_STYLES)[number];
-export const IMAGE_ORIENTATIONS = { square: '2048x2048', portrait: '1728x2304', landscape: '2304x1728' } as const;
+// ~2.3 MP: sharp on phones/print-outs and ~25% faster than 4 MP (measured 53 s vs 69 s).
+export const IMAGE_ORIENTATIONS = { square: '1536x1536', portrait: '1344x1792', landscape: '1792x1344' } as const;
 export type ImageOrientation = keyof typeof IMAGE_ORIENTATIONS;
 
 export const TOPIC_MAX = 160;

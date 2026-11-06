@@ -18,6 +18,8 @@ export type StudioItem = {
   error?: string | null;
   /** Diagram/poster image as a data URL. */
   image?: string | undefined;
+  /** Private 24-hour server copy of the picture, so it survives a refresh. */
+  imagePath?: string | undefined;
   /** Finished animation saved on this device. */
   video?: Blob | undefined;
   /** Temporary upload of the source clip (enhance), removed once the job ends. */

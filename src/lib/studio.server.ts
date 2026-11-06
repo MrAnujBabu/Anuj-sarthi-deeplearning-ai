@@ -78,7 +78,7 @@ export async function createStudioImage(input: { style: ImageStyle; topic: strin
       await noteSuccess();
       const b64 = event.b64_json;
       const mime = b64.startsWith('/9j/') ? 'image/jpeg' : b64.startsWith('UklG') ? 'image/webp' : 'image/png';
-      return `data:${mime};base64,${b64}`;
+      return { image: `data:${mime};base64,${b64}`, imagePath: await keepImageCopy(b64, mime).catch(() => null) };
     }
   }
   throw new StudioError('Image nahi ban paayi — phir try kariye.', 502);
@@ -145,6 +145,29 @@ export async function studioVideoFile(id: string, download: boolean) {
 
 // ---------- Temporary upload storage for Topaz ----------
 export const STUDIO_BUCKET = 'studio-temp';
+const IMAGE_KEEP_MS = 24 * 60 * 60 * 1000;
+const IMAGE_PATH_RE = /^images\/\d{13}-[0-9a-f-]{36}\.(jpg|png|webp)$/;
+export const isStudioImagePath = (path: string) => IMAGE_PATH_RE.test(path) && Date.now() - Number(path.slice(7, 20)) < IMAGE_KEEP_MS;
+
+/** Private 24-hour copy so a finished picture survives a page refresh; swept afterwards. */
+async function keepImageCopy(b64: string, mime: string) {
+  const sb = await admin();
+  void sweepFolder(sb, 'images', IMAGE_KEEP_MS);
+  const ext = mime === 'image/jpeg' ? 'jpg' : mime === 'image/webp' ? 'webp' : 'png';
+  const path = `images/${Date.now()}-${crypto.randomUUID()}.${ext}`;
+  const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const { error } = await sb.storage.from(STUDIO_BUCKET).upload(path, bytes, { contentType: mime, upsert: false });
+  if (error) { console.error('[studio] image copy failed', error.message); return null; }
+  return path;
+}
+
+export async function studioImageFile(path: string) {
+  const sb = await admin();
+  const { data, error } = await sb.storage.from(STUDIO_BUCKET).download(path);
+  if (error || !data) throw new StudioError('Image ab available nahi hai (24 ghante khatam).', 404);
+  return new Response(data, { headers: { 'Content-Type': data.type || 'image/jpeg', 'Cache-Control': 'private, max-age=3600' } });
+}
+
 const UPLOAD_PATH_RE = /^topaz\/\d{13}-[0-9a-f-]{36}\.(mp4|mov|m4v)$/;
 export const isStudioUploadPath = (path: string) => UPLOAD_PATH_RE.test(path);
 
@@ -177,10 +200,14 @@ export async function removeUpload(path: string) {
 }
 
 async function sweepOldUploads(sb: Awaited<ReturnType<typeof admin>>) {
+  await sweepFolder(sb, 'topaz', 6 * 60 * 60 * 1000);
+}
+
+async function sweepFolder(sb: Awaited<ReturnType<typeof admin>>, folder: string, maxAgeMs: number) {
   try {
-    const { data } = await sb.storage.from(STUDIO_BUCKET).list('topaz', { limit: 100, sortBy: { column: 'created_at', order: 'asc' } });
-    const cutoff = Date.now() - 6 * 60 * 60 * 1000;
-    const old = (data ?? []).filter(f => Number(f.name.split('-')[0]) < cutoff).map(f => `topaz/${f.name}`);
+    const { data } = await sb.storage.from(STUDIO_BUCKET).list(folder, { limit: 100, sortBy: { column: 'created_at', order: 'asc' } });
+    const cutoff = Date.now() - maxAgeMs;
+    const old = (data ?? []).filter(f => Number(f.name.split('-')[0]) < cutoff).map(f => `${folder}/${f.name}`);
     if (old.length) await sb.storage.from(STUDIO_BUCKET).remove(old);
   } catch (e) {
     console.error('[studio] sweep failed', e instanceof Error ? e.message : e);

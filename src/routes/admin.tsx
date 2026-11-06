@@ -102,7 +102,12 @@ function SignIn({ onDone }: { onDone: () => void }) {
         if (create) {
           const { error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/admin` } });
           setBusy(false);
-          if (error) setErr(error.message); else setSent(true);
+          if (error) {
+            const m = error.message.toLowerCase();
+            setErr(m.includes("signups not allowed") || m.includes("signup is disabled") || m.includes("signups are disabled")
+              ? "Naye account abhi band hain. Supabase dashboard → Authentication → Sign In / Providers mein \"Allow new users to sign up\" chalu karein, phir dobara koshish karein."
+              : error.message);
+          } else setSent(true);
           return;
         }
         const { error } = await supabase.auth.signInWithPassword({ email, password });

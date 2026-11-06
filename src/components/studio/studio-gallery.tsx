@@ -95,10 +95,11 @@ function ItemCard({ item }: { item: StudioItem }) {
   const pending = item.status === 'queued' || item.status === 'in_progress';
   const left = hoursLeft(item.expiresAt);
   const remoteAvailable = item.status === 'completed' && !!item.jobId && (left === null || left > 0);
+  const savedCopy = item.imagePath && Date.now() - item.createdAt < 24 * 60 * 60 * 1000 ? `/api/studio-image?path=${encodeURIComponent(item.imagePath)}` : undefined;
   const remove = () => { if (window.confirm(`"${item.title}" hatayein?`)) void deleteStudioItem(item.id); };
   return (
     <article className="overflow-hidden rounded-xl border bg-card">
-      {item.tool === 'diagram' && (item.image || item.telegramRef) && <img src={item.telegramRef ? `/api/studio-telegram?ref=${encodeURIComponent(item.telegramRef)}` : item.image} alt={`${item.title} — AI image`} loading="lazy" className="max-h-80 w-full bg-background object-contain" />}
+      {item.tool === 'diagram' && (item.image || item.telegramRef || savedCopy) && <img src={item.telegramRef ? `/api/studio-telegram?ref=${encodeURIComponent(item.telegramRef)}` : item.image ?? savedCopy} alt={`${item.title} — AI image`} loading="lazy" className="max-h-80 w-full bg-background object-contain" />}
       {item.tool !== 'diagram' && item.telegramRef && <video src={`/api/studio-telegram?ref=${encodeURIComponent(item.telegramRef)}`} controls playsInline className="w-full bg-muted" aria-label={item.title} />}
       {item.video && <VideoBlob blob={item.video} label={item.title} />}
       {!item.telegramRef && !item.video && item.tool !== 'diagram' && remoteAvailable && (
@@ -120,11 +121,15 @@ function ItemCard({ item }: { item: StudioItem }) {
           <p className="truncate text-xs text-muted-foreground">
             {[item.detail, item.credits != null ? formatCredits(item.credits) : null, new Date(item.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })].filter(Boolean).join(' · ')}
           </p>
+          {item.status === 'completed' && item.tool === 'diagram' && !item.image && !item.telegramRef && item.imagePath && (
+            <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground"><Clock className="size-3" />{savedCopy ? 'Refresh ke baad bhi 24 ghante tak yahan rahegi — hamesha ke liye Telegram par save kariye' : 'Time khatam — image ab available nahi'}</p>
+          )}
           {item.status === 'completed' && item.tool === 'enhance' && left !== null && (
             <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground"><Clock className="size-3" />{left > 0 ? `Download link ${left >= 1 ? `${Math.floor(left)} ghante` : 'kuch minute'} aur chalega` : 'Time khatam — video ab available nahi'}</p>
           )}
         </div>
         <div className="flex shrink-0 gap-0.5">
+          {!item.image && savedCopy && <Button asChild variant="ghost" size="icon" className="size-8"><a href={savedCopy} download={`${slug(item.title)}.jpg`} aria-label={`Download ${item.title}`}><Download className="size-4" /></a></Button>}
           {item.image && <Button variant="ghost" size="icon" className="size-8" aria-label={`Download ${item.title}`} onClick={() => downloadDataUrl(item.image ?? '', `${slug(item.title)}.png`)}><Download className="size-4" /></Button>}
           {item.video && <Button variant="ghost" size="icon" className="size-8" aria-label={`Download ${item.title}`} onClick={() => item.video && downloadBlob(item.video, `${slug(item.title)}.mp4`)}><Download className="size-4" /></Button>}
           {!item.telegramRef && !item.video && item.tool !== 'diagram' && remoteAvailable && (
