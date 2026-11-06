@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { INDIAN_DUBBING_DELIVERY, INDIAN_BRIGHT_DELIVERY } from '@/lib/voice-style';
-import { youtubeDeliveryPrompt, youtubeVoiceProfile } from '@/lib/youtube-voice-profile';
+import { youtubeDeliveryPrompt, youtubeVoiceProfile, SPEAK_ONCE_RULE } from '@/lib/youtube-voice-profile';
 import { isAiCancellation } from '@/lib/ai/cancellation';
 
 const MODEL = "google/gemini-2.5-pro-tts";
@@ -11,9 +11,9 @@ const BACKUP_VOICE_NAMES = new Set(["Kore", "Charon", "Fenrir", "Puck", "Orus", 
 
 /** Steering text keeps the Indian-teacher accent; Gemini TTS reads it from the input, not a system prompt. */
 export function indianTeacherPrompt(text: string, dubbing = false, bright = false) {
-  if (bright) return `${INDIAN_BRIGHT_DELIVERY} Speak as a friendly North Indian NEET teacher with even loudness and smooth Hindi-English transitions. Read only the supplied text without adding or translating words or reading these instructions aloud:\n${text}`;
-  if (dubbing) return `${INDIAN_DUBBING_DELIVERY} Speak as a friendly North Indian NEET teacher at a comfortable pace with even loudness, complete word endings and clear scientific terms. No forced fillers, fake laughter or breath effects. Read only the supplied text without adding or translating words or reading these instructions aloud:\n${text}`;
-  return `Speak like a real, warm North Indian NEET teacher talking one-on-one with a student: natural Indian English accent, Hindi words pronounced the desi way, clear diction, relaxed conversational Hinglish rhythm with natural pauses — not a news reader, not an American accent. Keep the same warm, understated voice throughout. Polish lightly: short pauses between ideas, smooth Hindi-English transitions, complete word endings and clear scientific terms. Keep a comfortable conversational pace and even loudness; no exaggerated emotion, forced fillers, fake laughter or breath effects. Read only the supplied text, without adding or translating words or reading these instructions aloud:\n${text}`;
+  if (bright) return `${INDIAN_BRIGHT_DELIVERY} Speak as a friendly North Indian NEET teacher with even loudness and smooth Hindi-English transitions. Read only the supplied text without adding or translating words or reading these instructions aloud. ${SPEAK_ONCE_RULE}\n${text}`;
+  if (dubbing) return `${INDIAN_DUBBING_DELIVERY} Speak as a friendly North Indian NEET teacher at a comfortable pace with even loudness, complete word endings and clear scientific terms. No forced fillers, fake laughter or breath effects. Read only the supplied text without adding or translating words or reading these instructions aloud. ${SPEAK_ONCE_RULE}\n${text}`;
+  return `Speak like a real, warm North Indian NEET teacher talking one-on-one with a student: natural Indian English accent, Hindi words pronounced the desi way, clear diction, relaxed conversational Hinglish rhythm with natural pauses — not a news reader, not an American accent. Keep the same warm, understated voice throughout. Polish lightly: short pauses between ideas, smooth Hindi-English transitions, complete word endings and clear scientific terms. Keep a comfortable conversational pace and even loudness; no exaggerated emotion, forced fillers, fake laughter or breath effects. Read only the supplied text, without adding or translating words or reading these instructions aloud. ${SPEAK_ONCE_RULE}\n${text}`;
 }
 
 export const Route = createFileRoute("/api/speech")({

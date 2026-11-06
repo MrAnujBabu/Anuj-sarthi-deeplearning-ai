@@ -7,7 +7,13 @@ import { isAiCancellation } from '@/lib/ai/cancellation';
 const SARVAM_GATEWAY_URL = 'https://connector-gateway.lovable.dev/udc_sarvam_ai/text-to-speech/stream';
 
 export const Route = createFileRoute('/api/sarvam-speech')({
-  server: { handlers: { POST: async ({ request }) => {
+  server: { handlers: {
+  // Tells the browser only whether Sarvam is connected (never any key), so it can skip straight to the backup voice.
+  GET: async () => {
+    const configured = process.env['UDC_SARVAM_AI_API_KEY'] ? !!process.env['LOVABLE_API_KEY'] : !!process.env['SARVAM_API_KEY'];
+    return Response.json({ configured }, { headers: { 'Cache-Control': 'no-store' } });
+  },
+  POST: async ({ request }) => {
     try {
       if (request.signal.aborted) return new Response(null, { status: 499 });
       const key = process.env['SARVAM_API_KEY'];

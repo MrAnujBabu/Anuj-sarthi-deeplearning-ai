@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Plus, Trash2, BookOpen, AudioLines, Menu, FileDown, PanelLeftClose, PanelLeftOpen, Search } from "lucide-react";
+import { Plus, Trash2, BookOpen, AudioLines, Menu, FileDown, PanelLeftClose, PanelLeftOpen, Search, Youtube, CalendarDays } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
@@ -51,8 +51,9 @@ export function DoubtSidebar({ activeId, mobileContent = false }: { activeId?: s
         </Link>
       </div>
       <Link to="/practice" className="mx-3 mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-sidebar-accent"><BookOpen className="size-4"/>Saved practice</Link>
-      <Link to="/youtube" className="mx-3 mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-sidebar-accent"><BookOpen className="size-4"/>YouTube → Hindi</Link>
+      <Link to="/youtube" className="mx-3 mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-sidebar-accent"><Youtube className="size-4"/>YouTube → Hindi</Link>
       <Link to="/voice" className="mx-3 mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-sidebar-accent"><AudioLines className="size-4"/>Voice mode</Link>
+      <Link to="/batch" className="mx-3 mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-sidebar-accent"><CalendarDays className="size-4"/>Mera Batch</Link>
       <Button variant="ghost"
         type="button"
         onClick={() => {

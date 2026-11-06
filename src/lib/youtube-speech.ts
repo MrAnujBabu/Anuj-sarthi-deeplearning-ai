@@ -1,6 +1,7 @@
 // Browser speech fetch for the YouTube→Hindi page: Sarvam first, Lovable AI voice as backup.
 import type { SarvamVoice } from './sarvam-speech';
 import { YOUTUBE_VOICE_PROFILES } from './youtube-voice-profile';
+import { sarvamAvailable } from './sarvam-status';
 
 export const YOUTUBE_SPEECH_MODEL = 'google/gemini-2.5-pro-tts';
 
@@ -48,6 +49,8 @@ export function shouldUseBackup(status: number | 'network') {
 export async function fetchHindiSpeech(text: string, voice: SarvamVoice, signal: AbortSignal, now = Date.now(), engine?: YouTubeVoiceEngine): Promise<Response> {
   const forceBackup = engine ? engine === 'lovable' : speechState.forceBackup;
   if (!forceBackup && speechState.useBackup && now >= speechState.backupUntil) speechState.useBackup = false;
+  // Sarvam not connected at all: use the backup voice without sending a request that can only fail.
+  if (!forceBackup && !speechState.useBackup && !(await sarvamAvailable())) { speechState.useBackup = true; speechState.backupUntil = now + SARVAM_RETRY_MS; }
   if (!forceBackup && !speechState.useBackup) {
     let status: number | 'network' = 'network';
     try {

@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { speechState, type YouTubeVoiceEngine } from '@/lib/youtube-speech';
 import { SPEECH_SAMPLE_RATE } from '@/lib/stream-speech';
 import { fetchDubAudio } from '@/lib/youtube-audio';
+import { isRepeatedLine, speakableText } from '@/lib/repeated-line';
 import { runDubPlayback, type DubPlayer } from '@/lib/youtube-dub-sync';
 import { htmlMediaDubPlayer } from '@/lib/html-media-player';
 import type { DubSegment } from '@/lib/youtube-hindi';
@@ -134,7 +135,15 @@ export function YouTubeDub({ videoId, mediaSrc, mediaFallbackSrc, segments, orig
       const cached = buffers.current.get(i); if (cached) return Promise.resolve(cached);
       const existing = pending.get(i); if (existing) return existing;
       if (!segments[i]) return Promise.reject(new Error('Missing segment.'));
-      const promise = waitForText(i).then(text => fetchDubAudio(text, voice, ctx, ctl.signal, voiceEngine)).then(buffer => {
+      const promise = waitForText(i).then(text => {
+        // Same Hindi line as the previous part (interpreter repeat): stay silent instead of speaking it twice.
+        const previous = i > 0 ? latest.current[i - 1]?.hindi : undefined;
+        if (i > 0 && isRepeatedLine(text, previous)) return ctx.createBuffer(1, 1, SPEECH_SAMPLE_RATE);
+        // Repeated sentences inside a part (or carried over from the previous part) are spoken once.
+        const spoken = speakableText(text, previous);
+        if (!spoken) return ctx.createBuffer(1, 1, SPEECH_SAMPLE_RATE);
+        return fetchDubAudio(spoken, voice, ctx, ctl.signal, voiceEngine);
+      }).then(buffer => {
         if (generation.current === id) {
           buffers.current.set(i, buffer);
           // Bounded device memory: keep recent/look-ahead audio for replay, never an entire long lecture.

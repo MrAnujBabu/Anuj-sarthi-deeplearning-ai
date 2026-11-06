@@ -34,6 +34,7 @@ import { VoiceSamples } from '@/components/voice-samples';
 import { SPEECH_VOICES, resolveSpeechVoice, useSpeechVoice, type SpeechVoice } from '@/lib/speech-voice';
 import { SPEECH_SAMPLE_RATE, prefetchSpeech, speakSentence, speechAccessFailure } from '@/lib/stream-speech';
 import { LiveSpeechQueue, takeSpeechThoughts } from '@/lib/live-speech-queue';
+import { sarvamAvailable } from '@/lib/sarvam-status';
 import { SARVAM_VOICE, SARVAM_VOICES, SARVAM_VOICE_KEY, isSarvamVoice, resolveSarvamVoice, sarvamFallback, sarvamVoiceLabel, type SarvamVoice } from '@/lib/sarvam-speech';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -130,6 +131,8 @@ function LiveVoicePage() {
   // One speaker for the whole call: opening/closing a new audio output per sentence
   // disturbs the phone's call audio and microphone.
   const ttsAudio = useRef<AudioContext | null>(null);
+  const sarvamOff = useRef(false);
+  useEffect(() => { void sarvamAvailable().then(ok => { sarvamOff.current = !ok; }); }, []);
   const ttsSpeaker = useCallback(() => {
     try {
       if (!ttsAudio.current || ttsAudio.current.state === 'closed') ttsAudio.current = new AudioContext({ sampleRate: SPEECH_SAMPLE_RATE });
@@ -138,8 +141,10 @@ function LiveVoicePage() {
     return ttsAudio.current ?? undefined;
   }, []);
   const ttsEnqueue = useCallback((text: string) => {
-    const v = ttsVoice.current;
+    let v = ttsVoice.current;
     if (!text || !v || ttsFailed.current) return;
+    // Sarvam not connected: speak with the backup voice instead of sending requests that can only fail.
+    if (isSarvamVoice(v) && sarvamOff.current && fallbackVoice.current) { v = fallbackVoice.current; ttsVoice.current = v; }
     const endpoint = isSarvamVoice(v) ? '/api/sarvam-speech' : '/api/speech';
     ttsQueue.current ??= new LiveSpeechQueue({
       request: (text, signal) => prefetchSpeech(endpoint, text, signal, v),
@@ -489,7 +494,7 @@ function LiveVoicePage() {
           <label className="flex items-center justify-between gap-2"><Volume2 className="size-4 text-muted-foreground" />Sarvam awaaz<Switch checked={engine === 'sarvam'} disabled={locked} aria-label="Voice engine: Sarvam ya Lovable" onCheckedChange={(on) => {
             if (on) { setEngine('sarvam'); try { localStorage.setItem('snapsolve.call-voice-engine', 'sarvam'); } catch { /* keep */ }
               // Warm the Sarvam connection now so the first real answer starts sooner.
-              void fetch('/api/sarvam-speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: 'Namaste.', voice: sarvamVoice }) }).then(r => { void r.body?.cancel().catch(() => {}); }).catch(() => {});
+              if (!sarvamOff.current) void fetch('/api/sarvam-speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: 'Namaste.', voice: sarvamVoice }) }).then(r => { void r.body?.cancel().catch(() => {}); }).catch(() => {});
               return;
             }
             setEngine(lastLovable.current);
@@ -514,7 +519,7 @@ function LiveVoicePage() {
               const sarvam = value.startsWith('sarvam:') ? value.slice(7) : undefined;
               if (isSarvamVoice(sarvam)) { setSarvamVoice(sarvam); setEngine('sarvam'); try { localStorage.setItem(SARVAM_VOICE_KEY, sarvam); localStorage.setItem('snapsolve.call-voice-engine', 'sarvam'); } catch { /* keep */ }
                 // Warm the Sarvam connection now so the first real answer starts sooner.
-                void fetch('/api/sarvam-speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: 'Namaste.', voice: sarvam }) }).then(r => { void r.body?.cancel().catch(() => {}); }).catch(() => {});
+                if (!sarvamOff.current) void fetch('/api/sarvam-speech', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: 'Namaste.', voice: sarvam }) }).then(r => { void r.body?.cancel().catch(() => {}); }).catch(() => {});
               }
             }}>
               <SelectTrigger aria-label="Sarvam voice"><SelectValue placeholder="Sarvam voice chuniye" /></SelectTrigger>

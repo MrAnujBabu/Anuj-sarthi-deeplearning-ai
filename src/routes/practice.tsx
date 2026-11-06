@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { BookOpenText, ImagePlus, ListOrdered, ScanSearch } from 'lucide-react';
+import { ArrowLeft, BookOpenText, ImagePlus, Layers, ListOrdered, PartyPopper, ScanSearch } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AssistantAnswer } from '@/components/assistant-answer';
@@ -12,6 +12,7 @@ import { useBoldQuestions, useStudyTextSize } from '@/lib/quiz-label-preference'
 import { NCERT_BIOLOGY_CHAPTERS, chapterLabel, ncertChapter } from '@/lib/ncert-biology';
 import { snippetToCard, structureQuizQueue, type NcertSnippet } from '@/lib/ncert-snippets';
 import { pendingFirstMessage } from '@/lib/threads';
+import { recordActivity } from '@/lib/study-stats';
 
 export const Route = createFileRoute('/practice')({ head: () => ({ meta: [{ title: 'Saved practice — SnapSolve' },{ name:'description', content:'Revise saved NEET questions and answers without AI credits.' },{ property:'og:title',content:'Saved practice — SnapSolve' },{ property:'og:description',content:'Credit-free active recall from your saved material.' },{ property:'og:type',content:'website' },{name:'twitter:card',content:'summary'}] }), component: Practice });
 
@@ -167,6 +168,7 @@ function NcertDeepScan({ onCards }: { onCards: (cards: Card[]) => void }) {
 }
 
 function Practice() {
+  const navigate = useNavigate();
   const [boldQuestions] = useBoldQuestions();
   const [textSize] = useStudyTextSize();
   const [cards,setCards] = useState<Card[]>([]);
@@ -174,6 +176,7 @@ function Practice() {
   const [saveError,setSaveError] = useState('');
   const [revealed,setRevealed] = useState(false);
   const [ready,setReady] = useState(false);
+  const [tally,setTally] = useState({ right: 0, wrong: 0 });
   useEffect(() => {
     const deck = loadPractice(); setCards(deck);
     let saved: unknown = {};
@@ -189,8 +192,12 @@ function Practice() {
   }
   function grade(correct: boolean) {
     if (!card) return;
-    try { reviewSavedCard(card, correct, Date.now()); }
+    const now = Date.now();
+    try { reviewSavedCard(card, correct, now); }
     catch { setSaveError('Browser storage is full. Your review was not saved.');return; }
+    recordActivity('review', `${card.id}:${now}`, now);
+    setCards(loadPractice());
+    setTally((t) => correct ? { ...t, right: t.right + 1 } : { ...t, wrong: t.wrong + 1 });
     persistSession(completePracticeCard(session,card.id));
   }
   function onCards(newCards: Card[]) {
@@ -203,14 +210,88 @@ function Practice() {
       toast.error('Browser storage is full. New cards could not be saved — clear old media first.');
     }
   }
-  return <main className="mx-auto min-h-screen max-w-3xl px-5 py-8">
-    <Link to="/" className="text-primary">← SnapSolve</Link>
-    <div className="mt-8 flex flex-wrap items-center justify-between gap-3"><h1 className="text-3xl font-semibold">Saved practice</h1><span className="text-sm text-muted-foreground">No AI credits used</span></div>
+  function restart() {
+    setTally({ right: 0, wrong: 0 });
+    persistSession({ queue: [...cards].sort((a, b) => a.due - b.due).map(c => c.id), completed: [] });
+  }
+  function startQuiz() {
+    const id = crypto.randomUUID();
+    pendingFirstMessage.set(id, { text: 'Quiz mode ON — NEET ke important topics se mujhse ek-ek MCQ poochho.', files: [], mode: 'quiz' });
+    localStorage.setItem(`snapsolve.quiz.${id}`, '1');
+    navigate({ to: '/doubt/$threadId', params: { threadId: id } });
+  }
+  // Keyboard: Space/Enter reveals, 1 = needs revision, 2 = remembered. Dialogs and text fields never trigger it.
+  useEffect(() => {
+    if (!card) return;
+    const keydown = (event: KeyboardEvent) => {
+      if (event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (document.querySelector('[role="dialog"], [role="alertdialog"], [role="listbox"]')) return;
+      const target = event.target;
+      if (target instanceof Element && target.closest('input,textarea,select,button,a,[contenteditable="true"],[role="combobox"]')) return;
+      if (!revealed && (event.key === ' ' || event.key === 'Enter')) { event.preventDefault(); setRevealed(true); return; }
+      if (revealed && (event.key === '1' || event.code === 'Numpad1')) { event.preventDefault(); grade(false); }
+      if (revealed && (event.key === '2' || event.code === 'Numpad2')) { event.preventDefault(); grade(true); }
+    };
+    window.addEventListener('keydown', keydown);
+    return () => window.removeEventListener('keydown', keydown);
+  });
+
+  const now = Date.now();
+  const due = cards.filter(c => c.due <= now).length;
+  const mastered = cards.filter(c => c.box >= 4).length;
+  const boxes = [1, 2, 3, 4, 5].map(b => cards.filter(c => c.box === b).length);
+  const done = session.completed.length;
+  const total = cards.length;
+
+  return <main className="mx-auto min-h-screen max-w-3xl px-5 py-6 md:py-8">
+    <Link to="/" className="inline-flex items-center gap-1 text-sm text-primary"><ArrowLeft className="size-4" /> SnapSolve</Link>
+    <div className="mt-6 flex flex-wrap items-end justify-between gap-3"><h1 className="font-display text-3xl font-semibold">Saved practice</h1><span className="text-sm text-muted-foreground">No AI credits used</span></div>
     {saveError && <p role="alert" className="mt-4 text-destructive">{saveError}</p>}
-    {!ready ? <p className="mt-8">Loading saved material…</p> : !cards.length ? <p className="mt-8">No saved questions or revision cards yet.</p> : !card ? <div className="mt-10"><h2 className="text-2xl">Session complete</h2><p className="mt-3">Your revision schedule is saved in this browser.</p><Button className="mt-5" onClick={()=>persistSession({queue:cards.map(c=>c.id),completed:[]})}>Practice again</Button></div> : <>
-      <p className="mt-6 text-sm text-muted-foreground">{session.completed.length+1} / {cards.length} · {card.topic}</p>
-      <section className={`study-text study-text-${textSize} mt-4 border-y py-6`}><AssistantAnswer text={card.q} isAnimating={false} boldQuestion={boldQuestions} /></section>
-      {revealed ? <section className={`study-text study-text-${textSize} mt-6`}><h2 className="mb-3 font-semibold">Saved answer</h2><AssistantAnswer text={card.a} isAnimating={false} /><div className="mt-8 flex flex-wrap gap-3"><Button variant="outline" onClick={()=>grade(false)}>Needs revision</Button><Button onClick={()=>grade(true)}>Remembered</Button></div></section> : <Button className="mt-6" onClick={()=>setRevealed(true)}>Reveal saved answer</Button>}
+
+    {ready && total > 0 && (
+      <section aria-label="Deck summary" className="mt-5 rounded-2xl border bg-card p-4 shadow-sm">
+        <div className="grid grid-cols-3 gap-3 text-center">
+          <div><div className="font-display text-2xl font-semibold tabular-nums">{due}</div><div className="text-xs text-muted-foreground">Aaj due</div></div>
+          <div><div className="font-display text-2xl font-semibold tabular-nums">{total}</div><div className="text-xs text-muted-foreground">Deck mein</div></div>
+          <div><div className="font-display text-2xl font-semibold tabular-nums">{mastered}</div><div className="text-xs text-muted-foreground">Pakke (box 4–5)</div></div>
+        </div>
+        <div className="mt-4 flex h-2 overflow-hidden rounded-full bg-muted" role="img" aria-label={`Cards by box: ${boxes.join(', ')}`}>
+          {boxes.map((n, i) => n > 0 && <div key={i} className="h-full" style={{ width: `${(n / total) * 100}%`, background: `color-mix(in oklab, var(--primary) ${30 + i * 17}%, var(--muted))` }} />)}
+        </div>
+        <div className="mt-1.5 flex justify-between text-[10px] text-muted-foreground"><span>Naye / bhoole</span><span>Pakke yaad</span></div>
+      </section>
+    )}
+
+    {!ready ? <p className="mt-8 text-muted-foreground">Loading saved material…</p> : !total ? (
+      <section className="mt-8 rounded-2xl border border-dashed bg-card/60 p-5 text-center">
+        <Layers className="mx-auto size-8 text-primary" />
+        <h2 className="mt-3 font-display text-lg font-semibold">No saved questions or revision cards yet.</h2>
+        <p className="mx-auto mt-1 max-w-md text-sm text-muted-foreground">Har solved doubt aur quiz ka sawaal yahan apne-aap card ban jaata hai. Ya neeche Deep Scan se NCERT lines ke cards banao.</p>
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          <Button asChild className="touch-btn"><Link to="/">Doubt poochho</Link></Button>
+          <Button variant="outline" className="touch-btn" onClick={startQuiz}>Quiz shuru karo</Button>
+        </div>
+      </section>
+    ) : !card ? (
+      <section className="mt-8 rounded-2xl border bg-card p-5 text-center shadow-sm">
+        <PartyPopper className="mx-auto size-8 text-primary" />
+        <h2 className="mt-3 font-display text-2xl font-semibold">Session complete</h2>
+        {(tally.right + tally.wrong) > 0 && <p className="mt-2 text-sm"><span className="font-semibold text-primary">{tally.right} yaad the</span> · <span className="font-semibold">{tally.wrong} dobara padhne hain</span></p>}
+        <p className="mt-2 text-sm text-muted-foreground">Your revision schedule is saved in this browser. Galat wale cards kal phir aayenge.</p>
+        <div className="mt-5 flex flex-wrap justify-center gap-2">
+          <Button className="touch-btn" onClick={restart}>Practice again</Button>
+          <Button variant="outline" asChild className="touch-btn"><Link to="/">Home</Link></Button>
+        </div>
+      </section>
+    ) : <>
+      <div className="mt-6 flex items-center justify-between gap-3 text-sm text-muted-foreground"><span className="min-w-0 truncate">{card.topic}</span><span className="shrink-0 tabular-nums">{done+1} / {total}</span></div>
+      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={done} aria-label="Session progress"><div className="h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${(done / total) * 100}%` }} /></div>
+      <section className={`study-text study-text-${textSize} mt-4 rounded-2xl border bg-card p-4 shadow-sm md:p-6`}><AssistantAnswer text={card.q} isAnimating={false} boldQuestion={boldQuestions} /></section>
+      {revealed ? <section className={`study-text study-text-${textSize} mt-4 rounded-2xl border border-primary/30 bg-accent/40 p-4 md:p-6`}><h2 className="mb-3 font-semibold">Saved answer</h2><AssistantAnswer text={card.a} isAnimating={false} /></section> : null}
+      <div className="sticky bottom-0 -mx-5 mt-4 border-t bg-background/95 px-5 py-3 backdrop-blur">
+        {revealed ? <div className="grid grid-cols-2 gap-3"><Button variant="outline" className="touch-btn h-11" onClick={()=>grade(false)}>Needs revision <kbd className="ml-1 hidden rounded border px-1 text-[10px] text-muted-foreground md:inline">1</kbd></Button><Button className="touch-btn h-11" onClick={()=>grade(true)}>Remembered <kbd className="ml-1 hidden rounded border border-primary-foreground/40 px-1 text-[10px] md:inline">2</kbd></Button></div>
+          : <Button className="touch-btn h-11 w-full" onClick={()=>setRevealed(true)}>Reveal saved answer <kbd className="ml-1 hidden rounded border border-primary-foreground/40 px-1 text-[10px] md:inline">Space</kbd></Button>}
+      </div>
     </>}
     <NcertDeepScan onCards={onCards} />
     <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground"><BookOpenText className="size-3.5" /> Deep Scan AI credits use karta hai; saved cards ka revision hamesha free hai.</p>

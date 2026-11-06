@@ -15,6 +15,7 @@ import { fetchHindiSpeech, readYouTubeVoiceEngine, setYouTubeVoiceEngine, type Y
 import { decodePCM, SPEECH_SAMPLE_RATE } from '@/lib/stream-speech';
 import { splitForSpeech } from '@/lib/youtube-hindi';
 import { YouTubeDub } from '@/components/youtube-dub';
+import { isRepeatedLine } from '@/lib/repeated-line';
 import { YouTubeNarrationDownload } from '@/components/youtube-narration-download';
 import { YouTubeTranscriptDownload } from '@/components/youtube-transcript-download';
 import { ChannelPicker } from '@/components/interpreter/channel-picker';
@@ -256,7 +257,7 @@ function YouTubeHindi() {
       for (let i = 0; i < pieces.length; i++) {
         while (playhead - ctx.currentTime > 30) { ctl.signal.throwIfAborted(); await new Promise(resolve => setTimeout(resolve, 200)); }
         setProgress(`Part ${i + 1} / ${pieces.length}`);
-        const piece = pieces[i]; if (!piece) continue;
+        const piece = pieces[i]; if (!piece || (i > 0 && isRepeatedLine(piece, pieces[i - 1]))) continue;
         const res = await fetchHindiSpeech(piece, voice, ctl.signal, Date.now(), voiceEngine);
         if (!res.body) throw new Error('No audio.');
         let pending: Uint8Array = new Uint8Array(0);

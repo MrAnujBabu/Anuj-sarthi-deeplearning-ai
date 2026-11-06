@@ -24,6 +24,7 @@ import { ToolStep } from "@/components/tool-step";
 import { ChatControls } from "@/components/chat-controls";
 import { restoreDocs, stripDocs } from "@/lib/doc-store";
 import { parseCards, recordResults } from "@/lib/srs";
+import { recordActivity } from "@/lib/study-stats";
 import { DEFAULT_MODEL, upgradedTutorPreference, type Effort } from '@/lib/models';
 import { displayAiError, isCreditError, isConfigurationError } from '@/lib/ai/errors';
 import { Button } from '@/components/ui/button';
@@ -231,7 +232,13 @@ function ChatWindow({ threadId, initialMessages }: { threadId: string; initialMe
     prevStatus.current = status;
     if ((was === "streaming" || was === "submitted") && status === "ready" && !paused) {
       const l = messages[messages.length - 1];
-      if (l?.role === "assistant") setAutoTarget(l.id);
+      if (l?.role === "assistant") {
+        setAutoTarget(l.id);
+        const asked = messages[messages.length - 2];
+        const askedText = asked?.parts.map((p) => (p.type === "text" ? p.text : "")).join(" ") ?? "";
+        const answered = l.parts.some((p) => p.type === "text" && p.text.trim() && !p.text.trim().startsWith("[AI_"));
+        if (answered && !isResumeText(askedText)) recordActivity(quiz ? "quiz" : "doubt", `${threadId}:${l.id}`);
+      }
     }
   }, [status, messages, paused]);
   useEffect(() => {

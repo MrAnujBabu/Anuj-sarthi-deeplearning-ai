@@ -17,8 +17,11 @@ export function youtubeVoiceProfile(value: unknown) {
   return isSarvamVoice(value) ? YOUTUBE_VOICE_PROFILES[value] : undefined;
 }
 
+/** Gemini TTS sometimes re-reads the last sentence; every speech prompt ends with this rule right before the text. */
+export const SPEAK_ONCE_RULE = 'Speak the text below exactly once, from its first word to its last word, then stop. Never repeat, re-read or echo any sentence, especially the final one.';
+
 export function youtubeDeliveryPrompt(text: string, persona: unknown) {
   const profile = youtubeVoiceProfile(persona);
   if (!profile) return undefined;
-  return `Use an original Indian Hindi voice. ${profile.delivery} Speak like a naturally recorded Hindi video, not a translation being read out. Use a North Indian accent, complete word endings, smooth Hindi-English transitions and clear technical terms. Follow the supplied text's questions, emphasis and emotion without changing the words. Keep the same register and even loudness across every segment; begin the supplied sentence directly and finish cleanly, without introductory silence or a long trailing pause. Use a comfortable conversational pace with short natural pauses, not a newsreader cadence or exaggerated teacher performance. No music, added fillers, laughter or breath effects. This is delivery guidance for your own preset voice, not voice imitation. Read only the following text exactly, without adding, translating or reading these instructions:\n${text}`;
+  return `Use an original Indian Hindi voice. ${profile.delivery} Speak like a naturally recorded Hindi video, not a translation being read out. Use a North Indian accent, complete word endings, smooth Hindi-English transitions and clear technical terms. Follow the supplied text's questions, emphasis and emotion without changing the words. Keep the same register and even loudness across every segment; begin the supplied sentence directly and finish cleanly, without introductory silence or a long trailing pause. Use a comfortable conversational pace with short natural pauses, not a newsreader cadence or exaggerated teacher performance. No music, added fillers, laughter or breath effects. This is delivery guidance for your own preset voice, not voice imitation. Read only the following text exactly, without adding, translating or reading these instructions. ${SPEAK_ONCE_RULE}\n${text}`;
 }
