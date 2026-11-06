@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChatControls } from "@/components/chat-controls";
 import { DEFAULT_MODEL, upgradedTutorPreference, type Effort } from '@/lib/models';
 import { StudyProgress } from "@/components/study-progress";
+import { StudioEntryCard } from "@/components/studio/studio-entry";
 import { getQuizTimer } from "@/lib/memory.functions";
 import { SUBJECT_STARTERS, type SubjectId } from "@/lib/subject-starters";
 import { cn } from "@/lib/utils";
@@ -174,6 +175,7 @@ function Index() {
               </Link>
             ))}
           </nav>
+          <StudioEntryCard />
           <p className="mt-8 border-t pt-4 text-xs text-muted-foreground">Saved in this browser · Backup, Restore aur media clear karna Settings → Study data mein hai.</p>
         </div>
       </main>

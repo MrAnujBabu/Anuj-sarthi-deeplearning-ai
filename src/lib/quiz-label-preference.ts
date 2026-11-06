@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 /** Device preference shared by admin and quiz; hydration never reads browser storage. */
-function useDeviceBoolean(key: string, event: string, defaultValue: boolean) {
+export function useDeviceBoolean(key: string, event: string, defaultValue: boolean) {
   const [numeric, setNumeric] = useState(defaultValue);
   useEffect(() => {
     const refresh = () => { try { const saved = localStorage.getItem(key); setNumeric(saved === null ? defaultValue : saved === '1'); } catch { /* Device storage unavailable. */ } };

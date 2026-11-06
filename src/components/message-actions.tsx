@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Check, Copy, MoreHorizontal, Share2, Square, ThumbsDown, ThumbsUp, Volume2 } from "lucide-react";
+import { Check, Clapperboard, Copy, ImageIcon, MoreHorizontal, Share2, Square, ThumbsDown, ThumbsUp, Volume2 } from "lucide-react";
 import { toast } from "sonner";
+import { useNavigate } from "@tanstack/react-router";
+import { studioTopicFrom, useStudioTool } from "@/lib/studio-tools";
 import { streamSpeech } from "@/lib/stream-speech";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -26,6 +28,29 @@ export function setVote(id: string, vote: Vote) {
 
 export function getVote(id: string): Vote {
   return readVotes()[id] ?? null;
+}
+
+/** AI Studio shortcuts for this answer's topic; each appears only while its tool is switched on. */
+function StudioMenuItems({ text }: { text: string }) {
+  const navigate = useNavigate();
+  const [diagramOn] = useStudioTool("diagram");
+  const [animationOn] = useStudioTool("animation");
+  if (!diagramOn && !animationOn) return null;
+  const topic = studioTopicFrom(text);
+  return (
+    <>
+      {diagramOn && (
+        <DropdownMenuItem onClick={() => void navigate({ to: "/studio", search: { tool: "diagram", topic } })}>
+          <ImageIcon className="mr-2 size-4" /> Diagram / poster banao
+        </DropdownMenuItem>
+      )}
+      {animationOn && (
+        <DropdownMenuItem onClick={() => void navigate({ to: "/studio", search: { tool: "animation", topic } })}>
+          <Clapperboard className="mr-2 size-4" /> Animation banao
+        </DropdownMenuItem>
+      )}
+    </>
+  );
 }
 
 /** Like / unlike / copy / share actions under an agent reply. Stored locally per message id. */
@@ -105,6 +130,7 @@ export function MessageActions({ messageId, text, children }: { messageId: strin
           <DropdownMenuItem onClick={copy}>
             <Copy className="mr-2 size-4" /> Copy text
           </DropdownMenuItem>
+          <StudioMenuItems text={text} />
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

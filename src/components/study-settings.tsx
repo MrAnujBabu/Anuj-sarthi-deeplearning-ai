@@ -7,6 +7,7 @@ import { STUDY_TEXT_SIZES, useAutoVerify, usePhotoReading, useBoldQuestions, use
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { BackupControls } from './backup-controls';
 import { QuizTimerSettings } from './quiz-timer-settings';
+import { STUDIO_TOOL_IDS, STUDIO_TOOLS, useStudioToolSwitches } from '@/lib/studio-tools';
 
 export function StudySettings() {
   const [numeric, setNumeric] = useNumericAnswerLabels();
@@ -32,6 +33,7 @@ export function StudySettings() {
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Auto-verify answers <span className="mt-1 block text-xs text-muted-foreground">Gemini 4 Argon + GPT-6 Astra check each answer · Claude rules on objections</span></span><Switch checked={autoVerify} onCheckedChange={setAutoVerify} aria-label="Auto-verify answers" /></label>
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Photo reading <span className="mt-1 block text-xs text-muted-foreground">Gemini 4 Argon reads doubt photos first, then the tutor answers</span></span><Switch checked={photoReading} onCheckedChange={setPhotoReading} aria-label="Photo reading by Gemini" /></label>
         <label className="flex min-h-16 items-center justify-between gap-4 py-3"><span className="text-sm">Mera Batch context <span className="mt-1 block text-xs text-muted-foreground">Tutor ko aapki aaj ki classes, upcoming tests aur AITS tracker dikhta hai (chat + voice)</span></span><Switch checked={batchContext} onCheckedChange={setBatchContext} aria-label="Mera Batch context" /></label>
+        <StudioToolRows />
         <ThemeRow />
         <VoiceChoiceRow />
         <QuizTimerSettings />
@@ -54,6 +56,27 @@ function VoiceChoiceRow() {
         <SelectContent>{VOICE_CHOICES.map(c => <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>)}</SelectContent>
       </Select>
     </div>
+  );
+}
+
+/** AI Studio: one on/off switch per tool (ByteDance diagram/poster, ByteDance animation, Topaz enhance). */
+function StudioToolRows() {
+  const switches = useStudioToolSwitches();
+  return (
+    <section className="py-3" aria-labelledby="studio-settings-title">
+      <h2 id="studio-settings-title" className="text-sm font-medium">AI Studio tools</h2>
+      <p className="text-xs text-muted-foreground">Band tool kahin nahi dikhta aur koi credit kharch nahi karta.</p>
+      {STUDIO_TOOL_IDS.map(id => {
+        const [on, setOn] = switches[id];
+        const tool = STUDIO_TOOLS[id];
+        return (
+          <label key={id} className="flex min-h-14 items-center justify-between gap-4 py-2">
+            <span className="text-sm">{tool.label} <span className="mt-0.5 block text-xs text-muted-foreground">{tool.vendor}</span></span>
+            <Switch checked={on} onCheckedChange={setOn} aria-label={`${tool.label} on/off`} />
+          </label>
+        );
+      })}
+    </section>
   );
 }
 

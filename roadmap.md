@@ -16,12 +16,14 @@
 - [ ] Saved practice upgrade: stats header, box progress, keyboard shortcuts, better empty state, review logging
 - [ ] Honest Sarvam status on YouTube + Voice pages when Sarvam is not connected
 - [ ] End-to-end check: real doubt answer + quiz turn in the browser (credits are limited — keep test calls few)
-- [ ] Workspace moved again (Nov 6, 09:07 UTC): connect Firecrawl, GitHub API, Parallel, Perplexity fresh in the new workspace
-- [ ] Commit the changes to the GitHub repo (MrAnujBabu/snapsolveanujsarti) through the GitHub connection
+- [x] Workspace moved again (Nov 6, 09:07 UTC): connect Firecrawl, GitHub API, Parallel, Perplexity fresh in the new workspace
+- [x] Commit the changes to the GitHub repo (MrAnujBabu/snapsolveanujsarti) through the GitHub connection
+- [x] Workspace moved again (10:50 UTC): connect Firecrawl, GitHub API, Parallel, Perplexity fresh
+- [x] Workspace moved again (11:21 UTC): connect Firecrawl, GitHub API, Parallel, Perplexity fresh
 - [ ] New ask (09:13 UTC): useful AI feature using ByteDance models
 - [ ] New ask: useful AI feature using Topaz Labs (photo/video enhancement)
-- [ ] New ask: Google on/off switch in the app's settings
-- [ ] Fix broken SnapSolve logo/icon on the phone (screenshot shows a broken image)
+- [ ] New ask: on/off toggle switch for each new AI tool ("Google" = "toggle", confirmed by user 09:20 UTC)
+- [x] Fix broken SnapSolve logo/icon on the phone (small logo, real favicon, home-screen icons)
 
 ## Waiting on the user
 - [ ] Admin account — admin email must sign up via "Pehli baar? Account banao" (signed-in checks not possible from here)

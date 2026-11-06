@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BatchRouteImport } from './routes/batch'
 import { Route as PracticeRouteImport } from './routes/practice'
+import { Route as StudioRouteImport } from './routes/studio'
 import { Route as VoiceRouteImport } from './routes/voice'
 import { Route as YoutubeRouteImport } from './routes/youtube'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -22,6 +23,10 @@ import { Route as ApiNcertDiagramRouteImport } from './routes/api/ncert-diagram'
 import { Route as ApiNcertScanRouteImport } from './routes/api/ncert-scan'
 import { Route as ApiSarvamSpeechRouteImport } from './routes/api/sarvam-speech'
 import { Route as ApiSpeechRouteImport } from './routes/api/speech'
+import { Route as ApiStudioImageRouteImport } from './routes/api/studio-image'
+import { Route as ApiStudioUploadRouteImport } from './routes/api/studio-upload'
+import { Route as ApiStudioVideoRouteImport } from './routes/api/studio-video'
+import { Route as ApiStudioVideoFileRouteImport } from './routes/api/studio-video-file'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiVerifyRouteImport } from './routes/api/verify'
 import { Route as ApiVisionReadRouteImport } from './routes/api/vision-read'
@@ -47,6 +52,11 @@ const BatchRoute = BatchRouteImport.update({
 const PracticeRoute = PracticeRouteImport.update({
   id: '/practice',
   path: '/practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioRoute = StudioRouteImport.update({
+  id: '/studio',
+  path: '/studio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VoiceRoute = VoiceRouteImport.update({
@@ -94,6 +104,26 @@ const ApiSpeechRoute = ApiSpeechRouteImport.update({
   path: '/api/speech',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiStudioImageRoute = ApiStudioImageRouteImport.update({
+  id: '/api/studio-image',
+  path: '/api/studio-image',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStudioUploadRoute = ApiStudioUploadRouteImport.update({
+  id: '/api/studio-upload',
+  path: '/api/studio-upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStudioVideoRoute = ApiStudioVideoRouteImport.update({
+  id: '/api/studio-video',
+  path: '/api/studio-video',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStudioVideoFileRoute = ApiStudioVideoFileRouteImport.update({
+  id: '/api/studio-video-file',
+  path: '/api/studio-video-file',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   id: '/api/transcribe',
   path: '/api/transcribe',
@@ -130,6 +160,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
+  '/studio': typeof StudioRoute
   '/voice': typeof VoiceRoute
   '/youtube': typeof YoutubeRoute
   '/api/chat': typeof ApiChatRoute
@@ -139,6 +170,10 @@ export interface FileRoutesByFullPath {
   '/api/ncert-scan': typeof ApiNcertScanRoute
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
+  '/api/studio-image': typeof ApiStudioImageRoute
+  '/api/studio-upload': typeof ApiStudioUploadRoute
+  '/api/studio-video': typeof ApiStudioVideoRoute
+  '/api/studio-video-file': typeof ApiStudioVideoFileRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
   '/api/vision-read': typeof ApiVisionReadRoute
@@ -151,6 +186,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
+  '/studio': typeof StudioRoute
   '/voice': typeof VoiceRoute
   '/youtube': typeof YoutubeRoute
   '/api/chat': typeof ApiChatRoute
@@ -160,6 +196,10 @@ export interface FileRoutesByTo {
   '/api/ncert-scan': typeof ApiNcertScanRoute
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
+  '/api/studio-image': typeof ApiStudioImageRoute
+  '/api/studio-upload': typeof ApiStudioUploadRoute
+  '/api/studio-video': typeof ApiStudioVideoRoute
+  '/api/studio-video-file': typeof ApiStudioVideoFileRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
   '/api/vision-read': typeof ApiVisionReadRoute
@@ -173,6 +213,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/batch': typeof BatchRoute
   '/practice': typeof PracticeRoute
+  '/studio': typeof StudioRoute
   '/voice': typeof VoiceRoute
   '/youtube': typeof YoutubeRoute
   '/api/chat': typeof ApiChatRoute
@@ -182,6 +223,10 @@ export interface FileRoutesById {
   '/api/ncert-scan': typeof ApiNcertScanRoute
   '/api/sarvam-speech': typeof ApiSarvamSpeechRoute
   '/api/speech': typeof ApiSpeechRoute
+  '/api/studio-image': typeof ApiStudioImageRoute
+  '/api/studio-upload': typeof ApiStudioUploadRoute
+  '/api/studio-video': typeof ApiStudioVideoRoute
+  '/api/studio-video-file': typeof ApiStudioVideoFileRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/verify': typeof ApiVerifyRoute
   '/api/vision-read': typeof ApiVisionReadRoute
@@ -196,6 +241,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/batch'
     | '/practice'
+    | '/studio'
     | '/voice'
     | '/youtube'
     | '/api/chat'
@@ -205,6 +251,10 @@ export interface FileRouteTypes {
     | '/api/ncert-scan'
     | '/api/sarvam-speech'
     | '/api/speech'
+    | '/api/studio-image'
+    | '/api/studio-upload'
+    | '/api/studio-video'
+    | '/api/studio-video-file'
     | '/api/transcribe'
     | '/api/verify'
     | '/api/vision-read'
@@ -217,6 +267,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/batch'
     | '/practice'
+    | '/studio'
     | '/voice'
     | '/youtube'
     | '/api/chat'
@@ -226,6 +277,10 @@ export interface FileRouteTypes {
     | '/api/ncert-scan'
     | '/api/sarvam-speech'
     | '/api/speech'
+    | '/api/studio-image'
+    | '/api/studio-upload'
+    | '/api/studio-video'
+    | '/api/studio-video-file'
     | '/api/transcribe'
     | '/api/verify'
     | '/api/vision-read'
@@ -238,6 +293,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/batch'
     | '/practice'
+    | '/studio'
     | '/voice'
     | '/youtube'
     | '/api/chat'
@@ -247,6 +303,10 @@ export interface FileRouteTypes {
     | '/api/ncert-scan'
     | '/api/sarvam-speech'
     | '/api/speech'
+    | '/api/studio-image'
+    | '/api/studio-upload'
+    | '/api/studio-video'
+    | '/api/studio-video-file'
     | '/api/transcribe'
     | '/api/verify'
     | '/api/vision-read'
@@ -260,6 +320,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   BatchRoute: typeof BatchRoute
   PracticeRoute: typeof PracticeRoute
+  StudioRoute: typeof StudioRoute
   VoiceRoute: typeof VoiceRoute
   YoutubeRoute: typeof YoutubeRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -269,6 +330,10 @@ export interface RootRouteChildren {
   ApiNcertScanRoute: typeof ApiNcertScanRoute
   ApiSarvamSpeechRoute: typeof ApiSarvamSpeechRoute
   ApiSpeechRoute: typeof ApiSpeechRoute
+  ApiStudioImageRoute: typeof ApiStudioImageRoute
+  ApiStudioUploadRoute: typeof ApiStudioUploadRoute
+  ApiStudioVideoRoute: typeof ApiStudioVideoRoute
+  ApiStudioVideoFileRoute: typeof ApiStudioVideoFileRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiVerifyRoute: typeof ApiVerifyRoute
   ApiVisionReadRoute: typeof ApiVisionReadRoute
@@ -305,6 +370,13 @@ declare module '@tanstack/react-router' {
       path: '/practice'
       fullPath: '/practice'
       preLoaderRoute: typeof PracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio': {
+      id: '/studio'
+      path: '/studio'
+      fullPath: '/studio'
+      preLoaderRoute: typeof StudioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/voice': {
@@ -370,6 +442,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiSpeechRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/studio-image': {
+      id: '/api/studio-image'
+      path: '/api/studio-image'
+      fullPath: '/api/studio-image'
+      preLoaderRoute: typeof ApiStudioImageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/studio-upload': {
+      id: '/api/studio-upload'
+      path: '/api/studio-upload'
+      fullPath: '/api/studio-upload'
+      preLoaderRoute: typeof ApiStudioUploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/studio-video': {
+      id: '/api/studio-video'
+      path: '/api/studio-video'
+      fullPath: '/api/studio-video'
+      preLoaderRoute: typeof ApiStudioVideoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/studio-video-file': {
+      id: '/api/studio-video-file'
+      path: '/api/studio-video-file'
+      fullPath: '/api/studio-video-file'
+      preLoaderRoute: typeof ApiStudioVideoFileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/transcribe': {
       id: '/api/transcribe'
       path: '/api/transcribe'
@@ -420,6 +520,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   BatchRoute: BatchRoute,
   PracticeRoute: PracticeRoute,
+  StudioRoute: StudioRoute,
   VoiceRoute: VoiceRoute,
   YoutubeRoute: YoutubeRoute,
   ApiChatRoute: ApiChatRoute,
@@ -429,6 +530,10 @@ const rootRouteChildren: RootRouteChildren = {
   ApiNcertScanRoute: ApiNcertScanRoute,
   ApiSarvamSpeechRoute: ApiSarvamSpeechRoute,
   ApiSpeechRoute: ApiSpeechRoute,
+  ApiStudioImageRoute: ApiStudioImageRoute,
+  ApiStudioUploadRoute: ApiStudioUploadRoute,
+  ApiStudioVideoRoute: ApiStudioVideoRoute,
+  ApiStudioVideoFileRoute: ApiStudioVideoFileRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiVerifyRoute: ApiVerifyRoute,
   ApiVisionReadRoute: ApiVisionReadRoute,
