@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { z } from 'zod';
 import {
-  ANIMATION_ASPECTS, ANIMATION_DURATIONS, DETAILS_MAX, ENHANCE_CONTAINERS, ENHANCE_MAX_SECONDS, ENHANCE_TARGETS, TOPIC_MAX,
+  ANIMATION_ASPECTS, isAnimationDuration, DETAILS_MAX, ENHANCE_CONTAINERS, ENHANCE_MAX_SECONDS, ENHANCE_TARGETS, TOPIC_MAX,
 } from '@/lib/studio-tools';
 
 const JOB_ID = /^[A-Za-z0-9_\-:.]{4,200}$/;
@@ -10,7 +10,7 @@ const Animation = z.object({
   tool: z.literal('animation'),
   topic: z.string().trim().min(2).max(TOPIC_MAX),
   details: z.string().trim().max(DETAILS_MAX).default(''),
-  duration: z.union([z.literal(ANIMATION_DURATIONS[0]), z.literal(ANIMATION_DURATIONS[1]), z.literal(ANIMATION_DURATIONS[2])]),
+  duration: z.custom<import('@/lib/studio-tools').AnimationDuration>(isAnimationDuration, 'Ek animation 30 second tak ho sakti hai.'),
   resolution: z.enum(['480p', '720p']),
   aspect: z.enum(ANIMATION_ASPECTS),
 });

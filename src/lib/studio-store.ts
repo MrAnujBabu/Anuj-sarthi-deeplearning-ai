@@ -17,12 +17,14 @@ export type StudioItem = {
   credits?: number | null;
   error?: string | null;
   /** Diagram/poster image as a data URL. */
-  image?: string;
+  image?: string | undefined;
   /** Finished animation saved on this device. */
-  video?: Blob;
+  video?: Blob | undefined;
   /** Temporary upload of the source clip (enhance), removed once the job ends. */
   uploadPath?: string | undefined;
   detail?: string;
+  telegramRef?: string;
+  telegramUrl?: string | undefined;
 };
 
 const DB = 'snapsolve-studio';
@@ -65,9 +67,11 @@ export async function listStudioItems(): Promise<StudioItem[]> {
 
 /** Saves an item; keeps only the newest STUDIO_MAX_ITEMS so the device never fills up. */
 export async function saveStudioItem(item: StudioItem) {
+  // Unsaved media lives only in this open app session. Persist references/metadata, never new bytes.
+  unsaved.set(item.id, item);
+  const { image: _image, video: _video, ...metadata } = item;
   try {
-    await tx('readwrite', s => { s.put(item); });
-    unsaved.delete(item.id);
+    await tx('readwrite', s => { s.put(metadata); });
   } catch (e) {
     unsaved.set(item.id, item);
     notify();

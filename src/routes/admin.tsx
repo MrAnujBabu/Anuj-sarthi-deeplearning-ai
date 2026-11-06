@@ -74,7 +74,7 @@ function AdminPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="flex items-center justify-between border-b border-border px-6 py-4">
-        <Link to="/" className="font-display text-xl">SnapSolve <span className="text-muted-foreground text-base">· Agent memory</span></Link>
+        <div className="flex flex-wrap items-center gap-3"><Link to="/" className="font-display text-xl">SnapSolve <span className="text-muted-foreground text-base">· Agent memory</span></Link><Button asChild size="sm" variant="outline"><Link to="/studio">AI Studio</Link></Button></div>
         {state === "in" || state === "denied" ? <Button variant="ghost" size="sm" onClick={signOut}>Sign out</Button> : null}
       </header>
       <main className="mx-auto max-w-4xl px-6 py-8">

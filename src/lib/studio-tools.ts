@@ -59,7 +59,8 @@ export function studioTopicFrom(text: string, max = 100) {
 export const SEEDREAM_IMAGE_CREDITS = 0.18;
 export const SEEDANCE_CREDITS_PER_SECOND = { '480p': 0.4112, '720p': 0.9248 } as const;
 export type AnimationResolution = keyof typeof SEEDANCE_CREDITS_PER_SECOND;
-export const ANIMATION_DURATIONS = [5, 8, 10] as const;
+export const ANIMATION_DURATIONS = [5, 8, 10, 30] as const;
+export const isAnimationDuration = (value: unknown): value is AnimationDuration => ANIMATION_DURATIONS.some(duration => duration === value);
 export type AnimationDuration = (typeof ANIMATION_DURATIONS)[number];
 export const ANIMATION_ASPECTS = ['16:9', '9:16', '1:1'] as const;
 export type AnimationAspect = (typeof ANIMATION_ASPECTS)[number];

@@ -65,7 +65,7 @@ export function AnimationTool({ initialTopic = '' }: { initialTopic?: string }) 
             placeholder="e.g. deoxygenated blood right atrium se right ventricle, phir lungs" />
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
-          <div><FieldLabel>Length</FieldLabel><Choice label="Length" value={duration} options={DURATIONS} onChange={setDuration} disabled={busy} /></div>
+          <div><FieldLabel>Length</FieldLabel><Choice label="Length" value={duration} options={DURATIONS} onChange={setDuration} disabled={busy} /><Button type="button" variant="outline" size="sm" disabled title="60 sec ke liye alag clips jodni hongi" className="mt-1.5">60 sec</Button><p className="mt-1 text-xs text-muted-foreground">60 sec: alag clips jodna zaroori hai; ek video 30 sec tak.</p></div>
           <div><FieldLabel>Quality</FieldLabel><Choice label="Quality" value={resolution} options={QUALITIES} onChange={setResolution} disabled={busy} /></div>
           <div><FieldLabel>Shape</FieldLabel><Choice label="Shape" value={aspect} options={ASPECTS} onChange={setAspect} disabled={busy} /></div>
         </div>

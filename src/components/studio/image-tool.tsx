@@ -83,7 +83,7 @@ export function ImageTool({ initialTopic = '' }: { initialTopic?: string }) {
         <figure className="mt-4 overflow-hidden rounded-xl border bg-background">
           <img src={result.image} alt={`${result.topic} — AI image`} className="mx-auto max-h-[70vh] w-full object-contain" />
           <figcaption className="flex items-center justify-between gap-2 border-t bg-muted/50 px-3 py-2 text-xs text-muted-foreground">
-            <span className="truncate">{result.topic} · Gallery mein saved</span>
+            <span className="truncate">{result.topic} · Neeche Save to Telegram</span>
             <Button type="button" size="sm" variant="ghost" onClick={() => downloadDataUrl(result.image, `${slug(result.topic)}.png`)}><Download className="size-3.5" />Save</Button>
           </figcaption>
         </figure>

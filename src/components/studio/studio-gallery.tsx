@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { AlertTriangle, Clapperboard, Clock, Download, ImageIcon, Loader2, Sparkles, Trash2, HardDriveDownload } from 'lucide-react';
+import { AlertTriangle, Clapperboard, Clock, Download, ImageIcon, Loader2, Sparkles, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -7,6 +7,7 @@ import { STUDIO_TOOLS, formatCredits, type StudioJob, type StudioToolId } from '
 import { STUDIO_EVENT, deleteStudioItem, isPendingItem, listStudioItems, patchStudioItem, type StudioItem } from '@/lib/studio-store';
 import { downloadBlob, downloadDataUrl, slug } from './studio-shared';
 import { deferStudio, responseWaitSeconds, studioRemaining } from '@/lib/studio-recovery';
+import { TelegramSave } from './telegram-save';
 
 const ICONS: Record<StudioToolId, typeof ImageIcon> = { diagram: ImageIcon, animation: Clapperboard, enhance: Sparkles };
 
@@ -72,12 +73,6 @@ async function finish(item: StudioItem, job: Partial<StudioJob> & { status: 'com
     expiresAt: job.expiresAt ?? item.expiresAt ?? null, credits: job.billedCredits ?? item.credits ?? null,
   };
   if (cleaned) base.uploadPath = undefined;
-  if (job.status === 'completed' && item.tool === 'animation' && item.jobId) {
-    try {
-      const res = await fetch(`/api/studio-video-file?id=${encodeURIComponent(item.jobId)}`);
-      if (res.ok) base.video = await res.blob();
-    } catch { /* Still playable from the link until it expires. */ }
-  }
   await patchStudioItem(item.id, base);
   if (job.status === 'completed') toast.success(`${STUDIO_TOOLS[item.tool].label} taiyaar: ${item.title}`);
   else toast.error(`${item.title}: ${base.error}`);
@@ -96,19 +91,6 @@ function VideoBlob({ blob, label }: { blob: Blob; label: string }) {
 }
 
 function ItemCard({ item }: { item: StudioItem }) {
-  const [saving, setSaving] = useState(false);
-  async function saveOnDevice() {
-    if (!item.jobId || saving) return;
-    setSaving(true);
-    try {
-      const res = await fetch(`/api/studio-video-file?id=${encodeURIComponent(item.jobId)}`);
-      if (res.status === 429) deferStudio(responseWaitSeconds(res));
-      if (!res.ok) throw new Error('Video abhi save nahi hui — thodi der baad phir try kariye.');
-      await patchStudioItem(item.id, { video: await res.blob() });
-      toast.success('Video device par saved.');
-    } catch (e) { toast.error(e instanceof Error ? e.message : 'Save nahi hui.'); }
-    finally { setSaving(false); }
-  }
   const Icon = ICONS[item.tool];
   const pending = item.status === 'queued' || item.status === 'in_progress';
   const left = hoursLeft(item.expiresAt);
@@ -116,9 +98,10 @@ function ItemCard({ item }: { item: StudioItem }) {
   const remove = () => { if (window.confirm(`"${item.title}" hatayein?`)) void deleteStudioItem(item.id); };
   return (
     <article className="overflow-hidden rounded-xl border bg-card">
-      {item.image && <img src={item.image} alt={`${item.title} — AI image`} loading="lazy" className="max-h-80 w-full bg-background object-contain" />}
+      {item.tool === 'diagram' && (item.image || item.telegramRef) && <img src={item.telegramRef ? `/api/studio-telegram?ref=${encodeURIComponent(item.telegramRef)}` : item.image} alt={`${item.title} — AI image`} loading="lazy" className="max-h-80 w-full bg-background object-contain" />}
+      {item.tool !== 'diagram' && item.telegramRef && <video src={`/api/studio-telegram?ref=${encodeURIComponent(item.telegramRef)}`} controls playsInline className="w-full bg-muted" aria-label={item.title} />}
       {item.video && <VideoBlob blob={item.video} label={item.title} />}
-      {!item.video && item.tool !== 'diagram' && remoteAvailable && (
+      {!item.telegramRef && !item.video && item.tool !== 'diagram' && remoteAvailable && (
         <video src={`/api/studio-video-file?id=${encodeURIComponent(item.jobId ?? '')}`} controls playsInline preload="metadata" className="w-full bg-muted" aria-label={item.title} />
       )}
       {pending && (
@@ -144,15 +127,13 @@ function ItemCard({ item }: { item: StudioItem }) {
         <div className="flex shrink-0 gap-0.5">
           {item.image && <Button variant="ghost" size="icon" className="size-8" aria-label={`Download ${item.title}`} onClick={() => downloadDataUrl(item.image ?? '', `${slug(item.title)}.png`)}><Download className="size-4" /></Button>}
           {item.video && <Button variant="ghost" size="icon" className="size-8" aria-label={`Download ${item.title}`} onClick={() => item.video && downloadBlob(item.video, `${slug(item.title)}.mp4`)}><Download className="size-4" /></Button>}
-          {!item.video && item.tool !== 'diagram' && remoteAvailable && (
-            <Button variant="ghost" size="icon" className="size-8" disabled={saving} aria-label={`Save on device ${item.title}`} title="Save on device" onClick={() => void saveOnDevice()}>{saving ? <Loader2 className="size-4 animate-spin" /> : <HardDriveDownload className="size-4" />}</Button>
-          )}
-          {!item.video && item.tool !== 'diagram' && remoteAvailable && (
+          {!item.telegramRef && !item.video && item.tool !== 'diagram' && remoteAvailable && (
             <Button asChild variant="ghost" size="icon" className="size-8"><a href={`/api/studio-video-file?id=${encodeURIComponent(item.jobId ?? '')}&download=1`} aria-label={`Download ${item.title}`}><Download className="size-4" /></a></Button>
           )}
           <Button variant="ghost" size="icon" className="size-8 text-muted-foreground hover:text-destructive" aria-label={`Delete ${item.title}`} onClick={remove}><Trash2 className="size-4" /></Button>
         </div>
       </div>
+      {item.status === 'completed' && <div className="flex flex-wrap items-center gap-2 border-t px-3 py-2"><TelegramSave item={item} />{item.telegramUrl && <a href={item.telegramUrl} target="_blank" rel="noreferrer" className="text-sm text-primary underline">Telegram mein dekhein</a>}</div>}
     </article>
   );
 }
@@ -163,8 +144,8 @@ export function StudioGallery() {
   return (
     <section aria-labelledby="studio-gallery-title" className="mt-8">
       <div className="flex items-end justify-between gap-2">
-        <h2 id="studio-gallery-title" className="font-display text-xl font-semibold">Meri gallery</h2>
-        <span className="text-xs text-muted-foreground">Sirf is device par saved</span>
+        <h2 id="studio-gallery-title" className="font-display text-xl font-semibold">Studio outputs</h2>
+        <span className="text-xs text-muted-foreground">Media Telegram par · list is device par</span>
       </div>
       {items === null ? <p className="mt-3 text-sm text-muted-foreground">Loading…</p> : items.length === 0 ? (
         <p className="mt-3 rounded-xl border border-dashed bg-card/60 px-4 py-6 text-center text-sm text-muted-foreground">Abhi kuch nahi bana. Upar kisi tool se pehla diagram, animation ya saaf video banaiye.</p>

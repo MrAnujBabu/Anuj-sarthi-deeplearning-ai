@@ -18,7 +18,12 @@
 - [x] Commit changes to the GitHub repo (MrAnujBabu/snapsolveanujsarti)
 
 ## Ready next
-- [ ] Commit latest Studio recovery fixes to GitHub after final checks
+- [x] Screenshot showed signed-out Telegram save without a sign-in action. Added Admin sign in link beside Save and AI Studio return link; mobile navigation verified. Real authenticated save remains unverified (external unmanaged auth).
+- [ ] Commit Telegram storage and animation-length changes to GitHub after verification
+- [x] Concept Animation: 30 sec enabled and mobile selection/server validation tested; 60 sec shown disabled because one Seedance generation supports at most 30 sec. No paid generation tested: ByteDance disabled in current workspace.
+- [x] AI Studio: Save to Telegram button, session-only media, persisted metadata/signed references; My Snapsolve Database bot/channel posting verified. Small real image uploaded and read back via gateway; mobile button/401 guard verified. Signed-in end-to-end save unavailable with external unmanaged auth.
+- [ ] 60 sec composed animation — requires separate multi-clip composition flow; not implemented or tested
+- [x] Commit latest Studio recovery fixes to GitHub main: 43c84836 (Nov 6)
 - [x] Fix Studio busy recovery: provider wait-time, countdown, duplicate request guard and polling backoff; verified with simulated 429, no paid generation
 - [x] Preserve accepted Studio jobs if device saving fails; retain Topaz source when a submission outcome is unknown
 - [ ] Studio: "Add to practice" for generated diagrams (image flashcards in the practice deck)
