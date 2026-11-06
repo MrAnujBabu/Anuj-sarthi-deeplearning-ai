@@ -70,3 +70,9 @@ it('only credits and access refusals end a voice for the whole call', () => {
   expect(speechAccessFailure(new Error('TTS failed: 400 nothing to read'))).toBe(false);
   expect(speechAccessFailure(new Error('Incomplete speech stream'))).toBe(false);
 });
+
+import { speechAccessFailure as accessFailure } from '@/lib/stream-speech';
+test('unconfigured Sarvam moves the call to the backup voice; a passing outage does not', () => {
+  expect(accessFailure(new Error('TTS failed: 503 {"error":"[AI_CONFIGURATION] Sarvam voice is not configured."}'))).toBe(true);
+  expect(accessFailure(new Error('TTS failed: 503 {"error":"Sarvam speech could not finish."}'))).toBe(false);
+});

@@ -127,35 +127,49 @@ export async function scanChapter(cls: number, no: number): Promise<ScanResult> 
   const cached = await readCache(chapterKey);
   if (cached && cached.length >= 3) return { chapter: label, chapterKey, snippets: cached, cached: true, verified: cached.every((s) => s.verified) };
 
-  const results = await perplexitySearch(`"${chapter.name}" NCERT Class ${chapter.cls} Biology chapter ${chapter.no} full text explanation`);
-  // Skip whole-book index / PDF-download pages — they never carry chapter text.
-  const pages = results.filter((r) => !/pdf|download|books?\b|index/i.test(r.url) && !/pdf|download/i.test(r.title ?? ''));
+  // Two searches (chapter name, then chapter number) so one weak search never ends the scan.
+  const queries = [
+    `"${chapter.name}" NCERT Class ${chapter.cls} Biology chapter ${chapter.no}`,
+    `NCERT Class ${chapter.cls} Biology chapter ${chapter.no} ${chapter.name} notes explanation`,
+  ];
+  const seen = new Set<string>();
+  const pages: Array<{ title?: string; url: string }> = [];
+  for (const q of queries) {
+    for (const r of await perplexitySearch(q)) {
+      // Skip PDF downloads and whole-book index pages — they never carry readable chapter text.
+      if (seen.has(r.url) || /\.pdf($|\?)|download/i.test(r.url) || /\bpdf\b|download/i.test(r.title ?? '')) continue;
+      seen.add(r.url); pages.push(r);
+    }
+  }
   if (!pages.length) throw new ScanError(422, 'No readable NCERT page found for this chapter.');
 
   const nameNeedle = chapter.name.toLowerCase().split(':')[0]!.trim();
-  let snippets: NcertSnippet[] = [];
+  const kept: NcertSnippet[] = [];
   const failures: string[] = [];
-  for (const r of pages.slice(0, 3)) {
+  let verified = true;
+  // Verify each page on its own: a junk page is dropped, the next page is tried.
+  for (const r of pages.slice(0, 5)) {
+    if (kept.length >= MAX_SNIPPETS_PER_CHAPTER) break;
     try {
       const md = await firecrawlMarkdown(r.url);
       if (md.length < 500) { failures.push(`${r.url} (too short)`); continue; }
       if (!md.toLowerCase().includes(nameNeedle)) { failures.push(`${r.url} (not this chapter)`); continue; }
-      snippets = dedupeSnippets([...snippets, ...extractSnippets(md).map((s) => ({ ...s, sourceUrl: r.url }))]);
-      if (snippets.length >= MAX_SNIPPETS_PER_CHAPTER) break;
+      const fresh = dedupeSnippets([...kept, ...extractSnippets(md).map((s) => ({ ...s, sourceUrl: r.url }))]).slice(kept.length, MAX_SNIPPETS_PER_CHAPTER);
+      if (!fresh.length) { failures.push(`${r.url} (no study lines)`); continue; }
+      const wrong = await verifySnippetLines(label, fresh);
+      if (wrong === null) verified = false;
+      const good = fresh.filter((_, i) => !wrong?.has(i));
+      if (!good.length) { failures.push(`${r.url} (lines rejected)`); continue; }
+      kept.push(...good);
     } catch (e) {
       if (e instanceof ScanError && e.status === 402) throw e;
       failures.push(r.url);
     }
   }
-  snippets = snippets.slice(0, MAX_SNIPPETS_PER_CHAPTER);
-  if (!snippets.length) {
-    throw new ScanError(422, `The chapter pages could not be read (${failures.join(', ') || 'empty results'}). Try again later — the scan never guesses content.`);
+  if (!kept.length) {
+    throw new ScanError(422, `No page gave lines that passed the check (${failures.join(', ') || 'empty results'}). The scan never saves doubtful content.`);
   }
-
-  const wrong = await verifySnippetLines(label, snippets);
-  const verified = wrong !== null;
-  const kept = snippets.filter((_, i) => !wrong?.has(i)).map((s) => ({ ...s, verified }));
-  if (!kept.length) throw new ScanError(422, 'Verification rejected all extracted lines — scan aborted instead of saving doubtful content.');
+  for (const s of kept) s.verified = verified;
 
   await writeCache(chapterKey, kept);
   return { chapter: label, chapterKey, snippets: kept, cached: false, verified };

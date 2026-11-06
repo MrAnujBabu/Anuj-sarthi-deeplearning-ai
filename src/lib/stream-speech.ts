@@ -61,7 +61,9 @@ export function retryableSpeechError(error: unknown) {
 /** Credits (402) and access (403) refusals end a voice for the whole call; a refusal to read one fragment does not. */
 export function speechAccessFailure(error: unknown) {
   const message = error instanceof Error ? error.message : String(error);
-  return /^TTS failed: (402|403)/.test(message);
+  // A voice service that is not connected at all (503 + AI_CONFIGURATION) is
+  // permanent too: move to the backup voice instead of silencing the call.
+  return /^TTS failed: (402|403)/.test(message) || /^TTS failed: 503 .*AI_CONFIGURATION/.test(message);
 }
 
 /** Audio cushion before playback starts or resumes after a gap. */
